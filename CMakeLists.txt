@@ -12,6 +12,10 @@ add_library(simulator STATIC
     session.cpp
     memory.cpp
     machine.cpp
+    processor.cpp
+    arithmetic.cpp
+    besm6_arch.cpp
+    extracode.cpp
     trace.cpp
 )
 

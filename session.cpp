@@ -185,12 +185,12 @@ public:
     //
     void mem_write(const Words &input, uint64_t addr)
     {
-        memory.debug_write(input, addr);
+        memory.write_words(input, addr);
     }
 
     void mem_read(Words &output, unsigned nrows, uint64_t addr)
     {
-        memory.debug_read(output, nrows, addr);
+        memory.read_words(output, nrows, addr);
     }
 
 private:

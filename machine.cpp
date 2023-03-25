@@ -35,8 +35,9 @@ const uint64_t Machine::DEFAULT_LIMIT = 100ULL * 1000 * 1000 * 1000;
 // Initialize the machine.
 //
 Machine::Machine(Memory &memory) :
+    progress_time_last(std::chrono::steady_clock::now()),
     memory(memory),
-    progress_time_last(std::chrono::steady_clock::now())
+    cpu(*this, memory)
 {
 }
 
@@ -68,47 +69,15 @@ void Machine::show_progress()
 
 //
 // Run the machine until completion.
-// Return `done' flag: true when everything finished.
 //
-bool Machine::run()
+void Machine::run()
 {
-    bool done;
+    cpu.run();
 
-    do {
-        is_halted = false;
-
-        try {
-            // Simulate one instruction.
-            done = advance();
-
-        } catch (std::exception &ex) {
-            std::cout << "\nFATAL ERROR: " << ex.what() << std::endl;
-            //TODO: dump_state();
-            throw;
-        }
-
-        if (progress_message_enabled) {
-            show_progress();
-        }
-
-        if (is_halted) {
-            return false;
-        }
-    } while (!done);
-
-    return true;
-}
-
-//
-// Run one instruction.
-// Return `done' flag: true when finished.
-// Throw exception in case of fatal error.
-//
-bool Machine::advance()
-{
-    //TODO: simulate one instruction.
-
-    return true;
+    //TODO: move to cpu.run()
+    //if (progress_message_enabled) {
+    //    show_progress();
+    //}
 }
 
 //

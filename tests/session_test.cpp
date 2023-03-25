@@ -33,8 +33,7 @@ TEST_F(dubna_session, version)
     EXPECT_NE(result.find("-"), std::string::npos);
 }
 
-#if 0
-TEST_F(dubna_session, nop_stop)
+TEST_F(dubna_session, DISABLED_nop_stop)
 {
     std::string job_filename = get_test_name() + ".dub";
     create_file(job_filename,
@@ -51,4 +50,3 @@ TEST_F(dubna_session, nop_stop)
     EXPECT_EQ(session->get_exit_status(), EXIT_SUCCESS);
     EXPECT_EQ(session->get_instr_count(), 2);
 }
-#endif

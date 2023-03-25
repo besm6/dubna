@@ -227,7 +227,7 @@ static const char *get_alnum(const char *iptr, char *optr)
 // Parse single instruction (half word).
 // Allow mnemonics or octal code.
 //
-static const char *parse_instruction(const char *cptr, uint32_t *val)
+static const char *parse_instruction(const char *cptr, unsigned *val)
 {
     int opcode, reg, addr, negate;
     char buf[BUFSIZ];
@@ -322,7 +322,7 @@ static const char *parse_instruction(const char *cptr, uint32_t *val)
 //
 static bool parse_instruction_word(const char *cptr, uint64_t *val)
 {
-    uint32_t left, right;
+    unsigned left, right;
 
     *val = 0;
     cptr = parse_instruction(cptr, &left);
@@ -347,7 +347,7 @@ static bool parse_instruction_word(const char *cptr, uint64_t *val)
 //
 // Печать машинной инструкции с мнемоникой.
 //
-void svs_fprint_cmd(FILE *of, uint32_t cmd)
+void svs_fprint_cmd(FILE *of, unsigned cmd)
 {
     int reg, opcode, addr;
 
@@ -379,7 +379,7 @@ void svs_fprint_cmd(FILE *of, uint32_t cmd)
 //
 // Печать машинной инструкции в восьмеричном виде.
 //
-void svs_fprint_insn(FILE *of, uint32_t insn)
+void svs_fprint_insn(FILE *of, unsigned insn)
 {
     if (insn & BBIT(20))
         fprintf(of, "%02o %02o %05o ",
@@ -515,7 +515,7 @@ bool svs_load(struct ElSvsProcessor *cpu, FILE *input)
             ++addr;
             break;
         case '@':               // start address
-            cpu->core.PC = (uint32_t)word;
+            cpu->core.PC = (unsigned)word;
             break;
         }
         if (addr > SVS_MEMSIZE)
@@ -552,7 +552,7 @@ void svs_dump(struct ElSvsProcessor *cpu, FILE *of, const char *fnam)
         last_addr = addr;
         if (IS_INSN48(tag)) {
             fprintf(of, "к ");
-            svs_fprint_cmd(of, (uint32_t)(word >> 24));
+            svs_fprint_cmd(of, (unsigned)(word >> 24));
             fprintf(of, ", ");
             svs_fprint_cmd(of, word & BITS(24));
             fprintf(of, "\t\t; %05o - ", addr);

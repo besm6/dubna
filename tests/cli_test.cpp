@@ -67,8 +67,7 @@ TEST(cli, version)
     EXPECT_NE(result.find("-"), std::string::npos);
 }
 
-#if 0
-TEST(cli, trace_end_file)
+TEST(cli, DISABLED_trace_end_file)
 {
     std::string base_name = get_test_name();
     std::string job_filename = base_name + ".dub";
@@ -106,4 +105,3 @@ TEST(cli, trace_end_file)
     EXPECT_STREQ(trace[2].c_str(), "TODO");
     EXPECT_STREQ(trace[3].c_str(), "----------------");
 }
-#endif

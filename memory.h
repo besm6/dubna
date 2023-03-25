@@ -36,14 +36,14 @@ public:
     virtual ~Memory() = default;
 
     // Store data to memory.
-    void store_word(const Word &input, unsigned addr);
+    void store(unsigned addr, uint64_t val) { mem[addr].word = val; }
 
     // Load data from memory.
-    void load_word(Word &output, unsigned addr);
+    uint64_t load(unsigned addr) { return mem[addr].word; }
 
-    // Debug access to memory: no tracing.
-    void debug_write(const Words &input, unsigned addr);
-    void debug_read(Words &output, unsigned nrows, unsigned addr);
+    // Bulk access to memory.
+    void write_words(const Words &input, unsigned addr);
+    void read_words(Words &output, unsigned nrows, unsigned addr);
 
     // Cannot copy the Memory object.
     Memory(const Memory &) = delete;

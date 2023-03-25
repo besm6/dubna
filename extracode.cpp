@@ -1,7 +1,7 @@
 //
-// BESM-6 memory unit.
+// Execute extracodes.
 //
-// Copyright (c) 2022-2023 Leonid Broukhis, Serge Vakulenko
+// Copyright (c) 2023 Serge Vakulenko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -21,23 +21,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
-#include "memory.h"
+#include "machine.h"
 
-//
-// Backdoor read from memory.
-// No tracing.
-//
-void Memory::read_words(Words &output, unsigned nrows, unsigned addr)
+void Processor::extracode(unsigned opcode)
 {
-    output.resize(nrows);
-    memcpy(output.data(), &mem[addr], nrows * sizeof(Word));
-}
-
-//
-// Backdoor write to memory.
-// No tracing.
-//
-void Memory::write_words(const Words &input, unsigned addr)
-{
-    memcpy(&mem[addr], input.data(), input.size() * sizeof(Word));
+    //TODO
 }

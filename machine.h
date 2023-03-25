@@ -23,16 +23,12 @@
 #define DUBNA_MACHINE_H
 
 #include "memory.h"
+#include "processor.h"
 
 class Machine {
 private:
-    Memory &memory;
-
     // Simulate this number of instructions.
     uint64_t instr_limit{ DEFAULT_LIMIT };
-
-    // Internal flag to stop the simulation.
-    bool is_halted{ false };
 
     // Enable a progress message to stderr.
     bool progress_message_enabled{ false };
@@ -50,12 +46,27 @@ private:
     static bool trace_flag;
     static std::ofstream trace_stream;
 
+    // Trace modes.
+    bool trace_instructions{}; // trace machine instuctions
+    bool trace_extracodes{};   // trace extracodes (except e75)
+    bool trace_registers{};    // trace CPU registers
+    bool trace_memory{};       // trace memory read/write
+    bool trace_fetch{};        // trace instruction fetch
+    bool trace_exceptions{};   // trace exceptions
+
     // Static stuff.
     static const uint64_t DEFAULT_LIMIT;    // Limit of instructions to simulate, by default
     static bool verbose;                    // Verbose flag for tracing
     static uint64_t simulated_instructions; // Count of instructions
 
 public:
+    // 32K words of virtual memory.
+    Memory &memory;
+
+    // BESM-6 processor.
+    Processor cpu;
+
+    // Constructor.
     explicit Machine(Memory &memory);
 
     // Get reference to memory.
@@ -66,10 +77,7 @@ public:
     void load(std::istream &input);
 
     // Run simulation.
-    bool run();
-
-    // Simulate one instruction.
-    bool advance();
+    void run();
 
     // Enable a progress message to stderr.
     void enable_progress_message(bool on) { progress_message_enabled = on; }
@@ -94,11 +102,6 @@ public:
 
     // Emit trace to this stream.
     static std::ostream &get_trace_stream();
-
-    // Backdoor access to memory.
-    // No tracing.
-    void mem_write(const Words &input, unsigned addr) { memory.debug_write(input, addr); }
-    void mem_read(Words &output, unsigned nrows, unsigned addr) { memory.debug_read(output, nrows, addr); }
 };
 
 #endif // DUBNA_MACHINE_H

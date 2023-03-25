@@ -30,12 +30,9 @@
 static const unsigned MEMORY_NWORDS = 32 * 1024;
 
 //
-// One row of 8-bit values (signed).
+// 48-bit memory word in lower bits of uint64_t value.
 //
-union Word {
-    uint8_t byte[8]; // Only bytes 5:0 are used
-    uint64_t word;   // Only bits 47:0 are used
-};
+using Word = uint64_t;
 
 //
 // Array of words.

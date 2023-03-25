@@ -40,11 +40,11 @@ TEST_F(dubna_machine, uj)
     store_word(012, besm6_asm("06 33 12345, 00 22 00000"));
 
     // Run the code.
-    machine->set_pc(010);
+    machine->cpu.set_pc(010);
     machine->run();
 
     // Check the PC address.
-    EXPECT_EQ(machine->get_pc(), 012u);
+    EXPECT_EQ(machine->cpu.get_pc(), 012u);
 }
 
 //
@@ -76,12 +76,12 @@ TEST_F(dubna_machine, vtm_vzm_v1m)
     store_word(016, besm6_asm("стоп 12345(6), мода")); // Magic opcode: Pass
 
     // Run the code.
-    machine->set_pc(010);
+    machine->cpu.set_pc(010);
     machine->run();
 
     // Check registers.
-    EXPECT_EQ(machine->get_pc(), 016u);
-    EXPECT_EQ(machine->get_m(2), 077777u);
+    EXPECT_EQ(machine->cpu.get_pc(), 016u);
+    EXPECT_EQ(machine->cpu.get_m(2), 077777u);
 }
 
 //
@@ -98,13 +98,13 @@ TEST_F(dubna_machine, jam_utm)
     store_word(015, besm6_asm("стоп 76543(2), мода")); // Magic opcode: Fail
 
     // Run the code.
-    machine->set_pc(010);
+    machine->cpu.set_pc(010);
     machine->run();
 
     // Check registers.
-    EXPECT_EQ(machine->get_pc(), 014u);
-    EXPECT_EQ(machine->get_m(2), 0u);
-    EXPECT_EQ(machine->get_m(3), 0u);
+    EXPECT_EQ(machine->cpu.get_pc(), 014u);
+    EXPECT_EQ(machine->cpu.get_m(2), 0u);
+    EXPECT_EQ(machine->cpu.get_m(3), 0u);
 }
 
 //
@@ -178,26 +178,26 @@ TEST_F(dubna_machine, vlm)
     store_word(02000, 07777777777777777ul);
 
     // Run the code.
-    machine->set_pc(010);
+    machine->cpu.set_pc(010);
     machine->run();
 
     // Check registers.
-    EXPECT_EQ(machine->get_pc(), 0104u);
-    EXPECT_EQ(machine->get_m(1), 0u);
-    EXPECT_EQ(machine->get_m(2), 0u);
-    EXPECT_EQ(machine->get_m(3), 0u);
-    EXPECT_EQ(machine->get_m(4), 0u);
-    EXPECT_EQ(machine->get_m(5), 0u);
-    EXPECT_EQ(machine->get_m(6), 0u);
-    EXPECT_EQ(machine->get_m(7), 0u);
-    EXPECT_EQ(machine->get_m(8), 0u);
-    EXPECT_EQ(machine->get_m(9), 0u);
-    EXPECT_EQ(machine->get_m(10), 0u);
-    EXPECT_EQ(machine->get_m(11), 0u);
-    EXPECT_EQ(machine->get_m(12), 0u);
-    EXPECT_EQ(machine->get_m(13), 0u);
-    EXPECT_EQ(machine->get_m(14), 0u);
-    EXPECT_EQ(machine->get_m(15), 0u);
+    EXPECT_EQ(machine->cpu.get_pc(), 0104u);
+    EXPECT_EQ(machine->cpu.get_m(1), 0u);
+    EXPECT_EQ(machine->cpu.get_m(2), 0u);
+    EXPECT_EQ(machine->cpu.get_m(3), 0u);
+    EXPECT_EQ(machine->cpu.get_m(4), 0u);
+    EXPECT_EQ(machine->cpu.get_m(5), 0u);
+    EXPECT_EQ(machine->cpu.get_m(6), 0u);
+    EXPECT_EQ(machine->cpu.get_m(7), 0u);
+    EXPECT_EQ(machine->cpu.get_m(8), 0u);
+    EXPECT_EQ(machine->cpu.get_m(9), 0u);
+    EXPECT_EQ(machine->cpu.get_m(10), 0u);
+    EXPECT_EQ(machine->cpu.get_m(11), 0u);
+    EXPECT_EQ(machine->cpu.get_m(12), 0u);
+    EXPECT_EQ(machine->cpu.get_m(13), 0u);
+    EXPECT_EQ(machine->cpu.get_m(14), 0u);
+    EXPECT_EQ(machine->cpu.get_m(15), 0u);
 }
 
 //
@@ -236,14 +236,14 @@ TEST_F(dubna_machine, utc_wtc)
     store_word(02002, 02525252525252525ul);
 
     // Run the code.
-    machine->set_pc(010);
+    machine->cpu.set_pc(010);
     machine->run();
 
     // Check registers.
-    EXPECT_EQ(machine->get_pc(), 037u);
-    EXPECT_EQ(machine->get_m(3), 0u);
-    EXPECT_EQ(machine->get_m(4), 052525u);
-    EXPECT_EQ(machine->get_m(5), 0u);
+    EXPECT_EQ(machine->cpu.get_pc(), 037u);
+    EXPECT_EQ(machine->cpu.get_m(3), 0u);
+    EXPECT_EQ(machine->cpu.get_m(4), 052525u);
+    EXPECT_EQ(machine->cpu.get_m(5), 0u);
 }
 
 //
@@ -266,13 +266,13 @@ TEST_F(dubna_machine, vjm)
     store_word(023, besm6_asm("стоп 76543(2), мода")); // Magic opcode: Fail
 
     // Run the code.
-    machine->set_pc(010);
+    machine->cpu.set_pc(010);
     machine->run();
 
     // Check registers.
-    EXPECT_EQ(machine->get_pc(), 022u);
-    EXPECT_EQ(machine->get_m(2), 020u);
-    EXPECT_EQ(machine->get_m(3), 0u);
+    EXPECT_EQ(machine->cpu.get_pc(), 022u);
+    EXPECT_EQ(machine->cpu.get_m(2), 020u);
+    EXPECT_EQ(machine->cpu.get_m(3), 0u);
 }
 
 //
@@ -296,13 +296,13 @@ TEST_F(dubna_machine, mtj)
     store_word(024, besm6_asm("стоп 76543(2), мода")); // Magic opcode: Fail
 
     // Run the code.
-    machine->set_pc(010);
+    machine->cpu.set_pc(010);
     machine->run();
 
     // Check registers.
-    EXPECT_EQ(machine->get_pc(), 023u);
-    EXPECT_EQ(machine->get_m(2), 1u);
-    EXPECT_EQ(machine->get_m(3), 0u);
+    EXPECT_EQ(machine->cpu.get_pc(), 023u);
+    EXPECT_EQ(machine->cpu.get_m(2), 1u);
+    EXPECT_EQ(machine->cpu.get_m(3), 0u);
 }
 
 //
@@ -322,13 +322,13 @@ TEST_F(dubna_machine, xta_uza_u1a)
     store_word(02001, 0000000000000001ul);
 
     // Run the code.
-    machine->set_pc(010);
+    machine->cpu.set_pc(010);
     machine->run();
 
     // Check registers.
-    EXPECT_EQ(machine->get_pc(), 016u);
-    EXPECT_EQ(machine->get_acc(), 1u);
-    EXPECT_EQ(machine->get_rmr(), 1u);
+    EXPECT_EQ(machine->cpu.get_pc(), 016u);
+    EXPECT_EQ(machine->cpu.get_acc(), 1u);
+    EXPECT_EQ(machine->cpu.get_rmr(), 1u);
 }
 
 //
@@ -357,13 +357,13 @@ TEST_F(dubna_machine, atx)
     store_word(02003, 0000000000000001ul);
 
     // Run the code.
-    machine->set_pc(010);
+    machine->cpu.set_pc(010);
     machine->run();
 
     // Check registers.
-    EXPECT_EQ(machine->get_pc(), 027u);
-    EXPECT_EQ(machine->get_acc(), 1u);
-    EXPECT_EQ(machine->get_rmr(), 1u);
+    EXPECT_EQ(machine->cpu.get_pc(), 027u);
+    EXPECT_EQ(machine->cpu.get_acc(), 1u);
+    EXPECT_EQ(machine->cpu.get_rmr(), 1u);
 }
 
 //
@@ -386,14 +386,14 @@ TEST_F(dubna_machine, ati_ita)
     store_word(02000, 07777777777777777ul);
 
     // Run the code.
-    machine->set_pc(010);
+    machine->cpu.set_pc(010);
     machine->run();
 
     // Check registers.
-    EXPECT_EQ(machine->get_pc(), 017u);
-    EXPECT_EQ(machine->get_acc(), 077777u);
-    EXPECT_EQ(machine->get_m(2), 077777u);
-    EXPECT_EQ(machine->get_m(3), 0u);
+    EXPECT_EQ(machine->cpu.get_pc(), 017u);
+    EXPECT_EQ(machine->cpu.get_acc(), 077777u);
+    EXPECT_EQ(machine->cpu.get_m(2), 077777u);
+    EXPECT_EQ(machine->cpu.get_m(3), 0u);
 }
 
 //
@@ -422,13 +422,13 @@ TEST_F(dubna_machine, addr0)
     store_word(027, besm6_asm("стоп 76543(2), мода")); // Magic opcode: Fail
 
     // Run the code.
-    machine->set_pc(010);
+    machine->cpu.set_pc(010);
     machine->run();
 
     // Check registers.
-    EXPECT_EQ(machine->get_pc(), 026u);
-    EXPECT_EQ(machine->get_acc(), 0u);
-    EXPECT_EQ(machine->get_m(2), 0u);
+    EXPECT_EQ(machine->cpu.get_pc(), 026u);
+    EXPECT_EQ(machine->cpu.get_acc(), 0u);
+    EXPECT_EQ(machine->cpu.get_m(2), 0u);
 }
 
 //
@@ -453,13 +453,13 @@ TEST_F(dubna_machine, aax_aox_aex)
     store_word(02002, 02525252525252525ul);
 
     // Run the code.
-    machine->set_pc(010);
+    machine->cpu.set_pc(010);
     machine->run();
 
     // Check registers.
-    EXPECT_EQ(machine->get_pc(), 021u);
-    EXPECT_EQ(machine->get_acc(), 0u);
-    EXPECT_EQ(machine->get_rmr(), 0u);
+    EXPECT_EQ(machine->cpu.get_pc(), 021u);
+    EXPECT_EQ(machine->cpu.get_acc(), 0u);
+    EXPECT_EQ(machine->cpu.get_rmr(), 0u);
 }
 
 //
@@ -482,13 +482,13 @@ TEST_F(dubna_machine, arx)
     store_word(02003, 00000000000000014ul);
 
     // Run the code.
-    machine->set_pc(010);
+    machine->cpu.set_pc(010);
     machine->run();
 
     // Check registers.
-    EXPECT_EQ(machine->get_pc(), 016u);
-    EXPECT_EQ(machine->get_acc(), 0u);
-    EXPECT_EQ(machine->get_rmr(), 0u);
+    EXPECT_EQ(machine->cpu.get_pc(), 016u);
+    EXPECT_EQ(machine->cpu.get_acc(), 0u);
+    EXPECT_EQ(machine->cpu.get_rmr(), 0u);
 }
 
 //
@@ -517,16 +517,16 @@ TEST_F(dubna_machine, its)
     store_word(02006, 00000000000000033ul);
 
     // Run the code.
-    machine->set_pc(010);
+    machine->cpu.set_pc(010);
     machine->run();
 
     // Check registers.
-    EXPECT_EQ(machine->get_pc(), 024u);
-    EXPECT_EQ(machine->get_acc(), 0u);
-    EXPECT_EQ(machine->get_rmr(), 0u);
-    EXPECT_EQ(machine->get_m(1), 011u);
-    EXPECT_EQ(machine->get_m(2), 022u);
-    EXPECT_EQ(machine->get_m(3), 033u);
+    EXPECT_EQ(machine->cpu.get_pc(), 024u);
+    EXPECT_EQ(machine->cpu.get_acc(), 0u);
+    EXPECT_EQ(machine->cpu.get_rmr(), 0u);
+    EXPECT_EQ(machine->cpu.get_m(1), 011u);
+    EXPECT_EQ(machine->cpu.get_m(2), 022u);
+    EXPECT_EQ(machine->cpu.get_m(3), 033u);
 }
 
 //
@@ -561,17 +561,17 @@ TEST_F(dubna_machine, sti)
     store_word(02005, 00000000000070777ul);
 
     // Run the code.
-    machine->set_pc(010);
+    machine->cpu.set_pc(010);
     machine->run();
 
     // Check registers.
-    EXPECT_EQ(machine->get_pc(), 030u);
-    EXPECT_EQ(machine->get_acc(), 0u);
-    EXPECT_EQ(machine->get_rmr(), 0u);
-    EXPECT_EQ(machine->get_m(1), 0u);
-    EXPECT_EQ(machine->get_m(2), 0u);
-    EXPECT_EQ(machine->get_m(3), 0u);
-    EXPECT_EQ(machine->get_m(15), 070777u);
+    EXPECT_EQ(machine->cpu.get_pc(), 030u);
+    EXPECT_EQ(machine->cpu.get_acc(), 0u);
+    EXPECT_EQ(machine->cpu.get_rmr(), 0u);
+    EXPECT_EQ(machine->cpu.get_m(1), 0u);
+    EXPECT_EQ(machine->cpu.get_m(2), 0u);
+    EXPECT_EQ(machine->cpu.get_m(3), 0u);
+    EXPECT_EQ(machine->cpu.get_m(15), 070777u);
 }
 
 //
@@ -598,14 +598,14 @@ TEST_F(dubna_machine, xts)
     store_word(02006, 00000000000000033ul);
 
     // Run the code.
-    machine->set_pc(010);
+    machine->cpu.set_pc(010);
     machine->run();
 
     // Check registers.
-    EXPECT_EQ(machine->get_pc(), 022u);
-    EXPECT_EQ(machine->get_acc(), 0u);
-    EXPECT_EQ(machine->get_rmr(), 0u);
-    EXPECT_EQ(machine->get_m(15), 0u);
+    EXPECT_EQ(machine->cpu.get_pc(), 022u);
+    EXPECT_EQ(machine->cpu.get_acc(), 0u);
+    EXPECT_EQ(machine->cpu.get_rmr(), 0u);
+    EXPECT_EQ(machine->cpu.get_m(15), 0u);
 }
 
 //
@@ -636,17 +636,17 @@ TEST_F(dubna_machine, stx)
     store_word(02005, 00000000000077777ul);
 
     // Run the code.
-    machine->set_pc(010);
+    machine->cpu.set_pc(010);
     machine->run();
 
     // Check registers.
-    EXPECT_EQ(machine->get_pc(), 026u);
-    EXPECT_EQ(machine->get_acc(), 0u);
-    EXPECT_EQ(machine->get_rmr(), 0u);
-    EXPECT_EQ(machine->get_m(1), 0u);
-    EXPECT_EQ(machine->get_m(2), 0u);
-    EXPECT_EQ(machine->get_m(3), 0u);
-    EXPECT_EQ(machine->get_m(15), 0u);
+    EXPECT_EQ(machine->cpu.get_pc(), 026u);
+    EXPECT_EQ(machine->cpu.get_acc(), 0u);
+    EXPECT_EQ(machine->cpu.get_rmr(), 0u);
+    EXPECT_EQ(machine->cpu.get_m(1), 0u);
+    EXPECT_EQ(machine->cpu.get_m(2), 0u);
+    EXPECT_EQ(machine->cpu.get_m(3), 0u);
+    EXPECT_EQ(machine->cpu.get_m(15), 0u);
 }
 
 //
@@ -734,15 +734,15 @@ TEST_F(dubna_machine, asn_asx)
     store_word(02070, 00020000000000000ul);
 
     // Run the code.
-    machine->set_pc(010);
+    machine->cpu.set_pc(010);
     machine->run();
 
     // Check registers.
-    EXPECT_EQ(machine->get_pc(), 032u);
-    EXPECT_EQ(machine->get_acc(), 0u);
-    EXPECT_EQ(machine->get_rmr(), 0u);
-    EXPECT_EQ(machine->get_m(11), 077777u);
-    EXPECT_EQ(machine->get_m(12), 0u);
+    EXPECT_EQ(machine->cpu.get_pc(), 032u);
+    EXPECT_EQ(machine->cpu.get_acc(), 0u);
+    EXPECT_EQ(machine->cpu.get_rmr(), 0u);
+    EXPECT_EQ(machine->cpu.get_m(11), 077777u);
+    EXPECT_EQ(machine->cpu.get_m(12), 0u);
 }
 
 //
@@ -783,17 +783,17 @@ TEST_F(dubna_machine, acx_anx)
     store_word(02007, 02525252525252525ul);
 
     // Run the code.
-    machine->set_pc(010);
+    machine->cpu.set_pc(010);
     machine->run();
 
     // Check registers.
-    EXPECT_EQ(machine->get_pc(), 034u);
-    EXPECT_EQ(machine->get_acc(), 0u);
-    EXPECT_EQ(machine->get_rmr(), 0u);
-    EXPECT_EQ(machine->get_m(11), 077777u);
-    EXPECT_EQ(machine->get_m(12), 0u);
-    EXPECT_EQ(machine->get_m(14), 01001u);
-    EXPECT_EQ(machine->get_m(15), 02011u);
+    EXPECT_EQ(machine->cpu.get_pc(), 034u);
+    EXPECT_EQ(machine->cpu.get_acc(), 0u);
+    EXPECT_EQ(machine->cpu.get_rmr(), 0u);
+    EXPECT_EQ(machine->cpu.get_m(11), 077777u);
+    EXPECT_EQ(machine->cpu.get_m(12), 0u);
+    EXPECT_EQ(machine->cpu.get_m(14), 01001u);
+    EXPECT_EQ(machine->cpu.get_m(15), 02011u);
 }
 
 //
@@ -819,13 +819,13 @@ TEST_F(dubna_machine, apx_aux)
     store_word(02003, 02525252525252525ul);
 
     // Run the code.
-    machine->set_pc(010);
+    machine->cpu.set_pc(010);
     machine->run();
 
     // Check registers.
-    EXPECT_EQ(machine->get_pc(), 021u);
-    EXPECT_EQ(machine->get_acc(), 0u);
-    EXPECT_EQ(machine->get_rmr(), 0u);
+    EXPECT_EQ(machine->cpu.get_pc(), 021u);
+    EXPECT_EQ(machine->cpu.get_acc(), 0u);
+    EXPECT_EQ(machine->cpu.get_rmr(), 0u);
 }
 
 //
@@ -934,14 +934,14 @@ TEST_F(dubna_machine, stack)
     store_word(02007, 07777777700000001ul);
 
     // Run the code.
-    machine->set_pc(010);
+    machine->cpu.set_pc(010);
     machine->run();
 
     // Check registers.
-    EXPECT_EQ(machine->get_pc(), 0100u);
-    EXPECT_EQ(machine->get_acc(), 0u);
-    EXPECT_EQ(machine->get_rmr(), 0u);
-    EXPECT_EQ(machine->get_m(15), 02010u);
+    EXPECT_EQ(machine->cpu.get_pc(), 0100u);
+    EXPECT_EQ(machine->cpu.get_acc(), 0u);
+    EXPECT_EQ(machine->cpu.get_rmr(), 0u);
+    EXPECT_EQ(machine->cpu.get_m(15), 02010u);
 }
 
 //
@@ -1003,17 +1003,17 @@ TEST_F(dubna_machine, ntr_rte)
     store_word(04061, 03740000000000000ul);
 
     // Run the code.
-    machine->set_pc(010);
+    machine->cpu.set_pc(010);
     machine->run();
 
     // Check registers.
-    EXPECT_EQ(machine->get_pc(), 066u);
-    EXPECT_EQ(machine->get_acc(), 0u);
-    EXPECT_EQ(machine->get_rmr(), 0u);
-    EXPECT_EQ(machine->get_rau(), 04u);
-    EXPECT_EQ(machine->get_m(2), 077777u);
-    EXPECT_EQ(machine->get_m(3), 0u);
-    EXPECT_EQ(machine->get_m(15), 02001u);
+    EXPECT_EQ(machine->cpu.get_pc(), 066u);
+    EXPECT_EQ(machine->cpu.get_acc(), 0u);
+    EXPECT_EQ(machine->cpu.get_rmr(), 0u);
+    EXPECT_EQ(machine->cpu.get_rau(), 04u);
+    EXPECT_EQ(machine->cpu.get_m(2), 077777u);
+    EXPECT_EQ(machine->cpu.get_m(3), 0u);
+    EXPECT_EQ(machine->cpu.get_m(15), 02001u);
 }
 
 //
@@ -1080,13 +1080,13 @@ TEST_F(dubna_machine, yta)
     store_word(02006, 01143210654321065ul);
 
     // Run the code.
-    machine->set_pc(010);
+    machine->cpu.set_pc(010);
     machine->run();
 
     // Check registers.
-    EXPECT_EQ(machine->get_pc(), 067u);
-    EXPECT_EQ(machine->get_acc(), 0u);
-    EXPECT_EQ(machine->get_rmr(), 0u);
+    EXPECT_EQ(machine->cpu.get_pc(), 067u);
+    EXPECT_EQ(machine->cpu.get_acc(), 0u);
+    EXPECT_EQ(machine->cpu.get_rmr(), 0u);
 }
 
 //
@@ -1125,16 +1125,16 @@ TEST_F(dubna_machine, ean_esn_eax_esx)
     store_word(02006, 06760000000000000ul);
 
     // Run the code.
-    machine->set_pc(010);
+    machine->cpu.set_pc(010);
     machine->run();
 
     // Check registers.
-    EXPECT_EQ(machine->get_pc(), 033u);
-    EXPECT_EQ(machine->get_acc(), 0u);
-    EXPECT_EQ(machine->get_rmr(), 0u);
-    EXPECT_EQ(machine->get_rau(), 04u);
-    EXPECT_EQ(machine->get_m(11), 077600u);
-    EXPECT_EQ(machine->get_m(14), 0u);
+    EXPECT_EQ(machine->cpu.get_pc(), 033u);
+    EXPECT_EQ(machine->cpu.get_acc(), 0u);
+    EXPECT_EQ(machine->cpu.get_rmr(), 0u);
+    EXPECT_EQ(machine->cpu.get_rau(), 04u);
+    EXPECT_EQ(machine->cpu.get_m(11), 077600u);
+    EXPECT_EQ(machine->cpu.get_m(14), 0u);
 }
 
 //
@@ -1209,15 +1209,15 @@ TEST_F(dubna_machine, aax_asx_xsa)
     store_word(02040, 03757777777600000ul);
 
     // Run the code.
-    machine->set_pc(010);
+    machine->cpu.set_pc(010);
     machine->run();
 
     // Check registers.
-    EXPECT_EQ(machine->get_pc(), 056u);
-    EXPECT_EQ(machine->get_acc(), 0u);
-    EXPECT_EQ(machine->get_rmr(), 0u);
-    EXPECT_EQ(machine->get_rau(), 04u);
-    EXPECT_EQ(machine->get_m(15), 02000u);
+    EXPECT_EQ(machine->cpu.get_pc(), 056u);
+    EXPECT_EQ(machine->cpu.get_acc(), 0u);
+    EXPECT_EQ(machine->cpu.get_rmr(), 0u);
+    EXPECT_EQ(machine->cpu.get_rau(), 04u);
+    EXPECT_EQ(machine->cpu.get_m(15), 02000u);
 }
 
 //
@@ -1264,15 +1264,15 @@ TEST_F(dubna_machine, amx)
     store_word(02030, 01653000000000000ul);
 
     // Run the code.
-    machine->set_pc(010);
+    machine->cpu.set_pc(010);
     machine->run();
 
     // Check registers.
-    EXPECT_EQ(machine->get_pc(), 033u);
-    EXPECT_EQ(machine->get_acc(), 0u);
-    EXPECT_EQ(machine->get_rmr(), 0u);
-    EXPECT_EQ(machine->get_rau(), 04u);
-    EXPECT_EQ(machine->get_m(15), 02001u);
+    EXPECT_EQ(machine->cpu.get_pc(), 033u);
+    EXPECT_EQ(machine->cpu.get_acc(), 0u);
+    EXPECT_EQ(machine->cpu.get_rmr(), 0u);
+    EXPECT_EQ(machine->cpu.get_rau(), 04u);
+    EXPECT_EQ(machine->cpu.get_m(15), 02001u);
 }
 
 //
@@ -1326,15 +1326,15 @@ TEST_F(dubna_machine, avx)
     store_word(02026, 00010000000000001ul);
 
     // Run the code.
-    machine->set_pc(010);
+    machine->cpu.set_pc(010);
     machine->run();
 
     // Check registers.
-    EXPECT_EQ(machine->get_pc(), 044u);
-    EXPECT_EQ(machine->get_acc(), 0u);
-    EXPECT_EQ(machine->get_rmr(), 0u);
-    EXPECT_EQ(machine->get_rau(), 04u);
-    EXPECT_EQ(machine->get_m(15), 02002u);
+    EXPECT_EQ(machine->cpu.get_pc(), 044u);
+    EXPECT_EQ(machine->cpu.get_acc(), 0u);
+    EXPECT_EQ(machine->cpu.get_rmr(), 0u);
+    EXPECT_EQ(machine->cpu.get_rau(), 04u);
+    EXPECT_EQ(machine->cpu.get_m(15), 02002u);
 }
 
 //
@@ -1382,15 +1382,15 @@ TEST_F(dubna_machine, multiply)
     store_word(02027, 00040000000000000);
 
     // Run the code.
-    machine->set_pc(010);
+    machine->cpu.set_pc(010);
     machine->run();
 
     // Check registers.
-    EXPECT_EQ(machine->get_pc(), 036u);
-    EXPECT_EQ(machine->get_acc(), 0u);
-    EXPECT_EQ(machine->get_rmr(), 0u);
-    EXPECT_EQ(machine->get_rau(), 06u);
-    EXPECT_EQ(machine->get_m(15), 02001u);
+    EXPECT_EQ(machine->cpu.get_pc(), 036u);
+    EXPECT_EQ(machine->cpu.get_acc(), 0u);
+    EXPECT_EQ(machine->cpu.get_rmr(), 0u);
+    EXPECT_EQ(machine->cpu.get_rau(), 06u);
+    EXPECT_EQ(machine->cpu.get_m(15), 02001u);
 }
 
 //
@@ -1409,13 +1409,13 @@ TEST_F(dubna_machine, divide)
     store_word(02014, 04110000000000000ul);
 
     // Run the code.
-    machine->set_pc(010);
+    machine->cpu.set_pc(010);
     machine->run();
 
     // Check registers.
-    EXPECT_EQ(machine->get_pc(), 013u);
-    EXPECT_EQ(machine->get_acc(), 0u);
-    EXPECT_EQ(machine->get_rmr(), 0u);
-    EXPECT_EQ(machine->get_rau(), 07u);
-    EXPECT_EQ(machine->get_m(15), 02000u);
+    EXPECT_EQ(machine->cpu.get_pc(), 013u);
+    EXPECT_EQ(machine->cpu.get_acc(), 0u);
+    EXPECT_EQ(machine->cpu.get_rmr(), 0u);
+    EXPECT_EQ(machine->cpu.get_rau(), 07u);
+    EXPECT_EQ(machine->cpu.get_m(15), 02000u);
 }

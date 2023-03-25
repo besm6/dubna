@@ -51,7 +51,7 @@ void Processor::reset()
 //
 // Main instruction fetch/decode loop.
 //
-void Processor::run()
+int Processor::run()
 {
     // TODO: Trace initial state.
     //if (trace_registers) {
@@ -71,7 +71,7 @@ void Processor::run()
         //}
 
         core.M[017] += corr_stack;
-        return;
+        return exception_status;
     }
 
     for (;;) {
@@ -538,6 +538,7 @@ load_modifier:
         longjmp(exception, ESS_BADCMD);
         break;
     case 0330:                                      // стоп, stop
+        longjmp(exception, ESS_HALT);
         break;
     case 0340:                                      // пио, vzm
 branch_zero:

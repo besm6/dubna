@@ -69,9 +69,6 @@ public:
     // Constructor.
     explicit Machine(Memory &memory);
 
-    // Get reference to memory.
-    Memory &get_memory() { return memory; }
-
     // Load job input into machine.
     void load(const std::string &filename);
     void load(std::istream &input);

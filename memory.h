@@ -36,10 +36,10 @@ public:
     virtual ~Memory() = default;
 
     // Store data to memory.
-    void store(unsigned addr, uint64_t val) { mem[addr].word = val; }
+    void store(unsigned addr, uint64_t val) { mem[addr] = val; }
 
     // Load data from memory.
-    uint64_t load(unsigned addr) { return mem[addr].word; }
+    uint64_t load(unsigned addr) { return mem[addr]; }
 
     // Bulk access to memory.
     void write_words(const Words &input, unsigned addr);

@@ -63,7 +63,7 @@ private:
     jmp_buf exception{}; // jump here on exception
     int corr_stack{};    // stack correction on exception
 
-    // Internal exceptions.
+    // Run status codes.
     enum {
         ESS_OK = 0,
         ESS_HALT,          // Останов
@@ -82,7 +82,8 @@ public:
     void reset();
 
     // Main instruction fetch/decode loop.
-    void run();
+    // Return status code.
+    int run();
 
     // Simulate one instruction.
     void step();

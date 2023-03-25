@@ -15,6 +15,7 @@ add_library(simulator STATIC
     processor.cpp
     arithmetic.cpp
     besm6_arch.cpp
+    assembler.cpp
     extracode.cpp
     trace.cpp
 )

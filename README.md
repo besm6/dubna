@@ -7,14 +7,12 @@ by Gennady Maznyi.
 Compile the CPU sources and the unit tests.
 
 ```
-cmake -Bbuild
-make -Cbuild
-make -Cbuild install
+make
+make install
 ```
 
 Run tests:
 ```
-cd build
 make test
 ```
 Expected output:

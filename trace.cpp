@@ -1,26 +1,71 @@
-/*
- * SVS instruction and register tracing.
- *
- * Copyright (c) 2022 Leonid Broukhis, Serge Vakulenko
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- */
+//
+// Instruction and register tracing.
+//
+// Copyright (c) 2022-2023 Leonid Broukhis, Serge Vakulenko
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+//
+#include <iostream>
+#include <fstream>
+#include "machine.h"
+
+//
+// Flag to enable tracing.
+//
+bool Machine::trace_flag;
+
+//
+// Emit trace to this stream.
+//
+std::ofstream Machine::trace_stream;
+
+//
+// Trace output.
+//
+void Machine::enable_trace(const char *file_name)
+{
+    if (trace_stream.is_open()) {
+        trace_stream.close();
+    }
+    if (file_name && file_name[0]) {
+        trace_stream.open(file_name);
+    }
+    trace_flag = true;
+}
+
+std::ostream &Machine::get_trace_stream()
+{
+    if (trace_stream.is_open()) {
+        return trace_stream;
+    }
+    return std::cout;
+}
+
+void Machine::close_trace()
+{
+    if (trace_stream.is_open()) {
+        trace_stream.close();
+    }
+    trace_flag = false;
+}
+
+#if 0
 #include "el_svs_internal.h"
 
 void svs_trace_opcode(struct ElSvsProcessor *cpu, int paddr)
@@ -156,3 +201,4 @@ void svs_trace_registers(struct ElSvsProcessor *cpu)
 
     cpu->prev = cpu->core;
 }
+#endif

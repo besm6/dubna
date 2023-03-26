@@ -37,8 +37,8 @@ private:
     Memory memory;
     Machine machine{ memory };
 
-    // A name of the executable file to run.
-    std::string exec_file;
+    // A name of the file to run.
+    std::string job_file;
 
     // Status of the simulation.
     int exit_status{ EXIT_SUCCESS };
@@ -66,18 +66,18 @@ public:
     int get_exit_status() const { return exit_status; }
 
     //
-    // Set name of executable file.
+    // Set name of job file.
     //
-    void set_exec_file(const char *filename)
+    void set_job_file(const char *filename)
     {
-        if (!exec_file.empty()) {
-            std::cerr << "Too many executable files: " << filename << std::endl;
+        if (!job_file.empty()) {
+            std::cerr << "Too many job files: " << filename << std::endl;
             ::exit(EXIT_FAILURE);
         }
-        exec_file = filename;
+        job_file = filename;
     }
 
-    std::string get_exec_file() const { return exec_file; }
+    std::string get_job_file() const { return job_file; }
 
     //
     // Run simulation session with given parameters.
@@ -86,8 +86,8 @@ public:
     {
         // Load requested ELF file.
         try {
-            std::cout << "Read " << exec_file << std::endl;
-            machine.load(exec_file);
+            std::cout << "Read " << job_file << std::endl;
+            machine.load(job_file);
 
         } catch (std::exception &ex) {
             std::cerr << ex.what() << std::endl;
@@ -153,10 +153,10 @@ public:
     //
     // Enable trace log to stdout.
     //
-    void enable_trace(bool on)
+    void enable_trace(const char *mode)
     {
-        if (on) {
-            Machine::enable_trace("");
+        if (mode && *mode) {
+            Machine::enable_trace(mode);
         } else {
             Machine::close_trace();
         }
@@ -165,9 +165,9 @@ public:
     //
     // Enable trace log to the specified file.
     //
-    void set_trace_file(const char *filename)
+    void set_trace_file(const char *filename, const char *default_mode)
     {
-        Machine::enable_trace(filename);
+        Machine::redirect_trace(filename, default_mode);
         Machine::get_trace_stream() << "Version: " << VERSION_STRING << "\n";
     }
 
@@ -225,16 +225,16 @@ Session::Session() :
 Session::~Session() = default;
 
 //
-// Set name of executable file.
+// Set name of job file.
 //
-void Session::set_exec_file(const char *filename)
+void Session::set_job_file(const char *filename)
 {
-    internal->set_exec_file(filename);
+    internal->set_job_file(filename);
 }
 
-std::string Session::get_exec_file()
+std::string Session::get_job_file()
 {
-    return internal->get_exec_file();
+    return internal->get_job_file();
 }
 
 //
@@ -265,14 +265,14 @@ void Session::finish()
 //
 // Enable a trace log to stdout or to the specified file.
 //
-void Session::enable_trace(bool on)
+void Session::enable_trace(const char *mode)
 {
-    internal->enable_trace(on);
+    internal->enable_trace(mode);
 }
 
-void Session::set_trace_file(const char *filename)
+void Session::set_trace_file(const char *filename, const char *default_mode)
 {
-    internal->set_trace_file(filename);
+    internal->set_trace_file(filename, default_mode);
 }
 
 //

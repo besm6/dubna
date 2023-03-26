@@ -42,17 +42,16 @@ private:
     // Last instr_count when progress message was printed.
     uint64_t progress_count{ 0 };
 
-    // The trace flag.
-    static bool trace_flag;
+    // Trace output.
     static std::ofstream trace_stream;
 
     // Trace modes.
-    bool trace_instructions{}; // trace machine instuctions
-    bool trace_extracodes{};   // trace extracodes (except e75)
-    bool trace_registers{};    // trace CPU registers
-    bool trace_memory{};       // trace memory read/write
-    bool trace_fetch{};        // trace instruction fetch
-    bool trace_exceptions{};   // trace exceptions
+    static bool trace_instructions; // trace machine instuctions
+    static bool trace_extracodes;   // trace extracodes (except e75)
+    static bool trace_registers;    // trace CPU registers
+    static bool trace_memory;       // trace memory read/write
+    static bool trace_fetch;        // trace instruction fetch
+    static bool trace_exceptions;   // trace exceptions
 
     // Static stuff.
     static const uint64_t DEFAULT_LIMIT;    // Limit of instructions to simulate, by default
@@ -93,9 +92,11 @@ public:
 
     // Enable trace output to the given file,
     // or to std::cout when filename not present.
-    static void enable_trace(const char *file_name);
+    static void enable_trace(const char *mode);
+    static void redirect_trace(const char *file_name, const char *default_mode);
     static void close_trace();
-    static bool trace_enabled() { return trace_flag; }
+    static bool trace_enabled() { return trace_instructions | trace_extracodes | trace_registers |
+                                         trace_memory | trace_fetch | trace_exceptions; }
 
     // Emit trace to this stream.
     static std::ostream &get_trace_stream();

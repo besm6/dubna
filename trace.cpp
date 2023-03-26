@@ -28,7 +28,12 @@
 //
 // Flag to enable tracing.
 //
-bool Machine::trace_flag;
+bool Machine::trace_instructions; // trace machine instuctions
+bool Machine::trace_extracodes;   // trace extracodes (except e75)
+bool Machine::trace_registers;    // trace CPU registers
+bool Machine::trace_memory;       // trace memory read/write
+bool Machine::trace_fetch;        // trace instruction fetch
+bool Machine::trace_exceptions;   // trace exceptions
 
 //
 // Emit trace to this stream.
@@ -36,17 +41,62 @@ bool Machine::trace_flag;
 std::ofstream Machine::trace_stream;
 
 //
-// Trace output.
+// Enable trace with given modes.
+//  i - trace instructions
+//  e - trace extracodes
+//  f - trace fetch
+//  r - trace registers
+//  m - trace memory read/write
+//  x - trace exceptions
 //
-void Machine::enable_trace(const char *file_name)
+void Machine::enable_trace(const char *trace_mode)
+{
+    // Disable all trace options.
+    trace_instructions = false;
+    trace_extracodes = false;
+    trace_registers = false;
+    trace_memory = false;
+    trace_fetch = false;
+    trace_exceptions = false;
+
+    if (trace_mode) {
+        // Parse the mode string and enable all requested trace flags.
+        for (unsigned i = 0; trace_mode[i]; i++) {
+            char ch = trace_mode[i];
+            switch (ch) {
+            case 'i': trace_instructions = true; break;
+            case 'e': trace_extracodes = true; break;
+            case 'f': trace_fetch = true; break;
+            case 'm': trace_memory = true; break;
+            case 'x': trace_exceptions = true; break;
+            case 'r': trace_registers = true; break;
+            default:
+                throw std::runtime_error("Wrong trace option: " + std::string(1, ch));
+            }
+        }
+    }
+}
+
+//
+// Redirect trace output to a given file.
+//
+void Machine::redirect_trace(const char *file_name, const char *default_mode)
 {
     if (trace_stream.is_open()) {
+        // Close previous file.
         trace_stream.close();
     }
     if (file_name && file_name[0]) {
+        // Open new trace file.
         trace_stream.open(file_name);
+        if (!trace_stream.is_open())
+            throw std::runtime_error("Cannot write to " + std::string(file_name));
     }
-    trace_flag = true;
+
+    if (!trace_enabled()) {
+        // Set default mode.
+        enable_trace(default_mode);
+    }
 }
 
 std::ostream &Machine::get_trace_stream()
@@ -60,9 +110,12 @@ std::ostream &Machine::get_trace_stream()
 void Machine::close_trace()
 {
     if (trace_stream.is_open()) {
+        // Close output.
         trace_stream.close();
     }
-    trace_flag = false;
+
+    // Disable trace options.
+    enable_trace("");
 }
 
 #if 0

@@ -61,7 +61,7 @@ static const char *opname_long_madlen[16] = {
 // Выдача мнемоники по коду инструкции.
 // Код должен быть в диапазоне 000..077 или 0200..0370.
 //
-static const char *svs_opname(int opcode)
+static const char *besm6_opname(int opcode)
 {
 #if 0
     // Madlen mnemonics.
@@ -80,7 +80,7 @@ static const char *svs_opname(int opcode)
 //
 // Выдача кода инструкции по мнемонике (UTF-8).
 //
-static int svs_opcode(char *instr)
+static int besm6_opcode(char *instr)
 {
     int i;
 
@@ -188,7 +188,7 @@ static const char *parse_instruction(const char *cptr, unsigned &result)
     } else {
         // Мнемоническое представление команды.
         cptr = get_alnum(cptr, buf);               // get opcode
-        opcode = svs_opcode(buf);
+        opcode = besm6_opcode(buf);
         if (opcode < 0) {
             //printf("Bad opname: %s\n", buf);
             return 0;

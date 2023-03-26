@@ -30,11 +30,12 @@
 //
 static const struct option long_options[] = {
     // clang-format off
-    { "help",                   no_argument,        nullptr,    'h' },
-    { "version",                no_argument,        nullptr,    'V' },
-    { "verbose",                no_argument,        nullptr,    'v' },
-    { "limit",                  required_argument,  nullptr,    'l' },
-    { "trace",                  optional_argument,  nullptr,    't' },
+    { "help",       no_argument,        nullptr,    'h' },
+    { "version",    no_argument,        nullptr,    'V' },
+    { "verbose",    no_argument,        nullptr,    'v' },
+    { "limit",      required_argument,  nullptr,    'l' },
+    { "trace",      required_argument,  nullptr,    'T' },
+    { "debug",      required_argument,  nullptr,    'd' },
     { nullptr },
     // clang-format on
 };
@@ -53,10 +54,17 @@ static void print_usage(std::ostream &out, const char *prog_name)
     out << "    -h, --help              Display available options" << std::endl;
     out << "    -V, --version           Print the version number and exit" << std::endl;
     out << "    -v, --verbose           Verbose mode" << std::endl;
-    out << "    -l NUM, --limit=NUM     Stop after this amount of instructions (default "
-        << Session::get_default_limit() << ")" << std::endl;
-    out << "    -t, --trace             Generate trace to stdout" << std::endl;
-    out << "    -t FILE, --trace=FILE   Generate trace to the file" << std::endl;
+    out << "    -l NUM, --limit=NUM     Stop after so many instructions (default " << Session::get_default_limit() << ")" << std::endl;
+    out << "    -t                      Trace extracodes to stdout" << std::endl;
+    out << "    --trace=FILE            Redirect trace to the file" << std::endl;
+    out << "    -d MODE, --debug=MODE   Select debug mode, default irmx" << std::endl;
+    out << "Debug modes:" << std::endl;
+    out << "    i       Trace instructions" << std::endl;
+    out << "    e       Trace extracodes" << std::endl;
+    out << "    f       Trace fetch" << std::endl;
+    out << "    r       Trace registers" << std::endl;
+    out << "    m       Trace memory read/write" << std::endl;
+    out << "    x       Trace exceptions" << std::endl;
 }
 
 //
@@ -78,14 +86,14 @@ int main(int argc, char *argv[])
 
     // Parse command line options.
     for (;;) {
-        switch (getopt_long(argc, argv, "-hVvl:t::", long_options, nullptr)) {
+        switch (getopt_long(argc, argv, "-hVvl:tT:d:", long_options, nullptr)) {
         case EOF:
             break;
         case 0:
             continue;
         case 1:
             // Regular argument.
-            session.set_exec_file(optarg);
+            session.set_job_file(optarg);
             continue;
         case 'h':
             // Show usage message and exit.
@@ -110,12 +118,16 @@ int main(int argc, char *argv[])
             }
             continue;
         case 't':
-            // Enable tracing, with optional file argument.
-            if (optarg) {
-                session.set_trace_file(optarg);
-            } else {
-                session.enable_trace();
-            }
+            // Enable tracing of extracodes, to stdout by default.
+            session.enable_trace("e");
+            continue;
+        case 'T':
+            // Redirect tracing to a file.
+            session.set_trace_file(optarg, "irmx");
+            continue;
+        case 'd':
+            // Set trace options.
+            session.enable_trace(optarg);
             continue;
         default:
             print_usage(std::cerr, prog_name);
@@ -125,7 +137,7 @@ int main(int argc, char *argv[])
     }
 
     // Must specify a file to run.
-    if (session.get_exec_file().empty()) {
+    if (session.get_job_file().empty()) {
         print_usage(std::cerr, prog_name);
         exit(EXIT_FAILURE);
     }

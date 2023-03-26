@@ -35,10 +35,10 @@ public:
     // Constructor.
     explicit Session();
 
-    // Set name of executable file.
-    void set_exec_file(const char *filename);
-    void set_exec_file(const std::string &filename) { set_exec_file(filename.c_str()); }
-    std::string get_exec_file();
+    // Set name of job file.
+    void set_job_file(const char *filename);
+    void set_job_file(const std::string &filename) { set_job_file(filename.c_str()); }
+    std::string get_job_file();
 
     // Run simulation session with given parameters.
     void run();
@@ -58,8 +58,8 @@ public:
     void set_verbose(bool on = true);
 
     // Enable a trace log to stdout or to the specified file.
-    void enable_trace(bool on = true);
-    void set_trace_file(const char *filename);
+    void enable_trace(const char *mode);
+    void set_trace_file(const char *filename, const char *default_mode);
 
     // Get the number of simulated instructions.
     uint64_t get_instr_count();

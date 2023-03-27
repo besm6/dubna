@@ -29,27 +29,27 @@
 TEST_F(dubna_machine, alu_mul)
 {
     // Disable normalization
-    machine->set_rau(3);
+    machine->cpu.set_rau(3);
 
-    machine->set_acc(04050000000000000);               // 1/2 * 2^1
-    machine->arith_multiply(04050000000000000);        // 1/2 * 2^1
-    EXPECT_EQ(machine->get_acc(), 04104000000000000u); // 1/4 * 2^2
-    EXPECT_EQ(machine->get_rmr(), 0u);
+    machine->cpu.set_acc(04050000000000000);               // 1/2 * 2^1
+    machine->cpu.arith_multiply(04050000000000000);        // 1/2 * 2^1
+    EXPECT_EQ(machine->cpu.get_acc(), 04104000000000000u); // 1/4 * 2^2
+    EXPECT_EQ(machine->cpu.get_rmr(), 0u);
 
-    machine->set_acc(04050000000000000);               // 1/2 * 2^1
-    machine->arith_multiply(04020000000000000);        // -1 * 2^0
-    EXPECT_EQ(machine->get_acc(), 04070000000000000u); // -1/2 * 2^1
-    EXPECT_EQ(machine->get_rmr(), 0u);
+    machine->cpu.set_acc(04050000000000000);               // 1/2 * 2^1
+    machine->cpu.arith_multiply(04020000000000000);        // -1 * 2^0
+    EXPECT_EQ(machine->cpu.get_acc(), 04070000000000000u); // -1/2 * 2^1
+    EXPECT_EQ(machine->cpu.get_rmr(), 0u);
 
-    machine->set_acc(04020000000000000);               // -1 * 2^0
-    machine->arith_multiply(04050000000000000);        // 1/2 * 2^1
-    EXPECT_EQ(machine->get_acc(), 04070000000000000u); // -1/2 * 2^1
-    EXPECT_EQ(machine->get_rmr(), 0u);
+    machine->cpu.set_acc(04020000000000000);               // -1 * 2^0
+    machine->cpu.arith_multiply(04050000000000000);        // 1/2 * 2^1
+    EXPECT_EQ(machine->cpu.get_acc(), 04070000000000000u); // -1/2 * 2^1
+    EXPECT_EQ(machine->cpu.get_rmr(), 0u);
 
-    machine->set_acc(04020000000000000);               // -1 * 2^0
-    machine->arith_multiply(04020000000000000);        // -1 * 2^0
-    EXPECT_EQ(machine->get_acc(), 04050000000000000u); // 1/2 * 2^1
-    EXPECT_EQ(machine->get_rmr(), 0u);
+    machine->cpu.set_acc(04020000000000000);               // -1 * 2^0
+    machine->cpu.arith_multiply(04020000000000000);        // -1 * 2^0
+    EXPECT_EQ(machine->cpu.get_acc(), 04050000000000000u); // 1/2 * 2^1
+    EXPECT_EQ(machine->cpu.get_rmr(), 0u);
 }
 
 //
@@ -58,29 +58,29 @@ TEST_F(dubna_machine, alu_mul)
 TEST_F(dubna_machine, alu_div)
 {
     // Disable normalization
-    machine->set_rau(3);
+    machine->cpu.set_rau(3);
 
     // 1.0 / 1.0 gives 1.0
-    machine->set_acc(04050000000000000);               // 1/2 * 2^1
-    machine->arith_divide(04050000000000000);          // 1/2 * 2^1
-    EXPECT_EQ(machine->get_acc(), 04050000000000000u); // 1/2 * 2^1
-    EXPECT_EQ(machine->get_rmr(), 0u);
+    machine->cpu.set_acc(04050000000000000);               // 1/2 * 2^1
+    machine->cpu.arith_divide(04050000000000000);          // 1/2 * 2^1
+    EXPECT_EQ(machine->cpu.get_acc(), 04050000000000000u); // 1/2 * 2^1
+    EXPECT_EQ(machine->cpu.get_rmr(), 0u);
 
     // -1.0 / -1.0 gives 1.0
-    machine->set_acc(04020000000000000);               // -1 * 2^0
-    machine->arith_divide(04020000000000000);          // -1 * 2^0
-    EXPECT_EQ(machine->get_acc(), 04050000000000000u); // 1/2 * 2^1
-    EXPECT_EQ(machine->get_rmr(), 0u);
+    machine->cpu.set_acc(04020000000000000);               // -1 * 2^0
+    machine->cpu.arith_divide(04020000000000000);          // -1 * 2^0
+    EXPECT_EQ(machine->cpu.get_acc(), 04050000000000000u); // 1/2 * 2^1
+    EXPECT_EQ(machine->cpu.get_rmr(), 0u);
 
     // 1.0 / -1.0 gives -1.0 denormalized
-    machine->set_acc(04050000000000000);               // 1/2 * 2^1
-    machine->arith_divide(04020000000000000);          // -1 * 2^0
-    EXPECT_EQ(machine->get_acc(), 04070000000000000u); // -1/2 * 2^1
-    EXPECT_EQ(machine->get_rmr(), 0u);
+    machine->cpu.set_acc(04050000000000000);               // 1/2 * 2^1
+    machine->cpu.arith_divide(04020000000000000);          // -1 * 2^0
+    EXPECT_EQ(machine->cpu.get_acc(), 04070000000000000u); // -1/2 * 2^1
+    EXPECT_EQ(machine->cpu.get_rmr(), 0u);
 
     // -1.0 / 1.0 gives -1.0
-    machine->set_acc(04020000000000000);               // -1 * 2^0
-    machine->arith_divide(04050000000000000);          // 1/2 * 2^1
-    EXPECT_EQ(machine->get_acc(), 04020000000000000u); // -1 * 2^0
-    EXPECT_EQ(machine->get_rmr(), 0u);
+    machine->cpu.set_acc(04020000000000000);               // -1 * 2^0
+    machine->cpu.arith_divide(04050000000000000);          // 1/2 * 2^1
+    EXPECT_EQ(machine->cpu.get_acc(), 04020000000000000u); // -1 * 2^0
+    EXPECT_EQ(machine->cpu.get_rmr(), 0u);
 }

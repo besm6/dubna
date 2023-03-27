@@ -71,11 +71,11 @@ TEST_F(dubna_machine, trace_startjob)
     store_word(02016, besm6_asm("atx 422,       *70 423"));      // infloa по адресу 423b - статический загрузчик
     store_word(02017, besm6_asm("xta 17,        ati 16"));       //
     store_word(02020, besm6_asm("atx 2(16),     arx 3001"));     // прибавляем 10b
-    store_word(02021, besm6_asm("atx 17,        xta 3000"));     //
-    store_word(02022, besm6_asm("atx (16),      vtm 1673(15)")); // "chekjob*"
+    store_word(02021, besm6_asm("atx 17,        xta 3000"));     // 'INPUTCAL'
+    store_word(02022, besm6_asm("atx (16),      vtm 1673(15)")); // call CHEKJOB*
     store_word(02023, besm6_asm("uj (17),       utc"));          // в статический загрузчик
 
-    store_word(03000, 05156606564434154ul); // text 8hINPUTCAL
+    store_word(03000, 05156606564434154ul); // 'INPUTCAL' in Text encoding
     store_word(03001, 00000000000000010ul); // прибавляем 10b
     store_word(03002, 04014000000210201ul); // инициатор
     store_word(03003, 00000000000200000ul); //  Т Р П

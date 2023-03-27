@@ -100,6 +100,7 @@ public:
 
     // Execute extracode.
     void extracode(unsigned opcode);
+    void e70();
 
     // Memory access.
     Word mem_fetch(unsigned addr);

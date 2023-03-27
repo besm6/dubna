@@ -45,25 +45,52 @@ using Words = std::vector<Word>;
 Word besm6_asm(const char *source);
 
 //
+// Get instruction mnemonics by opcode, in range 000..077 or 0200..0370.
+//
+const char *besm6_opname(unsigned opcode);
+
+//
+// Get instruction opcode by mnemonics (UTF-8).
+//
+unsigned besm6_opcode(const char *opname);
+
+//
 // Find highest bit.
 // Bit 48 returns 1, bit 47-й -> 2 and so on.
 //
-unsigned besm6_highest_bit(uint64_t val);
+unsigned besm6_highest_bit(Word val);
 
 //
 // Pack bits by mask.
 //
-uint64_t besm6_pack(uint64_t val, uint64_t mask);
+Word besm6_pack(Word val, Word mask);
 
 //
 // Unpack bits by mask.
 //
-uint64_t besm6_unpack(uint64_t val, uint64_t mask);
+Word besm6_unpack(Word val, Word mask);
 
 //
 // Count bits.
 //
-unsigned besm6_count_ones(uint64_t word);
+unsigned besm6_count_ones(Word word);
+
+//
+// Check whether instruction is extracode.
+//
+bool is_extracode(unsigned opcode);
+
+//
+// Convert float value between IEEE and BESM-6 formats.
+//
+Word ieee_to_besm6(double d);
+double besm6_to_ieee(Word word);
+
+//
+// Print BESM-6 instruction.
+//
+void besm6_print_instruction_octal(std::ostream &out, unsigned cmd);
+void besm6_print_instruction_mnemonics(std::ostream &out, unsigned cmd);
 
 //
 // Bits of memory word, from right to left, starting from 1.
@@ -82,22 +109,16 @@ unsigned besm6_count_ones(uint64_t word);
 #define ADDR(x)         ((x) & BITS(15))        // адрес слова
 
 //
-// Разряды режима АУ.
+// Bits of ALU mode.
 //
-#define RAU_NORM_DISABLE        001     // блокировка нормализации
-#define RAU_ROUND_DISABLE       002     // блокировка округления
-#define RAU_LOG                 004     // признак логической группы
-#define RAU_MULT                010     // признак группы умножения
-#define RAU_ADD                 020     // признак группы слодения
-#define RAU_OVF_DISABLE         040     // блокировка переполнения
-
-#define RAU_MODE                (RAU_LOG | RAU_MULT | RAU_ADD)
-#define SET_MODE(x,m)           (((x) & ~RAU_MODE) | (m))
-#define SET_LOGICAL(x)          (((x) & ~RAU_MODE) | RAU_LOG)
-#define SET_MULTIPLICATIVE(x)   (((x) & ~RAU_MODE) | RAU_MULT)
-#define SET_ADDITIVE(x)         (((x) & ~RAU_MODE) | RAU_ADD)
-#define IS_LOGICAL(x)           (((x) & RAU_MODE) == RAU_LOG)
-#define IS_MULTIPLICATIVE(x)    (((x) & (RAU_ADD | RAU_MULT)) == RAU_MULT)
-#define IS_ADDITIVE(x)          ((x) & RAU_ADD)
+enum {
+    RAU_NORM_DISABLE  = 001, // блокировка нормализации
+    RAU_ROUND_DISABLE = 002, // блокировка округления
+    RAU_LOG           = 004, // признак логической группы
+    RAU_MULT          = 010, // признак группы умножения
+    RAU_ADD           = 020, // признак группы сложения
+    RAU_OVF_DISABLE   = 040, // блокировка переполнения
+    RAU_MODE          = RAU_LOG | RAU_MULT | RAU_ADD,
+};
 
 #endif // BESM6_ARCH_H

@@ -46,12 +46,11 @@ private:
     static std::ofstream trace_stream;
 
     // Trace modes.
-    static bool trace_instructions; // trace machine instuctions
-    static bool trace_extracodes;   // trace extracodes (except e75)
-    static bool trace_registers;    // trace CPU registers
-    static bool trace_memory;       // trace memory read/write
-    static bool trace_fetch;        // trace instruction fetch
-    static bool trace_exceptions;   // trace exceptions
+    static bool debug_instructions; // trace machine instuctions
+    static bool debug_extracodes;   // trace extracodes (except e75)
+    static bool debug_registers;    // trace CPU registers
+    static bool debug_memory;       // trace memory read/write
+    static bool debug_fetch;        // trace instruction fetch
 
     // Static stuff.
     static const uint64_t DEFAULT_LIMIT;    // Limit of instructions to simulate, by default
@@ -95,11 +94,58 @@ public:
     static void enable_trace(const char *mode);
     static void redirect_trace(const char *file_name, const char *default_mode);
     static void close_trace();
-    static bool trace_enabled() { return trace_instructions | trace_extracodes | trace_registers |
-                                         trace_memory | trace_fetch | trace_exceptions; }
+    static bool trace_enabled() { return debug_instructions | debug_extracodes | debug_registers |
+                                         debug_memory | debug_fetch; }
 
     // Emit trace to this stream.
     static std::ostream &get_trace_stream();
+
+    //
+    // Trace methods.
+    //
+    static void trace_exception(const char *message)
+    {
+        if (trace_enabled())
+            print_exception(message);
+    }
+
+    static void trace_registers()
+    {
+        if (debug_registers)
+            print_registers();
+    }
+
+    static void trace_instruction(unsigned opcode)
+    {
+        // Print e50...e77 except e75, and also e20, e21.
+        if (debug_instructions ||
+            (debug_extracodes && opcode != 075 && is_extracode(opcode)))
+            print_instruction();
+    }
+
+    static void trace_fetch(unsigned addr, Word val)
+    {
+        if (debug_fetch)
+            print_fetch(addr, val);
+    }
+
+    static void trace_memory_write(unsigned addr, Word val)
+    {
+        if (debug_memory)
+            print_memory_access(addr, val, "Write");
+    }
+
+    static void trace_memory_read(unsigned addr, Word val)
+    {
+        if (debug_memory)
+            print_memory_access(addr, val, "Read");
+    }
+
+    static void print_exception(const char *message);
+    static void print_registers();
+    static void print_instruction();
+    static void print_fetch(unsigned addr, Word val);
+    static void print_memory_access(unsigned addr, Word val, const char *opname);
 };
 
 #endif // DUBNA_MACHINE_H

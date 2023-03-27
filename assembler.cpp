@@ -56,14 +56,13 @@ static const char *opname_long_madlen[16] = {
     "uj",   "vjm",  "ij",   "stop", "vzm",  "v1m",  "*36",  "vlm",
 };
 
-#if 0
 //
 // Выдача мнемоники по коду инструкции.
 // Код должен быть в диапазоне 000..077 или 0200..0370.
 //
-static const char *besm6_opname(int opcode)
+const char *besm6_opname(unsigned opcode)
 {
-#if 0
+#if 1
     // Madlen mnemonics.
     if (opcode & 0200)
         return opname_long_madlen[(opcode >> 3) & 017];
@@ -75,24 +74,25 @@ static const char *besm6_opname(int opcode)
     return opname_short_bemsh[opcode];
 #endif
 }
-#endif
 
 //
 // Выдача кода инструкции по мнемонике (UTF-8).
 //
-static int besm6_opcode(char *instr)
+unsigned besm6_opcode(const char *opname)
 {
-    int i;
+    unsigned i;
 
     for (i=0; i<64; ++i)
-        if (strcmp(opname_short_bemsh[i], instr) == 0 ||
-            strcmp(opname_short_madlen[i], instr) == 0)
+        if (strcmp(opname_short_bemsh[i], opname) == 0 ||
+            strcmp(opname_short_madlen[i], opname) == 0)
             return i;
+
     for (i=0; i<16; ++i)
-        if (strcmp(opname_long_bemsh[i], instr) == 0 ||
-            strcmp(opname_long_madlen[i], instr) == 0)
+        if (strcmp(opname_long_bemsh[i], opname) == 0 ||
+            strcmp(opname_long_madlen[i], opname) == 0)
             return (i << 3) | 0200;
-    return -1;
+
+    throw std::runtime_error("Unknown instruction: " + std::string(opname));
 }
 
 //
@@ -264,5 +264,5 @@ Word besm6_asm(const char *src)
         throw std::runtime_error("besm6_asm: bad extra symbols: " + std::string(src));
     }
 
-    return (uint64_t) left << 24 | right;
+    return (Word) left << 24 | right;
 }

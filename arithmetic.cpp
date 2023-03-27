@@ -24,7 +24,7 @@
 #include "processor.h"
 #include "besm6_arch.h"
 
-static Processor::AluReg toalu(uint64_t val)
+static Processor::AluReg toalu(Word val)
 {
     Processor::AluReg ret;
 
@@ -75,9 +75,9 @@ static void normalize_to_the_right(Processor::AluReg &val)
 // Исходные значения: регистр ACC и аргумент 'val'.
 // Результат помещается в регистр ACC и 40-1 разряды RMR.
 //
-void Processor::arith_add(uint64_t val, int negate_acc, int negate_val)
+void Processor::arith_add(Word val, int negate_acc, int negate_val)
 {
-    uint64_t mr;
+    Word mr;
     AluReg acc, word, a1, a2;
     int diff, neg, rnd_rq = 0;
 
@@ -155,11 +155,11 @@ void Processor::arith_add(uint64_t val, int negate_acc, int negate_val)
 // Результат помещается в регистры ACC и 40-1 разряды RMR.
 // 48-41 разряды RMR сохраняются.
 //
-void Processor::arith_normalize_and_round(AluReg acc, uint64_t mr, int rnd_rq)
+void Processor::arith_normalize_and_round(AluReg acc, Word mr, int rnd_rq)
 {
-    uint64_t rr = 0;
+    Word rr = 0;
     int i;
-    uint64_t r;
+    Word r;
 
     if (core.RAU & RAU_NORM_DISABLE)
         goto chk_rnd;
@@ -233,7 +233,7 @@ zero:   core.ACC = 0;
         return;
     }
 
-    core.ACC = (uint64_t) (acc.exponent & BITS(7)) << 41 |
+    core.ACC = (Word) (acc.exponent & BITS(7)) << 41 |
         (acc.mantissa & BITS41);
     core.RMR = (core.RMR & ~BITS40) | (mr & BITS40);
 
@@ -280,7 +280,7 @@ void Processor::arith_change_sign(int negate_acc)
 // Исходные значения: регистр ACC и аргумент 'val'.
 // Результат помещается в регистр ACC и 40-1 разряды RMR.
 //
-void Processor::arith_multiply(uint64_t val)
+void Processor::arith_multiply(Word val)
 {
     if (! core.ACC || ! val) {
         // multiplication by zero is zero
@@ -290,7 +290,7 @@ void Processor::arith_multiply(uint64_t val)
     }
     AluReg acc = toalu(core.ACC);
     AluReg word = toalu(val);
-    uint64_t mr;
+    Word mr;
 
     //
     // Multiply two signed 41-bit integers a and b, giving a 81-bit result.
@@ -299,7 +299,7 @@ void Processor::arith_multiply(uint64_t val)
     //
     __int128 result = (__int128) acc.mantissa * word.mantissa;
     acc.mantissa = (int64_t) (result >> 40);
-    mr = (uint64_t)result & BITS40;
+    mr = (Word)result & BITS40;
 
     acc.exponent += word.exponent - 64;
 
@@ -364,7 +364,7 @@ static inline Processor::AluReg nrdiv(Processor::AluReg n, Processor::AluReg d)
 // Исходные значения: регистр ACC и аргумент 'val'.
 // Результат помещается в регистр ACC, содержимое RMR не определено.
 //
-void Processor::arith_divide(uint64_t val)
+void Processor::arith_divide(Word val)
 {
     AluReg acc;
     AluReg dividend, divisor;

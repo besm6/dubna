@@ -42,8 +42,8 @@ TEST_F(dubna_session, DISABLED_nop_stop)
     );
 
     // Run the job.
-    session->enable_trace();
-    session->set_exec_file(job_filename);
+    session->enable_trace("irmx");
+    session->set_job_file(job_filename);
     session->run();
 
     // Check status.

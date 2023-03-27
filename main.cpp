@@ -57,14 +57,13 @@ static void print_usage(std::ostream &out, const char *prog_name)
     out << "    -l NUM, --limit=NUM     Stop after so many instructions (default " << Session::get_default_limit() << ")" << std::endl;
     out << "    -t                      Trace extracodes to stdout" << std::endl;
     out << "    --trace=FILE            Redirect trace to the file" << std::endl;
-    out << "    -d MODE, --debug=MODE   Select debug mode, default irmx" << std::endl;
+    out << "    -d MODE, --debug=MODE   Select debug mode, default irm" << std::endl;
     out << "Debug modes:" << std::endl;
     out << "    i       Trace instructions" << std::endl;
     out << "    e       Trace extracodes" << std::endl;
     out << "    f       Trace fetch" << std::endl;
     out << "    r       Trace registers" << std::endl;
     out << "    m       Trace memory read/write" << std::endl;
-    out << "    x       Trace exceptions" << std::endl;
 }
 
 //
@@ -123,7 +122,7 @@ int main(int argc, char *argv[])
             continue;
         case 'T':
             // Redirect tracing to a file.
-            session.set_trace_file(optarg, "irmx");
+            session.set_trace_file(optarg, "irm");
             continue;
         case 'd':
             // Set trace options.

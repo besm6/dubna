@@ -23,7 +23,6 @@
 #define DUBNA_MEMORY_H
 
 #include <array>
-
 #include "besm6_arch.h"
 
 class Memory {
@@ -36,10 +35,10 @@ public:
     virtual ~Memory() = default;
 
     // Store data to memory.
-    void store(unsigned addr, uint64_t val) { mem[addr] = val; }
+    void store(unsigned addr, Word val) { mem[addr] = val; }
 
     // Load data from memory.
-    uint64_t load(unsigned addr) { return mem[addr]; }
+    Word load(unsigned addr) { return mem[addr]; }
 
     // Bulk access to memory.
     void write_words(const Words &input, unsigned addr);

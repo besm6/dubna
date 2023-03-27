@@ -25,5 +25,5 @@
 
 void Processor::extracode(unsigned opcode)
 {
-    //TODO
+    //TODO: implement extracodes
 }

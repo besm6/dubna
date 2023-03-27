@@ -28,12 +28,11 @@
 //
 // Flag to enable tracing.
 //
-bool Machine::trace_instructions; // trace machine instuctions
-bool Machine::trace_extracodes;   // trace extracodes (except e75)
-bool Machine::trace_registers;    // trace CPU registers
-bool Machine::trace_memory;       // trace memory read/write
-bool Machine::trace_fetch;        // trace instruction fetch
-bool Machine::trace_exceptions;   // trace exceptions
+bool Machine::debug_instructions; // trace machine instuctions
+bool Machine::debug_extracodes;   // trace extracodes (except e75)
+bool Machine::debug_registers;    // trace CPU registers
+bool Machine::debug_memory;       // trace memory read/write
+bool Machine::debug_fetch;        // trace instruction fetch
 
 //
 // Emit trace to this stream.
@@ -52,24 +51,22 @@ std::ofstream Machine::trace_stream;
 void Machine::enable_trace(const char *trace_mode)
 {
     // Disable all trace options.
-    trace_instructions = false;
-    trace_extracodes = false;
-    trace_registers = false;
-    trace_memory = false;
-    trace_fetch = false;
-    trace_exceptions = false;
+    debug_instructions = false;
+    debug_extracodes = false;
+    debug_registers = false;
+    debug_memory = false;
+    debug_fetch = false;
 
     if (trace_mode) {
         // Parse the mode string and enable all requested trace flags.
         for (unsigned i = 0; trace_mode[i]; i++) {
             char ch = trace_mode[i];
             switch (ch) {
-            case 'i': trace_instructions = true; break;
-            case 'e': trace_extracodes = true; break;
-            case 'f': trace_fetch = true; break;
-            case 'm': trace_memory = true; break;
-            case 'x': trace_exceptions = true; break;
-            case 'r': trace_registers = true; break;
+            case 'i': debug_instructions = true; break;
+            case 'e': debug_extracodes = true; break;
+            case 'f': debug_fetch = true; break;
+            case 'm': debug_memory = true; break;
+            case 'r': debug_registers = true; break;
             default:
                 throw std::runtime_error("Wrong trace option: " + std::string(1, ch));
             }
@@ -119,35 +116,10 @@ void Machine::close_trace()
 }
 
 #if 0
-#include "el_svs_internal.h"
-
-void svs_trace_opcode(struct ElSvsProcessor *cpu, int paddr)
-{
-    // Print instruction.
-    fprintf(cpu->log_output, "cpu%d %05o %07o %c: ",
-        cpu->index, cpu->core.PC, paddr,
-        (cpu->core.RUU & RUU_RIGHT_INSTR) ? 'R' : 'L');
-    svs_fprint_insn(cpu->log_output, cpu->RK);
-    fprintf(cpu->log_output, " ");
-    svs_fprint_cmd(cpu->log_output, cpu->RK);
-    fprintf(cpu->log_output, "\n");
-}
-
-//
-// Print 32-bit value as octal.
-//
-static void fprint_32bits(FILE *of, uint64_t value)
-{
-    fprintf(of, "%03o %04o %04o",
-        (int) (value >> 24) & 0377,
-        (int) (value >> 12) & 07777,
-        (int) value & 07777);
-}
-
 //
 // Print 48-bit value as octal.
 //
-void svs_fprint_48bits(FILE *of, uint64_t value)
+static void print_48bits(FILE *of, Word value)
 {
     fprintf(of, "%04o %04o %04o %04o",
         (int) (value >> 36) & 07777,
@@ -155,103 +127,86 @@ void svs_fprint_48bits(FILE *of, uint64_t value)
         (int) (value >> 12) & 07777,
         (int) value & 07777);
 }
+#endif
+//
+// Trace output
+//
+void Machine::print_exception(const char *message)
+{
+    auto &out = Machine::get_trace_stream();
+    out << "cpu --- " << message << std::endl;
+}
 
 //
-// Печать регистров процессора, изменившихся с прошлого вызова.
+// Print changes in CPU registers.
 //
-void svs_trace_registers(struct ElSvsProcessor *cpu)
+void Machine::print_registers()
 {
+    //TODO: print changed registers
+#if 0
+    auto &out = Machine::get_trace_stream();
+    out << "cpu ???" << std::endl;
     int i;
 
     if (cpu->core.ACC != cpu->prev.ACC) {
-        fprintf(cpu->log_output, "cpu%d       Write ACC = ", cpu->index);
-        svs_fprint_48bits(cpu->log_output, cpu->core.ACC);
+        fprintf(cpu->log_output, "cpu       Write ACC = ");
+        print_48bits(cpu->log_output, cpu->core.ACC);
         fprintf(cpu->log_output, "\n");
     }
     if (cpu->core.RMR != cpu->prev.RMR) {
-        fprintf(cpu->log_output, "cpu%d       Write RMR = ", cpu->index);
-        svs_fprint_48bits(cpu->log_output, cpu->core.RMR);
+        fprintf(cpu->log_output, "cpu       Write RMR = ");
+        print_48bits(cpu->log_output, cpu->core.RMR);
         fprintf(cpu->log_output, "\n");
     }
-    for (i = 0; i < SVS_NREGS; i++) {
+    for (i = 0; i < 16; i++) {
         if (cpu->core.M[i] != cpu->prev.M[i])
-            fprintf(cpu->log_output, "cpu%d       Write M%o = %05o\n",
-                cpu->index, i, cpu->core.M[i]);
+            fprintf(cpu->log_output, "cpu       Write M%o = %05o\n", i, cpu->core.M[i]);
     }
     if (cpu->core.RAU != cpu->prev.RAU)
-        fprintf(cpu->log_output, "cpu%d       Write RAU = %02o\n",
-            cpu->index, cpu->core.RAU);
-    if ((cpu->core.RUU & ~RUU_RIGHT_INSTR) != (cpu->prev.RUU & ~RUU_RIGHT_INSTR))
-        fprintf(cpu->log_output, "cpu%d       Write RUU = %03o\n",
-            cpu->index, cpu->core.RUU);
-    for (i = 0; i < 8; i++) {
-        if (cpu->core.RP[i] != cpu->prev.RP[i]) {
-            fprintf(cpu->log_output, "cpu%d       Write RP%o = ",
-                cpu->index, i);
-            svs_fprint_48bits(cpu->log_output, cpu->core.RP[i]);
-            fprintf(cpu->log_output, "\n");
-        }
-        if (cpu->core.RPS[i] != cpu->prev.RPS[i]) {
-            fprintf(cpu->log_output, "cpu%d       Write RPS%o = ",
-                cpu->index, i);
-            svs_fprint_48bits(cpu->log_output, cpu->core.RPS[i]);
-            fprintf(cpu->log_output, "\n");
+        fprintf(cpu->log_output, "cpu       Write RAU = %02o\n", cpu->core.RAU);
+    if (cpu->core.apply_mod_reg != cpu->prev.apply_mod_reg) {
+        if (cpu->core.apply_mod_reg) {
+            fprintf(cpu->log_output, "cpu       Write MOD = %03o\n", cpu->core.M[020]);
+        } else {
+            fprintf(cpu->log_output, "cpu       Clear MOD\n");
         }
     }
-    if (cpu->core.RZ != cpu->prev.RZ) {
-        fprintf(cpu->log_output, "cpu%d       Write RZ = ", cpu->index);
-        fprint_32bits(cpu->log_output, cpu->core.RZ);
-        fprintf(cpu->log_output, "\n");
-    }
-    if (cpu->core.bad_addr != cpu->prev.bad_addr) {
-        fprintf(cpu->log_output, "cpu%d       Write EADDR = %03o\n",
-            cpu->index, cpu->core.bad_addr);
-    }
-    if (cpu->core.TagR != cpu->prev.TagR) {
-        fprintf(cpu->log_output, "cpu%d       Write TAG = %03o\n",
-            cpu->index, cpu->core.TagR);
-    }
-    if (cpu->core.PP != cpu->prev.PP) {
-        fprintf(cpu->log_output, "cpu%d       Write PP = ", cpu->index);
-        svs_fprint_48bits(cpu->log_output, cpu->core.PP);
-        fprintf(cpu->log_output, "\n");
-    }
-    if (cpu->core.OPP != cpu->prev.OPP) {
-        fprintf(cpu->log_output, "cpu%d       Write OPP = ", cpu->index);
-        svs_fprint_48bits(cpu->log_output, cpu->core.OPP);
-        fprintf(cpu->log_output, "\n");
-    }
-    if (cpu->core.POP != cpu->prev.POP) {
-        fprintf(cpu->log_output, "cpu%d       Write POP = ", cpu->index);
-        svs_fprint_48bits(cpu->log_output, cpu->core.POP);
-        fprintf(cpu->log_output, "\n");
-    }
-    if (cpu->core.OPOP != cpu->prev.OPOP) {
-        fprintf(cpu->log_output, "cpu%d       Write OPOP = ", cpu->index);
-        svs_fprint_48bits(cpu->log_output, cpu->core.OPOP);
-        fprintf(cpu->log_output, "\n");
-    }
-    if (cpu->core.RKP != cpu->prev.RKP) {
-        fprintf(cpu->log_output, "cpu%d       Write RKP = ", cpu->index);
-        svs_fprint_48bits(cpu->log_output, cpu->core.RKP);
-        fprintf(cpu->log_output, "\n");
-    }
-    if (cpu->core.RPR != cpu->prev.RPR) {
-        fprintf(cpu->log_output, "cpu%d       Write RPR = ", cpu->index);
-        svs_fprint_48bits(cpu->log_output, cpu->core.RPR);
-        fprintf(cpu->log_output, "\n");
-    }
-    if (cpu->core.GRVP != cpu->prev.GRVP) {
-        fprintf(cpu->log_output, "cpu%d       Write GRVP = ", cpu->index);
-        fprint_32bits(cpu->log_output, cpu->core.GRVP);
-        fprintf(cpu->log_output, "\n");
-    }
-    if (cpu->core.GRM != cpu->prev.GRM) {
-        fprintf(cpu->log_output, "cpu%d       Write GRM = ", cpu->index);
-        fprint_32bits(cpu->log_output, cpu->core.GRM);
-        fprintf(cpu->log_output, "\n");
-    }
-
     cpu->prev = cpu->core;
-}
 #endif
+}
+
+void Machine::print_instruction()
+{
+    // Print instruction address, opcode from core.RK and mnemonics.
+#if 0
+    auto &out = Machine::get_trace_stream();
+    out << "cpu --- Exception" << std::endl;
+    fprintf(cpu->log_output, "cpu %05o %07o %c: ", cpu->core.PC, paddr,
+        (cpu->core.RUU & RUU_RIGHT_INSTR) ? 'R' : 'L');
+    print_insn(cpu->log_output, cpu->RK);
+    fprintf(cpu->log_output, " ");
+    print_cmd(cpu->log_output, cpu->RK);
+    fprintf(cpu->log_output, "\n");
+#endif
+}
+
+void Machine::print_fetch(unsigned addr, Word val)
+{
+    //TODO: print fetch
+#if 0
+    fprintf(log_output, "cpu       Fetch [%05o] = ", addr);
+    besm6_print_insn(log_output, (val >> 24) & BITS(24));
+    besm6_print_insn(log_output, val & BITS(24));
+    fprintf(log_output, "\n");
+#endif
+}
+
+void Machine::print_memory_access(unsigned addr, Word val, const char *opname)
+{
+    //TODO: print memory read/write
+#if 0
+    fprintf(log_output, "cpu       Memory %s [%05o] = ", opname, addr);
+    print_48bits(log_output, val);
+    fprintf(log_output, "\n");
+#endif
+}

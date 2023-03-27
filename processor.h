@@ -24,6 +24,7 @@
 
 #include <cstdint>
 #include <setjmp.h>
+#include "besm6_arch.h"
 
 class Machine;
 class Memory;
@@ -33,12 +34,20 @@ class Memory;
 //
 struct CoreState {
     unsigned PC;           // program counter СчАС
-    uint64_t ACC;          // accumulator
-    uint64_t RMR;          // регистр младших разрядов
+    Word ACC;              // accumulator
+    Word RMR;              // регистр младших разрядов
     unsigned M[16 + 1];    // registers modifiers
     unsigned RAU;          // ALU mode (режим АУ)
     bool right_instr_flag; // execute right half of the word (ПрК)
     bool apply_mod_reg;    // modify address by register M[16] (ПрИК)
+
+    // Check and modify ALU mode.
+    bool is_additive() const { return RAU & RAU_ADD; }
+    bool is_multiplicative() const { return (RAU & (RAU_ADD | RAU_MULT)) == RAU_MULT; }
+    bool is_logical() const { return (RAU & RAU_MODE) == RAU_LOG; }
+    void set_additive() { RAU &= ~RAU_MODE; RAU |= RAU_ADD; }
+    void set_multiplicative() { RAU &= ~RAU_MODE; RAU |= RAU_MULT; }
+    void set_logical() { RAU &= ~RAU_MODE; RAU |= RAU_LOG; }
 };
 
 //
@@ -92,22 +101,22 @@ public:
     void extracode(unsigned opcode);
 
     // Memory access.
-    uint64_t mem_fetch(unsigned addr);
-    uint64_t mem_load(unsigned addr);
-    void mem_store(unsigned addr, uint64_t val);
+    Word mem_fetch(unsigned addr);
+    Word mem_load(unsigned addr);
+    void mem_store(unsigned addr, Word val);
 
     // Set register value.
     void set_pc(unsigned val) { core.PC = val; }
     void set_m(unsigned index, unsigned val) { core.M[index] = val; }
     void set_rau(unsigned val) { core.RAU = val; }
-    void set_acc(uint64_t val) { core.ACC = val; }
+    void set_acc(Word val) { core.ACC = val; }
 
     // Get register value.
     unsigned get_pc() { return core.PC; }
     unsigned get_m(unsigned index) { return core.M[index]; }
     unsigned get_rau() { return core.RAU; }
-    uint64_t get_acc() { return core.ACC; }
-    uint64_t get_rmr() { return core.RMR; }
+    Word get_acc() { return core.ACC; }
+    Word get_rmr() { return core.RMR; }
 
     // ALU register type.
     struct AluReg {
@@ -116,12 +125,12 @@ public:
     };
 
     // Arithmetics.
-    void arith_add(uint64_t val, int negate_acc, int negate_val);
-    void arith_normalize_and_round(AluReg acc, uint64_t mr, int rnd_rq);
+    void arith_add(Word val, int negate_acc, int negate_val);
+    void arith_normalize_and_round(AluReg acc, Word mr, int rnd_rq);
     void arith_add_exponent(int val);
     void arith_change_sign(int negate_acc);
-    void arith_multiply(uint64_t val);
-    void arith_divide(uint64_t val);
+    void arith_multiply(Word val);
+    void arith_divide(Word val);
     void arith_shift(int i);
 };
 

@@ -67,8 +67,8 @@ TEST_F(dubna_machine, trace_startjob)
     store_word(02012, besm6_asm("xta 363,       atx 100"));      // ТРП для загрузчика
     store_word(02013, besm6_asm("vtm 53401(17), utc"));          // магазин
     store_word(02014, besm6_asm("*70 3010(1),   utc"));          // каталоги
-    store_word(02015, besm6_asm("vlm 2014(1),   ita 17"));       // aload по адресу 422b
-    store_word(02016, besm6_asm("atx 422,       *70 423"));      // infloa по адресу 423b - статический загрузчик
+    store_word(02015, besm6_asm("vlm 2014(1),   ita 17"));       // aload по адресу 716b
+    store_word(02016, besm6_asm("atx 716,       *70 717"));      // infloa по адресу 717b - статический загрузчик
     store_word(02017, besm6_asm("xta 17,        ati 16"));       //
     store_word(02020, besm6_asm("atx 2(16),     arx 3001"));     // прибавляем 10b
     store_word(02021, besm6_asm("atx 17,        xta 3000"));     // 'INPUTCAL'

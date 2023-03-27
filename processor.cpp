@@ -118,7 +118,7 @@ void Processor::step()
     }
 
     if (core.apply_mod_reg) {
-        addr = ADDR(addr + core.M[020]);
+        addr = ADDR(addr + core.MOD);
     }
     next_mod = 0;
 
@@ -569,7 +569,7 @@ branch_zero:
 
     if (next_mod != 0) {
         // Модификация адреса следующей команды.
-        core.M[020] = next_mod;
+        core.MOD = next_mod;
         core.apply_mod_reg = true;
     } else {
         core.apply_mod_reg = false;

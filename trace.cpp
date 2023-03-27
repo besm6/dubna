@@ -115,98 +115,111 @@ void Machine::close_trace()
     enable_trace("");
 }
 
-#if 0
-//
-// Print 48-bit value as octal.
-//
-static void print_48bits(FILE *of, Word value)
-{
-    fprintf(of, "%04o %04o %04o %04o",
-        (int) (value >> 36) & 07777,
-        (int) (value >> 24) & 07777,
-        (int) (value >> 12) & 07777,
-        (int) value & 07777);
-}
-#endif
 //
 // Trace output
 //
 void Machine::print_exception(const char *message)
 {
     auto &out = Machine::get_trace_stream();
-    out << "cpu --- " << message << std::endl;
+    out << "--- " << message << std::endl;
+}
+
+//
+// Print instruction fetch.
+//
+void Machine::print_fetch(unsigned addr, Word val)
+{
+    auto &out = Machine::get_trace_stream();
+    auto save_flags = out.flags();
+
+    out << "      Fetch [" << std::oct
+        << std::setfill('0') << std::setw(5) << addr << "] = ";
+    besm6_print_instruction_octal(out, (val >> 24) & BITS(24));
+    out << ' ';
+    besm6_print_instruction_octal(out, val & BITS(24));
+    out << std::endl;
+
+    // Restore.
+    out.flags(save_flags);
+}
+
+//
+// Print memory read/write.
+//
+void Machine::print_memory_access(unsigned addr, Word val, const char *opname)
+{
+    auto &out = Machine::get_trace_stream();
+    auto save_flags = out.flags();
+
+    out << "      Memory " << opname << " [" << std::oct
+        << std::setfill('0') << std::setw(5) << addr << "] = ";
+    besm6_print_word_octal(out, val);
+    out << std::endl;
+
+    // Restore.
+    out.flags(save_flags);
+}
+
+//
+// Print instruction address, opcode from RK and mnemonics.
+//
+void Processor::print_instruction()
+{
+    auto &out = Machine::get_trace_stream();
+    auto save_flags = out.flags();
+
+    out << std::oct << std::setfill('0') << std::setw(5) << core.PC
+        << ' '  << (core.right_instr_flag ? 'R' : 'L') << ": ";
+    besm6_print_instruction_octal(out, RK);
+    out << ' ';
+    besm6_print_instruction_mnemonics(out, RK);
+    out << std::endl;
+
+    // Restore.
+    out.flags(save_flags);
 }
 
 //
 // Print changes in CPU registers.
 //
-void Machine::print_registers()
+void Processor::print_registers()
 {
-    //TODO: print changed registers
-#if 0
     auto &out = Machine::get_trace_stream();
-    out << "cpu ???" << std::endl;
-    int i;
+    auto save_flags = out.flags();
 
-    if (cpu->core.ACC != cpu->prev.ACC) {
-        fprintf(cpu->log_output, "cpu       Write ACC = ");
-        print_48bits(cpu->log_output, cpu->core.ACC);
-        fprintf(cpu->log_output, "\n");
+    if (core.ACC != prev.ACC) {
+        out << "      Write ACC = ";
+        besm6_print_word_octal(out, core.ACC);
+        out << std::endl;
     }
-    if (cpu->core.RMR != cpu->prev.RMR) {
-        fprintf(cpu->log_output, "cpu       Write RMR = ");
-        print_48bits(cpu->log_output, cpu->core.RMR);
-        fprintf(cpu->log_output, "\n");
+    if (core.RMR != prev.RMR) {
+        out << "      Write RMR = ";
+        besm6_print_word_octal(out, core.RMR);
+        out << std::endl;
     }
-    for (i = 0; i < 16; i++) {
-        if (cpu->core.M[i] != cpu->prev.M[i])
-            fprintf(cpu->log_output, "cpu       Write M%o = %05o\n", i, cpu->core.M[i]);
-    }
-    if (cpu->core.RAU != cpu->prev.RAU)
-        fprintf(cpu->log_output, "cpu       Write RAU = %02o\n", cpu->core.RAU);
-    if (cpu->core.apply_mod_reg != cpu->prev.apply_mod_reg) {
-        if (cpu->core.apply_mod_reg) {
-            fprintf(cpu->log_output, "cpu       Write MOD = %03o\n", cpu->core.M[020]);
-        } else {
-            fprintf(cpu->log_output, "cpu       Clear MOD\n");
+    for (unsigned i = 0; i < 16; i++) {
+        if (core.M[i] != prev.M[i]) {
+            out << "      Write M" << std::oct << i << " = "
+                << std::setfill('0') << std::setw(5) << core.M[i] << std::endl;
         }
     }
-    cpu->prev = cpu->core;
-#endif
-}
+    if (core.RAU != prev.RAU) {
+        out << "      Write RAU = " << std::oct
+            << std::setfill('0') << std::setw(2) << core.RAU << std::endl;
+    }
+    if (core.apply_mod_reg != prev.apply_mod_reg) {
+        if (core.apply_mod_reg) {
+            out << "      Write MOD = " << std::oct
+            << std::setfill('0') << std::setw(5) << core.MOD;
+        } else {
+            out << "      Clear MOD";
+        }
+        out << std::endl;
+    }
 
-void Machine::print_instruction()
-{
-    // Print instruction address, opcode from core.RK and mnemonics.
-#if 0
-    auto &out = Machine::get_trace_stream();
-    out << "cpu --- Exception" << std::endl;
-    fprintf(cpu->log_output, "cpu %05o %07o %c: ", cpu->core.PC, paddr,
-        (cpu->core.RUU & RUU_RIGHT_INSTR) ? 'R' : 'L');
-    print_insn(cpu->log_output, cpu->RK);
-    fprintf(cpu->log_output, " ");
-    print_cmd(cpu->log_output, cpu->RK);
-    fprintf(cpu->log_output, "\n");
-#endif
-}
+    // Update previous state.
+    prev = core;
 
-void Machine::print_fetch(unsigned addr, Word val)
-{
-    //TODO: print fetch
-#if 0
-    fprintf(log_output, "cpu       Fetch [%05o] = ", addr);
-    besm6_print_insn(log_output, (val >> 24) & BITS(24));
-    besm6_print_insn(log_output, val & BITS(24));
-    fprintf(log_output, "\n");
-#endif
-}
-
-void Machine::print_memory_access(unsigned addr, Word val, const char *opname)
-{
-    //TODO: print memory read/write
-#if 0
-    fprintf(log_output, "cpu       Memory %s [%05o] = ", opname, addr);
-    print_48bits(log_output, val);
-    fprintf(log_output, "\n");
-#endif
+    // Restore output flags.
+    out.flags(save_flags);
 }

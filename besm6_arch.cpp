@@ -214,7 +214,7 @@ void besm6_print_instruction_octal(std::ostream &out, unsigned cmd)
 {
     auto save_flags = out.flags();
 
-    out << std::setfill('0') << std::setw(2) << (cmd >> 20) << ' ';
+    out << std::oct << std::setfill('0') << std::setw(2) << (cmd >> 20) << ' ';
     if (cmd & BBIT(20)) {
         out << std::setfill('0') << std::setw(2) << ((cmd >> 15) & 037) << ' ';
         out << std::setfill('0') << std::setw(5) << (cmd & BITS(15));
@@ -222,6 +222,23 @@ void besm6_print_instruction_octal(std::ostream &out, unsigned cmd)
         out << std::setfill('0') << std::setw(3) << ((cmd >> 12) & 0177) << ' ';
         out << std::setfill('0') << std::setw(4) << (cmd & BITS(12));
     }
+
+    // Restore.
+    out.flags(save_flags);
+}
+
+//
+// Print 48-bit value as octal.
+//
+void besm6_print_word_octal(std::ostream &out, Word value)
+{
+    auto save_flags = out.flags();
+
+    out << std::oct;
+    out << std::setfill('0') << std::setw(4) << ((int) (value >> 36) & BITS(12)) << ' ';
+    out << std::setfill('0') << std::setw(4) << ((int) (value >> 24) & BITS(12)) << ' ';
+    out << std::setfill('0') << std::setw(4) << ((int) (value >> 12) & BITS(12)) << ' ';
+    out << std::setfill('0') << std::setw(4) << ((int) value & BITS(12));
 
     // Restore.
     out.flags(save_flags);

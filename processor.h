@@ -36,7 +36,8 @@ struct CoreState {
     unsigned PC;           // program counter СчАС
     Word ACC;              // accumulator
     Word RMR;              // регистр младших разрядов
-    unsigned M[16 + 1];    // registers modifiers
+    unsigned M[16];        // registers modifiers
+    unsigned MOD;          // MOD register
     unsigned RAU;          // ALU mode (режим АУ)
     bool right_instr_flag; // execute right half of the word (ПрК)
     bool apply_mod_reg;    // modify address by register M[16] (ПрИК)
@@ -112,11 +113,11 @@ public:
     void set_acc(Word val) { core.ACC = val; }
 
     // Get register value.
-    unsigned get_pc() { return core.PC; }
-    unsigned get_m(unsigned index) { return core.M[index]; }
-    unsigned get_rau() { return core.RAU; }
-    Word get_acc() { return core.ACC; }
-    Word get_rmr() { return core.RMR; }
+    unsigned get_pc() const { return core.PC; }
+    unsigned get_m(unsigned index) const { return core.M[index]; }
+    unsigned get_rau() const { return core.RAU; }
+    Word get_acc() const { return core.ACC; }
+    Word get_rmr() const { return core.RMR; }
 
     // ALU register type.
     struct AluReg {
@@ -132,6 +133,10 @@ public:
     void arith_multiply(Word val);
     void arith_divide(Word val);
     void arith_shift(int i);
+
+    // Print trace info.
+    void print_instruction();
+    void print_registers();
 };
 
 #endif // DUBNA_PROCESSOR_H

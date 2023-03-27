@@ -109,20 +109,6 @@ public:
             print_exception(message);
     }
 
-    static void trace_registers()
-    {
-        if (debug_registers)
-            print_registers();
-    }
-
-    static void trace_instruction(unsigned opcode)
-    {
-        // Print e50...e77 except e75, and also e20, e21.
-        if (debug_instructions ||
-            (debug_extracodes && opcode != 075 && is_extracode(opcode)))
-            print_instruction();
-    }
-
     static void trace_fetch(unsigned addr, Word val)
     {
         if (debug_fetch)
@@ -141,9 +127,21 @@ public:
             print_memory_access(addr, val, "Read");
     }
 
+    void trace_instruction(unsigned opcode)
+    {
+        // Print e50...e77 except e75, and also e20, e21.
+        if (debug_instructions ||
+            (debug_extracodes && opcode != 075 && is_extracode(opcode)))
+            cpu.print_instruction();
+    }
+
+    void trace_registers()
+    {
+        if (debug_registers)
+            cpu.print_registers();
+    }
+
     static void print_exception(const char *message);
-    static void print_registers();
-    static void print_instruction();
     static void print_fetch(unsigned addr, Word val);
     static void print_memory_access(unsigned addr, Word val, const char *opname);
 };

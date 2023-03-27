@@ -1,4 +1,6 @@
 //
+// BESM-6 architecture details.
+//
 // Copyright (c) 2023 Serge Vakulenko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -85,6 +87,11 @@ bool is_extracode(unsigned opcode);
 //
 Word ieee_to_besm6(double d);
 double besm6_to_ieee(Word word);
+
+//
+// Print BESM-6 word.
+//
+void besm6_print_word_octal(std::ostream &out, Word cmd);
 
 //
 // Print BESM-6 instruction.

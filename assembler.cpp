@@ -76,9 +76,10 @@ const char *besm6_opname(unsigned opcode)
 }
 
 //
-// Выдача кода инструкции по мнемонике (UTF-8).
+// Get opcode by mnemonics (UTF-8).
+// Return -1 when not found.
 //
-unsigned besm6_opcode(const char *opname)
+int besm6_opcode(const char *opname)
 {
     unsigned i;
 
@@ -92,7 +93,7 @@ unsigned besm6_opcode(const char *opname)
             strcmp(opname_long_madlen[i], opname) == 0)
             return (i << 3) | 0200;
 
-    throw std::runtime_error("Unknown instruction: " + std::string(opname));
+    return -1;
 }
 
 //
@@ -133,11 +134,13 @@ static char *parse_octal(const char *cptr, int &result)
 
 //
 // Get alphanumeric string.
+// Also accept symbols * / + -.
 //
 static const char *get_alnum(const char *iptr, char *optr)
 {
     while ((*iptr >= 'a' && *iptr<='z') ||
            (*iptr >= 'A' && *iptr<='Z') ||
+           (*iptr == '*') || (*iptr == '/') || (*iptr == '+') || (*iptr == '-') ||
            (*iptr >= '0' && *iptr<='9') || (*iptr & 0x80)) {
         *optr++ = *iptr++;
     }

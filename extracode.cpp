@@ -26,4 +26,5 @@
 void Processor::extracode(unsigned opcode)
 {
     //TODO: implement extracodes
+    longjmp(exception, ESS_UNIMPLEMENTED);
 }

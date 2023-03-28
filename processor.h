@@ -25,6 +25,7 @@
 #include <cstdint>
 #include <setjmp.h>
 #include "besm6_arch.h"
+#include "extracode.h"
 
 class Machine;
 class Memory;
@@ -98,9 +99,6 @@ public:
     // Simulate one instruction.
     void step();
 
-    // Execute extracode.
-    void extracode(unsigned opcode);
-    void e70();
 
     // Memory access.
     Word mem_fetch(unsigned addr);
@@ -138,6 +136,10 @@ public:
     // Print trace info.
     void print_instruction();
     void print_registers();
+
+    // Extracodes.
+    void extracode(unsigned opcode);
+    void e70();
 };
 
 #endif // DUBNA_PROCESSOR_H

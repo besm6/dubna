@@ -45,127 +45,60 @@ void Processor::extracode(unsigned opcode)
 }
 
 //
-// Экстракод 070: обмен с внешней памятью.
-//
-// Информационное слово по исполнительному адресу задаёт параметры обмена.
-// Если исполнительный адрес равен нулю - информационное слово находится на сумматоре.
-//
-// При обмене с магнитными барабанами:
-//  * Разряд 48 = 0 - обмен между листом ОП и трактом МБ;
-//              = 1 - обмен между абзацем листа и сектором МБ;
-//  * Разряд 40 = 0 - запись из ОП на МБ;
-//              = 1 - чтение с МБ в ОП;
-//  * Разряды 35-31 - номер листа;
-//  * Разряды 26-25 - номер абзаца листа;
-//  * Разряды 18-13 - логический номер МБ;
-//  * Разряды 8-7   - номер сектора тракта;
-//  * Разряды 5-1   - номер тракта.
-//
-// При обмене с магнитными дисками:
-//  * Разряд 40 = 0 - запись листа ОП в зону МД;
-//              = 1 - чтение зоны МД в лист ОП;
-//  * Разряды 35-31 - номер листа;
-//  * Разряды 18-13 - логический номер МД;
-//  * Разряды 12-1  - номер зоны.
+// Extracode 070: disk/drum read/write.
 //
 void Processor::e70()
 {
-    //TODO
-    longjmp(exception, ESS_UNIMPLEMENTED);
-#if 0
-    ushort addr   = reg[016], u, zone;
-    ushort sector = 0;
-    uinstr_t uil, uir;
-    int r;
-    static uchar buf[6144];
-    static char cvbuf[1024];
+    // Read control word at the executive address.
+    // When address is zero - the control word is on accumulator.
+    E70_Info info;
+    info.word = (core.M[016] == 0) ? core.ACC : mem_load(core.M[016]);
 
-    LOAD(acc, addr);
-    unpack(addr);
-    uil = uicore[addr][0];
-    uir = uicore[addr][1];
-    cwadj(&uil);
-    cwadj(&uir);
-    addr = (uil.i_addr & 03700) << 4;
-    u    = uir.i_opcode & 077;
-    if ((u < 030) || (u >= 070))
-        zone = uir.i_addr & 037;
-    else
-        zone = uir.i_addr & 07777;
-    if (uil.i_opcode & 4) { /* физобмен */
-        zone += (u - (phdrum & 077)) * 040;
-        u = phdrum >> 8;
-    }
-    if (!disks[u].diskh) {
-        if (!disks[u].diskno) {
-            return E_CWERR;
-        } else {
-            if (!(disks[u].diskh = disk_open(disks[u].diskno, disks[u].mode)))
-                return E_INT;
-        }
-    }
+    machine.trace_e70(info);
 
-    if (uil.i_reg & 8) {
-        /* согласно ВЗУ и ХЛАМу, 36-й разряд означает, что номер "зоны"
-         * есть не номер тракта, а номер сектора (обмен по КУС).
-         */
-        if (uil.i_addr & 04000) {
-            zone   = uir.i_addr & 0177;
-            sector = zone & 3;
-            zone >>= 2;
-        } else {
-            sector = (uir.i_addr >> 6) & 3;
-        }
-        r = disk_readi(disks[u].diskh, (zone + disks[u].offset) & 0xfff, (char *)buf, cvbuf, NULL,
-                       DISK_MODE_QUIET);
-        if (!(uil.i_opcode & 010)) {
-            memcpy(buf + sector * 256 * 6, core + addr + (uil.i_addr & 3) * 256, 256 * 6);
-            memcpy(cvbuf + sector * 256, convol + addr + (uil.i_addr & 3) * 256, 256);
-            r = disk_writei(disks[u].diskh, (zone + disks[u].offset) & 0xfff, (char *)buf, cvbuf,
-                            NULL, DISK_MODE_QUIET);
-        }
-    } else if (uil.i_opcode & 010) {
-        char cwords[48];
-        int iomode = DISK_MODE_QUIET;
-        if (uil.i_addr & 04000 && disks[u].diskno >= 2048) {
-            /* листовой обмен с диском по КУС - физический номер зоны */
-            iomode = DISK_MODE_PHYS;
-        }
-        r = disk_readi(disks[u].diskh, (zone + disks[u].offset) & 0xfff, (char *)(core + addr),
-                       (char *)convol + addr, cwords, iomode);
-
-        if (uil.i_opcode & 1 && disks[u].diskno < 2048) {
-            /* check words requested for tape */
-            put_check_words(u, zone, addr, 0 != (uir.i_opcode & 0200));
-        } else if (uil.i_addr & 04000 && disks[u].diskno >= 2048) {
-            /* copy disk check words to requested page */
-            /* what should happen to the zone data? */
-            memcpy((char *)(core + addr), cwords, 48);
-        }
+    char     op   = info.disk.read_op ? 'r' : 'w';
+    unsigned addr = info.disk.page << 10;
+    if (info.disk.unit >= 030 && info.disk.unit < 070) {
+        //
+        // Disk read/write.
+        //
+        machine.disk_io(op, info.disk.unit - 030, info.disk.zone, 0, addr, 1024);
     } else {
-        r = disk_writei(disks[u].diskh, (zone + disks[u].offset) & 0xfff, (char *)(core + addr),
-                        (char *)convol + addr, NULL, DISK_MODE_QUIET);
-    }
+        //
+        // Drum read/write.
+        //
+        unsigned tract = info.drum.tract;
+        unsigned sector = info.drum.sector;
+        if (info.drum.raw_sect & info.drum.sect_io) {
+            // Raw sector index in lower bits.
+            sector = info.disk.zone & 3;
+            tract = (info.disk.zone >> 2) & 037;
+        }
 
-    if (disks[u].diskno) {
-        disk_close(disks[u].diskh);
-        disks[u].diskh = 0;
-    }
-    if (r != DISK_IO_OK)
-        return E_DISKERR;
+        if (info.drum.sect_io) {
+            addr += info.drum.paragraph << 8;
+        }
 
-    if (uil.i_reg & 8 && uil.i_opcode & 010) {
-        memcpy(core + addr + (uil.i_addr & 3) * 256, buf + sector * 256 * 6, 256 * 6);
-        memcpy(convol + addr + (uil.i_addr & 3) * 256, cvbuf + sector * 256, 256);
-        for (u = addr + (uil.i_addr & 3) * 256; u < addr + (uil.i_addr & 3) * 256 + 256; ++u)
-            cflags[u] &= ~C_UNPACKED;
-    } else if (uil.i_opcode & 010) {
-        for (u = addr; u < addr + 1024; ++u)
-            cflags[u] &= ~C_UNPACKED;
-        if (uil.i_opcode & 1)
-            for (u = 010; u < 020; ++u)
-                cflags[u] &= ~C_UNPACKED;
+        if (info.drum.phys_io) {
+            // Remap to disk drive.
+            unsigned disk_unit = machine.get_mapped_disk() - 030;
+            unsigned zone = tract + (info.drum.unit - machine.get_mapped_drum()) * 040;
+
+            if (info.drum.sect_io == 0) {
+                // Full page i/o with disk.
+                machine.disk_io(op, disk_unit, zone, 0, addr, 1024);
+            } else {
+                // Sector i/o with disk (1/4 of page).
+                machine.disk_io(op, disk_unit, zone, sector, addr, 256);
+            }
+        } else if (info.drum.sect_io == 0) {
+            // Full page i/o.
+            machine.drum_io(op, info.drum.unit & 037, tract, 0, addr, 1024);
+        } else {
+            // Sector i/o (1/4 of page).
+            machine.drum_io(op, info.drum.unit & 037, tract, sector, addr, 256);
+        }
     }
-    return E_SUCCESS;
-#endif
 }
+
+//    throw std::runtime_error("e70 for disk not supported yet");

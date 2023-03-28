@@ -42,6 +42,15 @@ Machine::Machine(Memory &memory) :
 }
 
 //
+// Deallocate the machine: disable tracing.
+//
+Machine::~Machine()
+{
+    redirect_trace(nullptr, "");
+    enable_trace("");
+}
+
+//
 // Every few seconds, print a message to stderr, to track the simulation progress.
 //
 void Machine::show_progress()
@@ -95,4 +104,20 @@ void Machine::load(const std::string &filename)
 void Machine::load(std::istream &input)
 {
     //TODO: load job from stream
+}
+
+//
+// Disk read/write.
+//
+void Machine::disk_io(char op, unsigned disk_unit, unsigned zone, unsigned sector, unsigned addr, unsigned nwords)
+{
+    throw std::runtime_error("disk i/o not supported yet");
+}
+
+//
+// Drum read/write.
+//
+void Machine::drum_io(char op, unsigned drum_unit, unsigned zone, unsigned sector, unsigned addr, unsigned nwords)
+{
+    throw std::runtime_error("drum i/o not supported yet");
 }

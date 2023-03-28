@@ -24,4 +24,4 @@ clean:
 
 build:
 	mkdir $@
-	cmake -B$@
+	cmake -B$@ -DCMAKE_BUILD_TYPE=Debug

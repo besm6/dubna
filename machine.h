@@ -27,6 +27,9 @@
 
 class Machine {
 private:
+    unsigned mapped_disk{};
+    unsigned mapped_drum{};
+
     // Simulate this number of instructions.
     uint64_t instr_limit{ DEFAULT_LIMIT };
 
@@ -67,6 +70,9 @@ public:
     // Constructor.
     explicit Machine(Memory &memory);
 
+    // Destructor.
+    ~Machine();
+
     // Load job input into machine.
     void load(const std::string &filename);
     void load(std::istream &input);
@@ -99,6 +105,13 @@ public:
 
     // Emit trace to this stream.
     static std::ostream &get_trace_stream();
+
+    // Disk and drum i/o.
+    void disk_io(char op, unsigned disk_unit, unsigned zone, unsigned sector, unsigned addr, unsigned nwords);
+    void drum_io(char op, unsigned drum_unit, unsigned zone, unsigned sector, unsigned addr, unsigned nwords);
+    void map_drum_to_disk(unsigned drum, unsigned disk) { mapped_drum = drum; mapped_disk = disk; }
+    unsigned get_mapped_disk() const { return mapped_disk; }
+    unsigned get_mapped_drum() const { return mapped_drum; }
 
     //
     // Trace methods.
@@ -141,9 +154,16 @@ public:
             cpu.print_registers();
     }
 
+    void trace_e70(const E70_Info &info)
+    {
+        if (debug_extracodes)
+            print_e70(info);
+    }
+
     static void print_exception(const char *message);
     static void print_fetch(unsigned addr, Word val);
     static void print_memory_access(unsigned addr, Word val, const char *opname);
+    static void print_e70(const E70_Info &info);
 };
 
 #endif // DUBNA_MACHINE_H

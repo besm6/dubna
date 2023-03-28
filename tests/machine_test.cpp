@@ -62,6 +62,9 @@ TEST_F(dubna_machine, trace_arx)
 
 TEST_F(dubna_machine, trace_startjob)
 {
+    // Phys i/o: map drum 021 to disk 030.
+    machine->map_drum_to_disk(021, 030);
+
     store_word(02010, besm6_asm("vtm -5(1),     *70 3002"));     // читаем инициатор монитора
     store_word(02011, besm6_asm("xta 377,       atx 3010"));     // берем тракт, где MONITOR* + /MONTRAN
     store_word(02012, besm6_asm("xta 363,       atx 100"));      // ТРП для загрузчика
@@ -87,7 +90,7 @@ TEST_F(dubna_machine, trace_startjob)
 
     // Enable trace.
     std::string trace_filename = get_test_name() + ".trace";
-    machine->redirect_trace(trace_filename.c_str(), "irm");
+    machine->redirect_trace(trace_filename.c_str(), "eirm");
 
     // Run the code.
     machine->cpu.set_pc(02010);
@@ -97,10 +100,10 @@ TEST_F(dubna_machine, trace_startjob)
     auto trace = file_contents_split(trace_filename);
 
     // Check output.
-    static const std::vector<std::string> expect = {
-        "",
-    };
-    EXPECT_EQ(trace, expect);
+    ASSERT_EQ(trace[0], "02010 L: 01 24 77773 vtm -5(1)");
+    ASSERT_EQ(trace[1], "      Write M1 = 77773");
+    ASSERT_EQ(trace[2], "02010 R: 00 070 3002 *70 3002");
+    ASSERT_EQ(trace[3], "TODO");
 }
 
 #if 0

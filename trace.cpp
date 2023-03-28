@@ -223,3 +223,64 @@ void Processor::print_registers()
     // Restore output flags.
     out.flags(save_flags);
 }
+
+//
+// Print memory read/write.
+//
+void Machine::print_e70(const E70_Info &info)
+{
+    auto &out = Machine::get_trace_stream();
+    auto save_flags = out.flags();
+
+    if (info.disk.unit >= 030 && info.disk.unit < 070) {
+        //
+        // Disk.
+        //
+        const char *opname = info.disk.read_op ? "Read" : "Write";
+        out << "      Disk " << std::oct << info.disk.unit
+            << ' ' << opname << " [";
+
+        unsigned addr = info.disk.page << 10;
+        unsigned last_addr = addr + 1023;
+        unsigned zone = info.disk.zone;
+        out << std::setfill('0') << std::setw(5) << addr << '-'
+            << std::setfill('0') << std::setw(5) << last_addr
+            << "] = Zone " << zone << std::endl;
+    } else {
+        //
+        // Drum.
+        //
+        const char *opname = info.drum.phys_io ?
+                            (info.drum.read_op ? "PhysRead" : "PhysWrite") :
+                            (info.drum.read_op ? "Read" : "Write");
+        out << "      Drum " << std::oct << info.drum.unit
+            << ' ' << opname << " [";
+
+        unsigned addr = info.drum.page << 10;
+        unsigned tract = info.drum.tract;
+        if (info.drum.sect_io == 0) {
+            // Full page i/o.
+            unsigned last_addr = addr + 1023;
+            out << std::setfill('0') << std::setw(5) << addr << '-'
+                << std::setfill('0') << std::setw(5) << last_addr
+                << "] = Zone " << tract << std::endl;
+        } else {
+            // Sector i/o (1/4 of page).
+            addr += info.drum.paragraph << 8;
+            unsigned last_addr = addr + 255;
+            unsigned sector = info.drum.sector;
+            if (info.drum.raw_sect) {
+                // Raw sector index in lower bits.
+                sector = info.disk.zone & 3;
+                tract = (info.disk.zone >> 2) & 037;
+            }
+            out << std::setfill('0') << std::setw(5) << addr << '-'
+                << std::setfill('0') << std::setw(5) << last_addr
+                << "] = Zone " << tract
+                << " Sector " << sector << std::endl;
+        }
+    }
+
+    // Restore.
+    out.flags(save_flags);
+}

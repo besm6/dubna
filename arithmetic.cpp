@@ -29,7 +29,7 @@
 // Исходные значения: регистр ACC и аргумент 'val'.
 // Результат помещается в регистр ACC и 40-1 разряды RMR.
 //
-void Processor::arith_add(Word val, int negate_acc, int negate_val)
+void Processor::arith_add(Word val, bool negate_acc, bool negate_val)
 {
     MantissaExponent acc(core.ACC);
     MantissaExponent word(val);
@@ -67,16 +67,17 @@ void Processor::arith_add(Word val, int negate_acc, int negate_val)
 
     Word mr = 0;
     bool neg = a1.is_negative();
-    int rnd_rq = 0;
+    bool round_flag = false;
     if (diff == 0) {
         // Nothing to do.
     } else if (diff <= 40) {
-        rnd_rq = (mr = (a1.mantissa << (40 - diff)) & BITS40) != 0;
+        mr = (a1.mantissa << (40 - diff)) & BITS40;
+        round_flag = (mr != 0);
         a1.mantissa = ((a1.mantissa >> diff) |
                        (neg ? (~0ll << (40 - diff)) : 0)) & BITS42;
     } else if (diff <= 80) {
         diff -= 40;
-        rnd_rq = a1.mantissa != 0;
+        round_flag = (a1.mantissa != 0);
         mr = ((a1.mantissa >> diff) |
               (neg ? (~0ll << (40 - diff)) : 0)) & BITS40;
         if (neg) {
@@ -85,7 +86,7 @@ void Processor::arith_add(Word val, int negate_acc, int negate_val)
             a1.mantissa = 0;
         }
     } else {
-        rnd_rq = a1.mantissa != 0;
+        round_flag = (a1.mantissa != 0);
         if (neg) {
             mr = BITS40;
             a1.mantissa = BITS42;
@@ -99,11 +100,11 @@ void Processor::arith_add(Word val, int negate_acc, int negate_val)
     // Если требуется нормализация вправо, биты 42:41
     // принимают значение 01 или 10.
     if (acc.is_denormal()) {
-        rnd_rq |= acc.mantissa & 1;
+        round_flag |= acc.mantissa & 1;
         mr = (mr >> 1) | ((acc.mantissa & 1) << 39);
         acc.normalize_to_the_right();
     }
-    arith_normalize_and_round(acc, mr, rnd_rq);
+    arith_normalize_and_round(acc, mr, round_flag);
 }
 
 //
@@ -111,7 +112,7 @@ void Processor::arith_add(Word val, int negate_acc, int negate_val)
 // Результат помещается в регистры ACC и 40-1 разряды RMR.
 // 48-41 разряды RMR сохраняются.
 //
-void Processor::arith_normalize_and_round(MantissaExponent acc, Word mr, int rnd_rq)
+void Processor::arith_normalize_and_round(MantissaExponent acc, Word mr, bool round_flag)
 {
     Word rr = 0;
     int i;
@@ -173,13 +174,13 @@ void Processor::arith_normalize_and_round(MantissaExponent acc, Word mr, int rnd
     }
 chk_zero:
     if (rr)
-        rnd_rq = 0;
+        round_flag = false;
 
 chk_rnd:
     if (acc.exponent & 0x8000)
         goto zero;
 
-    if (! (core.RAU & RAU_ROUND_DISABLE) && rnd_rq) {
+    if (! (core.RAU & RAU_ROUND_DISABLE) && round_flag) {
         acc.mantissa |= 1;
     }
 
@@ -217,7 +218,7 @@ void Processor::arith_add_exponent(int val)
 // Изменение знака числа на сумматоре ACC.
 // Результат помещается в регистр ACC, RMR гасится.
 //
-void Processor::arith_change_sign(int negate_acc)
+void Processor::arith_change_sign(bool negate_acc)
 {
     MantissaExponent acc(core.ACC);
 
@@ -338,26 +339,26 @@ void Processor::arith_divide(Word val)
 // Сдвиг сумматора ACC с выдвижением в регистр младших разрядов RMR.
 // Величина сдвига находится в диапазоне -64..63.
 //
-void Processor::arith_shift(int i)
+void Processor::arith_shift(int nbits)
 {
     core.RMR = 0;
-    if (i > 0) {
+    if (nbits > 0) {
         // Сдвиг вправо.
-        if (i < 48) {
-            core.RMR = (core.ACC << (48-i)) & BITS48;
-            core.ACC >>= i;
+        if (nbits < 48) {
+            core.RMR = (core.ACC << (48 - nbits)) & BITS48;
+            core.ACC >>= nbits;
         } else {
-            core.RMR = core.ACC >> (i-48);
+            core.RMR = core.ACC >> (nbits - 48);
             core.ACC = 0;
         }
-    } else if (i < 0) {
+    } else if (nbits < 0) {
         // Сдвиг влево.
-        i = -i;
-        if (i < 48) {
-            core.RMR = core.ACC >> (48-i);
-            core.ACC = (core.ACC << i) & BITS48;
+        nbits = -nbits;
+        if (nbits < 48) {
+            core.RMR = core.ACC >> (48 - nbits);
+            core.ACC = (core.ACC << nbits) & BITS48;
         } else {
-            core.RMR = (core.ACC << (i-48)) & BITS48;
+            core.RMR = (core.ACC << (nbits - 48)) & BITS48;
             core.ACC = 0;
         }
     }

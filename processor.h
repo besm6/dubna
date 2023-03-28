@@ -119,13 +119,13 @@ public:
     Word get_rmr() const { return core.RMR; }
 
     // Arithmetics.
-    void arith_add(Word val, int negate_acc, int negate_val);
-    void arith_normalize_and_round(MantissaExponent acc, Word mr, int rnd_rq);
+    void arith_add(Word val, bool negate_acc, bool negate_val);
+    void arith_normalize_and_round(MantissaExponent acc, Word mr, bool round_flag);
     void arith_add_exponent(int val);
-    void arith_change_sign(int negate_acc);
+    void arith_change_sign(bool negate_acc);
     void arith_multiply(Word val);
     void arith_divide(Word val);
-    void arith_shift(int i);
+    void arith_shift(int nbits);
 
     // Print trace info.
     void print_instruction();

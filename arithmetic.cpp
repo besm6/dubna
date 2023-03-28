@@ -24,52 +24,6 @@
 #include "processor.h"
 #include "besm6_arch.h"
 
-static Processor::AluReg toalu(Word val)
-{
-    Processor::AluReg ret;
-
-    ret.exponent = (val >> 41) & BITS(7);
-    ret.mantissa = val & BITS41;
-
-    // Sign extend.
-    ret.mantissa <<= 64 - 41;
-    ret.mantissa >>= 64 - 41;
-    return ret;
-}
-
-static inline int is_negative(const Processor::AluReg &word)
-{
-    return (word.mantissa & BIT41) != 0;
-}
-
-//
-// Вернуть true если число ненормализованное.
-// У нормализованного числа биты 42 и 41 совпадают.
-//
-static inline int is_denormal(const Processor::AluReg &val)
-{
-    return ((val.mantissa >> 40) ^ (val.mantissa >> 41)) & 1;
-}
-
-//
-// Change sign of the mantissa.
-// Note: the number may become denormalized.
-//
-static void negate(Processor::AluReg &val)
-{
-    val.mantissa = - val.mantissa;
-}
-
-//
-// Normalize "to the right".
-// Increment the exponent and update the mantissa.
-//
-static void normalize_to_the_right(Processor::AluReg &val)
-{
-    val.mantissa >>= 1;
-    ++val.exponent;
-}
-
 //
 // Сложение и все варианты вычитаний.
 // Исходные значения: регистр ACC и аргумент 'val'.
@@ -77,33 +31,31 @@ static void normalize_to_the_right(Processor::AluReg &val)
 //
 void Processor::arith_add(Word val, int negate_acc, int negate_val)
 {
-    Word mr;
-    AluReg acc, word, a1, a2;
-    int diff, neg, rnd_rq = 0;
+    MantissaExponent acc(core.ACC);
+    MantissaExponent word(val);
 
-    acc = toalu(core.ACC);
-    word = toalu(val);
     if (! negate_acc) {
         if (! negate_val) {
             // Сложение
         } else {
             // Вычитание
-            negate(word);
+            word.negate();
         }
     } else {
         if (! negate_val) {
             // Обратное вычитание
-            negate(acc);
+            acc.negate();
         } else {
             // Вычитание модулей
-            if (is_negative(acc))
-                negate(acc);
-            if (! is_negative(word))
-                negate(word);
+            if (acc.is_negative())
+                acc.negate();
+            if (! word.is_negative())
+                word.negate();
         }
     }
 
-    diff = acc.exponent - word.exponent;
+    MantissaExponent a1, a2;
+    int diff = acc.exponent - word.exponent;
     if (diff < 0) {
         diff = -diff;
         a1 = acc;
@@ -112,8 +64,10 @@ void Processor::arith_add(Word val, int negate_acc, int negate_val)
         a1 = word;
         a2 = acc;
     }
-    mr = 0;
-    neg = is_negative(a1);
+
+    Word mr = 0;
+    bool neg = a1.is_negative();
+    int rnd_rq = 0;
     if (diff == 0) {
         // Nothing to do.
     } else if (diff <= 40) {
@@ -127,25 +81,27 @@ void Processor::arith_add(Word val, int negate_acc, int negate_val)
               (neg ? (~0ll << (40 - diff)) : 0)) & BITS40;
         if (neg) {
             a1.mantissa = BITS42;
-        } else
+        } else {
             a1.mantissa = 0;
+        }
     } else {
         rnd_rq = a1.mantissa != 0;
         if (neg) {
             mr = BITS40;
             a1.mantissa = BITS42;
-        } else
+        } else {
             mr = a1.mantissa = 0;
+        }
     }
     acc.exponent = a2.exponent;
     acc.mantissa = a1.mantissa + a2.mantissa;
 
     // Если требуется нормализация вправо, биты 42:41
     // принимают значение 01 или 10.
-    if (is_denormal(acc)) {
+    if (acc.is_denormal()) {
         rnd_rq |= acc.mantissa & 1;
         mr = (mr >> 1) | ((acc.mantissa & 1) << 39);
-        normalize_to_the_right(acc);
+        acc.normalize_to_the_right();
     }
     arith_normalize_and_round(acc, mr, rnd_rq);
 }
@@ -155,7 +111,7 @@ void Processor::arith_add(Word val, int negate_acc, int negate_val)
 // Результат помещается в регистры ACC и 40-1 разряды RMR.
 // 48-41 разряды RMR сохраняются.
 //
-void Processor::arith_normalize_and_round(AluReg acc, Word mr, int rnd_rq)
+void Processor::arith_normalize_and_round(MantissaExponent acc, Word mr, int rnd_rq)
 {
     Word rr = 0;
     int i;
@@ -250,7 +206,7 @@ zero:   core.ACC = 0;
 //
 void Processor::arith_add_exponent(int val)
 {
-    AluReg acc = toalu(core.ACC);
+    MantissaExponent acc(core.ACC);
 
     acc.exponent += val;
     core.RMR = 0;
@@ -263,12 +219,12 @@ void Processor::arith_add_exponent(int val)
 //
 void Processor::arith_change_sign(int negate_acc)
 {
-    AluReg acc = toalu(core.ACC);
+    MantissaExponent acc(core.ACC);
 
     if (negate_acc) {
-        negate(acc);
-        if (is_denormal(acc)) {
-            normalize_to_the_right(acc);
+        acc.negate();
+        if (acc.is_denormal()) {
+            acc.normalize_to_the_right();
         }
     }
     core.RMR = 0;
@@ -288,8 +244,8 @@ void Processor::arith_multiply(Word val)
         core.RMR &= ~BITS40;
         return;
     }
-    AluReg acc = toalu(core.ACC);
-    AluReg word = toalu(val);
+    MantissaExponent acc(core.ACC);
+    MantissaExponent word(val);
     Word mr;
 
     //
@@ -303,8 +259,8 @@ void Processor::arith_multiply(Word val)
 
     acc.exponent += word.exponent - 64;
 
-    if (is_denormal(acc)) {
-        normalize_to_the_right(acc);
+    if (acc.is_denormal()) {
+        acc.normalize_to_the_right();
     }
     arith_normalize_and_round(acc, mr, mr != 0);
 }
@@ -312,9 +268,9 @@ void Processor::arith_multiply(Word val)
 //
 // non-restoring division
 //
-static inline Processor::AluReg nrdiv(Processor::AluReg n, Processor::AluReg d)
+static inline MantissaExponent nrdiv(MantissaExponent n, MantissaExponent d)
 {
-    Processor::AluReg quot;
+    MantissaExponent quot;
 
     if (d.mantissa == BIT40) {
         // Divide by a positive power of 2.
@@ -328,7 +284,7 @@ static inline Processor::AluReg nrdiv(Processor::AluReg n, Processor::AluReg d)
     d.mantissa <<= 1;
 
     if (llabs(n.mantissa) >= llabs(d.mantissa)) {
-        normalize_to_the_right(n);
+        n.normalize_to_the_right();
     }
 
     // Compute exponent.
@@ -366,17 +322,14 @@ static inline Processor::AluReg nrdiv(Processor::AluReg n, Processor::AluReg d)
 //
 void Processor::arith_divide(Word val)
 {
-    AluReg acc;
-    AluReg dividend, divisor;
-
     if (((val ^ (val << 1)) & BIT41) == 0) {
         // Ненормализованный делитель: деление на ноль.
         longjmp(exception, ESS_DIVZERO);
     }
-    dividend = toalu(core.ACC);
-    divisor = toalu(val);
 
-    acc = nrdiv(dividend, divisor);
+    MantissaExponent dividend(core.ACC);
+    MantissaExponent divisor(val);
+    MantissaExponent acc = nrdiv(dividend, divisor);
 
     arith_normalize_and_round(acc, 0, 0);
 }

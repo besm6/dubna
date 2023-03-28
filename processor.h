@@ -29,6 +29,7 @@
 
 class Machine;
 class Memory;
+class MantissaExponent;
 
 //
 // Internal state of the processor.
@@ -99,7 +100,6 @@ public:
     // Simulate one instruction.
     void step();
 
-
     // Memory access.
     Word mem_fetch(unsigned addr);
     Word mem_load(unsigned addr);
@@ -118,15 +118,9 @@ public:
     Word get_acc() const { return core.ACC; }
     Word get_rmr() const { return core.RMR; }
 
-    // ALU register type.
-    struct AluReg {
-        int64_t mantissa;  // Note: signed value
-        unsigned exponent; // offset by 64
-    };
-
     // Arithmetics.
     void arith_add(Word val, int negate_acc, int negate_val);
-    void arith_normalize_and_round(AluReg acc, Word mr, int rnd_rq);
+    void arith_normalize_and_round(MantissaExponent acc, Word mr, int rnd_rq);
     void arith_add_exponent(int val);
     void arith_change_sign(int negate_acc);
     void arith_multiply(Word val);

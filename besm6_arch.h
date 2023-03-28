@@ -135,4 +135,64 @@ enum {
     RAU_MODE          = RAU_LOG | RAU_MULT | RAU_ADD,
 };
 
+//
+// Floating point value as represented in ALU.
+//
+class MantissaExponent {
+public:
+    int64_t mantissa;  // Note: signed value
+    unsigned exponent; // offset by 64
+
+    //
+    // Constructors.
+    //
+    MantissaExponent() : mantissa(0), exponent(0) {}
+
+    explicit MantissaExponent(Word val)
+    {
+        exponent = (val >> 41) & BITS(7);
+        mantissa = val & BITS41;
+
+        // Sign extend.
+        mantissa <<= 64 - 41;
+        mantissa >>= 64 - 41;
+    }
+
+    //
+    // Whether the number is negative.
+    //
+    bool is_negative()
+    {
+        return (mantissa & BIT41) != 0;
+    }
+
+    //
+    // Вернуть true если число ненормализованное.
+    // У нормализованного числа биты 42 и 41 совпадают.
+    //
+    bool is_denormal()
+    {
+        return ((mantissa >> 40) ^ (mantissa >> 41)) & 1;
+    }
+
+    //
+    // Change sign of the mantissa.
+    // Note: the number may become denormalized.
+    //
+    void negate()
+    {
+        mantissa = - mantissa;
+    }
+
+    //
+    // Normalize "to the right".
+    // Increment the exponent and update the mantissa.
+    //
+    void normalize_to_the_right()
+    {
+        mantissa >>= 1;
+        ++exponent;
+    }
+};
+
 #endif // BESM6_ARCH_H

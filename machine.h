@@ -112,6 +112,11 @@ public:
     // Emit trace to this stream.
     static std::ostream &get_trace_stream();
 
+    // Memory access.
+    Word mem_fetch(unsigned addr);
+    Word mem_load(unsigned addr);
+    void mem_store(unsigned addr, Word val);
+
     // Disk and drum i/o.
     void disk_io(char op, unsigned disk_unit, unsigned zone, unsigned sector, unsigned addr, unsigned nwords);
     void drum_io(char op, unsigned drum_unit, unsigned zone, unsigned sector, unsigned addr, unsigned nwords);

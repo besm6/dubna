@@ -119,6 +119,51 @@ void Machine::run()
 }
 
 //
+// Fetch instruction word.
+//
+Word Machine::mem_fetch(unsigned addr)
+{
+    if (addr == 0) {
+        throw Processor::Exception("Jump to zero");
+    }
+
+    Word val = memory.load(addr);
+
+    if (!cpu.on_right_instruction()) {
+        trace_fetch(addr, val);
+    }
+    return val & BITS48;
+}
+
+//
+// Write word to memory.
+//
+void Machine::mem_store(unsigned addr, Word val)
+{
+    addr &= BITS(15);
+    if (addr == 0)
+        return;
+
+    memory.store(addr, val);
+    trace_memory_write(addr, val);
+}
+
+//
+// Read word from memory.
+//
+Word Machine::mem_load(unsigned addr)
+{
+    addr &= BITS(15);
+    if (addr == 0)
+        return 0;
+
+    Word val = memory.load(addr);
+    trace_memory_read(addr, val);
+
+    return val & BITS48;
+}
+
+//
 // Load input file.
 // Throw exception on failure.
 //

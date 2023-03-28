@@ -28,7 +28,7 @@ add_executable(unit_tests EXCLUDE_FROM_ALL
     cli_test.cpp
     session_test.cpp
     machine_test.cpp
-    instr_test.cpp
+    cpu_test.cpp
     alu_test.cpp
     util.cpp
 )

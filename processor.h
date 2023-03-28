@@ -97,11 +97,6 @@ public:
     // Stack correction in case of exception.
     void stack_correction();
 
-    // Memory access.
-    Word mem_fetch(unsigned addr);
-    Word mem_load(unsigned addr);
-    void mem_store(unsigned addr, Word val);
-
     // Set register value.
     void set_pc(unsigned val) { core.PC = val; }
     void set_m(unsigned index, unsigned val) { core.M[index] = val; }
@@ -114,6 +109,7 @@ public:
     unsigned get_rau() const { return core.RAU; }
     Word get_acc() const { return core.ACC; }
     Word get_rmr() const { return core.RMR; }
+    bool on_right_instruction() const { return core.right_instr_flag; }
 
     // Arithmetics.
     void arith_add(Word val, bool negate_acc, bool negate_val);

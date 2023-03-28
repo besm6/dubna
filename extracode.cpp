@@ -51,7 +51,7 @@ void Processor::e70()
     // Read control word at the executive address.
     // When address is zero - the control word is on accumulator.
     E70_Info info;
-    info.word = (core.M[016] == 0) ? core.ACC : mem_load(core.M[016]);
+    info.word = (core.M[016] == 0) ? core.ACC : machine.mem_load(core.M[016]);
 
     machine.trace_e70(info);
 

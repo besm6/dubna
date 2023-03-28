@@ -66,7 +66,7 @@ bool Processor::step()
 
     corr_stack = 0;
     core.PC &= BITS(15);
-    word = mem_fetch(core.PC);
+    word = machine.mem_fetch(core.PC);
     if (core.right_instr_flag)
         RK = (unsigned)word;         // get right instruction
     else
@@ -104,26 +104,26 @@ bool Processor::step()
     switch (opcode) {
     case 000:                                       // зп, atx
         Aex = ADDR(addr + core.M[reg]);
-        mem_store(Aex, core.ACC);
+        machine.mem_store(Aex, core.ACC);
         if (! addr && reg == 017)
             core.M[017] = ADDR(core.M[017] + 1);
         break;
     case 001:                                       // зпм, stx
         Aex = ADDR(addr + core.M[reg]);
-        mem_store(Aex, core.ACC);
+        machine.mem_store(Aex, core.ACC);
         core.M[017] = ADDR(core.M[017] - 1);
         corr_stack = 1;
-        core.ACC = mem_load(core.M[017]);
+        core.ACC = machine.mem_load(core.M[017]);
         core.set_logical();
         break;
     case 002:                                       // рег, mod
         throw Exception("Illegal instruction 002 рег/mod");
     case 003:                                       // счм, xts
-        mem_store(core.M[017], core.ACC);
+        machine.mem_store(core.M[017], core.ACC);
         core.M[017] = ADDR(core.M[017] + 1);
         corr_stack = -1;
         Aex = ADDR(addr + core.M[reg]);
-        core.ACC = mem_load(Aex);
+        core.ACC = machine.mem_load(Aex);
         core.set_logical();
         break;
     case 004:                                       // сл, a+x
@@ -132,7 +132,7 @@ bool Processor::step()
             corr_stack = 1;
         }
         Aex = ADDR(addr + core.M[reg]);
-        arith_add(mem_load(Aex), 0, 0);
+        arith_add(machine.mem_load(Aex), 0, 0);
         core.set_additive();
         break;
     case 005:                                       // вч, a-x
@@ -141,7 +141,7 @@ bool Processor::step()
             corr_stack = 1;
         }
         Aex = ADDR(addr + core.M[reg]);
-        arith_add(mem_load(Aex), 0, 1);
+        arith_add(machine.mem_load(Aex), 0, 1);
         core.set_additive();
         break;
     case 006:                                       // вчоб, x-a
@@ -150,7 +150,7 @@ bool Processor::step()
             corr_stack = 1;
         }
         Aex = ADDR(addr + core.M[reg]);
-        arith_add(mem_load(Aex), 1, 0);
+        arith_add(machine.mem_load(Aex), 1, 0);
         core.set_additive();
         break;
     case 007:                                       // вчаб, amx
@@ -159,7 +159,7 @@ bool Processor::step()
             corr_stack = 1;
         }
         Aex = ADDR(addr + core.M[reg]);
-        arith_add(mem_load(Aex), 1, 1);
+        arith_add(machine.mem_load(Aex), 1, 1);
         core.set_additive();
         break;
     case 010:                                       // сч, xta
@@ -168,7 +168,7 @@ bool Processor::step()
             corr_stack = 1;
         }
         Aex = ADDR(addr + core.M[reg]);
-        core.ACC = mem_load(Aex);
+        core.ACC = machine.mem_load(Aex);
         core.set_logical();
         break;
     case 011:                                       // и, aax
@@ -177,7 +177,7 @@ bool Processor::step()
             corr_stack = 1;
         }
         Aex = ADDR(addr + core.M[reg]);
-        core.ACC &= mem_load(Aex);
+        core.ACC &= machine.mem_load(Aex);
         core.RMR = 0;
         core.set_logical();
         break;
@@ -188,7 +188,7 @@ bool Processor::step()
         }
         Aex = ADDR(addr + core.M[reg]);
         core.RMR = core.ACC;
-        core.ACC ^= mem_load(Aex);
+        core.ACC ^= machine.mem_load(Aex);
         core.set_logical();
         break;
     case 013:                                       // слц, arx
@@ -197,7 +197,7 @@ bool Processor::step()
             corr_stack = 1;
         }
         Aex = ADDR(addr + core.M[reg]);
-        core.ACC += mem_load(Aex);
+        core.ACC += machine.mem_load(Aex);
         if (core.ACC & BIT49)
             core.ACC = (core.ACC + 1) & BITS48;
         core.RMR = 0;
@@ -209,7 +209,7 @@ bool Processor::step()
             corr_stack = 1;
         }
         Aex = ADDR(addr + core.M[reg]);
-        arith_change_sign(mem_load(Aex) >> 40 & 1);
+        arith_change_sign(machine.mem_load(Aex) >> 40 & 1);
         core.set_additive();
         break;
     case 015:                                       // или, aox
@@ -218,7 +218,7 @@ bool Processor::step()
             corr_stack = 1;
         }
         Aex = ADDR(addr + core.M[reg]);
-        core.ACC |= mem_load(Aex);
+        core.ACC |= machine.mem_load(Aex);
         core.RMR = 0;
         core.set_logical();
         break;
@@ -228,7 +228,7 @@ bool Processor::step()
             corr_stack = 1;
         }
         Aex = ADDR(addr + core.M[reg]);
-        arith_divide(mem_load(Aex));
+        arith_divide(machine.mem_load(Aex));
         core.set_multiplicative();
         break;
     case 017:                                       // умн, a*x
@@ -237,7 +237,7 @@ bool Processor::step()
             corr_stack = 1;
         }
         Aex = ADDR(addr + core.M[reg]);
-        arith_multiply(mem_load(Aex));
+        arith_multiply(machine.mem_load(Aex));
         core.set_multiplicative();
         break;
     case 020:                                       // сбр, apx
@@ -246,7 +246,7 @@ bool Processor::step()
             corr_stack = 1;
         }
         Aex = ADDR(addr + core.M[reg]);
-        core.ACC = besm6_pack(core.ACC, mem_load(Aex));
+        core.ACC = besm6_pack(core.ACC, machine.mem_load(Aex));
         core.RMR = 0;
         core.set_logical();
         break;
@@ -256,7 +256,7 @@ bool Processor::step()
             corr_stack = 1;
         }
         Aex = ADDR(addr + core.M[reg]);
-        core.ACC = besm6_unpack(core.ACC, mem_load(Aex));
+        core.ACC = besm6_unpack(core.ACC, machine.mem_load(Aex));
         core.RMR = 0;
         core.set_logical();
         break;
@@ -266,7 +266,7 @@ bool Processor::step()
             corr_stack = 1;
         }
         Aex = ADDR(addr + core.M[reg]);
-        core.ACC = besm6_count_ones(core.ACC) + mem_load(Aex);
+        core.ACC = besm6_count_ones(core.ACC) + machine.mem_load(Aex);
         if (core.ACC & BIT49)
             core.ACC = (core.ACC + 1) & BITS48;
         core.RMR = 0;
@@ -287,12 +287,12 @@ bool Processor::step()
             arith_shift(48 - n);
 
             // Циклическое сложение номера со словом по Аисп.
-            core.ACC = n + mem_load(Aex);
+            core.ACC = n + machine.mem_load(Aex);
             if (core.ACC & BIT49)
                 core.ACC = (core.ACC + 1) & BITS48;
         } else {
             core.RMR = 0;
-            core.ACC = mem_load(Aex);
+            core.ACC = machine.mem_load(Aex);
         }
         core.set_logical();
         break;
@@ -302,7 +302,7 @@ bool Processor::step()
             corr_stack = 1;
         }
         Aex = ADDR(addr + core.M[reg]);
-        arith_add_exponent((mem_load(Aex) >> 41) - 64);
+        arith_add_exponent((machine.mem_load(Aex) >> 41) - 64);
         core.set_multiplicative();
         break;
     case 025:                                       // вчп, e-x
@@ -311,7 +311,7 @@ bool Processor::step()
             corr_stack = 1;
         }
         Aex = ADDR(addr + core.M[reg]);
-        arith_add_exponent(64 - (mem_load(Aex) >> 41));
+        arith_add_exponent(64 - (machine.mem_load(Aex) >> 41));
         core.set_multiplicative();
         break;
     case 026: {                                     // сд, asx
@@ -321,7 +321,7 @@ bool Processor::step()
             corr_stack = 1;
         }
         Aex = ADDR(addr + core.M[reg]);
-        n = (mem_load(Aex) >> 41) - 64;
+        n = (machine.mem_load(Aex) >> 41) - 64;
         arith_shift(n);
         core.set_logical();
         break;
@@ -332,7 +332,7 @@ bool Processor::step()
             corr_stack = 1;
         }
         Aex = ADDR(addr + core.M[reg]);
-        core.RAU = (mem_load(Aex) >> 41) & 077;
+        core.RAU = (machine.mem_load(Aex) >> 41) & 077;
         break;
     case 030:                                       // счрж, rte
         Aex = ADDR(addr + core.M[reg]);
@@ -391,7 +391,7 @@ bool Processor::step()
             core.M[017] = ADDR(core.M[017] - 1);
             corr_stack = 1;
         }
-        core.ACC = mem_load(rg != 017 ? core.M[017] : ad);
+        core.ACC = machine.mem_load(rg != 017 ? core.M[017] : ad);
         core.M[rg] = ad;
         core.M[0] = 0;
         core.set_logical();
@@ -404,7 +404,7 @@ load_modifier:
         core.set_logical();
         break;
     case 043:                                       // счим, its
-        mem_store(core.M[017], core.ACC);
+        machine.mem_store(core.M[017], core.ACC);
         core.M[017] = ADDR(core.M[017] + 1);
         goto load_modifier;
     case 044:                                       // уии, mtj
@@ -444,7 +444,7 @@ load_modifier:
             corr_stack = 1;
         }
         Aex = ADDR(addr + core.M[reg]);
-        next_mod = ADDR(mem_load(Aex));
+        next_mod = ADDR(machine.mem_load(Aex));
         break;
     case 0240:                                      // уиа, vtm
         Aex = addr;
@@ -550,49 +550,4 @@ branch_zero:
     // Show changed registers.
     machine.trace_registers();
     return false;
-}
-
-//
-// Fetch instruction word.
-//
-Word Processor::mem_fetch(unsigned addr)
-{
-    if (addr == 0) {
-        throw Exception("Jump to zero");
-    }
-
-    Word val = memory.load(addr);
-
-    if (!core.right_instr_flag) {
-        machine.trace_fetch(addr, val);
-    }
-    return val & BITS48;
-}
-
-//
-// Write word to memory.
-//
-void Processor::mem_store(unsigned addr, Word val)
-{
-    addr &= BITS(15);
-    if (addr == 0)
-        return;
-
-    memory.store(addr, val);
-    machine.trace_memory_write(addr, val);
-}
-
-//
-// Read word from memory.
-//
-Word Processor::mem_load(unsigned addr)
-{
-    addr &= BITS(15);
-    if (addr == 0)
-        return 0;
-
-    Word val = memory.load(addr);
-    machine.trace_memory_read(addr, val);
-
-    return val & BITS48;
 }

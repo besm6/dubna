@@ -111,6 +111,7 @@ void Machine::load(std::istream &input)
 //
 void Machine::disk_io(char op, unsigned disk_unit, unsigned zone, unsigned sector, unsigned addr, unsigned nwords)
 {
+    //TODO: use disks[]
     throw std::runtime_error("disk i/o not supported yet");
 }
 
@@ -119,5 +120,6 @@ void Machine::disk_io(char op, unsigned disk_unit, unsigned zone, unsigned secto
 //
 void Machine::drum_io(char op, unsigned drum_unit, unsigned zone, unsigned sector, unsigned addr, unsigned nwords)
 {
+    //TODO: use drums[]
     throw std::runtime_error("drum i/o not supported yet");
 }

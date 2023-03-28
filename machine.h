@@ -24,9 +24,15 @@
 
 #include "memory.h"
 #include "processor.h"
+#include "disk.h"
+#include "drum.h"
 
 class Machine {
 private:
+    // Disks and drums.
+    std::array<std::unique_ptr<Disk>, NDISKS> disks;
+    std::array<std::unique_ptr<Drum>, NDRUMS> drums;
+
     unsigned mapped_disk{};
     unsigned mapped_drum{};
 

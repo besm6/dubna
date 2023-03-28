@@ -7,6 +7,23 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
 add_compile_options(-Wall -Werror -Wmissing-prototypes -Wshadow)
 
+#
+# Enable cppcheck by default
+#
+find_program(Cppcheck NAMES cppcheck)
+if(NOT (Cppcheck MATCHES "NOTFOUND"))
+    message(STATUS "Found Cppcheck: ${Cppcheck}")
+    set(CMAKE_CXX_CPPCHECK "${Cppcheck}"
+        "--std=c++17"
+        "--enable=style"
+        "--error-exitcode=1" # Fail on any issues
+        "--inline-suppr" # Enable inline control like // cppcheck-suppress "id"
+        "--quiet" # No progress report messages
+        "--suppress=*:*/_deps/*" # Ignore issues in Googletest
+        "--library=${CMAKE_SOURCE_DIR}/tests/googletest.xml" # Parse TEST() macro properly
+    )
+endif()
+
 # Build library
 add_library(simulator STATIC
     session.cpp

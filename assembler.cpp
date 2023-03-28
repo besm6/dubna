@@ -154,8 +154,7 @@ static const char *get_alnum(const char *iptr, char *optr)
 //
 static const char *parse_instruction(const char *cptr, unsigned &result)
 {
-    int opcode, reg, addr, negate;
-    char buf[BUFSIZ];
+    int opcode, reg, addr;
 
     cptr = skip_spaces(cptr);                       // absorb spaces
     if (*cptr >= '0' && *cptr <= '7') {
@@ -190,13 +189,14 @@ static const char *parse_instruction(const char *cptr, unsigned &result)
         }
     } else {
         // Мнемоническое представление команды.
+        char buf[BUFSIZ];
         cptr = get_alnum(cptr, buf);               // get opcode
         opcode = besm6_opcode(buf);
         if (opcode < 0) {
             //printf("Bad opname: %s\n", buf);
             return 0;
         }
-        negate = 0;
+        int negate = 0;
         cptr = skip_spaces(cptr);                   // absorb spaces
         if (*cptr == '-') {                         // negative offset
             negate = 1;

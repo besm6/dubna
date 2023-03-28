@@ -606,10 +606,7 @@ void Processor::mem_store(unsigned addr, Word val)
         return;
 
     memory.store(addr, val);
-
-    if (addr != 0) {
-        machine.trace_memory_write(addr, val);
-    }
+    machine.trace_memory_write(addr, val);
 }
 
 //
@@ -622,9 +619,7 @@ Word Processor::mem_load(unsigned addr)
         return 0;
 
     Word val = memory.load(addr);
+    machine.trace_memory_read(addr, val);
 
-    if (addr != 0) {
-        machine.trace_memory_read(addr, val);
-    }
     return val & BITS48;
 }

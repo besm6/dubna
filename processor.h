@@ -22,8 +22,8 @@
 #ifndef DUBNA_PROCESSOR_H
 #define DUBNA_PROCESSOR_H
 
+#include <string>
 #include <cstdint>
-#include <setjmp.h>
 #include "besm6_arch.h"
 #include "extracode.h"
 
@@ -72,33 +72,30 @@ private:
 
     unsigned RK{};       // регистр команд
     unsigned Aex{};      // executive address
-    jmp_buf exception{}; // jump here on exception
     int corr_stack{};    // stack correction on exception
 
-    // Run status codes.
-    enum {
-        ESS_OK = 0,
-        ESS_HALT,          // Останов
-        ESS_BADCMD,        // Запрещенная команда
-        ESS_OVFL,          // Переполнение АУ
-        ESS_DIVZERO,       // Деление на нуль
-        ESS_JUMPZERO,      // Переход на 0
-        ESS_UNIMPLEMENTED, // Не реализовано
+public:
+    // Exception for unexpected situations.
+    class Exception : public std::exception {
+    private:
+        std::string message;
+    public:
+        explicit Exception(const std::string &message) : message(message) {}
+        const char *what() const noexcept override { return message.c_str(); }
     };
 
-public:
     // Constructor.
     Processor(Machine &machine, Memory &memory);
 
     // Reset to initial state.
     void reset();
 
-    // Main instruction fetch/decode loop.
-    // Return status code.
-    int run();
-
     // Simulate one instruction.
-    void step();
+    // Return true when the processor is stopped.
+    bool step();
+
+    // Stack correction in case of exception.
+    void stack_correction();
 
     // Memory access.
     Word mem_fetch(unsigned addr);

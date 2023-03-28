@@ -81,12 +81,41 @@ void Machine::show_progress()
 //
 void Machine::run()
 {
-    cpu.run();
+    // Show initial state.
+    trace_registers();
 
-    //TODO: move to cpu.run()
-    //if (progress_message_enabled) {
-    //    show_progress();
-    //}
+    try {
+        for (;;) {
+            bool done = cpu.step();
+
+            if (progress_message_enabled) {
+                show_progress();
+            }
+
+            if (done) {
+                // Halted by 'стоп' instruction.
+                return;
+            }
+        }
+
+    } catch (const Processor::Exception &ex) {
+        // Unexpected situation in the machine.
+        cpu.stack_correction();
+
+        auto const *message = ex.what();
+        if (!message[0]) {
+            // Empty message - legally halted by extracode e74.
+            return;
+        }
+        std::cerr << "Error: " << message << std::endl;
+        trace_exception(message);
+        throw;
+
+    } catch (std::exception &ex) {
+        // Something else.
+        std::cerr << "Error: " << ex.what() << std::endl;
+        throw;
+    }
 }
 
 //

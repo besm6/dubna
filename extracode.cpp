@@ -36,11 +36,10 @@ void Processor::extracode(unsigned opcode)
 
     case 074:
         // Finish the job.
-        longjmp(exception, ESS_HALT);
-        break;
+        throw Exception("");
 
     default:
-        longjmp(exception, ESS_UNIMPLEMENTED);
+        throw Exception("Unimplemented extracode");
     }
 }
 
@@ -100,5 +99,3 @@ void Processor::e70()
         }
     }
 }
-
-//    throw std::runtime_error("e70 for disk not supported yet");

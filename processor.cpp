@@ -45,48 +45,27 @@ void Processor::reset()
 }
 
 //
-// Main instruction fetch/decode loop.
+// Stack correction in case of exception.
 //
-int Processor::run()
+void Processor::stack_correction()
 {
-    // Show initial state.
-    machine.trace_registers();
-
-    // Mask PC.
-    core.PC &= BITS(15);
-
-    // An internal interrupt or user intervention
-    int exception_status = setjmp(exception);
-    if (exception_status) {
-        switch (exception_status) {
-        case ESS_HALT:          break;
-        case ESS_BADCMD:        machine.trace_exception("Bad instruction"); break;
-        case ESS_OVFL:          machine.trace_exception("Arithmetic overflow"); break;
-        case ESS_DIVZERO:       machine.trace_exception("Division by zero"); break;
-        case ESS_JUMPZERO:      machine.trace_exception("Jump to zero"); break;
-        case ESS_UNIMPLEMENTED: machine.trace_exception("Unimplemented"); break;
-        default:                machine.trace_exception("Unknown exception"); break;
-        }
-
-        core.M[017] += corr_stack;
-        return exception_status;
-    }
-
-    for (;;) {
-        step();
-    }
+    core.M[017] += corr_stack;
+    corr_stack = 0;
 }
 
 //
 // Execute one instruction, placed at address PC+right_instr_flag.
-// When stopped, perform a longjmp to exception.
+// Return false to continue the program.
+// Return true when the program is done and the processor is stopped.
+// Emit exception in case of failure.
 //
-void Processor::step()
+bool Processor::step()
 {
     unsigned reg, opcode, addr, nextpc, next_mod;
     Word word;
 
     corr_stack = 0;
+    core.PC &= BITS(15);
     word = mem_fetch(core.PC);
     if (core.right_instr_flag)
         RK = (unsigned)word;         // get right instruction
@@ -138,8 +117,7 @@ void Processor::step()
         core.set_logical();
         break;
     case 002:                                       // рег, mod
-        longjmp(exception, ESS_BADCMD);
-        break;
+        throw Exception("Illegal instruction 002 рег/mod");
     case 003:                                       // счм, xts
         mem_store(core.M[017], core.ACC);
         core.M[017] = ADDR(core.M[017] + 1);
@@ -373,11 +351,9 @@ void Processor::step()
         }
         break;
     case 032:                                       // зпп, запись полноразрядная
-        longjmp(exception, ESS_BADCMD);
-        break;
+        throw Exception("Illegal instruction 032 зпп");
     case 033:                                       // счп, считывание полноразрядное
-        longjmp(exception, ESS_BADCMD);
-        break;
+        throw Exception("Illegal instruction 033 счп");
     case 034:                                       // слпа, e+n
         Aex = ADDR(addr + core.M[reg]);
         arith_add_exponent((Aex & 0177) - 64);
@@ -442,11 +418,9 @@ load_modifier:
         core.M[0] = 0;
         break;
     case 046:                                       // cоп, специальное обращение к памяти
-        longjmp(exception, ESS_BADCMD);
-        break;
+        throw Exception("Illegal instruction 046 cоп");
     case 047:                                       // э47, x47
-        longjmp(exception, ESS_BADCMD);
-        break;
+        throw Exception("Illegal instruction 047");
     case 050: case 051: case 052: case 053:
     case 054: case 055: case 056: case 057:
     case 060: case 061: case 062: case 063:
@@ -530,11 +504,10 @@ load_modifier:
         core.right_instr_flag = false;
         break;
     case 0320:                                      // выпр, iret
-        longjmp(exception, ESS_BADCMD);
-        break;
+        throw Exception("Illegal instruction 32 выпр/iret");
     case 0330:                                      // стоп, stop
-        longjmp(exception, ESS_HALT);
-        break;
+        // We are done.
+        return true;
     case 0340:                                      // пио, vzm
 branch_zero:
         Aex = addr;
@@ -563,8 +536,7 @@ branch_zero:
         break;
     default:
         // Unknown instruction - cannot happen.
-        longjmp(exception, ESS_BADCMD);
-        break;
+        throw Exception("Unknown instruction");
     }
 
     if (next_mod != 0) {
@@ -577,6 +549,7 @@ branch_zero:
 
     // Show changed registers.
     machine.trace_registers();
+    return false;
 }
 
 //
@@ -585,7 +558,7 @@ branch_zero:
 Word Processor::mem_fetch(unsigned addr)
 {
     if (addr == 0) {
-        longjmp(exception, ESS_JUMPZERO);
+        throw Exception("Jump to zero");
     }
 
     Word val = memory.load(addr);

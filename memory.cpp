@@ -27,10 +27,10 @@
 // Backdoor read from memory.
 // No tracing.
 //
-void Memory::read_words(Words &output, unsigned nrows, unsigned addr)
+void Memory::read_words(Words &output, unsigned nwords, unsigned addr)
 {
-    output.resize(nrows);
-    memcpy(output.data(), &mem[addr], nrows * sizeof(Word));
+    output.resize(nwords);
+    memcpy(output.data(), &mem[addr], nwords * sizeof(Word));
 }
 
 //
@@ -39,7 +39,8 @@ void Memory::read_words(Words &output, unsigned nrows, unsigned addr)
 //
 void Memory::write_words(const Words &input, unsigned addr)
 {
-    memcpy(&mem[addr], input.data(), input.size() * sizeof(Word));
+    unsigned nwords = input.size();
+    memcpy(&mem[addr], input.data(), nwords * sizeof(Word));
 }
 
 #if 0

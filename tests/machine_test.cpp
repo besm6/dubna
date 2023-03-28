@@ -60,6 +60,48 @@ TEST_F(dubna_machine, trace_arx)
     EXPECT_EQ(trace, expect);
 }
 
+TEST_F(dubna_machine, e70_read_drum)
+{
+    // Write test data to memory.
+    static const Words input = {
+        0'7760'0000'0000'0067,
+        0'1302'7055'1203'1060,
+        0'0000'2342'5442'0001,
+        0'2224'2502'1422'7060,
+        0'0000'1261'5401'2011,
+        0'1442'0107'0360'7417,
+        0'0000'1261'5401'2016,
+        0'1242'0055'1002'5417,
+        0'0000'1261'5401'2023,
+        0'1363'0056'1160'7417,
+    };
+    machine->memory.write_words(input, 02000);
+
+    // Write page to drum.
+    machine->drum_io('w', 020, 7, 0, 02000, 1024);
+
+    // Store the test code.
+    store_word(010, besm6_asm("*70 2000, utc"));
+    store_word(011, besm6_asm("stop 12345(6), utc")); // Magic opcode: Pass
+    store_word(02000, 00010220000200007ul); // Read drum 20 zone 7 into page 22, address 044000
+
+    // Enable trace.
+    std::string trace_filename = get_test_name() + ".trace";
+    machine->redirect_trace(trace_filename.c_str(), "irm");
+
+    // Run the code.
+    machine->cpu.set_pc(010);
+    machine->run();
+
+    // Check registers.
+    EXPECT_EQ(machine->cpu.get_pc(), 011u);
+
+    // Check data in memory.
+    Words result;
+    machine->memory.read_words(result, input.size(), 044000);
+    EXPECT_EQ(result, input);
+}
+
 TEST_F(dubna_machine, trace_startjob)
 {
     // Phys i/o: map drum 021 to disk 030.

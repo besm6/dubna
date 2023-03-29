@@ -35,27 +35,27 @@ void Processor::extracode(unsigned opcode)
     }
 
     switch (opcode) {
-    case 050:
-        // Elementary math functions and other services.
+    case 050: // Elementary math functions and other services.
         e50();
         break;
 
-    case 070:
-        // Disk or drum i/o.
+    case 064: // Text output.
+        e64();
+        break;
+
+    case 070: // Disk or drum i/o.
         e70();
         break;
 
-    case 074:
-        // Finish the job.
+    case 074: // Finish the job.
         throw Exception("");
 
-    case 075:
-        // Write to memory with instruction check bits.
+    case 075: // Write to memory with instruction check bits.
         e75();
         break;
 
     default:
-        throw Exception("Unimplemented extracode");
+        throw Exception("Unimplemented extracode " + to_octal(opcode));
     }
 }
 
@@ -71,7 +71,7 @@ void Processor::e70()
 
     machine.trace_e70(info);
 
-    char     op   = info.disk.read_op ? 'r' : 'w';
+    char op       = info.disk.read_op ? 'r' : 'w';
     unsigned addr = info.disk.page << 10;
     if (info.disk.unit >= 030 && info.disk.unit < 070) {
         //
@@ -82,12 +82,12 @@ void Processor::e70()
         //
         // Drum read/write.
         //
-        unsigned tract = info.drum.tract;
+        unsigned tract  = info.drum.tract;
         unsigned sector = info.drum.sector;
         if (info.drum.raw_sect & info.drum.sect_io) {
             // Raw sector index in lower bits.
             sector = info.disk.zone & 3;
-            tract = (info.disk.zone >> 2) & 037;
+            tract  = (info.disk.zone >> 2) & 037;
         }
 
         if (info.drum.sect_io) {
@@ -97,7 +97,7 @@ void Processor::e70()
         if (info.drum.phys_io) {
             // Remap to disk drive.
             unsigned disk_unit = machine.get_mapped_disk() - 030;
-            unsigned zone = tract + (info.drum.unit - machine.get_mapped_drum()) * 040;
+            unsigned zone      = tract + (info.drum.unit - machine.get_mapped_drum()) * 040;
 
             if (info.drum.sect_io == 0) {
                 // Full page i/o with disk.
@@ -138,6 +138,6 @@ void Processor::e50()
         core.ACC = 0'7707'7774'0000'0000; // mask
         break;
     default:
-        throw Exception("Unimplemented extracode *50 " + std::to_string(core.M[016]));
+        throw Exception("Unimplemented extracode *50 " + to_octal(core.M[016]));
     }
 }

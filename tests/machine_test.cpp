@@ -110,6 +110,10 @@ TEST_F(dubna_machine, trace_startjob)
     // Phys i/o: map drum 021 to disk 030.
     machine->map_drum_to_disk(021, 030);
 
+    //
+    // I got this boot code from Mikhail Popov.
+    // See https://groups.google.com/g/besm6/c/e5jM_R1Oozc/m/aGfCePzsCwAJ
+    //
     store_word(02010, besm6_asm("vtm -5(1),     *70 3002"));     // читаем инициатор монитора
     store_word(02011, besm6_asm("xta 377,       atx 3010"));     // берем тракт, где MONITOR* + /MONTRAN
     store_word(02012, besm6_asm("xta 363,       atx 100"));      // ТРП для загрузчика
@@ -133,7 +137,7 @@ TEST_F(dubna_machine, trace_startjob)
     store_word(03007, 00000000000210001ul); // (физ. и мат.)
     store_word(03010, 00014000000210035ul); // /MONTRAN
 
-    // Enable trace.
+    // Enable trace for debug.
     std::string trace_filename = get_test_name() + ".trace";
     machine->redirect_trace(trace_filename.c_str(), "eirm");
 
@@ -141,14 +145,8 @@ TEST_F(dubna_machine, trace_startjob)
     machine->cpu.set_pc(02010);
     machine->run();
 
-    // Read the trace.
-    auto trace = file_contents_split(trace_filename);
-
-    // Check output.
-    ASSERT_EQ(trace[0], "02010 L: 01 24 77773 vtm -5(1)");
-    ASSERT_EQ(trace[1], "      Write M1 = 77773");
-    ASSERT_EQ(trace[2], "02010 R: 00 070 3002 *70 3002");
-    ASSERT_EQ(trace[3], "TODO");
+    // Check PC value.
+    ASSERT_EQ(machine->cpu.get_pc(), 012345); // TODO: figure out correct PC value when finished
 }
 
 #if 0

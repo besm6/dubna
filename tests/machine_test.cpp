@@ -85,9 +85,9 @@ TEST_F(dubna_machine, e70_read_drum)
     store_word(011, besm6_asm("stop 12345(6), utc")); // Magic opcode: Pass
     store_word(02000, 0'0010'2200'0020'0007ul); // Read drum 20 zone 7 into page 22, address 044000
 
-    // Enable trace.
+    // Enable trace for debug.
     std::string trace_filename = get_test_name() + ".trace";
-    machine->redirect_trace(trace_filename.c_str(), "irm");
+    machine->redirect_trace(trace_filename.c_str(), "eirm");
 
     // Run the code.
     machine->cpu.set_pc(010);
@@ -113,15 +113,70 @@ TEST_F(dubna_machine, trace_startjob)
     // Load boot code for Monitoring System Dubna.
     machine->boot_ms_dubna();
 
-    // Enable trace for debug.
-    //std::string trace_filename = get_test_name() + ".trace";
-    //machine->redirect_trace(trace_filename.c_str(), "eirm");
+    // Trace extracodes.
+    std::string trace_filename = get_test_name() + ".trace";
+    machine->redirect_trace(trace_filename.c_str(), "e");
 
     // Run the code.
     machine->run();
 
     // Check PC value.
     ASSERT_EQ(machine->cpu.get_pc(), 1554);
+
+    // Read the trace.
+    auto trace = file_contents(trace_filename);
+
+    // Check output.
+    static const std::string expect = R"(02010 R: 00 070 3002 *70 3002
+      Drum 21 PhysRead [00000-00377] = Zone 1 Sector 2
+02014 L: 01 070 3010 *70 3010(1)
+      Drum 20 Write [00000-01777] = Zone 0
+02014 L: 01 070 3010 *70 3010(1)
+      Drum 21 PhysRead [00000-01777] = Zone 7
+02014 L: 01 070 3010 *70 3010(1)
+      Drum 21 Write [00000-01777] = Zone 0
+02014 L: 01 070 3010 *70 3010(1)
+      Drum 21 PhysRead [00000-01777] = Zone 10
+02014 L: 01 070 3010 *70 3010(1)
+      Drum 21 Write [00000-01777] = Zone 1
+02014 L: 01 070 3010 *70 3010(1)
+      Drum 21 PhysRead [00000-01777] = Zone 35
+02016 R: 00 070 0717 *70 717
+      Drum 21 PhysRead [53400-53777] = Zone 1 Sector 1
+53442 R: 01 070 0373 *70 373(1)
+      Drum 21 PhysRead [76000-76377] = Zone 1 Sector 3
+53475 R: 01 070 0373 *70 373(1)
+      Drum 21 PhysRead [76000-77777] = Zone 36
+53554 R: 01 070 0373 *70 373(1)
+      Drum 21 PhysRead [76000-77777] = Zone 37
+53554 R: 01 070 0373 *70 373(1)
+      Drum 22 PhysRead [76000-77777] = Zone 0
+53554 R: 01 070 0373 *70 373(1)
+      Drum 22 PhysRead [76000-77777] = Zone 1
+53554 R: 01 070 0373 *70 373(1)
+      Drum 22 PhysRead [76000-77777] = Zone 2
+53554 R: 01 070 0373 *70 373(1)
+      Drum 22 PhysRead [76000-77777] = Zone 3
+53613 L: 00 070 0045 *70 45
+      Drum 20 Read [76000-77777] = Zone 4
+01525 R: 00 050 0067 *50 67
+01525 R: 00 050 0067 *50 67
+01547 R: 00 064 0000 *64
+02551 R: 00 070 0073 *70 73
+      Drum 21 PhysRead [76000-77777] = Zone 1
+02561 L: 00 063 0765 *63 765
+02563 L: 00 063 0007 *63 7
+02567 L: 00 063 0502 *63 502
+02570 R: 16 063 0000 *63 (16)
+01414 L: 07 064 0077 *64 77(7)
+01414 L: 07 064 0077 *64 77(7)
+02602 L: 00 064 3036 *64 3036
+01160 L: 13 070 0062 *70 62(13)
+      Drum 1 Read [76000-77777] = Zone 0
+01414 L: 07 064 0077 *64 77(7)
+03021 L: 00 074 0000 *74
+)";
+    EXPECT_EQ(trace, expect);
 }
 
 #if 0

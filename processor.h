@@ -127,6 +127,7 @@ public:
     // Extracodes.
     void extracode(unsigned opcode);
     void e70();
+    void e75();
 };
 
 #endif // DUBNA_PROCESSOR_H

@@ -44,6 +44,11 @@ void Processor::extracode(unsigned opcode)
         // Finish the job.
         throw Exception("");
 
+    case 075:
+        // Write to memory with instruction check bits.
+        e75();
+        break;
+
     default:
         throw Exception("Unimplemented extracode");
     }
@@ -103,5 +108,16 @@ void Processor::e70()
             // Sector i/o (1/4 of page).
             machine.drum_io(op, info.drum.unit & 037, tract, sector, addr, 256);
         }
+    }
+}
+
+//
+// Extracode 075: write accumulator to memory with instruction check bits.
+//
+void Processor::e75()
+{
+    auto addr = core.M[016];
+    if (addr > 0) {
+        machine.mem_store(addr, core.ACC);
     }
 }

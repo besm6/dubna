@@ -84,7 +84,7 @@ void Memory::dump(unsigned serial_num, unsigned disk_unit, unsigned zone,
 
     out << "; " << filename << std::endl;
     for (; nwords > 0; nwords--, addr++) {
-        auto word = mem[addr];
+        auto word = mem[addr] & BITS48;
         if (word == 0)
             continue;
 

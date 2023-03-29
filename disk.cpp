@@ -25,6 +25,7 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 #include "machine.h"
+#include <iostream>
 
 //
 // Open binary image as disk.
@@ -58,17 +59,29 @@ Disk::~Disk()
 //
 void Disk::disk_to_memory(unsigned zone, unsigned sector, unsigned addr, unsigned nwords)
 {
-    Word *destination = memory.get_ptr(addr);
-    unsigned offset_nwords = (DISK_ZONE_NWORDS * zone) +      // start of the zone record
-                             8 +                              // skip OS info
-                             (DISK_ZONE_NWORDS / 4 * sector); // sector offset
+    zone += DISK_ZONE_OFFSET;
+    if (zone >= num_zones)
+        throw std::runtime_error("Zone number exceeds disk size");
 
+    unsigned offset_nwords = (DISK_ZONE_NWORDS * zone) + // start of the zone record
+                             8 +                         // skip OS info
+                             (256 * sector);             // sector offset
+#if 0
+    auto &out = Machine::get_trace_stream();
+    auto save_flags = out.flags();
+    out << "--- seek " << offset_nwords << " words\n";
+#endif
     if (lseek(file_descriptor, offset_nwords * sizeof(Word), SEEK_SET) < 0)
         throw std::runtime_error("Disk seek error");
 
+    Word *destination = memory.get_ptr(addr);
     unsigned nbytes = nwords * sizeof(Word);
     if (read(file_descriptor, destination, nbytes) != nbytes)
         throw std::runtime_error("Disk read error");
+#if 0
+    out << "--- read " << nwords << " words to address " << addr << "\n";
+    out.flags(save_flags);
+#endif
 }
 
 //
@@ -79,14 +92,18 @@ void Disk::memory_to_disk(unsigned zone, unsigned sector, unsigned addr, unsigne
     if (!write_permit)
         throw std::runtime_error("Cannot write to read-only disk");
 
-    Word *source = memory.get_ptr(addr);
-    unsigned offset_nwords = (DISK_ZONE_NWORDS * zone) +      // start of the zone record
-                             8 +                              // skip OS info
-                             (DISK_ZONE_NWORDS / 4 * sector); // sector offset
+    zone += DISK_ZONE_OFFSET;
+    if (zone >= num_zones)
+        throw std::runtime_error("Zone number exceeds disk size");
+
+    unsigned offset_nwords = (DISK_ZONE_NWORDS * zone) + // start of the zone record
+                             8 +                         // skip OS info
+                             (256 * sector);             // sector offset
 
     if (lseek(file_descriptor, offset_nwords * sizeof(Word), SEEK_SET) < 0)
         throw std::runtime_error("Disk seek error");
 
+    Word *source = memory.get_ptr(addr);
     unsigned nbytes = nwords * sizeof(Word);
     if (write(file_descriptor, source, nbytes) != nbytes)
         throw std::runtime_error("Disk write error");

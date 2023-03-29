@@ -47,6 +47,11 @@ static const unsigned MEMORY_NWORDS = 32 * PAGE_NWORDS;
 static const unsigned DISK_ZONE_NWORDS = 8 + 1024;
 
 //
+// Four first physical zones in the disk image are reserved by OS.
+//
+static const unsigned DISK_ZONE_OFFSET = 4;
+
+//
 // Total 32 disks on units 030-067.
 // Total 32 drums on units 0-027, 070-077.
 //

@@ -126,6 +126,7 @@ public:
 
     // Extracodes.
     void extracode(unsigned opcode);
+    void e50();
     void e70();
     void e75();
 };

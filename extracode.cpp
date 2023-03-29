@@ -35,6 +35,11 @@ void Processor::extracode(unsigned opcode)
     }
 
     switch (opcode) {
+    case 050:
+        // Elementary math functions and other services.
+        e50();
+        break;
+
     case 070:
         // Disk or drum i/o.
         e70();
@@ -119,5 +124,20 @@ void Processor::e75()
     auto addr = core.M[016];
     if (addr > 0) {
         machine.mem_store(addr, core.ACC);
+    }
+}
+
+//
+// Extracode 050: elementary math functions and other services.
+//
+void Processor::e50()
+{
+    switch (core.M[016]) {
+    case 067:
+        // DATE*, OS Dubna specific.
+        core.ACC = 0'7707'7774'0000'0000; // mask
+        break;
+    default:
+        throw Exception("Unimplemented extracode *50 " + std::to_string(core.M[016]));
     }
 }

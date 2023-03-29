@@ -104,6 +104,9 @@ TEST_F(dubna_machine, e70_read_drum)
 
 TEST_F(dubna_machine, trace_startjob)
 {
+    // Open disk monsys.9, for read only.
+    machine->disk_mount(030, TEST_DIR "/../tapes/9", false);
+
     // Phys i/o: map drum 021 to disk 030.
     machine->map_drum_to_disk(021, 030);
 

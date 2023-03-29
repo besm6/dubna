@@ -23,7 +23,26 @@
 #define DUBNA_DISK_H
 
 class Disk {
-    //TODO
+private:
+    // Reference to the BESM-6 memory.
+    Memory &memory;
+
+    // File path.
+    std::string path;
+    bool write_permit;
+    int file_descriptor;
+    unsigned num_zones;
+
+public:
+    // Constructor throws exception if the file cannot be opened.
+    explicit Disk(Memory &memory, const std::string &path, bool write_permit);
+
+    // Close file in destructor.
+    ~Disk();
+
+    // Data transfer.
+    void disk_to_memory(unsigned zone, unsigned sector, unsigned addr, unsigned nwords);
+    void memory_to_disk(unsigned zone, unsigned sector, unsigned addr, unsigned nwords);
 };
 
 #endif // DUBNA_DISK_H

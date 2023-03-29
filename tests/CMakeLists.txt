@@ -20,6 +20,7 @@ enable_testing()
 #
 include_directories(BEFORE ..)
 link_libraries(simulator gtest gtest_main)
+add_definitions(-DTEST_DIR="${CMAKE_CURRENT_SOURCE_DIR}")
 
 #
 # Check CPU instructions.

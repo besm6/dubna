@@ -188,8 +188,21 @@ void Machine::disk_io(char op, unsigned disk_unit, unsigned zone, unsigned secto
     if (disk_unit >= NDRUMS)
         throw std::runtime_error("Invalid disk unit " + to_octal(disk_unit));
 
-    //TODO: use disks[]
-    throw std::runtime_error("disk i/o not supported yet");
+    if (!disks[disk_unit]) {
+        // Disk must be previously configured using disk_mount().
+        throw std::runtime_error("Disk unit " + to_octal(disk_unit + 030) + " is not mounted");
+    }
+
+    if (op == 'r') {
+        disks[disk_unit]->disk_to_memory(zone, sector, addr, nwords);
+
+        // Debug: dump the data.
+        if (dump_io_flag) {
+            memory.dump(++dump_serial_num, disk_unit + 030, zone, sector, addr, nwords);
+        }
+    } else {
+        disks[disk_unit]->memory_to_disk(zone, sector, addr, nwords);
+    }
 }
 
 //
@@ -205,8 +218,25 @@ void Machine::drum_io(char op, unsigned drum_unit, unsigned zone, unsigned secto
         drums[drum_unit] = std::make_unique<Drum>(memory);
     }
 
-    if (op == 'r')
+    if (op == 'r') {
         drums[drum_unit]->drum_to_memory(zone, sector, addr, nwords);
-    else
+    } else {
         drums[drum_unit]->memory_to_drum(zone, sector, addr, nwords);
+    }
+}
+
+//
+// Open binary image and assign it to the disk unit.
+//
+void Machine::disk_mount(unsigned disk_unit, const std::string &filename, bool write_permit)
+{
+    if (disk_unit < 030 || disk_unit >= 070)
+        throw std::runtime_error("Invalid disk unit " + to_octal(disk_unit) + " in disk_mount()");
+
+    disk_unit -= 030;
+    if (disks[disk_unit])
+        throw std::runtime_error("Disk unit " + to_octal(disk_unit + 030) + " is already mounted");
+
+    // Open binary image as disk.
+    disks[disk_unit] = std::make_unique<Disk>(memory, filename, write_permit);
 }

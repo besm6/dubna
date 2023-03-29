@@ -36,6 +36,7 @@ add_library(simulator STATIC
     extracode.cpp
     trace.cpp
     drum.cpp
+    disk.cpp
 )
 
 # Build executable file

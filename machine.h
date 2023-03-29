@@ -51,6 +51,10 @@ private:
     // Last instr_count when progress message was printed.
     uint64_t progress_count{ 0 };
 
+    // Dump disk data for debug.
+    bool dump_io_flag{ true };
+    unsigned dump_serial_num{};
+
     // Trace output.
     static std::ofstream trace_stream;
 
@@ -120,6 +124,7 @@ public:
     // Disk and drum i/o.
     void disk_io(char op, unsigned disk_unit, unsigned zone, unsigned sector, unsigned addr, unsigned nwords);
     void drum_io(char op, unsigned drum_unit, unsigned zone, unsigned sector, unsigned addr, unsigned nwords);
+    void disk_mount(unsigned disk, const std::string &filename, bool write_permit);
     void map_drum_to_disk(unsigned drum, unsigned disk) { mapped_drum = drum; mapped_disk = disk; }
     unsigned get_mapped_disk() const { return mapped_disk; }
     unsigned get_mapped_drum() const { return mapped_drum; }

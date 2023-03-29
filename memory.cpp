@@ -21,6 +21,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
+#include <iostream>
+#include <sstream>
+#include <fstream>
 #include "memory.h"
 
 //
@@ -57,6 +60,43 @@ void Memory::read_words(Word output[], unsigned nwords, unsigned addr)
 void Memory::write_words(const Word input[], unsigned nwords, unsigned addr)
 {
     memcpy(&mem[addr], input, nwords * sizeof(Word));
+}
+
+//
+// Dump block of memory to file.
+//
+void Memory::dump(unsigned serial_num, unsigned disk_unit, unsigned zone,
+                  unsigned sector, unsigned addr, unsigned nwords)
+{
+    // Create unique filename.
+    std::ostringstream buf;
+    buf << serial_num << "-disk" << std::oct << disk_unit
+             << "-zone" << zone;
+    if (nwords < 1024)
+        buf << "-sector" << sector;
+    buf << ".dump";
+
+    // Open file.
+    std::string filename = buf.str();
+    std::ofstream out(filename);
+    if (!out.is_open())
+        throw std::runtime_error("Cannot create " + filename);
+
+    out << "; " << filename << std::endl;
+    for (; nwords > 0; nwords--, addr++) {
+        auto word = mem[addr];
+        if (word == 0)
+            continue;
+
+        out << "в " << std::oct << std::setfill('0') << std::setw(5) << addr
+            << "  с ";
+        besm6_print_word_octal(out, word);
+        out << "  к ";
+        besm6_print_instruction_mnemonics(out, (unsigned)(word >> 24));
+        out << ", ";
+        besm6_print_instruction_mnemonics(out, word & BITS(24));
+        out << std::endl;
+    }
 }
 
 #if 0
@@ -179,53 +219,5 @@ bool Memory::load(struct ElSvsProcessor *cpu, FILE *input)
             return false;
     }
     return true;
-}
-
-//
-// Dump memory to file.
-//
-void Memory::dump(struct ElSvsProcessor *cpu, FILE *of, const char *fnam)
-{
-    int addr, last_addr = -1;
-    ElMasterWord word;
-    ElMasterTag tag;
-
-    fprintf(of, "; %s\n", fnam);
-    for (addr=1; addr<SVS_MEMSIZE; ++addr) {
-        if (addr < 010) {
-            word = cpu->pult[addr];
-            tag = TAG_INSN48;
-        } else {
-            elMasterRamWordRead(addr, &tag, &word);
-            word >>= 16;
-        }
-
-        if (word == 0)
-            continue;
-
-        if (addr != last_addr+1) {
-            fprintf(of, "\nв %05o\n", addr);
-        }
-        last_addr = addr;
-        if (IS_INSN48(tag)) {
-            fprintf(of, "к ");
-            besm6_print_instruction(of, (unsigned)(word >> 24));
-            fprintf(of, ", ");
-            besm6_print_instruction(of, word & BITS(24));
-            fprintf(of, "\t\t; %05o - ", addr);
-            fprintf(of, "%04o %04o %04o %04o\n",
-                     (int) (word >> 36) & 07777,
-                     (int) (word >> 24) & 07777,
-                     (int) (word >> 12) & 07777,
-                     (int) word & 07777);
-        } else {
-            fprintf(of, "с %04o %04o %04o %04o",
-                     (int) (word >> 36) & 07777,
-                     (int) (word >> 24) & 07777,
-                     (int) (word >> 12) & 07777,
-                     (int) word & 07777);
-            fprintf(of, "\t\t; %05o\n", addr);
-        }
-    }
 }
 #endif

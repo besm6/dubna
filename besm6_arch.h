@@ -42,6 +42,11 @@ static const unsigned SECTOR_NWORDS = 256;
 static const unsigned MEMORY_NWORDS = 32 * PAGE_NWORDS;
 
 //
+// One zone in the disk image takes 8 extra words for OS info.
+//
+static const unsigned DISK_ZONE_NWORDS = 8 + 1024;
+
+//
 // Total 32 disks on units 030-067.
 // Total 32 drums on units 0-027, 070-077.
 //

@@ -22,11 +22,39 @@
 // SOFTWARE.
 //
 #include <iostream>
+#include <unistd.h>
 #include "machine.h"
 #include "encoding.h"
 #include "gost10859.h"
 
 static const bool TRACE_E64 = false;
+
+//
+// Byte pointer.
+//
+class BytePointer {
+private:
+    Memory &memory;
+public:
+    unsigned word_addr;
+    unsigned byte_index;
+
+    BytePointer(Memory &memory, unsigned addr, unsigned index = 0)
+        : memory(memory), word_addr(addr), byte_index(index) {}
+
+    unsigned get_byte()
+    {
+        const Word *ptr = memory.get_ptr(word_addr);
+        unsigned ch = *ptr >> (40 - byte_index*8);
+
+        byte_index++;
+        if (byte_index == 6) {
+            byte_index = 0;
+            word_addr++;
+        }
+        return ch;
+    }
+};
 
 static int line_flush(unsigned char *line)
 {
@@ -48,22 +76,20 @@ static void print_text_debug(unsigned addr0, unsigned addr1, bool itm_flag, int 
 {
     //TODO: print text debug
 #if 0
-    ptr bp;
+    BytePointer bp(memory, addr0);
     int c;
 
     printf("*** E64  %s ", itm_flag ? "itm" : "gost");
-    bp.p_w = addr0;
-    bp.p_b = 0;
     for (;;) {
-        if (!bp.p_w) {
+        if (!bp.word_addr) {
         done:
             printf("\n");
             return;
         }
-        if (addr1 && bp.p_w == addr1 + 1)
+        if (addr1 && bp.word_addr == addr1 + 1)
             goto done;
 
-        c = getbyte(&bp);
+        c = bp.get_byte();
         printf("-%03o", c);
 
         // end of information
@@ -72,7 +98,7 @@ static void print_text_debug(unsigned addr0, unsigned addr1, bool itm_flag, int 
             case 0140: // end of information
                 goto done;
             case 0173: // repeat last symbol
-                c = getbyte(&bp);
+                c = bp.get_byte();
                 printf("-%03o", c);
                 if (c == 040)
                     pos = 0;
@@ -111,7 +137,7 @@ static void print_text_debug(unsigned addr0, unsigned addr1, bool itm_flag, int 
                 break;
             case GOST_SET_POSITION:
             case 0200: // set position
-                c = getbyte(&bp);
+                c = bp.get_byte();
                 printf("-%03o", c);
                 pos = c % 128;
                 break;
@@ -139,30 +165,13 @@ static void print_text_debug(unsigned addr0, unsigned addr1, bool itm_flag, int 
 
 static void exform(void);
 
-static inline unsigned char peekbyte(ptr *bp)
-{
-    return core[bp->p_w].w_b[bp->p_b];
-}
-
-unsigned char getbyte(ptr *bp)
-{
-    unsigned char c = peekbyte(bp);
-
-    ++bp->p_b;
-    if (bp->p_b == 6) {
-        bp->p_b = 0;
-        ++bp->p_w;
-    }
-    return c;
-}
-
 void putbyte(ptr *bp, unsigned char c)
 {
-    core[bp->p_w].w_b[bp->p_b++] = c;
+    core[bp->word_addr].w_b[bp->byte_index++] = c;
 
-    if (bp->p_b == 6) {
-        bp->p_b = 0;
-        ++bp->p_w;
+    if (bp->byte_index == 6) {
+        bp->byte_index = 0;
+        ++bp->word_addr;
     }
 }
 
@@ -171,14 +180,14 @@ uint64_t getword(ptr *bp)
     uint64_t w = 0;
     int i;
 
-    if (bp->p_b) {
-        bp->p_b = 0;
-        ++bp->p_w;
+    if (bp->byte_index) {
+        bp->byte_index = 0;
+        ++bp->word_addr;
     }
     for (i = 0; i < 6; ++i)
-        w = w << 8 | core[bp->p_w].w_b[i];
+        w = w << 8 | core[bp->word_addr].w_b[i];
 
-    ++bp->p_w;
+    ++bp->word_addr;
 
     return w;
 }
@@ -279,41 +288,39 @@ static unsigned print_itm(unsigned addr0, unsigned addr1, unsigned char *line, i
 #if 1
     throw Processor::Exception("Printing in ITM encoding is not supported yet");
 #else
-    ptr bp;
+    BytePointer bp(memory, addr0);
     unsigned char c, lastc = GOST_SPACE;
 
-    bp.p_w = addr0;
-    bp.p_b = 0;
     for (;;) {
-        if (!bp.p_w)
+        if (!bp.word_addr)
             return 0;
 
         // No data to print.
-        if (addr1 && bp.p_w == addr1 + 1)
-            return bp.p_w;
+        if (addr1 && bp.word_addr == addr1 + 1)
+            return bp.word_addr;
 
         // No space left on line.
         if (pos == 128) {
             if (!addr1) {
-                if (bp.p_b)
-                    ++bp.p_w;
-                return bp.p_w;
+                if (bp.byte_index)
+                    ++bp.word_addr;
+                return bp.word_addr;
             }
             line_flush(line);
             putchar('\n');
             pos = 0;
         }
-        c = getbyte(&bp);
+        c = bp.get_byte();
         switch (c) {
         case 0140: // end of information
-            if (bp.p_b)
-                ++bp.p_w;
-            return bp.p_w;
+            if (bp.byte_index)
+                ++bp.word_addr;
+            return bp.word_addr;
         case 040: // blank
             line[pos++] = GOST_SPACE;
             break;
         case 0173: // repeat last symbol
-            c = getbyte(&bp);
+            c = bp.get_byte();
             if (c == 040) {
                 // fill line by last symbol (?)
                 memset(line, lastc, 128);
@@ -503,42 +510,37 @@ static unsigned print_real(unsigned addr0, unsigned addr1, unsigned char *line,
 // Print string in GOST format.
 // Return next data address.
 //
-static unsigned print_gost(unsigned addr0, unsigned addr1, unsigned char *line, int pos, bool *need_newline)
+unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1, unsigned char *line, int pos, bool *need_newline)
 {
-    //TODO: print gost
-#if 1
-    throw Processor::Exception("Printing in GOST encoding is not supported yet");
-#else
-    ptr bp;
-    unsigned char c, lastc = GOST_SPACE;
+    BytePointer bp(memory, addr0);
+    unsigned char last_ch = GOST_SPACE;
 
-    bp.p_w = addr0;
-    bp.p_b = 0;
     for (;;) {
-        if (!bp.p_w)
+        if (bp.word_addr == 0)
             return 0;
 
         // No data to print.
-        if (addr1 && bp.p_w == addr1 + 1)
-            return bp.p_w;
+        if (addr1 && bp.word_addr == addr1 + 1)
+            return bp.word_addr;
 
-        c = getbyte(&bp);
-        switch (c) {
+        unsigned char ch = bp.get_byte();
+        switch (ch) {
         case GOST_EOF:
         case GOST_END_OF_INFORMATION:
         case 0231:
             if (pos == 0 || pos == 128)
                 *need_newline = false;
-            if (bp.p_b)
-                ++bp.p_w;
-            return bp.p_w;
+            if (bp.byte_index != 0)
+                ++bp.word_addr;
+            return bp.word_addr;
         case 0201: // new page
             if (pos) {
                 line_flush(line);
                 pos = 0;
             }
-            if (!isatty(1))
-                utf8_puts("\f", stdout);
+            if (!isatty(1)) {
+                utf8_putc('\f');
+            }
             line[pos++] = GOST_SPACE;
             break;
         case GOST_CARRIAGE_RETURN:
@@ -551,54 +553,55 @@ static unsigned print_gost(unsigned addr0, unsigned addr1, unsigned char *line, 
                 line_flush(line);
                 pos = 0;
             }
-            utf8_puts("\n", stdout);
+            utf8_putc('\n');
             break;
         case 0143: // null width symbol
         case 0341:
             break;
         case GOST_SET_POSITION:
         case 0200: // set position
-            c   = getbyte(&bp);
-            pos = c % 128;
+            ch  = bp.get_byte();
+            pos = ch % 128;
             break;
         case 0174:
         case 0265: // repeat last symbol
-            c = getbyte(&bp);
-            if (c == 040) {
+            ch = bp.get_byte();
+            if (ch == 040) {
                 // fill line by last symbol (?)
-                memset(line, lastc, 128);
+                memset(line, last_ch, 128);
                 line_flush(line);
                 putchar('\n');
                 pos = 0;
-            } else
-                while (c-- & 017) {
+            } else {
+                while (ch-- & 017) {
                     if (line[pos] == GOST_SPACE)
-                        line[pos] = lastc;
+                        line[pos] = last_ch;
                     ++pos;
                 }
+            }
             break;
         case GOST_SPACE2: // blank
         case 0242:        // used as space by forex
-            c = GOST_SPACE;
+            ch = GOST_SPACE;
             // fall through...
         default:
             if (pos == 128) {
-                if (addr1)
+                if (addr1) {
                     pos = 0;
-                else {
+                } else {
                     // No space left on line.
                     *need_newline = false;
-                    if (bp.p_b)
-                        ++bp.p_w;
-                    return bp.p_w;
+                    if (bp.byte_index != 0)
+                        ++bp.word_addr;
+                    return bp.word_addr;
                 }
             }
             if (line[pos] != GOST_SPACE) {
                 line_flush(line);
                 fputs("\\\n", stdout);
             }
-            line[pos] = c;
-            lastc     = c;
+            line[pos] = ch;
+            last_ch   = ch;
             ++pos;
             if (pos == 128) {
                 // No space left on line.
@@ -608,7 +611,6 @@ static unsigned print_gost(unsigned addr0, unsigned addr1, unsigned char *line, 
             break;
         }
     }
-#endif
 }
 
 //
@@ -701,7 +703,7 @@ void Processor::e64()
             if (TRACE_E64) {
                 print_text_debug(start_addr, end_addr, 0, offset);
             }
-            start_addr = print_gost(start_addr, end_addr, line, offset, &need_newline);
+            start_addr = e64_print_gost(start_addr, end_addr, line, offset, &need_newline);
             break;
 
         case 1:

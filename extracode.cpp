@@ -39,6 +39,10 @@ void Processor::extracode(unsigned opcode)
         e50();
         break;
 
+    case 063: // OS Dubna specific.
+        e63();
+        break;
+
     case 064: // Text output.
         e64();
         break;
@@ -139,5 +143,32 @@ void Processor::e50()
         break;
     default:
         throw Exception("Unimplemented extracode *50 " + to_octal(core.M[016]));
+    }
+}
+
+//
+// Extracode 063: manage time limit.
+//
+void Processor::e63()
+{
+    switch (core.M[016]) {
+    case 7:
+        // Get machine number in bits 36-34.
+        core.ACC = 5ULL << 33;
+        return;
+    case 0502:
+        // Get phys.address of process descriptor.
+        core.ACC = 02000;
+        return;
+    case 0765:
+        // Get name of organization in ISO.
+        core.ACC = 0'3244'7513'2064'2554; // йоксел
+        return;
+    case 02000:
+        // Get word #0 of process descriptor: task ID (шифр).
+        core.ACC = 01234567;
+        return;
+    default:
+        throw Exception("Unimplemented extracode *63 " + to_octal(core.M[016]));
     }
 }

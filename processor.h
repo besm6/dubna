@@ -74,6 +74,15 @@ private:
     unsigned Aex{};      // executive address
     int corr_stack{};    // stack correction on exception
 
+    // Extracodes.
+    void extracode(unsigned opcode);
+    void e50();
+    void e63();
+    void e64();
+    void e70();
+    void e75();
+    unsigned e64_print_gost(unsigned addr0, unsigned addr1, unsigned char *line, int pos, bool *need_newline);
+
 public:
     // Exception for unexpected situations.
     class Exception : public std::exception {
@@ -123,13 +132,6 @@ public:
     // Print trace info.
     void print_instruction();
     void print_registers();
-
-    // Extracodes.
-    void extracode(unsigned opcode);
-    void e50();
-    void e64();
-    void e70();
-    void e75();
 };
 
 #endif // DUBNA_PROCESSOR_H

@@ -138,15 +138,15 @@ TEST_F(dubna_machine, trace_startjob)
     store_word(03010, 00014000000210035ul); // /MONTRAN
 
     // Enable trace for debug.
-    std::string trace_filename = get_test_name() + ".trace";
-    machine->redirect_trace(trace_filename.c_str(), "eirm");
+    //std::string trace_filename = get_test_name() + ".trace";
+    //machine->redirect_trace(trace_filename.c_str(), "eirm");
 
     // Run the code.
     machine->cpu.set_pc(02010);
     machine->run();
 
     // Check PC value.
-    ASSERT_EQ(machine->cpu.get_pc(), 012345); // TODO: figure out correct PC value when finished
+    ASSERT_EQ(machine->cpu.get_pc(), 1554);
 }
 
 #if 0

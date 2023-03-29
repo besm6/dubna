@@ -127,6 +127,11 @@ void besm6_print_instruction_octal(std::ostream &out, unsigned cmd);
 void besm6_print_instruction_mnemonics(std::ostream &out, unsigned cmd);
 
 //
+// Convert numbers to strings.
+//
+std::string to_octal(unsigned val);
+
+//
 // Bits of memory word, from right to left, starting from 1.
 //
 #define BBIT(n)         (1ULL << (n-1))             // один бит, от 1 до 64
@@ -215,10 +220,5 @@ public:
         ++exponent;
     }
 };
-
-//
-// Convert numbers to strings.
-//
-std::string to_octal(unsigned val);
 
 #endif // BESM6_ARCH_H

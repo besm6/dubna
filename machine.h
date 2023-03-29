@@ -52,7 +52,7 @@ private:
     uint64_t progress_count{ 0 };
 
     // Dump disk data for debug.
-    bool dump_io_flag{ true };
+    bool dump_io_flag{}; // set to true to dump all disk reads
     unsigned dump_serial_num{};
 
     // Trace output.

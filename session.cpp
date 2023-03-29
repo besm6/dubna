@@ -108,7 +108,7 @@ public:
             machine.boot_ms_dubna();
 
             // Run simulation.
-            std::cout << "Start BESM-6" << std::endl;
+            std::cout << "------------------------------------------------------------" << std::endl;
             auto t0 = std::chrono::steady_clock::now();
             machine.run();
             auto t1 = std::chrono::steady_clock::now();
@@ -130,7 +130,6 @@ public:
                 // Print also to the trace file.
                 auto &out = Machine::get_trace_stream();
                 if (&out != &std::cout) {
-                    out << "----------------\n";
                     print_footer(out, sec, instr_per_sec);
                 }
             }
@@ -215,6 +214,7 @@ private:
         auto instr_count = Machine::get_instr_count();
         int time_precision = (sec < 1) ? 3 : (sec < 10) ? 2 : 1;
 
+        out << "------------------------------------------------------------" << std::endl;
         out << "   Elapsed time: " << std::fixed << std::setprecision(time_precision)
             << sec << " seconds" << std::setprecision(6) << std::endl;
         out << "      Simulated: " << instr_count << " instructions" << std::endl;

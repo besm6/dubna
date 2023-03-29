@@ -24,6 +24,7 @@
 #include "besm6_arch.h"
 #include <iomanip>
 #include <cmath>
+#include <sstream>
 
 //
 // 48-й разряд -> 1, 47-й -> 2 и т.п.
@@ -242,4 +243,14 @@ void besm6_print_word_octal(std::ostream &out, Word value)
 
     // Restore.
     out.flags(save_flags);
+}
+
+//
+// Convert number to string as octal.
+//
+std::string to_octal(unsigned val)
+{
+    std::ostringstream buf;
+    buf << std::oct << val;
+    return buf.str();
 }

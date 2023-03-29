@@ -27,9 +27,19 @@
 #include <vector>
 
 //
-// Memory has 32768 words.
+// Page, or zone, has 1024 words.
 //
-static const unsigned MEMORY_NWORDS = 32 * 1024;
+static const unsigned PAGE_NWORDS = 1024;
+
+//
+// Sector, or paragraph, has 256 words.
+//
+static const unsigned SECTOR_NWORDS = 256;
+
+//
+// Memory has 32 pages, or 32768 words.
+//
+static const unsigned MEMORY_NWORDS = 32 * PAGE_NWORDS;
 
 //
 // Total 32 disks on units 030-067.
@@ -194,5 +204,10 @@ public:
         ++exponent;
     }
 };
+
+//
+// Convert numbers to strings.
+//
+std::string to_octal(unsigned val);
 
 #endif // BESM6_ARCH_H

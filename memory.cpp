@@ -43,6 +43,22 @@ void Memory::write_words(const Words &input, unsigned addr)
     memcpy(&mem[addr], input.data(), nwords * sizeof(Word));
 }
 
+//
+// Bulk read from memory.
+//
+void Memory::read_words(Word output[], unsigned nwords, unsigned addr)
+{
+    memcpy(output, &mem[addr], nwords * sizeof(Word));
+}
+
+//
+// Bulk write to memory.
+//
+void Memory::write_words(const Word input[], unsigned nwords, unsigned addr)
+{
+    memcpy(&mem[addr], input, nwords * sizeof(Word));
+}
+
 #if 0
 //
 // Чтение строки входного файла.

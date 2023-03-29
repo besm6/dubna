@@ -28,6 +28,12 @@
 //
 void Processor::extracode(unsigned opcode)
 {
+    // Return from extracode to the next machine word.
+    if (core.right_instr_flag) {
+        core.PC += 1;
+        core.right_instr_flag = false;
+    }
+
     switch (opcode) {
     case 070:
         // Disk or drum i/o.

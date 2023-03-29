@@ -43,6 +43,8 @@ public:
     // Bulk access to memory.
     void write_words(const Words &input, unsigned addr);
     void read_words(Words &output, unsigned nwords, unsigned addr);
+    void write_words(const Word input[], unsigned nwords, unsigned addr);
+    void read_words(Word output[], unsigned nwords, unsigned addr);
 
     // Cannot copy the Memory object.
     Memory(const Memory &) = delete;

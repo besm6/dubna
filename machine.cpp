@@ -185,6 +185,9 @@ void Machine::load(std::istream &input)
 //
 void Machine::disk_io(char op, unsigned disk_unit, unsigned zone, unsigned sector, unsigned addr, unsigned nwords)
 {
+    if (disk_unit >= NDRUMS)
+        throw std::runtime_error("Invalid disk unit " + to_octal(disk_unit));
+
     //TODO: use disks[]
     throw std::runtime_error("disk i/o not supported yet");
 }
@@ -194,6 +197,16 @@ void Machine::disk_io(char op, unsigned disk_unit, unsigned zone, unsigned secto
 //
 void Machine::drum_io(char op, unsigned drum_unit, unsigned zone, unsigned sector, unsigned addr, unsigned nwords)
 {
-    //TODO: use drums[]
-    throw std::runtime_error("drum i/o not supported yet");
+    if (drum_unit >= NDRUMS)
+        throw std::runtime_error("Invalid drum unit " + to_octal(drum_unit));
+
+    if (!drums[drum_unit]) {
+        // Allocate new drum on first request.
+        drums[drum_unit] = std::make_unique<Drum>(memory);
+    }
+
+    if (op == 'r')
+        drums[drum_unit]->drum_to_memory(zone, sector, addr, nwords);
+    else
+        drums[drum_unit]->memory_to_drum(zone, sector, addr, nwords);
 }

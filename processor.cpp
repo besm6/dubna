@@ -431,7 +431,6 @@ load_modifier:
     case 0210:                                      // э21
        Aex = ADDR(addr + core.M[reg]);
        core.M[14] = Aex;
-       core.right_instr_flag = false;
        extracode(opcode);
        break;
     case 0220:                                      // мода, utc

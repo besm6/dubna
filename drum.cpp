@@ -21,26 +21,24 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
-#ifndef DUBNA_DRUM_H
-#define DUBNA_DRUM_H
+#include "machine.h"
 
-#include "memory.h"
+//
+// Drum read: transfer data to memory.
+//
+void Drum::drum_to_memory(unsigned zone, unsigned sector, unsigned addr, unsigned nwords)
+{
+    const Word *source = &media[zone * PAGE_NWORDS + sector * SECTOR_NWORDS];
 
-class Drum {
-private:
-    // Reference to the BESM-6 memory.
-    Memory &memory;
+    memory.write_words(source, nwords, addr);
+}
 
-    // Drum contents.
-    std::array<Word, 040 * PAGE_NWORDS> media;
+//
+// Drum write: transfer data from memory.
+//
+void Drum::memory_to_drum(unsigned zone, unsigned sector, unsigned addr, unsigned nwords)
+{
+    Word *destination = &media[zone * PAGE_NWORDS + sector * SECTOR_NWORDS];
 
-public:
-    // Constructor.
-    explicit Drum(Memory &memory) : memory(memory) {}
-
-    // Data transfer.
-    void drum_to_memory(unsigned zone, unsigned sector, unsigned addr, unsigned nwords);
-    void memory_to_drum(unsigned zone, unsigned sector, unsigned addr, unsigned nwords);
-};
-
-#endif // DUBNA_DRUM_H
+    memory.read_words(destination, nwords, addr);
+}

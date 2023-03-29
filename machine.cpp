@@ -22,6 +22,8 @@
 // SOFTWARE.
 //
 #include <iostream>
+#include <sstream>
+#include <unistd.h>
 #include "machine.h"
 
 // Static fields.
@@ -109,12 +111,12 @@ void Machine::run()
         }
         std::cerr << "Error: " << message << std::endl;
         trace_exception(message);
-        throw;
+        throw 0;
 
     } catch (std::exception &ex) {
         // Something else.
         std::cerr << "Error: " << ex.what() << std::endl;
-        throw;
+        throw 0;
     }
 }
 
@@ -238,7 +240,52 @@ void Machine::disk_mount(unsigned disk_unit, const std::string &filename, bool w
         throw std::runtime_error("Disk unit " + to_octal(disk_unit + 030) + " is already mounted");
 
     // Open binary image as disk.
-    disks[disk_unit] = std::make_unique<Disk>(memory, filename, write_permit);
+    disks[disk_unit] = std::make_unique<Disk>(memory, disk_find(filename), write_permit);
+}
+
+//
+// Find file at pre-defined places.
+// 1. Use envorinment variable BESM6_PATH.
+// 2. Try ~/.besm6 directory.
+// 3. Try /usr/local/share/besm6 directory.
+//
+std::string Machine::disk_find(const std::string &filename)
+{
+    if (filename.find('/') != std::string::npos) {
+        // Slash is present in file name, so we assume it's absolute.
+        return filename;
+    }
+
+    // Setup the list of directories to search.
+    if (disk_search_path.empty()) {
+        auto env_besm6_path = std::getenv("BESM6_PATH");
+        if (env_besm6_path != nullptr) {
+            disk_search_path = env_besm6_path;
+        } else {
+            // No BESM6_PATH, so use the default.
+            auto env_home = std::getenv("HOME");
+            if (env_home != nullptr) {
+                disk_search_path = env_home;
+            }
+            disk_search_path += "/.besm6:/usr/local/share/besm6";
+        }
+    }
+
+    // Iterate the search path using string stream.
+    std::stringstream list(disk_search_path);
+    while (list.good()) {
+        // Get directory name from the list.
+        std::string name;
+        getline(list, name, ':');
+
+        // Check for disk image here.
+        name += "/";
+        name += filename;
+        if (access(name.c_str(), R_OK) >= 0) {
+            return name;
+        }
+    }
+    throw std::runtime_error("Cannot find file '" + filename + "'");
 }
 
 //

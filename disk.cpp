@@ -66,11 +66,7 @@ void Disk::disk_to_memory(unsigned zone, unsigned sector, unsigned addr, unsigne
     unsigned offset_nwords = (DISK_ZONE_NWORDS * zone) + // start of the zone record
                              8 +                         // skip OS info
                              (256 * sector);             // sector offset
-#if 0
-    auto &out = Machine::get_trace_stream();
-    auto save_flags = out.flags();
-    out << "--- seek " << offset_nwords << " words\n";
-#endif
+
     if (lseek(file_descriptor, offset_nwords * sizeof(Word), SEEK_SET) < 0)
         throw std::runtime_error("Disk seek error");
 
@@ -78,10 +74,6 @@ void Disk::disk_to_memory(unsigned zone, unsigned sector, unsigned addr, unsigne
     unsigned nbytes = nwords * sizeof(Word);
     if (read(file_descriptor, destination, nbytes) != nbytes)
         throw std::runtime_error("Disk read error");
-#if 0
-    out << "--- read " << nwords << " words to address " << addr << "\n";
-    out.flags(save_flags);
-#endif
 }
 
 //

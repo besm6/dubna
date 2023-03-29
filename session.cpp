@@ -100,8 +100,15 @@ public:
         }
 
         try {
+            // Boot MS Dubna by default.
+            // Mount tape image 9 as disk 30, read only.
+            // Re-direct drum 21 to it.
+            machine.disk_mount(030, "9", false);
+            machine.map_drum_to_disk(021, 030);
+            machine.boot_ms_dubna();
+
             // Run simulation.
-            std::cout << "Simulate." << std::endl;
+            std::cout << "Start BESM-6" << std::endl;
             auto t0 = std::chrono::steady_clock::now();
             machine.run();
             auto t1 = std::chrono::steady_clock::now();
@@ -127,9 +134,12 @@ public:
                     print_footer(out, sec, instr_per_sec);
                 }
             }
-        } catch (std::exception &ex) {
-            std::cerr << ex.what() << std::endl;
-            std::cerr << "Simulation FAILED." << std::endl;
+        } catch (const std::exception &ex) {
+            // Print exception message.
+            std::cerr << "Error: " << ex.what() << std::endl;
+            exit_status = EXIT_FAILURE;
+        } catch (...) {
+            // Assuming the exception message already printed.
             exit_status = EXIT_FAILURE;
         }
     }

@@ -240,3 +240,40 @@ void Machine::disk_mount(unsigned disk_unit, const std::string &filename, bool w
     // Open binary image as disk.
     disks[disk_unit] = std::make_unique<Disk>(memory, filename, write_permit);
 }
+
+//
+// Load boot code for Monitoring System Dubna.
+//
+void Machine::boot_ms_dubna()
+{
+    //
+    // I got this magic code from Mikhail Popov.
+    // See https://groups.google.com/g/besm6/c/e5jM_R1Oozc/m/aGfCePzsCwAJ
+    // It more or less coincides with sources of STARTJOB routine
+    // at https://github.com/besm6/besm6.github.io/blob/master/sources/dubna/cross/extold.txt#L250
+    //
+    memory.store(02010, besm6_asm("vtm -5(1),     *70 3002"));     // читаем инициатор монитора
+    memory.store(02011, besm6_asm("xta 377,       atx 3010"));     // берем тракт, где MONITOR* + /MONTRAN
+    memory.store(02012, besm6_asm("xta 363,       atx 100"));      // ТРП для загрузчика
+    memory.store(02013, besm6_asm("vtm 53401(17), utc"));          // магазин
+    memory.store(02014, besm6_asm("*70 3010(1),   utc"));          // каталоги
+    memory.store(02015, besm6_asm("vlm 2014(1),   ita 17"));       // aload по адресу 716b
+    memory.store(02016, besm6_asm("atx 716,       *70 717"));      // infloa по адресу 717b - статический загрузчик
+    memory.store(02017, besm6_asm("xta 17,        ati 16"));       //
+    memory.store(02020, besm6_asm("atx 2(16),     arx 3001"));     // прибавляем 10b
+    memory.store(02021, besm6_asm("atx 17,        xta 3000"));     // 'INPUTCAL'
+    memory.store(02022, besm6_asm("atx (16),      vtm 1673(15)")); // call CHEKJOB*
+    memory.store(02023, besm6_asm("uj (17),       utc"));          // в статический загрузчик
+
+    memory.store(03000, 0'5156'6065'6443'4154ul); // 'INPUTCAL' in Text encoding
+    memory.store(03001, 0'0000'0000'0000'0010ul); // прибавляем 10b
+    memory.store(03002, 0'4014'0000'0021'0201ul); // инициатор
+    memory.store(03003, 0'0000'0000'0020'0000ul); // таблица резидентных программ
+    memory.store(03004, 0'0014'0000'0021'0007ul); // каталоги
+    memory.store(03005, 0'0000'0000'0021'0000ul); // временной
+    memory.store(03006, 0'0014'0000'0021'0010ul); // библиотеки
+    memory.store(03007, 0'0000'0000'0021'0001ul); // (физ. и мат.)
+    memory.store(03010, 0'0014'0000'0021'0035ul); // /MONTRAN
+
+    cpu.set_pc(02010);
+}

@@ -27,8 +27,8 @@ TEST_F(dubna_machine, trace_arx)
     // Store the test code.
     store_word(010, besm6_asm("xta 2000, arx 2001"));
     store_word(011, besm6_asm("stop 12345(6), utc")); // Magic opcode: Pass
-    store_word(02000, 00000000000000013ul);
-    store_word(02001, 00000000000000001ul);
+    store_word(02000, 0'0000'0000'0000'0013ul);
+    store_word(02001, 0'0000'0000'0000'0001ul);
 
     // Enable trace.
     std::string trace_filename = get_test_name() + ".trace";
@@ -83,7 +83,7 @@ TEST_F(dubna_machine, e70_read_drum)
     // Store the test code.
     store_word(010, besm6_asm("*70 2000, utc"));
     store_word(011, besm6_asm("stop 12345(6), utc")); // Magic opcode: Pass
-    store_word(02000, 00010220000200007ul); // Read drum 20 zone 7 into page 22, address 044000
+    store_word(02000, 0'0010'2200'0020'0007ul); // Read drum 20 zone 7 into page 22, address 044000
 
     // Enable trace.
     std::string trace_filename = get_test_name() + ".trace";
@@ -110,39 +110,14 @@ TEST_F(dubna_machine, trace_startjob)
     // Phys i/o: map drum 021 to disk 030.
     machine->map_drum_to_disk(021, 030);
 
-    //
-    // I got this boot code from Mikhail Popov.
-    // See https://groups.google.com/g/besm6/c/e5jM_R1Oozc/m/aGfCePzsCwAJ
-    //
-    store_word(02010, besm6_asm("vtm -5(1),     *70 3002"));     // читаем инициатор монитора
-    store_word(02011, besm6_asm("xta 377,       atx 3010"));     // берем тракт, где MONITOR* + /MONTRAN
-    store_word(02012, besm6_asm("xta 363,       atx 100"));      // ТРП для загрузчика
-    store_word(02013, besm6_asm("vtm 53401(17), utc"));          // магазин
-    store_word(02014, besm6_asm("*70 3010(1),   utc"));          // каталоги
-    store_word(02015, besm6_asm("vlm 2014(1),   ita 17"));       // aload по адресу 716b
-    store_word(02016, besm6_asm("atx 716,       *70 717"));      // infloa по адресу 717b - статический загрузчик
-    store_word(02017, besm6_asm("xta 17,        ati 16"));       //
-    store_word(02020, besm6_asm("atx 2(16),     arx 3001"));     // прибавляем 10b
-    store_word(02021, besm6_asm("atx 17,        xta 3000"));     // 'INPUTCAL'
-    store_word(02022, besm6_asm("atx (16),      vtm 1673(15)")); // call CHEKJOB*
-    store_word(02023, besm6_asm("uj (17),       utc"));          // в статический загрузчик
-
-    store_word(03000, 05156606564434154ul); // 'INPUTCAL' in Text encoding
-    store_word(03001, 00000000000000010ul); // прибавляем 10b
-    store_word(03002, 04014000000210201ul); // инициатор
-    store_word(03003, 00000000000200000ul); //  Т Р П
-    store_word(03004, 00014000000210007ul); // каталоги
-    store_word(03005, 00000000000210000ul); // временной
-    store_word(03006, 00014000000210010ul); // библиотеки
-    store_word(03007, 00000000000210001ul); // (физ. и мат.)
-    store_word(03010, 00014000000210035ul); // /MONTRAN
+    // Load boot code for Monitoring System Dubna.
+    machine->boot_ms_dubna();
 
     // Enable trace for debug.
     //std::string trace_filename = get_test_name() + ".trace";
     //machine->redirect_trace(trace_filename.c_str(), "eirm");
 
     // Run the code.
-    machine->cpu.set_pc(02010);
     machine->run();
 
     // Check PC value.

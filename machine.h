@@ -129,6 +129,9 @@ public:
     unsigned get_mapped_disk() const { return mapped_disk; }
     unsigned get_mapped_drum() const { return mapped_drum; }
 
+    // Bootstrap the Monitoring System Dubna.
+    void boot_ms_dubna();
+
     //
     // Trace methods.
     //

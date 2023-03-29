@@ -1,4 +1,6 @@
 //
+// Main memory for BESM-6: 32k pages of 1024 48-bit words.
+//
 // Copyright (c) 2023 Serge Vakulenko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy

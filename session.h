@@ -1,4 +1,7 @@
 //
+// Class Session: collect parameters for simulation and run the Machine instance.
+// Hide all internals from user.
+//
 // Copyright (c) 2023 Serge Vakulenko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy

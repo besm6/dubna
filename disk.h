@@ -1,4 +1,6 @@
 //
+// Disk unit for BESM-6.
+//
 // Copyright (c) 2023 Serge Vakulenko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy

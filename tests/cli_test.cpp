@@ -1,4 +1,6 @@
 //
+// Tests for command line interface.
+//
 // Copyright (c) 2023 Serge Vakulenko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy

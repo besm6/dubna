@@ -1,4 +1,7 @@
 //
+// Gtest fixture 'dubna_machine': instantiate a fresh new Machine instance
+// and random generator for each test.
+//
 // Copyright (c) 2023 Serge Vakulenko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy

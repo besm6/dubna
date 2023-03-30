@@ -93,6 +93,9 @@ void Machine::run()
             if (progress_message_enabled) {
                 show_progress();
             }
+            simulated_instructions++;
+            if (simulated_instructions > instr_limit)
+                throw std::runtime_error("Simulation limit exceeded");
 
             if (done) {
                 // Halted by 'стоп' instruction.

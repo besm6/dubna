@@ -59,7 +59,7 @@ execute_process(
     OUTPUT_VARIABLE GIT_REVCOUNT
 )
 set_source_files_properties(session.cpp PROPERTIES COMPILE_FLAGS
-    -DVERSION_STRING=\\"${DUBNA_VERSION}.${GIT_REVCOUNT}-${GIT_HASH}\\"
+    -DVERSION_STRING=\\"${CMAKE_PROJECT_VERSION}.${GIT_REVCOUNT}-${GIT_HASH}\\"
 )
 
 install(TARGETS

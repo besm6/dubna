@@ -89,7 +89,7 @@ public:
     {
         // Load requested ELF file.
         try {
-            std::cout << "Read " << job_file << std::endl;
+            std::cout << "Read job '" << job_file << "'" << std::endl;
             machine.load(job_file);
 
         } catch (std::exception &ex) {

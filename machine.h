@@ -131,7 +131,7 @@ public:
     void drum_io(char op, unsigned drum_unit, unsigned zone, unsigned sector, unsigned addr, unsigned nwords);
     void disk_mount(unsigned disk, const std::string &filename, bool write_permit);
     std::string disk_find(const std::string &filename);
-    void map_drum_to_disk(unsigned drum, unsigned disk) { mapped_drum = drum; mapped_disk = disk; }
+    void map_drum_to_disk(unsigned drum, unsigned disk);
     unsigned get_mapped_disk() const { return mapped_disk; }
     unsigned get_mapped_drum() const { return mapped_drum; }
 

@@ -37,3 +37,9 @@ unsigned gost_to_unicode(unsigned char ch);
 // Write Unicode symbol to stdout in UTF-8 encoding.
 //
 void utf8_putc(unsigned ch);
+
+//
+// Fetch Unicode symbol from UTF-8 string.
+// Advance string pointer.
+//
+unsigned utf8_to_unicode(const char **p);

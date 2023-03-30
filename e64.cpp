@@ -112,7 +112,7 @@ static void print_text_debug(unsigned addr0, unsigned addr1, bool itm_flag, int 
                 ++pos;
                 if (pos == 128) {
                     // No space left on line.
-                    putchar('/');
+                    std::cout << '/';
                     pos = 0;
                 }
                 break;
@@ -148,7 +148,7 @@ static void print_text_debug(unsigned addr0, unsigned addr1, bool itm_flag, int 
                 ++pos;
                 if (pos == 128) {
                     // No space left on line.
-                    putchar('/');
+                    std::cout << '/';
                     if (addr1)
                         pos = 0;
                 }
@@ -217,7 +217,7 @@ static void print_char(unsigned char *line, int *pos, int sym)
 {
     if (*pos == 128) {
         line_flush(line);
-        putchar('\n');
+        std::cout << std::endl;
     }
     line[(*pos) & 127] = sym;
     ++(*pos);
@@ -307,7 +307,7 @@ static unsigned print_itm(unsigned addr0, unsigned addr1, unsigned char *line, i
                 return bp.word_addr;
             }
             line_flush(line);
-            putchar('\n');
+            std::cout << std::endl;
             pos = 0;
         }
         c = bp.get_byte();
@@ -325,7 +325,7 @@ static unsigned print_itm(unsigned addr0, unsigned addr1, unsigned char *line, i
                 // fill line by last symbol (?)
                 memset(line, lastc, 128);
                 line_flush(line);
-                putchar('\n');
+                std::cout << std::endl;
                 pos = 0;
             } else
                 while (c-- & 017)
@@ -539,7 +539,7 @@ unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1, unsigned char
                 pos = 0;
             }
             if (!isatty(1)) {
-                utf8_putc('\f');
+                std::cout << '\f';
             }
             line[pos++] = GOST_SPACE;
             break;
@@ -553,7 +553,7 @@ unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1, unsigned char
                 line_flush(line);
                 pos = 0;
             }
-            utf8_putc('\n');
+            std::cout << std::endl;
             break;
         case 0143: // null width symbol
         case 0341:
@@ -570,7 +570,7 @@ unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1, unsigned char
                 // fill line by last symbol (?)
                 memset(line, last_ch, 128);
                 line_flush(line);
-                putchar('\n');
+                std::cout << std::endl;
                 pos = 0;
             } else {
                 while (ch-- & 017) {
@@ -598,7 +598,7 @@ unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1, unsigned char
             }
             if (line[pos] != GOST_SPACE) {
                 line_flush(line);
-                fputs("\\\n", stdout);
+                std::cout << std::endl;
             }
             line[pos] = ch;
             last_ch   = ch;
@@ -606,7 +606,7 @@ unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1, unsigned char
             if (pos == 128) {
                 // No space left on line.
                 line_flush(line);
-                putchar('\n');
+                std::cout << std::endl;
             }
             break;
         }

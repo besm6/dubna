@@ -115,9 +115,24 @@ TEST_F(dubna_machine, trace_startjob)
     // Load boot code for Monitoring System Dubna.
     machine->boot_ms_dubna();
 
+    // Write job to the input drum.
+    static const Words input = {
+        0'1244'7101'2324'2601,
+        0'2124'6520'2505'4710,
+        0'0242'0040'1002'0012,
+        0'1244'2516'2110'0506,
+        0'2224'6105'6240'5012,
+        0'1245'1105'2024'2040,
+        0'2364'6104'6240'5012,
+        0'1244'2516'2102'0106,
+        0'2224'6105'1014'4412,
+    };
+    machine->memory.write_words(input, 04000);
+    machine->drum_io('w', 001, 0, 0, 04000, 1024);
+
     // Trace extracodes.
     std::string trace_filename = get_test_name() + ".trace";
-    machine->redirect_trace(trace_filename.c_str(), "e");
+    machine->redirect_trace(trace_filename.c_str(), "eirm");
 
     // Run the code.
     machine->run();

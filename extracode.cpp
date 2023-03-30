@@ -47,8 +47,16 @@ void Processor::extracode(unsigned opcode)
         e64();
         break;
 
+    case 065: // Read pult tumblers.
+        e65();
+        break;
+
     case 070: // Disk or drum i/o.
         e70();
+        break;
+
+    case 072: // OS Dubna specific.
+        e72();
         break;
 
     case 074: // Finish the job.
@@ -100,8 +108,14 @@ void Processor::e70()
 
         if (info.drum.phys_io) {
             // Remap to disk drive.
+            unsigned this_drum   = info.drum.unit & 037;
+            unsigned mapped_drum = machine.get_mapped_drum();
+            if (this_drum < mapped_drum)
+                throw Exception("Phys.io failed on drum " + to_octal(this_drum) +
+                                ", as it's below mapped drum " + to_octal(mapped_drum));
+
             unsigned disk_unit = machine.get_mapped_disk() - 030;
-            unsigned zone      = tract + (info.drum.unit - machine.get_mapped_drum()) * 040;
+            unsigned zone      = tract + (this_drum - mapped_drum) * 040;
 
             if (info.drum.sect_io == 0) {
                 // Full page i/o with disk.
@@ -137,9 +151,32 @@ void Processor::e75()
 void Processor::e50()
 {
     switch (core.M[016]) {
+    case 064:
+        // Print some message.
+        //TODO: print_iso(ADDR(core.ACC));
+        break;
     case 067:
         // DATE*, OS Dubna specific.
         core.ACC = 0'7707'7774'0000'0000; // mask
+        break;
+    case 076:
+        // Send message to operator.
+        //TODO: print_iso(ADDR(core.ACC));
+        break;
+    case 070214:
+        // Asking for шифр?
+        core.ACC = 0'1234'5670'1234'5670;
+        break;
+    case 072211:
+        // Set time limit?
+        //TODO: show time limit on core.ACC
+        break;
+    case 072214:
+        // Set something for шифр?
+        break;
+    case 072216:
+        // Set paper limit?
+        //TODO: show paper limit on core.ACC
         break;
     default:
         throw Exception("Unimplemented extracode *50 " + to_octal(core.M[016]));
@@ -160,6 +197,15 @@ void Processor::e63()
         // Get phys.address of process descriptor.
         core.ACC = 02000;
         return;
+    case 0573:
+        // Get phys.address of limits descriptor.
+        core.ACC = 04000;
+        return;
+    case 0760:
+    case 0761:
+        // Get phys.address of some other descriptor.
+        core.ACC = 03000;
+        return;
     case 0765:
         // Get name of organization in ISO.
         core.ACC = 0'3244'7513'2064'2554; // йоксел
@@ -168,7 +214,62 @@ void Processor::e63()
         // Get word #0 of process descriptor: task ID (шифр).
         core.ACC = 01234567;
         return;
+    case 03000:
+    case 03001:
+        // Get words from some other descriptor.
+        core.ACC = 0;
+        return;
+    case 04000:
+        // Get word #1 from limits descriptor.
+        core.ACC = 0;
+        return;
     default:
         throw Exception("Unimplemented extracode *63 " + to_octal(core.M[016]));
+    }
+}
+
+//
+// Extracode 072.
+//
+void Processor::e72()
+{
+    switch (core.M[016]) {
+    case 4:
+        // Write the input card to the dayfile.
+        // Address of MONCARD* array is in bits 15:1 of accumulator.
+        // See source file dubna.ms, line 21300.
+        // Ignore for now.
+        return;
+    default:
+        throw Exception("Unimplemented extracode *72 " + to_octal(core.M[016]));
+    }
+}
+
+//
+// Extracode 065: read pult tumblers.
+//
+void Processor::e65()
+{
+    switch (core.M[016]) {
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+    case 7:
+        // All pult tumblers are off.
+        core.ACC = 0;
+        return;
+    case 0564:
+        // Get address of user table.
+        core.ACC = 01000;
+        return;
+    case 01002:
+        // Get drum/track of user info.
+        core.ACC = 0710003;
+        return;
+    default:
+        throw Exception("Unimplemented extracode *65 " + to_octal(core.M[016]));
     }
 }

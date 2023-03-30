@@ -81,7 +81,9 @@ private:
     void e50();
     void e63();
     void e64();
+    void e65();
     void e70();
+    void e72();
     void e75();
     unsigned e64_print_gost(unsigned addr0, unsigned addr1, unsigned char *line, int pos, bool *need_newline);
 

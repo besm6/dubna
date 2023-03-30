@@ -429,10 +429,11 @@ load_modifier:
     case 074: case 075: case 076: case 077:         // э50...э77
     case 0200:                                      // э20
     case 0210:                                      // э21
-       Aex = ADDR(addr + core.M[reg]);
-       core.M[14] = Aex;
-       extracode(opcode);
-       break;
+        Aex = ADDR(addr + core.M[reg]);
+        core.M[14] = Aex;
+        extracode(opcode);
+        core.set_logical();
+        break;
     case 0220:                                      // мода, utc
         Aex = ADDR(addr + core.M[reg]);
         next_mod = Aex;

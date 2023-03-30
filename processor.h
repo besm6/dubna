@@ -82,6 +82,7 @@ private:
     void e63();
     void e64();
     void e65();
+    void e67();
     void e70();
     void e72();
     void e75();

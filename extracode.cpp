@@ -51,6 +51,10 @@ void Processor::extracode(unsigned opcode)
         e65();
         break;
 
+    case 067: // Debug.
+        e67();
+        break;
+
     case 070: // Disk or drum i/o.
         e70();
         break;
@@ -110,21 +114,23 @@ void Processor::e70()
             // Remap to disk drive.
             unsigned this_drum   = info.drum.unit & 037;
             unsigned mapped_drum = machine.get_mapped_drum();
-            if (this_drum < mapped_drum)
-                throw Exception("Phys.io failed on drum " + to_octal(this_drum) +
-                                ", as it's below mapped drum " + to_octal(mapped_drum));
 
-            unsigned disk_unit = machine.get_mapped_disk() - 030;
-            unsigned zone      = tract + (this_drum - mapped_drum) * 040;
+            if (this_drum >= mapped_drum) {
+                unsigned disk_unit = machine.get_mapped_disk() - 030;
+                unsigned zone      = tract + (this_drum - mapped_drum) * 040;
 
-            if (info.drum.sect_io == 0) {
-                // Full page i/o with disk.
-                machine.disk_io(op, disk_unit, zone, 0, addr, 1024);
-            } else {
-                // Sector i/o with disk (1/4 of page).
-                machine.disk_io(op, disk_unit, zone, sector, addr, 256);
+                if (info.drum.sect_io == 0) {
+                    // Full page i/o with disk.
+                    machine.disk_io(op, disk_unit, zone, 0, addr, 1024);
+                } else {
+                    // Sector i/o with disk (1/4 of page).
+                    machine.disk_io(op, disk_unit, zone, sector, addr, 256);
+                }
+                return;
             }
-        } else if (info.drum.sect_io == 0) {
+        }
+
+        if (info.drum.sect_io == 0) {
             // Full page i/o.
             machine.drum_io(op, info.drum.unit & 037, tract, 0, addr, 1024);
         } else {
@@ -261,15 +267,65 @@ void Processor::e65()
         // All pult tumblers are off.
         core.ACC = 0;
         return;
+    case 0502:
+        // Get address of process descriptor.
+        core.ACC = 02000;
+        return;
+    case 0560:
+        // Get address of A/LINKP.
+        core.ACC = 05000;
+        return;
     case 0564:
         // Get address of user table.
         core.ACC = 01000;
+        return;
+    case 0760:
+        // Get address of СТАТУС and ИПД.
+        core.ACC = 0'0000'4000'0000'3000;
+        return;
+    case 0761:
+        // Get address of INFBA.
+        core.ACC = 04000;
         return;
     case 01002:
         // Get drum/track of user info.
         core.ACC = 0710003;
         return;
+    case 02000:
+        // Get process id in upper 6 bits.
+        core.ACC = 0;
+        return;
+    case 03000:
+        // Get Ш/CЛYЖ.
+        core.ACC = 0;
+        return;
+    case 03001:
+        // Unknown?
+        core.ACC = 0;
+        return;
+    case 04000:
+        // Get INFBA.
+        core.ACC = 0;
+        return;
+    case 05001:
+        // Get field SC/CONC of A/LINKP
+        core.ACC = 0;
+        return;
     default:
         throw Exception("Unimplemented extracode *65 " + to_octal(core.M[016]));
+    }
+}
+
+//
+// Extracode 067: debug service.
+//
+void Processor::e67()
+{
+    switch (core.M[016]) {
+    case 1:
+        // Ignore.
+        return;
+    default:
+        throw Exception("Unimplemented extracode *67 " + to_octal(core.M[016]));
     }
 }

@@ -41,6 +41,10 @@ public:
     // Data transfer.
     void drum_to_memory(unsigned zone, unsigned sector, unsigned addr, unsigned nwords);
     void memory_to_drum(unsigned zone, unsigned sector, unsigned addr, unsigned nwords);
+
+    // Single word access.
+    void write_word(unsigned offset, Word value) { media[offset] = value; }
+    Word read_word(unsigned offset) { return media[offset]; }
 };
 
 #endif // DUBNA_DRUM_H

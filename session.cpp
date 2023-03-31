@@ -93,8 +93,7 @@ public:
             machine.load(job_file);
 
         } catch (std::exception &ex) {
-            std::cerr << ex.what() << std::endl;
-            std::cerr << "Reading input FAILED." << std::endl;
+            std::cerr << "Error: " << ex.what() << std::endl;
             exit_status = EXIT_FAILURE;
             return;
         }

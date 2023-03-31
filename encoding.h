@@ -43,3 +43,13 @@ void utf8_putc(unsigned ch);
 // Advance string pointer.
 //
 unsigned utf8_to_unicode(const char **p);
+
+//
+// Convert Unicode character to KOI-7 encoding.
+//
+unsigned char unicode_to_koi7(unsigned short val);
+
+//
+// Convert string from UTF-8 encoding to KOI-7.
+//
+std::string utf8_to_koi7(const std::string &input);

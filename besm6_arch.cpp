@@ -22,6 +22,7 @@
 // SOFTWARE.
 //
 #include "besm6_arch.h"
+#include <iostream>
 #include <iomanip>
 #include <cmath>
 #include <sstream>
@@ -253,4 +254,61 @@ std::string to_octal(unsigned val)
     std::ostringstream buf;
     buf << std::oct << val;
     return buf.str();
+}
+
+//
+// Encode string to COSY format.
+//
+std::string encode_cosy(std::string line)
+{
+    // Extend to 83 characters and append newline.
+    line.append(83 - line.size(), ' ');
+    line.append(1, '\n');
+
+    // Pack spaces.
+    unsigned num_spaces = 0;
+    unsigned first_space_index = 0;
+    unsigned n;
+    for (n = 0; n < line.size(); n++) {
+        if (line[n] == ' ') {
+            // Space.
+            if (num_spaces == 0) {
+                first_space_index = n;
+            }
+            num_spaces++;
+        } else {
+            // Non-space character.
+            if (num_spaces > 0) {
+                // Replace spaces with packed byte.
+                line[first_space_index] = '\200' + num_spaces;
+                if (num_spaces > 1) {
+                    // Remove spaces.
+                    line.erase(first_space_index + 1, num_spaces - 1);
+                    n -= num_spaces - 1;
+                }
+                num_spaces = 0;
+                first_space_index = 0;
+            }
+        }
+    }
+
+    // Align to 6 bytes.
+    switch (line.size() % 6) {
+    case 1:
+        line.append("\40\40\40\40\12");
+        break;
+    case 2:
+        line.append("\40\40\40\12");
+        break;
+    case 3:
+        line.append("\40\40\12");
+        break;
+    case 4:
+        line.append("\40\12");
+        break;
+    case 5:
+        line.append("\12");
+        break;
+    }
+    return line;
 }

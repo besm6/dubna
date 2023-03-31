@@ -23,8 +23,10 @@
 //
 #include <iostream>
 #include <sstream>
+#include <fstream>
 #include <unistd.h>
 #include "machine.h"
+#include "encoding.h"
 
 // Static fields.
 bool Machine::verbose = false;
@@ -169,20 +171,61 @@ Word Machine::mem_load(unsigned addr)
 }
 
 //
-// Load input file.
+// Load input job from file.
 // Throw exception on failure.
 //
 void Machine::load(const std::string &filename)
 {
-    //TODO: load job file
+    // Open the input file.
+    std::ifstream input;
+    input.open(filename);
+    if (!input.is_open())
+        throw std::runtime_error(filename + ": " + std::strerror(errno));
+
+    load(input);
 }
 
 //
-// Load input job from stream.
+// Load input job from stream to drum #1.
 //
 void Machine::load(std::istream &input)
 {
-    //TODO: load job from stream
+    // Word offset from the beginning of the drum.
+    unsigned offset = 0;
+
+    while (input.good()) {
+        if (offset >= 040 * PAGE_NWORDS)
+            throw std::runtime_error("Input job is too large");
+
+        // Get next line.
+        std::string line;
+        getline(input, line);
+
+        // Write to drum in COSY format.
+        drum_write_cosy(1, offset, line);
+    }
+}
+
+//
+// Encode line as COSY and write to drum.
+// Update offset.
+//
+void Machine::drum_write_cosy(unsigned drum_unit, unsigned &offset, const std::string &input)
+{
+    // Convert input from UTF-8 to KOI-7.
+    // Encode as COSY.
+    std::string line = encode_cosy(utf8_to_koi7(input));
+
+    // Write to drum as words.
+    for (; line.size() >= 6; line.erase(0, 6)) {
+        Word word = (uint8_t)line[0];
+        word = word << 8 | (uint8_t)line[1];
+        word = word << 8 | (uint8_t)line[2];
+        word = word << 8 | (uint8_t)line[3];
+        word = word << 8 | (uint8_t)line[4];
+        word = word << 8 | (uint8_t)line[5];
+        drum_write_word(drum_unit, offset++, word);
+    }
 }
 
 //
@@ -215,18 +258,43 @@ void Machine::disk_io(char op, unsigned disk_unit, unsigned zone, unsigned secto
 //
 void Machine::drum_io(char op, unsigned drum_unit, unsigned zone, unsigned sector, unsigned addr, unsigned nwords)
 {
+    drum_init(drum_unit);
+    if (op == 'r') {
+        drums[drum_unit]->drum_to_memory(zone, sector, addr, nwords);
+    } else {
+        drums[drum_unit]->memory_to_drum(zone, sector, addr, nwords);
+    }
+}
+
+//
+// Write one word to drum.
+//
+void Machine::drum_write_word(unsigned drum_unit, unsigned offset, Word value)
+{
+    drum_init(drum_unit);
+    drums[drum_unit]->write_word(offset, value);
+}
+
+//
+// Read one word from drum.
+//
+Word Machine::drum_read_word(unsigned drum_unit, unsigned offset)
+{
+    drum_init(drum_unit);
+    return drums[drum_unit]->read_word(offset);
+}
+
+//
+// Allocate drum on first access.
+//
+void Machine::drum_init(unsigned drum_unit)
+{
     if (drum_unit >= NDRUMS)
         throw std::runtime_error("Invalid drum unit " + to_octal(drum_unit));
 
     if (!drums[drum_unit]) {
         // Allocate new drum on first request.
         drums[drum_unit] = std::make_unique<Drum>(memory);
-    }
-
-    if (op == 'r') {
-        drums[drum_unit]->drum_to_memory(zone, sector, addr, nwords);
-    } else {
-        drums[drum_unit]->memory_to_drum(zone, sector, addr, nwords);
     }
 }
 

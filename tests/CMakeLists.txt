@@ -31,6 +31,7 @@ add_executable(unit_tests EXCLUDE_FROM_ALL
     machine_test.cpp
     cpu_test.cpp
     alu_test.cpp
+    cosy_test.cpp
     util.cpp
 )
 gtest_discover_tests(unit_tests EXTRA_ARGS --gtest_repeat=1 PROPERTIES TIMEOUT 120)

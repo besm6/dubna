@@ -126,11 +126,19 @@ public:
     Word mem_load(unsigned addr);
     void mem_store(unsigned addr, Word val);
 
-    // Disk and drum i/o.
+    // Disk i/o.
     void disk_io(char op, unsigned disk_unit, unsigned zone, unsigned sector, unsigned addr, unsigned nwords);
-    void drum_io(char op, unsigned drum_unit, unsigned zone, unsigned sector, unsigned addr, unsigned nwords);
     void disk_mount(unsigned disk, const std::string &filename, bool write_permit);
     std::string disk_find(const std::string &filename);
+
+    // Drum i/o.
+    void drum_io(char op, unsigned drum_unit, unsigned zone, unsigned sector, unsigned addr, unsigned nwords);
+    void drum_init(unsigned drum_unit);
+    void drum_write_word(unsigned drum_unit, unsigned offset, Word value);
+    Word drum_read_word(unsigned drum_unit, unsigned offset);
+    void drum_write_cosy(unsigned drum_unit, unsigned &offset, const std::string &line);
+
+    // "Phys.io": redirect drum r/w to disk.
     void map_drum_to_disk(unsigned drum, unsigned disk);
     unsigned get_mapped_disk() const { return mapped_disk; }
     unsigned get_mapped_drum() const { return mapped_drum; }

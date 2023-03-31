@@ -41,6 +41,9 @@ TEST_F(dubna_session, trace_end_file)
     std::string job_filename = base_name + ".dub";
     std::string trace_filename = base_name + ".trace";
 
+    // Set path to the disk images.
+    EXPECT_EQ(setenv("BESM6_PATH", TEST_DIR "/../tapes", 1), 0);
+
     // Enable trace.
     session->set_trace_file(trace_filename.c_str(), "e");
 

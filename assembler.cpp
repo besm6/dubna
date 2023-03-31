@@ -78,23 +78,27 @@ const char *besm6_opname(unsigned opcode)
 
 //
 // Get opcode by mnemonics (UTF-8).
-// Return -1 when not found.
+// Return false when not found.
 //
-int besm6_opcode(const char *opname)
+bool besm6_opcode(const char *opname, unsigned &opcode)
 {
     unsigned i;
 
-    for (i=0; i<64; ++i)
+    for (i=0; i<64; ++i) {
         if (strcmp(opname_short_bemsh[i], opname) == 0 ||
-            strcmp(opname_short_madlen[i], opname) == 0)
-            return i;
-
-    for (i=0; i<16; ++i)
+            strcmp(opname_short_madlen[i], opname) == 0) {
+            opcode = i;
+            return true;
+        }
+    }
+    for (i=0; i<16; ++i) {
         if (strcmp(opname_long_bemsh[i], opname) == 0 ||
-            strcmp(opname_long_madlen[i], opname) == 0)
-            return (i << 3) | 0200;
-
-    return -1;
+            strcmp(opname_long_madlen[i], opname) == 0) {
+            opcode = (i << 3) | 0200;
+            return true;
+        }
+    }
+    return false;
 }
 
 //
@@ -192,8 +196,7 @@ static const char *parse_instruction(const char *cptr, unsigned &result)
         // Мнемоническое представление команды.
         char buf[BUFSIZ];
         cptr = get_alnum(cptr, buf);               // get opcode
-        opcode = besm6_opcode(buf);
-        if (opcode < 0) {
+        if (!besm6_opcode(buf, opcode)) {
             //printf("Bad opname: %s\n", buf);
             return 0;
         }

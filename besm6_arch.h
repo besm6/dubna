@@ -83,7 +83,7 @@ const char *besm6_opname(unsigned opcode);
 //
 // Get instruction opcode by mnemonics (UTF-8).
 //
-int besm6_opcode(const char *opname);
+bool besm6_opcode(const char *opname, unsigned &opcode);
 
 //
 // Find highest bit.

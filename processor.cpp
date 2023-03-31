@@ -26,9 +26,9 @@
 //
 // Initialize the processor.
 //
-Processor::Processor(Machine &machine, Memory &memory) :
-    machine(machine),
-    memory(memory)
+Processor::Processor(Machine &mach, Memory &mem) :
+    machine(mach),
+    memory(mem)
 {
     reset();
 }

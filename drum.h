@@ -36,7 +36,7 @@ private:
 
 public:
     // Constructor.
-    explicit Drum(Memory &memory) : memory(memory) {}
+    explicit Drum(Memory &m) : memory(m) {}
 
     // Data transfer.
     void drum_to_memory(unsigned zone, unsigned sector, unsigned addr, unsigned nwords);

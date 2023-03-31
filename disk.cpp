@@ -30,10 +30,10 @@
 //
 // Open binary image as disk.
 //
-Disk::Disk(Memory &memory, const std::string &path, bool write_permit) :
-    memory(memory),
-    path(path),
-    write_permit(write_permit)
+Disk::Disk(Memory &m, const std::string &p, bool wp) :
+    memory(m),
+    path(p),
+    write_permit(wp)
 {
     // Open file.
     int open_flag = write_permit ? O_RDWR : O_RDONLY;

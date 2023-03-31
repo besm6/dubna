@@ -25,6 +25,8 @@
 #define BESM6_ARCH_H
 
 #include <vector>
+#include <ostream>
+#include <cstdint>
 
 //
 // Page, or zone, has 1024 words.

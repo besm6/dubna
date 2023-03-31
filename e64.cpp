@@ -22,6 +22,7 @@
 // SOFTWARE.
 //
 #include <iostream>
+#include <cstring>
 #include <unistd.h>
 #include "machine.h"
 #include "encoding.h"
@@ -39,8 +40,8 @@ public:
     unsigned word_addr;
     unsigned byte_index;
 
-    BytePointer(Memory &memory, unsigned addr, unsigned index = 0)
-        : memory(memory), word_addr(addr), byte_index(index) {}
+    BytePointer(Memory &m, unsigned wa, unsigned bi = 0)
+        : memory(m), word_addr(wa), byte_index(bi) {}
 
     unsigned get_byte()
     {

@@ -24,6 +24,8 @@
 #include <iostream>
 #include <sstream>
 #include <fstream>
+#include <iomanip>
+#include <cstring>
 #include "memory.h"
 
 //

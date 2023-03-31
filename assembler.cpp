@@ -23,6 +23,7 @@
 //
 #include "besm6_arch.h"
 #include <string>
+#include <cstring>
 
 static const char *opname_short_bemsh[64] = {
     "зп",  "зпм", "рег", "счм", "сл",  "вч",  "вчоб","вчаб",
@@ -122,11 +123,11 @@ static const char *skip_spaces(const char *p)
 //
 // Get octal number.
 //
-static char *parse_octal(const char *cptr, int &result)
+static char *parse_octal(const char *cptr, unsigned &result)
 {
     char *eptr;
 
-    result = strtol(cptr, &eptr, 8);
+    result = strtoul(cptr, &eptr, 8);
     if (eptr == cptr)
         return 0;
     return eptr;
@@ -154,7 +155,7 @@ static const char *get_alnum(const char *iptr, char *optr)
 //
 static const char *parse_instruction(const char *cptr, unsigned &result)
 {
-    int opcode, reg, addr;
+    unsigned opcode, reg, addr;
 
     cptr = skip_spaces(cptr);                       // absorb spaces
     if (*cptr >= '0' && *cptr <= '7') {

@@ -24,6 +24,9 @@
 #ifndef DUBNA_MACHINE_H
 #define DUBNA_MACHINE_H
 
+#include <array>
+#include <memory>
+#include <chrono>
 #include "memory.h"
 #include "processor.h"
 #include "disk.h"

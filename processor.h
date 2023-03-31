@@ -96,7 +96,7 @@ public:
     private:
         std::string message;
     public:
-        explicit Exception(const std::string &message) : message(message) {}
+        explicit Exception(const std::string &m) : message(m) {}
         const char *what() const noexcept override { return message.c_str(); }
     };
 

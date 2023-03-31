@@ -24,6 +24,7 @@
 #include <iostream>
 #include <sstream>
 #include <fstream>
+#include <cstring>
 #include <unistd.h>
 #include "machine.h"
 #include "encoding.h"
@@ -38,10 +39,10 @@ const uint64_t Machine::DEFAULT_LIMIT = 100ULL * 1000 * 1000 * 1000;
 //
 // Initialize the machine.
 //
-Machine::Machine(Memory &memory) :
+Machine::Machine(Memory &m) :
     progress_time_last(std::chrono::steady_clock::now()),
-    memory(memory),
-    cpu(*this, memory)
+    memory(m),
+    cpu(*this, m)
 {
 }
 

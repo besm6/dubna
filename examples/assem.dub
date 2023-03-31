@@ -1,0 +1,14 @@
+*name ассемблер
+*assem
+ program: ,name,
+          ,*64 , inf64
+          ,*74 ,
+ inf64:   ,    , text
+          ,    , text
+          ,001 ,
+         8,    ,
+ text:    ,gost, 18h Hello, World!'214'
+          ,gost, 6h'231'
+          ,end ,
+*execute
+*end file

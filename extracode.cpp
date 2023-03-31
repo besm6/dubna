@@ -173,6 +173,9 @@ void Processor::e50()
         // Send message to operator.
         //TODO: print_iso(ADDR(core.ACC));
         break;
+    case 0102:
+        // Some conversion?
+        break;
     case 070214:
         // Asking for шифр?
         core.ACC = 0'1234'5670'1234'5670;
@@ -290,6 +293,15 @@ void Processor::e65()
     case 0761:
         // Get address of INFBA.
         core.ACC = 04000;
+        return;
+    case 0764:
+        // Get version of Dubna OS.
+        // Return =R1.01.
+        core.ACC = 0'4050'0507'5341'2173;
+        return;
+    case 0766:
+        // Return 'OC ДYБ'.
+        core.ACC = 0'2364'1440'3105'4542;
         return;
     case 01002:
         // Get drum/track of user info.

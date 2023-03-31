@@ -104,7 +104,7 @@ int main(int argc, char *argv[])
             continue;
         case 'V':
             // Show version and exit.
-            std::cout << "Dubna Simulator Version " << Session::get_version() << "\n";
+            std::cout << "Version " << Session::get_version() << "\n";
             exit(EXIT_SUCCESS);
         case 'l':
             // Limit the cycle count.

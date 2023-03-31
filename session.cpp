@@ -179,7 +179,7 @@ public:
     void set_trace_file(const char *filename, const char *default_mode)
     {
         Machine::redirect_trace(filename, default_mode);
-        Machine::get_trace_stream() << "Version: " << VERSION_STRING << "\n";
+        Machine::get_trace_stream() << "Dubna Simulator Version: " << VERSION_STRING << "\n";
     }
 
     //

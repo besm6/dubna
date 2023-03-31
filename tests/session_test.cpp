@@ -35,20 +35,30 @@ TEST_F(dubna_session, version)
     EXPECT_NE(result.find("-"), std::string::npos);
 }
 
-TEST_F(dubna_session, DISABLED_nop_stop)
+TEST_F(dubna_session, trace_end_file)
 {
-    std::string job_filename = get_test_name() + ".dub";
-    create_file(job_filename,
-        "*name e74\n"
-        "*end file\n"
-    );
+    std::string base_name = get_test_name();
+    std::string job_filename = base_name + ".dub";
+    std::string trace_filename = base_name + ".trace";
+
+    // Enable trace.
+    session->set_trace_file(trace_filename.c_str(), "e");
 
     // Run the job.
-    session->enable_trace("irmx");
+    create_file(job_filename,
+        "*name empty\n"
+        "*end file\n"
+    );
     session->set_job_file(job_filename);
     session->run();
 
-    // Check status.
-    EXPECT_EQ(session->get_exit_status(), EXIT_SUCCESS);
-    EXPECT_EQ(session->get_instr_count(), 2);
+    // Read the trace.
+    auto trace = file_contents_split(trace_filename);
+
+    // Check output.
+    ASSERT_GE(trace.size(), 4);
+    EXPECT_TRUE(starts_with(trace[0], "Dubna Simulator Version"));
+    EXPECT_STREQ(trace[1].c_str(), "02010 R: 00 070 3002 *70 3002");
+    EXPECT_STREQ(trace[2].c_str(), "      Drum 21 PhysRead [00000-00377] = Zone 1 Sector 2");
+    EXPECT_STREQ(trace[trace.size()-5].c_str(), "00020 L: 00 074 0000 *74");
 }

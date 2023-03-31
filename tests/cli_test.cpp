@@ -69,15 +69,15 @@ TEST(cli, version)
     EXPECT_NE(result.find("-"), std::string::npos);
 }
 
-TEST(cli, DISABLED_trace_end_file)
+TEST(cli, trace_end_file)
 {
     std::string base_name = get_test_name();
     std::string job_filename = base_name + ".dub";
     std::string trace_filename = base_name + ".trace";
-    std::string command_line = "../dubna --trace=" + trace_filename + " " + job_filename;
+    std::string command_line = "../dubna --trace=" + trace_filename + " --debug=e " + job_filename;
 
     create_file(job_filename,
-        "*name e74\n"
+        "*name empty\n"
         "*end file\n"
     );
 
@@ -99,11 +99,9 @@ TEST(cli, DISABLED_trace_end_file)
     auto trace = file_contents_split(trace_filename);
 
     // Check output.
-    //using std::string_literals::operator""s;
-    //using namespace std::string_literals;
     ASSERT_GE(trace.size(), 4);
-    EXPECT_TRUE(starts_with(trace[0], "Version"));
-    EXPECT_STREQ(trace[1].c_str(), "TODO");
-    EXPECT_STREQ(trace[2].c_str(), "TODO");
-    EXPECT_STREQ(trace[3].c_str(), "----------------");
+    EXPECT_TRUE(starts_with(trace[0], "Dubna Simulator Version"));
+    EXPECT_STREQ(trace[1].c_str(), "02010 R: 00 070 3002 *70 3002");
+    EXPECT_STREQ(trace[2].c_str(), "      Drum 21 PhysRead [00000-00377] = Zone 1 Sector 2");
+    EXPECT_STREQ(trace[trace.size()-5].c_str(), "00020 L: 00 074 0000 *74");
 }

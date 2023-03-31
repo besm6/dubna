@@ -70,6 +70,10 @@ void Processor::extracode(unsigned opcode)
         e75();
         break;
 
+    case 076: // Call routine in kernel mode?
+        e76();
+        break;
+
     default:
         throw Exception("Unimplemented extracode " + to_octal(opcode));
     }
@@ -327,5 +331,20 @@ void Processor::e67()
         return;
     default:
         throw Exception("Unimplemented extracode *67 " + to_octal(core.M[016]));
+    }
+}
+
+//
+// Extracode 076: call routine in kernel mode?
+//
+void Processor::e76()
+{
+    switch (core.M[016]) {
+    case 1:
+        // Enable something.
+        // Value 3053 4576 1634 0112 in accumulator.
+        return;
+    default:
+        throw Exception("Unimplemented extracode *76 " + to_octal(core.M[016]));
     }
 }

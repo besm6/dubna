@@ -86,6 +86,7 @@ private:
     void e70();
     void e72();
     void e75();
+    void e76();
     unsigned e64_print_gost(unsigned addr0, unsigned addr1, unsigned char *line, int pos, bool *need_newline);
     unsigned e64_print_octal(unsigned addr0, unsigned addr1, unsigned char *line,
                              int pos, int digits, int width, int repeat);

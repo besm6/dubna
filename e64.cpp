@@ -159,6 +159,16 @@ static void print_text_debug(unsigned addr0, unsigned addr1, bool itm_flag, int 
 #endif
 }
 
+static void print_char(unsigned char *line, int *pos, int sym)
+{
+    if (*pos == 128) {
+        line_flush(line);
+        std::cout << std::endl;
+    }
+    line[(*pos) & 127] = sym;
+    ++(*pos);
+}
+
 #if 0
 #define IS_DIGIT(c) (c >= '0' && c <= '9')
 #define IS_CHAR(c)  ((c >= 0101 && c <= 0132) || (c >= 0140 && c <= 0136))
@@ -211,16 +221,6 @@ void terminate(void)
     for (u = 030; u < 070; ++u)
         if (disks[u].diskh)
             disk_close(disks[u].diskh);
-}
-
-static void print_char(unsigned char *line, int *pos, int sym)
-{
-    if (*pos == 128) {
-        line_flush(line);
-        std::cout << std::endl;
-    }
-    line[(*pos) & 127] = sym;
-    ++(*pos);
 }
 
 static void print_opcode1(unsigned char *line, int *pos, unsigned long cmd)
@@ -344,50 +344,43 @@ static unsigned print_itm(unsigned addr0, unsigned addr1, unsigned char *line, i
 // Print word(s) in octal format.
 // Return next data address.
 //
-static unsigned print_octal(unsigned addr0, unsigned addr1, unsigned char *line,
-                            int pos, int digits, int width, int repeat)
+unsigned Processor::e64_print_octal(unsigned addr0, unsigned addr1, unsigned char *line,
+                                    int pos, int digits, int width, int repeat)
 {
-    //TODO: print octal
-#if 1
-    throw Processor::Exception("Printing of octal numbers is not supported yet");
-#else
-    uint64_t w;
-    int i;
-
-    if (digits > 16)
+    if (digits > 16) {
         digits = 16;
-    for (;;) {
-        if (!addr0)
-            return 0;
-
+    }
+    while (addr0) {
         // No data to print.
-        if (addr1 && addr0 == addr1 + 1)
+        if (addr1 && addr0 == addr1 + 1) {
             return addr0;
+        }
 
         // No space left on line.
         if (pos >= 128) {
-            if (!addr1)
+            if (!addr1) {
                 return 0;
+            }
             return addr0;
         }
-        w = (uint64_t)core[addr0].w_b[0] << 40 | (uint64_t)core[addr0].w_b[1] << 32 |
-            (uint)core[addr0].w_b[2] << 24 | (uint)core[addr0].w_b[3] << 16 |
-            core[addr0].w_b[4] << 8 | core[addr0].w_b[5];
+        Word word = machine.mem_load(addr0);
         ++addr0;
 
-        w <<= 64 - digits * 3;
-        for (i = 0; i < digits; ++i) {
-            print_char(line, &pos, (int)(w >> 61) & 7);
-            w <<= 3;
+        word <<= 64 - digits * 3;
+        for (int i = 0; i < digits; ++i) {
+            print_char(line, &pos, (int)(word >> 61) & 7);
+            word <<= 3;
         }
 
-        if (!repeat)
+        if (!repeat) {
             return addr0;
+        }
         --repeat;
-        if (width)
+        if (width) {
             pos += width - digits;
+        }
     }
-#endif
+    return 0;
 }
 
 //
@@ -713,7 +706,7 @@ void Processor::e64()
 
         case 2:
             // Octal number.
-            start_addr = print_octal(start_addr, end_addr, line, offset, digits, width, repeat);
+            start_addr = e64_print_octal(start_addr, end_addr, line, offset, digits, width, repeat);
             break;
 
         case 3:

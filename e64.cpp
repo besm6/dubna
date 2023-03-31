@@ -659,7 +659,7 @@ void Processor::e64()
         throw Processor::Exception("Bad start_addr in extracode e64");
 
     // Execute every format word in order.
-    unsigned char line[128];
+    unsigned char line[256];
     memset(line, GOST_SPACE, sizeof(line));
     for (;;) {
         // Get next control word.

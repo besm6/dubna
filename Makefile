@@ -8,6 +8,8 @@
 #
 # make clean    -- remove build files
 #
+#BUILD_TYPE = Debug
+BUILD_TYPE = RelWithDebInfo
 
 all:    build
 	$(MAKE) -Cbuild $@
@@ -24,4 +26,4 @@ clean:
 
 build:
 	mkdir $@
-	cmake -B$@ -DCMAKE_BUILD_TYPE=Debug
+	cmake -B$@ -DCMAKE_BUILD_TYPE=$(BUILD_TYPE)

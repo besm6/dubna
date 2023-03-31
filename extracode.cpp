@@ -22,6 +22,7 @@
 // SOFTWARE.
 //
 #include "machine.h"
+#include <iostream>
 
 //
 // Execute extracode.
@@ -37,6 +38,14 @@ void Processor::extracode(unsigned opcode)
     switch (opcode) {
     case 050: // Elementary math functions and other services.
         e50();
+        break;
+
+    case 057: // Mount tapes.
+        e57();
+        break;
+
+    case 061: // VT-340 control.
+        e61();
         break;
 
     case 063: // OS Dubna specific.
@@ -176,6 +185,14 @@ void Processor::e50()
     case 0102:
         // Some conversion?
         break;
+    case 0211:
+        // Pause the task? Waiting for tape.
+        throw Exception("Task paused waiting for tape");
+        break;
+    case 070200:
+        // Asking for some capabilities?
+        core.ACC = 0'0010'0000;
+        break;
     case 070214:
         // Asking for шифр?
         core.ACC = 0'1234'5670'1234'5670;
@@ -246,7 +263,13 @@ void Processor::e63()
 //
 void Processor::e72()
 {
-    switch (core.M[016]) {
+    unsigned addr = core.M[016];
+    if (addr >= 010) {
+        // Request or release pages of memory.
+        return;
+    }
+
+    switch (addr) {
     case 4:
         // Write the input card to the dayfile.
         // Address of MONCARD* array is in bits 15:1 of accumulator.
@@ -254,7 +277,7 @@ void Processor::e72()
         // Ignore for now.
         return;
     default:
-        throw Exception("Unimplemented extracode *72 " + to_octal(core.M[016]));
+        throw Exception("Unimplemented extracode *72 " + to_octal(addr));
     }
 }
 
@@ -296,8 +319,8 @@ void Processor::e65()
         return;
     case 0764:
         // Get version of Dubna OS.
-        // Return =R1.01.
-        core.ACC = 0'4050'0507'5341'2173;
+        //core.ACC = 0'4050'0507'5341'2173; // return =R1.01
+        core.ACC = 0'4050'1217'2702'4366; // return =R1.02
         return;
     case 0766:
         // Return 'OC ДYБ'.
@@ -351,12 +374,50 @@ void Processor::e67()
 //
 void Processor::e76()
 {
-    switch (core.M[016]) {
+    auto addr = core.M[016];
+    switch (addr) {
+    case 0:
+        // Cancel something.
+        return;
     case 1:
         // Enable something.
-        // Value 3053 4576 1634 0112 in accumulator.
+        // Accumulator has some key 3053 4576 1634 0112.
         return;
     default:
-        throw Exception("Unimplemented extracode *76 " + to_octal(core.M[016]));
+        if (addr >= 10) {
+            // Print warning.
+            std::cerr << "--- Ignore extracode *76 " + to_octal(core.M[016]) << std::endl;
+            return;
+        }
+        throw Exception("Unimplemented extracode *76 " + to_octal(addr));
     }
+}
+
+//
+// Extracode 057: mount tapes.
+//
+void Processor::e57()
+{
+    switch (core.M[016]) {
+    case 02050:
+        // Mount tape.
+        core.ACC = 0; // failed
+        return;
+    case 04040:
+        // Request tapes bitmask on accumulator.
+        //core.ACC = BITS48;
+        core.ACC = 0;
+        return;
+    default:
+        throw Exception("Unimplemented extracode *57 " + to_octal(core.M[016]));
+    }
+}
+
+//
+// Extracode 061: VT-340 control.
+//
+void Processor::e61()
+{
+    core.ACC = 0;
+    return;
 }

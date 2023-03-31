@@ -23,7 +23,7 @@
 //
 #include "fixture_machine.h"
 
-TEST_F(dubna_machine, encode_cosy)
+TEST(unit, encode_cosy)
 {
     EXPECT_EQ(encode_cosy(""),         "\323\n   \n");
     EXPECT_EQ(encode_cosy("A"),        "A\322\n  \n");

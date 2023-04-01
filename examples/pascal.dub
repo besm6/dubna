@@ -1,0 +1,8 @@
+*name Pascal
+*pascal
+program main (output);
+_(
+    writeln("Hello, World!");
+_).
+*execute
+*end file

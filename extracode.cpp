@@ -69,6 +69,10 @@ void Processor::extracode(unsigned opcode)
         e70();
         break;
 
+    case 071: // Punch card r/w
+        e71();
+        break;
+
     case 072: // OS Dubna specific.
         e72();
         break;
@@ -405,6 +409,18 @@ void Processor::e76()
 void Processor::e57()
 {
     switch (core.M[016]) {
+    case 03:
+        // Some delay.
+        core.ACC = 0;
+        throw Exception("Task paused waiting for tape");
+    case 050:
+        // Unknown.
+        core.ACC = 0;
+        return;
+    case 0400:
+        // Ask for tape by name?
+        core.ACC = 0; // failed
+        return;
     case 02050:
         // Mount tape.
         core.ACC = 0; // failed
@@ -425,5 +441,12 @@ void Processor::e57()
 void Processor::e61()
 {
     core.ACC = 0;
-    return;
+}
+
+//
+// Extracode 071: punch card r/w.
+//
+void Processor::e71()
+{
+    core.ACC = 0;
 }

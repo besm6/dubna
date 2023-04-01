@@ -24,8 +24,9 @@
 #ifndef DUBNA_PROCESSOR_H
 #define DUBNA_PROCESSOR_H
 
-#include <string>
 #include <cstdint>
+#include <string>
+
 #include "besm6_arch.h"
 #include "extracode.h"
 
@@ -50,9 +51,24 @@ struct CoreState {
     bool is_additive() const { return RAU & RAU_ADD; }
     bool is_multiplicative() const { return (RAU & (RAU_ADD | RAU_MULT)) == RAU_MULT; }
     bool is_logical() const { return (RAU & RAU_MODE) == RAU_LOG; }
-    void set_additive() { RAU &= ~RAU_MODE; RAU |= RAU_ADD; }
-    void set_multiplicative() { RAU &= ~RAU_MODE; RAU |= RAU_MULT; }
-    void set_logical() { RAU &= ~RAU_MODE; RAU |= RAU_LOG; }
+
+    void set_additive()
+    {
+        RAU &= ~RAU_MODE;
+        RAU |= RAU_ADD;
+    }
+
+    void set_multiplicative()
+    {
+        RAU &= ~RAU_MODE;
+        RAU |= RAU_MULT;
+    }
+
+    void set_logical()
+    {
+        RAU &= ~RAU_MODE;
+        RAU |= RAU_LOG;
+    }
 };
 
 //
@@ -67,14 +83,14 @@ private:
     Memory &memory;
 
     // Current state.
-    struct CoreState core{};
+    struct CoreState core {};
 
     // Previous state, for tracing.
-    struct CoreState prev{};
+    struct CoreState prev {};
 
-    unsigned RK{};       // регистр команд
-    unsigned Aex{};      // executive address
-    int corr_stack{};    // stack correction on exception
+    unsigned RK{};    // регистр команд
+    unsigned Aex{};   // executive address
+    int corr_stack{}; // stack correction on exception
 
     // Extracodes.
     void extracode(unsigned opcode);
@@ -89,15 +105,17 @@ private:
     void e72();
     void e75();
     void e76();
-    unsigned e64_print_gost(unsigned addr0, unsigned addr1, unsigned char *line, int pos, bool *need_newline);
-    unsigned e64_print_octal(unsigned addr0, unsigned addr1, unsigned char *line,
-                             int pos, int digits, int width, int repeat);
+    unsigned e64_print_gost(unsigned addr0, unsigned addr1, unsigned char *line, int pos,
+                            bool *need_newline);
+    unsigned e64_print_octal(unsigned addr0, unsigned addr1, unsigned char *line, int pos,
+                             int digits, int width, int repeat);
 
 public:
     // Exception for unexpected situations.
     class Exception : public std::exception {
     private:
         std::string message;
+
     public:
         explicit Exception(const std::string &m) : message(m) {}
         const char *what() const noexcept override { return message.c_str(); }

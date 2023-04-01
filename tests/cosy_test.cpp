@@ -25,14 +25,14 @@
 
 TEST(unit, encode_cosy)
 {
-    EXPECT_EQ(encode_cosy(""),         "\323\n   \n");
-    EXPECT_EQ(encode_cosy("A"),        "A\322\n  \n");
-    EXPECT_EQ(encode_cosy("AB"),       "AB\321\n \n");
-    EXPECT_EQ(encode_cosy("ABC"),      "ABC\320\n\n");
-    EXPECT_EQ(encode_cosy("ABCD"),     "ABCD\317\n");
-    EXPECT_EQ(encode_cosy("ABCDE"),    "ABCDE\316\n    \n");
-    EXPECT_EQ(encode_cosy("ABCDEF"),   "ABCDEF\315\n   \n");
-    EXPECT_EQ(encode_cosy("ABC DEF"),  "ABC\201DEF\314\n  \n");
+    EXPECT_EQ(encode_cosy(""), "\323\n   \n");
+    EXPECT_EQ(encode_cosy("A"), "A\322\n  \n");
+    EXPECT_EQ(encode_cosy("AB"), "AB\321\n \n");
+    EXPECT_EQ(encode_cosy("ABC"), "ABC\320\n\n");
+    EXPECT_EQ(encode_cosy("ABCD"), "ABCD\317\n");
+    EXPECT_EQ(encode_cosy("ABCDE"), "ABCDE\316\n    \n");
+    EXPECT_EQ(encode_cosy("ABCDEF"), "ABCDEF\315\n   \n");
+    EXPECT_EQ(encode_cosy("ABC DEF"), "ABC\201DEF\314\n  \n");
     EXPECT_EQ(encode_cosy("ABC  DEF"), "ABC\202DEF\313\n  \n");
 }
 

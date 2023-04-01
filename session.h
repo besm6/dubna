@@ -25,8 +25,8 @@
 #ifndef DUBNA_SESSION_H
 #define DUBNA_SESSION_H
 
-#include <string>
 #include <memory>
+#include <string>
 
 #include "besm6_arch.h"
 
@@ -78,10 +78,10 @@ public:
     virtual ~Session();
 
     // Delete copy/move constructors.
-    Session(const Session&) = delete;
-    Session& operator=(const Session&) = delete;
-    Session(Session&&) = delete;
-    Session& operator=(Session&&) = delete;
+    Session(const Session &)            = delete;
+    Session &operator=(const Session &) = delete;
+    Session(Session &&)                 = delete;
+    Session &operator=(Session &&)      = delete;
 
 private:
     // Use a "pImpl" idiom to hide implementation details.

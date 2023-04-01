@@ -21,8 +21,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
-#include "processor.h"
 #include "besm6_arch.h"
+#include "processor.h"
 
 //
 // Сложение и все варианты вычитаний.
@@ -34,22 +34,22 @@ void Processor::arith_add(Word val, bool negate_acc, bool negate_val)
     MantissaExponent acc(core.ACC);
     MantissaExponent word(val);
 
-    if (! negate_acc) {
-        if (! negate_val) {
+    if (!negate_acc) {
+        if (!negate_val) {
             // Сложение
         } else {
             // Вычитание
             word.negate();
         }
     } else {
-        if (! negate_val) {
+        if (!negate_val) {
             // Обратное вычитание
             acc.negate();
         } else {
             // Вычитание модулей
             if (acc.is_negative())
                 acc.negate();
-            if (! word.is_negative())
+            if (!word.is_negative())
                 word.negate();
         }
     }
@@ -58,28 +58,26 @@ void Processor::arith_add(Word val, bool negate_acc, bool negate_val)
     int diff = acc.exponent - word.exponent;
     if (diff < 0) {
         diff = -diff;
-        a1 = acc;
-        a2 = word;
+        a1   = acc;
+        a2   = word;
     } else {
         a1 = word;
         a2 = acc;
     }
 
-    Word mr = 0;
-    bool neg = a1.is_negative();
+    Word mr         = 0;
+    bool neg        = a1.is_negative();
     bool round_flag = false;
     if (diff == 0) {
         // Nothing to do.
     } else if (diff <= 40) {
-        mr = (a1.mantissa << (40 - diff)) & BITS40;
-        round_flag = (mr != 0);
-        a1.mantissa = ((a1.mantissa >> diff) |
-                       (neg ? (~0ll << (40 - diff)) : 0)) & BITS42;
+        mr          = (a1.mantissa << (40 - diff)) & BITS40;
+        round_flag  = (mr != 0);
+        a1.mantissa = ((a1.mantissa >> diff) | (neg ? (~0ll << (40 - diff)) : 0)) & BITS42;
     } else if (diff <= 80) {
         diff -= 40;
         round_flag = (a1.mantissa != 0);
-        mr = ((a1.mantissa >> diff) |
-              (neg ? (~0ll << (40 - diff)) : 0)) & BITS40;
+        mr         = ((a1.mantissa >> diff) | (neg ? (~0ll << (40 - diff)) : 0)) & BITS40;
         if (neg) {
             a1.mantissa = BITS42;
         } else {
@@ -88,7 +86,7 @@ void Processor::arith_add(Word val, bool negate_acc, bool negate_val)
     } else {
         round_flag = (a1.mantissa != 0);
         if (neg) {
-            mr = BITS40;
+            mr          = BITS40;
             a1.mantissa = BITS42;
         } else {
             mr = a1.mantissa = 0;
@@ -127,7 +125,7 @@ void Processor::arith_normalize_and_round(MantissaExponent acc, Word mr, bool ro
         if (r) {
             int cnt = besm6_highest_bit(r) - 9;
             r <<= cnt;
-            rr = mr >> (40 - cnt);
+            rr           = mr >> (40 - cnt);
             acc.mantissa = r | rr;
             mr <<= cnt;
             acc.exponent -= cnt;
@@ -136,10 +134,10 @@ void Processor::arith_normalize_and_round(MantissaExponent acc, Word mr, bool ro
         r = mr & BITS40;
         if (r) {
             int cnt = besm6_highest_bit(r) - 9;
-            rr = mr;
+            rr      = mr;
             r <<= cnt;
             acc.mantissa = r;
-            mr = 0;
+            mr           = 0;
             acc.exponent -= 40 + cnt;
             goto chk_zero;
         }
@@ -147,9 +145,9 @@ void Processor::arith_normalize_and_round(MantissaExponent acc, Word mr, bool ro
     } else if (i == 3) {
         r = ~acc.mantissa & BITS40;
         if (r) {
-            int cnt = besm6_highest_bit(r) - 9;
-            r = (r << cnt) | ((1LL << cnt) - 1);
-            rr = mr >> (40 - cnt);
+            int cnt      = besm6_highest_bit(r) - 9;
+            r            = (r << cnt) | ((1LL << cnt) - 1);
+            rr           = mr >> (40 - cnt);
             acc.mantissa = BIT41 | (~r & BITS40) | rr;
             mr <<= cnt;
             acc.exponent -= cnt;
@@ -157,17 +155,17 @@ void Processor::arith_normalize_and_round(MantissaExponent acc, Word mr, bool ro
         }
         r = ~mr & BITS40;
         if (r) {
-            int cnt = besm6_highest_bit(r) - 9;
-            rr = mr;
-            r = (r << cnt) | ((1LL << cnt) - 1);
+            int cnt      = besm6_highest_bit(r) - 9;
+            rr           = mr;
+            r            = (r << cnt) | ((1LL << cnt) - 1);
             acc.mantissa = BIT41 | (~r & BITS40);
-            mr = 0;
+            mr           = 0;
             acc.exponent -= 40 + cnt;
             goto chk_zero;
         } else {
-            rr = 1;
+            rr           = 1;
             acc.mantissa = BIT41;
-            mr = 0;
+            mr           = 0;
             acc.exponent -= 80;
             goto chk_zero;
         }
@@ -180,23 +178,23 @@ chk_rnd:
     if (acc.exponent & 0x8000)
         goto zero;
 
-    if (! (core.RAU & RAU_ROUND_DISABLE) && round_flag) {
+    if (!(core.RAU & RAU_ROUND_DISABLE) && round_flag) {
         acc.mantissa |= 1;
     }
 
-    if (! acc.mantissa && ! (core.RAU & RAU_NORM_DISABLE)) {
-zero:   core.ACC = 0;
+    if (!acc.mantissa && !(core.RAU & RAU_NORM_DISABLE)) {
+    zero:
+        core.ACC = 0;
         core.RMR &= ~BITS40;
         return;
     }
 
-    core.ACC = (Word) (acc.exponent & BITS(7)) << 41 |
-        (acc.mantissa & BITS41);
+    core.ACC = (Word)(acc.exponent & BITS(7)) << 41 | (acc.mantissa & BITS41);
     core.RMR = (core.RMR & ~BITS40) | (mr & BITS40);
 
     // При переполнении мантисса и младшие разряды порядка верны
     if (acc.exponent & 0x80) {
-        if (! (core.RAU & RAU_OVF_DISABLE)) {
+        if (!(core.RAU & RAU_OVF_DISABLE)) {
             throw Exception("Arithmetic overflow");
         }
     }
@@ -240,7 +238,7 @@ void Processor::arith_change_sign(bool negate_acc)
 //
 void Processor::arith_multiply(Word val)
 {
-    if (! core.ACC || ! val) {
+    if (!core.ACC || !val) {
         // multiplication by zero is zero
         core.ACC = 0;
         core.RMR &= ~BITS40;
@@ -255,9 +253,9 @@ void Processor::arith_multiply(Word val)
     // Put upper 41 bits into signed *hi.
     // Put lower 40 bits into unsigned *lo.
     //
-    __int128 result = (__int128) acc.mantissa * word.mantissa;
-    acc.mantissa = (int64_t) (result >> 40);
-    mr = (Word)result & BITS40;
+    __int128 result = (__int128)acc.mantissa * word.mantissa;
+    acc.mantissa    = (int64_t)(result >> 40);
+    mr              = (Word)result & BITS40;
 
     acc.exponent += word.exponent - 64;
 

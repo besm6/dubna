@@ -21,11 +21,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
+#include "util.h"
+
 #include <fstream>
 
 #include "fixture_machine.h"
 #include "fixture_session.h"
-#include "util.h"
 
 //
 // Get current test name, as specified in TEST() macro.

@@ -22,14 +22,16 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
-#include <vector>
-#include <iostream>
-#include <fstream>
-#include <iomanip>
-#include <cmath>
+#include "session.h"
+
 #include <unistd.h>
 
-#include "session.h"
+#include <cmath>
+#include <fstream>
+#include <iomanip>
+#include <iostream>
+#include <vector>
+
 #include "machine.h"
 
 //
@@ -107,19 +109,21 @@ public:
             machine.boot_ms_dubna();
 
             // Run simulation.
-            std::cout << "------------------------------------------------------------" << std::endl;
-            auto t0 = std::chrono::steady_clock::now();
+            using namespace std::chrono;
+            std::cout << "------------------------------------------------------------"
+                      << std::endl;
+            auto t0 = steady_clock::now();
             machine.run();
-            auto t1 = std::chrono::steady_clock::now();
+            auto t1 = steady_clock::now();
 
             // Get duration in microseconds.
-            auto usec = (double) std::chrono::duration_cast<std::chrono::microseconds>(t1 - t0).count();
+            auto usec = (double)duration_cast<microseconds>(t1 - t0).count();
             if (usec < 1)
                 usec = 1;
 
             // Compute the simulation speed.
-            auto sec = usec / 1000000.0;
-            auto instr_count = Machine::get_instr_count();
+            auto sec           = usec / 1000000.0;
+            auto instr_count   = Machine::get_instr_count();
             long instr_per_sec = std::lround(1000000.0 * instr_count / usec);
 
             // Print footer.
@@ -156,10 +160,7 @@ public:
     // Enable verbose mode.
     // Print more details to the trace log.
     //
-    void set_verbose(bool on)
-    {
-        machine.set_verbose(on);
-    }
+    void set_verbose(bool on) { machine.set_verbose(on); }
 
     //
     // Enable trace log to stdout.
@@ -185,19 +186,13 @@ public:
     //
     // Fail after the specified number of instructions.
     //
-    void set_limit(uint64_t count)
-    {
-        machine.set_limit(count);
-    }
+    void set_limit(uint64_t count) { machine.set_limit(count); }
 
     //
     // Backdoor access to DRAM memory.
     // No tracing.
     //
-    void mem_write(const Words &input, uint64_t addr)
-    {
-        memory.write_words(input, addr);
-    }
+    void mem_write(const Words &input, uint64_t addr) { memory.write_words(input, addr); }
 
     void mem_read(Words &output, unsigned nrows, uint64_t addr)
     {
@@ -210,12 +205,12 @@ private:
     //
     static void print_footer(std::ostream &out, double sec, long instr_per_sec)
     {
-        auto instr_count = Machine::get_instr_count();
+        auto instr_count   = Machine::get_instr_count();
         int time_precision = (sec < 1) ? 3 : (sec < 10) ? 2 : 1;
 
         out << "------------------------------------------------------------" << std::endl;
-        out << "   Elapsed time: " << std::fixed << std::setprecision(time_precision)
-            << sec << " seconds" << std::setprecision(6) << std::endl;
+        out << "   Elapsed time: " << std::fixed << std::setprecision(time_precision) << sec
+            << " seconds" << std::setprecision(6) << std::endl;
         out << "      Simulated: " << instr_count << " instructions" << std::endl;
         out << "Simulation rate: " << std::fixed << instr_per_sec << " instructions/sec"
             << std::setprecision(6) << std::endl;
@@ -226,8 +221,7 @@ private:
 // Instaltiate the Session object.
 // Allocate the internal implementation.
 //
-Session::Session() :
-    internal(std::make_unique<Session::Hidden>())
+Session::Session() : internal(std::make_unique<Session::Hidden>())
 {
 }
 

@@ -24,6 +24,8 @@
 #ifndef DUBNA_DISK_H
 #define DUBNA_DISK_H
 
+#include "memory.h"
+
 class Disk {
 private:
     // Reference to the BESM-6 memory.

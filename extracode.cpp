@@ -21,8 +21,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
-#include "machine.h"
 #include <iostream>
+
+#include "machine.h"
 
 //
 // Execute extracode.
@@ -172,7 +173,7 @@ void Processor::e50()
     switch (core.M[016]) {
     case 064:
         // Print some message.
-        //TODO: print_iso(ADDR(core.ACC));
+        // TODO: print_iso(ADDR(core.ACC));
         break;
     case 067:
         // DATE*, OS Dubna specific.
@@ -180,7 +181,7 @@ void Processor::e50()
         break;
     case 076:
         // Send message to operator.
-        //TODO: print_iso(ADDR(core.ACC));
+        // TODO: print_iso(ADDR(core.ACC));
         break;
     case 0102:
         // Some conversion?
@@ -199,14 +200,14 @@ void Processor::e50()
         break;
     case 072211:
         // Set time limit?
-        //TODO: show time limit on core.ACC
+        // TODO: show time limit on core.ACC
         break;
     case 072214:
         // Set something for шифр?
         break;
     case 072216:
         // Set paper limit?
-        //TODO: show paper limit on core.ACC
+        // TODO: show paper limit on core.ACC
         break;
     default:
         throw Exception("Unimplemented extracode *50 " + to_octal(core.M[016]));
@@ -319,7 +320,7 @@ void Processor::e65()
         return;
     case 0764:
         // Get version of Dubna OS.
-        //core.ACC = 0'4050'0507'5341'2173; // return =R1.01
+        // core.ACC = 0'4050'0507'5341'2173; // return =R1.01
         core.ACC = 0'4050'1217'2702'4366; // return =R1.02
         return;
     case 0766:
@@ -405,7 +406,7 @@ void Processor::e57()
         return;
     case 04040:
         // Request tapes bitmask on accumulator.
-        //core.ACC = BITS48;
+        // core.ACC = BITS48;
         core.ACC = 0;
         return;
     default:

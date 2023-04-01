@@ -21,12 +21,13 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
-#include <iostream>
-#include <sstream>
+#include "memory.h"
+
+#include <cstring>
 #include <fstream>
 #include <iomanip>
-#include <cstring>
-#include "memory.h"
+#include <iostream>
+#include <sstream>
 
 //
 // Backdoor read from memory.
@@ -67,13 +68,12 @@ void Memory::write_words(const Word input[], unsigned nwords, unsigned addr)
 //
 // Dump block of memory to file.
 //
-void Memory::dump(unsigned serial_num, unsigned disk_unit, unsigned zone,
-                  unsigned sector, unsigned addr, unsigned nwords)
+void Memory::dump(unsigned serial_num, unsigned disk_unit, unsigned zone, unsigned sector,
+                  unsigned addr, unsigned nwords)
 {
     // Create unique filename.
     std::ostringstream buf;
-    buf << serial_num << "-disk" << std::oct << disk_unit
-             << "-zone" << zone;
+    buf << serial_num << "-disk" << std::oct << disk_unit << "-zone" << zone;
     if (nwords < 1024)
         buf << "-sector" << sector;
     buf << ".dump";
@@ -90,8 +90,7 @@ void Memory::dump(unsigned serial_num, unsigned disk_unit, unsigned zone,
         if (word == 0)
             continue;
 
-        out << "в " << std::oct << std::setfill('0') << std::setw(5) << addr
-            << "  с ";
+        out << "в " << std::oct << std::setfill('0') << std::setw(5) << addr << "  с ";
         besm6_print_word_octal(out, word);
         out << "  к ";
         besm6_print_instruction_mnemonics(out, (unsigned)(word >> 24));

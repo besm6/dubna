@@ -21,16 +21,19 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
+#include "machine.h"
+
+#include <unistd.h>
+
+#include <cstring>
+#include <fstream>
 #include <iostream>
 #include <sstream>
-#include <fstream>
-#include <cstring>
-#include <unistd.h>
-#include "machine.h"
+
 #include "encoding.h"
 
 // Static fields.
-bool Machine::verbose = false;
+bool Machine::verbose                    = false;
 uint64_t Machine::simulated_instructions = 0;
 
 // Limit of instructions, by default.
@@ -39,10 +42,8 @@ const uint64_t Machine::DEFAULT_LIMIT = 100ULL * 1000 * 1000 * 1000;
 //
 // Initialize the machine.
 //
-Machine::Machine(Memory &m) :
-    progress_time_last(std::chrono::steady_clock::now()),
-    memory(m),
-    cpu(*this, m)
+Machine::Machine(Memory &m)
+    : progress_time_last(std::chrono::steady_clock::now()), memory(m), cpu(*this, m)
 {
 }
 
@@ -70,8 +71,8 @@ void Machine::show_progress()
 
         // How much time has passed since the last check?
         auto time_now = std::chrono::steady_clock::now();
-        auto delta = time_now - progress_time_last;
-        auto sec = std::chrono::duration_cast<std::chrono::seconds>(delta).count();
+        auto delta    = time_now - progress_time_last;
+        auto sec      = std::chrono::duration_cast<std::chrono::seconds>(delta).count();
 
         // Emit message every 5 seconds.
         if (sec >= 5) {
@@ -220,11 +221,11 @@ void Machine::drum_write_cosy(unsigned drum_unit, unsigned &offset, const std::s
     // Write to drum as words.
     for (; line.size() >= 6; line.erase(0, 6)) {
         Word word = (uint8_t)line[0];
-        word = word << 8 | (uint8_t)line[1];
-        word = word << 8 | (uint8_t)line[2];
-        word = word << 8 | (uint8_t)line[3];
-        word = word << 8 | (uint8_t)line[4];
-        word = word << 8 | (uint8_t)line[5];
+        word      = word << 8 | (uint8_t)line[1];
+        word      = word << 8 | (uint8_t)line[2];
+        word      = word << 8 | (uint8_t)line[3];
+        word      = word << 8 | (uint8_t)line[4];
+        word      = word << 8 | (uint8_t)line[5];
         drum_write_word(drum_unit, offset++, word);
     }
 }
@@ -232,7 +233,8 @@ void Machine::drum_write_cosy(unsigned drum_unit, unsigned &offset, const std::s
 //
 // Disk read/write.
 //
-void Machine::disk_io(char op, unsigned disk_unit, unsigned zone, unsigned sector, unsigned addr, unsigned nwords)
+void Machine::disk_io(char op, unsigned disk_unit, unsigned zone, unsigned sector, unsigned addr,
+                      unsigned nwords)
 {
     if (disk_unit >= NDRUMS)
         throw std::runtime_error("Invalid disk unit " + to_octal(disk_unit));
@@ -257,7 +259,8 @@ void Machine::disk_io(char op, unsigned disk_unit, unsigned zone, unsigned secto
 //
 // Drum read/write.
 //
-void Machine::drum_io(char op, unsigned drum_unit, unsigned zone, unsigned sector, unsigned addr, unsigned nwords)
+void Machine::drum_io(char op, unsigned drum_unit, unsigned zone, unsigned sector, unsigned addr,
+                      unsigned nwords)
 {
     drum_init(drum_unit);
     if (op == 'r') {
@@ -312,7 +315,7 @@ void Machine::disk_mount(unsigned disk_unit, const std::string &filename, bool w
         throw std::runtime_error("Disk unit " + to_octal(disk_unit + 030) + " is already mounted");
 
     // Open binary image as disk.
-    auto path = disk_find(filename);
+    auto path        = disk_find(filename);
     disks[disk_unit] = std::make_unique<Disk>(memory, path, write_permit);
 
     std::cout << "Mount image '" << path << "' as disk " << to_octal(disk_unit + 030) << std::endl;
@@ -326,7 +329,8 @@ void Machine::map_drum_to_disk(unsigned drum, unsigned disk)
 {
     mapped_drum = drum;
     mapped_disk = disk;
-    std::cout << "Redirect drum " << to_octal(mapped_drum) << " to disk " << to_octal(mapped_disk) << std::endl;
+    std::cout << "Redirect drum " << to_octal(mapped_drum) << " to disk " << to_octal(mapped_disk)
+              << std::endl;
 }
 
 //
@@ -385,6 +389,7 @@ void Machine::boot_ms_dubna()
     // It more or less coincides with sources of STARTJOB routine
     // at https://github.com/besm6/besm6.github.io/blob/master/sources/dubna/cross/extold.txt#L250
     //
+    // clang-format off
     memory.store(02010, besm6_asm("vtm -5(1),     *70 3002"));     // читаем инициатор монитора
     memory.store(02011, besm6_asm("xta 377,       atx 3010"));     // берем тракт, где MONITOR* + /MONTRAN
     memory.store(02012, besm6_asm("xta 363,       atx 100"));      // ТРП для загрузчика
@@ -407,6 +412,7 @@ void Machine::boot_ms_dubna()
     memory.store(03006, 0'0014'0000'0021'0010ul); // библиотеки
     memory.store(03007, 0'0000'0000'0021'0001ul); // (физ. и мат.)
     memory.store(03010, 0'0014'0000'0021'0035ul); // /MONTRAN
+    // clang-format on
 
     cpu.set_pc(02010);
 }

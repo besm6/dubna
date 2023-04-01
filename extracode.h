@@ -31,55 +31,55 @@
 // Если исполнительный адрес равен нулю - информационное слово находится на сумматоре.
 //
 // При обмене с магнитными барабанами:
-//  * Разряд 48 = 0 - обмен между листом ОП и трактом МБ;
-//              = 1 - секторный обмен между абзацем листа и сектором МБ;
-//  * Разряд 40 = 0 - запись из ОП на МБ;
-//              = 1 - чтение с МБ в ОП;
-//  * Разряд 39     - признак физ.обмена, перенаправляемого на первый заказанный диск,
-//                    с учётом смещения относительно номера ФИЗ МБ в паспорте;
-//  * Разряд 36     - для секторного обмена,
-//                    номер тракта в битах 7-3, номер сектора в битах 2-1;
-//  * Разряды 35-31 - номер листа;
-//  * Разряды 26-25 - номер абзаца в листе;
-//  * Разряды 18-13 - логический номер МБ;
-//  * Разряды 8-7   - номер сектора в тракте;
-//  * Разряды 5-1   - номер тракта.
+// Разряд 48 = 0 - обмен между листом ОП и трактом МБ;
+//           = 1 - секторный обмен между абзацем листа и сектором МБ;
+// Разряд 40 = 0 - запись из ОП на МБ;
+//           = 1 - чтение с МБ в ОП;
+// Разряд 39     - признак физ.обмена, перенаправляемого на первый заказанный диск,
+//                 с учётом смещения относительно номера ФИЗ МБ в паспорте;
+// Разряд 36     - для секторного обмена,
+//                 номер тракта в битах 7-3, номер сектора в битах 2-1;
+// Разряды 35-31 - номер листа;
+// Разряды 26-25 - номер абзаца в листе;
+// Разряды 18-13 - логический номер МБ;
+// Разряды 8-7   - номер сектора в тракте;
+// Разряды 5-1   - номер тракта.
 //
 // При обмене с магнитными дисками:
-//  * Разряд 40 = 0 - запись листа ОП в зону МД;
-//              = 1 - чтение зоны МД в лист ОП;
-//  * Разряды 35-31 - номер листа;
-//  * Разряды 18-13 - логический номер МД;
-//  * Разряды 12-1  - номер зоны.
+// Разряд 40 = 0 - запись листа ОП в зону МД;
+//           = 1 - чтение зоны МД в лист ОП;
+// Разряды 35-31 - номер листа;
+// Разряды 18-13 - логический номер МД;
+// Разряды 12-1  - номер зоны.
 //
 #pragma pack(push, 1)
 union E70_Info {
     Word word;
     struct {
-        unsigned zone     : 12;     // Zone number
-        unsigned unit     : 6;      // Disk unit number
-        unsigned _1       : 12;     // ---
-        unsigned page     : 5;      // Memory page number
-        unsigned _2       : 4;      // ---
-        unsigned read_op  : 1;      // Operation: 1=Read, 0=Write
-        unsigned _3       : 8;      // ---
+        unsigned zone : 12;   // Zone number
+        unsigned unit : 6;    // Disk unit number
+        unsigned _1 : 12;     // ---
+        unsigned page : 5;    // Memory page number
+        unsigned _2 : 4;      // ---
+        unsigned read_op : 1; // Operation: 1=Read, 0=Write
+        unsigned _3 : 8;      // ---
     } disk;
     struct {
-        unsigned tract    : 5;      // Tract number
-        unsigned _1       : 1;      // ---
-        unsigned sector   : 2;      // Sector number in the tract
-        unsigned _2       : 4;      // ---
-        unsigned unit     : 6;      // Disk unit number
-        unsigned _3       : 6;      // ---
-        unsigned paragraph: 2;      // Paragraph number in the memory page
-        unsigned _4       : 4;      // ---
-        unsigned page     : 5;      // Memory page number
-        unsigned raw_sect : 1;      // Raw sector number instead of tract/sector
-        unsigned _5       : 2;      // ---
-        unsigned phys_io  : 1;      // Redirection to physical disk
-        unsigned read_op  : 1;      // Operation: 1=Read, 0=Write
-        unsigned _6       : 7;      // ---
-        unsigned sect_io  : 1;      // When 1 - transfer only one sector
+        unsigned tract : 5;     // Tract number
+        unsigned _1 : 1;        // ---
+        unsigned sector : 2;    // Sector number in the tract
+        unsigned _2 : 4;        // ---
+        unsigned unit : 6;      // Disk unit number
+        unsigned _3 : 6;        // ---
+        unsigned paragraph : 2; // Paragraph number in the memory page
+        unsigned _4 : 4;        // ---
+        unsigned page : 5;      // Memory page number
+        unsigned raw_sect : 1;  // Raw sector number instead of tract/sector
+        unsigned _5 : 2;        // ---
+        unsigned phys_io : 1;   // Redirection to physical disk
+        unsigned read_op : 1;   // Operation: 1=Read, 0=Write
+        unsigned _6 : 7;        // ---
+        unsigned sect_io : 1;   // When 1 - transfer only one sector
     } drum;
 };
 #pragma pack(pop)

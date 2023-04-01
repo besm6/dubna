@@ -21,12 +21,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
-#include <iostream>
-#include <cstring>
 #include <unistd.h>
-#include "machine.h"
+
+#include <cstring>
+#include <iostream>
+
 #include "encoding.h"
 #include "gost10859.h"
+#include "machine.h"
 
 static const bool TRACE_E64 = false;
 
@@ -36,17 +38,19 @@ static const bool TRACE_E64 = false;
 class BytePointer {
 private:
     Memory &memory;
+
 public:
     unsigned word_addr;
     unsigned byte_index;
 
-    BytePointer(Memory &m, unsigned wa, unsigned bi = 0)
-        : memory(m), word_addr(wa), byte_index(bi) {}
+    BytePointer(Memory &m, unsigned wa, unsigned bi = 0) : memory(m), word_addr(wa), byte_index(bi)
+    {
+    }
 
     unsigned get_byte()
     {
         const Word *ptr = memory.get_ptr(word_addr);
-        unsigned ch = *ptr >> (40 - byte_index*8);
+        unsigned ch     = *ptr >> (40 - byte_index * 8);
 
         byte_index++;
         if (byte_index == 6) {
@@ -75,7 +79,7 @@ static int line_flush(unsigned char *line)
 
 static void print_text_debug(unsigned addr0, unsigned addr1, bool itm_flag, int pos)
 {
-    //TODO: print text debug
+    // TODO: print text debug
 #if 0
     BytePointer bp(memory, addr0);
     int c;
@@ -285,7 +289,7 @@ static double real_exponent(double value, int *exponent)
 //
 static unsigned print_itm(unsigned addr0, unsigned addr1, unsigned char *line, int pos)
 {
-    //TODO: print itm
+    // TODO: print itm
 #if 1
     throw Processor::Exception("Printing in ITM encoding is not supported yet");
 #else
@@ -345,8 +349,8 @@ static unsigned print_itm(unsigned addr0, unsigned addr1, unsigned char *line, i
 // Print word(s) in octal format.
 // Return next data address.
 //
-unsigned Processor::e64_print_octal(unsigned addr0, unsigned addr1, unsigned char *line,
-                                    int pos, int digits, int width, int repeat)
+unsigned Processor::e64_print_octal(unsigned addr0, unsigned addr1, unsigned char *line, int pos,
+                                    int digits, int width, int repeat)
 {
     if (digits > 16) {
         digits = 16;
@@ -388,10 +392,10 @@ unsigned Processor::e64_print_octal(unsigned addr0, unsigned addr1, unsigned cha
 // Print CPU instruction(s).
 // Return next data address.
 //
-static unsigned print_opcode(unsigned addr0, unsigned addr1, unsigned char *line,
-                                  int pos, int width, int repeat)
+static unsigned print_opcode(unsigned addr0, unsigned addr1, unsigned char *line, int pos,
+                             int width, int repeat)
 {
-    //TODO: print command
+    // TODO: print command
 #if 1
     throw Processor::Exception("Printing of instructions is not supported yet");
 #else
@@ -432,10 +436,10 @@ static unsigned print_opcode(unsigned addr0, unsigned addr1, unsigned char *line
 // Print real number(s).
 // Return next data address.
 //
-static unsigned print_real(unsigned addr0, unsigned addr1, unsigned char *line,
-                           int pos, int digits, int width, int repeat)
+static unsigned print_real(unsigned addr0, unsigned addr1, unsigned char *line, int pos, int digits,
+                           int width, int repeat)
 {
-    //TODO: print real
+    // TODO: print real
 #if 1
     throw Processor::Exception("Printing of real numbers is not supported yet");
 #else
@@ -504,7 +508,8 @@ static unsigned print_real(unsigned addr0, unsigned addr1, unsigned char *line,
 // Print string in GOST format.
 // Return next data address.
 //
-unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1, unsigned char *line, int pos, bool *need_newline)
+unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1, unsigned char *line, int pos,
+                                   bool *need_newline)
 {
     BytePointer bp(memory, addr0);
     unsigned char last_ch = GOST_SPACE;
@@ -639,23 +644,23 @@ unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1, unsigned char
 void Processor::e64()
 {
     switch (core.M[016]) {
-    case 0: // Disable paging.
+    case 0:  // Disable paging.
         return;
-    case 1: // Enable paging.
+    case 1:  // Enable paging.
         return;
     default: // Print something.
         break;
     }
 
     // Get start and end addresses from control word #0.
-    unsigned ctl_addr = core.M[016];
-    Word ctl_word = machine.mem_load(ctl_addr);
+    unsigned ctl_addr   = core.M[016];
+    Word ctl_word       = machine.mem_load(ctl_addr);
     unsigned start_addr = ADDR(FIELD(ctl_word, 25, 15) +        // left address (long)
                                core.M[FIELD(ctl_word, 45, 4)]); // left register
-    unsigned end_addr = ADDR(FIELD(ctl_word, 1, 15) +           // right address (long)
-                             core.M[FIELD(ctl_word, 21, 4)]);   // right register
+    unsigned end_addr   = ADDR(FIELD(ctl_word, 1, 15) +         // right address (long)
+                               core.M[FIELD(ctl_word, 21, 4)]); // right register
     if (end_addr <= start_addr)
-        end_addr = 0; // No limit
+        end_addr = 0;                                           // No limit
     if (start_addr == 0)
         throw Processor::Exception("Bad start_addr in extracode e64");
 

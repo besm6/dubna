@@ -21,22 +21,21 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
-#include <unistd.h>
 #include <fcntl.h>
 #include <sys/stat.h>
-#include "machine.h"
+#include <unistd.h>
+
 #include <iostream>
+
+#include "machine.h"
 
 //
 // Open binary image as disk.
 //
-Disk::Disk(Memory &m, const std::string &p, bool wp) :
-    memory(m),
-    path(p),
-    write_permit(wp)
+Disk::Disk(Memory &m, const std::string &p, bool wp) : memory(m), path(p), write_permit(wp)
 {
     // Open file.
-    int open_flag = write_permit ? O_RDWR : O_RDONLY;
+    int open_flag   = write_permit ? O_RDWR : O_RDONLY;
     file_descriptor = open(path.c_str(), open_flag);
     if (file_descriptor < 0)
         throw std::runtime_error("Cannot open " + path +
@@ -71,7 +70,7 @@ void Disk::disk_to_memory(unsigned zone, unsigned sector, unsigned addr, unsigne
         throw std::runtime_error("Disk seek error");
 
     Word *destination = memory.get_ptr(addr);
-    unsigned nbytes = nwords * sizeof(Word);
+    unsigned nbytes   = nwords * sizeof(Word);
     if (read(file_descriptor, destination, nbytes) != nbytes)
         throw std::runtime_error("Disk read error");
 }
@@ -95,7 +94,7 @@ void Disk::memory_to_disk(unsigned zone, unsigned sector, unsigned addr, unsigne
     if (lseek(file_descriptor, offset_nwords * sizeof(Word), SEEK_SET) < 0)
         throw std::runtime_error("Disk seek error");
 
-    Word *source = memory.get_ptr(addr);
+    Word *source    = memory.get_ptr(addr);
     unsigned nbytes = nwords * sizeof(Word);
     if (write(file_descriptor, source, nbytes) != nbytes)
         throw std::runtime_error("Disk write error");

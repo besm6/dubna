@@ -21,9 +21,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
-#include <iostream>
 #include <fstream>
 #include <iomanip>
+#include <iostream>
+
 #include "machine.h"
 
 //
@@ -53,21 +54,31 @@ void Machine::enable_trace(const char *trace_mode)
 {
     // Disable all trace options.
     debug_instructions = false;
-    debug_extracodes = false;
-    debug_registers = false;
-    debug_memory = false;
-    debug_fetch = false;
+    debug_extracodes   = false;
+    debug_registers    = false;
+    debug_memory       = false;
+    debug_fetch        = false;
 
     if (trace_mode) {
         // Parse the mode string and enable all requested trace flags.
         for (unsigned i = 0; trace_mode[i]; i++) {
             char ch = trace_mode[i];
             switch (ch) {
-            case 'i': debug_instructions = true; break;
-            case 'e': debug_extracodes = true; break;
-            case 'f': debug_fetch = true; break;
-            case 'm': debug_memory = true; break;
-            case 'r': debug_registers = true; break;
+            case 'i':
+                debug_instructions = true;
+                break;
+            case 'e':
+                debug_extracodes = true;
+                break;
+            case 'f':
+                debug_fetch = true;
+                break;
+            case 'm':
+                debug_memory = true;
+                break;
+            case 'r':
+                debug_registers = true;
+                break;
             default:
                 throw std::runtime_error("Wrong trace option: " + std::string(1, ch));
             }
@@ -130,11 +141,10 @@ void Machine::print_exception(const char *message)
 //
 void Machine::print_fetch(unsigned addr, Word val)
 {
-    auto &out = Machine::get_trace_stream();
+    auto &out       = Machine::get_trace_stream();
     auto save_flags = out.flags();
 
-    out << "      Fetch [" << std::oct
-        << std::setfill('0') << std::setw(5) << addr << "] = ";
+    out << "      Fetch [" << std::oct << std::setfill('0') << std::setw(5) << addr << "] = ";
     besm6_print_instruction_octal(out, (val >> 24) & BITS(24));
     out << ' ';
     besm6_print_instruction_octal(out, val & BITS(24));
@@ -149,11 +159,11 @@ void Machine::print_fetch(unsigned addr, Word val)
 //
 void Machine::print_memory_access(unsigned addr, Word val, const char *opname)
 {
-    auto &out = Machine::get_trace_stream();
+    auto &out       = Machine::get_trace_stream();
     auto save_flags = out.flags();
 
-    out << "      Memory " << opname << " [" << std::oct
-        << std::setfill('0') << std::setw(5) << addr << "] = ";
+    out << "      Memory " << opname << " [" << std::oct << std::setfill('0') << std::setw(5)
+        << addr << "] = ";
     besm6_print_word_octal(out, val);
     out << std::endl;
 
@@ -166,11 +176,11 @@ void Machine::print_memory_access(unsigned addr, Word val, const char *opname)
 //
 void Processor::print_instruction()
 {
-    auto &out = Machine::get_trace_stream();
+    auto &out       = Machine::get_trace_stream();
     auto save_flags = out.flags();
 
-    out << std::oct << std::setfill('0') << std::setw(5) << core.PC
-        << ' '  << (core.right_instr_flag ? 'R' : 'L') << ": ";
+    out << std::oct << std::setfill('0') << std::setw(5) << core.PC << ' '
+        << (core.right_instr_flag ? 'R' : 'L') << ": ";
     besm6_print_instruction_octal(out, RK);
     out << ' ';
     besm6_print_instruction_mnemonics(out, RK);
@@ -185,7 +195,7 @@ void Processor::print_instruction()
 //
 void Processor::print_registers()
 {
-    auto &out = Machine::get_trace_stream();
+    auto &out       = Machine::get_trace_stream();
     auto save_flags = out.flags();
 
     if (core.ACC != prev.ACC) {
@@ -200,18 +210,18 @@ void Processor::print_registers()
     }
     for (unsigned i = 0; i < 16; i++) {
         if (core.M[i] != prev.M[i]) {
-            out << "      Write M" << std::oct << i << " = "
-                << std::setfill('0') << std::setw(5) << core.M[i] << std::endl;
+            out << "      Write M" << std::oct << i << " = " << std::setfill('0') << std::setw(5)
+                << core.M[i] << std::endl;
         }
     }
     if (core.RAU != prev.RAU) {
-        out << "      Write RAU = " << std::oct
-            << std::setfill('0') << std::setw(2) << core.RAU << std::endl;
+        out << "      Write RAU = " << std::oct << std::setfill('0') << std::setw(2) << core.RAU
+            << std::endl;
     }
     if (core.apply_mod_reg != prev.apply_mod_reg) {
         if (core.apply_mod_reg) {
-            out << "      Write MOD = " << std::oct
-            << std::setfill('0') << std::setw(5) << core.MOD;
+            out << "      Write MOD = " << std::oct << std::setfill('0') << std::setw(5)
+                << core.MOD;
         } else {
             out << "      Clear MOD";
         }
@@ -230,7 +240,7 @@ void Processor::print_registers()
 //
 void Machine::print_e70(const E70_Info &info)
 {
-    auto &out = Machine::get_trace_stream();
+    auto &out       = Machine::get_trace_stream();
     auto save_flags = out.flags();
 
     if (info.disk.unit >= 030 && info.disk.unit < 070) {
@@ -238,47 +248,41 @@ void Machine::print_e70(const E70_Info &info)
         // Disk.
         //
         const char *opname = info.disk.read_op ? "Read" : "Write";
-        out << "      Disk " << std::oct << info.disk.unit
-            << ' ' << opname << " [";
+        out << "      Disk " << std::oct << info.disk.unit << ' ' << opname << " [";
 
-        unsigned addr = info.disk.page << 10;
+        unsigned addr      = info.disk.page << 10;
         unsigned last_addr = addr + 1023;
-        unsigned zone = info.disk.zone;
-        out << std::setfill('0') << std::setw(5) << addr << '-'
-            << std::setfill('0') << std::setw(5) << last_addr
-            << "] = Zone " << zone << std::endl;
+        unsigned zone      = info.disk.zone;
+        out << std::setfill('0') << std::setw(5) << addr << '-' << std::setfill('0') << std::setw(5)
+            << last_addr << "] = Zone " << zone << std::endl;
     } else {
         //
         // Drum.
         //
-        const char *opname = info.drum.phys_io ?
-                            (info.drum.read_op ? "PhysRead" : "PhysWrite") :
-                            (info.drum.read_op ? "Read" : "Write");
-        out << "      Drum " << std::oct << info.drum.unit
-            << ' ' << opname << " [";
+        const char *opname = info.drum.phys_io ? (info.drum.read_op ? "PhysRead" : "PhysWrite")
+                                               : (info.drum.read_op ? "Read" : "Write");
+        out << "      Drum " << std::oct << info.drum.unit << ' ' << opname << " [";
 
-        unsigned addr = info.drum.page << 10;
+        unsigned addr  = info.drum.page << 10;
         unsigned tract = info.drum.tract;
         if (info.drum.sect_io == 0) {
             // Full page i/o.
             unsigned last_addr = addr + 1023;
-            out << std::setfill('0') << std::setw(5) << addr << '-'
-                << std::setfill('0') << std::setw(5) << last_addr
-                << "] = Zone " << tract << std::endl;
+            out << std::setfill('0') << std::setw(5) << addr << '-' << std::setfill('0')
+                << std::setw(5) << last_addr << "] = Zone " << tract << std::endl;
         } else {
             // Sector i/o (1/4 of page).
             addr += info.drum.paragraph << 8;
             unsigned last_addr = addr + 255;
-            unsigned sector = info.drum.sector;
+            unsigned sector    = info.drum.sector;
             if (info.drum.raw_sect) {
                 // Raw sector index in lower bits.
                 sector = info.disk.zone & 3;
-                tract = (info.disk.zone >> 2) & 037;
+                tract  = (info.disk.zone >> 2) & 037;
             }
-            out << std::setfill('0') << std::setw(5) << addr << '-'
-                << std::setfill('0') << std::setw(5) << last_addr
-                << "] = Zone " << tract
-                << " Sector " << sector << std::endl;
+            out << std::setfill('0') << std::setw(5) << addr << '-' << std::setfill('0')
+                << std::setw(5) << last_addr << "] = Zone " << tract << " Sector " << sector
+                << std::endl;
         }
     }
 

@@ -23,6 +23,7 @@
 //
 #include <cstdio>
 #include <fstream>
+
 #include "util.h"
 
 TEST(cli, usage)
@@ -37,7 +38,7 @@ TEST(cli, usage)
 
     // Check exit code.
     int exit_status = pclose(pipe);
-    int exit_code = WEXITSTATUS(exit_status);
+    int exit_code   = WEXITSTATUS(exit_status);
     ASSERT_NE(exit_status, -1);
     ASSERT_EQ(exit_code, 0);
 
@@ -59,7 +60,7 @@ TEST(cli, version)
 
     // Check exit code.
     int exit_status = pclose(pipe);
-    int exit_code = WEXITSTATUS(exit_status);
+    int exit_code   = WEXITSTATUS(exit_status);
     ASSERT_NE(exit_status, -1);
     ASSERT_EQ(exit_code, 0);
 
@@ -71,15 +72,14 @@ TEST(cli, version)
 
 TEST(cli, trace_end_file)
 {
-    std::string base_name = get_test_name();
-    std::string job_filename = base_name + ".dub";
+    std::string base_name      = get_test_name();
+    std::string job_filename   = base_name + ".dub";
     std::string trace_filename = base_name + ".trace";
     std::string command_line = "../dubna --trace=" + trace_filename + " --debug=e " + job_filename;
 
     create_file(job_filename,
-        "*name empty\n"
-        "*end file\n"
-    );
+                "*name empty\n"
+                "*end file\n");
 
     // Set path to the disk images.
     EXPECT_EQ(setenv("BESM6_PATH", TEST_DIR "/../tapes", 1), 0);
@@ -94,7 +94,7 @@ TEST(cli, trace_end_file)
 
     // Check exit code.
     int exit_status = pclose(pipe);
-    int exit_code = WEXITSTATUS(exit_status);
+    int exit_code   = WEXITSTATUS(exit_status);
     ASSERT_NE(exit_status, -1);
     ASSERT_EQ(exit_code, 0);
 
@@ -106,5 +106,5 @@ TEST(cli, trace_end_file)
     EXPECT_TRUE(starts_with(trace[0], "Dubna Simulator Version"));
     EXPECT_STREQ(trace[1].c_str(), "02010 R: 00 070 3002 *70 3002");
     EXPECT_STREQ(trace[2].c_str(), "      Drum 21 PhysRead [00000-00377] = Zone 1 Sector 2");
-    EXPECT_STREQ(trace[trace.size()-5].c_str(), "00020 L: 00 074 0000 *74");
+    EXPECT_STREQ(trace[trace.size() - 5].c_str(), "00020 L: 00 074 0000 *74");
 }

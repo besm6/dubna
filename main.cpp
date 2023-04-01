@@ -20,8 +20,9 @@
 // SOFTWARE.
 //
 #include <getopt.h>
-#include <iostream>
+
 #include <cstring>
+#include <iostream>
 
 #include "session.h"
 
@@ -54,7 +55,8 @@ static void print_usage(std::ostream &out, const char *prog_name)
     out << "    -h, --help              Display available options" << std::endl;
     out << "    -V, --version           Print the version number and exit" << std::endl;
     out << "    -v, --verbose           Verbose mode" << std::endl;
-    out << "    -l NUM, --limit=NUM     Stop after so many instructions (default " << Session::get_default_limit() << ")" << std::endl;
+    out << "    -l NUM, --limit=NUM     Stop after so many instructions (default "
+        << Session::get_default_limit() << ")" << std::endl;
     out << "    -t                      Trace extracodes to stdout" << std::endl;
     out << "    --trace=FILE            Redirect trace to the file" << std::endl;
     out << "    -d MODE, --debug=MODE   Select debug mode, default irm" << std::endl;
@@ -88,24 +90,30 @@ int main(int argc, char *argv[])
         switch (getopt_long(argc, argv, "-hVvl:tT:d:", long_options, nullptr)) {
         case EOF:
             break;
+
         case 0:
             continue;
+
         case 1:
             // Regular argument.
             session.set_job_file(optarg);
             continue;
+
         case 'h':
             // Show usage message and exit.
             print_usage(std::cout, prog_name);
             exit(EXIT_SUCCESS);
+
         case 'v':
             // Verbose.
             session.set_verbose(true);
             continue;
+
         case 'V':
             // Show version and exit.
             std::cout << "Version " << Session::get_version() << "\n";
             exit(EXIT_SUCCESS);
+
         case 'l':
             // Limit the cycle count.
             try {
@@ -116,18 +124,22 @@ int main(int argc, char *argv[])
                 exit(EXIT_FAILURE);
             }
             continue;
+
         case 't':
             // Enable tracing of extracodes, to stdout by default.
             session.enable_trace("e");
             continue;
+
         case 'T':
             // Redirect tracing to a file.
             session.set_trace_file(optarg, "irm");
             continue;
+
         case 'd':
             // Set trace options.
             session.enable_trace(optarg);
             continue;
+
         default:
             print_usage(std::cerr, prog_name);
             exit(EXIT_FAILURE);

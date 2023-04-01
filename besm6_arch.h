@@ -24,9 +24,9 @@
 #ifndef BESM6_ARCH_H
 #define BESM6_ARCH_H
 
-#include <vector>
-#include <ostream>
 #include <cstdint>
+#include <ostream>
+#include <vector>
 
 //
 // Page, or zone, has 1024 words.
@@ -141,19 +141,19 @@ std::string encode_cosy(std::string line);
 //
 // Bits of memory word, from right to left, starting from 1.
 //
-#define BBIT(n)         (1ULL << (n-1))             // один бит, от 1 до 64
-#define BIT40           000010000000000000LL        // 40-й бит - старший разряд мантиссы
-#define BIT41           000020000000000000LL        // 41-й бит - знак
-#define BIT42           000040000000000000LL        // 42-й бит - дубль-знак в мантиссе
-#define BIT48           004000000000000000LL        // 48-й бит - знак порядка
-#define BIT49           010000000000000000LL        // бит 49
-#define BITS(n)         ((uint64_t)~0ULL >> (64-n)) // маска битов n..1
-#define BITS40          00017777777777777LL         // биты 40..1 - мантисса
-#define BITS41          00037777777777777LL         // биты 41..1 - мантисса и знак
-#define BITS42          00077777777777777LL         // биты 42..1 - мантисса и оба знака
-#define BITS48          07777777777777777LL         // биты 48..1
-#define ADDR(x)         ((x) & BITS(15))            // адрес слова
-#define FIELD(x,n,w)    (((x) >> (n-1)) & BITS(w))  // поле шириной w бит, начиная с бита n
+#define ONEBIT(n)      (1ULL << (n - 1))             // один бит, от 1 до 64
+#define BITS(n)        ((uint64_t)~0ULL >> (64 - n)) // маска битов n..1
+#define ADDR(x)        ((x) & BITS(15))              // адрес слова
+#define FIELD(x, n, w) (((x) >> (n - 1)) & BITS(w))  // поле шириной w бит, начиная с бита n
+
+#define BIT40  0'0010'0000'0000'0000LL // 40-й бит - старший разряд мантиссы
+#define BIT41  0'0020'0000'0000'0000LL // 41-й бит - знак
+#define BIT42  0'0040'0000'0000'0000LL // 42-й бит - дубль-знак в мантиссе
+#define BIT48  0'4000'0000'0000'0000LL // 48-й бит - знак порядка
+#define BITS40 0'0017'7777'7777'7777LL // биты 40..1 - мантисса
+#define BITS41 0'0037'7777'7777'7777LL // биты 41..1 - мантисса и знак
+#define BITS42 0'0077'7777'7777'7777LL // биты 42..1 - мантисса и оба знака
+#define BITS48 0'7777'7777'7777'7777LL // биты 48..1
 
 //
 // Bits of ALU mode.
@@ -194,28 +194,19 @@ public:
     //
     // Whether the number is negative.
     //
-    bool is_negative()
-    {
-        return (mantissa & BIT41) != 0;
-    }
+    bool is_negative() { return (mantissa & BIT41) != 0; }
 
     //
     // Вернуть true если число ненормализованное.
     // У нормализованного числа биты 42 и 41 совпадают.
     //
-    bool is_denormal()
-    {
-        return ((mantissa >> 40) ^ (mantissa >> 41)) & 1;
-    }
+    bool is_denormal() { return ((mantissa >> 40) ^ (mantissa >> 41)) & 1; }
 
     //
     // Change sign of the mantissa.
     // Note: the number may become denormalized.
     //
-    void negate()
-    {
-        mantissa = - mantissa;
-    }
+    void negate() { mantissa = -mantissa; }
 
     //
     // Normalize "to the right".

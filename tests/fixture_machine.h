@@ -47,8 +47,5 @@ protected:
         random_generator.seed(0);
     }
 
-    void store_word(unsigned addr, uint64_t val)
-    {
-        machine->memory.store(addr, val);
-    }
+    void store_word(unsigned addr, uint64_t val) { machine->memory.store(addr, val); }
 };

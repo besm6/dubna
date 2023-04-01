@@ -25,12 +25,12 @@
 #define DUBNA_MACHINE_H
 
 #include <array>
-#include <memory>
 #include <chrono>
-#include "memory.h"
-#include "processor.h"
+#include <memory>
+
 #include "disk.h"
 #include "drum.h"
+#include "processor.h"
 
 class Machine {
 private:
@@ -118,8 +118,10 @@ public:
     static void enable_trace(const char *mode);
     static void redirect_trace(const char *file_name, const char *default_mode);
     static void close_trace();
-    static bool trace_enabled() { return debug_instructions | debug_extracodes | debug_registers |
-                                         debug_memory | debug_fetch; }
+    static bool trace_enabled()
+    {
+        return debug_instructions | debug_extracodes | debug_registers | debug_memory | debug_fetch;
+    }
 
     // Emit trace to this stream.
     static std::ostream &get_trace_stream();
@@ -130,12 +132,14 @@ public:
     void mem_store(unsigned addr, Word val);
 
     // Disk i/o.
-    void disk_io(char op, unsigned disk_unit, unsigned zone, unsigned sector, unsigned addr, unsigned nwords);
+    void disk_io(char op, unsigned disk_unit, unsigned zone, unsigned sector, unsigned addr,
+                 unsigned nwords);
     void disk_mount(unsigned disk, const std::string &filename, bool write_permit);
     std::string disk_find(const std::string &filename);
 
     // Drum i/o.
-    void drum_io(char op, unsigned drum_unit, unsigned zone, unsigned sector, unsigned addr, unsigned nwords);
+    void drum_io(char op, unsigned drum_unit, unsigned zone, unsigned sector, unsigned addr,
+                 unsigned nwords);
     void drum_init(unsigned drum_unit);
     void drum_write_word(unsigned drum_unit, unsigned offset, Word value);
     Word drum_read_word(unsigned drum_unit, unsigned offset);
@@ -179,8 +183,7 @@ public:
     void trace_instruction(unsigned opcode)
     {
         // Print e50...e77 except e75, and also e20, e21.
-        if (debug_instructions ||
-            (debug_extracodes && opcode != 075 && is_extracode(opcode)))
+        if (debug_instructions || (debug_extracodes && opcode != 075 && is_extracode(opcode)))
             cpu.print_instruction();
     }
 

@@ -22,6 +22,7 @@
 // SOFTWARE.
 //
 #include <fstream>
+
 #include "fixture_machine.h"
 
 TEST_F(dubna_machine, trace_arx)
@@ -49,6 +50,7 @@ TEST_F(dubna_machine, trace_arx)
 
     // Check output.
     static const std::vector<std::string> expect = {
+        // clang-format off
         "00010 L: 00 010 2000 xta 2000",
         "      Memory Read [02000] = 0000 0000 0000 0013",
         "      Write ACC = 0000 0000 0000 0013",
@@ -58,6 +60,7 @@ TEST_F(dubna_machine, trace_arx)
         "      Write ACC = 0000 0000 0000 0014",
         "      Write RAU = 10",
         "00011 L: 06 33 12345 stop 12345(6)",
+        // clang-format on
     };
     EXPECT_EQ(trace, expect);
 }
@@ -66,6 +69,7 @@ TEST_F(dubna_machine, e70_read_drum)
 {
     // Write test data to memory.
     static const Words input = {
+        // clang-format off
         0'7760'0000'0000'0067,
         0'1302'7055'1203'1060,
         0'0000'2342'5442'0001,
@@ -76,6 +80,7 @@ TEST_F(dubna_machine, e70_read_drum)
         0'1242'0055'1002'5417,
         0'0000'1261'5401'2023,
         0'1363'0056'1160'7417,
+        // clang-format on
     };
     machine->memory.write_words(input, 02000);
 
@@ -119,6 +124,7 @@ TEST_F(dubna_machine, trace_startjob)
     // *NAME EMPTY
     // *END FILE
     static const Words input = {
+        // clang-format off
         0'1244'7101'2324'2601,
         0'2124'6520'2505'4710,
         0'0242'0040'1002'0012,
@@ -128,6 +134,7 @@ TEST_F(dubna_machine, trace_startjob)
         0'2364'6104'6240'5012,
         0'1244'2516'2102'0106,
         0'2224'6105'1014'4412,
+        // clang-format on
     };
     machine->memory.write_words(input, 04000);
     machine->drum_io('w', 001, 0, 0, 04000, 1024);
@@ -143,7 +150,7 @@ TEST_F(dubna_machine, trace_startjob)
     ASSERT_EQ(machine->cpu.get_pc(), 17);
 
     // Check the trace.
-    auto trace = file_contents(trace_filename);
+    auto trace  = file_contents(trace_filename);
     auto expect = file_contents(TEST_DIR "/trace_startjob.expect");
     EXPECT_EQ(trace, expect);
 }

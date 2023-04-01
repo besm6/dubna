@@ -179,6 +179,9 @@ void Processor::e50()
         // DATE*, OS Dubna specific.
         core.ACC = 0'7707'7774'0000'0000; // mask
         break;
+    case 075:
+        // Unknown.
+        break;
     case 076:
         // Send message to operator.
         // TODO: print_iso(ADDR(core.ACC));
@@ -190,9 +193,17 @@ void Processor::e50()
         // Pause the task? Waiting for tape.
         throw Exception("Task paused waiting for tape");
         break;
+    case 070077:
+        // Get date?
+        core.ACC = 0;
+        break;
     case 070200:
         // Asking for some capabilities?
         core.ACC = 0'0010'0000;
+        break;
+    case 070210:
+        // Get time?
+        core.ACC = 0;
         break;
     case 070214:
         // Asking for шифр?
@@ -361,13 +372,7 @@ void Processor::e65()
 //
 void Processor::e67()
 {
-    switch (core.M[016]) {
-    case 1:
-        // Ignore.
-        return;
-    default:
-        throw Exception("Unimplemented extracode *67 " + to_octal(core.M[016]));
-    }
+    // Ignore.
 }
 
 //

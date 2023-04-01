@@ -1,0 +1,8 @@
+*name Алгол
+*algol
+'begin'
+    print(''Hello, World!'');
+'end'
+'eop'
+*execute
+*end file

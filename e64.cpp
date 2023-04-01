@@ -174,6 +174,30 @@ static void print_char(unsigned char *line, int *pos, int sym)
     ++(*pos);
 }
 
+static void print_opcode1(unsigned char *line, int *pos, unsigned cmd)
+{
+    print_char(line, pos, cmd >> 23 & 1);
+    print_char(line, pos, cmd >> 20 & 7);
+    print_char(line, pos, GOST_SPACE);
+    if (cmd & 02000000) {
+        // long address command
+        print_char(line, pos, cmd >> 18 & 3);
+        print_char(line, pos, cmd >> 15 & 7);
+        print_char(line, pos, GOST_SPACE);
+        print_char(line, pos, cmd >> 12 & 7);
+    } else {
+        // short address command
+        print_char(line, pos, cmd >> 18 & 1);
+        print_char(line, pos, cmd >> 15 & 7);
+        print_char(line, pos, cmd >> 12 & 7);
+        print_char(line, pos, GOST_SPACE);
+    }
+    print_char(line, pos, cmd >> 9 & 7);
+    print_char(line, pos, cmd >> 6 & 7);
+    print_char(line, pos, cmd >> 3 & 7);
+    print_char(line, pos, cmd & 7);
+}
+
 #if 0
 #define IS_DIGIT(c) (c >= '0' && c <= '9')
 #define IS_CHAR(c)  ((c >= 0101 && c <= 0132) || (c >= 0140 && c <= 0136))
@@ -227,30 +251,7 @@ void terminate(void)
         if (disks[u].diskh)
             disk_close(disks[u].diskh);
 }
-
-static void print_opcode1(unsigned char *line, int *pos, unsigned long cmd)
-{
-    print_char(line, pos, cmd >> 23 & 1);
-    print_char(line, pos, cmd >> 20 & 7);
-    print_char(line, pos, GOST_SPACE);
-    if (cmd & 02000000) {
-        // long address command
-        print_char(line, pos, cmd >> 18 & 3);
-        print_char(line, pos, cmd >> 15 & 7);
-        print_char(line, pos, GOST_SPACE);
-        print_char(line, pos, cmd >> 12 & 7);
-    } else {
-        // short address command
-        print_char(line, pos, cmd >> 18 & 1);
-        print_char(line, pos, cmd >> 15 & 7);
-        print_char(line, pos, cmd >> 12 & 7);
-        print_char(line, pos, GOST_SPACE);
-    }
-    print_char(line, pos, cmd >> 9 & 7);
-    print_char(line, pos, cmd >> 6 & 7);
-    print_char(line, pos, cmd >> 3 & 7);
-    print_char(line, pos, cmd & 7);
-}
+#endif
 
 //
 // Extract decimal exponent from the real value.
@@ -281,49 +282,47 @@ static double real_exponent(double value, int *exponent)
     }
     return value;
 }
-#endif
 
 //
 // Print string in ITM format.
 // Return next data address.
 //
-static unsigned print_itm(unsigned addr0, unsigned addr1, unsigned char *line, int pos)
+unsigned Processor::e64_print_itm(unsigned addr0, unsigned addr1, unsigned char *line, int pos)
 {
-    // TODO: print itm
-#if 1
-    throw Processor::Exception("Printing in ITM encoding is not supported yet");
-#else
     BytePointer bp(memory, addr0);
-    unsigned char c, lastc = GOST_SPACE;
+    uint8_t lastc = GOST_SPACE;
 
-    for (;;) {
-        if (!bp.word_addr)
-            return 0;
-
+    while (bp.word_addr) {
         // No data to print.
-        if (addr1 && bp.word_addr == addr1 + 1)
+        if (addr1 && bp.word_addr == addr1 + 1) {
             return bp.word_addr;
+        }
 
         // No space left on line.
         if (pos == 128) {
             if (!addr1) {
-                if (bp.byte_index)
+                if (bp.byte_index) {
                     ++bp.word_addr;
+                }
                 return bp.word_addr;
             }
             line_flush(line);
             std::cout << std::endl;
             pos = 0;
         }
-        c = bp.get_byte();
+
+        uint8_t c = bp.get_byte();
         switch (c) {
         case 0140: // end of information
-            if (bp.byte_index)
+            if (bp.byte_index) {
                 ++bp.word_addr;
+            }
             return bp.word_addr;
+
         case 040: // blank
             line[pos++] = GOST_SPACE;
             break;
+
         case 0173: // repeat last symbol
             c = bp.get_byte();
             if (c == 040) {
@@ -332,17 +331,20 @@ static unsigned print_itm(unsigned addr0, unsigned addr1, unsigned char *line, i
                 line_flush(line);
                 std::cout << std::endl;
                 pos = 0;
-            } else
-                while (c-- & 017)
+            } else {
+                while (c-- & 017) {
                     line[pos++] = lastc;
+                }
+            }
             break;
+
         default:
             lastc       = itm_to_gost[c];
             line[pos++] = lastc;
             break;
         }
     }
-#endif
+    return 0;
 }
 
 //
@@ -392,116 +394,110 @@ unsigned Processor::e64_print_octal(unsigned addr0, unsigned addr1, unsigned cha
 // Print CPU instruction(s).
 // Return next data address.
 //
-static unsigned print_opcode(unsigned addr0, unsigned addr1, unsigned char *line, int pos,
-                             int width, int repeat)
+unsigned Processor::e64_print_opcode(unsigned addr0, unsigned addr1, unsigned char *line, int pos,
+                                     int width, int repeat)
 {
-    // TODO: print command
-#if 1
-    throw Processor::Exception("Printing of instructions is not supported yet");
-#else
-    unsigned long a, b;
-
-    for (;;) {
-        if (!addr0)
-            return 0;
-
+    while (addr0) {
         // No data to print.
-        if (addr1 && addr0 == addr1 + 1)
+        if (addr1 && addr0 == addr1 + 1) {
             return addr0;
+        }
 
         // No space left on line.
         if (pos >= 128) {
-            if (!addr1)
+            if (!addr1) {
                 return 0;
+            }
             return addr0;
         }
-        a = (unsigned long)core[addr0].w_b[0] << 16 | core[addr0].w_b[1] << 8 | core[addr0].w_b[2];
-        b = (unsigned long)core[addr0].w_b[3] << 16 | core[addr0].w_b[4] << 8 | core[addr0].w_b[5];
+        Word word  = machine.mem_load(addr0);
+        unsigned a = word >> 24;
+        unsigned b = word & BITS(24);
         ++addr0;
 
         print_opcode1(line, &pos, a);
         print_char(line, &pos, GOST_SPACE);
         print_opcode1(line, &pos, b);
 
-        if (!repeat)
+        if (!repeat) {
             return addr0;
+        }
         --repeat;
-        if (width)
+        if (width) {
             pos += width - 23;
+        }
     }
-#endif
+    return 0;
 }
 
 //
 // Print real number(s).
 // Return next data address.
 //
-static unsigned print_real(unsigned addr0, unsigned addr1, unsigned char *line, int pos, int digits,
-                           int width, int repeat)
+unsigned Processor::e64_print_real(unsigned addr0, unsigned addr1, unsigned char *line, int pos,
+                                   int digits, int width, int repeat)
 {
-    // TODO: print real
-#if 1
-    throw Processor::Exception("Printing of real numbers is not supported yet");
-#else
-    int i, negative, exponent, digit;
-    double value;
-
-    if (digits > 20)
+    if (digits > 20) {
         digits = 20;
-    for (;;) {
-        if (!addr0)
-            return 0;
-
+    }
+    while (addr0) {
         // No data to print.
-        if (addr1 && addr0 == addr1 + 1)
-            return addr0;
-
-        // No space left on line.
-        if (pos >= 128) {
-            if (!addr1)
-                return 0;
+        if (addr1 && addr0 == addr1 + 1) {
             return addr0;
         }
 
-        negative = (core[addr0].w_b[0] & 1);
-        if (!(core[addr0].w_b[0] >> 1) && !core[addr0].w_b[0] && !core[addr0].w_b[1] &&
-            !core[addr0].w_b[2] && !core[addr0].w_b[3] && !core[addr0].w_b[4] &&
-            !core[addr0].w_b[5]) {
+        // No space left on line.
+        if (pos >= 128) {
+            if (!addr1) {
+                return 0;
+            }
+            return addr0;
+        }
+
+        Word word     = machine.mem_load(addr0);
+        bool negative = (word & BIT41);
+        double value;
+        int exponent;
+        if ((word & ~BIT41) == 0) {
             value    = 0;
             exponent = 0;
         } else {
-            value = fetch_real(addr0);
-            if (value < 0)
+            value = besm6_to_ieee(word);
+            if (value < 0) {
                 value = -value;
+            }
             value = real_exponent(value, &exponent);
         }
         ++addr0;
 
         print_char(line, &pos, GOST_SPACE);
         print_char(line, &pos, negative ? GOST_MINUS : GOST_PLUS);
-        for (i = 0; i < digits - 4; ++i) {
-            value = value * 10;
-            digit = (int)value;
+
+        for (int i = 0; i < digits - 4; ++i) {
+            value     = value * 10;
+            int digit = (int)value;
             print_char(line, &pos, digit);
             value -= digit;
         }
         print_char(line, &pos, GOST_LOWER_TEN);
-        if (exponent >= 0)
+        if (exponent >= 0) {
             print_char(line, &pos, GOST_PLUS);
-        else {
+        } else {
             print_char(line, &pos, GOST_MINUS);
             exponent = -exponent;
         }
         print_char(line, &pos, exponent / 10);
         print_char(line, &pos, exponent % 10);
 
-        if (!repeat)
+        if (!repeat) {
             return addr0;
+        }
         --repeat;
-        if (width)
+        if (width) {
             pos += width - digits - 2;
+        }
     }
-#endif
+    return 0;
 }
 
 //
@@ -707,7 +703,7 @@ void Processor::e64()
 
         case 1:
             // CPU instruction.
-            start_addr = print_opcode(start_addr, end_addr, line, offset, width, repeat);
+            start_addr = e64_print_opcode(start_addr, end_addr, line, offset, width, repeat);
             break;
 
         case 2:
@@ -717,7 +713,7 @@ void Processor::e64()
 
         case 3:
             // Real number.
-            start_addr = print_real(start_addr, end_addr, line, offset, digits, width, repeat);
+            start_addr = e64_print_real(start_addr, end_addr, line, offset, digits, width, repeat);
             break;
 
         case 4:
@@ -725,7 +721,7 @@ void Processor::e64()
             if (TRACE_E64) {
                 print_text_debug(start_addr, end_addr, 1, offset);
             }
-            start_addr = print_itm(start_addr, end_addr, line, offset);
+            start_addr = e64_print_itm(start_addr, end_addr, line, offset);
             break;
         }
 

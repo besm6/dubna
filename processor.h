@@ -109,6 +109,11 @@ private:
                             bool *need_newline);
     unsigned e64_print_octal(unsigned addr0, unsigned addr1, unsigned char *line, int pos,
                              int digits, int width, int repeat);
+    unsigned e64_print_opcode(unsigned addr0, unsigned addr1, unsigned char *line, int pos,
+                              int width, int repeat);
+    unsigned e64_print_real(unsigned addr0, unsigned addr1, unsigned char *line, int pos, int digits,
+                            int width, int repeat);
+    unsigned e64_print_itm(unsigned addr0, unsigned addr1, unsigned char *line, int pos);
 
 public:
     // Exception for unexpected situations.

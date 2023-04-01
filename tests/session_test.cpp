@@ -42,9 +42,6 @@ TEST_F(dubna_session, trace_end_file)
     std::string job_filename   = base_name + ".dub";
     std::string trace_filename = base_name + ".trace";
 
-    // Set path to the disk images.
-    EXPECT_EQ(setenv("BESM6_PATH", TEST_DIR "/../tapes", 1), 0);
-
     // Enable trace.
     session->set_trace_file(trace_filename.c_str(), "e");
 
@@ -64,4 +61,74 @@ TEST_F(dubna_session, trace_end_file)
     EXPECT_STREQ(trace[1].c_str(), "02010 R: 00 070 3002 *70 3002");
     EXPECT_STREQ(trace[2].c_str(), "      Drum 21 PhysRead [00000-00377] = Zone 1 Sector 2");
     EXPECT_STREQ(trace[trace.size() - 5].c_str(), "00020 L: 00 074 0000 *74");
+}
+
+TEST_F(dubna_session, okno)
+{
+    auto output = run_job_and_capture_output(R"(*name окно
+*call ОКНО
+*call ВОКНО
+*end file
+)");
+    auto expect = file_contents(TEST_DIR "/output_okno.expect");
+    check_output(output, expect);
+}
+
+TEST_F(dubna_session, edit)
+{
+    auto output = run_job_and_capture_output(R"(*name Edit
+*edit
+*RO
+*W:27001,2
+Варкалось. Хливкие шорьки
+Пырялись по наве,
+И хрюкотали зелюки,
+Как мюмзики в мове.
+*EE
+*
+*edit
+*R:270001
+*LL
+*EE
+*end file
+)");
+    auto expect = file_contents(TEST_DIR "/output_edit.expect");
+    check_output(output, expect);
+}
+
+TEST_F(dubna_session, assem)
+{
+    auto output = run_job_and_capture_output(R"(*name ассемблер
+*assem
+ program: ,name,
+          ,*64 , inf64
+          ,*74 ,
+ inf64:   ,    , text
+          ,    , text
+          ,001 ,
+         8,    ,
+ text:    ,gost, 18h Hello, World!'214'
+          ,gost, 6h'231'
+          ,end ,
+*execute
+*end file
+)");
+    auto expect = file_contents(TEST_DIR "/output_assem.expect");
+    check_output(output, expect);
+}
+
+TEST_F(dubna_session, fortran)
+{
+    auto output = run_job_and_capture_output(R"(*name фортран
+*fortran
+        program hello
+        print 1000
+        stop
+ 1000   format('Hello, World!')
+        end
+*execute
+*end file
+)");
+    auto expect = file_contents(TEST_DIR "/output_fortran.expect");
+    check_output(output, expect);
 }

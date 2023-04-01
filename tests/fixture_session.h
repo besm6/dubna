@@ -38,5 +38,64 @@ protected:
     {
         // Allocate fresh new Session.
         session = std::make_unique<Session>();
+
+        // Set path to the disk images.
+        EXPECT_EQ(setenv("BESM6_PATH", TEST_DIR "/../tapes", 1), 0);
+    }
+
+    //
+    // Run a job and return captured output.
+    //
+    std::string run_job_and_capture_output(const std::string &input)
+    {
+        // Create job file.
+        std::string job_filename = get_test_name() + ".dub";
+        create_file(job_filename, input);
+        session->set_job_file(job_filename);
+
+        // Redirect stdout.
+        std::streambuf *save_cout = std::cout.rdbuf();
+        std::ostringstream output;
+        std::cout.rdbuf(output.rdbuf());
+
+        // Run the job.
+        session->run();
+
+        // Return output.
+        std::cout.rdbuf(save_cout);
+        return output.str();
+    }
+
+    //
+    // Compare output of the Dubna session.
+    // Ignore header and footer.
+    //
+    void check_output(const std::string &output_str, const std::string &expect_str)
+    {
+        std::stringstream output(output_str);
+        std::stringstream expect(expect_str);
+
+        // Skip header in the output.
+        while (output.good()) {
+            // Get directory name from the output.
+            std::string line;
+            getline(output, line);
+            if (line == "------------------------------------------------------------")
+                break;
+        }
+
+        // Compare line by line.
+        while (expect.good()) {
+            EXPECT_TRUE(output.good()) << "Output is too short";
+
+            std::string output_line;
+            getline(output, output_line);
+            if (output_line == "------------------------------------------------------------")
+                break;
+
+            std::string expect_line;
+            getline(expect, expect_line);
+            EXPECT_EQ(output_line, expect_line);
+        }
     }
 };

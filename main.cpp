@@ -63,6 +63,7 @@ static void print_usage(std::ostream &out, const char *prog_name)
     out << "Debug modes:" << std::endl;
     out << "    i       Trace instructions" << std::endl;
     out << "    e       Trace extracodes" << std::endl;
+    out << "    p       Trace printing (extracode e64)" << std::endl;
     out << "    f       Trace fetch" << std::endl;
     out << "    r       Trace registers" << std::endl;
     out << "    m       Trace memory read/write" << std::endl;

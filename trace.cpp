@@ -32,6 +32,7 @@
 //
 bool Machine::debug_instructions; // trace machine instuctions
 bool Machine::debug_extracodes;   // trace extracodes (except e75)
+bool Machine::debug_print;        // trace extracode e64
 bool Machine::debug_registers;    // trace CPU registers
 bool Machine::debug_memory;       // trace memory read/write
 bool Machine::debug_fetch;        // trace instruction fetch
@@ -55,6 +56,7 @@ void Machine::enable_trace(const char *trace_mode)
     // Disable all trace options.
     debug_instructions = false;
     debug_extracodes   = false;
+    debug_print        = false;
     debug_registers    = false;
     debug_memory       = false;
     debug_fetch        = false;
@@ -69,6 +71,9 @@ void Machine::enable_trace(const char *trace_mode)
                 break;
             case 'e':
                 debug_extracodes = true;
+                break;
+            case 'p':
+                debug_print = true;
                 break;
             case 'f':
                 debug_fetch = true;
@@ -236,7 +241,7 @@ void Processor::print_registers()
 }
 
 //
-// Print memory read/write.
+// Print details about extracode e70.
 //
 void Machine::print_e70(const E70_Info &info)
 {
@@ -284,6 +289,137 @@ void Machine::print_e70(const E70_Info &info)
                 << std::setw(5) << last_addr << "] = Zone " << tract << " Sector " << sector
                 << std::endl;
         }
+    }
+
+    // Restore.
+    out.flags(save_flags);
+}
+
+//
+// Print details about extracode e64.
+//
+void Machine::print_e64(const E64_Info &info, unsigned start_addr, unsigned end_addr)
+{
+    auto &out       = Machine::get_trace_stream();
+    auto save_flags = out.flags();
+
+    out << "      Print ";
+    switch (info.field.format) {
+        case 0: out << "Text"; break;
+        case 1: out << "Instruction"; break;
+        case 2: out << "Octal"; break;
+        case 3: out << "Real"; break;
+        case 4: out << "ITM"; break;
+        default: out << "Unknown(" << info.field.format << ')'; break;
+    }
+    out << ' ' << std::oct << std::setfill('0') << std::setw(5) << start_addr
+        << '-' << std::setfill('0') << std::setw(5) << end_addr
+        << " offset=" << std::dec << info.field.offset;
+    if (info.field.digits)
+        out << " digits=" << info.field.digits;
+    if (info.field.width)
+        out << " width=" << info.field.width;
+    if (info.field.repeat1)
+        out << " repeat=" << info.field.repeat1;
+    if (info.field.skip)
+        out << " skip=" << info.field.skip;
+    if (info.field.finish)
+        out << " finish";
+    out << std::endl;
+
+    if (info.field.format == 0 || info.field.format == 4) {
+        // Text in Gost or ITM encoding.
+        int pos = info.field.offset;
+        BytePointer bp(memory, start_addr);
+
+        out << "      Text " << ((info.field.format == 4) ? "ITM" : "Gost") << std::oct;
+        while (bp.word_addr) {
+            if (end_addr && bp.word_addr == end_addr + 1) {
+                goto done;
+            }
+
+            unsigned c = bp.get_byte();
+            out << ' ' << std::setfill('0') << std::setw(3) << c;
+
+            switch (info.field.format) {
+            case 0:
+                //
+                // Gost encoding.
+                //
+                switch (c) {
+                case GOST_END_OF_INFORMATION:
+                case 0231:
+                case GOST_EOF:
+                    goto done;
+                case 0201: // new page
+                    if (pos > 0) {
+                        pos = 0;
+                    }
+                    ++pos;
+                    break;
+                case GOST_CARRIAGE_RETURN:
+                case GOST_NEWLINE:
+                    pos = 0;
+                    break;
+                case 0143: // null width symbol
+                case 0341:
+                    break;
+                case GOST_SET_POSITION:
+                case 0200: // set position
+                    c = bp.get_byte();
+                    out << ' ' << std::setfill('0') << std::setw(3) << c;
+                    pos = c % 128;
+                    break;
+                default:
+                    // No space left on the line.
+                    if (pos == 128) {
+                        goto done;
+                    }
+                    ++pos;
+                    if (pos == 128) {
+                        // No space left on the line.
+                        out << '/';
+                        if (end_addr) {
+                            pos = 0;
+                        }
+                    }
+                    break;
+                }
+                break;
+            case 4:
+                //
+                // ITM endcoding.
+                //
+                switch (c) {
+                case 0140: // end of information
+                    goto done;
+                case 0173: // repeat last symbol
+                    c = bp.get_byte();
+                    out << ' ' << std::setfill('0') << std::setw(3) << c;
+                    if (c == 040) {
+                        pos = 0;
+                    } else {
+                        pos += c & 017;
+                    }
+                    break;
+                default:
+                    // No space left on the line.
+                    if (!end_addr && pos == 128) {
+                        goto done;
+                    }
+                    ++pos;
+                    if (pos == 128) {
+                        // No space left on the line.
+                        out << '/';
+                        pos = 0;
+                    }
+                    break;
+                }
+                break;
+            }
+        }
+done:
+        out << std::endl;
     }
 
     // Restore.

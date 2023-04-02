@@ -59,4 +59,33 @@ public:
     Memory &operator=(const Memory &) = delete;
 };
 
+//
+// Byte pointer.
+//
+class BytePointer {
+private:
+    Memory &memory;
+
+public:
+    unsigned word_addr;
+    unsigned byte_index;
+
+    BytePointer(Memory &m, unsigned wa, unsigned bi = 0) : memory(m), word_addr(wa), byte_index(bi)
+    {
+    }
+
+    unsigned get_byte()
+    {
+        const Word *ptr = memory.get_ptr(word_addr);
+        unsigned ch     = *ptr >> (40 - byte_index * 8);
+
+        byte_index++;
+        if (byte_index == 6) {
+            byte_index = 0;
+            word_addr++;
+        }
+        return (uint8_t) ch;
+    }
+};
+
 #endif // DUBNA_MEMORY_H

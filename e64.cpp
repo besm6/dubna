@@ -30,41 +30,11 @@
 
 #include <cstring>
 #include <iostream>
+#include <iomanip>
 
 #include "encoding.h"
 #include "gost10859.h"
 #include "machine.h"
-
-static const bool TRACE_E64 = false;
-
-//
-// Byte pointer.
-//
-class BytePointer {
-private:
-    Memory &memory;
-
-public:
-    unsigned word_addr;
-    unsigned byte_index;
-
-    BytePointer(Memory &m, unsigned wa, unsigned bi = 0) : memory(m), word_addr(wa), byte_index(bi)
-    {
-    }
-
-    unsigned get_byte()
-    {
-        const Word *ptr = memory.get_ptr(word_addr);
-        unsigned ch     = *ptr >> (40 - byte_index * 8);
-
-        byte_index++;
-        if (byte_index == 6) {
-            byte_index = 0;
-            word_addr++;
-        }
-        return ch;
-    }
-};
 
 static int line_flush(unsigned char *line)
 {
@@ -80,93 +50,6 @@ static int line_flush(unsigned char *line)
     gost_write(line, i + 1);
     memset(line, GOST_SPACE, i + 1);
     return 1;
-}
-
-static void print_text_debug(unsigned addr0, unsigned addr1, bool itm_flag, int pos)
-{
-    // TODO: print text debug
-#if 0
-    BytePointer bp(memory, addr0);
-    int c;
-
-    printf("*** E64  %s ", itm_flag ? "itm" : "gost");
-    for (;;) {
-        if (!bp.word_addr) {
-        done:
-            printf("\n");
-            return;
-        }
-        if (addr1 && bp.word_addr == addr1 + 1)
-            goto done;
-
-        c = bp.get_byte();
-        printf("-%03o", c);
-
-        // end of information
-        if (itm_flag) {
-            switch (c) {
-            case 0140: // end of information
-                goto done;
-            case 0173: // repeat last symbol
-                c = bp.get_byte();
-                printf("-%03o", c);
-                if (c == 040)
-                    pos = 0;
-                else
-                    pos += c & 017;
-                break;
-            default:
-                // No space left on line.
-                if (!addr1 && pos == 128)
-                    goto done;
-                ++pos;
-                if (pos == 128) {
-                    // No space left on line.
-                    std::cout << '/';
-                    pos = 0;
-                }
-                break;
-            }
-        } else {
-            switch (c) {
-            case GOST_END_OF_INFORMATION:
-            case 0231:
-            case GOST_EOF:
-                goto done;
-            case 0201: // new page
-                if (pos > 0)
-                    pos = 0;
-                ++pos;
-                break;
-            case GOST_CARRIAGE_RETURN:
-            case GOST_NEWLINE:
-                pos = 0;
-                break;
-            case 0143: // null width symbol
-            case 0341:
-                break;
-            case GOST_SET_POSITION:
-            case 0200: // set position
-                c = bp.get_byte();
-                printf("-%03o", c);
-                pos = c % 128;
-                break;
-            default:
-                // No space left on line.
-                if (pos == 128)
-                    goto done;
-                ++pos;
-                if (pos == 128) {
-                    // No space left on line.
-                    std::cout << '/';
-                    if (addr1)
-                        pos = 0;
-                }
-                break;
-            }
-        }
-    }
-#endif
 }
 
 static void print_char(unsigned char *line, int *pos, int sym)
@@ -202,61 +85,6 @@ static void print_opcode1(unsigned char *line, int *pos, unsigned cmd)
     print_char(line, pos, cmd >> 3 & 7);
     print_char(line, pos, cmd & 7);
 }
-
-#if 0
-#define IS_DIGIT(c) (c >= '0' && c <= '9')
-#define IS_CHAR(c)  ((c >= 0101 && c <= 0132) || (c >= 0140 && c <= 0136))
-
-static void exform(void);
-
-void putbyte(ptr *bp, unsigned char c)
-{
-    core[bp->word_addr].w_b[bp->byte_index++] = c;
-
-    if (bp->byte_index == 6) {
-        bp->byte_index = 0;
-        ++bp->word_addr;
-    }
-}
-
-uint64_t getword(ptr *bp)
-{
-    uint64_t w = 0;
-    int i;
-
-    if (bp->byte_index) {
-        bp->byte_index = 0;
-        ++bp->word_addr;
-    }
-    for (i = 0; i < 6; ++i)
-        w = w << 8 | core[bp->word_addr].w_b[i];
-
-    ++bp->word_addr;
-
-    return w;
-}
-
-void cwadj(uinstr_t *ip)
-{
-    if (ip->i_opcode >= 0100) {
-        ip->i_opcode = (ip->i_opcode - 060) << 3;
-        ip->i_opcode |= ip->i_addr >> 12;
-        ip->i_addr &= 0xfff;
-    } else if (ip->i_addr & 070000) {
-        ip->i_addr &= 07777;
-        ip->i_opcode |= 0100;
-    }
-}
-
-void terminate(void)
-{
-    unsigned u;
-
-    for (u = 030; u < 070; ++u)
-        if (disks[u].diskh)
-            disk_close(disks[u].diskh);
-}
-#endif
 
 //
 // Extract decimal exponent from the real value.
@@ -303,7 +131,7 @@ unsigned Processor::e64_print_itm(unsigned addr0, unsigned addr1, unsigned char 
             return bp.word_addr;
         }
 
-        // No space left on line.
+        // No space left on the line.
         if (pos == 128) {
             if (!addr1) {
                 if (bp.byte_index) {
@@ -368,7 +196,7 @@ unsigned Processor::e64_print_octal(unsigned addr0, unsigned addr1, unsigned cha
             return addr0;
         }
 
-        // No space left on line.
+        // No space left on the line.
         if (pos >= 128) {
             if (!addr1) {
                 return 0;
@@ -408,7 +236,7 @@ unsigned Processor::e64_print_opcode(unsigned addr0, unsigned addr1, unsigned ch
             return addr0;
         }
 
-        // No space left on line.
+        // No space left on the line.
         if (pos >= 128) {
             if (!addr1) {
                 return 0;
@@ -451,7 +279,7 @@ unsigned Processor::e64_print_real(unsigned addr0, unsigned addr1, unsigned char
             return addr0;
         }
 
-        // No space left on line.
+        // No space left on the line.
         if (pos >= 128) {
             if (!addr1) {
                 return 0;
@@ -589,7 +417,7 @@ unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1, unsigned char
                 if (addr1) {
                     pos = 0;
                 } else {
-                    // No space left on line.
+                    // No space left on the line.
                     *need_newline = false;
                     if (bp.byte_index != 0)
                         ++bp.word_addr;
@@ -604,7 +432,7 @@ unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1, unsigned char
             last_ch   = ch;
             ++pos;
             if (pos == 128) {
-                // No space left on line.
+                // No space left on the line.
                 line_flush(line);
                 std::cout << std::endl;
             }
@@ -654,16 +482,19 @@ void Processor::e64()
     }
 
     // Get start and end addresses from control word #0.
-    unsigned ctl_addr   = core.M[016];
-    Word ctl_word       = machine.mem_load(ctl_addr);
-    unsigned start_addr = ADDR(FIELD(ctl_word, 25, 15) +        // left address (long)
-                               core.M[FIELD(ctl_word, 45, 4)]); // left register
-    unsigned end_addr   = ADDR(FIELD(ctl_word, 1, 15) +         // right address (long)
-                               core.M[FIELD(ctl_word, 21, 4)]); // right register
-    if (end_addr <= start_addr)
-        end_addr = 0;                                           // No limit
-    if (start_addr == 0)
+    unsigned ctl_addr = core.M[016];
+    E64_Pointer ptr;
+    ptr.word = machine.mem_load(ctl_addr);
+
+    unsigned start_addr  = ADDR(ptr.field.start_addr + core.M[ptr.field.start_reg]);
+    unsigned end_addr    = ADDR(ptr.field.end_addr + core.M[ptr.field.end_reg]);
+    if (end_addr <= start_addr) {
+        // No limit.
+        end_addr = 0;
+    }
+    if (start_addr == 0) {
         throw Processor::Exception("Bad start_addr in extracode e64");
+    }
 
     // Execute every format word in order.
     unsigned char line[256];
@@ -673,36 +504,25 @@ void Processor::e64()
         ctl_addr++;
         if (ctl_addr >= MEMORY_NWORDS)
             throw Processor::Exception("Unterminated info list in extracode e64");
-        ctl_word = machine.mem_load(ctl_addr);
+
+        // Get format details from control word #1 onwards.
+        E64_Info ctl;
+        ctl.word = machine.mem_load(ctl_addr);
+        machine.trace_e64(ctl, start_addr, end_addr);
 
         // Extract fields.
-        unsigned format     = FIELD(ctl_word, 45, 4);  // left register
-        unsigned offset     = FIELD(ctl_word, 37, 8);  // left opcode
-        unsigned digits     = FIELD(ctl_word, 25, 12); // left address (short)
-        unsigned final_skip = FIELD(ctl_word, 21, 4);  // right register
-        unsigned width      = FIELD(ctl_word, 13, 8);  // right opcode
-        unsigned repeat     = FIELD(ctl_word, 1, 12);  // right address (short)
-#if 0
-        if (TRACE_E64) {
-            printf("*** E64  %05o-%05o  format=%u offset=%u", start_addr, end_addr, format, offset);
-            if (digits)
-                printf(" digits=%d", digits);
-            if (width)
-                printf(" width=%d", width);
-            if (repeat)
-                printf(" repeat=%d", repeat);
-            if (final_skip)
-                printf(" final=%#o", final_skip);
-            printf("\n");
-        }
-#endif
+        unsigned format = ctl.field.format;
+        unsigned offset = ctl.field.offset;
+        unsigned digits = ctl.field.digits;
+        bool     finish = ctl.field.finish;
+        unsigned skip   = ctl.field.skip;
+        unsigned width  = ctl.field.width;
+        unsigned repeat = ctl.field.repeat1;
+
         bool need_newline = true;
         switch (format) {
         case 0:
             // Text in GOST encoding.
-            if (TRACE_E64) {
-                print_text_debug(start_addr, end_addr, 0, offset);
-            }
             start_addr = e64_print_gost(start_addr, end_addr, line, offset, &need_newline);
             break;
 
@@ -723,17 +543,13 @@ void Processor::e64()
 
         case 4:
             // Text in ITM encoding.
-            if (TRACE_E64) {
-                print_text_debug(start_addr, end_addr, 1, offset);
-            }
             start_addr = e64_print_itm(start_addr, end_addr, line, offset);
             break;
         }
 
-        if (final_skip & 8) {
-            final_skip &= 7;
-            if (line_flush(line) || (need_newline && !final_skip))
-                ++final_skip;
+        if (finish) {
+            if (line_flush(line) || (need_newline && !skip))
+                ++skip;
 
             if (end_addr && start_addr <= end_addr) {
                 // Repeat printing task until all data expired.
@@ -741,7 +557,7 @@ void Processor::e64()
                 continue;
             }
 
-            while (final_skip-- > 0)
+            while (skip-- > 0)
                 std::cout << std::endl;
             break;
         }

@@ -31,6 +31,7 @@
 #include "disk.h"
 #include "drum.h"
 #include "processor.h"
+#include "gost10859.h"
 
 class Machine {
 private:
@@ -69,6 +70,7 @@ private:
     // Trace modes.
     static bool debug_instructions; // trace machine instuctions
     static bool debug_extracodes;   // trace extracodes (except e75)
+    static bool debug_print;        // trace extracode e64
     static bool debug_registers;    // trace CPU registers
     static bool debug_memory;       // trace memory read/write
     static bool debug_fetch;        // trace instruction fetch
@@ -120,7 +122,7 @@ public:
     static void close_trace();
     static bool trace_enabled()
     {
-        return debug_instructions | debug_extracodes | debug_registers | debug_memory | debug_fetch;
+        return debug_instructions | debug_extracodes | debug_print | debug_registers | debug_memory | debug_fetch;
     }
 
     // Emit trace to this stream.
@@ -199,10 +201,17 @@ public:
             print_e70(info);
     }
 
+    void trace_e64(const E64_Info &info, unsigned start_addr, unsigned end_addr)
+    {
+        if (debug_print)
+            print_e64(info, start_addr, end_addr);
+    }
+
     static void print_exception(const char *message);
     static void print_fetch(unsigned addr, Word val);
     static void print_memory_access(unsigned addr, Word val, const char *opname);
     static void print_e70(const E70_Info &info);
+    void print_e64(const E64_Info &info, unsigned start_addr, unsigned end_addr);
 };
 
 #endif // DUBNA_MACHINE_H

@@ -1,6 +1,11 @@
 //
 // Extracode 064 - text output.
 //
+// For details, see:
+//   1) Pages 34-36 of book "Операционная система Диспак для БЭСМ-6"
+//      https://github.com/besm6/besm6.github.io/raw/master/doc/%D0%9E%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D0%B0%D1%8F-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0-%D0%94%D0%98%D0%A1%D0%9F%D0%90%D0%9A.pdf
+//   2) https://github.com/besm6/besm6.github.io/blob/master/wiki/extracodes.txt
+//
 // Copyright (c) 2023 Serge Vakulenko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy

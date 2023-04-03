@@ -36,54 +36,76 @@
 #include "gost10859.h"
 #include "machine.h"
 
-static int line_flush(unsigned char *line)
+//
+// Width of the printed line.
+//
+static const unsigned LINE_WIDTH = 128;
+
+//
+// If the line is non-blank - print it to stdout.
+// Erase it (fill with spaces) and return 1.
+// If line is empty (all spaces) - return 0.
+//
+static int line_flush(std::string &line)
 {
-    int i;
+    int limit;
 
-    for (i = 127; i >= 0; --i)
-        if (line[i] != GOST_SPACE)
+    for (limit = line.size() - 1; limit >= 0; --limit) {
+        if (line[limit] != GOST_SPACE)
             break;
+    }
 
-    if (i < 0)
+    if (limit < 0) {
+        // Nothing to print.
         return 0;
+    }
 
-    gost_write(line, i + 1);
-    memset(line, GOST_SPACE, i + 1);
+    gost_write(line, limit);
+    std::fill(line.begin(), line.end(), GOST_SPACE);
     return 1;
 }
 
-static void print_char(unsigned char *line, int *pos, int sym)
+//
+// Print one character at a given position.
+// Update the position.
+//
+static void print_char(std::string &line, int &position, int sym)
 {
-    if (*pos == 128) {
+    if (position >= LINE_WIDTH) {
         line_flush(line);
         std::cout << std::endl;
+        position = 0;
     }
-    line[(*pos) & 127] = sym;
-    ++(*pos);
+    line[position] = sym;
+    position += 1;
 }
 
-static void print_opcode1(unsigned char *line, int *pos, unsigned cmd)
+//
+// Print machine instruction at a given position.
+// Update the position.
+//
+static void print_opcode1(std::string &line, int &position, unsigned cmd)
 {
-    print_char(line, pos, cmd >> 23 & 1);
-    print_char(line, pos, cmd >> 20 & 7);
-    print_char(line, pos, GOST_SPACE);
+    print_char(line, position, cmd >> 23 & 1);
+    print_char(line, position, cmd >> 20 & 7);
+    print_char(line, position, GOST_SPACE);
     if (cmd & 02000000) {
         // long address command
-        print_char(line, pos, cmd >> 18 & 3);
-        print_char(line, pos, cmd >> 15 & 7);
-        print_char(line, pos, GOST_SPACE);
-        print_char(line, pos, cmd >> 12 & 7);
+        print_char(line, position, cmd >> 18 & 3);
+        print_char(line, position, cmd >> 15 & 7);
+        print_char(line, position, GOST_SPACE);
+        print_char(line, position, cmd >> 12 & 7);
     } else {
         // short address command
-        print_char(line, pos, cmd >> 18 & 1);
-        print_char(line, pos, cmd >> 15 & 7);
-        print_char(line, pos, cmd >> 12 & 7);
-        print_char(line, pos, GOST_SPACE);
+        print_char(line, position, cmd >> 18 & 1);
+        print_char(line, position, cmd >> 15 & 7);
+        print_char(line, position, cmd >> 12 & 7);
+        print_char(line, position, GOST_SPACE);
     }
-    print_char(line, pos, cmd >> 9 & 7);
-    print_char(line, pos, cmd >> 6 & 7);
-    print_char(line, pos, cmd >> 3 & 7);
-    print_char(line, pos, cmd & 7);
+    print_char(line, position, cmd >> 9 & 7);
+    print_char(line, position, cmd >> 6 & 7);
+    print_char(line, position, cmd >> 3 & 7);
+    print_char(line, position, cmd & 7);
 }
 
 //
@@ -91,26 +113,26 @@ static void print_opcode1(unsigned char *line, int *pos, unsigned cmd)
 // Return value in range 0.1 - 0.9(9).
 // Input value must be nonzero positive.
 //
-static double real_exponent(double value, int *exponent)
+static double real_exponent(double value, int &exponent)
 {
-    *exponent = 0;
+    exponent = 0;
     if (value <= 0)
         return 0; // cannot happen
 
     while (value >= 1000000) {
-        *exponent += 6;
+        exponent += 6;
         value /= 1000000;
     }
     while (value >= 1) {
-        ++*exponent;
+        ++exponent;
         value /= 10;
     }
     while (value < 0.0000001) {
-        *exponent -= 6;
+        exponent -= 6;
         value *= 1000000;
     }
     while (value < 0.1) {
-        --*exponent;
+        --exponent;
         value *= 10;
     }
     return value;
@@ -120,7 +142,7 @@ static double real_exponent(double value, int *exponent)
 // Print string in ITM format.
 // Return next data address.
 //
-unsigned Processor::e64_print_itm(unsigned addr0, unsigned addr1, unsigned char *line, int pos)
+unsigned Processor::e64_print_itm(unsigned addr0, unsigned addr1, std::string &line, int position)
 {
     BytePointer bp(memory, addr0);
     uint8_t lastc = GOST_SPACE;
@@ -132,7 +154,7 @@ unsigned Processor::e64_print_itm(unsigned addr0, unsigned addr1, unsigned char 
         }
 
         // No space left on the line.
-        if (pos == 128) {
+        if (position == LINE_WIDTH) {
             if (!addr1) {
                 if (bp.byte_index) {
                     ++bp.word_addr;
@@ -141,7 +163,7 @@ unsigned Processor::e64_print_itm(unsigned addr0, unsigned addr1, unsigned char 
             }
             line_flush(line);
             std::cout << std::endl;
-            pos = 0;
+            position = 0;
         }
 
         uint8_t c = bp.get_byte();
@@ -153,27 +175,27 @@ unsigned Processor::e64_print_itm(unsigned addr0, unsigned addr1, unsigned char 
             return bp.word_addr;
 
         case 040: // blank
-            line[pos++] = GOST_SPACE;
+            line[position++] = GOST_SPACE;
             break;
 
         case 0173: // repeat last symbol
             c = bp.get_byte();
             if (c == 040) {
                 // fill line by last symbol (?)
-                memset(line, lastc, 128);
+                std::fill(line.begin(), line.end(), lastc);
                 line_flush(line);
                 std::cout << std::endl;
-                pos = 0;
+                position = 0;
             } else {
                 while (c-- & 017) {
-                    line[pos++] = lastc;
+                    line[position++] = lastc;
                 }
             }
             break;
 
         default:
-            lastc       = itm_to_gost[c];
-            line[pos++] = lastc;
+            lastc            = itm_to_gost[c];
+            line[position++] = lastc;
             break;
         }
     }
@@ -184,7 +206,7 @@ unsigned Processor::e64_print_itm(unsigned addr0, unsigned addr1, unsigned char 
 // Print word(s) in octal format.
 // Return next data address.
 //
-unsigned Processor::e64_print_octal(unsigned addr0, unsigned addr1, unsigned char *line, int pos,
+unsigned Processor::e64_print_octal(unsigned addr0, unsigned addr1, std::string &line, int position,
                                     int digits, int width, int repeat)
 {
     if (digits > 16) {
@@ -197,7 +219,7 @@ unsigned Processor::e64_print_octal(unsigned addr0, unsigned addr1, unsigned cha
         }
 
         // No space left on the line.
-        if (pos >= 128) {
+        if (position >= LINE_WIDTH) {
             if (!addr1) {
                 return 0;
             }
@@ -208,7 +230,7 @@ unsigned Processor::e64_print_octal(unsigned addr0, unsigned addr1, unsigned cha
 
         word <<= 64 - digits * 3;
         for (int i = 0; i < digits; ++i) {
-            print_char(line, &pos, (int)(word >> 61) & 7);
+            print_char(line, position, (int)(word >> 61) & 7);
             word <<= 3;
         }
 
@@ -217,7 +239,7 @@ unsigned Processor::e64_print_octal(unsigned addr0, unsigned addr1, unsigned cha
         }
         --repeat;
         if (width) {
-            pos += width - digits;
+            position += width - digits;
         }
     }
     return 0;
@@ -227,7 +249,7 @@ unsigned Processor::e64_print_octal(unsigned addr0, unsigned addr1, unsigned cha
 // Print CPU instruction(s).
 // Return next data address.
 //
-unsigned Processor::e64_print_opcode(unsigned addr0, unsigned addr1, unsigned char *line, int pos,
+unsigned Processor::e64_print_opcode(unsigned addr0, unsigned addr1, std::string &line, int position,
                                      int width, int repeat)
 {
     while (addr0) {
@@ -237,7 +259,7 @@ unsigned Processor::e64_print_opcode(unsigned addr0, unsigned addr1, unsigned ch
         }
 
         // No space left on the line.
-        if (pos >= 128) {
+        if (position >= LINE_WIDTH) {
             if (!addr1) {
                 return 0;
             }
@@ -248,16 +270,16 @@ unsigned Processor::e64_print_opcode(unsigned addr0, unsigned addr1, unsigned ch
         unsigned b = word & BITS(24);
         ++addr0;
 
-        print_opcode1(line, &pos, a);
-        print_char(line, &pos, GOST_SPACE);
-        print_opcode1(line, &pos, b);
+        print_opcode1(line, position, a);
+        print_char(line, position, GOST_SPACE);
+        print_opcode1(line, position, b);
 
         if (!repeat) {
             return addr0;
         }
         --repeat;
         if (width) {
-            pos += width - 23;
+            position += width - 23;
         }
     }
     return 0;
@@ -267,7 +289,7 @@ unsigned Processor::e64_print_opcode(unsigned addr0, unsigned addr1, unsigned ch
 // Print real number(s).
 // Return next data address.
 //
-unsigned Processor::e64_print_real(unsigned addr0, unsigned addr1, unsigned char *line, int pos,
+unsigned Processor::e64_print_real(unsigned addr0, unsigned addr1, std::string &line, int position,
                                    int digits, int width, int repeat)
 {
     if (digits > 20) {
@@ -280,7 +302,7 @@ unsigned Processor::e64_print_real(unsigned addr0, unsigned addr1, unsigned char
         }
 
         // No space left on the line.
-        if (pos >= 128) {
+        if (position >= LINE_WIDTH) {
             if (!addr1) {
                 return 0;
             }
@@ -289,45 +311,43 @@ unsigned Processor::e64_print_real(unsigned addr0, unsigned addr1, unsigned char
 
         Word word     = machine.mem_load(addr0);
         bool negative = (word & BIT41);
-        double value;
-        int exponent;
-        if ((word & ~BIT41) == 0) {
-            value    = 0;
-            exponent = 0;
-        } else {
+        double value = 0;
+        int exponent = 0;
+        if (word & ~BIT41) {
+            // Value is non-zero.
             value = besm6_to_ieee(word);
             if (value < 0) {
                 value = -value;
             }
-            value = real_exponent(value, &exponent);
+            value = real_exponent(value, exponent);
         }
         ++addr0;
 
-        print_char(line, &pos, GOST_SPACE);
-        print_char(line, &pos, negative ? GOST_MINUS : GOST_PLUS);
+        print_char(line, position, GOST_SPACE);
+        print_char(line, position, negative ? GOST_MINUS : GOST_PLUS);
 
         for (int i = 0; i < digits - 4; ++i) {
             value     = value * 10;
             int digit = (int)value;
-            print_char(line, &pos, digit);
+            print_char(line, position, digit);
             value -= digit;
         }
-        print_char(line, &pos, GOST_LOWER_TEN);
+        print_char(line, position, GOST_LOWER_TEN);
         if (exponent >= 0) {
-            print_char(line, &pos, GOST_PLUS);
+            print_char(line, position, GOST_PLUS);
         } else {
-            print_char(line, &pos, GOST_MINUS);
+            print_char(line, position, GOST_MINUS);
             exponent = -exponent;
         }
-        print_char(line, &pos, exponent / 10);
-        print_char(line, &pos, exponent % 10);
+        print_char(line, position, exponent / 10);
+        print_char(line, position, exponent % 10);
 
         if (!repeat) {
             return addr0;
         }
         --repeat;
         if (width) {
-            pos += width - digits - 2;
+            position += width - digits - 2;
         }
     }
     return 0;
@@ -336,9 +356,10 @@ unsigned Processor::e64_print_real(unsigned addr0, unsigned addr1, unsigned char
 //
 // Print string in GOST format.
 // Return next data address.
+// Update the need_newline flag.
 //
-unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1, unsigned char *line, int pos,
-                                   bool *need_newline)
+unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1, std::string &line, int position,
+                                   bool &need_newline)
 {
     BytePointer bp(memory, addr0);
     unsigned char last_ch = GOST_SPACE;
@@ -356,30 +377,30 @@ unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1, unsigned char
         case GOST_EOF:
         case GOST_END_OF_INFORMATION:
         case 0231:
-            if (pos == 0 || pos == 128)
-                *need_newline = false;
+            if (position == 0 || position == LINE_WIDTH)
+                need_newline = false;
             if (bp.byte_index != 0)
                 ++bp.word_addr;
             return bp.word_addr;
         case 0201: // new page
-            if (pos) {
+            if (position) {
                 line_flush(line);
-                pos = 0;
+                position = 0;
             }
             if (!isatty(1)) {
                 std::cout << '\f';
             }
-            line[pos++] = GOST_SPACE;
+            line[position++] = GOST_SPACE;
             break;
         case GOST_CARRIAGE_RETURN:
         case GOST_NEWLINE:
-            if (pos == 128) {
-                pos = 0;
+            if (position == LINE_WIDTH) {
+                position = 0;
                 break;
             }
-            if (pos) {
+            if (position) {
                 line_flush(line);
-                pos = 0;
+                position = 0;
             }
             std::cout << std::endl;
             break;
@@ -389,22 +410,22 @@ unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1, unsigned char
         case GOST_SET_POSITION:
         case 0200: // set position
             ch  = bp.get_byte();
-            pos = ch % 128;
+            position = ch % LINE_WIDTH;
             break;
         case 0174:
         case 0265: // repeat last symbol
             ch = bp.get_byte();
             if (ch == 040) {
                 // fill line by last symbol (?)
-                memset(line, last_ch, 128);
+                std::fill(line.begin(), line.end(), last_ch);
                 line_flush(line);
                 std::cout << std::endl;
-                pos = 0;
+                position = 0;
             } else {
                 while (ch-- & 017) {
-                    if (line[pos] == GOST_SPACE)
-                        line[pos] = last_ch;
-                    ++pos;
+                    if (line[position] == GOST_SPACE)
+                        line[position] = last_ch;
+                    ++position;
                 }
             }
             break;
@@ -413,25 +434,25 @@ unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1, unsigned char
             ch = GOST_SPACE;
             // fall through...
         default:
-            if (pos == 128) {
+            if (position == LINE_WIDTH) {
                 if (addr1) {
-                    pos = 0;
+                    position = 0;
                 } else {
                     // No space left on the line.
-                    *need_newline = false;
+                    need_newline = false;
                     if (bp.byte_index != 0)
                         ++bp.word_addr;
                     return bp.word_addr;
                 }
             }
-            if (line[pos] != GOST_SPACE) {
+            if (line[position] != GOST_SPACE) {
                 line_flush(line);
                 std::cout << std::endl;
             }
-            line[pos] = ch;
+            line[position] = ch;
             last_ch   = ch;
-            ++pos;
-            if (pos == 128) {
+            ++position;
+            if (position == LINE_WIDTH) {
                 // No space left on the line.
                 line_flush(line);
                 std::cout << std::endl;
@@ -496,9 +517,10 @@ void Processor::e64()
         throw Processor::Exception("Bad start_addr in extracode e64");
     }
 
+    // Create a line buffer, initialize with spaces.
+    std::string line(LINE_WIDTH, GOST_SPACE);
+
     // Execute every format word in order.
-    unsigned char line[256];
-    memset(line, GOST_SPACE, sizeof(line));
     for (;;) {
         // Get next control word.
         ctl_addr++;
@@ -523,7 +545,7 @@ void Processor::e64()
         switch (format) {
         case 0:
             // Text in GOST encoding.
-            start_addr = e64_print_gost(start_addr, end_addr, line, offset, &need_newline);
+            start_addr = e64_print_gost(start_addr, end_addr, line, offset, need_newline);
             break;
 
         case 1:

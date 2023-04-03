@@ -27,7 +27,7 @@
 // Write GOST-10859 string to stdout.
 // Convert to local encoding UTF-8.
 //
-void gost_write(unsigned char *line, unsigned n);
+void gost_write(const std::string &line, unsigned limit);
 
 //
 // Convert character in GOST-10859 encoding to Unicode.

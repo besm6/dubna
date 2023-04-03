@@ -75,10 +75,10 @@ unsigned gost_to_unicode(unsigned char ch)
 // Write GOST-10859 string to stdout.
 // Convert to local encoding UTF-8.
 //
-void gost_write(unsigned char *line, unsigned n)
+void gost_write(const std::string &line, unsigned limit)
 {
-    while (n-- > 0) {
-        unsigned ch = gost_to_unicode(*line++);
+    for (unsigned i = 0; i <= limit; i++) {
+        unsigned ch = gost_to_unicode(line[i]);
         if (!ch)
             ch = ' ';
         utf8_putc(ch);

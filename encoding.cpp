@@ -385,7 +385,7 @@ std::string utf8_to_koi7(const std::string &input)
 /*
  * Encoding of ITM autocode.
  * Documentation:
- * http://besm6.googlegroups.com/web/%D0%90%D0%B2%D1%82%D0%BE%D0%BA%D0%BE%D0%B4-%D0%91%D0%AD%D0%A1%D0%9C6-%D0%B8%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D0%B8%D1%8F.pdf
+ * https://github.com/besm6/besm6.github.io/raw/master/doc/%D0%90%D0%B2%D1%82%D0%BE%D0%BA%D0%BE%D0%B4-%D0%A7%D0%B0%D0%B9%D0%BA%D0%BE%D0%B2%D1%81%D0%BA%D0%BE%D0%B3%D0%BE.pdf
  */
 const unsigned char itm_to_gost[256] = {
     // clang-format off

@@ -43,10 +43,10 @@ static const unsigned LINE_WIDTH = 128;
 
 //
 // If the line is non-blank - print it to stdout.
-// Erase it (fill with spaces) and return 1.
-// If line is empty (all spaces) - return 0.
+// Erase it (fill with spaces) and return true.
+// If line is empty (all spaces) - return false.
 //
-static int line_flush(std::string &line)
+static bool line_flush(std::string &line)
 {
     int limit;
 
@@ -57,19 +57,19 @@ static int line_flush(std::string &line)
 
     if (limit < 0) {
         // Nothing to print.
-        return 0;
+        return false;
     }
 
     gost_write(line, limit);
     std::fill(line.begin(), line.end(), GOST_SPACE);
-    return 1;
+    return true;
 }
 
 //
 // Print one character at a given position.
 // Update the position.
 //
-static void print_char(std::string &line, int &position, int sym)
+static void print_char(std::string &line, unsigned &position, int sym)
 {
     if (position >= LINE_WIDTH) {
         line_flush(line);
@@ -84,7 +84,7 @@ static void print_char(std::string &line, int &position, int sym)
 // Print machine instruction at a given position.
 // Update the position.
 //
-static void print_opcode1(std::string &line, int &position, unsigned cmd)
+static void print_opcode1(std::string &line, unsigned &position, unsigned cmd)
 {
     print_char(line, position, cmd >> 23 & 1);
     print_char(line, position, cmd >> 20 & 7);
@@ -142,7 +142,7 @@ static double real_exponent(double value, int &exponent)
 // Print string in ITM format.
 // Return next data address.
 //
-unsigned Processor::e64_print_itm(unsigned addr0, unsigned addr1, std::string &line, int position)
+unsigned Processor::e64_print_itm(unsigned addr0, unsigned addr1, std::string &line, unsigned position)
 {
     BytePointer bp(memory, addr0);
     uint8_t lastc = GOST_SPACE;
@@ -206,8 +206,8 @@ unsigned Processor::e64_print_itm(unsigned addr0, unsigned addr1, std::string &l
 // Print word(s) in octal format.
 // Return next data address.
 //
-unsigned Processor::e64_print_octal(unsigned addr0, unsigned addr1, std::string &line, int position,
-                                    int digits, int width, int repeat)
+unsigned Processor::e64_print_octal(unsigned addr0, unsigned addr1, std::string &line, unsigned position,
+                                    unsigned digits, unsigned width, unsigned repeat)
 {
     if (digits > 16) {
         digits = 16;
@@ -229,7 +229,7 @@ unsigned Processor::e64_print_octal(unsigned addr0, unsigned addr1, std::string 
         ++addr0;
 
         word <<= 64 - digits * 3;
-        for (int i = 0; i < digits; ++i) {
+        for (unsigned i = 0; i < digits; ++i) {
             print_char(line, position, (int)(word >> 61) & 7);
             word <<= 3;
         }
@@ -238,7 +238,7 @@ unsigned Processor::e64_print_octal(unsigned addr0, unsigned addr1, std::string 
             return addr0;
         }
         --repeat;
-        if (width) {
+        if (width > digits) {
             position += width - digits;
         }
     }
@@ -249,8 +249,8 @@ unsigned Processor::e64_print_octal(unsigned addr0, unsigned addr1, std::string 
 // Print CPU instruction(s).
 // Return next data address.
 //
-unsigned Processor::e64_print_opcode(unsigned addr0, unsigned addr1, std::string &line, int position,
-                                     int width, int repeat)
+unsigned Processor::e64_print_opcode(unsigned addr0, unsigned addr1, std::string &line, unsigned position,
+                                     unsigned width, unsigned repeat)
 {
     while (addr0) {
         // No data to print.
@@ -278,7 +278,7 @@ unsigned Processor::e64_print_opcode(unsigned addr0, unsigned addr1, std::string
             return addr0;
         }
         --repeat;
-        if (width) {
+        if (width > 23) {
             position += width - 23;
         }
     }
@@ -289,11 +289,14 @@ unsigned Processor::e64_print_opcode(unsigned addr0, unsigned addr1, std::string
 // Print real number(s).
 // Return next data address.
 //
-unsigned Processor::e64_print_real(unsigned addr0, unsigned addr1, std::string &line, int position,
-                                   int digits, int width, int repeat)
+unsigned Processor::e64_print_real(unsigned addr0, unsigned addr1, std::string &line, unsigned position,
+                                   unsigned digits, unsigned width, unsigned repeat)
 {
     if (digits > 20) {
         digits = 20;
+    }
+    if (digits < 4) {
+        digits = 4;
     }
     while (addr0) {
         // No data to print.
@@ -326,7 +329,7 @@ unsigned Processor::e64_print_real(unsigned addr0, unsigned addr1, std::string &
         print_char(line, position, GOST_SPACE);
         print_char(line, position, negative ? GOST_MINUS : GOST_PLUS);
 
-        for (int i = 0; i < digits - 4; ++i) {
+        for (unsigned i = 0; i < digits - 4; ++i) {
             value     = value * 10;
             int digit = (int)value;
             print_char(line, position, digit);
@@ -346,7 +349,7 @@ unsigned Processor::e64_print_real(unsigned addr0, unsigned addr1, std::string &
             return addr0;
         }
         --repeat;
-        if (width) {
+        if (width > digits + 2) {
             position += width - digits - 2;
         }
     }
@@ -358,7 +361,7 @@ unsigned Processor::e64_print_real(unsigned addr0, unsigned addr1, std::string &
 // Return next data address.
 // Update the need_newline flag.
 //
-unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1, std::string &line, int position,
+unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1, std::string &line, unsigned position,
                                    bool &need_newline)
 {
     BytePointer bp(memory, addr0);

@@ -106,15 +106,15 @@ private:
     void e72();
     void e75();
     void e76();
-    unsigned e64_print_gost(unsigned addr0, unsigned addr1, std::string &line, int pos,
+    unsigned e64_print_gost(unsigned addr0, unsigned addr1, std::string &line, unsigned position,
                             bool &need_newline);
-    unsigned e64_print_octal(unsigned addr0, unsigned addr1, std::string &line, int pos,
-                             int digits, int width, int repeat);
-    unsigned e64_print_opcode(unsigned addr0, unsigned addr1, std::string &line, int pos,
-                              int width, int repeat);
-    unsigned e64_print_real(unsigned addr0, unsigned addr1, std::string &line, int pos, int digits,
-                            int width, int repeat);
-    unsigned e64_print_itm(unsigned addr0, unsigned addr1, std::string &line, int pos);
+    unsigned e64_print_octal(unsigned addr0, unsigned addr1, std::string &line, unsigned position,
+                             unsigned digits, unsigned width, unsigned repeat);
+    unsigned e64_print_opcode(unsigned addr0, unsigned addr1, std::string &line, unsigned position,
+                              unsigned width, unsigned repeat);
+    unsigned e64_print_real(unsigned addr0, unsigned addr1, std::string &line, unsigned position,
+                            unsigned digits, unsigned width, unsigned repeat);
+    unsigned e64_print_itm(unsigned addr0, unsigned addr1, std::string &line, unsigned position);
 
 public:
     // Exception for unexpected situations.

@@ -334,10 +334,11 @@ void Machine::print_e64(const E64_Info &info, unsigned start_addr, unsigned end_
             out << "Hex";
             break;
         default:
-            out << "Unknown(" << info.field.format << ')';
+            out << "Unknown";
             break;
     }
-    out << ' ' << std::oct << std::setfill('0') << std::setw(5) << start_addr
+    out << '(' << info.field.format
+        << ") " << std::oct << std::setfill('0') << std::setw(5) << start_addr
         << '-' << std::setfill('0') << std::setw(5) << end_addr
         << " offset=" << std::dec << info.field.offset;
     if (info.field.digits)
@@ -352,7 +353,7 @@ void Machine::print_e64(const E64_Info &info, unsigned start_addr, unsigned end_
         out << " finish";
     out << std::endl;
 
-    if (info.field.format == 0 || info.field.format == 4) {
+    if ((info.field.format & 3) == 0) {
         // Text in Gost or ITM encoding.
         int pos = info.field.offset;
         BytePointer bp(memory, start_addr);
@@ -368,6 +369,7 @@ void Machine::print_e64(const E64_Info &info, unsigned start_addr, unsigned end_
 
             switch (info.field.format) {
             case 0:
+            case 8:
                 //
                 // Gost encoding.
                 //
@@ -412,6 +414,7 @@ void Machine::print_e64(const E64_Info &info, unsigned start_addr, unsigned end_
                 }
                 break;
             case 4:
+            case 12:
                 //
                 // ITM endcoding.
                 //

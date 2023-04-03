@@ -143,8 +143,8 @@ std::string encode_cosy(std::string line);
 //
 #define ONEBIT(n)      (1ULL << (n - 1))             // один бит, от 1 до 64
 #define BITS(n)        ((uint64_t)~0ULL >> (64 - n)) // маска битов n..1
-#define ADDR(x)        ((x) & BITS(15))              // адрес слова
-#define FIELD(x, n, w) (((x) >> (n - 1)) & BITS(w))  // поле шириной w бит, начиная с бита n
+#define ADDR(x)        ((x)&BITS(15))                // адрес слова
+#define FIELD(x, n, w) (((x) >> (n - 1)) & BITS(w)) // поле шириной w бит, начиная с бита n
 
 #define BIT40  0'0010'0000'0000'0000LL // 40-й бит - старший разряд мантиссы
 #define BIT41  0'0020'0000'0000'0000LL // 41-й бит - знак

@@ -115,6 +115,8 @@ private:
     unsigned e64_print_real(unsigned addr0, unsigned addr1, std::string &line, unsigned position,
                             unsigned digits, unsigned width, unsigned repeat);
     unsigned e64_print_itm(unsigned addr0, unsigned addr1, std::string &line, unsigned position);
+    unsigned e64_print_hex(unsigned addr0, unsigned addr1, std::string &line, unsigned position,
+                           unsigned digits, unsigned width, unsigned repeat);
 
 public:
     // Exception for unexpected situations.

@@ -305,12 +305,37 @@ void Machine::print_e64(const E64_Info &info, unsigned start_addr, unsigned end_
 
     out << "      Print ";
     switch (info.field.format) {
-        case 0: out << "Text"; break;
-        case 1: out << "Instruction"; break;
-        case 2: out << "Octal"; break;
-        case 3: out << "Real"; break;
-        case 4: out << "ITM"; break;
-        default: out << "Unknown(" << info.field.format << ')'; break;
+        case 0:
+        case 8:
+            out << "Text";
+            break;
+        case 1:
+        case 5:
+        case 9:
+        case 13:
+            out << "Instruction";
+            break;
+        case 2:
+        case 10:
+            out << "Octal";
+            break;
+        case 3:
+        case 11:
+            out << "Real";
+            break;
+        case 4:
+        case 12:
+            out << "ITM";
+            break;
+        case 6:
+        case 7:
+        case 14:
+        case 15:
+            out << "Hex";
+            break;
+        default:
+            out << "Unknown(" << info.field.format << ')';
+            break;
     }
     out << ' ' << std::oct << std::setfill('0') << std::setw(5) << start_addr
         << '-' << std::setfill('0') << std::setw(5) << end_addr

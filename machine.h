@@ -30,8 +30,8 @@
 
 #include "disk.h"
 #include "drum.h"
-#include "processor.h"
 #include "gost10859.h"
+#include "processor.h"
 
 class Machine {
 private:
@@ -122,7 +122,8 @@ public:
     static void close_trace();
     static bool trace_enabled()
     {
-        return debug_instructions | debug_extracodes | debug_print | debug_registers | debug_memory | debug_fetch;
+        return debug_instructions | debug_extracodes | debug_print | debug_registers |
+               debug_memory | debug_fetch;
     }
 
     // Emit trace to this stream.

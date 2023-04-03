@@ -29,8 +29,8 @@
 #include <unistd.h>
 
 #include <cstring>
-#include <iostream>
 #include <iomanip>
+#include <iostream>
 
 #include "encoding.h"
 #include "gost10859.h"
@@ -142,7 +142,8 @@ static double real_exponent(double value, int &exponent)
 // Print string in ITM format.
 // Return next data address.
 //
-unsigned Processor::e64_print_itm(unsigned addr0, unsigned addr1, std::string &line, unsigned position)
+unsigned Processor::e64_print_itm(unsigned addr0, unsigned addr1, std::string &line,
+                                  unsigned position)
 {
     BytePointer bp(memory, addr0);
     uint8_t lastc = GOST_SPACE;
@@ -206,8 +207,9 @@ unsigned Processor::e64_print_itm(unsigned addr0, unsigned addr1, std::string &l
 // Print word(s) in octal format.
 // Return next data address.
 //
-unsigned Processor::e64_print_octal(unsigned addr0, unsigned addr1, std::string &line, unsigned position,
-                                    unsigned digits, unsigned width, unsigned repeat)
+unsigned Processor::e64_print_octal(unsigned addr0, unsigned addr1, std::string &line,
+                                    unsigned position, unsigned digits, unsigned width,
+                                    unsigned repeat)
 {
     if (digits > 16) {
         digits = 16;
@@ -246,11 +248,61 @@ unsigned Processor::e64_print_octal(unsigned addr0, unsigned addr1, std::string 
 }
 
 //
+// Print word(s) in hexadecimal format.
+// Return next data address.
+//
+unsigned Processor::e64_print_hex(unsigned addr0, unsigned addr1, std::string &line,
+                                  unsigned position, unsigned digits, unsigned width,
+                                  unsigned repeat)
+{
+    static const char hex_digit[16] = {
+        GOST_0, GOST_1, GOST_2, GOST_3, GOST_4, GOST_5, GOST_6, GOST_7,
+        GOST_8, GOST_9, GOST_A, GOST_B, GOST_C, GOST_D, GOST_E, GOST_F,
+    };
+
+    if (digits > 12) {
+        digits = 12;
+    }
+    while (addr0) {
+        // No data to print.
+        if (addr1 && addr0 == addr1 + 1) {
+            return addr0;
+        }
+
+        // No space left on the line.
+        if (position >= LINE_WIDTH) {
+            if (!addr1) {
+                return 0;
+            }
+            return addr0;
+        }
+        Word word = machine.mem_load(addr0);
+        ++addr0;
+
+        word <<= 64 - digits * 4;
+        for (unsigned i = 0; i < digits; ++i) {
+            char ch = hex_digit[(word >> 60) & 15];
+            print_char(line, position, ch);
+            word <<= 4;
+        }
+
+        if (!repeat) {
+            return addr0;
+        }
+        --repeat;
+        if (width > digits) {
+            position += width - digits;
+        }
+    }
+    return 0;
+}
+
+//
 // Print CPU instruction(s).
 // Return next data address.
 //
-unsigned Processor::e64_print_opcode(unsigned addr0, unsigned addr1, std::string &line, unsigned position,
-                                     unsigned width, unsigned repeat)
+unsigned Processor::e64_print_opcode(unsigned addr0, unsigned addr1, std::string &line,
+                                     unsigned position, unsigned width, unsigned repeat)
 {
     while (addr0) {
         // No data to print.
@@ -289,8 +341,9 @@ unsigned Processor::e64_print_opcode(unsigned addr0, unsigned addr1, std::string
 // Print real number(s).
 // Return next data address.
 //
-unsigned Processor::e64_print_real(unsigned addr0, unsigned addr1, std::string &line, unsigned position,
-                                   unsigned digits, unsigned width, unsigned repeat)
+unsigned Processor::e64_print_real(unsigned addr0, unsigned addr1, std::string &line,
+                                   unsigned position, unsigned digits, unsigned width,
+                                   unsigned repeat)
 {
     if (digits > 20) {
         digits = 20;
@@ -314,8 +367,8 @@ unsigned Processor::e64_print_real(unsigned addr0, unsigned addr1, std::string &
 
         Word word     = machine.mem_load(addr0);
         bool negative = (word & BIT41);
-        double value = 0;
-        int exponent = 0;
+        double value  = 0;
+        int exponent  = 0;
         if (word & ~BIT41) {
             // Value is non-zero.
             value = besm6_to_ieee(word);
@@ -361,8 +414,8 @@ unsigned Processor::e64_print_real(unsigned addr0, unsigned addr1, std::string &
 // Return next data address.
 // Update the need_newline flag.
 //
-unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1, std::string &line, unsigned position,
-                                   bool &need_newline)
+unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1, std::string &line,
+                                   unsigned position, bool &need_newline)
 {
     BytePointer bp(memory, addr0);
     unsigned char last_ch = GOST_SPACE;
@@ -412,7 +465,7 @@ unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1, std::string &
             break;
         case GOST_SET_POSITION:
         case 0200: // set position
-            ch  = bp.get_byte();
+            ch       = bp.get_byte();
             position = ch % LINE_WIDTH;
             break;
         case 0174:
@@ -453,7 +506,7 @@ unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1, std::string &
                 std::cout << std::endl;
             }
             line[position] = ch;
-            last_ch   = ch;
+            last_ch        = ch;
             ++position;
             if (position == LINE_WIDTH) {
                 // No space left on the line.
@@ -510,8 +563,8 @@ void Processor::e64()
     E64_Pointer ptr;
     ptr.word = machine.mem_load(ctl_addr);
 
-    unsigned start_addr  = ADDR(ptr.field.start_addr + core.M[ptr.field.start_reg]);
-    unsigned end_addr    = ADDR(ptr.field.end_addr + core.M[ptr.field.end_reg]);
+    unsigned start_addr = ADDR(ptr.field.start_addr + core.M[ptr.field.start_reg]);
+    unsigned end_addr   = ADDR(ptr.field.end_addr + core.M[ptr.field.end_reg]);
     if (end_addr <= start_addr) {
         // No limit.
         end_addr = 0;
@@ -539,7 +592,7 @@ void Processor::e64()
         unsigned format = ctl.field.format;
         unsigned offset = ctl.field.offset;
         unsigned digits = ctl.field.digits;
-        bool     finish = ctl.field.finish;
+        bool finish     = ctl.field.finish;
         unsigned skip   = ctl.field.skip;
         unsigned width  = ctl.field.width;
         unsigned repeat = ctl.field.repeat1;
@@ -547,28 +600,43 @@ void Processor::e64()
         bool need_newline = true;
         switch (format) {
         case 0:
+        case 8:
             // Text in GOST encoding.
             start_addr = e64_print_gost(start_addr, end_addr, line, offset, need_newline);
             break;
 
         case 1:
+        case 5:
+        case 9:
+        case 13:
             // CPU instruction.
             start_addr = e64_print_opcode(start_addr, end_addr, line, offset, width, repeat);
             break;
 
         case 2:
+        case 10:
             // Octal number.
             start_addr = e64_print_octal(start_addr, end_addr, line, offset, digits, width, repeat);
             break;
 
         case 3:
+        case 11:
             // Real number.
             start_addr = e64_print_real(start_addr, end_addr, line, offset, digits, width, repeat);
             break;
 
         case 4:
+        case 12:
             // Text in ITM encoding.
             start_addr = e64_print_itm(start_addr, end_addr, line, offset);
+            break;
+
+        case 6:
+        case 7:
+        case 14:
+        case 15:
+            // Hexadecimal number.
+            start_addr = e64_print_hex(start_addr, end_addr, line, offset, digits, width, repeat);
             break;
         }
 

@@ -179,6 +179,7 @@ TEST_F(dubna_session, e64_trivial)
           ,*64 , octal
           ,*64 , real
           ,*64 , itm
+          ,*64 , hex
           ,*74 ,
  gost:    ,    , text
           ,    , text
@@ -208,6 +209,10 @@ TEST_F(dubna_session, e64_trivial)
  textitm: ,oct , 6310 0607 0371 0206
           ,oct , 4350 1622 4310 3213
           ,oct , 3000 0000 0000 0000
+ hex:     ,    , data
+          ,    , data
+        7 ,001 , 12         .hex numbers
+        8 ,    ,
           ,end ,
 *execute
 *end file

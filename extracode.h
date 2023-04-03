@@ -149,12 +149,12 @@ union E64_Info {
 
     struct {
         // Разряды 48-45 - формат печати:
-        //                 0 - текст;
-        //                 1 - команды;
-        //                 2 - восьмеричное целое;
-        //                 3 - машинное число с плавающей точкой;
-        //                 4 - текст в кодировке автокода ИТМ;
-        //                 7 - шестнадцатеричное целое;
+        //                 0,8 - текст в кодировке ГОСТ;
+        //                 1,5,9,13 - команды;
+        //                 2,10 - восьмеричное целое;
+        //                 3,11 - машинное число с плавающей точкой;
+        //                 4,12 - текст в кодировке автокода ИТМ;
+        //                 6,7,14,15 - шестнадцатеричное целое;
         // Разряды 43-37 - номер позиции (с нуля), начиная с которой
         //                 должна выдаваться информация по данному
         //                 информационному слову (`А`);
@@ -169,17 +169,17 @@ union E64_Info {
         // Разряды 7-1   - число элементов, печатаемых по данному
         //                 слову разметки, уменьшенное на единицу (`К-1`).
         //
-        unsigned repeat1 : 7;     // Repeat count (K) minus 1
-        unsigned _1 : 5;          // ---
-        unsigned width : 7;       // Interval between elements
-        unsigned _2 : 1;          // ---
-        unsigned skip : 3;        // Number of extra empty lines at the end
-        unsigned finish : 1;      // Flag of the final info word
-        unsigned digits : 7;      // Number of digits (L) to print
-        unsigned _3 : 5;          // ---
-        unsigned offset : 7;      // Position at which to start (A)
-        unsigned _4 : 1;          // ---
-        unsigned format : 4;      // Format of the output
+        unsigned repeat1 : 7; // Repeat count (K) minus 1
+        unsigned _1 : 5;      // ---
+        unsigned width : 7;   // Interval between elements
+        unsigned _2 : 1;      // ---
+        unsigned skip : 3;    // Number of extra empty lines at the end
+        unsigned finish : 1;  // Flag of the final info word
+        unsigned digits : 7;  // Number of digits (L) to print
+        unsigned _3 : 5;      // ---
+        unsigned offset : 7;  // Position at which to start (A)
+        unsigned _4 : 1;      // ---
+        unsigned format : 4;  // Format of the output
     } field;
 };
 

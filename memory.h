@@ -84,7 +84,7 @@ public:
             byte_index = 0;
             word_addr++;
         }
-        return (uint8_t) ch;
+        return (uint8_t)ch;
     }
 };
 

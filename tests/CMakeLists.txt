@@ -32,6 +32,7 @@ add_executable(unit_tests EXCLUDE_FROM_ALL
     machine_test.cpp
     cli_test.cpp
     session_test.cpp
+    e64_test.cpp
     util.cpp
 )
 gtest_discover_tests(unit_tests EXTRA_ARGS --gtest_repeat=1 PROPERTIES TIMEOUT 120)

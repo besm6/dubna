@@ -27,7 +27,7 @@
 
 #include "gost10859.h"
 
-static const bool GOST_LATIN = false; // default cyrillics
+static const bool GOST_LATIN = true; // default latin
 
 //
 // GOST-10859 encoding.

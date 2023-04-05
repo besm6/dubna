@@ -155,7 +155,7 @@ TEST_F(dubna_session, fortran)
 //
 // Try all formats of extracode 064.
 //
-TEST_F(dubna_session, e64_trivial)
+TEST_F(dubna_session, e64_simple)
 {
     // Format of e64 info:
     //
@@ -171,7 +171,7 @@ TEST_F(dubna_session, e64_trivial)
     //      width  - Interval between elements
     //      repeat - Repeat count (K) minus 1
     //
-    auto output = run_job_and_capture_output(R"(*name print trivial
+    auto output = run_job_and_capture_output(R"(*name print
 *assem
  program: ,name,
           ,*64 , gost
@@ -218,6 +218,322 @@ TEST_F(dubna_session, e64_trivial)
 *end file
 )");
 
-    auto expect = file_contents(TEST_DIR "/output_e64_trivial.expect");
+    auto expect = file_contents(TEST_DIR "/output_e64_simple.expect");
     check_output(output, expect);
+}
+
+TEST_F(dubna_session, e64_newline)
+{
+    auto output = run_job_and_capture_output(R"(*name print
+*no list
+*no load
+*assem
+ program: ,name,
+          ,*64 , info
+          ,*74 ,
+ info:    ,    , text
+          ,    , text
+        0 ,    ,
+        8 ,    ,
+ text:    ,gost, 2h'214''231' . newline end-of-text
+          ,end ,
+*execute
+*end file
+)");
+
+    // Isolated newline symbol.
+    static const std::string expect =
+        "";
+    check_program_output(output, expect);
+}
+
+TEST_F(dubna_session, DISABLED_e64_newpage)
+{
+    auto output = run_job_and_capture_output(R"(*name print
+*no list
+*no load
+*assem
+ program: ,name,
+          ,*64 , info
+          ,*74 ,
+ info:    ,    , text
+          ,    , text
+        0 ,    ,
+        8 ,    ,
+ text:    ,gost, 2h'201''231' . newpage end-of-text
+          ,end ,
+*execute
+*end file
+)");
+
+    // Isolated newpage symbol.
+    static const std::string expect =
+        "\f ";
+    check_program_output(output, expect);
+}
+
+TEST_F(dubna_session, e64_128chars)
+{
+    auto output = run_job_and_capture_output(R"(*name print
+*no list
+*no load
+*assem
+ program: ,name,
+          ,*64 , info
+          ,*74 ,
+ info:    ,    , text
+          ,    , text
+        0 ,    ,
+        8 ,    ,
+ text:    ,gost, 30h--------10--------20--------30
+          ,gost, 30h--------40--------50--------60
+          ,gost, 30h--------70--------80--------90
+          ,gost, 30h-------100-------110-------120
+          ,gost, 9h12345678'231' . end-of-text
+          ,end ,
+*execute
+*end file
+)");
+
+    // Exactly 128 characters in the line.
+    // Newline is added implicitly.
+    static const std::string expect =
+        "--------10--------20--------30--------40--------50--------60--------70--------80--------90-------100-------110-------12012345678";
+    check_program_output(output, expect);
+}
+
+TEST_F(dubna_session, e64_128chars_newline)
+{
+    auto output = run_job_and_capture_output(R"(*name print
+*no list
+*no load
+*assem
+ program: ,name,
+          ,*64 , info
+          ,*74 ,
+ info:    ,    , text
+          ,    , text
+        0 ,    ,
+        8 ,    ,
+ text:    ,gost, 30h--------10--------20--------30
+          ,gost, 30h--------40--------50--------60
+          ,gost, 30h--------70--------80--------90
+          ,gost, 30h-------100-------110-------120
+          ,gost, 10h12345678'214''231' . newline end-of-text
+          ,end ,
+*execute
+*end file
+)");
+
+    // Exactly 128 characters in the line.
+    // Newline in position 129 is explicit in this case.
+    static const std::string expect =
+        "--------10--------20--------30--------40--------50--------60--------70--------80--------90-------100-------110-------12012345678";
+    check_program_output(output, expect);
+}
+
+TEST_F(dubna_session, e64_128chars_newpage)
+{
+    auto output = run_job_and_capture_output(R"(*name print
+*no list
+*no load
+*assem
+ program: ,name,
+          ,*64 , info
+          ,*74 ,
+ info:    ,    , text
+          ,    , text
+        0 ,    ,
+        8 ,    ,
+ text:    ,gost, 30h--------10--------20--------30
+          ,gost, 30h--------40--------50--------60
+          ,gost, 30h--------70--------80--------90
+          ,gost, 30h-------100-------110-------120
+          ,gost, 10h12345678'201''231' . newpage end-of-text
+          ,end ,
+*execute
+*end file
+)");
+
+    // Exactly 128 characters in the line.
+    // Newpage symbol in position 129 is ignored.
+    static const std::string expect =
+        "--------10--------20--------30--------40--------50--------60--------70--------80--------90-------100-------110-------12012345678";
+    check_program_output(output, expect);
+}
+
+TEST_F(dubna_session, e64_129chars)
+{
+    auto output = run_job_and_capture_output(R"(*name print
+*no list
+*no load
+*assem
+ program: ,name,
+          ,*64 , info
+          ,*74 ,
+ info:    ,    , text
+          ,    , text
+        0 ,    ,
+        8 ,    ,
+ text:    ,gost, 30h--------10--------20--------30
+          ,gost, 30h--------40--------50--------60
+          ,gost, 30h--------70--------80--------90
+          ,gost, 30h-------100-------110-------120
+          ,gost, 10h12345678x'231' . end-of-text
+          ,end ,
+*execute
+*end file
+)");
+
+    // Exactly 128 characters in the line.
+    // Newline is added implicitly before 'x'.
+    static const std::string expect =
+        "--------10--------20--------30--------40--------50--------60--------70--------80--------90-------100-------110-------12012345678\n"
+        "X";
+    check_program_output(output, expect);
+}
+
+TEST_F(dubna_session, e64_134chars)
+{
+    auto output = run_job_and_capture_output(R"(*name print
+*no list
+*no load
+*assem
+ program: ,name,
+          ,*64 , info
+          ,*74 ,
+ info:    ,    , text
+          ,    , text
+        0 ,    ,
+        8 ,    ,
+ text:    ,gost, 30h--------10--------20--------30
+          ,gost, 30h--------40--------50--------60
+          ,gost, 30h--------70--------80--------90
+          ,gost, 30h-------100-------110-------120
+          ,gost, 15h12345678xabcde'231' . end-of-text
+          ,end ,
+*execute
+*end file
+)");
+
+    // Exactly 128 characters in the line.
+    // Newline is added implicitly before 'x'.
+    static const std::string expect =
+        "--------10--------20--------30--------40--------50--------60--------70--------80--------90-------100-------110-------12012345678\n"
+        "XABCDE";
+    check_program_output(output, expect);
+}
+
+TEST_F(dubna_session, e64_3chars_newline_3chars)
+{
+    auto output = run_job_and_capture_output(R"(*name print
+*no list
+*no load
+*assem
+ program: ,name,
+          ,*64 , info
+          ,*74 ,
+ info:    ,    , text
+          ,    , text
+        0 ,    ,
+        8 ,    ,
+ text:    ,gost, 8hfoo'214'bar'231' . newline end-of-text
+          ,end ,
+*execute
+*end file
+)");
+
+    // Newline in position 4 break the line.
+    static const std::string expect =
+        "FOO\n"
+        "BAR";
+    check_program_output(output, expect);
+}
+
+TEST_F(dubna_session, DISABLED_e64_3chars_newpage_3chars)
+{
+    auto output = run_job_and_capture_output(R"(*name print
+*no list
+*no load
+*assem
+ program: ,name,
+          ,*64 , info
+          ,*74 ,
+ info:    ,    , text
+          ,    , text
+        0 ,    ,
+        8 ,    ,
+ text:    ,gost, 8hfoo'201'bar'231' . newpage end-of-text
+          ,end ,
+*execute
+*end file
+)");
+
+    // Newpage in position 4 break the line.
+    static const std::string expect =
+        "\fFOO BAR";
+    check_program_output(output, expect);
+}
+
+TEST_F(dubna_session, DISABLED_e64_128chars_newline_5chars)
+{
+    auto output = run_job_and_capture_output(R"(*name print
+*no list
+*no load
+*assem
+ program: ,name,
+          ,*64 , info
+          ,*74 ,
+ info:    ,    , text
+          ,    , text
+        0 ,    ,
+        8 ,    ,
+ text:    ,gost, 30h--------10--------20--------30
+          ,gost, 30h--------40--------50--------60
+          ,gost, 30h--------70--------80--------90
+          ,gost, 30h-------100-------110-------120
+          ,gost, 15h12345678'214'abcde'231' . newline end-of-text
+          ,end ,
+*execute
+*end file
+)");
+
+    // Exactly 128 characters in the line.
+    // Newline in position 129 adds extra empty line.
+    static const std::string expect =
+        "--------10--------20--------30--------40--------50--------60--------70--------80--------90-------100-------110-------12012345678\n"
+        "\n"
+        "ABCDE";
+    check_program_output(output, expect);
+}
+
+TEST_F(dubna_session, DISABLED_e64_128chars_newpage_5chars)
+{
+    auto output = run_job_and_capture_output(R"(*name print
+*no list
+*no load
+*assem
+ program: ,name,
+          ,*64 , info
+          ,*74 ,
+ info:    ,    , text
+          ,    , text
+        0 ,    ,
+        8 ,    ,
+ text:    ,gost, 30h--------10--------20--------30
+          ,gost, 30h--------40--------50--------60
+          ,gost, 30h--------70--------80--------90
+          ,gost, 30h-------100-------110-------120
+          ,gost, 15h12345678'201'abcde'231' . newpage end-of-text
+          ,end ,
+*execute
+*end file
+)");
+
+    // Exactly 128 characters in the line, terminated by \f instead of \n.
+    // Extra space is added.
+    // Newpage symbol in position 129 is ignored.
+    static const std::string expect =
+        "--------10--------20--------30--------40--------50--------60--------70--------80--------90-------100-------110-------12012345678\f ABCDE";
+    check_program_output(output, expect);
 }

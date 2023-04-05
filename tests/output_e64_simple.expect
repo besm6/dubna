@@ -1,0 +1,91 @@
+﻿                                             3  000    00.00
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖЖ  ЖЖЖЖ   ЖЖЖ  Ж   Ж ЖЖЖЖЖ
+            Ж   Ж Ж   Ж   Ж   ЖЖ  Ж   Ж
+            Ж   Ж Ж   Ж   Ж   Ж Ж Ж   Ж
+            Ж   Ж ЖЖЖЖ    Ж   Ж  ЖЖ   Ж
+            ЖЖЖЖ  Ж Ж     Ж   Ж   Ж   Ж
+            Ж     Ж  Ж    Ж   Ж   Ж   Ж
+            Ж     Ж   Ж  ЖЖЖ  Ж   Ж   Ж
+
+
+
+
+
+
+
+
+*NAME PRINT
+*ASSEM
+                                             3  000    00.00
+ ABTOKOД  MADLEN
+   (1.10.72)
+                    PROGRAM :  , NAME,
+ 0000                          , *64 ,GOST
+  -
+ 0001                          , *64 ,CMD
+  -
+ 0002                          , *64 ,OCTAL
+  -
+ 0003                          , *64 ,REAL
+  -
+ 0004                          , *64 ,ITM
+  -
+ 0005                          , *64 ,HEX
+  -
+ 0006                          , *74 ,
+  -
+ 0007               GOST    :  ,     ,TEXT
+  -                            ,     ,TEXT
+ 0010                         0, 001 ,        .TEXT IN GOST ENC
+                                                ODING
+  -                           8,     ,
+ 0011               TEXT    :  , GOST,18HGOST ENCODING′231′
+ 0014               CMD     :  ,     ,CODE
+  -                            ,     ,CODE
+ 0015                         1, 001 ,        .INSTRUCTION CODE
+  -                           8,     ,
+ 0016               CODE    :12, 34  ,56701B
+  -                          02, 043 ,76543B
+ 0017               OCTAL   :  ,     ,DATA
+  -                            ,     ,DATA
+ 0020                         2, 001 ,12      .OCTAL NUMBERS
+  -                           8,     ,
+ 0021               DATA    :  , OCT ,1234 5670 7654 3210
+ 0022               REAL    :  ,     ,VALUES
+  -                            ,     ,VALUES
+ 0023                         3, 001 ,20      .REAL NUMBERS
+  -                           8,     ,
+ 0024               VALUES  :  , REAL,3.141592653589793238
+ 0025               ITM     :  ,     ,TEXTITM
+  -                            ,     ,TEXTITM
+ 0026                         4, 001 ,        .TEXT IN ITM ENCO
+                                                DING
+  -                           8,     ,
+ 0027               TEXTITM :  , OCT ,6310 0607 0371 0206
+ 0030                          , OCT ,4350 1622 4310 3213
+ 0031                          , OCT ,3000 0000 0000 0000
+ 0032               HEX     :  ,     ,DATA
+  -                            ,     ,DATA
+ 0033                         7, 001 ,12      .HEX NUMBERS
+  -                           8,     ,
+                               , END ,
+ ЧИCЛO ПEPФ. 0041      ЧИCЛO OШИБ. OПEPATOPOB  0000
+*EXECUTE
+≠
+         PROGRAM    01000                CBOБOДHO   01034
+≠
+ GOST ENCODING
+ 14 34 56701 02 143 6543
+ 567076543210
+  +3141592653577390e+01
+ ИTM ENCODING
+ 29CBB8FAC688

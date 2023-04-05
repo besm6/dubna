@@ -98,4 +98,37 @@ protected:
             EXPECT_EQ(output_line, expect_line);
         }
     }
+
+    //
+    // Compare output of the program after *EXECUTE.
+    // Ignore header and footer.
+    //
+    void check_program_output(const std::string &output_str, const std::string &expect_str)
+    {
+        std::stringstream output(output_str);
+        std::stringstream expect(expect_str);
+
+        // Skip header in the output.
+        while (output.good()) {
+            // Get directory name from the output.
+            std::string line;
+            getline(output, line);
+            if (line == "*EXECUTE")
+                break;
+        }
+
+        // Compare line by line.
+        while (expect.good()) {
+            EXPECT_TRUE(output.good()) << "Output is too short";
+
+            std::string output_line;
+            getline(output, output_line);
+            if (output_line == "------------------------------------------------------------")
+                break;
+
+            std::string expect_line;
+            getline(expect, expect_line);
+            EXPECT_EQ(output_line, expect_line);
+        }
+    }
 };

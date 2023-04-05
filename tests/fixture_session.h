@@ -103,32 +103,15 @@ protected:
     // Compare output of the program after *EXECUTE.
     // Ignore header and footer.
     //
-    void check_program_output(const std::string &output_str, const std::string &expect_str)
+    std::string extract_after_execute(const std::string &str)
     {
-        std::stringstream output(output_str);
-        std::stringstream expect(expect_str);
+        // Skip all output until *EXECUTE word, but keep the newline.
+        std::string output = str.substr(str.find("*EXECUTE"));
 
-        // Skip header in the output.
-        while (output.good()) {
-            // Get directory name from the output.
-            std::string line;
-            getline(output, line);
-            if (line == "*EXECUTE")
-                break;
-        }
+        // Remove everything after the program output.
+        output.resize(output.find("------------------------------------------------------------"));
 
-        // Compare line by line.
-        while (expect.good()) {
-            EXPECT_TRUE(output.good()) << "Output is too short";
-
-            std::string output_line;
-            getline(output, output_line);
-            if (output_line == "------------------------------------------------------------")
-                break;
-
-            std::string expect_line;
-            getline(expect, expect_line);
-            EXPECT_EQ(output_line, expect_line);
-        }
+        //std::cout << "--- '" << output << "'\n";
+        return output;
     }
 };

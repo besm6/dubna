@@ -457,3 +457,69 @@ TEST_F(dubna_session, DISABLED_e64_128chars_newpage_5chars)
 --------10--------20--------30--------40--------50--------60--------70--------80--------90-------100-------110-------12012345678 ABCDE
 )");
 }
+
+TEST_F(dubna_session, DISABLED_e64_overprint_dispak)
+{
+    auto output = run_job_and_capture_output(R"(*name print
+*no list
+*no load
+*assem
+ program: ,name,
+          ,*64 , line1
+          ,*64 , line2
+          ,*74 ,
+ line1:   ,    , text1
+          ,    , text1
+        0 ,    ,
+        8 ,    ,
+ line2:   ,    , text2
+          ,    , text2
+        0 ,    ,
+        8 ,    ,
+ text1:   ,gost, 5h  --'172'        . end-of-info
+ text2:   ,gost, 8hf'212'oobar'172' . overprint end-of-info
+          ,end ,
+*execute
+*end file
+)");
+    output = extract_after_execute(output);
+
+    // Newpage in position 4 break the line.
+    EXPECT_EQ(output, R"(*EXECUTE
+F --\
+  OOBAR
+)");
+}
+
+TEST_F(dubna_session, DISABLED_e64_overprint_dubna)
+{
+    auto output = run_job_and_capture_output(R"(*name print
+*no list
+*no load
+*assem
+ program: ,name,
+          ,*64 , line1
+          ,*64 , line2
+          ,*74 ,
+ line1:   ,    , text1
+          ,    , text1
+        0 ,    ,
+        8 ,    ,
+ line2:   ,    , text2
+          ,    , text2
+        0 ,    ,
+        8 ,    ,
+ text1:   ,gost, 5h  --'231'        . end-of-text
+ text2:   ,gost, 8h'212'foobar'231' . overprint end-of-text
+          ,end ,
+*execute
+*end file
+)");
+    output = extract_after_execute(output);
+
+    // Newpage in position 4 break the line.
+    EXPECT_EQ(output, R"(*EXECUTE
+ F--\
+  OOBAR
+)");
+}

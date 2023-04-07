@@ -443,9 +443,8 @@ unsigned Processor::e64_print_real(unsigned addr0, unsigned addr1, unsigned digi
 //
 // Print string in GOST format.
 // Return next data address.
-// Update the need_newline flag.
 //
-unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1, bool &need_newline)
+unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1)
 {
     BytePointer bp(memory, addr0);
     unsigned char last_ch = GOST_SPACE;
@@ -463,8 +462,6 @@ unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1, bool &need_ne
         case GOST_EOF:
         case GOST_END_OF_INFORMATION:
         case 0231:
-            if (e64_position == 0 || e64_position == LINE_WIDTH)
-                need_newline = false;
             if (bp.byte_index != 0)
                 ++bp.word_addr;
             return bp.word_addr;
@@ -517,7 +514,6 @@ unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1, bool &need_ne
                     e64_position = 0;
                 } else {
                     // No space left on the line.
-                    need_newline = false;
                     if (bp.byte_index != 0)
                         ++bp.word_addr;
                     return bp.word_addr;
@@ -608,14 +604,13 @@ void Processor::e64()
         machine.trace_e64(ctl, start_addr, end_addr);
 
         // Start at given position.
-        e64_position      = ctl.field.offset;
-        bool need_newline = true;
+        e64_position = ctl.field.offset;
 
         switch (ctl.field.format) {
         case 0:
         case 8:
             // Text in GOST encoding.
-            start_addr = e64_print_gost(start_addr, end_addr, need_newline);
+            start_addr = e64_print_gost(start_addr, end_addr);
             break;
 
         case 1:
@@ -658,7 +653,7 @@ void Processor::e64()
         }
 
         if (ctl.field.finish) {
-            if (need_newline) {
+            if (e64_position != 0 /*&& e64_position != LINE_WIDTH*/) {
                 e64_emit_line();
             }
 

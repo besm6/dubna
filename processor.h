@@ -108,7 +108,7 @@ private:
     void e76();
 
     // Internals of the print extracode.
-    unsigned e64_print_gost(unsigned addr0, unsigned addr1, bool &need_newline);
+    unsigned e64_print_gost(unsigned addr0, unsigned addr1);
     unsigned e64_print_octal(unsigned addr0, unsigned addr1, unsigned digits, unsigned width,
                              unsigned repeat);
     unsigned e64_print_instructions(unsigned addr0, unsigned addr1, unsigned width,

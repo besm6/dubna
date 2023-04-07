@@ -28,6 +28,7 @@
 #include <iomanip>
 #include <iostream>
 #include <sstream>
+#include "gost10859.h"
 
 //
 // Backdoor read from memory.
@@ -98,4 +99,26 @@ void Memory::dump(unsigned serial_num, unsigned disk_unit, unsigned zone, unsign
         besm6_print_instruction_mnemonics(out, word & BITS(24));
         out << std::endl;
     }
+}
+
+static bool is_eof(uint8_t byte)
+{
+    switch (byte) {
+    case 0231:
+    case GOST_EOF:
+    case GOST_END_OF_INFORMATION:
+        return true;
+    default:
+        return false;
+    }
+}
+
+//
+// Check whether '231' or GOST_EOF or GOST_END_OF_INFORMATION
+// symbol is present in the current word.
+//
+bool BytePointer::eof_in_word()
+{
+    const Word w = *memory.get_ptr(word_addr);
+    return is_eof(w) || is_eof(w >> 8) || is_eof(w >> 16) || is_eof(w >> 24) || is_eof(w >> 32) || is_eof(w >> 40);
 }

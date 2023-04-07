@@ -473,6 +473,14 @@ unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1)
 
         case GOST_CARRIAGE_RETURN:
         case GOST_NEWLINE:
+            if (e64_position == LINE_WIDTH) {
+                e64_emit_line();
+                if (bp.eof_in_word()) {
+                    // Weirdness of e64 in Dispak: when '231' or other EOF
+                    // is present in the current word - byte #129 is ignored.
+                    break;
+                }
+            }
             e64_emit_line();
             break;
 
@@ -510,24 +518,19 @@ unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1)
             // fall through...
         default:
             if (e64_position == LINE_WIDTH) {
-                if (addr1) {
-                    e64_position = 0;
-                } else {
-                    // No space left on the line.
-                    if (bp.byte_index != 0)
-                        ++bp.word_addr;
-                    return bp.word_addr;
-                }
-            }
-            if (e64_line[e64_position] != GOST_SPACE) {
+//std::cout << "--- word_addr=" << bp.word_addr
+//<< ", byte_index=" << bp.byte_index
+//<< ", word=" << std::hex << std::setfill('0') << std::setw(12) << *memory.get_ptr(bp.word_addr)
+//<< std::setfill(' ') << std::dec << std::endl;
                 e64_emit_line();
+                if (bp.eof_in_word()) {
+                    // Weirdness of e64 in Dispak: when '231' or other EOF
+                    // is present in the current word - byte #129 is ignored.
+                    break;
+                }
             }
             last_ch = ch;
             e64_putchar(ch);
-            if (e64_position == LINE_WIDTH) {
-                // No space left on the line.
-                e64_emit_line();
-            }
             break;
         }
     }

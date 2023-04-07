@@ -74,6 +74,7 @@ public:
     {
     }
 
+    // Get byte at the pointer.
     unsigned get_byte()
     {
         const Word *ptr = memory.get_ptr(word_addr);
@@ -86,6 +87,9 @@ public:
         }
         return (uint8_t)ch;
     }
+
+    // Check whether '231' or other EOF symbol is present in the current word.
+    bool eof_in_word();
 };
 
 #endif // DUBNA_MEMORY_H

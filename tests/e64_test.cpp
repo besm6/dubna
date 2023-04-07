@@ -181,7 +181,7 @@ TEST_F(dubna_session, e64_newpage)
     output = extract_after_execute(output);
 
     // Isolated newpage symbol.
-    EXPECT_EQ(output, "*EXECUTE\f ");
+    EXPECT_EQ(output, "*EXECUTE\f\n");
 }
 
 TEST_F(dubna_session, e64_128chars)
@@ -388,9 +388,7 @@ TEST_F(dubna_session, e64_3chars_newpage_3chars)
     output = extract_after_execute(output);
 
     // Newpage in position 4 break the line.
-    EXPECT_EQ(output, R"(*EXECUTE
-FOO BAR
-)");
+    EXPECT_EQ(output, "*EXECUTE\fFOO BAR\n");
 }
 
 TEST_F(dubna_session, e64_128chars_newline_5chars)

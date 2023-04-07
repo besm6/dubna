@@ -467,6 +467,14 @@ unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1)
             return bp.word_addr;
 
         case 0201: // new page
+            if (e64_position == LINE_WIDTH) {
+                e64_emit_line();
+                if (bp.eof_in_word()) {
+                    // Weirdness of e64 in Dispak: when '231' or other EOF
+                    // is present in the current word - byte #129 is ignored.
+                    break;
+                }
+            }
             e64_putchar(GOST_SPACE);
             e64_skip_lines = -1;
             break;

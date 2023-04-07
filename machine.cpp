@@ -103,6 +103,7 @@ void Machine::run()
 
             if (done) {
                 // Halted by 'стоп' instruction.
+                cpu.finish();
                 return;
             }
         }
@@ -110,6 +111,7 @@ void Machine::run()
     } catch (const Processor::Exception &ex) {
         // Unexpected situation in the machine.
         cpu.stack_correction();
+        cpu.finish();
 
         auto const *message = ex.what();
         if (!message[0]) {

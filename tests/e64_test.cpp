@@ -160,7 +160,7 @@ TEST_F(dubna_session, e64_newline)
 )");
 }
 
-TEST_F(dubna_session, DISABLED_e64_newpage)
+TEST_F(dubna_session, e64_newpage)
 {
     auto output = run_job_and_capture_output(R"(*name print
 *no list
@@ -246,7 +246,7 @@ TEST_F(dubna_session, e64_128chars_newline)
 )");
 }
 
-TEST_F(dubna_session, DISABLED_e64_128chars_newpage)
+TEST_F(dubna_session, e64_128chars_newpage)
 {
     auto output = run_job_and_capture_output(R"(*name print
 *no list
@@ -308,7 +308,7 @@ TEST_F(dubna_session, e64_129chars)
 )");
 }
 
-TEST_F(dubna_session, DISABLED_e64_134chars)
+TEST_F(dubna_session, e64_134chars)
 {
     auto output = run_job_and_capture_output(R"(*name print
 *no list
@@ -367,7 +367,7 @@ BAR
 )");
 }
 
-TEST_F(dubna_session, DISABLED_e64_3chars_newpage_3chars)
+TEST_F(dubna_session, e64_3chars_newpage_3chars)
 {
     auto output = run_job_and_capture_output(R"(*name print
 *no list
@@ -393,7 +393,7 @@ TEST_F(dubna_session, DISABLED_e64_3chars_newpage_3chars)
 )");
 }
 
-TEST_F(dubna_session, DISABLED_e64_128chars_newline_5chars)
+TEST_F(dubna_session, e64_128chars_newline_5chars)
 {
     auto output = run_job_and_capture_output(R"(*name print
 *no list
@@ -426,7 +426,7 @@ ABCDE
 )");
 }
 
-TEST_F(dubna_session, DISABLED_e64_128chars_newpage_5chars)
+TEST_F(dubna_session, e64_128chars_newpage_5chars)
 {
     auto output = run_job_and_capture_output(R"(*name print
 *no list
@@ -458,7 +458,7 @@ TEST_F(dubna_session, DISABLED_e64_128chars_newpage_5chars)
 )");
 }
 
-TEST_F(dubna_session, DISABLED_e64_overprint_dispak)
+TEST_F(dubna_session, e64_overprint_dispak)
 {
     auto output = run_job_and_capture_output(R"(*name print
 *no list
@@ -491,7 +491,7 @@ F --\
 )");
 }
 
-TEST_F(dubna_session, DISABLED_e64_overprint_dubna)
+TEST_F(dubna_session, e64_overprint_dubna)
 {
     auto output = run_job_and_capture_output(R"(*name print
 *no list

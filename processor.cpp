@@ -32,6 +32,15 @@ Processor::Processor(Machine &mach, Memory &mem) : machine(mach), memory(mem)
 }
 
 //
+// Finish the processor
+//
+void Processor::finish()
+{
+    // Emit the final newline.
+    e64_finish();
+}
+
+//
 // Reset routine
 //
 void Processor::reset()

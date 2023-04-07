@@ -121,8 +121,11 @@ private:
     void e64_print_cmd(unsigned cmd);
     void e64_putchar(int ch);
     bool e64_emit_line();
+    void e64_finish();
     std::string e64_line;
     unsigned e64_position{};
+    int e64_skip_lines{};
+    unsigned e64_line_count{};
 
 public:
     // Exception for unexpected situations.
@@ -147,6 +150,9 @@ public:
 
     // Stack correction in case of exception.
     void stack_correction();
+
+    // Finalize the processor.
+    void finish();
 
     // Set register value.
     void set_pc(unsigned val) { core.PC = val; }

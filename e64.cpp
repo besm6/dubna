@@ -48,21 +48,62 @@ static const unsigned LINE_WIDTH = 128;
 //
 bool Processor::e64_emit_line()
 {
-    int limit;
-
-    for (limit = e64_line.size() - 1; limit >= 0; --limit) {
-        if (e64_line[limit] != GOST_SPACE)
-            break;
+    // Skip the line separator before the very first line.
+    if (e64_line_count > 0) {
+        // Emit line separator: newline, newpage or overprint indicator.
+        if (e64_skip_lines > 0) {
+            // One or more newlines.
+            while (e64_skip_lines-- > 0) {
+                std::cout << std::endl;
+            }
+        } else if (e64_skip_lines < 0) {
+            // New page.
+            if (isatty(1)) {
+                // Output to a terminal: replace FormFeed by a NewLine.
+                std::cout << std::endl;
+            } else {
+                std::cout << '\f' << std::flush;
+            }
+        } else {
+            // Overprint.
+            std::cout << '\\' << std::endl;
+        }
     }
 
-    if (limit < 0) {
-        // Nothing to print.
-        return false;
-    }
+    // Set separator and position for next line.
+    e64_skip_lines = 1;
+    e64_position = 0;
 
-    gost_write(e64_line, limit);
-    std::fill(e64_line.begin(), e64_line.end(), GOST_SPACE);
-    return true;
+    // Find the last symbol to print.
+    int limit = e64_line.size();
+    for (;;) {
+        limit--;
+        if (limit < 0) {
+            // Nothing to print.
+            return false;
+        }
+
+        if (e64_line[limit] != GOST_SPACE) {
+            // Write the line to the output.
+            gost_write(e64_line, limit);
+            e64_line_count++;
+
+            // Erase the line: fill with spaces.
+            std::fill(e64_line.begin(), e64_line.end(), GOST_SPACE);
+            return true;
+        }
+    }
+}
+
+//
+// Emit the final newline.
+//
+void Processor::e64_finish()
+{
+    if (e64_line_count > 0) {
+        std::cout << std::endl;
+        e64_line_count = 0;
+    }
 }
 
 //
@@ -73,8 +114,6 @@ void Processor::e64_putchar(int ch)
 {
     if (e64_position >= LINE_WIDTH) {
         e64_emit_line();
-        std::cout << std::endl;
-        e64_position = 0;
     }
     e64_line[e64_position] = ch;
     e64_position += 1;
@@ -162,8 +201,6 @@ unsigned Processor::e64_print_itm(unsigned addr0, unsigned addr1)
                 return bp.word_addr;
             }
             e64_emit_line();
-            std::cout << std::endl;
-            e64_position = 0;
         }
 
         uint8_t ch = bp.get_byte();
@@ -175,7 +212,7 @@ unsigned Processor::e64_print_itm(unsigned addr0, unsigned addr1)
             return bp.word_addr;
 
         case 040: // blank
-            e64_line[e64_position++] = GOST_SPACE;
+            e64_putchar(GOST_SPACE);
             break;
 
         case 0173: // repeat last symbol
@@ -184,18 +221,16 @@ unsigned Processor::e64_print_itm(unsigned addr0, unsigned addr1)
                 // fill line by last symbol (?)
                 std::fill(e64_line.begin(), e64_line.end(), last_ch);
                 e64_emit_line();
-                std::cout << std::endl;
-                e64_position = 0;
             } else {
                 while (ch-- & 017) {
-                    e64_line[e64_position++] = last_ch;
+                    e64_putchar(last_ch);
                 }
             }
             break;
 
         default:
-            last_ch                  = itm_to_gost[ch];
-            e64_line[e64_position++] = last_ch;
+            last_ch = itm_to_gost[ch];
+            e64_putchar(last_ch);
             break;
         }
     }
@@ -435,27 +470,13 @@ unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1, bool &need_ne
             return bp.word_addr;
 
         case 0201: // new page
-            if (e64_position) {
-                e64_emit_line();
-                e64_position = 0;
-            }
-            if (!isatty(1)) {
-                std::cout << '\f';
-            }
-            e64_line[e64_position++] = GOST_SPACE;
+            e64_putchar(GOST_SPACE);
+            e64_skip_lines = -1;
             break;
 
         case GOST_CARRIAGE_RETURN:
         case GOST_NEWLINE:
-            if (e64_position == LINE_WIDTH) {
-                e64_position = 0;
-                break;
-            }
-            if (e64_position) {
-                e64_emit_line();
-                e64_position = 0;
-            }
-            std::cout << std::endl;
+            e64_emit_line();
             break;
 
         case 0143: // null width symbol
@@ -475,14 +496,13 @@ unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1, bool &need_ne
                 // fill line by last symbol (?)
                 std::fill(e64_line.begin(), e64_line.end(), last_ch);
                 e64_emit_line();
-                std::cout << std::endl;
-                e64_position = 0;
             } else {
-                while (ch-- & 017) {
+                while ((ch-- & 017) != 0 && e64_position < LINE_WIDTH) {
                     if (e64_line[e64_position] == GOST_SPACE) {
-                        e64_line[e64_position] = last_ch;
+                        e64_putchar(last_ch);
+                    } else {
+                        ++e64_position;
                     }
-                    ++e64_position;
                 }
             }
             break;
@@ -505,15 +525,12 @@ unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1, bool &need_ne
             }
             if (e64_line[e64_position] != GOST_SPACE) {
                 e64_emit_line();
-                std::cout << std::endl;
             }
-            last_ch                = ch;
-            e64_line[e64_position] = ch;
-            ++e64_position;
+            last_ch = ch;
+            e64_putchar(ch);
             if (e64_position == LINE_WIDTH) {
                 // No space left on the line.
                 e64_emit_line();
-                std::cout << std::endl;
             }
             break;
         }
@@ -641,25 +658,24 @@ void Processor::e64()
         }
 
         if (ctl.field.finish) {
-            unsigned skip = ctl.field.skip;
-            if (e64_emit_line() || (need_newline && !skip))
-                ++skip;
+            if (need_newline) {
+                e64_emit_line();
+            }
 
             if (end_addr && start_addr <= end_addr) {
                 // Repeat printing task until all data expired.
-                std::cout << std::endl;
                 continue;
             }
 
-            while (skip-- > 0)
-                std::cout << std::endl;
+            if (ctl.field.skip != 0) {
+                e64_skip_lines = ctl.field.skip;
+            }
             break;
         }
 
         // Check the limit of data pointer.
         if (end_addr && start_addr > end_addr) {
             e64_emit_line();
-            std::cout << std::endl;
             break;
         }
     }

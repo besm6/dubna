@@ -8,13 +8,14 @@
 #
 # make clean    -- remove build files
 #
-#BUILD_TYPE = Debug
-BUILD_TYPE = RelWithDebInfo
+# To reconfigure for Debug build:
+#   make clean; make debug; make
+#
 
 all:    build
 	$(MAKE) -Cbuild $@
 
-test:
+test:   build
 	$(MAKE) -Cbuild unit_tests
 	ctest --test-dir build/tests
 
@@ -22,8 +23,12 @@ install: build
 	$(MAKE) -Cbuild $@
 
 clean:
-	rm -rf build tests/build
+	rm -rf build
 
 build:
 	mkdir $@
-	cmake -B$@ -DCMAKE_BUILD_TYPE=$(BUILD_TYPE)
+	cmake -B$@ -DCMAKE_BUILD_TYPE=RelWithDebInfo
+
+debug:
+	mkdir build
+	cmake -Bbuild -DCMAKE_BUILD_TYPE=Debug

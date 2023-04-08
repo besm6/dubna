@@ -240,7 +240,7 @@ TEST_F(dubna_session, e64_128chars_newline)
     output = extract_after_execute(output);
 
     // Exactly 128 characters in the line.
-    // Newline in position 129 is explicit in this case.
+    // Newline at position 129 is explicit in this case.
     EXPECT_EQ(output, R"(*EXECUTE
 --------10--------20--------30--------40--------50--------60--------70--------80--------90-------100-------110-------12012345678
 )");
@@ -271,7 +271,7 @@ TEST_F(dubna_session, e64_128chars_newpage)
     output = extract_after_execute(output);
 
     // Exactly 128 characters in the line.
-    // Newpage symbol in position 129 is ignored.
+    // Newpage symbol at position 129 is ignored.
     EXPECT_EQ(output, R"(*EXECUTE
 --------10--------20--------30--------40--------50--------60--------70--------80--------90-------100-------110-------12012345678
 )");
@@ -360,7 +360,7 @@ TEST_F(dubna_session, e64_3chars_newline_3chars)
 )");
     output = extract_after_execute(output);
 
-    // Newline in position 4 break the line.
+    // Newline at position 4 break the line.
     EXPECT_EQ(output, R"(*EXECUTE
 FOO
 BAR
@@ -387,7 +387,7 @@ TEST_F(dubna_session, e64_3chars_newpage_3chars)
 )");
     output = extract_after_execute(output);
 
-    // Newpage in position 4 break the line.
+    // Newpage at position 4 break the line.
     EXPECT_EQ(output, "*EXECUTE\fFOO BAR\n");
 }
 
@@ -416,7 +416,7 @@ TEST_F(dubna_session, e64_128chars_newline_5chars)
     output = extract_after_execute(output);
 
     // Exactly 128 characters in the line.
-    // Newline in position 129 adds extra empty line.
+    // Newline at position 129 adds extra empty line.
     EXPECT_EQ(output, R"(*EXECUTE
 --------10--------20--------30--------40--------50--------60--------70--------80--------90-------100-------110-------12012345678
 
@@ -450,7 +450,7 @@ TEST_F(dubna_session, e64_128chars_newpage_5chars)
 
     // Exactly 128 characters in the line, terminated by \f instead of \n.
     // Extra space is added.
-    // Newpage symbol in position 129 is ignored.
+    // Newpage symbol at position 129 is ignored.
     EXPECT_EQ(output, R"(*EXECUTE
 --------10--------20--------30--------40--------50--------60--------70--------80--------90-------100-------110-------12012345678 ABCDE
 )");
@@ -480,13 +480,14 @@ TEST_F(dubna_session, e64_overprint_dispak)
 *execute
 *end file
 )");
-    output = extract_after_execute(output);
 
-    // Newpage in position 4 break the line.
-    EXPECT_EQ(output, R"(*EXECUTE
+    // Overprint at position 2, according to Dispak documentation.
+    auto expect = R"(*EXECUTE
 F --\
   OOBAR
-)");
+)";
+    output = extract_after_execute(output);
+    EXPECT_EQ(output, expect);
 }
 
 TEST_F(dubna_session, e64_overprint_dubna)
@@ -513,11 +514,46 @@ TEST_F(dubna_session, e64_overprint_dubna)
 *execute
 *end file
 )");
-    output = extract_after_execute(output);
 
-    // Newpage in position 4 break the line.
-    EXPECT_EQ(output, R"(*EXECUTE
+    // Overprint at position 1.
+    auto expect = R"(*EXECUTE
  F--\
   OOBAR
+)";
+    output = extract_after_execute(output);
+    EXPECT_EQ(output, expect);
+}
+
+TEST_F(dubna_session, e64_setpos0)
+{
+    auto output = run_job_and_capture_output(R"(*name print
+*no list
+*no load
+*assem
+ program: ,name,
+          ,*64 , line1
+          ,*64 , line2
+          ,*74 ,
+ line1:   ,    , text1
+          ,    , text1
+        0 ,    ,
+        8 ,    ,
+ line2:   ,    , text2
+          ,    , text2
+        0 ,    ,
+        8 ,    ,
+ text1:   ,gost, 5h  --'231'
+ text2:   ,gost, 30h       here'200''0'foobar'231'
+          ,end ,
+*execute
+*end file
 )");
+
+    // Set position to column #0.
+    auto expect = R"(*EXECUTE
+  --
+FOOBAR HERE
+)";
+    output = extract_after_execute(output);
+    EXPECT_EQ(output, expect);
 }

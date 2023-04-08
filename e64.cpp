@@ -458,52 +458,49 @@ unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1)
             return bp.word_addr;
 
         unsigned char ch = bp.get_byte();
-        switch (ch) {
-        case GOST_EOF:
-        case GOST_END_OF_INFORMATION:
-        case 0231:
+        if (is_gost_end_of_text(ch)) {
             if (bp.byte_index != 0)
                 ++bp.word_addr;
             return bp.word_addr;
+        }
 
-        case 0201: // new page
-            if (e64_position == LINE_WIDTH) {
-                e64_emit_line();
-                if (bp.eof_in_word()) {
-                    // Weirdness of e64 in Dispak: when '231' or other EOF
-                    // is present in the current word - byte #129 is ignored.
-                    break;
-                }
+        // Weirdness of e64 in Dispak: when '231' or other EOF
+        // is present in the current word - byte #129 is ignored.
+        if (e64_position == LINE_WIDTH) {
+            e64_emit_line();
+            if (bp.eof_in_word()) {
+                continue;
             }
+        }
+
+        switch (ch) {
+        case 0201:
+            // New page.
             e64_putchar(GOST_SPACE);
             e64_skip_lines = -1;
             break;
 
         case GOST_CARRIAGE_RETURN:
         case GOST_NEWLINE:
-            if (e64_position == LINE_WIDTH) {
-                e64_emit_line();
-                if (bp.eof_in_word()) {
-                    // Weirdness of e64 in Dispak: when '231' or other EOF
-                    // is present in the current word - byte #129 is ignored.
-                    break;
-                }
-            }
+            // New line.
             e64_emit_line();
             break;
 
-        case 0143: // null width symbol
+        case 0143:
         case 0341:
+            // Null width symbol.
             break;
 
         case GOST_SET_POSITION:
-        case 0200: // set position
+        case 0200:
+            // Set position, defined by next byte.
             ch           = bp.get_byte();
             e64_position = ch % LINE_WIDTH;
             break;
 
         case 0174:
-        case 0265: // repeat last symbol
+        case 0265:
+            // Repeat last symbol as many times, as defined by next byte.
             ch = bp.get_byte();
             if (ch == 040) {
                 // fill line by last symbol (?)
@@ -520,23 +517,12 @@ unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1)
             }
             break;
 
-        case GOST_SPACE2: // blank
+        case GOST_SPACE2: // space
         case 0242:        // used as space by forex
             ch = GOST_SPACE;
             // fall through...
         default:
-            if (e64_position == LINE_WIDTH) {
-//std::cout << "--- word_addr=" << bp.word_addr
-//<< ", byte_index=" << bp.byte_index
-//<< ", word=" << std::hex << std::setfill('0') << std::setw(12) << *memory.get_ptr(bp.word_addr)
-//<< std::setfill(' ') << std::dec << std::endl;
-                e64_emit_line();
-                if (bp.eof_in_word()) {
-                    // Weirdness of e64 in Dispak: when '231' or other EOF
-                    // is present in the current word - byte #129 is ignored.
-                    break;
-                }
-            }
+            // Printable character.
             last_ch = ch;
             e64_putchar(ch);
             break;

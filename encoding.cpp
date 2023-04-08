@@ -86,6 +86,21 @@ void gost_write(const std::string &line, unsigned limit)
 }
 
 //
+// Check for end-of-text symbol.
+//
+bool is_gost_end_of_text(unsigned char ch)
+{
+    switch (ch) {
+    case GOST_EOF:
+    case GOST_END_OF_INFORMATION:
+    case 0231:
+        return true;
+    default:
+        return false;
+    }
+}
+
+//
 // Write Unicode symbol to stdout.
 // Convert to UTF-8 encoding:
 // 00000000.0xxxxxxx -> 0xxxxxxx

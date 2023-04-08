@@ -35,6 +35,11 @@ void gost_write(const std::string &line, unsigned limit);
 unsigned gost_to_unicode(unsigned char ch);
 
 //
+// Check for end-of-text symbol.
+//
+bool is_gost_end_of_text(unsigned char ch);
+
+//
 // Write Unicode symbol to stdout in UTF-8 encoding.
 //
 void utf8_putc(unsigned ch);

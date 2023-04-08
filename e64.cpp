@@ -498,8 +498,15 @@ unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1)
             }
         }
 
+        // Weirdness of e64 in Dispak: overprint '212'
+        // is valid only at position #2, but it affects
+        // previous character as well.
+        if (e64_position == 0 && bp.peek_byte() == GOST_OVERPRINT) {
+            e64_overprint = true;
+        }
+
         switch (ch) {
-        case 0201:
+        case GOST_NEWPAGE:
             // New page.
             if (e64_line_dirty) {
                 // Emit previous line.
@@ -519,20 +526,20 @@ unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1)
             e64_emit_line();
             break;
 
-        case 0143:
-        case 0341:
+        case GOST_NULL_WIDTH:
+        case GOST_NULL_WIDTH2:
             // Null width symbol.
             break;
 
         case GOST_SET_POSITION:
-        case 0200:
+        case GOST_SET_POSITION2:
             // Set position, defined by next byte.
             ch           = bp.get_byte();
             e64_position = ch % LINE_WIDTH;
             break;
 
-        case 0174:
-        case 0265:
+        case GOST_EOLN:
+        case GOST_REPEAT:
             // Repeat last symbol as many times, as defined by next byte.
             ch = bp.get_byte();
             if (ch == 040) {
@@ -550,13 +557,13 @@ unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1)
             }
             break;
 
-        case 0212:
+        case GOST_OVERPRINT:
             // Overprint.
             e64_overprint = true;
             // fall through...
         case GOST_SPACE:  // space
         case GOST_SPACE2: // alternative space
-        case 0242:        // used as space by forex
+        case GOST_SPACE3: // used as space by forex
             ch = GOST_SPACE;
             // fall through...
         default:

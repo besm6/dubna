@@ -118,10 +118,17 @@
 #define GOST_HARD_SIGN             0135 // Ъ
 #define GOST_DEGREE                0136 // °
 #define GOST_PRIME                 0137 // '
+#define GOST_NULL_WIDTH            0143
 #define GOST_END_OF_INFORMATION    0172
 #define GOST_SET_POSITION          0173
 #define GOST_EOLN                  0174
 #define GOST_CARRIAGE_RETURN       0175
 #define GOST_SPACE2                0176
+#define GOST_SET_POSITION2         0200
+#define GOST_NEWPAGE               0201
+#define GOST_OVERPRINT             0212
 #define GOST_NEWLINE               0214
+#define GOST_SPACE3                0242 // used as space by forex
+#define GOST_REPEAT                0265
+#define GOST_NULL_WIDTH2           0341
 #define GOST_EOF                   0377

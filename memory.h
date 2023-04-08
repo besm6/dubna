@@ -74,18 +74,23 @@ public:
     {
     }
 
-    // Get byte at the pointer.
-    unsigned get_byte()
+    // Fetch byte at the pointer. No increment.
+    uint8_t peek_byte()
     {
         const Word *ptr = memory.get_ptr(word_addr);
-        unsigned ch     = *ptr >> (40 - byte_index * 8);
+        return *ptr >> (40 - byte_index * 8);
+    }
 
+    // Get byte at the pointer, and increment.
+    uint8_t get_byte()
+    {
+        auto ch = peek_byte();
         byte_index++;
         if (byte_index == 6) {
             byte_index = 0;
             word_addr++;
         }
-        return (uint8_t)ch;
+        return ch;
     }
 
     // Check whether '231' or other EOF symbol is present in the current word.

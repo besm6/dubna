@@ -57,7 +57,7 @@ void Processor::e64_emit_line()
 }
 
 //
-// Emit newline/newpage, then the line, if it's non-blank.
+// Emit newline/newpage, then the line.
 // Erase it (fill with spaces).
 // Don't change position.
 //
@@ -501,6 +501,10 @@ unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1)
         switch (ch) {
         case 0201:
             // New page.
+            if (e64_line_dirty) {
+                // Emit previous line.
+                e64_emit_line();
+            }
             e64_putchar(GOST_SPACE);
             e64_skip_lines = -1;
             break;
@@ -508,6 +512,10 @@ unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1)
         case GOST_CARRIAGE_RETURN:
         case GOST_NEWLINE:
             // New line.
+            if (e64_line_dirty) {
+                // Emit previous line.
+                e64_emit_line();
+            }
             e64_emit_line();
             break;
 
@@ -680,20 +688,22 @@ void Processor::e64()
         }
 
         if (ctl.field.finish) {
-            if (e64_position != 0) {
-                if (ctl.field.skip == 0) {
-                    e64_line_dirty = true;
-                } else {
-                    e64_emit_line();
-                }
-            }
             if (end_addr && start_addr <= end_addr) {
                 // Repeat printing task until all data expired.
+                e64_emit_line();
                 continue;
             }
 
-            if (ctl.field.skip != 0) {
-                e64_skip_lines = ctl.field.skip;
+            if (e64_position != 0) {
+                if (e64_line_dirty || ctl.field.skip > 0) {
+                    e64_emit_line();
+                } else {
+                    e64_line_dirty = true;
+                }
+            }
+
+            if (ctl.field.skip > 0) {
+                e64_skip_lines = ctl.field.skip + 1;
             }
             break;
         }

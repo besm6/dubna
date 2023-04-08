@@ -109,6 +109,7 @@ bool is_gost_end_of_text(unsigned char ch)
 //
 void utf8_putc(unsigned ch)
 {
+#if 0
     static int initialized = 0;
 
     if (!initialized) {
@@ -118,6 +119,7 @@ void utf8_putc(unsigned ch)
         std::cout << (char)0xBF;
         initialized = 1;
     }
+#endif
     if (ch < 0x80) {
         std::cout << (char)ch;
         return;

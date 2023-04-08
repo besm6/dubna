@@ -120,12 +120,14 @@ private:
                            unsigned repeat);
     void e64_print_cmd(unsigned cmd);
     void e64_putchar(int ch);
-    bool e64_emit_line();
+    void e64_emit_line();
+    void e64_flush_line();
     void e64_finish();
     std::string e64_line;
-    unsigned e64_position{};
     int e64_skip_lines{};
+    unsigned e64_position{};
     unsigned e64_line_count{};
+    bool e64_overprint{};
 
 public:
     // Exception for unexpected situations.

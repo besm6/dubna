@@ -42,45 +42,49 @@
 static const unsigned LINE_WIDTH = 128;
 
 //
-// If the line is non-blank - print it to stdout.
-// Erase it (fill with spaces) and return true.
-// If line is empty (all spaces) - return false.
+// Emit newline/newpage, then the line.
+// Reset position to the beginning of the line.
+// Clear overprint mode.
 //
-bool Processor::e64_emit_line()
+void Processor::e64_emit_line()
 {
-    // Skip the line separator before the very first line.
-    if (e64_line_count > 0) {
-        // Emit line separator: newline, newpage or overprint indicator.
-        if (e64_skip_lines > 0) {
-            // One or more newlines.
-            while (e64_skip_lines-- > 0) {
-                std::cout << std::endl;
-            }
-        } else if (e64_skip_lines < 0) {
-            // New page.
-            if (isatty(1)) {
-                // Output to a terminal: replace FormFeed by a NewLine.
-                std::cout << std::endl;
-            } else {
-                std::cout << '\f' << std::flush;
-            }
+    // Emit line separator: newpage or several newlines or nothing.
+    if (e64_skip_lines < 0) {
+        // New page.
+        if (isatty(1)) {
+            // Output to a terminal: replace FormFeed by a NewLine.
+            std::cout << std::endl;
         } else {
-            // Overprint.
-            std::cout << '\\' << std::endl;
+            std::cout << '\f' << std::flush;
+        }
+    } else {
+        // Zero or more newlines.
+        for (; e64_skip_lines > 0; e64_skip_lines--) {
+            std::cout << std::endl;
         }
     }
+    e64_flush_line();
 
     // Set separator and position for next line.
     e64_skip_lines = 1;
     e64_position = 0;
+    e64_overprint = false;
+}
 
+//
+// If the line is non-blank - print it to stdout.
+// Erase it (fill with spaces).
+// Don't change position.
+//
+void Processor::e64_flush_line()
+{
     // Find the last symbol to print.
     int limit = e64_line.size();
     for (;;) {
         limit--;
         if (limit < 0) {
             // Nothing to print.
-            return false;
+            return;
         }
 
         if (e64_line[limit] != GOST_SPACE) {
@@ -90,7 +94,7 @@ bool Processor::e64_emit_line()
 
             // Erase the line: fill with spaces.
             std::fill(e64_line.begin(), e64_line.end(), GOST_SPACE);
-            return true;
+            return;
         }
     }
 }
@@ -113,7 +117,14 @@ void Processor::e64_finish()
 void Processor::e64_putchar(int ch)
 {
     if (e64_position >= LINE_WIDTH) {
+        // Line is full.
         e64_emit_line();
+    }
+    if (e64_overprint && e64_line[e64_position] != GOST_SPACE) {
+        // In overprint mode: cannot overwrite previous character.
+        // Emit the line with overprint indicator (backslash).
+        e64_flush_line();
+        std::cout << '\\' << std::endl;
     }
     e64_line[e64_position] = ch;
     e64_position += 1;

@@ -42,11 +42,26 @@
 static const unsigned LINE_WIDTH = 128;
 
 //
-// Emit newline/newpage, then the line.
+// Emit the line.
 // Reset position to the beginning of the line.
 // Clear overprint mode.
 //
 void Processor::e64_emit_line()
+{
+    e64_flush_line();
+
+    // Set separator and position for next line.
+    e64_position = 0;
+    e64_overprint = false;
+    e64_line_dirty = false;
+}
+
+//
+// Emit newline/newpage, then the line, if it's non-blank.
+// Erase it (fill with spaces).
+// Don't change position.
+//
+void Processor::e64_flush_line()
 {
     // Emit line separator: newpage or several newlines or nothing.
     if (e64_skip_lines < 0) {
@@ -63,21 +78,8 @@ void Processor::e64_emit_line()
             std::cout << std::endl;
         }
     }
-    e64_flush_line();
-
-    // Set separator and position for next line.
     e64_skip_lines = 1;
-    e64_position = 0;
-    e64_overprint = false;
-}
 
-//
-// If the line is non-blank - print it to stdout.
-// Erase it (fill with spaces).
-// Don't change position.
-//
-void Processor::e64_flush_line()
-{
     // Find the last symbol to print.
     int limit = e64_line.size();
     for (;;) {
@@ -105,6 +107,10 @@ void Processor::e64_flush_line()
 void Processor::e64_finish()
 {
     if (e64_line_count > 0) {
+        if (e64_line_dirty) {
+            // Emit previous line.
+            e64_emit_line();
+        }
         std::cout << std::endl;
         e64_line_count = 0;
     }
@@ -120,13 +126,21 @@ void Processor::e64_putchar(int ch)
         // Line is full.
         e64_emit_line();
     }
-    if (e64_overprint && e64_line[e64_position] != GOST_SPACE) {
-        // In overprint mode: cannot overwrite previous character.
-        // Emit the line with overprint indicator (backslash).
-        e64_flush_line();
-        std::cout << '\\' << std::endl;
+    if (ch != GOST_SPACE) {
+        if (e64_line_dirty && !e64_overprint) {
+            // Emit previous line.
+            auto save = e64_position;
+            e64_emit_line();
+            e64_position = save;
+        }
+        if (e64_overprint && e64_line[e64_position] != GOST_SPACE) {
+            // In overprint mode: cannot overwrite previous character.
+            // Emit the line with overprint indicator (backslash).
+            e64_flush_line();
+            std::cout << '\\';
+        }
+        e64_line[e64_position] = ch;
     }
-    e64_line[e64_position] = ch;
     e64_position += 1;
 }
 
@@ -522,13 +536,18 @@ unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1)
                     if (e64_line[e64_position] == GOST_SPACE) {
                         e64_putchar(last_ch);
                     } else {
-                        ++e64_position;
+                        e64_position += 1;
                     }
                 }
             }
             break;
 
-        case GOST_SPACE2: // space
+        case 0212:
+            // Overprint.
+            e64_overprint = true;
+            // fall through...
+        case GOST_SPACE:  // space
+        case GOST_SPACE2: // alternative space
         case 0242:        // used as space by forex
             ch = GOST_SPACE;
             // fall through...
@@ -661,10 +680,13 @@ void Processor::e64()
         }
 
         if (ctl.field.finish) {
-            if (e64_position != 0 /*&& e64_position != LINE_WIDTH*/) {
-                e64_emit_line();
+            if (e64_position != 0) {
+                if (ctl.field.skip == 0) {
+                    e64_line_dirty = true;
+                } else {
+                    e64_emit_line();
+                }
             }
-
             if (end_addr && start_addr <= end_addr) {
                 // Repeat printing task until all data expired.
                 continue;

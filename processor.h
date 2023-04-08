@@ -124,9 +124,10 @@ private:
     void e64_flush_line();
     void e64_finish();
     std::string e64_line;
-    int e64_skip_lines{};
+    int e64_skip_lines{0};
     unsigned e64_position{};
     unsigned e64_line_count{};
+    bool e64_line_dirty{};
     bool e64_overprint{};
 
 public:

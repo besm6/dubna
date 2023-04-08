@@ -456,6 +456,40 @@ TEST_F(dubna_session, e64_128chars_newpage_5chars)
 )");
 }
 
+TEST_F(dubna_session, e64_setpos0)
+{
+    auto output = run_job_and_capture_output(R"(*name print
+*no list
+*no load
+*assem
+ program: ,name,
+          ,*64 , line1
+          ,*64 , line2
+          ,*74 ,
+ line1:   ,    , text1
+          ,    , text1
+        0 ,    ,
+        8 ,    ,
+ line2:   ,    , text2
+          ,    , text2
+        0 ,    ,
+        8 ,    ,
+ text1:   ,gost, 5h  --'231'
+ text2:   ,gost, 30h       here'200''0'foobar'231'
+          ,end ,
+*execute
+*end file
+)");
+
+    // Set position to column #0.
+    auto expect = R"(*EXECUTE
+  --
+FOOBAR HERE
+)";
+    output = extract_after_execute(output);
+    EXPECT_EQ(output, expect);
+}
+
 TEST_F(dubna_session, e64_overprint_dispak)
 {
     auto output = run_job_and_capture_output(R"(*name print
@@ -519,40 +553,6 @@ TEST_F(dubna_session, e64_overprint_dubna)
     auto expect = R"(*EXECUTE
  F--\
   OOBAR
-)";
-    output = extract_after_execute(output);
-    EXPECT_EQ(output, expect);
-}
-
-TEST_F(dubna_session, e64_setpos0)
-{
-    auto output = run_job_and_capture_output(R"(*name print
-*no list
-*no load
-*assem
- program: ,name,
-          ,*64 , line1
-          ,*64 , line2
-          ,*74 ,
- line1:   ,    , text1
-          ,    , text1
-        0 ,    ,
-        8 ,    ,
- line2:   ,    , text2
-          ,    , text2
-        0 ,    ,
-        8 ,    ,
- text1:   ,gost, 5h  --'231'
- text2:   ,gost, 30h       here'200''0'foobar'231'
-          ,end ,
-*execute
-*end file
-)");
-
-    // Set position to column #0.
-    auto expect = R"(*EXECUTE
-  --
-FOOBAR HERE
 )";
     output = extract_after_execute(output);
     EXPECT_EQ(output, expect);

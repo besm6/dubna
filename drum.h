@@ -32,7 +32,7 @@ private:
     Memory &memory;
 
     // Drum contents.
-    std::array<Word, 040 * PAGE_NWORDS> media;
+    std::array<Word, 040 * PAGE_NWORDS> media{};
 
 public:
     // Constructor.

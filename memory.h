@@ -31,7 +31,7 @@
 class Memory {
 private:
     // Memory contents.
-    std::array<Word, MEMORY_NWORDS> mem;
+    std::array<Word, MEMORY_NWORDS> mem{};
 
 public:
     explicit Memory() = default;

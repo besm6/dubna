@@ -416,7 +416,7 @@ void Machine::print_e64(const E64_Info &info, unsigned start_addr, unsigned end_
             case 4:
             case 12:
                 //
-                // ITM endcoding.
+                // ITM encoding.
                 //
                 switch (c) {
                 case 0140: // end of information

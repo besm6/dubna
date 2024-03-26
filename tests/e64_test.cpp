@@ -557,3 +557,177 @@ TEST_F(dubna_session, e64_overprint_dubna)
     output = extract_after_execute(output);
     EXPECT_EQ(output, expect);
 }
+
+TEST_F(dubna_session, e64_repeat0)
+{
+    auto output = run_job_and_capture_output(R"(*name print
+*no list
+*no load
+*assem
+ program: ,name,
+          ,*64 , info
+          ,*74 ,
+ info:    ,    , text
+          ,    , text
+        0 ,    ,
+        8 ,    ,
+ text:    ,gost, 6h/-'174''0'/'175' . eoln 0
+          ,gost, 6h/-'265''0'/'175' . repeat 0
+          ,gost, 1h'377'
+          ,end ,
+*execute
+*end file
+)");
+    output = extract_after_execute(output);
+
+    // Repeat symbol 0 times.
+    EXPECT_EQ(output, R"(*EXECUTE
+/-/
+/-/
+)");
+}
+
+TEST_F(dubna_session, e64_repeat1)
+{
+    auto output = run_job_and_capture_output(R"(*name print
+*no list
+*no load
+*assem
+ program: ,name,
+          ,*64 , info
+          ,*74 ,
+ info:    ,    , text
+          ,    , text
+        0 ,    ,
+        8 ,    ,
+ text:    ,gost, 6h/-'174''1'/'175' . eoln 1
+          ,gost, 6h/-'265''1'/'175' . repeat 1
+          ,gost, 1h'377'
+          ,end ,
+*execute
+*end file
+)");
+    output = extract_after_execute(output);
+
+    // Repeat symbol 1 times.
+    EXPECT_EQ(output, R"(*EXECUTE
+/--/
+/--/
+)");
+}
+
+TEST_F(dubna_session, e64_repeat3)
+{
+    auto output = run_job_and_capture_output(R"(*name print
+*no list
+*no load
+*assem
+ program: ,name,
+          ,*64 , info
+          ,*74 ,
+ info:    ,    , text
+          ,    , text
+        0 ,    ,
+        8 ,    ,
+ text:    ,gost, 6h/-'174''3'/'175' . eoln 3
+          ,gost, 6h/-'265''3'/'175' . repeat 3
+          ,gost, 1h'377'
+          ,end ,
+*execute
+*end file
+)");
+    output = extract_after_execute(output);
+
+    // Repeat symbol 3 times.
+    EXPECT_EQ(output, R"(*EXECUTE
+/----/
+/----/
+)");
+}
+
+TEST_F(dubna_session, e64_repeat7)
+{
+    auto output = run_job_and_capture_output(R"(*name print
+*no list
+*no load
+*assem
+ program: ,name,
+          ,*64 , info
+          ,*74 ,
+ info:    ,    , text
+          ,    , text
+        0 ,    ,
+        8 ,    ,
+ text:    ,gost, 6h/-'174''7'/'175' . eoln 7
+          ,gost, 6h/-'265''7'/'175' . repeat 7
+          ,gost, 1h'377'
+          ,end ,
+*execute
+*end file
+)");
+    output = extract_after_execute(output);
+
+    // Repeat symbol 7 times.
+    EXPECT_EQ(output, R"(*EXECUTE
+/--------/
+/--------/
+)");
+}
+
+TEST_F(dubna_session, e64_repeat15)
+{
+    auto output = run_job_and_capture_output(R"(*name print
+*no list
+*no load
+*assem
+ program: ,name,
+          ,*64 , info
+          ,*74 ,
+ info:    ,    , text
+          ,    , text
+        0 ,    ,
+        8 ,    ,
+ text:    ,gost, 6h/-'174''17'/'175' . eoln 15
+          ,gost, 6h/-'265''17'/'175' . repeat 15
+          ,gost, 1h'377'
+          ,end ,
+*execute
+*end file
+)");
+    output = extract_after_execute(output);
+
+    // Repeat symbol 15 times.
+    EXPECT_EQ(output, R"(*EXECUTE
+/----------------/
+/----------------/
+)");
+}
+
+TEST_F(dubna_session, e64_repeat31)
+{
+    auto output = run_job_and_capture_output(R"(*name print
+*no list
+*no load
+*assem
+ program: ,name,
+          ,*64 , info
+          ,*74 ,
+ info:    ,    , text
+          ,    , text
+        0 ,    ,
+        8 ,    ,
+ text:    ,gost, 6h/-'174''37'/'175' . eoln 31
+          ,gost, 6h/-'265''37'/'175' . repeat 31
+          ,gost, 1h'377'
+          ,end ,
+*execute
+*end file
+)");
+    output = extract_after_execute(output);
+
+    // Repeat symbol 31 times.
+    EXPECT_EQ(output, R"(*EXECUTE
+/--------------------------------/
+/--------------------------------/
+)");
+}

@@ -376,7 +376,8 @@ void Processor::e65()
 //
 void Processor::e67()
 {
-    // Ignore.
+    auto word = machine.mem_load(core.M[016]);
+    core.PC = (word >> 24) & 077777;
 }
 
 //

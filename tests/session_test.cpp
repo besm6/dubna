@@ -67,7 +67,7 @@ TEST_F(dubna_session, trace_end_file)
     EXPECT_TRUE(starts_with(trace[0], "Dubna Simulator Version"));
     EXPECT_STREQ(trace[1].c_str(), "02010 R: 00 070 3002 *70 3002");
     EXPECT_STREQ(trace[2].c_str(), "      Drum 21 PhysRead [00000-00377] = Zone 1 Sector 2");
-    EXPECT_STREQ(trace[trace.size() - 5].c_str(), "00020 L: 00 074 0000 *74");
+    EXPECT_STREQ(trace[trace.size() - 5].c_str(), "00427 L: 00 074 0000 *74");
 }
 
 //

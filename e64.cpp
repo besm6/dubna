@@ -542,17 +542,14 @@ unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1)
         case GOST_REPEAT:
             // Repeat last symbol as many times, as defined by next byte.
             ch = bp.get_byte();
-            if (ch == 040) {
-                // fill line by last symbol (?)
-                std::fill(e64_line.begin(), e64_line.end(), last_ch);
-                e64_emit_line();
-            } else {
-                while ((ch-- & 017) != 0 && e64_position < LINE_WIDTH) {
-                    if (e64_line[e64_position] == GOST_SPACE) {
-                        e64_putchar(last_ch);
-                    } else {
-                        e64_position += 1;
-                    }
+            while (ch-- > 0) {
+                if (e64_position == LINE_WIDTH) {
+                    e64_emit_line();
+                }
+                if (e64_line[e64_position] == GOST_SPACE) {
+                    e64_putchar(last_ch);
+                } else {
+                    e64_position += 1;
                 }
             }
             break;

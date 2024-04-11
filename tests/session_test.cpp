@@ -151,3 +151,33 @@ TEST_F(dubna_session, fortran)
     auto expect = file_contents(TEST_DIR "/output_fortran.expect");
     check_output(output, expect);
 }
+
+//
+// Print real values from Fortran and check output.
+// https://github.com/besm6/dubna/issues/1
+//
+TEST_F(dubna_session, epsilon)
+{
+    auto output = run_job_and_capture_output(R"(*name epsilon
+*no list
+      program eps
+      real a, b
+      a = 1.
+      i = 0
+ 10   a = a / 2.
+      i = i + 1
+      b = -1. + a
+      if (b .eq. -1.) stop
+      print 1000, i, b, b
+c Least significant digits 5 must form a neat staircase, they do not
+c But on the dispak emulator, they do
+ 1000 format(' -1.0+2**-', i2, ' =', f43.40, o17)
+      goto 10
+      end
+*no load list
+*execute
+*end file
+)");
+    auto expect = file_contents(TEST_DIR "/output_epsilon.expect");
+    check_output(output, expect);
+}

@@ -198,3 +198,34 @@ TEST_F(dubna_session, epsilon)
     // Correct output would be: " 4020000000000001 -0.9999999999990905052982270717620849609375"
     EXPECT_STREQ(lines[len-5].c_str(), " 4020000000000001 -0.9999999999985448084771633148193359375000");
 }
+
+//
+// Capture overflow.
+// https://github.com/besm6/dubna/issues/2
+//
+TEST_F(dubna_session, overflow)
+{
+    auto output = run_job_and_capture_output(R"(*name overflow
+*no list
+*fortran
+       program ovfl
+       a = 1.0
+       i = 0
+       if (ifovfl(0) .eq. 1) goto 10
+ 20    a = a + a
+       i = i + 1
+       goto 20
+ 10    print 1000, i
+ 1000  format (i6)
+       end
+*no load list
+*execute
+*end file
+)");
+    // Split output into lines.
+    auto lines = multiline_split(output);
+    auto len = lines.size();
+    ASSERT_GE(lines.size(), 5);
+
+    EXPECT_STREQ(lines[len-5].c_str(), " 62");
+}

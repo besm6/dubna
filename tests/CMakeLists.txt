@@ -19,7 +19,7 @@ enable_testing()
 # Common includes and libraries for all tests.
 #
 include_directories(BEFORE ..)
-link_libraries(simulator gtest gtest_main)
+link_libraries(simulator gtest_main)
 add_definitions(-DTEST_DIR="${CMAKE_CURRENT_SOURCE_DIR}")
 
 #

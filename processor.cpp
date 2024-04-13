@@ -61,6 +61,30 @@ void Processor::stack_correction()
 }
 
 //
+// Intercept ofvl/divzero exception, when enabled.
+// Return true when intercepted.
+// Return false when interception is disabled.
+//
+bool Processor::intercept(const std::string &message)
+{
+    if (intercept_count > 0 &&            // interception enabled
+        (message == MSG_ARITH_OVERFLOW || // arithmetic overflow
+         message == MSG_ARITH_DIVZERO)) { // divide by zero
+
+        intercept_count--;
+
+        // Jump to dedicated address.
+        core.PC               = intercept_addr;
+        core.right_instr_flag = false;
+        core.apply_mod_reg    = false;
+        core.MOD              = 0;
+        return true;
+    } else {
+        return false;
+    }
+}
+
+//
 // Execute one instruction, placed at address PC+right_instr_flag.
 // Return false to continue the program.
 // Return true when the program is done and the processor is stopped.
@@ -627,7 +651,5 @@ branch_zero:
         core.apply_mod_reg = false;
     }
 
-    // Show changed registers.
-    machine.trace_registers();
     return false;
 }

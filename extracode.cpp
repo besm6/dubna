@@ -166,6 +166,11 @@ void Processor::e75()
     auto addr = core.M[016];
     if (addr > 0) {
         machine.mem_store(addr, core.ACC);
+
+        if (addr == 020) {
+            // Intercept arithmetic overflow and division by zero.
+            intercept_count = 1;
+        }
     }
 }
 

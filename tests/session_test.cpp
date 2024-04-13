@@ -227,7 +227,7 @@ TEST_F(dubna_session, overflow)
     auto len = lines.size();
     ASSERT_GE(lines.size(), 5);
 
-    EXPECT_STREQ(lines[len-5].c_str(), " 62");
+    EXPECT_STREQ(lines[len-5].c_str(), "    62");
 }
 
 //
@@ -239,14 +239,14 @@ TEST_F(dubna_session, divzero)
 *no list
 *fortran
        program divz
-       a = 1.0
+       a = 123.4
        i = 0
        if (ifovfl(0) .eq. 1) goto 10
  20    a = a / i
        i = i + 1
        goto 20
- 10    print 1000, i
- 1000  format (i6)
+ 10    print 1000, a
+ 1000  format (f6.1)
        end
 *no load list
 *execute
@@ -257,5 +257,5 @@ TEST_F(dubna_session, divzero)
     auto len = lines.size();
     ASSERT_GE(lines.size(), 5);
 
-    EXPECT_STREQ(lines[len-5].c_str(), " 0");
+    EXPECT_STREQ(lines[len-5].c_str(), " 123.4");
 }

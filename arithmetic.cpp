@@ -195,7 +195,7 @@ chk_rnd:
     // При переполнении мантисса и младшие разряды порядка верны
     if (acc.exponent & 0x80) {
         if (!(core.RAU & RAU_OVF_DISABLE)) {
-            throw Exception("Arithmetic overflow");
+            throw Exception(MSG_ARITH_OVERFLOW);
         }
     }
 }
@@ -324,7 +324,7 @@ void Processor::arith_divide(Word val)
 {
     if (((val ^ (val << 1)) & BIT41) == 0) {
         // Ненормализованный делитель: деление на ноль.
-        throw Exception("Division by zero");
+        throw Exception(MSG_ARITH_DIVZERO);
     }
 
     MantissaExponent dividend(core.ACC);

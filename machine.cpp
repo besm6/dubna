@@ -87,12 +87,16 @@ void Machine::show_progress()
 //
 void Machine::run()
 {
+again:
     // Show initial state.
     trace_registers();
 
     try {
         for (;;) {
             bool done = cpu.step();
+
+            // Show changed registers.
+            trace_registers();
 
             if (progress_message_enabled) {
                 show_progress();
@@ -120,6 +124,10 @@ void Machine::run()
         }
         std::cerr << "Error: " << message << std::endl;
         trace_exception(message);
+
+        if (cpu.intercept(message)) {
+            goto again;
+        }
         throw 0;
 
     } catch (std::exception &ex) {

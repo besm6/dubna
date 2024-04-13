@@ -106,11 +106,11 @@ void Processor::e64_flush_line()
 //
 void Processor::e64_finish()
 {
+    if (e64_line_dirty) {
+        // Emit previous line.
+        e64_emit_line();
+    }
     if (e64_line_count > 0) {
-        if (e64_line_dirty) {
-            // Emit previous line.
-            e64_emit_line();
-        }
         std::cout << std::endl;
         e64_line_count = 0;
     }

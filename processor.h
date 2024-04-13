@@ -92,6 +92,12 @@ private:
     unsigned Aex{};   // executive address
     int corr_stack{}; // stack correction on exception
 
+    // Intercept divzero/overflow.
+    unsigned intercept_count{};     // intercept this many times
+    unsigned intercept_addr{ 020 }; // jump to this address
+    const std::string MSG_ARITH_OVERFLOW = "Arithmetic overflow";
+    const std::string MSG_ARITH_DIVZERO  = "Division by zero";
+
     // Extracodes.
     void extracode(unsigned opcode);
     void e50();
@@ -179,6 +185,9 @@ public:
     void arith_multiply(Word val);
     void arith_divide(Word val);
     void arith_shift(int nbits);
+
+    // Intercept ofvl/divzero exception, when enabled.
+    bool intercept(const std::string &message);
 
     // Print trace info.
     void print_instruction();

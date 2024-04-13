@@ -177,6 +177,24 @@ TEST_F(dubna_session, epsilon)
 *execute
 *end file
 )");
-    auto expect = file_contents(TEST_DIR "/output_epsilon.expect");
-    check_output(output, expect);
+    // Split output into lines.
+    auto lines = multiline_split(output);
+    auto len = lines.size();
+    ASSERT_GE(lines.size(), 8);
+
+    //
+    // This example shows bugs in floating-point formatted print of Fortran-Dubna.
+    //
+
+    // This line is OK.
+    EXPECT_STREQ(lines[len-8].c_str(), " 4020000000000010 -0.9999999999927240423858165740966796875000");
+
+    // Correct output would be: " 4020000000000004 -0.9999999999963620211929082870483398437500"
+    EXPECT_STREQ(lines[len-7].c_str(), " 4020000000000004 -0.9999999999956344254314899444580078125000");
+
+    // Correct output would be: " 4020000000000002 -0.9999999999981810105964541435241699218750"
+    EXPECT_STREQ(lines[len-6].c_str(), " 4020000000000002 -0.9999999999970896169543266296386718750000");
+
+    // Correct output would be: " 4020000000000001 -0.9999999999990905052982270717620849609375"
+    EXPECT_STREQ(lines[len-5].c_str(), " 4020000000000001 -0.9999999999985448084771633148193359375000");
 }

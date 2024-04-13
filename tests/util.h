@@ -47,6 +47,11 @@ std::string file_contents(const std::string &filename);
 std::vector<std::string> file_contents_split(const std::string &filename);
 
 //
+// Split multi-line text as vector of strings.
+//
+std::vector<std::string> multiline_split(const std::string &multiline);
+
+//
 // Read FILE* stream contents and return it as a string.
 //
 std::string stream_contents(FILE *input);

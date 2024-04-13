@@ -57,15 +57,32 @@ std::string file_contents(const std::string &filename)
 //
 // Read file contents as vector of strings.
 //
-std::vector<std::string> file_contents_split(const std::string &filename)
+std::vector<std::string> split_stream(std::istream &input)
 {
-    std::ifstream input(filename);
     std::vector<std::string> output;
     std::string line;
     while (std::getline(input, line)) {
         output.push_back(line);
     }
     return output;
+}
+
+//
+// Read file contents as vector of strings.
+//
+std::vector<std::string> file_contents_split(const std::string &filename)
+{
+    std::ifstream input(filename);
+    return split_stream(input);
+}
+
+//
+// Read file contents as vector of strings.
+//
+std::vector<std::string> multiline_split(const std::string &multiline)
+{
+    std::stringstream input(multiline);
+    return split_stream(input);
 }
 
 //

@@ -82,7 +82,7 @@ public:
         job_file = filename;
     }
 
-    std::string get_job_file() const { return job_file; }
+    const std::string &get_job_file() const { return job_file; }
 
     //
     // Run simulation session with given parameters.

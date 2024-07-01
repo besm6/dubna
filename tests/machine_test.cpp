@@ -53,12 +53,12 @@ TEST_F(dubna_machine, trace_arx)
         // clang-format off
         "00010 L: 00 010 2000 xta 2000",
         "      Memory Read [02000] = 0000 0000 0000 0013",
-        "      Write ACC = 0000 0000 0000 0013",
-        "      Write RAU = 04",
+        "      ACC = 0000 0000 0000 0013",
+        "      RAU = 04",
         "00010 R: 00 013 2001 arx 2001",
         "      Memory Read [02001] = 0000 0000 0000 0001",
-        "      Write ACC = 0000 0000 0000 0014",
-        "      Write RAU = 10",
+        "      ACC = 0000 0000 0000 0014",
+        "      RAU = 10",
         "00011 L: 06 33 12345 stop 12345(6)",
         // clang-format on
     };

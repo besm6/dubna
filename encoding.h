@@ -64,3 +64,8 @@ std::string utf8_to_koi7(const std::string &input);
 // Convert ITM encoding to/from GOST-10859.
 //
 extern const unsigned char itm_to_gost[256], gost_to_itm[256];
+
+//
+// Convert character in TEXT encoding to Unicode.
+//
+unsigned text_to_unicode(unsigned char ch);

@@ -551,3 +551,50 @@ const unsigned char gost_to_itm[256] = {
     /* 120-127 */ 0217, 0071, 0055, 0145, 0000, 0057, 0062, 0042,
     /* 130-137 */ 0044, 0070, 0043, 0063, 0134, 0136, 0064, 0041,
 };
+
+/*
+ * "Text" encoding of monitoring system Dubna.
+ */
+const unsigned char text_to_gost[64] =
+{
+/* 000 */	GOST_SPACE,		GOST_DOT,
+		GOST_BE,		GOST_TSE,
+		GOST_DE,		GOST_EF,
+		GOST_GHE,		GOST_CYRILLIC_I,
+/* 010 */	GOST_LEFT_PARENTHESIS,	GOST_RIGHT_PARENTHESIS,
+		GOST_ASTERISK,		GOST_SHORT_I,
+		GOST_EL,		GOST_YA,
+		GOST_ZHE,		GOST_SLASH,
+/* 020 */	GOST_0,			GOST_1,
+		GOST_2,			GOST_3,
+		GOST_4,			GOST_5,
+		GOST_6,			GOST_7,
+/* 030 */	GOST_8,			GOST_9,
+		GOST_SOFT_SIGN,		GOST_COMMA,
+		GOST_PE,		GOST_MINUS,
+		GOST_PLUS,		GOST_YERU,
+/* 040 */	GOST_ZE,		GOST_A,
+		GOST_B,			GOST_C,
+		GOST_D,			GOST_E,
+		GOST_F,			GOST_G,
+/* 050 */	GOST_H,			GOST_I,
+		GOST_J,			GOST_K,
+		GOST_L,			GOST_M,
+		GOST_N,			GOST_O,
+/* 060 */	GOST_P,			GOST_Q,
+		GOST_R,			GOST_S,
+		GOST_T,			GOST_U,
+		GOST_V,			GOST_W,
+/* 070 */	GOST_X,			GOST_Y,
+		GOST_Z,			GOST_SHA,
+		GOST_REVERSE_E,		GOST_SHCHA,
+		GOST_CHE,		GOST_YU,
+};
+
+//
+// Convert character in TEXT encoding to Unicode.
+//
+unsigned text_to_unicode(unsigned char ch)
+{
+    return gost_to_unicode(text_to_gost[ch & 077]);
+}

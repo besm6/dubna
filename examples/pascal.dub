@@ -2,7 +2,7 @@
 *pascal
 program main (output);
 _(
-    writeln("Hello, World!");
+    writeln('Hello, World!');
 _).
 *execute
 *end file

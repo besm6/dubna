@@ -24,6 +24,7 @@
 #include <iostream>
 
 #include "machine.h"
+#include "encoding.h"
 
 //
 // Execute extracode.
@@ -402,11 +403,23 @@ void Processor::e76()
     default:
         if (addr >= 10) {
             // Print warning.
-            std::cerr << "--- Ignore extracode *76 " + to_octal(core.M[016]) << std::endl;
+            std::cerr << "\n--- Ignore extracode *76 " + to_octal(core.M[016]) << std::endl;
             return;
         }
         throw Exception("Unimplemented extracode *76 " + to_octal(addr));
     }
+}
+
+static void print_word_as_text(Word w)
+{
+    utf8_putc(text_to_unicode(w >> 42));
+    utf8_putc(text_to_unicode(w >> 36));
+    utf8_putc(text_to_unicode(w >> 30));
+    utf8_putc(text_to_unicode(w >> 24));
+    utf8_putc(text_to_unicode(w >> 18));
+    utf8_putc(text_to_unicode(w >> 12));
+    utf8_putc(text_to_unicode(w >> 6));
+    utf8_putc(text_to_unicode(w));
 }
 
 //
@@ -414,30 +427,72 @@ void Processor::e76()
 //
 void Processor::e57()
 {
-    switch (core.M[016]) {
-    case 03:
-        // Some delay.
+    // "MONSYS )" in TEXT encoding.
+    static const Word MONSYS = 055'57'56'63'71'63'00'11;
+
+    // Modes of *57 in address field.
+    enum {
+        DELAY    = 07,    // задержка задачи
+        NOTFOUND = 010,   // печать 'нет магнитной ленты'
+        BUSY     = 020,   // печать 'занят магнитофон'
+        READY    = 040,   // печать 'нe гoтов магнитофон'
+        WRITE    = 0100,  // печать 'запись'
+        READ     = 0200,  // печать 'чтение'
+        NODIAG   = 0400,  // блокировка любой печати
+        BYNAME   = 01000, // поиск только по имени (без N бобины)
+        ASSIGN   = 02000, // поиск c захватом ленты (мат.номер ленты - в 13 регистре)
+        RELEASE  = 04000, // отказ от cвоиx лент, заданныx на сумматоре битовой шкалой:
+    };                    // 48 разряд - лента 30 для мат.задач
+
+    if (core.M[016] & DELAY) {
+        //
+        // Delay the task, presumably waiting for tape to be installed by operator.
+        //
         core.ACC = 0;
         throw Exception("Task paused waiting for tape");
-    case 050:
-        // Unknown.
+    }
+    if (core.M[016] & RELEASE) {
+        //
+        // Release tapes according to bitmask on accumulator.
+        //
+        if (machine.trace_enabled()) {
+            std::cout << "\nRelease tapes 0" << std::oct << core.ACC << std::dec << '\n';
+        }
         core.ACC = 0;
         return;
-    case 0400:
-        // Ask for tape by name?
-        core.ACC = 0; // failed
+    }
+    if (core.M[016] & ASSIGN) {
+        //
+        // Mount tape (by name) on given direction (in register #13).
+        //
+        if (core.ACC == MONSYS && core.M[015] == 030) {
+            // Tape MONSYS in mounted on direction #30.
+            core.ACC = 030;
+        } else {
+            std::cout << "\nCannot mount tape '";
+            print_word_as_text(core.ACC);
+            std::cout << "' on direction " << std::oct << core.M[015] << std::dec << '\n';
+            core.ACC = 0;
+        }
         return;
-    case 02050:
-        // Mount tape.
-        core.ACC = 0; // failed
+    } else {
+        //
+        // Find mounted tape by name.
+        //
+        if (core.ACC == MONSYS) {
+            // Tape MONSYS in mounted on direction #30.
+            core.ACC = 030;
+        } else {
+            // Tape not found.
+            core.ACC = 0;
+
+            if (!(core.M[016] & ASSIGN)) {
+                std::cout << "\nTape not found '";
+                print_word_as_text(core.ACC);
+                std::cout << "'\n";
+            }
+        }
         return;
-    case 04040:
-        // Request tapes bitmask on accumulator.
-        // core.ACC = BITS48;
-        core.ACC = 0;
-        return;
-    default:
-        throw Exception("Unimplemented extracode *57 " + to_octal(core.M[016]));
     }
 }
 

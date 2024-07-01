@@ -204,28 +204,28 @@ void Processor::print_registers()
     auto save_flags = out.flags();
 
     if (core.ACC != prev.ACC) {
-        out << "      Write ACC = ";
+        out << "      ACC = ";
         besm6_print_word_octal(out, core.ACC);
         out << std::endl;
     }
     if (core.RMR != prev.RMR) {
-        out << "      Write RMR = ";
+        out << "      RMR = ";
         besm6_print_word_octal(out, core.RMR);
         out << std::endl;
     }
     for (unsigned i = 0; i < 16; i++) {
         if (core.M[i] != prev.M[i]) {
-            out << "      Write M" << std::oct << i << " = " << std::setfill('0') << std::setw(5)
+            out << "      M" << std::oct << i << " = " << std::setfill('0') << std::setw(5)
                 << core.M[i] << std::endl;
         }
     }
     if (core.RAU != prev.RAU) {
-        out << "      Write RAU = " << std::oct << std::setfill('0') << std::setw(2) << core.RAU
+        out << "      RAU = " << std::oct << std::setfill('0') << std::setw(2) << core.RAU
             << std::endl;
     }
     if (core.apply_mod_reg != prev.apply_mod_reg) {
         if (core.apply_mod_reg) {
-            out << "      Write MOD = " << std::oct << std::setfill('0') << std::setw(5)
+            out << "      MOD = " << std::oct << std::setfill('0') << std::setw(5)
                 << core.MOD;
         } else {
             out << "      Clear MOD";

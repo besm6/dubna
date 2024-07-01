@@ -102,6 +102,7 @@ private:
     void extracode(unsigned opcode);
     void e50();
     void e57();
+    void e60();
     void e61();
     void e63();
     void e64();

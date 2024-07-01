@@ -46,6 +46,10 @@ void Processor::extracode(unsigned opcode)
         e57();
         break;
 
+    case 060: // Punch cards?
+        e60();
+        break;
+
     case 061: // VT-340 control.
         e61();
         break;
@@ -229,6 +233,9 @@ void Processor::e50()
     case 072216:
         // Set paper limit?
         // TODO: show paper limit on core.ACC
+        break;
+    case 074673:
+        // Unknown
         break;
     default:
         throw Exception("Unimplemented extracode *50 " + to_octal(core.M[016]));
@@ -510,4 +517,12 @@ void Processor::e61()
 void Processor::e71()
 {
     core.ACC = 0;
+}
+
+//
+// Extracode 060: punch card control?
+//
+void Processor::e60()
+{
+    throw Exception("Unimplemented extracode *60 " + to_octal(core.M[016]));
 }

@@ -1,9 +1,28 @@
-*name фортран
+*name фортран гдр
 *ftn
-        program hello
-        print 1000
-        stop
- 1000   format('Hello, World!')
-        end
+c---- Integers from 2 to 100: Sieve of Eratosthenes
+      program main
+      integer prime (100)
+c
+c---- Clear primes
+      do 10 n=2, 100
+ 10       prime (n) = 1
+c
+c---- Compute primes
+      do 20 n=2, 100
+          if (prime(n) .eq. 0) goto 20
+              maxk = 100 / n
+              if (maxk .lt. 2) goto 20
+              do 30 k=2, maxk
+ 30               prime (n*k) = 0
+ 20       continue
+c
+c---- Print primes
+      do 40 n=2, 100
+ 40       if (prime(n) .ne. 0) print 1000, n
+      stop
+c
+ 1000 format (1x, i4)
+      end
 *execute
 *end file

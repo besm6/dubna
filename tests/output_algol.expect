@@ -1,0 +1,46 @@
+                                             3  000    00.00
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+             ЖЖЖ    ЖЖЖ ЖЖЖЖЖ  ЖЖЖ    ЖЖЖ
+            Ж   Ж  Ж  Ж Ж     Ж   Ж  Ж  Ж
+            Ж   Ж  Ж  Ж Ж     Ж   Ж  Ж  Ж
+            Ж   Ж  Ж  Ж Ж     Ж   Ж  Ж  Ж
+            Ж   Ж  Ж  Ж Ж     Ж   Ж  Ж  Ж
+            ЖЖЖЖЖ  Ж  Ж Ж     Ж   Ж  Ж  Ж
+            Ж   Ж Ж   Ж Ж      ЖЖЖ  Ж   Ж
+
+
+
+
+
+
+
+
+*NAME AЛГOЛ
+*ALGOL                                             3  000    00.00
+A L G O L - Г Д P
+    (7.01.82)
+           1. ′BEGIN′
+           2.     PRINT(′′HELLO, WORLD!′′);
+           3. ′END′
+           4. ′EOP′
+CTPOKИ             OTHOCИTEЛЬHЫE AДPECA
+   1 - 00001 00001 00004
+PROGRAM   ДЛИHA:   16 00020B BPEMЯ:  0.00 CEK. KAPT:   4
+*EXECUTE
+≠
+         PROGRAM    01000                A/BPRI   E 01220                A/R*ISO  E 01370                PRINT8     01547
+         A/STOP     01020                A/SPRI   E 01227                STOP*      01423                SYSBACK*   01730
+         A/START  E 01024                A/LPRI   E 01244                EXIT     E 01424                CBOБOДHO   01740
+         A/DRUCK    01100                A/NLINE  E 01310                A/ARRD/K   01452
+         A/IPRI   E 01132                A/NPAGE  E 01312                A/ARRD/V E 01455
+         A/RPRI   E 01164                A/I*ISO  E 01365                STOPFLG* C 01546
+≠
+ HELLO, WORLD!

@@ -172,6 +172,24 @@ TEST_F(dubna_session, ftn)
 }
 
 //
+// Run *ALGOL example and check output.
+//
+TEST_F(dubna_session, algol)
+{
+    auto output = run_job_and_capture_output(R"(*name aлгол
+*algol
+'begin'
+    print(''Hello, World!'');
+'end'
+'eop'
+*execute
+*end file
+)");
+    auto expect = file_contents(TEST_DIR "/output_algol.expect");
+    check_output(output, expect);
+}
+
+//
 // Print real values from Fortran and check output.
 // https://github.com/besm6/dubna/issues/1
 //

@@ -520,9 +520,50 @@ void Processor::e71()
 }
 
 //
-// Extracode 060: punch card control?
+// Extracode 060: read from input buffer.
 //
 void Processor::e60()
 {
-    throw Exception("Unimplemented extracode *60 " + to_octal(core.M[016]));
+    //throw Exception("Unimplemented extracode *60 " + to_octal(addr));
+    static int count = 0;
+
+    auto addr = core.M[016];
+    switch (addr) {
+    case 0:
+        // Switch to next input buffer.
+        return;
+    default:
+        if (count > 0) {
+            // No more data in this buffer.
+            //std::cerr << "\n--- Ignore extracode *60 " + to_octal(core.M[016]) << std::endl;
+            core.M[016] = 0;
+            return;
+        }
+        machine.mem_store(addr + 0,  052ull<<32 | 0255<<24 | 0266<<16 | 0127<<8 | 0127); // 0КНЦ◇◇
+        machine.mem_store(addr + 1, 0127ull<<32);                                        // 0◇0000
+        machine.mem_store(addr + 2, 0);
+        machine.mem_store(addr + 3, 0);
+        machine.mem_store(addr + 4, 0);
+        machine.mem_store(addr + 5, 0);
+        machine.mem_store(addr + 6, 0);
+        machine.mem_store(addr + 7, 0);
+        machine.mem_store(addr + 8, 0);
+        machine.mem_store(addr + 9, 0);
+        machine.mem_store(addr + 10, 0);
+        machine.mem_store(addr + 11, 0);
+        machine.mem_store(addr + 12, 0);
+        machine.mem_store(addr + 13, 0);
+        machine.mem_store(addr + 14, 0);
+        machine.mem_store(addr + 15, 0);
+        machine.mem_store(addr + 16, 0);
+        machine.mem_store(addr + 17, 0);
+        machine.mem_store(addr + 18, 0);
+        machine.mem_store(addr + 19, 0);
+        machine.mem_store(addr + 20, 0);
+        machine.mem_store(addr + 21, 0);
+        machine.mem_store(addr + 22, 0);
+        machine.mem_store(addr + 23, 0);
+        count++;
+        return;
+    }
 }

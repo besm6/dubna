@@ -1,0 +1,56 @@
+                                             3  000    00.00
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+              Ж    ЖЖЖ  ЖЖЖЖ  ЖЖЖЖЖ ЖЖЖЖ   ЖЖЖ  Ж   Ж
+            ЖЖЖЖЖ Ж   Ж Ж   Ж   Ж   Ж   Ж Ж   Ж Ж   Ж
+            Ж Ж Ж Ж   Ж Ж   Ж   Ж   Ж   Ж Ж   Ж ЖЖЖЖЖ
+            Ж Ж Ж Ж   Ж Ж   Ж   Ж   Ж   Ж Ж   Ж Ж   Ж
+            ЖЖЖЖЖ Ж   Ж ЖЖЖЖ    Ж   ЖЖЖЖ  Ж   Ж Ж   Ж
+              Ж   Ж   Ж Ж       Ж   Ж     ЖЖЖЖЖ Ж   Ж
+              Ж    ЖЖЖ  Ж       Ж   Ж     Ж   Ж Ж   Ж
+
+
+
+
+
+
+
+
+*NAME ФOPTPAH
+*FTN                                             3  000    00.00
+ Ф O P T P A H - Г Д P
+      (09.07.81)
+  001                 PROGRAM HELLO
+  002                 PRINT 1000
+  003                 STOP
+  004          1000   FORMAT(′HELLO, WORLD!′)
+  005                 END
+
+  STATEMENT    RELATIVE ADDRESSES OF STATEMENTS (OCTAL)
+   00001        :00000   00000  :00004  :00005  :00005
+     *** ENTRIES ***   >LOCATION<
+    HELLO   >00000<   PROGRA  >00000<
+ >> HELLO  <<    LENGTH: 00009 00011B   INPUT CARDS: 00005
+*EXECUTE
+≠
+         HELLO      01000                IOCONT*    01614                FT*723   E 01666                ISOTCOS1 E 04017
+         PROGRAM  E 01000                IOAC*    E 01645                FT*003   E 01666                FMRTAPE    04037
+         BCDWRIT*   01011                FT*722   E 01660                STOP*      02654                OCTTDEC    04766
+         FT*621   E 01011                FT*642   E 01660                EXIT     E 02655                LUNMUN   C 05021
+         BCDENC*  E 01015                FT*002   E 01660                BCDBEG*    02703                JERRIO*  C 05022
+         FT*611   E 01015                FD*642   E 01661                FT2*     E 03210                CARD2    C 05023
+         FT*571   E 01017                FD*722   E 01661                KONV1*   E 03223                ISOICTTR   05050
+         FT*561   E 01022                FC*722   E 01661                PRINT8     03317                REVCARD    05105
+         NEXTLET* E 01027                FC*642   E 01661                TTPRINT    03500                *ICHECK* C 05132
+         RK*      E 01071                FC*002   E 01661                BCDPUN     03537                *ПEPФOPA   05140
+         WSY*     E 01327                IOEND*   E 01666                EBCDPUN  E 03563                KOД*CDC  E 05141
+         I/O*ERR  E 01567                FT*643   E 01666                ISOTCOSY   03746                CBOБOДHO   05201
+≠
+HELLO, WORLD!

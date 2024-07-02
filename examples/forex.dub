@@ -1,0 +1,9 @@
+*name форекс
+*forex
+        program hello
+        print 1000
+        stop
+ 1000   format('Hello, World!')
+        end
+*execute
+*end file

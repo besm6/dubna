@@ -153,6 +153,25 @@ TEST_F(dubna_session, fortran)
 }
 
 //
+// Run *FTN example and check output.
+//
+TEST_F(dubna_session, ftn)
+{
+    auto output = run_job_and_capture_output(R"(*name фортран
+*ftn
+        program hello
+        print 1000
+        stop
+ 1000   format('Hello, World!')
+        end
+*execute
+*end file
+)");
+    auto expect = file_contents(TEST_DIR "/output_ftn.expect");
+    check_output(output, expect);
+}
+
+//
 // Print real values from Fortran and check output.
 // https://github.com/besm6/dubna/issues/1
 //

@@ -437,6 +437,11 @@ void Processor::e57()
     // "MONSYS )" in TEXT encoding.
     static const Word MONSYS = 055'57'56'63'71'63'00'11;
 
+    // "LIBRAR W" in TEXT encoding.
+    static const Word LIBRAR_12 = 054'51'42'62'41'62'00'67;
+
+    static const Word LIBRAR_37 = 054'51'42'62'41'62'00'67; // TODO
+
     // Modes of *57 in address field.
     enum {
         DELAY    = 07,    // задержка задачи
@@ -473,12 +478,19 @@ void Processor::e57()
         // Mount tape (by name) on given direction (in register #13).
         //
         if (core.ACC == MONSYS && core.M[015] == 030) {
-            // Tape MONSYS in mounted on direction #30.
+            // Tape MONSYS is mounted on direction #30.
             core.ACC = 030;
+        } else if (core.ACC == LIBRAR_12 && core.M[015] == 031) {
+            // Tape LIBRAR.12 is mounted on direction #31.
+            core.ACC = 031;
+        } else if (core.ACC == LIBRAR_37 && core.M[015] == 032) {
+            // Tape LIBRAR.37 is mounted on direction #32.
+            core.ACC = 032;
         } else {
             std::cout << "\nCannot mount tape '";
             print_word_as_text(core.ACC);
             std::cout << "' on direction " << std::oct << core.M[015] << std::dec << '\n';
+            std::cout << "--- " << std::oct << core.ACC << std::dec << '\n';
             core.ACC = 0;
         }
         return;
@@ -489,6 +501,12 @@ void Processor::e57()
         if (core.ACC == MONSYS) {
             // Tape MONSYS in mounted on direction #30.
             core.ACC = 030;
+        } else if (core.ACC == LIBRAR_12) {
+            // Tape LIBRAR.12 is mounted on direction #31.
+            core.ACC = 031;
+        } else if (core.ACC == LIBRAR_37) {
+            // Tape LIBRAR.37 is mounted on direction #32.
+            core.ACC = 032;
         } else {
             // Tape not found.
             core.ACC = 0;

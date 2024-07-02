@@ -105,6 +105,8 @@ public:
             // Mount tape image 9 as disk 30, read only.
             // Re-direct drum 21 to it.
             machine.disk_mount(030, "9", false);
+            machine.disk_mount(031, "12", false);
+            machine.disk_mount(032, "37", false);
             machine.map_drum_to_disk(021, 030);
             machine.boot_ms_dubna();
 

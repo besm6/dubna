@@ -190,6 +190,21 @@ TEST_F(dubna_session, algol)
 }
 
 //
+// Run *LIBPUNCH example and check output.
+//
+TEST_F(dubna_session, libpunch)
+{
+    // See Mazny book, page 140.
+    auto output = run_job_and_capture_output(R"(*name libpunch
+*table:libpunch(print8)
+*libpunch
+*end file
+)");
+    auto expect = file_contents(TEST_DIR "/output_libpunch.expect");
+    check_output(output, expect);
+}
+
+//
 // Print real values from Fortran and check output.
 // https://github.com/besm6/dubna/issues/1
 //

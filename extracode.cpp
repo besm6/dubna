@@ -295,7 +295,7 @@ void Processor::e72()
     unsigned addr = core.M[016];
     if (addr >= 010) {
         // Request or release pages of memory.
-        std::cerr << "\n--- Ignore extracode *72 " + to_octal(addr) << std::endl;
+        //std::cerr << "\n--- Ignore extracode *72 " + to_octal(addr) << std::endl;
         return;
     }
 
@@ -323,9 +323,12 @@ void Processor::e65()
     case 4:
     case 5:
     case 6:
-    case 7:
-        // All pult tumblers are off.
+        // Pult tumblers #0-6 are off.
         core.ACC = 0;
+        return;
+    case 7:
+        // Pult tumblers #7: set bit 31.
+        core.ACC = 0000'0100'0000'0000;
         return;
     case 0502:
         // Get address of process descriptor.
@@ -394,6 +397,7 @@ void Processor::e67()
     core.PC = (word >> 24) & 077777;
 }
 
+#if 0
 static void print_instruction_word(unsigned addr, Word word)
 {
     std::cerr << "--- [" << to_octal(addr) << "] = ";
@@ -402,6 +406,7 @@ static void print_instruction_word(unsigned addr, Word word)
     besm6_print_instruction_mnemonics(std::cerr, word & BITS(24));
     std::cerr << std::endl;
 }
+#endif
 
 //
 // Extracode 076: call routine in kernel mode?
@@ -420,9 +425,9 @@ void Processor::e76()
     default:
         if (addr >= 10) {
             // Print warning.
-            std::cerr << "\n--- Ignore extracode *76 " + to_octal(addr) << std::endl;
-            print_instruction_word(addr, machine.mem_load(addr));
-            print_instruction_word(addr + 1, machine.mem_load(addr + 1));
+            //std::cerr << "\n--- Ignore extracode *76 " + to_octal(addr) << std::endl;
+            //print_instruction_word(addr, machine.mem_load(addr));
+            //print_instruction_word(addr + 1, machine.mem_load(addr + 1));
             return;
         }
         throw Exception("Unimplemented extracode *76 " + to_octal(addr));

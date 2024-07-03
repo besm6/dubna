@@ -85,7 +85,7 @@ protected:
         }
 
         // Compare line by line.
-        while (expect.good()) {
+        for (unsigned lineno = 1; expect.good(); lineno++) {
             EXPECT_TRUE(output.good()) << "Output is too short";
 
             std::string output_line;
@@ -93,9 +93,13 @@ protected:
             if (output_line == "------------------------------------------------------------")
                 break;
 
+            // Remove trailing spaces.
+            output_line.resize(1 + output_line.find_last_not_of(' '));
+
             std::string expect_line;
             getline(expect, expect_line);
-            EXPECT_EQ(output_line, expect_line);
+            EXPECT_EQ(output_line, expect_line)
+                << "line #" << lineno;
         }
     }
 

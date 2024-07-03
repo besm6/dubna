@@ -134,6 +134,30 @@ TEST_F(dubna_session, assem)
 }
 
 //
+// Run *MADLEN example and check output.
+//
+TEST_F(dubna_session, madlen)
+{
+    auto output = run_job_and_capture_output(R"(*name мадлен
+*madlen
+ program: ,name,
+          ,*64 , inf64
+          ,*74 ,
+ inf64:   ,    , text
+          ,    , text
+          ,001 ,
+         8,    ,
+ text:    ,gost, 18h Hello, World!'214'
+          ,gost, 6h'231'
+          ,end ,
+*execute
+*end file
+)");
+    auto expect = file_contents(TEST_DIR "/output_madlen.expect");
+    check_output(output, expect);
+}
+
+//
 // Run *FORTRAN example and check output.
 //
 TEST_F(dubna_session, fortran)
@@ -186,6 +210,24 @@ TEST_F(dubna_session, algol)
 *end file
 )");
     auto expect = file_contents(TEST_DIR "/output_algol.expect");
+    check_output(output, expect);
+}
+
+//
+// Run *PASCAL example and check output.
+//
+TEST_F(dubna_session, pascal)
+{
+    auto output = run_job_and_capture_output(R"(*name pascal
+*pascal
+program main (output);
+_(
+    writeln('Hello, World!');
+_).
+*execute
+*end file
+)");
+    auto expect = file_contents(TEST_DIR "/output_pascal.expect");
     check_output(output, expect);
 }
 

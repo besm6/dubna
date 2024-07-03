@@ -1,0 +1,78 @@
+                                             3  000    00.00
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            Ж   Ж  ЖЖЖ   ЖЖЖ    ЖЖЖ ЖЖЖЖ  Ж   Ж
+            ЖЖ ЖЖ Ж   Ж  Ж Ж   Ж  Ж Ж     Ж   Ж
+            Ж Ж Ж Ж   Ж  Ж Ж   Ж  Ж ЖЖЖ   ЖЖЖЖЖ
+            Ж Ж Ж Ж   Ж  Ж Ж   Ж  Ж Ж     Ж   Ж
+            Ж   Ж Ж   Ж  Ж Ж   Ж  Ж Ж     Ж   Ж
+            Ж   Ж ЖЖЖЖЖ ЖЖЖЖЖ  Ж  Ж Ж     Ж   Ж
+            Ж   Ж Ж   Ж Ж   Ж Ж   Ж ЖЖЖЖЖ Ж   Ж
+
+
+
+
+
+
+
+
+*NAME MAДЛEH
+*MADLEN
+ PROGRAM           MADLEN-3.5   3↑/1↑/↑↑   00.00.00    CTP    1
+ 001L               PROGRAM :  , NAME,
+ 0000 0002                     , *64 ,INF64
+ 0001                          , *74 ,
+ 0002 0004          INF64   :  ,     ,TEXT
+  -   0004                     ,     ,TEXT
+ 0003                          , 001 ,
+  -                           8,     ,
+ 0004               TEXT    :  , GOST,18H HELLO, WORLD!′214′
+ 0007                          , GOST,6H′231′
+        10                     , END ,
+
+ +++ CTPYKTYPA ПPOГPAMMЫ: +++++++++++++++++++++++++
+ +              ИMЯ 00001              BXOДЫ 00001+
+ +         OПИCAHИЯ 00002               SUBP 00000+
+ +      KOMMEHTAPИЙ 00000             ARRAYS 00000+
+ + PEЗEPBHAЯ ГPYППA 00000     ИДEHTИФИKATOPЫ 00002+
+ +ДЛ.ИДEHTИФИKATOPЫ 00000              DEBUG 00000+
+ +          KOMAHДЫ 00004              XTEXT 00000+
+ +       ГPYППA BSS 00000         ИHCTPYKЦИИ 00010+
+ +        KOHCTAHTЫ 00004   ГЛOБ.БAЗИPOBAHИE 00000+
+ +             DATA 00000               DISP DD****
+ +         PACCЫЛKИ 00000              MODEL ******
+ ЧИCЛO ПEPФ.     10      ЧИCЛO OШИБ. OПEPATOPOB  00
+ PROGRAM       CP 0.0,      ST 0.0,      RT     1.0*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*EXECUTE
+≠
+         PROGRAM    01000                CBOБOДHO   01010
+≠
+  HELLO, WORLD!

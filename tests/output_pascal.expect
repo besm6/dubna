@@ -1,0 +1,38 @@
+                                             3  000    00.00
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖЖ   ЖЖЖ   ЖЖЖ   ЖЖЖЖ  ЖЖЖ  Ж
+            Ж   Ж Ж   Ж Ж     Ж     Ж   Ж Ж
+            Ж   Ж Ж   Ж  ЖЖЖ  Ж     Ж   Ж Ж
+            Ж   Ж Ж   Ж     Ж Ж     Ж   Ж Ж
+            ЖЖЖЖ  Ж   Ж     Ж Ж     Ж   Ж Ж
+            Ж     ЖЖЖЖЖ Ж   Ж Ж     ЖЖЖЖЖ Ж
+            Ж     Ж   Ж  ЖЖЖ   ЖЖЖЖ Ж   Ж ЖЖЖЖЖ
+
+
+
+
+
+
+
+
+*NAME PASCAL
+*PASCAL                                             3  000    00.00
+ PASCAL COMPILER. 14.(24.12.79)
+ 00001    1 PROGRAM MAIN (OUTPUT);
+ 00007    2 _(
+ 00007    3     WRITELN(′HELLO, WORLD!′);
+ 00024    4 _).
+*EXECUTE
+≠
+         MAIN       01000           OTCYTCTBYET  P/7A               OTCYTCTBYET  P/1                     P/1D     C 01034
+    OTCYTCTBYET  P/CO               OTCYTCTBYET  P/WL               OTCYTCTBYET  P/PMDSET                *OUTPUT* C 01104
+    OTCYTCTBYET  P/IT               OTCYTCTBYET  P/EF                    PROGRAM  E 01000                CBOБOДHO   01142
+≠

@@ -295,6 +295,7 @@ void Processor::e72()
     unsigned addr = core.M[016];
     if (addr >= 010) {
         // Request or release pages of memory.
+        std::cerr << "\n--- Ignore extracode *72 " + to_octal(addr) << std::endl;
         return;
     }
 
@@ -393,6 +394,15 @@ void Processor::e67()
     core.PC = (word >> 24) & 077777;
 }
 
+static void print_instruction_word(unsigned addr, Word word)
+{
+    std::cerr << "--- [" << to_octal(addr) << "] = ";
+    besm6_print_instruction_mnemonics(std::cerr, (word >> 24) & BITS(24));
+    std::cerr << ", ";
+    besm6_print_instruction_mnemonics(std::cerr, word & BITS(24));
+    std::cerr << std::endl;
+}
+
 //
 // Extracode 076: call routine in kernel mode?
 //
@@ -410,7 +420,9 @@ void Processor::e76()
     default:
         if (addr >= 10) {
             // Print warning.
-            std::cerr << "\n--- Ignore extracode *76 " + to_octal(core.M[016]) << std::endl;
+            std::cerr << "\n--- Ignore extracode *76 " + to_octal(addr) << std::endl;
+            print_instruction_word(addr, machine.mem_load(addr));
+            print_instruction_word(addr + 1, machine.mem_load(addr + 1));
             return;
         }
         throw Exception("Unimplemented extracode *76 " + to_octal(addr));

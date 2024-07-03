@@ -438,18 +438,6 @@ void Processor::e76()
     }
 }
 
-static void print_word_as_text(Word w)
-{
-    utf8_putc(text_to_unicode(w >> 42));
-    utf8_putc(text_to_unicode(w >> 36));
-    utf8_putc(text_to_unicode(w >> 30));
-    utf8_putc(text_to_unicode(w >> 24));
-    utf8_putc(text_to_unicode(w >> 18));
-    utf8_putc(text_to_unicode(w >> 12));
-    utf8_putc(text_to_unicode(w >> 6));
-    utf8_putc(text_to_unicode(w));
-}
-
 //
 // Extracode 057: mount tapes.
 //

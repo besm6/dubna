@@ -389,6 +389,21 @@ std::string Machine::disk_find(const std::string &filename)
 }
 
 //
+// Print word as 8 characters in TEXT encoding.
+//
+void print_word_as_text(Word w)
+{
+    utf8_putc(text_to_unicode(w >> 42));
+    utf8_putc(text_to_unicode(w >> 36));
+    utf8_putc(text_to_unicode(w >> 30));
+    utf8_putc(text_to_unicode(w >> 24));
+    utf8_putc(text_to_unicode(w >> 18));
+    utf8_putc(text_to_unicode(w >> 12));
+    utf8_putc(text_to_unicode(w >> 6));
+    utf8_putc(text_to_unicode(w));
+}
+
+//
 // Load boot code for Monitoring System Dubna.
 //
 void Machine::boot_ms_dubna()

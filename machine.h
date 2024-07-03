@@ -215,4 +215,9 @@ public:
     void print_e64(const E64_Info &info, unsigned start_addr, unsigned end_addr);
 };
 
+//
+// Print word as 8 characters in TEXT encoding.
+//
+void print_word_as_text(Word w);
+
 #endif // DUBNA_MACHINE_H

@@ -204,7 +204,40 @@ public:
     //
     void print_libraries(std::ostream &out)
     {
-        out << "TODO" << std::endl;
+        try {
+            // Mount tape image 9 as disk 30, read only.
+            machine.disk_mount(030, "9", false);
+
+            // Read zone 6.
+            static const unsigned ZONE = 6;
+            machine.disk_io('r', 0, ZONE, 0, 0x0, 1024);
+
+            // Print table of libraries.
+            static const unsigned OFFSET = 01720;
+
+            out << "Library         Tape        Zone\n";
+            out << "--------------------------------\n";
+            for (unsigned libno = 0; libno < 030; libno++) {
+                Word tape_name = machine.mem_load(OFFSET + libno);
+                if (tape_name == 0) {
+                    // No library with this number.
+                    continue;
+                }
+                Word location = machine.mem_load(OFFSET + libno + 030);
+
+                out << "*library:" << std::left << std::setw(2) << std::oct << libno << "     ";
+                print_word_as_text(tape_name);
+                out << "    " << std::right << std::setw(4) << std::setfill('0') << (location >> 30)
+                    << std::setfill(' ') << std::dec << std::endl;
+            }
+        } catch (const std::exception &ex) {
+            // Print exception message.
+            std::cerr << "Error: " << ex.what() << std::endl;
+            exit_status = EXIT_FAILURE;
+        } catch (...) {
+            // Assuming the exception message already printed.
+            exit_status = EXIT_FAILURE;
+        }
     }
 
     //

@@ -293,12 +293,6 @@ void Processor::e63()
 void Processor::e72()
 {
     unsigned addr = core.M[016];
-    if (addr >= 010) {
-        // Request or release pages of memory.
-        std::cerr << "\n--- Ignore extracode *72 " + to_octal(addr) << std::endl;
-        return;
-    }
-
     switch (addr) {
     case 4:
         // Write the input card to the dayfile.
@@ -307,7 +301,14 @@ void Processor::e72()
         // Ignore for now.
         return;
     default:
-        throw Exception("Unimplemented extracode *72 " + to_octal(addr));
+        if (addr < 010) {
+            throw Exception("Unimplemented extracode *72 " + to_octal(addr));
+        }
+        // Request or release pages of memory.
+        Word word = machine.mem_load(addr);
+        std::cerr << "\n--- Ignore extracode *72 " << to_octal(addr)
+                  << ", " << std::oct << word << std::dec << std::endl;
+        return;
     }
 }
 

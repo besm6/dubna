@@ -227,6 +227,9 @@ void Processor::e50()
         // Asking for шифр?
         core.ACC = 0'1234'5670'1234'5670;
         break;
+    case 071223:
+        // Unknown, for Forex.
+        break;
     case 072211:
         // Set time limit?
         // TODO: show time limit on core.ACC

@@ -4,6 +4,6 @@ program main (output);
 _(
     writeln('Hello, World!');
 _).
-*perso:300172,cont
+*library:22
 *execute
 *end file

@@ -199,6 +199,22 @@ public:
         memory.read_words(output, nrows, addr);
     }
 
+    //
+    // Show available libraries.
+    //
+    void print_libraries(std::ostream &out)
+    {
+        out << "TODO" << std::endl;
+    }
+
+    //
+    // Show available commands.
+    //
+    void print_commands(std::ostream &out)
+    {
+        out << "TODO" << std::endl;
+    }
+
 private:
     //
     // Print footer.
@@ -333,4 +349,20 @@ void Session::mem_write(const Words &input, unsigned addr)
 void Session::mem_read(Words &output, unsigned nrows, unsigned addr)
 {
     internal->mem_read(output, nrows, addr);
+}
+
+//
+// Show available libraries.
+//
+void Session::print_libraries(std::ostream &out)
+{
+    internal->print_libraries(out);
+}
+
+//
+// Show available commands.
+//
+void Session::print_commands(std::ostream &out)
+{
+    internal->print_commands(out);
 }

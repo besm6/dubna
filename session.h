@@ -27,6 +27,7 @@
 
 #include <memory>
 #include <string>
+#include <iostream>
 
 #include "besm6_arch.h"
 
@@ -66,6 +67,12 @@ public:
 
     // Get the number of simulated instructions.
     uint64_t get_instr_count();
+
+    // Show available libraries.
+    void print_libraries(std::ostream &out);
+
+    // Show available commands.
+    void print_commands(std::ostream &out);
 
     // Get version of the simulator.
     static const char *get_version();

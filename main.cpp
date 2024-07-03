@@ -31,12 +31,14 @@
 //
 static const struct option long_options[] = {
     // clang-format off
-    { "help",       no_argument,        nullptr,    'h' },
-    { "version",    no_argument,        nullptr,    'V' },
-    { "verbose",    no_argument,        nullptr,    'v' },
-    { "limit",      required_argument,  nullptr,    'l' },
-    { "trace",      required_argument,  nullptr,    'T' },
-    { "debug",      required_argument,  nullptr,    'd' },
+    { "help",           no_argument,        nullptr,    'h' },
+    { "help-libs",      no_argument,        nullptr,    'L' },
+    { "help-commands",  no_argument,        nullptr,    'C' },
+    { "version",        no_argument,        nullptr,    'V' },
+    { "verbose",        no_argument,        nullptr,    'v' },
+    { "limit",          required_argument,  nullptr,    'l' },
+    { "trace",          required_argument,  nullptr,    'T' },
+    { "debug",          required_argument,  nullptr,    'd' },
     { nullptr },
     // clang-format on
 };
@@ -60,6 +62,8 @@ static void print_usage(std::ostream &out, const char *prog_name)
     out << "    -t                      Trace extracodes to stdout" << std::endl;
     out << "    --trace=FILE            Redirect trace to the file" << std::endl;
     out << "    -d MODE, --debug=MODE   Select debug mode, default irm" << std::endl;
+    out << "    --help-libs             Show available libraries" << std::endl;
+    out << "    --help-commands         Show available commands" << std::endl;
     out << "Debug modes:" << std::endl;
     out << "    i       Trace instructions" << std::endl;
     out << "    e       Trace extracodes" << std::endl;
@@ -103,6 +107,16 @@ int main(int argc, char *argv[])
         case 'h':
             // Show usage message and exit.
             print_usage(std::cout, prog_name);
+            exit(EXIT_SUCCESS);
+
+        case 'L':
+            // Show available libraries.
+            session.print_libraries(std::cout);
+            exit(EXIT_SUCCESS);
+
+        case 'C':
+            // Show available commands.
+            session.print_commands(std::cout);
             exit(EXIT_SUCCESS);
 
         case 'v':

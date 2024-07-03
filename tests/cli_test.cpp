@@ -108,3 +108,43 @@ TEST(cli, trace_end_file)
     EXPECT_STREQ(trace[2].c_str(), "      Drum 21 PhysRead [00000-00377] = Zone 1 Sector 2");
     EXPECT_STREQ(trace[trace.size() - 5].c_str(), "00427 L: 00 074 0000 *74");
 }
+
+TEST(cli, help_libs)
+{
+    // Run simulator via shell.
+    FILE *pipe = popen("../dubna --help-libs", "r");
+    ASSERT_TRUE(pipe != nullptr);
+
+    // Capture the output.
+    std::string result = stream_contents(pipe);
+    std::cout << result;
+
+    // Check exit code.
+    int exit_status = pclose(pipe);
+    int exit_code   = WEXITSTATUS(exit_status);
+    ASSERT_NE(exit_status, -1);
+    ASSERT_EQ(exit_code, 0);
+
+    // Check output.
+    const std::string expect = R"(Mount image '/Users/vak/.besm6/9' as disk 30
+Library         Tape        Zone
+--------------------------------
+*library:1      LIBRAR 2    0000
+*library:2      LIBRAR W    0000
+*library:3      LIBRAR W    0340
+*library:5      LIBRAR W    0545
+*library:6      LIBRAR W    0650
+*library:7      LIBRAR W    1061
+*library:10     LIBRAR W    1220
+*library:11     LIBRAR W    1370
+*library:12     LIBRAR 2    0375
+*library:21     MONSYS )    0240
+*library:22     MONSYS )    0172
+*library:23     MONSYS )    0320
+*library:24     MONSYS )    0172
+*library:25     LIBRAR 2    0640
+*library:26     GRAFPR2Ц    0000
+*library:27     LIBRAR 2    0600
+)";
+    EXPECT_EQ(result, expect);
+}

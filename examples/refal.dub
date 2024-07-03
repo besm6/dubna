@@ -1,5 +1,8 @@
 *name рефал
 *refal
-begin
-end
+hello   start
+        entry go
+        extrn print
+go      = <Print 'Hello World!'>
+        end
 *end file

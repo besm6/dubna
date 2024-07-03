@@ -252,7 +252,8 @@ void Machine::print_e70(const E70_Info &info)
         //
         // Disk.
         //
-        const char *opname = info.disk.read_op ? "Read" : "Write";
+        const char *opname = info.disk.seek ? "Seek" :
+                             info.disk.read_op ? "Read" : "Write";
         out << "      Disk " << std::oct << info.disk.unit << ' ' << opname << " [";
 
         unsigned addr      = info.disk.page << 10;

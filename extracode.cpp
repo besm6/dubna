@@ -116,6 +116,10 @@ void Processor::e70()
         //
         // Disk read/write.
         //
+        if (info.disk.seek) {
+            // Speculative operation: tape seek.
+            return;
+        }
         machine.disk_io(op, info.disk.unit - 030, info.disk.zone, 0, addr, 1024);
     } else {
         //
@@ -323,12 +327,9 @@ void Processor::e65()
     case 4:
     case 5:
     case 6:
-        // Pult tumblers #0-6 are off.
-        core.ACC = 0;
-        return;
     case 7:
-        // Pult tumblers #7: set bit 31.
-        core.ACC = 0000'0100'0000'0000;
+        // All pult tumblers are off.
+        core.ACC = 0;
         return;
     case 0502:
         // Get address of process descriptor.

@@ -49,7 +49,8 @@ union E70_Info {
         unsigned page : 5;    // Memory page number
         unsigned _2 : 4;      // ---
         unsigned read_op : 1; // Operation: 1=Read, 0=Write
-        unsigned _3 : 8;      // ---
+        unsigned seek : 1;    // Speculative operation: no data transfer
+        unsigned _3 : 7;      // ---
     } disk;
 
     struct {

@@ -354,3 +354,74 @@ TEST_F(dubna_session, divzero)
 
     EXPECT_STREQ(lines[len-5].c_str(), " 123.4");
 }
+
+//
+// Print contents of default library.
+//
+TEST_F(dubna_session, pcatalog)
+{
+    auto output = run_job_and_capture_output(R"(*name постоян.библиотека
+*call pcatalog
+*end file
+)");
+    auto expect = file_contents(TEST_DIR "/expect_pcatalog.txt");
+    check_output(output, expect);
+}
+
+//
+// Print a list of system overlays.
+//
+TEST_F(dubna_session, sovcatal)
+{
+    auto output = run_job_and_capture_output(R"(*name системные оверлеи
+*call sovcatal
+*end file
+)");
+    auto expect = file_contents(TEST_DIR "/expect_sovcatal.txt");
+    check_output(output, expect);
+}
+
+//
+// Print contents of library 21.
+//
+TEST_F(dubna_session, library21)
+{
+    auto output = run_job_and_capture_output(R"(*name библиотека 21
+*perso:300240
+*
+*call tcatalog
+*end file
+)");
+    auto expect = file_contents(TEST_DIR "/expect_library21.txt");
+    check_output(output, expect);
+}
+
+//
+// Print contents of library 22.
+//
+TEST_F(dubna_session, library22)
+{
+    auto output = run_job_and_capture_output(R"(*name библиотека 22
+*perso:300172
+*
+*call tcatalog
+*end file
+)");
+    auto expect = file_contents(TEST_DIR "/expect_library22.txt");
+    check_output(output, expect);
+}
+
+//
+// Print contents of library 23.
+//
+TEST_F(dubna_session, library23)
+{
+    auto output = run_job_and_capture_output(R"(*name библиотека 23
+*perso:300320
+*
+*call tcatalog
+*end file
+)");
+    auto expect = file_contents(TEST_DIR "/expect_library23.txt");
+    check_output(output, expect);
+}

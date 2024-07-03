@@ -1,0 +1,161 @@
+                                             3  000    00.00
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖЖЖ Ж   Ж ЖЖЖЖЖ   ЖЖЖ Ж   Ж  ЖЖЖ  ЖЖЖЖЖ ЖЖЖЖ  Ж  Ж   ЖЖЖ         ЖЖЖ  ЖЖЖЖЖ
+            Ж     Ж   Ж Ж      Ж  Ж Ж   Ж Ж   Ж   Ж   Ж     Ж Ж   Ж   Ж       Ж   Ж    Ж
+            ЖЖЖЖ  Ж   Ж ЖЖЖЖ   Ж  Ж Ж   Ж Ж   Ж   Ж   ЖЖЖ   ЖЖ    Ж   Ж           Ж   Ж
+            Ж   Ж Ж  ЖЖ Ж   Ж  Ж  Ж Ж  ЖЖ Ж   Ж   Ж   Ж     Ж Ж   Ж   Ж          Ж     Ж
+            Ж   Ж Ж Ж Ж Ж   Ж  Ж  Ж Ж Ж Ж Ж   Ж   Ж   Ж     Ж  Ж  Ж   Ж         Ж       Ж
+            Ж   Ж ЖЖ  Ж Ж   Ж  Ж  Ж ЖЖ  Ж Ж   Ж   Ж   Ж     Ж   Ж ЖЖЖЖЖ        Ж    Ж   Ж
+            ЖЖЖЖ  Ж   Ж ЖЖЖЖ  Ж   Ж Ж   Ж  ЖЖЖ    Ж   ЖЖЖЖЖ Ж   Ж Ж   Ж       ЖЖЖЖЖ  ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME БИБЛИOTEKA 23
+*PERSO:300320
+*100489×!                             ! ! ! ! ! ! !
+*CALL TCATALOG                                             3  000    00.00
+                      TEMPORARY LIBRARY                             ICOS     (TASK41  )  00075    LBPUT    (LSHIFT  )  00027
+                     CBOБOДHO  22 17 21                             IDCHECK  (NUSTOID )  00022    LCADD    (LSHIFT  )  00006
+                                                                    IDEC       21 04 17  00025    LCHANG   (LDEFIN  )  00473
+   *ISOTAB*   21 30 17  00400    ECSHIF   (ECREAD  )  00004         IDTONUS  (NUSTOID )  00013    LCNT     (LSHIFT  )  00011
+   *ORDERS*   21 27 37  00035    ECWRIT   (ECREAD  )  00001         IELADR   (EXLIB   )  00042    LCONC    (LDEFIN  )  00164
+   ADDCS    (TASK41  )  00124    EDPRI      21 30 04  00100         IEXADR   (EXMEM   )  00007    LCONEC     21 36 27  00070
+   APXAP      22 05 10  21266    EDPRI1   (EDPRI   )  00041         IFEREQ     21 04 20  00056    LCORRECT (LIBINIT )  00001
+   ARCHI    (TASK41  )  00033    ELCATALO (LIBINIT )  00002         IFRAG    (IGRA    )  02533    LCREAT   (LDEFIN  )  00126
+   ARCHIV   (TASK41  )  00010    ELCL     (EXLIB   )  00026         IGETPAR  (IBMPC   )  00100    LCROSS     21 37 30  00242
+   ASCOPC   (ASCOPY  )  00005    ELCLOS   (EXLIB   )  00027         IGETS      21 04 22  00037    LDEATH   (LDEFIN  )  00130
+   ASCOPY     21 12 15  02220    ELDEL    (EXLIB   )  00025         IGETSL   (IGETS   )  00024    LDEFIN     21 34 32  00664
+   B6*EC      21 12 26  02027    ELEQU    (EXLIB   )  00023         IGRA       21 16 03  03044    LDELA    (LDEFIN  )  00370
+   B6/EC    (B6*EC   )  00066    ELMOVE   (EXLIB   )  00024         IGRAS    (IGRA    )  02347    LDELB    (LDEFIN  )  00371
+   BILISN   (CONBIL  )  00055    ELNAME   (EXLIB   )  00022         INFOPT   (IGRA    )  02520    LETBI    (TASK41  )  00060
+   BILIST   (CONBIL  )  00050    ELPRES     22 04 25  00303         INFTYP     22 11 34  00155    LEXOR    (LSHIFT  )  00005
+   BLN      (LLФ     )  00001    ELPRESS  (LIBINIT )  00003         INPSPT     21 04 24  00003    LFDEL    (READER  )  00036
+   BRAND      22 12 25  00031    ELPRIN     22 04 34  00327         INTCOD     21 30 15  00047    LFIR     (LSHIFT  )  00013
+   BREEDING   21 37 17  00106    ELREAD   (EXLIB   )  00020         INTER      21 37 27  00017    LIBINIT    22 05 03  00113
+   BTL1     (BTLOOK  )  00026    ELWRIT   (EXLIB   )  00021         INTRA    (BRAND   )  00007    LIBLOOK    21 21 15  00333
+   BTLOOK     21 37 35  01630    ENCOD      21 30 32  00310         IOCTAL     21 15 15  00013    LIMAGE     21 34 22  00063
+   BYTE/L16 (BYTE/R16)  00001    ENCODB   (ENCOD   )  00065         IOPT     (IGRA    )  00676    LINCA    (LDEFIN  )  00466
+   BYTE/R16   21 14 10  00014    ENCODE   (ENCOD   )  00113         IP       (IGRA    )  02306    LINCB    (LDEFIN  )  00437
+   CHANGE     21 03 01  00026    ENCODF   (ENCOD   )  00111         IPARTW     21 04 25  00012    LISPRI     21 36 32  00157
+   CHBADSYM   21 15 36  00142    ENCODI   (ENCOD   )  00110         IPR      (IGRA    )  02304    LISTING    22 15 01  00074
+   CHEKPOIN   21 37 03  00440    ENCODL   (ENCOD   )  00005         IPT10      21 12 04  02451    LLC        21 11 10  21073
+   CHKPNT     21 37 16  00016    ENCODT   (ENCOD   )  00037         IPUTS    (IGETS   )  00001    LLCHEK     21 11 05  00115
+   CLOSE    (LISTING )  00026    ENTRY8/M (PRINT8/M)  00002         IPUTSL   (IGETS   )  00025    LLФ        21 20 10  10464
+   COCARD     21 34 25  00044    EQUCC    (EQUFS   )  00003         IRND       21 04 26  00027    LLФANL     21 17 32  01040
+   CODEI      21 03 02  00174    EQUFS      21 30 11  00032         ISCANG   (IGRA    )  02115    LLФDAT   (LLФPRI  )  00003
+   CONBIL     22 01 21  00121    EQUNUM   (ЗAПAKN  )  00015         ISO        21 37 23  00006    LLФEOP   (LLФPRI  )  00017
+   CONSTAN    21 03 07  00306    ERASE      22 01 25  00004         ISO*EC     21 13 15  00037    LLФIFC   (LLФPRI  )  00007
+   CONTAP     21 14 11  00044    ERREXMEM (EXMEM   )  00130         ISO*FIN    21 13 17  00021    LLФMIN     21 20 22  00010
+   CONV60     21 03 16  00044    ERRPRINT   21 03 35  00204         ISOTEX     21 04 27  00032    LLФPAG   (LLФPRI  )  00002
+   COSYPR     21 36 20  00300    ETLOOK     21 26 10  06300         ISOTIM   (INTCOD  )  00001    LLФPRI     21 20 23  00037
+   CP*TEXT  (B6*EC   )  00224    EXCLOS   (EXMEM   )  00006         ISPACK     21 11 37  00061    LLФPRN     21 20 25  00227
+   CP/TEXT  (B6*EC   )  00276    EXLIB      22 12 05  00350         ISUNP      21 11 35  00056    LLФZON   (LLФPRI  )  00020
+   CPABH      21 30 01  00076    EXMEM      22 12 16  00266         ITERG    (IGRA    )  02077    LOAD       21 05 02  00036
+   CPRBEG   (COSYPR  )  00210    EXMOVE   (EXMEM   )  00004         ITOD     (DTOI    )  00001    LOR      (LSHIFT  )  00004
+   CTLOOK     21 01 13  16447    EXREAD   (EXMEM   )  00003         IUP      (IGRA    )  02406    LORVM    (VMEMOR  )  00043
+   DATE       21 03 20  00027    EXSAVE   (EXMEM   )  00005         JCOUNS   (JSEART  )  00001    LPACK    (LSHIFT  )  00001
+   DATE/    (DATE    )  00014    EXWRIT   (EXMEM   )  00002         JCTR     (LISTING )  00042    LREAD    (LDEFIN  )  00254
+   DECOD      21 03 21  00144    F1PLOT     21 35 10  00314         JDATE      21 04 30  00036    LREGIM     21 15 00  00016
+   DECODA     21 16 02  00026    FCREST     21 04 03  00121         JERR       21 04 32  00055    LREWIN   (LDEFIN  )  00127
+   DECODB   (DECOD   )  00002    FORS     (IGRA    )  02671         JEXTRA   (MEMORR  )  00005    LSHIFT     21 34 16  00040
+   DECODI   (DECOD   )  00001    GIVADREM (EXMEM   )  00177         JEXTRI   (MEMORR  )  00006    LSTRIN   (COCARD  )  00031
+   DEFBYT   (GIVBYT  )  00024    GIVBYT     22 03 00  00104         JFEX1    (JFOCC   )  00562    LSWOP    (LDEFIN  )  00065
+   DEFECTAP   21 37 24  02045    GIVEME   (NEWSTR  )  00014         JFEXCH   (JFOCC   )  00563    LUNP     (LSHIFT  )  00002
+   DEFINP     21 03 25  00117    GIVEMT     21 15 16  00062         JFOCC      22 03 03  01322    LWRITE   (LDEFIN  )  00255
+   DIALOG     22 04 15  00361    GIVPAG     21 04 06  00017         JMPINP   (DEFINP  )  00002    MAK*TRT    22 15 05  00001
+   DIALOP     21 03 31  00023    GSTISO   (WRAUTOR )  00023         JOPER      21 04 34  00076    MAKESC   (PACПAK  )  00050
+   DIALOQ   (DIALOG  )  00001    GUSEV    (MT9A    )  00002         JSEART     21 04 36  00030    MAKRIW   (TASK41  )  00041
+   DIATEX     21 11 01  00034    GWCDC      21 12 01  00076         JTIME    (JDATE   )  00025    MAKTIT     21 11 27  00224
+   DTOI       21 03 33  00052    HDEL     (HOPEN   )  00003         JWORD    (LDEFIN  )  00074    MAKWIW   (TASK41  )  00042
+   DTON       22 00 34  00156    HDIAGN   (HOPEN   )  00277         KEY        21 04 37  00100    MATRCH   (PTPUNS  )  00110
+   DTRAN      21 31 01  05732    HEADLP   (HEADLT  )  00142         KEYGET   (KEY     )  00035    MBWAND   (MBWDEF  )  00047
+   EBCISO     21 26 07  00024    HEADLT     21 15 01  00251         KEYPUT   (KEY     )  00051    MBWCHK   (MBWDEF  )  00065
+   EC*B6    (B6*EC   )  00113    HGET     (HOPEN   )  00002         KLETKA   (TASK41  )  00047    MBWCLE   (MBWDEF  )  00067
+   EC*REW   (ECREAD  )  00003    HKEY     (HOPEN   )  00005         KLIN     (DIALOP  )  00021    MBWCNT   (MBWDEF  )  00124
+   EC/B6    (B6*EC   )  00205    HOPEN      21 04 07  00401         LAFTER   (LDEFIN  )  00357    MBWDEF     22 02 10  00202
+   ECB6       21 23 23  00713    HPUT     (HOPEN   )  00001         LAND     (LSHIFT  )  00003    MBWEXO   (MBWDEF  )  00054
+   ECBEG      21 14 17  00017    HSAVE    (HOPEN   )  00004         LANDVM   (VMEMOR  )  00040    MBWFIR   (MBWDEF  )  00131
+   ECBEGN   (ECBEG   )  00001    I10T8    (NEWSTR  )  00050         LASCII     22 15 15  00067    MBWLDA   (MBWDEF  )  00030
+   ECEOF    (ECREAD  )  00002    IANALS     21 24 12  00311         LBCLE    (LSHIFT  )  00026    MBWNOT   (MBWDEF  )  00061
+   ECEXTR   (TASK41  )  00117    IBMIO    (IBMPC   )  00024         LBEFOR   (LDEFIN  )  00356    MBWOR    (MBWDEF  )  00041
+   ECREAD     21 14 13  00145    IBMPC      22 13 33  00144         LBGET    (LSHIFT  )  00030    MBWPUT   (MBWDEF  )  00066
+   MBWSFT     22 02 15  00155    PUTPAR   (IBMPC   )  00120         TESTLIB    22 04 12  00073
+   MBWSTA   (MBWDEF  )  00034    PUTPLO     21 34 31  00007         TEXCDC     21 35 26  02742
+   MEMORR     21 16 01  00015    QCIA     (QTER    )  00046         TEXOUT     21 24 22  01647
+   MEMORW   (MEMORR  )  00002    QHSORT     22 01 04  00230         TINGR1     21 10 34  00036
+   MEMVRD   (VMEMOR  )  00046    QIN        21 07 06  00023         TPRIM    (TPRIN   )  00005
+   MGAUSS     21 25 16  00774    QINP       21 20 34  01105         TPRIN      22 13 11  05127
+   MISTER     21 34 20  00006    QKOORD     22 05 07  00035         TRACER     21 25 37  00073
+   MIXER    (BRAND   )  00006    QLINE      21 07 07  00036         UNPTIR   (EQUFS   )  00014
+   MONCRD   (NZEDIT  )  00004    QMOVE      21 07 11  00033         VMCLOS   (VMEMOR  )  00161
+   MT9      (MT9A    )  00001    QN         21 34 13  00121         VMCOPY   (VMEMOR  )  00012
+   MT9A       22 03 34  00175    QOUT       21 07 13  00026         VMEMOR     22 02 30  01416
+   MTRLNK     21 02 24  00157    QOUTLT     21 34 21  00017         VMREAD   (VMEMOR  )  00060
+   NCDTB6   (GWCDC   )  00022    QSTR       21 07 14  00031         VMSAVE   (VMEMOR  )  00162
+   NEWLIB     21 05 04  01341    QTER       21 07 15  00056         VMSET    (VMEMOR  )  00056
+   NEWSTR     21 05 34  00074    R160       21 35 20  00235         VMWRIT   (VMEMOR  )  00057
+   NNN        22 12 00  00150    R160S    (R160    )  00013         W160     (R160    )  00005
+   NR       (IGRA    )  02007    RCINIT   (READER  )  00050         W160S    (R160    )  00017
+   NSCANF   (IGRA    )  02656    RCO      (LISTING )  00031         W1LOOK     22 15 20  00677
+   NSCANG   (IGRA    )  02625    RDEMEM   (EXMEM   )  00166         WCO      (LISTING )  00033
+   NTOD     (DTON    )  00001    RDEXMEM  (EXMEM   )  00166         WHATIS     21 02 30  00314
+   NTRANC     21 12 23  00124    RDSTAR     21 07 17  00073         WRAUTOR    21 11 03  00037
+   NTREE    (IGRA    )  02563    RDVMEM   (VMEMOR  )  00046         WRAUTR     21 15 20  00552
+   NUMBS    (COCARD  )  00017    READCG     21 07 22  00103         WRITPL     21 36 37  00131
+   NUMFOR     21 11 26  00031    READER     21 07 25  00107         WRVMEM   (VMEMOR  )  00033
+   NUSTOID    22 01 00  00036    READPL     21 36 36  00007         YПAKN    (ЗAПAKN  )  00024
+   NV       (IGRA    )  02052    RENUMB     22 12 26  00150         ZZZZZFDB (REQTP   )  00033
+   NZEDIT     22 14 00  00006    REPLAC     21 27 06  01262         ЖИPЛИC   (ЖИPПEЧ  )  00106
+   NZTX     (LISTING )  00047    REQDEL   (REQTP   )  00075         ЖИPПEЧ     21 21 23  00203
+   OFFPLO   (PUTPLO  )  00001    REQFL    (REQTP   )  00014         ЗAПAK    (PACПAK  )  00036
+   OPCOUT   (LISTING )  00040    REQSFL   (REQTP   )  00024         ЗAПAKN     21 30 13  00037
+   OPENG    (IGRA    )  02272    REQSTP   (REQTP   )  00007         ИCKATEЛЬ   21 15 07  00016
+   OPT10    (IPT10   )  00140    REQTP      21 07 30  00164         ЛИЗA       21 14 20  00661
+   ORD        22 01 11  00323    REQUEST    21 07 34  00173
+   OVTREE     22 01 33  06512    RESRCF   (READER  )  00070
+   PACПAK     21 30 06  00074    RESTART  (CHEKPOIN)  00031
+   PARAMT     21 30 30  00026    RESTOR   (SWOP    )  00001
+   PARM*      21 05 37  00144    RETURN   (REQUEST )  00130
+   PARMON   (PARAMT  )  00001    RN01     (BRAND   )  00010
+   PARSER     21 06 03  00300    RUNSUB     21 34 27  00025
+   PAЗHИЦA2   21 06 12  00735    RUSORT     21 17 25  00222
+   PAЗБOP     21 24 01  00701    RZO      (LISTING )  00035
+   PC       (IGRA    )  01755    S/TEMPO  (PAЗHИЦA2)  00326
+   PEC        21 21 26  02673    S160     (R160    )  00122
+   PERFPL     21 26 02  00157    SAVEMON/   21 13 14  00027
+   PERFPL1  (PERFPL  )  00001    SAVRCF   (READER  )  00064
+   PERFPL2  (PERFPL  )  00002    SCANER     22 01 02  00064
+   PERSOT     21 34 24  00010    SEARCH*    21 10 01  00313
+   PREASP     21 23 06  00617    SERVER     22 15 06  00300
+   PRIBYT     21 10 36  00075    SHSORT     21 10 10  00133
+   PRIM     (CODEI   )  00170    SISORT   (QHSORT  )  00127
+   PRINT//M   21 06 34  00002    SORT48     21 10 13  00032
+   PRINT8/M   21 06 35  00032    SQROOT     21 36 01  00737
+   PRINTER    21 15 10  00173    STACK*   (SEARCH* )  00227
+   PRINTSP*   21 06 37  00172    STARTG   (IGRA    )  02301
+   PT6        21 07 03  00111    STRINP   (DEFINP  )  00001
+   PTPBEG   (PTPUNS  )  00052    STROUT     21 10 14  01447
+   PTPEND   (PTPUNS  )  00041    STRPRN     21 10 20  00035
+   PTPUNM   (PTPUNS  )  00031    SWOP       21 10 22  00227
+   PTPUNS     22 02 21  00305    TABLE*EC   21 13 31  00456
+   PULLMOD    22 04 01  00352    TABLE*SS   21 14 02  01041
+   PUTADR   (CONTAP  )  00032    TABSIMEC   21 13 20  00400
+   PUTBL    (ENCOD   )  00010    TAKELIBR   21 10 30  00152
+   PUTG     (SCANER  )  00003    TASK41     22 01 26  00146
+   PUTH     (SCANER  )  00001    TASK54   (LISTING )  00012
+   PUTO     (SCANER  )  00002    TBPRIN   (TPRIN   )  00063
+   PUTOUT     22 14 01  01776    TEPRIN     22 12 33  01106
+*END FILE

@@ -1,0 +1,159 @@
+                                             3  000    00.00
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖЖЖ  ЖЖЖ   ЖЖЖЖ ЖЖЖЖЖ  ЖЖЖ   ЖЖЖЖ Ж   Ж       ЖЖЖЖЖ Ж   Ж ЖЖЖЖЖ   ЖЖЖ Ж   Ж  ЖЖЖ  ЖЖЖЖЖ ЖЖЖЖ  Ж  Ж   ЖЖЖ
+            Ж   Ж Ж   Ж Ж       Ж   Ж   Ж Ж   Ж Ж   Ж       Ж     Ж   Ж Ж      Ж  Ж Ж   Ж Ж   Ж   Ж   Ж     Ж Ж   Ж   Ж
+            Ж   Ж Ж   Ж Ж       Ж   Ж   Ж Ж   Ж ЖЖЖЖЖ       ЖЖЖЖ  Ж   Ж ЖЖЖЖ   Ж  Ж Ж   Ж Ж   Ж   Ж   ЖЖЖ   ЖЖ    Ж   Ж
+            Ж   Ж Ж   Ж Ж       Ж   Ж   Ж  ЖЖЖЖ Ж   Ж       Ж   Ж Ж  ЖЖ Ж   Ж  Ж  Ж Ж  ЖЖ Ж   Ж   Ж   Ж     Ж Ж   Ж   Ж
+            Ж   Ж Ж   Ж Ж       Ж   Ж   Ж   Ж Ж Ж   Ж       Ж   Ж Ж Ж Ж Ж   Ж  Ж  Ж Ж Ж Ж Ж   Ж   Ж   Ж     Ж  Ж  Ж   Ж
+            Ж   Ж Ж   Ж Ж       Ж   Ж   Ж  Ж  Ж Ж   Ж  ЖЖ   Ж   Ж ЖЖ  Ж Ж   Ж  Ж  Ж ЖЖ  Ж Ж   Ж   Ж   Ж     Ж   Ж ЖЖЖЖЖ
+            Ж   Ж  ЖЖЖ   ЖЖЖЖ   Ж    ЖЖЖ  Ж   Ж Ж   Ж  ЖЖ   ЖЖЖЖ  Ж   Ж ЖЖЖЖ  Ж   Ж Ж   Ж  ЖЖЖ    Ж   ЖЖЖЖЖ Ж   Ж Ж   Ж
+
+
+
+
+
+
+
+
+*NAME ПOCTOЯH.БИБЛИOTEKA
+*CALL PCATALOG                                             3  000    00.00
+                     PERMANENT LIBRARY                              C*MU*I   (C*AD*I  )  00003    DIM      (SIGN    )  00007
+                     CBOБOДHO  21 33 01                             C*MU*R   (C*AD*R  )  00004    DINT       21 14 24  00043
+                                                                    C*PO*I     21 13 12  00045    DLOG       21 14 26  00237
+   *BACKS   (*REWIN  )  00001    A/SEQS   (LENGTH  )  00043         C*ST*C   (C*AD*C  )  00047    DLOG10     21 14 34  00035
+   *ENDFI   (*REWIN  )  00002    A/SGES   (LENGTH  )  00057         C*ST*I     21 13 14  00022    DMAX1      21 14 36  00046
+   *HEAP*PL (FIXDRUM )  00063    A/SGTS   (LENGTH  )  00053         C*ST*R     21 13 15  00010    DMIN1    (DMAX1   )  00017
+   *MUI*      21 11 00  00012    A/SIGN   (A/AND   )  00037         C*SU*C   (C*AD*C  )  00007    DMOD       21 15 00  00037
+   *REWIN     21 11 01  00011    A/SLES   (LENGTH  )  00061         C*SU*I   (C*AD*I  )  00001    DRUMTAP*   21 15 02  00031
+   *ПEPФOPA   21 11 02  00041    A/SLICE  (A/SPLUSS)  00032         C*SU*R   (C*AD*R  )  00002    DSIGN      21 15 04  00047
+   /MONTRAN   21 11 04  00053    A/SLTS   (LENGTH  )  00055         CABS       21 25 02  00076    DSIN       21 15 06  00363
+   /TRANS/    21 24 07  00033    A/SNES   (LENGTH  )  00047         CCOS     (CSIN    )  00005    DSQRT      21 15 16  00234
+   A/AND      21 11 10  00047    A/SPLUSS   21 23 10  00460         CEXP     (CABS    )  00025    DUBLPREC   21 15 24  00232
+   A/ARGSTR (A/SPLUSS)  00163    A/SPRI   (A/DRUCK )  00127         CHECKSUM   21 13 16  00015    EBCDPUN  (BCDPUN  )  00024
+   A/ARRD/K   21 11 12  00074    A/SREAD  (A/SPLUSS)  00152         CHKBEG*    21 13 17  00264    EDIT***    21 26 26  03712
+   A/ARRD/V (A/ARRD/K)  00003    A/START  (A/STOP  )  00004         CHKEND*  (CHKBEG* )  00131    EMULATOR   21 15 32  00061
+   A/BAPRI  (A/RAPRI )  00002    A/STOP     21 24 14  00060         CLOG     (CABS    )  00035    ENTIER*  (A/AND   )  00015
+   A/BAREAD (A/RAREAD)  00002    A/SUBCH    21 12 10  00012         CMPLX      21 13 25  00003    EXECUT     21 24 02  00064
+   A/BPRI   (A/DRUCK )  00120    A/VLM1     21 12 11  00004         COLPUN*B (COLPUNC*)  00040    EXIT     (STOP*   )  00001
+   A/BREAD  (A/RREAD )  00112    A/VLMX     21 12 12  00007         COLPUNB* (COLPUNC*)  00024    EXP*     (SIN*    )  00005
+   A/CALLP    21 11 15  00116    ABS      (FLOAT   )  00003         COLPUNC*   21 13 26  00060    EXP      (FLOAT   )  00023
+   A/CALLS  (A/CALLP )  00001    ACOS     (TAN     )  00010         COLPUNE* (COLPUNC*)  00031    F/FNOSV  (F/START )  00007
+   A/COMMON   21 23 05  00106    AIMAG    (REAL    )  00002         CONJG      21 13 30  00003    F/FRET   (F/START )  00026
+   A/DRUCK    21 11 20  00323    AINT     (FLOAT   )  00012         COPYTADR   21 25 34  00177    F/FRETNR (F/START )  00025
+   A/EQUIV  (A/AND   )  00003    ALLMEMOR (FICMEMOR)  00002         COS*     (SIN*    )  00001    F/FSTART (F/START )  00000
+   A/ERROR    21 11 30  00054    ALOG     (FLOAT   )  00022         COS      (FLOAT   )  00020    F/NOSVR  (F/START )  00004
+   A/GETARR   21 11 33  00016    ALOG10   (FLOAT   )  00027         COSYTAKE   21 13 31  00013    F/SAVER  (F/START )  00013
+   A/GETINC   21 11 34  00033    ALPROC     21 12 13  00247         COSYTISO   21 13 32  00054    F/SNOSV  (F/START )  00002
+   A/I*ISO  (A/DRUCK )  00265    AMAX0      21 12 17  00020         CSIN       21 24 17  00033    F/SRET   (F/START )  00027
+   A/IAPRI  (A/RAPRI )  00001    AMAX1    (AMAX0   )  00000         CSQRT    (CABS    )  00011    F/SRETNR (F/START )  00033
+   A/IAREAD (A/RAREAD)  00001    AMIN0    (AMAX0   )  00015         D*AD*D   (DUBLPREC)  00001    F/SSTART (F/START )  00011
+   A/IHOCHI (A/AND   )  00032    AMIN1    (AMAX0   )  00015         D*AD*I     21 13 34  00020    F/START    21 24 32  00036
+   A/IMPL   (A/AND   )  00007    AMOD       21 12 20  00015         D*AD*R     21 13 35  00015    FC*002   (IOCONT* )  00045
+   A/IPRI   (A/DRUCK )  00032    ARCTAN*  (SIN*    )  00004         D*COMP   (DUBLPREC)  00165    FC*642   (IOCONT* )  00045
+   A/IREAD  (A/RREAD )  00001    ASIN     (TAN     )  00005         D*DI*D   (DUBLPREC)  00116    FC*722   (IOCONT* )  00045
+   A/LAPRI  (A/RAPRI )  00004    ATAN     (FLOAT   )  00021         D*DI*I   (D*AD*I  )  00006    FD*002   (IOCONTD*)  00047
+   A/LAREAD (A/RAREAD)  00004    ATAN2      21 12 21  00077         D*DI*R   (D*AD*R  )  00006    FD*642   (IOCONT* )  00045
+   A/LHOCHI (A/LHOCHR)  00003    ATOS     (A/SPLUSS)  00103         D*LN*D   (DUBLPREC)  00167    FD*722   (IOCONT* )  00045
+   A/LHOCHR   21 11 36  00012    BCDBEG*    21 12 24  00414         D*LN*I   (D*ST*I  )  00006    FICMEMOR   21 30 23  00112
+   A/LOADGO   21 24 10  00153    BCDDEC*  (BCDREAD*)  00004         D*LN*R   (D*ST*R  )  00020    FIXDRUM    21 15 34  00123
+   A/LPRI   (A/DRUCK )  00144    BCDENC*  (BCDWRIT*)  00004         D*LO*D   (DUBLPREC)  00173    FLOAT      21 16 00  00033
+   A/LREAD  (A/RREAD )  00124    BCDPUN     21 12 36  00207         D*LO*I   (D*ST*I  )  00004    FM*007     21 16 02  00013
+   A/NLINE  (A/DRUCK )  00210    BCDPUN2  (SUBPERR*)  00001         D*LO*R   (D*ST*R  )  00016    FMRTAPE    21 32 27  00727
+   A/NOT    (A/AND   )  00004    BCDREAD*   21 21 37  00275         D*MU*D   (DUBLPREC)  00104    FOLZON   (RECARD  )  00060
+   A/NOTL   (A/LHOCHR)  00006    BCDWRIT*   21 23 24  00603         D*MU*I   (D*AD*I  )  00004    FORMKOZA   21 16 03  00154
+   A/NPAGE  (A/DRUCK )  00212    BIGPUNCH   21 13 01  00015         D*MU*R   (D*AD*R  )  00004    FT*002   (IOCONT* )  00044
+   A/OPTLIN   21 11 37  00025    BINARY     21 13 02  00017         D*PO*D     21 13 36  00031    FT*003   (IOCONT* )  00052
+   A/PARCON (A/CALLP )  00031    BINPUN   (SUBPERR*)  00001         D*PO*I     21 13 37  00045    FT*521   (BCDREAD*)  00000
+   A/PAREXP (A/CALLP )  00065    BINREAD*   21 22 06  00125         D*PO*R   (D*PO*D  )  00013    FT*531   (BCDREAD*)  00004
+   A/PARLAB (A/CALLP )  00076    BINWRIT* (BINREAD*)  00031         D*ST*D   (DUBLPREC)  00175    FT*541   (BCDREAD*)  00006
+   A/PARPAR (A/CALLP )  00051    BLEXPRIN   21 13 03  00013         D*ST*I     21 14 01  00025    FT*561   (BCDWRIT*)  00011
+   A/PARSTR (A/CALLP )  00105    BOKHO      21 13 04  00113         D*ST*R     21 24 30  00034    FT*571   (BCDWRIT*)  00006
+   A/PARVAL (A/CALLP )  00060    C*AD*C     21 13 06  00073         D*SU*D   (DUBLPREC)  00134    FT*611   (BCDWRIT*)  00004
+   A/PARVAR (A/CALLP )  00040    C*AD*I     21 13 10  00017         D*SU*I   (D*AD*I  )  00002    FT*621   (BCDWRIT*)  00000
+   A/PROCRT (A/CALLP )  00006    C*AD*R     21 13 11  00015         D*SU*R   (D*AD*R  )  00002    FT*641   (BINREAD*)  00000
+   A/PUTARR (A/GETARR)  00007    C*COMP   (C*AD*C  )  00061         D*TO*I   (D*ST*R  )  00013    FT*642   (IOCONT* )  00044
+   A/R*ISO  (A/DRUCK )  00270    C*DI*C   (C*AD*C  )  00027         D*TO*R   (D*ST*R  )  00014    FT*643   (IOCONT* )  00052
+   A/RAPRI    21 12 00  00014    C*DI*I   (C*AD*I  )  00005         DABS       21 14 03  00004    FT*721   (BINREAD*)  00031
+   A/RAREAD   21 12 01  00015    C*DI*R   (C*AD*R  )  00006         DATAN      21 14 04  00303    FT*722   (IOCONT* )  00044
+   A/RHOCHI (A/AND   )  00017    C*LN*C   (C*AD*C  )  00053         DATAN2     21 14 12  00126    FT*723   (IOCONT* )  00052
+   A/RNLINE (A/RREAD )  00154    C*LN*I   (C*ST*I  )  00003         DATAPR*    21 14 16  00057    FT2*     (BCDBEG* )  00305
+   A/RPRI   (A/DRUCK )  00064    C*LN*R   (C*ST*R  )  00003         DATE*    (DATAPR* )  00001    FULFILME (EXECUT  )  00040
+   A/RREAD    21 12 02  00224    C*LO*C   (C*AD*C  )  00051         DBLE     (SNGL    )  00006    FULLMEMO (FICMEMOR)  00001
+   A/RTOI   (A/AND   )  00012    C*LO*I   (C*ST*I  )  00001         DCOS     (DSIN    )  00001    GETPEN     21 25 17  00015
+   A/SAPRI  (A/RAPRI )  00003    C*LO*R   (C*ST*R  )  00001         DEBUGER    21 21 23  00006    I*DI*I     21 16 07  00024
+   A/SAREAD (A/RAREAD)  00003    C*MU*C   (C*AD*C  )  00014         DEXP       21 14 20  00117    I*DI*R     21 16 10  00013
+   I*MU*I   (I*DI*I  )  00011    PRINT82  (SUBPERR*)  00001         WRITLIBR   21 26 06  00361
+   I*MUI*     21 16 11  00006    PRTLINE*   21 17 27  00004         WRWORD   (WRCARD  )  00022
+   I*PO*I     21 16 12  00014    PT5BNP   (SUBPERR*)  00001         WSY*     (BCDWRIT*)  00316
+   I*PO*R   (I*PO*I  )  00011    PT5PUN   (SUBPERR*)  00001         ZAPAK12    21 21 21  00015
+   I*ST*C   (C*ST*I  )  00005    PT6/G      21 17 30  00071         ZAPAK8     21 21 22  00020
+   I*ST*D   (D*ST*I  )  00010    PT8BNP   (SUBPERR*)  00001
+   I*ST*L   (I*DI*I  )  00010    PT8PUN   (SUBPERR*)  00001
+   I/O*ERR  (BCDWRIT*)  00556    PUNCTABL   21 17 32  00200
+   IABS     (FLOAT   )  00006    R*DI*I   (I*DI*R  )  00005
+   IDIM     (SIGN    )  00006    R*PO*D   (D*PO*D  )  00016
+   IDINT    (SNGL    )  00003    R*PO*I     21 17 37  00030
+   IDIV       21 16 13  00011    R*PO*R   (I*PO*I  )  00011
+   IFIX     (FLOAT   )  00010    R*ST*C   (C*ST*R  )  00005
+   IFOVFL     21 24 05  00050    R*ST*D   (D*ST*R  )  00022
+   IFPULT     21 16 14  00007    R*ST*I     21 20 00  00010
+   INT      (FLOAT   )  00014    R*TO*I   (R*TO*INT)  00001
+   IOAC*    (IOCONT* )  00031    R*TO*INT   21 20 01  00013
+   IOCONT*    21 22 12  01040    RASPAK12   21 20 02  00013
+   IOCONTD*   21 16 15  00350    RASPAK8    21 20 03  00016
+   IOEND*   (IOCONT* )  00052    RBEGIN   (RECARD  )  00050
+   ISIGN    (SIGN    )  00004    READ*      21 20 04  00026
+   ISO*TEX*   21 16 26  00063    READ*ERR (MONREAD*)  00060
+   ISOICTTR   21 24 34  00035    READLIBT   21 20 06  00112
+   ISOTCOS1 (ISOTCOSY)  00051    READSTAR   21 20 11  00075
+   ISOTCOSY   21 16 30  00071    READVOLK   21 20 14  00062
+   KONV1*   (BCDBEG* )  00320    REAL       21 20 17  00004
+   KOД*CDC  (*ПEPФOPA)  00001    RECARD     21 20 20  00103
+   LDLIST     21 16 33  00010    REVCARD    21 20 23  00025
+   LENGTH     21 16 34  00065    REWORD   (RECARD  )  00032
+   LIBDELET   21 26 01  00145    RK*      (BCDWRIT*)  00060
+   LIBDRUM*   21 31 33  00502    RLIBLIS    21 22 36  02213
+   LIBDRUM  (LIBDRUM*)  00012    SCHEOF   (*REWIN  )  00003
+   LIBRARY    21 16 36  00043    SETFTN     21 24 20  00236
+   LIBRPN*    21 17 00  00230    SIGN       21 20 24  00013
+   LIBTAPE  (LISTLIBT)  00002    SIMFAIL*   21 31 23  00107
+   LISTLIBT   21 32 07  00701    SIN*       21 20 25  00010
+   LLPAGE     21 17 06  00026    SIN      (FLOAT   )  00017
+   LN*      (SIN*    )  00003    SNGL       21 20 26  00022
+   LOADANGO   21 17 07  00050    SQRT*    (SIN*    )  00002
+   LOADCALL (LOADANGO)  00042    SQRT     (FLOAT   )  00016
+   LOADGO   (LOADANGO)  00040    STAPUNCH   21 20 27  00203
+   MANTO*     21 17 11  00006    STAR*      21 30 26  00460
+   MAX0     (AMAX0   )  00001    STOA     (A/SPLUSS)  00121
+   MAX1     (AMAX0   )  00001    STOP*      21 24 26  00027
+   MIN0     (AMAX0   )  00016    STPUNCH*   21 20 34  00045
+   MIN1     (AMAX0   )  00016    STWRIT*    21 20 36  00232
+   MOD      (AMOD    )  00011    SUBPERR*   21 21 02  00012
+   MONITOR*   21 17 12  00022    SYSBACK*   21 21 03  00010
+   MONREAD*   21 17 17  00104    TABSIMIS   21 31 26  00200
+   MOVETAPE (COPYTADR)  00124    TABYNAM*   21 21 04  00150
+   NEXTLET* (BCDWRIT*)  00016    TAKETAPE (FIXDRUM )  00045
+   NOLDLI   (LDLIST  )  00003    TAN        21 21 11  00015
+   OCTTDEC    21 17 22  00033    TANH       21 21 12  00020
+   OKHO     (BOKHO   )  00035    TAPES*     21 21 24  00124
+   PARAMT*    21 31 14  00254    TERIN      21 21 13  00025
+   PLOT       21 25 27  00001    TEROUT     21 21 14  00022
+   PLOTBF     21 26 17  00542    TOMAN*   (MANTO*  )  00003
+   PLOTC      21 25 05  00103    TR*CALL  (/MONTRAN)  00025
+   PLOTTER    21 25 30  00130    TRANS8/6   21 23 22  00064
+   PLOTTX     21 25 11  00237    TRNSLTOR   21 21 27  00261
+   PLOTWX     21 25 20  00223    TTPRINT    21 22 32  00037
+   POWER      21 17 23  00047    TTREAD     21 22 34  00036
+   PREPDAT  (DATAPR* )  00026    VDSQRT     21 21 15  00027
+   PRINT8     21 24 36  00161    WBEGIN   (WRCARD  )  00041
+   PRINT8*    21 17 25  00046    WRCARD     21 21 16  00103
+   PRINT8//   21 31 04  01666    WRIEND   (WRCARD  )  00050
+*END FILE

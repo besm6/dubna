@@ -1,0 +1,227 @@
+                                             3  000    00.00
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖЖЖ Ж   Ж ЖЖЖЖЖ   ЖЖЖ Ж   Ж  ЖЖЖ  ЖЖЖЖЖ ЖЖЖЖ  Ж  Ж   ЖЖЖ         ЖЖЖ     Ж
+            Ж     Ж   Ж Ж      Ж  Ж Ж   Ж Ж   Ж   Ж   Ж     Ж Ж   Ж   Ж       Ж   Ж   ЖЖ
+            ЖЖЖЖ  Ж   Ж ЖЖЖЖ   Ж  Ж Ж   Ж Ж   Ж   Ж   ЖЖЖ   ЖЖ    Ж   Ж           Ж  Ж Ж
+            Ж   Ж Ж  ЖЖ Ж   Ж  Ж  Ж Ж  ЖЖ Ж   Ж   Ж   Ж     Ж Ж   Ж   Ж          Ж     Ж
+            Ж   Ж Ж Ж Ж Ж   Ж  Ж  Ж Ж Ж Ж Ж   Ж   Ж   Ж     Ж  Ж  Ж   Ж         Ж      Ж
+            Ж   Ж ЖЖ  Ж Ж   Ж  Ж  Ж ЖЖ  Ж Ж   Ж   Ж   Ж     Ж   Ж ЖЖЖЖЖ        Ж       Ж
+            ЖЖЖЖ  Ж   Ж ЖЖЖЖ  Ж   Ж Ж   Ж  ЖЖЖ    Ж   ЖЖЖЖЖ Ж   Ж Ж   Ж       ЖЖЖЖЖ   ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME БИБЛИOTEKA 21
+*PERSO:300240
+*121088                                                                                                                    !
+*CALL TCATALOG                                             3  000    00.00
+                      TEMPORARY LIBRARY                             EXCLUDE    21 27 34  00010    ISOPRT   (FTNPRT  )  00007
+                     CBOБOДHO  22 14 21                             EXECUTE    21 24 33  00323    ISOTOA0    21 05 07  00060
+                                                                    F/CHGOV  (F/TRACE )  00032    ITCONB     22 13 12  00005
+   *DISPAR1   21 26 31  00452    CATALOG* (TCATALOG)  00003         F/CHIND* (F/TRACE )  00000    ITDISB   (ITCONB  )  00001
+   *DRIVER*   22 13 13  01422    CHE*NAM    21 22 34  01021         F/LOOP     21 03 33  00022    ITIME    (CTIME   )  00016
+   *GIVE/MT (*DISPAR1)  00131    CHECCOD* (BEGCHEC*)  00013         F/PT6      21 03 34  00046    ITINPB   (ITCONB  )  00002
+   *ICHECK*   22 02 21  00016    CHEKJOB*   21 27 04  00641         F/TRACE    21 22 13  00243    ITM/ASS    21 05 11  00047
+   *NEWTEX*   21 31 30  00205    CLE/TEMP (CUTCAT* )  00025         F/TRCL   (F/TRACE )  00070    ITMODB   (ITCONB  )  00004
+   *SPEC      22 13 07  00016    CLRTRC   (SETTRC  )  00001         F/TRCRPL (F/TRACE )  00077    ITOUTB   (ITCONB  )  00003
+   *ПEPФOPA   22 11 21  00041    CM*002     21 03 04  00002         F/TRCS   (F/TRACE )  00044    IZ       (ZONE    )  00013
+   *ЬDP10Й*   21 35 13  00116    CM*642   (FM*722  )  00001         F/TRCSR  (F/TRACE )  00045    IЬANY      21 33 32  00004
+   *ЬIOCBЙ*   22 06 15  00042    CM*722   (FM*722  )  00001         FINISHER   21 11 26  00132    IЬBIT      21 33 06  00027
+   /1/OPT   (/NOOPT  )  00002    CM/COSY    21 03 05  00235         FM*000     21 03 36  00136    IЬCHAR     21 33 01  00003
+   /2/OPT   (/NOOPT  )  00001    CO*BATCH   21 27 21  00423         FM*002     21 04 02  00002    KILLBLAN   21 05 13  00005
+   /CHECK   (/NOOPT  )  00007    COLLECT    21 25 37  01241         FM*642   (FM*722  )  00000    KILNUMPG (YESLIS  )  00004
+   /NOOPT     21 01 37  00015    COM/MOD  (*DRIVER*)  00207         FM*722     21 04 03  00026    KOД*IBM  (*ПEPФOPA)  00001
+   A/OCTDEC   21 02 00  00033    COMTODRU   21 26 23  00224         FOR        21 04 04  00032    LDSHIFT    21 11 34  00025
+   ADDLIB   (CRELIB  )  00001    CON/DIS  (*DRIVER*)  00115         FOREWORD   21 12 23  00351    LFCLOS   (LFSYST  )  00011
+   ADRPRT*  (FTNPRT* )  00110    CONBATCH (BEGBATCH)  00107         FOREX*     21 04 06  00051    LFCREF   (LFSYST  )  00016
+   ADRPRT   (FTNPRT  )  00057    CONCAR   (CHE*NAM )  00625         FORMAT     21 04 11  00030    LFDELF   (LFSYST  )  00012
+   AHAЛИTИK   21 14 02  00056    COSY*    (CM/COSY )  00054         FORTLIBR   21 04 13  00105    LFOPEN   (LFSYST  )  00015
+   ALFA*    (ALPHA*  )  00000    CRELIB     22 07 07  01006         FREE     (INITMM  )  00222    LFRIEN   (LFSYST  )  00014
+   ALGOL//    21 17 25  00162    CSF        21 03 13  00077         FT*REGIM   21 14 12  00112    LFSCAN     21 12 35  00600
+   ALGOL/1  (ALGOL// )  00000    CSP      (CSF     )  00001         FTNPRT*    21 04 26  00344    LFSYST     21 14 23  00070
+   ALGOL/SI   21 02 01  00005    CTIME      21 17 32  00025         FTNPRT     21 04 16  00331    LIBDRU*    21 23 20  00471
+   ALLOC    (INITMM  )  00226    CUTCAT*    21 11 32  00044         GIV/MT     21 12 02  00056    LIBLIST    21 24 32  00001
+   ALPHA*     21 02 02  00033    CVARAC     21 33 36  00647         GIV/PG     21 04 36  00043    LIBRARY/   21 14 26  00116
+   ANL        21 02 04  00264    CVARBS   (CVARAC  )  00431         GIVE100    21 17 06  00020    LIBREFER (TCATALOG)  00360
+   ANL1     (ANL     )  00002    CЬCPAB     21 32 37  00003         GIVEMEM* (*DISPAR1)  00006    LIBTAP*    21 23 33  00555
+   ARCHI*** (PANNO   )  00023    CЬGE       21 32 33  00001         GIVEPAG* (*DISPAR1)  00004    LIBTAP*S (LIBTAP* )  00001
+   ARCHIV** (PANNO   )  00024    CЬGT       21 32 35  00001         GIVEPUN* (*DISPAR1)  00006    LINE       21 05 14  00100
+   AVTOLOAD   21 17 12  00127    CЬIN       21 33 11  00001         GIVETAP* (*DISPAR1)  00007    LINK/IPM   21 12 05  00163
+   B6TOPC     22 13 34  00103    CЬLE       21 32 34  00001         GIVETIME   21 27 35  00255    LINKED   (LINK/IPM)  00000
+   BBOДA0     21 02 12  00207    CЬLT       21 32 36  00001         GOST/ISO   21 05 00  00030    LISP       21 05 17  00013
+   BEGBATCH   21 14 04  00307    CЬMV       21 32 15  00001         HAЗMЛ      21 05 01  00032    LOADI*0    21 05 20  00023
+   BEGCHEC*   22 11 23  00746    CЬNE       21 32 32  00001         HAЛEHTY  (OC/БЭCM6)  00107    LOADLIBR   22 07 30  00643
+   BEGTPR     21 17 05  00005    CЬVP       21 33 14  00002         IDIM     (IFIX    )  00012    LOADSTL    21 22 27  00067
+   BEMSH*     21 11 36  00064    CЬZB       21 32 16  00002         IFIX       21 05 03  00046    LOCF     (CTIME   )  00021
+   BEMTOMON   21 02 17  00527    DECODER    21 11 17  00221         IFZ        21 05 05  00016    LONGCTL  (SETTRC  )  00007
+   BIB        21 02 32  00023    DELOVER  (SUMOVER )  00162         INFWORD  (REDACT1 )  00667    LOOKTAPE (PANNO   )  00021
+   BIGTIT   (BIGTITLE)  00063    DENORM   (POWER1  )  00002         INITCODE (DECODER )  00152    LOREX    (FOREX*  )  00012
+   BIGTITLE   21 02 33  00264    DIMPRT   (FTNPRT  )  00065         INITFOR* (FOREX*  )  00000    LTX        21 05 22  00554
+   BIN/EXCH (*DRIVER*)  00214    DIPOL*     22 14 16  00071         INITMM     21 17 16  00340    LUN        21 05 35  00325
+   BINPRT   (FTNPRT  )  00071    DIR        21 03 15  00132         INITTAKE (TAKECRD*)  00040    LUNTYP     21 14 31  00036
+   BLOCKERR (CUTCAT* )  00013    DISPAC     21 17 33  00240         INPUT*     21 17 07  00066    LЬBIT      21 33 00  00003
+   BOOLPRT  (FTNPRT  )  00000    DISPACER   21 23 17  00017         INPUTCAL   22 12 03  00100    M220       21 06 04  00247
+   BЬAN       21 33 16  00003    DM*002     21 03 20  00002         INT      (IFIX    )  00000    MAK/FILE   21 06 12  00057
+   BЬBIT      21 33 25  00026    DM*642   (FM*722  )  00001         INTPRT*  (FTNPRT* )  00140    MAKELIBT   21 24 11  01033
+   BЬCPAB     21 32 31  00001    DM*722   (FM*722  )  00001         INTPRT   (FTNPRT  )  00105    MAKFIL/    21 14 33  00057
+   BЬGE       21 32 25  00001    DMS/80     21 21 26  00266         INTPRT2*   21 05 06  00016    MDL      (ANL     )  00001
+   BЬGT       21 32 27  00001    DOS/IAE    21 20 02  03412         INTPRT3* (INTPRT2*)  00003    MIXLOAD    21 25 05  02655
+   BЬIN       21 33 10  00001    DUMP       21 03 21  00054         INTPRT5* (INTPRT2*)  00006    MNPLOUT  (RECATA* )  00075
+   BЬLE       21 32 26  00001    DUMP1      21 03 23  00017         INTPRTC* (FTNPRT* )  00133    MT*BATCH   22 12 10  00127
+   BЬLT       21 32 30  00001    EDI        21 03 24  00234         INTPRTF* (FTNPRT* )  00130    MT*FINAL (MT*PUNCH)  00047
+   BЬMV       21 32 13  00001    ENCODO     21 03 27  00061         INTPRTV* (FTNPRT* )  00136    MT*OБMEH   21 30 04  00146
+   BЬNA       21 33 17  00004    END*CJOB (CHE*NAM )  00556         IPCINI     21 12 14  00035    MT*PUNCH   21 30 10  00147
+   BЬNE       21 32 24  00001    ENDSTAT  (STATSUM )  00026         IPCKIL   (IPCINI  )  00015    MT/RED     21 06 14  00177
+   BЬNO       21 33 21  00004    EQUCRDL*   21 03 31  00044         IPCRCV   (IPCSND  )  00054    MT/БИБ     22 12 16  00162
+   BЬNT       21 33 24  00004    ERMTRED  (REDACT2 )  00056         IPCREJ   (IPCINI  )  00021    N8T10S     21 06 22  00054
+   BЬNX       21 33 23  00004    ERRCDC*  (BEGCHEC*)  00322         IPCRFB   (IPCSND  )  00056    NAMEJOB* (PUNTITLE)  00015
+   BЬOR       21 33 20  00003    ERROR*P    21 13 34  00001         IPCSCL   (IPCSND  )  00002    NAMTONUM (RECATA* )  00100
+   BЬVP       21 33 15  00011    ERRSTA*  (CM/COSY )  00101         IPCSND     21 12 16  00215    ND70READ (INPUT*  )  00034
+   BЬXR       21 33 22  00003    ERRUPP*  (BEGCHEC*)  00105         IPCTSC   (IPCINI  )  00013    NEW//MON (FOREWORD)  00331
+   BЬZB       21 32 14  00002    ERRYПДK* (BEGCHEC*)  00336         IPCTSN   (IPCINI  )  00007    NEW/30   (OC/БЭCM6)  00002
+   CAT        21 03 02  00052    EW       (T1      )  00022         ISOPRT*  (FTNPRT* )  00012    NEWLIBR/ (LIBRARY/)  00001
+   NEWLINE* (FTNPRT* )  00261    PUNCHICT   21 07 25  00056         TABLE2*    21 14 17  00140    ЬBBЬ       21 32 20  00002
+   NEWLINE  (FTNPRT  )  00051    PUNCHO   (PUNCHA  )  00035         TAK*COCA (CHE*NAM )  00046    ЬBFLDЙ     21 35 20  00067
+   NEWLIS   (YESLIS  )  00001    PUNM20   (PUNM220 )  00000         TAK/PG   (GIV/PG  )  00024    ЬCFMTЙ   (ЬTRMFЙ  )  00340
+   NEWPAGE* (FTNPRT* )  00262    PUNM220    21 07 30  00146         TAKECRD*   21 31 25  00060    ЬCLOSЙ     22 02 35  00027
+   NEWPAGE  (FTNPRT  )  00053    PUNOFF   (PUNCHA  )  00044         TAKEMEM* (*DISPAR1)  00006    ЬCMЬ       21 13 24  00047
+   NOTLIS   (YESLIS  )  00002    PUNON    (PUNCHA  )  00020         TAKEPAG* (*DISPAR1)  00000    ЬCN48Ь     21 33 03  00004
+   NOZ      (ZONE    )  00023    PUNTEX/    21 30 34  00103         TAKEPUN* (*DISPAR1)  00006    ЬCPABЬ     21 33 30  00047
+   NTAPDISC   21 13 13  00135    PUNTITLE   21 07 34  00024         TAKTAP     21 13 33  00020    ЬCPARЙ     21 37 20  00125
+   NЬANY      21 33 33  00004    PUNUPP     21 07 35  00115         TCATALOG   21 15 23  03120    ЬCRDЙ      22 02 15  00010
+   NЬUN       21 33 27  00007    PUTBL*   (FTNPRT* )  00113         TCATDOR  (TCATALOG)  00001    ЬCRЬ       21 34 26  00047
+   OC/БЭCM6   22 10 11  00170    PUTCOM*  (FTNPRT* )  00125         TELOUT*    21 10 33  00003    ЬCSTAЙ   (ЬOSTAЙ  )  00216
+   OCATALOG   21 06 24  00216    PUTEWRD* (FTNPRT* )  00263         TEMFILE    21 15 02  00325    ЬDELSЙ     22 01 05  00037
+   OCTALPRT (FTNPRT  )  00022    PUTFLAG*   21 10 00  00017         TEMP//     21 15 12  00027    ЬDESTЙ     21 35 33  00010
+   OCTPRT*  (FTNPRT* )  00102    PUTPERM  (CUTCAT* )  00015         TEMP/SI    21 15 14  00003    ЬDMU3Й     21 35 22  00120
+   OLD/30   (OC/БЭCM6)  00012    R        (T1      )  00004         TEXISO     21 10 34  00046    ЬEFLDЙ   (ЬBFLDЙ  )  00020
+   OLDMEMOR   21 34 14  00115    R2       (T2      )  00004         TEXПPO   (*NEWTEX*)  00001    ЬENDFЙ   (ЬRWNDЙ  )  00002
+   ORDERS*    21 13 17  00073    READ1      21 10 01  00076         TOPERSO  (LIBTAP* )  00000    ЬENDMЙ   (ЬINERЙ  )  00007
+   ORDINIT  (ORDERS* )  00062    READ2      21 10 04  00076         TR*OFF   (TR*ON   )  00001    ЬERRMЙ   (ЬINERЙ  )  00012
+   ORDOVER  (SUMOVER )  00165    READCO   (REDACT1 )  00352         TR*ON      21 32 11  00004    ЬEXECЙ     22 03 26  00003
+   OTTYD*   (TYDA*   )  00001    READZONE (OC/БЭCM6)  00000         TRANSFIO   21 12 34  00024    ЬGEЬ       21 13 27  00004
+   OVERLAY  (COLLECT )  00042    REALPRT* (FTNPRT* )  00164         TRNS10T8   21 10 36  00014    ЬGTЬ       21 13 31  00004
+   OVERLAY* (MIXLOAD )  00001    REALPRT  (FTNPRT  )  00137         TSCLS    (IPCINI  )  00030    ЬIF1NЙ   (ЬINIFЙ  )  00042
+   OVERLOAD   22 10 16  00610    RECAP/   (PUNTEX/ )  00025         TSILEVAS (SAVELIST)  00022    ЬIF2AЙ     22 01 16  00117
+   OБPYK*MT (MT*OБMEH)  00066    RECATA*    21 10 07  00202         TSINI    (IPCINI  )  00023    ЬIF2BЙ     22 01 21  00077
+   PAGOFF     21 34 25  00003    RECO       21 10 13  00044         TSKIL    (IPCINI  )  00032    ЬIF2DЙ     22 01 30  00054
+   PAK      (PAS     )  00001    REDACT1    21 30 36  00775         TSLSTB   (IPCINI  )  00026    ЬIF2IЙ     22 01 24  00056
+   PANNO      22 12 33  00042    REDACT2    21 31 20  00155         TSLSTM   (IPCINI  )  00024    ЬIF2LЙ     22 01 14  00044
+   PAS        21 06 32  00047    REDACTRM   22 12 23  00233         TSRCV    (IPCSND  )  00125    ЬIF2RЙ     22 01 26  00053
+   PASCAL*    21 06 34  00004    REFUSE   (OC/БЭCM6)  00105         TSRFB    (IPCSND  )  00127    ЬIF4AЙ     22 03 36  00223
+   PCATALOG (TCATALOG)  00062    RES100   (GIVE100 )  00010         TSSND    (IPCSND  )  00116    ЬIF4BЙ     22 05 26  00131
+   PCBEG      22 13 24  00331    REVISOR* (CHE*NAM )  00307         TTTITLE  (TELOUT* )  00002    ЬIF4CЙ     22 01 34  00141
+   PCEND    (PCBEG   )  00175    RMON     (FOREX*  )  00014         TWRBINC  (TEMFILE )  00155    ЬIF4DЙ     22 01 02  00074
+   PCPLOT     22 13 37  00651    SAVE*      21 10 15  00051         TXTGST     21 10 37  00071    ЬIF4IЙ     22 00 11  00052
+   PCREAD   (PCBEG   )  00033    SAVELIST   21 10 17  00066         TXTISO   (TXTGST  )  00022    ЬIF4LЙ     22 00 13  00051
+   PCTOB6   (B6TOPC  )  00022    SCHEND     21 36 12  00026         TYDA*      21 11 01  00027    ЬIF4RЙ     22 01 32  00060
+   PCWRIT   (PCBEG   )  00107    SDEC       21 10 22  00040         TЬCALL     21 34 31  00042    ЬIFAЙ      22 00 15  00054
+   PECYPC     21 31 37  00077    SDEC*    (SDEC    )  00000         TЬEND    (TЬPARR  )  00035    ЬIFBЙ      22 00 17  00142
+   PERCOSY    21 06 35  00172    SE*10/US   21 12 13  00023         TЬGOTO     21 35 02  00053    ЬIFDЙ      22 02 00  00311
+   PERSO    (LIBDRU* )  00000    SE*MTBUF (MT*OБMEH)  00001         TЬINDX     21 34 37  00070    ЬIFIЙ      22 00 32  00130
+   PERSTAND   21 07 02  00032    SERWISM    21 15 17  00150         TЬLABL   (TЬCALL  )  00021    ЬIFLЙ      22 00 36  00140
+   PLCATALO (TCATALOG)  00023    SETTRC     21 24 10  00013         TЬPARR     21 34 33  00107    ЬIFRЙ      22 04 03  00315
+   POWER1     21 21 36  00003    SHIMT    (SETTRC  )  00003         TЬRETN   (TЬCALL  )  00003    ЬINENЙ   (ЬINERЙ  )  00001
+   PRI*NEWS   21 30 14  00146    SOVCATAL (OCATALOG)  00114         TЬRPL      21 35 05  00146    ЬINERЙ     22 02 13  00046
+   PRINPART   21 22 22  00305    SREAD    (SWRITE  )  00002         UNP      (PAS     )  00002    ЬINFMЙ   (ЬTRMFЙ  )  00335
+   PRINT80    21 13 36  00161    SRWEND*  (SWRITE  )  00027         UPPFILE    21 11 02  00264    ЬINI1Й     22 02 16  00107
+   PRINTA     21 07 04  00024    STA*R      21 14 15  00024         VOБФOP     22 04 13  01125    ЬINI2Й     22 05 13  00055
+   PRINTAM    21 07 05  00026    START/ЧK   21 10 24  00024         VVERPR     22 06 25  00677    ЬINIFЙ     22 06 01  00056
+   PRINTAPE (PANNO   )  00020    STATICLO   21 25 26  00376         W        (T1      )  00013    ЬINIOЙ   (ЬINERЙ  )  00031
+   PRINTE   (PRINTA  )  00002    STATSUM    21 15 15  00062         WAIT       21 17 04  00003    ЬINIUЙ   (ЬIUWЙ   )  00056
+   PRINTFIL   21 30 20  00531    STOP/    (FOREX*  )  00027         WRCATA*  (RECATA* )  00032    ЬINLDЙ     22 02 27  00016
+   PRINTLIS   21 07 06  00024    SUMOVER    21 21 37  00473         WRIBINC  (UPPFILE )  00126    ЬINO1Й   (ЬINI1Й  )  00063
+   PRINTO   (PRINTA  )  00003    SWRITE     21 10 25  00042         WRITE1     21 11 11  00102    ЬINO2Й     22 05 10  00052
+   PRINTR     21 07 07  00101    SYS*BCB  (SYS/BCB )  00001         XLOC     (CTIME   )  00021    ЬINOFЙ     22 06 03  00106
+   PRO        21 07 12  00055    SYS/BCB    21 10 27  00015         XREF       22 10 36  01052    ЬINOUЙ   (ЬOUWЙ   )  00107
+   PRT6TIC* (FTNPRT* )  00022    SYSLDL     21 22 33  00014         XTRANS     22 05 37  00075    ЬINQFЙ     22 05 23  00113
+   PRT6TIV* (FTNPRT* )  00024    T*CALL     21 32 12  00033         XДTOП    (XTRANS  )  00012    ЬINQUЙ     22 05 20  00052
+   PRTCNAM* (FTNPRT* )  00052    T*END    (T*PARR  )  00026         XПTOД    (XTRANS  )  00011    ЬINRЙ      22 02 22  00102
+   PRTLINE*   21 07 14  00004    T*GOTO     21 32 07  00044         YESLIS     21 13 35  00012    ЬINTFЙ   (ЬINI1Й  )  00060
+   PRTLINE/ (FTNPRT* )  00233    T*INDX     21 32 05  00065         ZONE       21 11 14  00045    ЬINЬ       21 33 12  00051
+   PRTLOC*    21 07 15  00031    T*LABL   (T*CALL  )  00016         БEMШ/ПAP   21 12 04  00002    ЬIPARЙ   (ЬCPARЙ  )  00076
+   PRTPAGE* (FTNPRT* )  00232    T*PARR     21 32 02  00076         ДAЙЛEHTY (OC/БЭCM6)  00016    ЬIUBЙ      21 36 07  00124
+   PT6        21 07 17  00111    T*RETN   (T*CALL  )  00003         ПEP6B81C   21 11 16  00035    ЬIUCЙ      21 36 03  00130
+   PTG        21 34 30  00001    T*RPL      21 34 20  00243         ПYЛЬC      22 12 35  00312    ЬIUWЙ      22 03 03  00102
+   PTIME    (CTIME   )  00015    T1         21 10 30  00032         Ь8Ь        21 13 23  00003    ЬLDPRЙ     22 00 23  00266
+   PUNCHA     21 07 22  00072    T2         21 10 32  00016         ЬANYЬ      21 33 34  00031    ЬLEЬ       21 13 30  00004
+   PUNCHB   (PUNCHA  )  00033    TAB/ITG*   21 14 35  00200         ЬBACKЙ   (ЬRWNDЙ  )  00001    ЬLIBCЬ     21 33 02  00004
+   ЬLTЬ       21 13 32  00004    ЬTROUЙ   (ЬOUWЙ   )  00112
+   ЬMP10Й     21 35 11  00055    ЬTRUЬ      21 33 04  00001
+   ЬMV8Ь      21 32 21  00002    ЬTSLNЙ     22 02 25  00033
+   ЬMVЬ       21 32 22  00001    ЬUNITЙ     22 05 05  00067
+   ЬNEXTЙ     21 35 25  00065    ЬUPREЙ     21 35 27  00056
+   ЬNEЬ       21 13 26  00004    ЬVTIDЙ   (ЬVTODЙ  )  00061
+   ЬNUMBЙ   (ЬNEXTЙ  )  00024    ЬVTIПЙ   (ЬVTOПЙ  )  00001
+   ЬNXTЙ    (ЬNEXTЙ  )  00002    ЬVTODЙ     22 05 34  00077
+   ЬOACCЙ   (ЬOSTAЙ  )  00226    ЬVTOПЙ     22 05 22  00030
+   ЬOBITЙ     21 37 23  00035    ЬZZЬ       21 32 17  00002
+   ЬOBLNЙ   (ЬOSTAЙ  )  00222    ЬДИHЬ    (ЬCRЬ    )  00021
+   ЬOF1NЙ   (ЬINOFЙ  )  00067    ЬЗПЬ       21 32 23  00003
+   ЬOF2AЙ     21 37 25  00061    ЬЦ0Ь       21 33 05  00001
+   ЬOF2BЙ     21 37 27  00104    Э60/MБ   (SYS/BCB )  00006
+   ЬOF2DЙ     21 37 35  00064    ЭKCTPA/0 (ЭKCTPA/1)  00017
+   ЬOF2IЙ     22 02 10  00073    ЭKCTPA/1   22 13 10  00025
+   ЬOF2LЙ     21 37 37  00075    ЭKCTPA/2 (ЭKCTPA/1)  00011
+   ЬOF2RЙ     21 37 32  00106
+   ЬOF4AЙ     22 05 32  00073
+   ЬOF4BЙ     22 00 02  00163
+   ЬOF4CЙ     22 00 06  00115
+   ЬOFAЙ      22 01 07  00061
+   ЬOFBЙ      22 01 11  00110
+   ЬOFDЙ      22 03 27  00234
+   ЬOFEЙ    (ЬOFIЙ   )  00126
+   ЬOFFЙ    (ЬOFIЙ   )  00010
+   ЬOFGЙ      21 37 04  00104
+   ЬOFIЙ      22 04 37  00227
+   ЬOFMЙ    (ЬOSTAЙ  )  00232
+   ЬONRЙ      22 02 30  00075
+   ЬOPNDЙ     22 05 16  00053
+   ЬOPNЙ      22 06 06  00243
+   ЬORCLЙ   (ЬOSTAЙ  )  00213
+   ЬOSTAЙ     21 37 07  00366
+   ЬOUBЙ      21 36 00  00077
+   ЬOUCЙ      21 35 35  00102
+   ЬOUWЙ      22 02 37  00142
+   ЬPRINЙ     22 03 21  00013
+   ЬPRЙ     (ЬPRINЙ  )  00005
+   ЬPUNCЙ     22 03 22  00014
+   ЬPUNЙ      21 35 32  00001
+   ЬPUTCЙ   (ЬBFLDЙ  )  00003
+   ЬPUTNЙ   (ЬBFLDЙ  )  00040
+   ЬQACCЙ     21 36 24  00035
+   ЬQBLNЙ     21 37 02  00045
+   ЬQDIRЙ     21 36 31  00060
+   ЬQEXЙ      21 36 14  00012
+   ЬQFMTЙ     21 36 35  00121
+   ЬQFMЙ      21 36 33  00051
+   ЬQFNЙ      21 36 20  00145
+   ЬQNMDЙ     21 36 17  00013
+   ЬQNRЙ      21 37 01  00010
+   ЬQNUMЙ     21 36 16  00012
+   ЬQODЙ      21 36 15  00012
+   ЬQRCLЙ     21 37 00  00017
+   ЬQSEQЙ     21 36 26  00102
+   ЬQUNFЙ   (ЬQFMTЙ  )  00074
+   ЬQVTЙ    (ЬVTOПЙ  )  00015
+   ЬREADЙ     22 03 23  00015
+   ЬRWENЙ     21 35 34  00001
+   ЬRWNDЙ     22 04 12  00017
+   ЬSTINЙ     22 03 25  00003
+   ЬTRFMЙ     22 02 33  00064
+   ЬTRIUЙ   (ЬIUWЙ   )  00061
+   ЬTRMFЙ     22 03 10  00405
+   ЬTRMЙ      22 03 06  00041
+*END FILE

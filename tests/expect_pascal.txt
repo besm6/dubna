@@ -1,0 +1,63 @@
+                                             3  000    00.00
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖЖ   ЖЖЖ   ЖЖЖ   ЖЖЖЖ  ЖЖЖ  Ж
+            Ж   Ж Ж   Ж Ж     Ж     Ж   Ж Ж
+            Ж   Ж Ж   Ж  ЖЖЖ  Ж     Ж   Ж Ж
+            Ж   Ж Ж   Ж     Ж Ж     Ж   Ж Ж
+            ЖЖЖЖ  Ж   Ж     Ж Ж     Ж   Ж Ж
+            Ж     ЖЖЖЖЖ Ж   Ж Ж     ЖЖЖЖЖ Ж
+            Ж     Ж   Ж  ЖЖЖ   ЖЖЖЖ Ж   Ж ЖЖЖЖЖ
+
+
+
+
+
+
+
+
+*NAME PASCAL
+*PASCAL                                             3  000    00.00
+ PASCAL COMPILER. 14.(24.12.79)
+ 00001    1 PROGRAM MAIN (OUTPUT);
+ 00007    2 _(
+ 00007    3     WRITELN(′HELLO, WORLD!′);
+ 00024    4 _).
+*LIBRARY:22
+*EXECUTE
+      *LIBRA:22 = P/CW        P/EDIH      P/HIDE      P/DI        P/RC        P/TRPAGE    P/MD        P/A7        P/7AD
+      P/7A        P/DA        P/WO        P/SP        P/WI        PASNB8      PASDIH      PASHID      PASEVN      P/E
+      P/EF        P/PMDSET    P/TR        P/BEXF      PASEOF      PASISOXT    P/1         P/EN        P/BX        P/WXD
+      P/WR        P/PAGES     P/HT        P/TF        P/WL        P/WOLN      P/PF        P/CO        P/IT        P/PRINT
+≠
+         MAIN       01000                P/7AD    E 02125                PASZERO* C 02520                P/RC       03513
+         PROGRAM  E 01000                P/EF       02140                P/WX       02521                PASISOXT   03537
+         P/1D     C 01034                P/E      E 02143                P/WXD    E 02530                P/SP       03571
+         *OUTPUT* C 01104                P/1        02146                PASEOF     02546                MONREAD*   03577
+         P/SYS      01142                PASPMD     02152                READ*      02565                READ*ERR E 03657
+         P/MOD    E 01156                P/PMDSET E 02205                P/HIDE     02613                P/PAGES    03703
+         P/DIV    E 01162                PASENDS* C 02313                P/EDIH   E 02616                PASPAGN* C 03704
+         P/IT     E 01174                PASEOLSY C 02314                PASMINS* C 02621                PASDRN*  C 03705
+         P/CO     E 01176                PASEOFCD C 02315                P/TRPAGE   02622                PASDRUM* C 03706
+         P/RE1    E 01204                P/BEXF     02316                P/BX       02654                P/STACK  C 03707
+         P/RE2    E 01346                P/DA       02323                P/EN     E 02666                PASPERID C 03710
+         PASCTRP  E 01401                P/MD       02336                P/WO       02702                PASPLUS* C 03711
+         P/GF     E 01454                P/DI       02345                P/WR       02733                P/TR       03712
+         P/RACPAK E 01513                PASPMDAD C 02351                PASTENS  E 03121                P/A7       03715
+         PASINBUF E 01563                STOP*      02352                P/WI       03145                PASHID     03723
+         PASGIVEP E 01620                EXIT     E 02353                P/CW       03226                PASDIH   E 03726
+         P/PF     E 01701                SPACE*   C 02401                PASEXFT* C 03230                DRUMTAP*   03732
+         P/WOLN   E 01732                PASOUT     02402                RGEXPORT C 03247                COSYTISO   03763
+         P/WL     E 01733                P/PRINT  E 02403                *PASTEL* C 03250                P/FIRP   C 06000
+         P/RF     E 02005                PASTN    E 02441                PASEVN     03301                CHKWORD* C 10000
+         P/TF     E 02070                PASWHT   E 02455                PASNB8     03322                CBOБOДHO   10001
+         P/7A       02123                P/HT       02506                PRINT8     03332
+≠
+HELLO, WORLD!

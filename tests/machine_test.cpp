@@ -151,6 +151,6 @@ TEST_F(dubna_machine, trace_startjob)
 
     // Check the trace.
     auto trace  = file_contents(trace_filename);
-    auto expect = file_contents(TEST_DIR "/trace_startjob.expect");
+    auto expect = file_contents(TEST_DIR "/expect_startjob.txt");
     EXPECT_EQ(trace, expect);
 }

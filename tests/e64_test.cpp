@@ -91,7 +91,7 @@ TEST_F(dubna_session, e64_simple)
 *end file
 )");
 
-    auto expect = file_contents(TEST_DIR "/output_e64_simple.expect");
+    auto expect = file_contents(TEST_DIR "/expect_e64_simple.txt");
     check_output(output, expect);
 }
 

@@ -80,7 +80,7 @@ TEST_F(dubna_session, okno)
 *call ВОКНО
 *end file
 )");
-    auto expect = file_contents(TEST_DIR "/output_okno.expect");
+    auto expect = file_contents(TEST_DIR "/expect_okno.txt");
     check_output(output, expect);
 }
 
@@ -105,7 +105,7 @@ TEST_F(dubna_session, edit)
 *EE
 *end file
 )");
-    auto expect = file_contents(TEST_DIR "/output_edit.expect");
+    auto expect = file_contents(TEST_DIR "/expect_edit.txt");
     check_output(output, expect);
 }
 
@@ -129,7 +129,7 @@ TEST_F(dubna_session, assem)
 *execute
 *end file
 )");
-    auto expect = file_contents(TEST_DIR "/output_assem.expect");
+    auto expect = file_contents(TEST_DIR "/expect_assem.txt");
     check_output(output, expect);
 }
 
@@ -153,7 +153,7 @@ TEST_F(dubna_session, madlen)
 *execute
 *end file
 )");
-    auto expect = file_contents(TEST_DIR "/output_madlen.expect");
+    auto expect = file_contents(TEST_DIR "/expect_madlen.txt");
     check_output(output, expect);
 }
 
@@ -172,7 +172,7 @@ TEST_F(dubna_session, fortran)
 *execute
 *end file
 )");
-    auto expect = file_contents(TEST_DIR "/output_fortran.expect");
+    auto expect = file_contents(TEST_DIR "/expect_fortran.txt");
     check_output(output, expect);
 }
 
@@ -191,7 +191,7 @@ TEST_F(dubna_session, ftn)
 *execute
 *end file
 )");
-    auto expect = file_contents(TEST_DIR "/output_ftn.expect");
+    auto expect = file_contents(TEST_DIR "/expect_ftn.txt");
     check_output(output, expect);
 }
 
@@ -209,7 +209,7 @@ TEST_F(dubna_session, algol)
 *execute
 *end file
 )");
-    auto expect = file_contents(TEST_DIR "/output_algol.expect");
+    auto expect = file_contents(TEST_DIR "/expect_algol.txt");
     check_output(output, expect);
 }
 
@@ -224,10 +224,11 @@ program main (output);
 _(
     writeln('Hello, World!');
 _).
+*library:22
 *execute
 *end file
 )");
-    auto expect = file_contents(TEST_DIR "/output_pascal.expect");
+    auto expect = file_contents(TEST_DIR "/expect_pascal.txt");
     check_output(output, expect);
 }
 
@@ -242,7 +243,7 @@ TEST_F(dubna_session, libpunch)
 *libpunch
 *end file
 )");
-    auto expect = file_contents(TEST_DIR "/output_libpunch.expect");
+    auto expect = file_contents(TEST_DIR "/expect_libpunch.txt");
     check_output(output, expect);
 }
 

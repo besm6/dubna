@@ -204,39 +204,30 @@ public:
     //
     void print_libraries(std::ostream &out)
     {
-        try {
-            // Mount tape image 9 as disk 30, read only.
-            machine.disk_mount(030, "9", false);
+        // Mount tape image 9 as disk 30, read only.
+        machine.disk_mount(030, "9", false);
 
-            // Read zone 6.
-            static const unsigned ZONE = 6;
-            machine.disk_io('r', 0, ZONE, 0, 0x0, 1024);
+        // Read zone 6.
+        static const unsigned ZONE = 6;
+        machine.disk_io('r', 0, ZONE, 0, 0x0, 1024);
 
-            // Print table of libraries.
-            static const unsigned OFFSET = 01720;
+        // Print table of libraries.
+        static const unsigned OFFSET = 01720;
 
-            out << "Library         Tape        Zone\n";
-            out << "--------------------------------\n";
-            for (unsigned libno = 0; libno < 030; libno++) {
-                Word tape_name = machine.mem_load(OFFSET + libno);
-                if (tape_name == 0) {
-                    // No library with this number.
-                    continue;
-                }
-                Word location = machine.mem_load(OFFSET + libno + 030);
-
-                out << "*library:" << std::left << std::setw(2) << std::oct << libno << "     ";
-                print_word_as_text(tape_name);
-                out << "    " << std::right << std::setw(4) << std::setfill('0') << (location >> 30)
-                    << std::setfill(' ') << std::dec << std::endl;
+        out << "Library         Tape        Zone\n";
+        out << "--------------------------------\n";
+        for (unsigned libno = 0; libno < 030; libno++) {
+            Word tape_name = machine.mem_load(OFFSET + libno);
+            if (tape_name == 0) {
+                // No library with this number.
+                continue;
             }
-        } catch (const std::exception &ex) {
-            // Print exception message.
-            std::cerr << "Error: " << ex.what() << std::endl;
-            exit_status = EXIT_FAILURE;
-        } catch (...) {
-            // Assuming the exception message already printed.
-            exit_status = EXIT_FAILURE;
+            Word location = machine.mem_load(OFFSET + libno + 030);
+
+            out << "*library:" << std::left << std::setw(2) << std::oct << libno << "     ";
+            print_word_as_text(tape_name);
+            out << "    " << std::right << std::setw(4) << std::setfill('0') << (location >> 30)
+                << std::setfill(' ') << std::dec << std::endl;
         }
     }
 
@@ -245,7 +236,38 @@ public:
     //
     void print_commands(std::ostream &out)
     {
-        out << "TODO" << std::endl;
+        // Mount tape image 9 as disk 30, read only.
+        machine.disk_mount(030, "9", false);
+
+        // Create a list of available commands.
+        std::vector<std::string> list;
+        get_commands(list, 030, 01600, 01660);
+        get_commands(list, 024, 0340, 0374);
+
+        // Print sorted list.
+        std::sort(list.begin(), list.end());
+        for (auto const &item : list) {
+            out << item << std::endl;
+        }
+    }
+
+    //
+    // Extract available commands from given zone and address range.
+    //
+    void get_commands(std::vector<std::string> &list, const unsigned zone,
+                      const unsigned addr_start, const unsigned addr_finish)
+    {
+        machine.disk_io('r', 0, zone, 0, 0x0, 1024);
+        for (unsigned addr = addr_start; addr < addr_finish; addr++) {
+            Word word = machine.mem_load(addr);
+            char first_sym = word >> 40;
+            if (first_sym == '*') {
+                // First symbol must be star.
+                std::string str { first_sym, (char)(word >> 32), (char)(word >> 24),
+                                  (char)(word >> 16), (char)(word >> 8), (char)word };
+                list.push_back(str);
+            }
+        }
     }
 
 private:

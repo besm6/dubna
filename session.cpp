@@ -243,9 +243,14 @@ public:
         std::vector<std::string> list;
         get_commands(list, 030, 01600, 01660);
         get_commands(list, 024, 0340, 0374);
+        get_commands(list, 037, 060, 0110);
+
+        // Sort the list, remove duplicates.
+        std::sort(list.begin(), list.end());
+        auto last = std::unique(list.begin(), list.end());
+        list.erase(last, list.end());
 
         // Print sorted list.
-        std::sort(list.begin(), list.end());
         for (auto const &item : list) {
             out << item << std::endl;
         }

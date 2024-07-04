@@ -328,7 +328,9 @@ void Machine::disk_mount(unsigned disk_unit, const std::string &filename, bool w
     auto path        = disk_find(filename);
     disks[disk_unit] = std::make_unique<Disk>(memory, path, write_permit);
 
-    std::cout << "Mount image '" << path << "' as disk " << to_octal(disk_unit + 030) << std::endl;
+    if (trace_enabled()) {
+        std::cout << "Mount image '" << path << "' as disk " << to_octal(disk_unit + 030) << std::endl;
+    }
 }
 
 //
@@ -339,8 +341,10 @@ void Machine::map_drum_to_disk(unsigned drum, unsigned disk)
 {
     mapped_drum = drum;
     mapped_disk = disk;
-    std::cout << "Redirect drum " << to_octal(mapped_drum) << " to disk " << to_octal(mapped_disk)
-              << std::endl;
+    if (trace_enabled()) {
+        std::cout << "Redirect drum " << to_octal(mapped_drum) << " to disk " << to_octal(mapped_disk)
+                  << std::endl;
+    }
 }
 
 //

@@ -126,8 +126,7 @@ TEST(cli, help_libs)
     ASSERT_EQ(exit_code, 0);
 
     // Check output.
-    const std::string expect = R"(Mount image '/Users/vak/.besm6/9' as disk 30
-Library         Tape        Zone
+    const std::string expect = R"(Library         Tape        Zone
 --------------------------------
 *library:1      LIBRAR 2    0000
 *library:2      LIBRAR W    0000

@@ -20,6 +20,7 @@ if(NOT (Cppcheck MATCHES "NOTFOUND"))
         "--error-exitcode=1" # Fail on any issues
         "--inline-suppr" # Enable inline control like // cppcheck-suppress "id"
         "--quiet" # No progress report messages
+        "--suppress=badBitmaskCheck" # Allow redundant zero operands
         "--suppress=*:*/_deps/*" # Ignore issues in Googletest
         "--library=${CMAKE_SOURCE_DIR}/tests/googletest.xml" # Parse TEST() macro properly
     )

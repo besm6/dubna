@@ -241,6 +241,9 @@ void Processor::e50()
         // Set paper limit?
         // TODO: show paper limit on core.ACC
         break;
+    case 074671:
+        // Unknown
+        break;
     case 074673:
         // Unknown
         break;
@@ -266,6 +269,11 @@ void Processor::e63()
     case 0573:
         // Get phys.address of limits descriptor.
         core.ACC = 04000;
+        return;
+    case 0704:
+        // Get page mode.
+        // Bit 44 means disable page numbering.
+        core.ACC = 1ull << 43;
         return;
     case 0760:
     case 0761:
@@ -323,7 +331,8 @@ void Processor::e72()
 //
 void Processor::e65()
 {
-    switch (core.M[016]) {
+    unsigned addr = core.M[016];
+    switch (addr) {
     case 1:
     case 2:
     case 3:
@@ -337,6 +346,10 @@ void Processor::e65()
     case 0502:
         // Get address of process descriptor.
         core.ACC = 02000;
+        return;
+    case 0526:
+        // Get address of ALLTOISO encoding table.
+        core.ACC = 06000;
         return;
     case 0560:
         // Get address of A/LINKP.
@@ -388,7 +401,12 @@ void Processor::e65()
         core.ACC = 0;
         return;
     default:
-        throw Exception("Unimplemented extracode *65 " + to_octal(core.M[016]));
+        if (addr >= 06000 && addr < 06000 + 128) {
+            // Read entry from ALLTOISO encoding table.
+            core.ACC = all_to_iso[addr - 06000];
+            return;
+        }
+        throw Exception("Unimplemented extracode *65 " + to_octal(addr));
     }
 }
 

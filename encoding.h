@@ -69,3 +69,8 @@ extern const unsigned char itm_to_gost[256], gost_to_itm[256];
 // Convert character in TEXT encoding to Unicode.
 //
 unsigned text_to_unicode(unsigned char ch);
+
+//
+// ALLTOISO table from Dubna OS kernel.
+//
+extern const unsigned long long all_to_iso[128];

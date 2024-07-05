@@ -1,0 +1,66 @@
+                                             3  000    00.00
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            Ж   Ж Ж   Ж  ЖЖЖ  ЖЖЖЖЖ  ЖЖЖ   ЖЖЖ
+            Ж   Ж Ж   Ж Ж   Ж   Ж     Ж   Ж
+            Ж   Ж ЖЖЖЖЖ Ж   Ж   Ж     Ж    ЖЖЖ
+            Ж   Ж Ж   Ж Ж   Ж   Ж     Ж       Ж
+            Ж Ж Ж Ж   Ж Ж   Ж   Ж     Ж       Ж
+            Ж Ж Ж Ж   Ж ЖЖЖЖЖ   Ж     Ж   Ж   Ж
+             Ж Ж  Ж   Ж Ж   Ж   Ж    ЖЖЖ   ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME WHATIS
+*LIBRARY:23
+*CALL WHATIS
+ HA ЛEHTE 30    B ЗOHAX 0000-0437 OБHAPYЖEHO:
+    COMMON:  B 0001-1     20/10/88
+                          OБCП: LIBRAR
+    OVERLAY: B 0100       OVERLAY OT  27/04/87     FOREX 412
+   TEKCT   OT 0171  1-AЯ KAPTA:  C YKAЗAHИEM HOMEPA                          NOBEL 14                           .
+          0171                :       END                                                               NOBEL 90.
+          0171  OBMOD         :       SUBROUTINE OBMOD(NMOD,NBAS,NTIPB,K1,NTIPB1,NDLOB,NB,NBMODN,       OBMOD  0.
+          0171                :       END                                                               OBMOD 34.
+          0171  OMNSR         :       SUBROUTINE OMNSR                                                  OMNSR  0.
+   ИCПOPЧEH B 0172
+   TEKCT   OT 0315  1-AЯ KAPTA: *AHK0                                                                           .
+           ДO 0315
+   TEKCT   OT 0316  1-AЯ KAPTA: *ИCПP G  606                                                                    .
+           ДO 0316
+   TEKCT   OT 0317  1-AЯ KAPTA: *ИCПP G  713                                                                    .
+           ДO 0317
+   TEKCT   OT 0377  1-AЯ KAPTA: *NO LIST                                                                        .
+          0377  MA            :        PROGRAMMA                                                                .
+          0377                :        END                                                                      .
+           ДO 0377
+                          OБCП: LIBRAR
+   TEKCT   OT 0434  1-AЯ KAPTA: *NAME MACROS                                                                    .
+          0434                : END◇◇                                                                           .
+          0434                : END◇◇                                                                           .
+          0434  MA            :       PROGRAMMA                                                                 .
+          0434                :       END                                                                       .
+          0434  MA            :       PROGRAMMA                                                                 .
+          0434                :       END                                                                       .
+          0435  TOPC          :   TOPC:,NAME,                                                                   .
+          0435                :   ,END,                                                                         .
+          0435  TOPC1         :       SUBROUTINE TOPC1                                                          .
+          0435                :       END                                                                       .
+          0435  ASCII         :       SUBROUTINE ASCII(K)                                                       .
+          0435                :       END                                                                       .
+           ДO 0435
+   TEKCT   OT 0437  1-AЯ KAPTA:    1.      B ЦEЛЯX БOPЬБЫ C AHAPXИEЙ, A TAKЖE ДЛЯ                               .
+           ДO 0437
+*END FILE

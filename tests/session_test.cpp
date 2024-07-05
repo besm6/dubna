@@ -445,3 +445,18 @@ TEST_F(dubna_session, aspid)
     auto expect = file_contents(TEST_DIR "/expect_aspid.txt");
     check_output(output, expect);
 }
+
+//
+// Run WHATIS to show contents of tape MONSYS.
+//
+TEST_F(dubna_session, whatis_monsys)
+{
+    auto output = run_job_and_capture_output(R"(*name whatis
+*library:23
+*call whatis
+3000000437
+*end file
+)");
+    auto expect = file_contents(TEST_DIR "/expect_whatis_monsys.txt");
+    check_output(output, expect);
+}

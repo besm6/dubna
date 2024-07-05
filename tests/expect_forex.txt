@@ -1,0 +1,55 @@
+                                             3  000    00.00
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+              Ж    ЖЖЖ  ЖЖЖЖ  ЖЖЖЖ  Ж  Ж   ЖЖЖЖ
+            ЖЖЖЖЖ Ж   Ж Ж   Ж Ж     Ж Ж   Ж
+            Ж Ж Ж Ж   Ж Ж   Ж ЖЖЖ   ЖЖ    Ж
+            Ж Ж Ж Ж   Ж Ж   Ж Ж     Ж Ж   Ж
+            ЖЖЖЖЖ Ж   Ж ЖЖЖЖ  Ж     Ж  Ж  Ж
+              Ж   Ж   Ж Ж     Ж     Ж   Ж Ж
+              Ж    ЖЖЖ  Ж     ЖЖЖЖЖ Ж   Ж  ЖЖЖЖ
+
+
+
+
+
+
+
+
+*NAME ФOPEKC
+*FOREX                                             3  000    00.00
+F O R E X ИПM AH CCCP 4.13 OT 11.09.85 BPEMЯ:  00.00
+   1                  PROGRAM HELLO
+   2                  PRINT 1000
+   3                  STOP
+   4           1000   FORMAT(′HELLO, WORLD!′)
+   5                  END
+
+               TAБЛИЦA OTHOCИTEЛЬHЫX AДPECOB
+        1    2    3    4    5    6    7    8    9   10
+    0 :    :   1:   4:    :    :   5:    :    :    :
+KOMAHД 00013    KOHCTAHT 00003    ПAMЯTЬ ДЛЯ ПEPEMEHHЫX 00000
+ДЛИHA ПOДПPOГPAMMЫ HELLO  00016
+*EXECUTE
+≠
+         HELLO      01000                IOCONT*    01621                FT*723   E 01673                ISOTCOS1 E 04024
+         PROGRAM  E 01000                IOAC*    E 01652                FT*003   E 01673                FMRTAPE    04044
+         BCDWRIT*   01016                FT*722   E 01665                STOP*      02661                OCTTDEC    04773
+         FT*621   E 01016                FT*642   E 01665                EXIT     E 02662                LUNMUN   C 05026
+         BCDENC*  E 01022                FT*002   E 01665                BCDBEG*    02710                JERRIO*  C 05027
+         FT*611   E 01022                FD*642   E 01666                FT2*     E 03215                CARD2    C 05030
+         FT*571   E 01024                FD*722   E 01666                KONV1*   E 03230                ISOICTTR   05055
+         FT*561   E 01027                FC*722   E 01666                PRINT8     03324                REVCARD    05112
+         NEXTLET* E 01034                FC*642   E 01666                TTPRINT    03505                *ICHECK* C 05137
+         RK*      E 01076                FC*002   E 01666                BCDPUN     03544                *ПEPФOPA   05145
+         WSY*     E 01334                IOEND*   E 01673                EBCDPUN  E 03570                KOД*CDC  E 05146
+         I/O*ERR  E 01574                FT*643   E 01673                ISOTCOSY   03753                CBOБOДHO   05206
+≠
+HELLO, WORLD!

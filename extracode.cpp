@@ -207,6 +207,9 @@ void Processor::e50()
     case 0102:
         // Some conversion?
         break;
+    case 0103:
+        // TODO: Intercept авост, for Forex.
+        break;
     case 0211:
         // Pause the task? Waiting for tape.
         throw Exception("Task paused waiting for tape");
@@ -253,11 +256,25 @@ void Processor::e50()
 }
 
 //
+// Get CPU time in 1/50 of second.
+//
+unsigned Processor::get_cpu_time()
+{
+    auto now  = std::chrono::steady_clock::now();
+    auto msec = std::chrono::duration_cast<std::chrono::milliseconds>(now - start_time).count();
+    return msec / 20;
+}
+
+//
 // Extracode 063: manage time limit.
 //
 void Processor::e63()
 {
     switch (core.M[016]) {
+    case 4:
+        // Get CPU time in 1/50 of second.
+        core.ACC = get_cpu_time();
+        return;
     case 7:
         // Get machine number in bits 36-34.
         core.ACC = 5ULL << 33;
@@ -478,12 +495,15 @@ void Processor::e57()
         RELEASE  = 04000, // отказ от cвоиx лент, заданныx на сумматоре битовой шкалой:
     };                    // 48 разряд - лента 30 для мат.задач
 
-    if (core.M[016] & DELAY) {
-        //
+    switch (core.M[016] & DELAY) {
+    case 3:
+    case 7:
         // Delay the task, presumably waiting for tape to be installed by operator.
-        //
-        core.ACC = 0;
         throw Exception("Task paused waiting for tape");
+    case 5:
+        // Unknown, for Forex.
+        core.ACC = 0;
+        return;
     }
     if (core.M[016] & RELEASE) {
         //

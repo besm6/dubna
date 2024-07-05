@@ -24,6 +24,7 @@
 #ifndef DUBNA_PROCESSOR_H
 #define DUBNA_PROCESSOR_H
 
+#include <chrono>
 #include <cstdint>
 #include <string>
 
@@ -92,11 +93,17 @@ private:
     unsigned Aex{};   // executive address
     int corr_stack{}; // stack correction on exception
 
+    // Start time.
+    std::chrono::time_point<std::chrono::high_resolution_clock> start_time{ std::chrono::steady_clock::now() };
+
     // Intercept divzero/overflow.
     unsigned intercept_count{};     // intercept this many times
     unsigned intercept_addr{ 020 }; // jump to this address
     const std::string MSG_ARITH_OVERFLOW = "Arithmetic overflow";
     const std::string MSG_ARITH_DIVZERO  = "Division by zero";
+
+    // Get CPU time in 1/50 of second.
+    unsigned get_cpu_time();
 
     // Extracodes.
     void extracode(unsigned opcode);

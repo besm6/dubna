@@ -196,6 +196,25 @@ TEST_F(dubna_session, ftn)
 }
 
 //
+// Run *FOREX example and check output.
+//
+TEST_F(dubna_session, forex)
+{
+    auto output = run_job_and_capture_output(R"(*name форекс
+*forex
+        program hello
+        print 1000
+        stop
+ 1000   format('Hello, World!')
+        end
+*execute
+*end file
+)");
+    auto expect = file_contents(TEST_DIR "/expect_forex.txt");
+    check_output(output, expect);
+}
+
+//
 // Run *ALGOL example and check output.
 //
 TEST_F(dubna_session, algol)

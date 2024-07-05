@@ -251,10 +251,24 @@ public:
         auto last = std::unique(list.begin(), list.end());
         list.erase(last, list.end());
 
-        // Print sorted list.
-        for (auto const &item : list) {
-            out << item << std::endl;
-        }
+        print_columns(out, list, 6);
+    }
+
+private:
+    //
+    // Print footer.
+    //
+    static void print_footer(std::ostream &out, double sec, long instr_per_sec)
+    {
+        auto instr_count   = Machine::get_instr_count();
+        int time_precision = (sec < 1) ? 3 : (sec < 10) ? 2 : 1;
+
+        out << "------------------------------------------------------------" << std::endl;
+        out << "   Elapsed time: " << std::fixed << std::setprecision(time_precision) << sec
+            << " seconds" << std::setprecision(6) << std::endl;
+        out << "      Simulated: " << instr_count << " instructions" << std::endl;
+        out << "Simulation rate: " << std::fixed << instr_per_sec << " instructions/sec"
+            << std::setprecision(6) << std::endl;
     }
 
     //
@@ -276,21 +290,30 @@ public:
         }
     }
 
-private:
     //
-    // Print footer.
+    // Print list in columns.
     //
-    static void print_footer(std::ostream &out, double sec, long instr_per_sec)
+    void print_columns(std::ostream &out, const std::vector<std::string> &list,
+                       const unsigned num_columns)
     {
-        auto instr_count   = Machine::get_instr_count();
-        int time_precision = (sec < 1) ? 3 : (sec < 10) ? 2 : 1;
+        unsigned const num_rows  = (list.size() + num_columns - 1) / num_columns;
+        unsigned const col_width = 12;
 
-        out << "------------------------------------------------------------" << std::endl;
-        out << "   Elapsed time: " << std::fixed << std::setprecision(time_precision) << sec
-            << " seconds" << std::setprecision(6) << std::endl;
-        out << "      Simulated: " << instr_count << " instructions" << std::endl;
-        out << "Simulation rate: " << std::fixed << instr_per_sec << " instructions/sec"
-            << std::setprecision(6) << std::endl;
+        for (unsigned row = 0; row < num_rows; row++) {
+            for (unsigned col = 0; col < num_columns; col++) {
+                unsigned index = (col * num_rows) + row;
+                if (index >= list.size()){
+                    break;
+                }
+                bool is_last = (index + num_rows) >= list.size();
+                if (is_last) {
+                    out << list[index];
+                } else {
+                    out << std::setw(col_width) << std::left << list[index];
+                }
+            }
+            out << std::endl;
+        }
     }
 };
 

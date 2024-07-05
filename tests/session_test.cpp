@@ -425,3 +425,23 @@ TEST_F(dubna_session, library23)
     auto expect = file_contents(TEST_DIR "/expect_library23.txt");
     check_output(output, expect);
 }
+
+//
+// Run ASPID example and check output.
+//
+TEST_F(dubna_session, aspid)
+{
+    auto output = run_job_and_capture_output(R"(*name аспид
+*library:22,23
+*call aspid*d
+- А поворотись-ка, сын! Экой ты смешной какой!
+Что это на вас за поповские подрясники?
+И этак все ходят в академии? - Такими словами встретил
+старый Бульба двух сыновей своих, учившихся в киевской
+бурсе и приехавших домой к отцу.
+%KP
+*end file
+)");
+    auto expect = file_contents(TEST_DIR "/expect_aspid.txt");
+    check_output(output, expect);
+}

@@ -1,0 +1,38 @@
+                                             3  000    00.00
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+             ЖЖЖ   ЖЖЖЖ ЖЖЖЖЖ Ж   Ж  ЖЖЖ
+            Ж   Ж Ж     Ж   Ж Ж   Ж  Ж Ж
+            Ж   Ж Ж     Ж   Ж Ж   Ж  Ж Ж
+            Ж   Ж Ж     Ж   Ж Ж  ЖЖ  Ж Ж
+            Ж   Ж Ж     Ж   Ж Ж Ж Ж  Ж Ж
+            ЖЖЖЖЖ Ж     Ж   Ж ЖЖ  Ж ЖЖЖЖЖ
+            Ж   Ж  ЖЖЖЖ Ж   Ж Ж   Ж Ж   Ж
+
+
+
+
+
+
+
+
+*NAME ACПИД
+*LIBRARY:22,23
+*CALL ASPID*D
+                              1
+     - A ПOBOPOTИCЬ-KA, CЫH! ЭKOЙ TЫ CMEШHOЙ KAKOЙ!  ЧTO  ЭTO
+                             Э                       Ч
+                             Э                       Ч
+HA  BAC ЗA ПOПOBCKИE ПOДPЯCHИKИ↑ И ЭTAK BCE XOДЯT B AKAДEMИИ↑
+                                 И
+                                 И
+- TAKИMИ CЛOBAMИ BCTPETИЛ CTAPЫЙ БYЛЬБA ДBYX  CЫHOBEЙ  CBOИX,
+YЧИBШИXCЯ B KИEBCKOЙ БYPCE И ПPИEXABШИX ДOMOЙ K OTЦY.
+*END FILE

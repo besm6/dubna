@@ -114,7 +114,7 @@ union E64_Pointer {
         unsigned _1 : 5;          // ---
         unsigned end_reg : 4;     // End address: register index
         unsigned start_addr : 15; // Start address: offset
-        unsigned _2 : 5;          // ---
+        unsigned flags : 5;       // Bits special for Dubna OS
         unsigned start_reg : 4;   // Start address: register index
     } field;
 };

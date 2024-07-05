@@ -454,3 +454,37 @@ done:
     // Restore.
     out.flags(save_flags);
 }
+
+//
+// Print details about extracode e64 in Dubna mode.
+//
+void Machine::print_e64_dubna(unsigned start_addr, unsigned end_addr)
+{
+    auto &out       = Machine::get_trace_stream();
+    auto save_flags = out.flags();
+
+    out << "      Print Dubna " << std::oct << std::setfill('0') << std::setw(5) << start_addr
+        << '-' << std::setfill('0') << std::setw(5) << end_addr << std::dec << std::endl;
+
+    // Text in Gost encoding.
+    out << "      Text Gost" << std::oct;
+
+    BytePointer bp(memory, start_addr);
+    while (bp.word_addr) {
+        if (end_addr && bp.word_addr == end_addr + 1) {
+            goto done;
+        }
+
+        unsigned c = bp.get_byte();
+        out << ' ' << std::setfill('0') << std::setw(3) << c;
+
+        if (c == 0176) {
+            goto done;
+        }
+    }
+done:
+    out << std::endl;
+
+    // Restore.
+    out.flags(save_flags);
+}

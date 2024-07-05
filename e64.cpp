@@ -573,6 +573,48 @@ unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1)
 }
 
 //
+// Print string in Dubna mode.
+//
+void Processor::e64_print_dubna(unsigned addr0, unsigned addr1)
+{
+    BytePointer bp(memory, addr0);
+
+    unsigned char ch = bp.get_byte();
+    if (ch > 0 && e64_line_dirty) {
+        // Emit previous line.
+        e64_emit_line();
+    }
+    for (;;) {
+        if (addr1 && bp.word_addr == addr1 + 1) {
+            // No data to print.
+            return;
+        }
+
+        if (e64_position == LINE_WIDTH) {
+            // No more space on printed line.
+            return;
+        }
+
+        ch = bp.get_byte();
+        if (ch == 0176) {
+            // End of text.
+            e64_emit_line();
+            return;
+        }
+
+        if (ch >= 0200) {
+            // Packed spaces.
+            while (ch-- >= 0200 && e64_position < LINE_WIDTH) {
+                e64_putchar(GOST_SPACE);
+            }
+        } else if (ch < 0140) {
+            // Printable character.
+            e64_putchar(ch);
+        }
+    }
+}
+
+//
 // Extracode 064: text output.
 //
 // The information array has the following format
@@ -619,16 +661,23 @@ void Processor::e64()
 
     unsigned start_addr = ADDR(ptr.field.start_addr + core.M[ptr.field.start_reg]);
     unsigned end_addr   = ADDR(ptr.field.end_addr + core.M[ptr.field.end_reg]);
+    if (start_addr == 0) {
+        throw Processor::Exception("Bad start_addr in extracode e64");
+    }
     if (end_addr <= start_addr) {
         // No limit.
         end_addr = 0;
     }
-    if (start_addr == 0) {
-        throw Processor::Exception("Bad start_addr in extracode e64");
-    }
 
     // Allocate a line buffer, initialize with spaces.
     e64_line.resize(LINE_WIDTH, GOST_SPACE);
+
+    if (ptr.field.flags & 010) {
+        // Special mode for Dubna OS.
+        machine.trace_e64_dubna(start_addr, end_addr);
+        e64_print_dubna(start_addr, end_addr);
+        return;
+    }
 
     // Execute every format word in order.
     for (;;) {

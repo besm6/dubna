@@ -828,7 +828,7 @@ TEST_F(dubna_session, e64_repeat255)
 )");
 }
 
-TEST_F(dubna_session, DISABLED_boldprint)
+TEST_F(dubna_session, boldprint)
 {
     auto output = run_job_and_capture_output(R"(*name жирпеч
 *ftn
@@ -844,10 +844,15 @@ TEST_F(dubna_session, DISABLED_boldprint)
 *end file
 )");
     const std::string expect = R"(*EXECUTE
- ОДНАЖДЫ В СТУДЕНУЮ ЗИМНЮЮ ПОРУ
-     СИЖУ ЗА РЕШЕТКОЙ В ТЕМНИЦЕ СЫРОЙ
-  ГЛЯЖУ ПОДНИМАЕТСЯ МЕДЛЕННО В ГОРУ
-      ВСКОРМЛЕННЫЙ В НЕВОЛЕ ОРЕЛ МОЛОДОЙ
+      *LIBRA:23 = ЖИPПEЧ
+≠
+         MAIN       01000                ЖИPПEЧ     01060                STOP*      01263                *ЖПPOT*  C 01312
+         PROGRAM  E 01000                ЖИPЛИC   E 01166                EXIT     E 01264                CBOБOДHO   01313
+≠
+ OДHAЖДЫ B CTYДEHYЮ ЗИMHЮЮ ПOPY
+     CИЖY ЗA PEШETKOЙ B TEMHИЦE CЫPOЙ
+  ГЛЯЖY ПOДHИMAETCЯ MEДЛEHHO B ГOPY
+      BCKOPMЛEHHЫЙ B HEBOЛE OPEЛ MOЛOДOЙ
 )";
     output = extract_after_execute(output);
     EXPECT_EQ(output, expect);

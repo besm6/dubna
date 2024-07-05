@@ -125,6 +125,7 @@ private:
     unsigned e64_print_itm(unsigned addr0, unsigned addr1);
     unsigned e64_print_hex(unsigned addr0, unsigned addr1, unsigned digits, unsigned width,
                            unsigned repeat);
+    void e64_print_dubna(unsigned addr0, unsigned addr1);
     void e64_print_cmd(unsigned cmd);
     void e64_putchar(int ch);
     void e64_emit_line();

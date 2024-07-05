@@ -827,3 +827,28 @@ TEST_F(dubna_session, e64_repeat255)
 */
 )");
 }
+
+TEST_F(dubna_session, DISABLED_boldprint)
+{
+    auto output = run_job_and_capture_output(R"(*name жирпеч
+*ftn
+      program main
+      call жиpпeч('однажды в студёную зимнюю пору', 30, 1)
+      call жиpпeч('сижу за решёткой в темнице сырой', 32, 5)
+      call жиpпeч('гляжу поднимается медленно в гору', 33, 2)
+      call жиpпeч('вскормлённый в неволе орёл молодой', 34, 6)
+      stop
+      end
+*library:23
+*execute
+*end file
+)");
+    const std::string expect = R"(*EXECUTE
+ ОДНАЖДЫ В СТУДЕНУЮ ЗИМНЮЮ ПОРУ
+     СИЖУ ЗА РЕШЕТКОЙ В ТЕМНИЦЕ СЫРОЙ
+  ГЛЯЖУ ПОДНИМАЕТСЯ МЕДЛЕННО В ГОРУ
+      ВСКОРМЛЕННЫЙ В НЕВОЛЕ ОРЕЛ МОЛОДОЙ
+)";
+    output = extract_after_execute(output);
+    EXPECT_EQ(output, expect);
+}

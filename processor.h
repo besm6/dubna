@@ -94,7 +94,7 @@ private:
     int corr_stack{}; // stack correction on exception
 
     // Start time.
-    std::chrono::time_point<std::chrono::high_resolution_clock> start_time{ std::chrono::steady_clock::now() };
+    std::chrono::time_point<std::chrono::steady_clock> start_time{ std::chrono::steady_clock::now() };
 
     // Intercept divzero/overflow.
     unsigned intercept_count{};     // intercept this many times

@@ -24,7 +24,6 @@
 #ifndef DUBNA_PROCESSOR_H
 #define DUBNA_PROCESSOR_H
 
-#include <chrono>
 #include <cstdint>
 #include <string>
 
@@ -92,9 +91,6 @@ private:
     unsigned RK{};    // регистр команд
     unsigned Aex{};   // executive address
     int corr_stack{}; // stack correction on exception
-
-    // Start time.
-    std::chrono::time_point<std::chrono::steady_clock> start_time{ std::chrono::steady_clock::now() };
 
     // Intercept divzero/overflow.
     unsigned intercept_count{};     // intercept this many times

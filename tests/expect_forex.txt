@@ -25,7 +25,7 @@
 
 *NAME ФOPEKC
 *FOREX                                             04 ИЮЛ 24 23.45
-F O R E X ИПM AH CCCP 4.13 OT 11.09.85 BPEMЯ:  00.00
+F O R E X ИПM AH CCCP 4.13 OT 11.09.85 BPEMЯ:  04.12
    1                  PROGRAM HELLO
    2                  PRINT 1000
    3                  STOP

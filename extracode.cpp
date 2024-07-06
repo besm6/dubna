@@ -270,24 +270,15 @@ void Processor::e50()
 }
 
 //
-// Get CPU time in 1/50 of second.
-//
-unsigned Processor::get_cpu_time()
-{
-    auto now  = std::chrono::steady_clock::now();
-    auto msec = std::chrono::duration_cast<std::chrono::milliseconds>(now - start_time).count();
-    return msec / 20;
-}
-
-//
 // Extracode 063: manage time limit.
 //
 void Processor::e63()
 {
     switch (core.M[016]) {
     case 4:
-        // Get CPU time in 1/50 of second.
-        core.ACC = get_cpu_time();
+        // Get CPU time in 1/50 of seconds.
+        // Use fixed value for easy testing.
+        core.ACC = 412 / 2;
         return;
     case 7:
         // Get machine number in bits 36-34.

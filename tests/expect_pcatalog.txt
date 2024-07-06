@@ -1,4 +1,4 @@
-                                             3  000    00.00
+                                             04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
 
@@ -24,7 +24,7 @@
 
 
 *NAME ПOCTOЯH.БИБЛИOTEKA
-*CALL PCATALOG                                             3  000    00.00
+*CALL PCATALOG                                             04 ИЮЛ 24 23.45
                      PERMANENT LIBRARY                              C*MU*I   (C*AD*I  )  00003    DIM      (SIGN    )  00007
                      CBOБOДHO  21 33 01                             C*MU*R   (C*AD*R  )  00004    DINT       21 14 24  00043
                                                                     C*PO*I     21 13 12  00045    DLOG       21 14 26  00237

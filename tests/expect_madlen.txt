@@ -1,4 +1,4 @@
-                                             3  000    00.00
+                                             04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
 
@@ -25,7 +25,7 @@
 
 *NAME MAДЛEH
 *MADLEN
- PROGRAM           MADLEN-3.5   3↑/1↑/↑↑   00.00.00    CTP    1
+ PROGRAM           MADLEN-3.5   04/07/24   23.45.56    CTP    1
  001L               PROGRAM :  , NAME,
  0000 0002                     , *64 ,INF64
  0001                          , *74 ,

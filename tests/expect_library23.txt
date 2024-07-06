@@ -1,4 +1,4 @@
-                                             3  000    00.00
+                                             04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
 
@@ -26,7 +26,7 @@
 *NAME БИБЛИOTEKA 23
 *PERSO:300320
 *100489×!                             ! ! ! ! ! ! !
-*CALL TCATALOG                                             3  000    00.00
+*CALL TCATALOG                                             04 ИЮЛ 24 23.45
                       TEMPORARY LIBRARY                             ICOS     (TASK41  )  00075    LBPUT    (LSHIFT  )  00027
                      CBOБOДHO  22 17 21                             IDCHECK  (NUSTOID )  00022    LCADD    (LSHIFT  )  00006
                                                                     IDEC       21 04 17  00025    LCHANG   (LDEFIN  )  00473

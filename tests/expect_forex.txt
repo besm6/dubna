@@ -1,4 +1,4 @@
-                                             3  000    00.00
+                                             04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
 
@@ -24,7 +24,7 @@
 
 
 *NAME ФOPEKC
-*FOREX                                             3  000    00.00
+*FOREX                                             04 ИЮЛ 24 23.45
 F O R E X ИПM AH CCCP 4.13 OT 11.09.85 BPEMЯ:  00.00
    1                  PROGRAM HELLO
    2                  PRINT 1000

@@ -188,6 +188,13 @@ void Processor::e75()
 //
 void Processor::e50()
 {
+    static const Word     DAY   = 0x04;
+    static const Word     MONTH = 0x07; // July
+    static const Word     YEAR  = 0x24;
+    static const unsigned HOUR  = 0x23;
+    static const unsigned MIN   = 0x45;
+    static const unsigned SEC   = 0x56;
+
     switch (core.M[016]) {
     case 064:
         // Print some message.
@@ -195,7 +202,14 @@ void Processor::e50()
         break;
     case 067:
         // DATE*, OS Dubna specific.
-        core.ACC = 0'7707'7774'0000'0000; // mask
+        // Date: DD MON YY
+        //      / |  |  | \
+        //     46 42 34 30 26
+        // Time: 00.00.00
+        //      / | | \  \
+        //    24 20 16 12 4
+        core.ACC = (DAY << 42) | (MONTH << 34) | (YEAR << 26) |
+                   (HOUR << 20) | (MIN << 12) | (SEC << 4);
         break;
     case 075:
         // Unknown.
@@ -376,6 +390,14 @@ void Processor::e65()
         // Get address of user table.
         core.ACC = 01000;
         return;
+    case 0575:
+        // Unknows, for *DOS.
+        core.ACC = 011000;
+        return;
+    case 0576:
+        // Unknows, for *DOS.
+        core.ACC = 07000;
+        return;
     case 0760:
         // Get address of СТАТУС and ИПД.
         core.ACC = 0'0000'4000'0000'3000;
@@ -383,6 +405,10 @@ void Processor::e65()
     case 0761:
         // Get address of INFBA.
         core.ACC = 04000;
+        return;
+    case 0762:
+        // Get address of uknown table, for *DOS.
+        core.ACC = 010000;
         return;
     case 0764:
         // Get version of Dubna OS.
@@ -407,6 +433,10 @@ void Processor::e65()
         return;
     case 03001:
         // Unknown?
+        core.ACC = 0;
+        return;
+    case 03005:
+        // Unknown, for *DOS
         core.ACC = 0;
         return;
     case 04000:

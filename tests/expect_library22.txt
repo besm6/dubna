@@ -1,4 +1,4 @@
-                                             3  000    00.00
+                                             04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
 
@@ -27,7 +27,7 @@
 *PERSO:300172
  310888
 *  !        Ъ!  Ъ!  Ъ!!
-*CALL TCATALOG                                             3  000    00.00
+*CALL TCATALOG                                             04 ИЮЛ 24 23.45
                       TEMPORARY LIBRARY                             P/BP     (P/PB    )  00011    P/RR       21 22 31  00011
                      CBOБOДHO  22 07 05                             P/BX       21 24 23  00026    P/RSR      21 22 20  00016
                                                                     P/CA       21 25 25  00013    P/SC       21 25 21  00010

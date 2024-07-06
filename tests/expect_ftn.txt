@@ -1,4 +1,4 @@
-                                             3  000    00.00
+                                             04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
 
@@ -24,7 +24,7 @@
 
 
 *NAME ФOPTPAH
-*FTN                                             3  000    00.00
+*FTN                                             04 ИЮЛ 24 23.45
  Ф O P T P A H - Г Д P
       (09.07.81)
   001                 PROGRAM HELLO

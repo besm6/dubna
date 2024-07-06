@@ -1,4 +1,4 @@
-                                             3  000    00.00
+                                             04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
 
@@ -24,7 +24,7 @@
 
 
 *NAME CИCTEMHЫE OBEPЛEИ
-*CALL SOVCATAL                                             3  000    00.00
+*CALL SOVCATAL                                             04 ИЮЛ 24 23.45
  KATAЛOГ  OVERLAY
     /20.10.88/
 

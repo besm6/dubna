@@ -258,6 +258,9 @@ void Processor::e50()
         // Set paper limit?
         // TODO: show paper limit on core.ACC
         break;
+    case 074200:
+        // Unknown, for *page
+        break;
     case 074671:
         // Unknown
         break;

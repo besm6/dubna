@@ -1,0 +1,9 @@
+*name Edit
+*call putflag*
+61
+*edit
+*R:300316
+*LL
+*C:Contents of tape MONSYS, zone 0316
+*EE
+*end file

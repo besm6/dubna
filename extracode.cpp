@@ -203,11 +203,11 @@ void Processor::e50()
     case 067:
         // DATE*, OS Dubna specific.
         // Date: DD MON YY
-        //      / |  |  | \
-        //     46 42 34 30 26
+        //        |  |   |
+        //       42  34  26
         // Time: 00.00.00
-        //      / | | \  \
-        //    24 20 16 12 4
+        //        |  |  |
+        //       20  16 4
         core.ACC = (DAY << 42) | (MONTH << 34) | (YEAR << 26) |
                    (HOUR << 20) | (MIN << 12) | (SEC << 4);
         break;

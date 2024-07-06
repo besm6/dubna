@@ -223,8 +223,8 @@ public:
 };
 
 //
-// Print word as 8 characters in TEXT encoding.
+// Return tape name as string.
 //
-void print_word_as_text(Word w);
+std::string tape_name_string(Word w);
 
 #endif // DUBNA_MACHINE_H

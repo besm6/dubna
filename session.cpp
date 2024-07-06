@@ -215,7 +215,7 @@ public:
         // Print table of libraries.
         static const unsigned OFFSET = 01720;
 
-        out << "Library         Tape        Zone\n";
+        out << "Library        Tape         Zone\n";
         out << "--------------------------------\n";
         for (unsigned libno = 0; libno < 030; libno++) {
             Word tape_name = machine.mem_load(OFFSET + libno);
@@ -225,9 +225,9 @@ public:
             }
             Word location = machine.mem_load(OFFSET + libno + 030);
 
-            out << "*library:" << std::left << std::setw(2) << std::oct << libno << "     ";
-            print_word_as_text(tape_name);
-            out << "    " << std::right << std::setw(4) << std::setfill('0') << (location >> 30)
+            out << "*library:" << std::left << std::setw(2) << std::oct << libno << "    "
+                << std::setw(10) << tape_name_string(tape_name)
+                << "   " << std::right << std::setw(4) << std::setfill('0') << (location >> 30)
                 << std::setfill(' ') << std::dec << std::endl;
         }
     }

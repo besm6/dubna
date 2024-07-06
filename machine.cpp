@@ -393,18 +393,24 @@ std::string Machine::disk_find(const std::string &filename)
 }
 
 //
-// Print word as 8 characters in TEXT encoding.
+// Return tape name as string.
+// Name consists of up to 6 characters in TEXT encoding,
+// and up to three decimal digits in 2-10 format.
 //
-void print_word_as_text(Word w)
+std::string tape_name_string(Word w)
 {
-    utf8_putc(text_to_unicode(w >> 42));
-    utf8_putc(text_to_unicode(w >> 36));
-    utf8_putc(text_to_unicode(w >> 30));
-    utf8_putc(text_to_unicode(w >> 24));
-    utf8_putc(text_to_unicode(w >> 18));
-    utf8_putc(text_to_unicode(w >> 12));
-    utf8_putc(text_to_unicode(w >> 6));
-    utf8_putc(text_to_unicode(w));
+    std::ostringstream buf;
+    unsigned const num = ((w >> 8) & 0xf) * 100 +
+                         ((w >> 4) & 0xf) * 10 +
+                         (w & 0xf);
+    buf << num << '/'
+        << (char) std::tolower(text_to_unicode(w >> 42))
+        << (char) std::tolower(text_to_unicode(w >> 36))
+        << (char) std::tolower(text_to_unicode(w >> 30))
+        << (char) std::tolower(text_to_unicode(w >> 24))
+        << (char) std::tolower(text_to_unicode(w >> 18))
+        << (char) std::tolower(text_to_unicode(w >> 12));
+    return buf.str();
 }
 
 //

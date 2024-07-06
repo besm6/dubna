@@ -547,9 +547,8 @@ void Processor::e57()
             // Tape MONSYS in mounted on direction #30.
             core.ACC = 030;
         } else {
-            std::cout << "\nCannot mount tape '";
-            print_word_as_text(core.ACC);
-            std::cout << "' on direction " << std::oct << core.M[015] << std::dec << '\n';
+            std::cout << "\nCannot mount tape " << tape_name_string(core.ACC)
+                      << " on direction " << std::oct << core.M[015] << std::dec << '\n';
             core.ACC = 0;
         }
         return;
@@ -565,9 +564,7 @@ void Processor::e57()
             core.ACC = 0;
 
             if (!(core.M[016] & ASSIGN)) {
-                std::cout << "\nTape not found '";
-                print_word_as_text(core.ACC);
-                std::cout << "'\n";
+                std::cout << "\nTape not found " << tape_name_string(core.ACC) << '\n';
             }
         }
         return;

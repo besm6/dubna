@@ -479,3 +479,19 @@ TEST_F(dubna_session, whatis_monsys)
     auto expect = file_contents(TEST_DIR "/expect_whatis_monsys.txt");
     check_output(output, expect);
 }
+
+//
+// Use DTRAN to disassemble STOP* routine.
+//
+TEST_F(dubna_session, dtran)
+{
+    auto output = run_job_and_capture_output(R"(*name dtran
+*library:23
+*call dtran(stop*)
+*assem
+*read:1
+*end file
+)");
+    auto expect = file_contents(TEST_DIR "/expect_dtran.txt");
+    check_output(output, expect);
+}

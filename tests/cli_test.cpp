@@ -126,24 +126,24 @@ TEST(cli, help_libs)
     ASSERT_EQ(exit_code, 0);
 
     // Check output.
-    const std::string expect = R"(Library         Tape        Zone
+    const std::string expect = R"(Library        Tape         Zone
 --------------------------------
-*library:1      LIBRAR 2    0000
-*library:2      LIBRAR W    0000
-*library:3      LIBRAR W    0340
-*library:5      LIBRAR W    0545
-*library:6      LIBRAR W    0650
-*library:7      LIBRAR W    1061
-*library:10     LIBRAR W    1220
-*library:11     LIBRAR W    1370
-*library:12     LIBRAR 2    0375
-*library:21     MONSYS )    0240
-*library:22     MONSYS )    0172
-*library:23     MONSYS )    0320
-*library:24     MONSYS )    0172
-*library:25     LIBRAR 2    0640
-*library:26     GRAFPR2Ц    0000
-*library:27     LIBRAR 2    0600
+*library:1     12/librar    0000
+*library:2     37/librar    0000
+*library:3     37/librar    0340
+*library:5     37/librar    0545
+*library:6     37/librar    0650
+*library:7     37/librar    1061
+*library:10    37/librar    1220
+*library:11    37/librar    1370
+*library:12    12/librar    0375
+*library:21    9/monsys     0240
+*library:22    9/monsys     0172
+*library:23    9/monsys     0320
+*library:24    9/monsys     0172
+*library:25    12/librar    0640
+*library:26    483/grafpr   0000
+*library:27    12/librar    0600
 )";
     EXPECT_EQ(result, expect);
 }

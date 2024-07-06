@@ -1,0 +1,91 @@
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖ   ЖЖЖЖЖ ЖЖЖЖ   ЖЖЖ  Ж   Ж
+            Ж  Ж    Ж   Ж   Ж Ж   Ж ЖЖ  Ж
+            Ж   Ж   Ж   Ж   Ж Ж   Ж Ж Ж Ж
+            Ж   Ж   Ж   ЖЖЖЖ  Ж   Ж Ж  ЖЖ
+            Ж   Ж   Ж   Ж Ж   Ж   Ж Ж   Ж
+            Ж   Ж   Ж   Ж  Ж  ЖЖЖЖЖ Ж   Ж
+            ЖЖЖЖ    Ж   Ж   Ж Ж   Ж Ж   Ж
+
+
+
+
+
+
+
+
+*NAME DTRAN
+*LIBRARY:23
+*CALL DTRAN(STOP*)
+                 DTRAN  /01.06.84/
+*ASSEM
+*READ:1                                             04 ИЮЛ 24 23.45
+ ABTOKOД  MADLEN
+   (1.10.72)
+                    STOP*   :  , NAME,        DTRAN  /01.06.84/
+                    TAPELIST:  , LC  ,2
+                    MONITOR*:  , SUBP,
+                    LOADCALL:  , SUBP,
+                    RM*     :  , LC  ,0
+                    GAK/5   :  , EQU ,MONITOR*+4
+                    GAK/6   :  , EQU ,MONITOR*+1
+                    GAK/7   :  , EQU ,RM*+2
+                    GAL/3   :  , EQU ,TAPELIST+1
+ 0000               *0000B  :13, VTM ,GAK/5   .MONITOR*+4
+  -   0002                     , UJ  ,*0002B
+                   C===========================================
+ 0001               EXIT    :  ,ENTRY,
+                   C===========================================
+ 0001                        13, VTM ,
+  -
+ 0002 0000          *0002B  :12, VTM ,*0000B
+  -   0006                   13, V1M ,*0006B
+ 0003                        13, VTM ,GAK/6   .MONITOR*+1
+  -                            , XTA ,60B
+ 0004                          , ATX ,47B
+  -                            , XTA ,44B
+ 0005                        12, AOX ,24B
+  -                            , ATX ,44B
+ 0006               *0006B  :  , XTA ,17B
+  -                            , ATX ,2
+ 0007                          , XTA ,GAK/7   .RM*+2
+  -                            , ATI ,15
+ 0010                        12, ARX ,14B
+  -                            , ATX ,1
+ 0011                        12, XTA ,13B
+  -                            , CTX ,17B
+ 0012                          , UJ  ,17B
+  -
+ 0013                       :  , *67 ,1
+  -
+ 0014                          , Z00 ,*0015B
+  -                           8, VLM ,-1
+ 0015               *0015B  :  , XTA ,2
+  -                            , ATX ,17B
+ 0016                        12, XTA ,25B
+  -                            , *76 ,1
+ 0017                          , XTA ,GAL/3   .TAPELIST+1
+  -                          12, AAX ,26B
+ 0020                        13, UZA ,
+  -                            , XTS ,
+ 0021                        12, XTS ,23B
+  -                            , XTS ,
+ 0022                          , UJ  ,LOADCALL
+  -
+ 0023                          , OCT ,4655 6264 4160 45
+ 0024                          , OCT ,4
+ 0025                          , LOG ,3053 4576 1634 0112
+ 0026                          , OCT ,7777 7000 002
+                               , END ,
+ ЧИCЛO ПEPФ. 0051      ЧИCЛO OШИБ. OПEPATOPOB  0000
+*READ OLD
+*END FILE

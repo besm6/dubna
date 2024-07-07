@@ -450,7 +450,7 @@ std::string Machine::disk_path(Word tape_id)
             return name;
         }
     }
-    throw std::runtime_error("Cannot find file '" + filename + "'");
+    throw std::runtime_error("Tape " + tape_name_string(tape_id) + " not found");
 }
 
 //

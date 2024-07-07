@@ -481,6 +481,25 @@ void Processor::e65()
         // Get field SC/CONC of A/LINKP
         core.ACC = 0;
         return;
+    case 011000:
+    case 011001:
+    case 011002:
+    case 011003:
+    case 011004:
+    case 011005:
+    case 011006:
+    case 011007:
+    case 011010:
+    case 011011:
+    case 011012:
+    case 011013:
+    case 011014:
+    case 011015:
+    case 011016:
+    case 011017:
+        // Unknows, for *DOS.
+        core.ACC = 0;
+        return;
     default:
         if (addr >= 06000 && addr < 06000 + 128) {
             // Read entry from ALLTOISO encoding table.

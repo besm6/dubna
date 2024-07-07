@@ -568,7 +568,7 @@ void Processor::e57()
         // Mount tape (by name and number) on given disk number.
         // Disk number is provided in register #13.
         //
-        bool write_permit = false; // TODO
+        bool write_permit = addr & WRITE;
         machine.disk_mount(core.M[015], core.ACC, write_permit);
         core.ACC = core.M[015];
         return;

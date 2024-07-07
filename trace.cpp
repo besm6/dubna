@@ -189,10 +189,44 @@ void Processor::print_instruction()
     besm6_print_instruction_octal(out, RK);
     out << ' ';
     besm6_print_instruction_mnemonics(out, RK);
+    print_executive_address();
     out << std::endl;
 
     // Restore.
     out.flags(save_flags);
+}
+
+//
+// Print executive address of extracode, optional.
+//
+void Processor::print_executive_address()
+{
+    if (RK & ONEBIT(20)) {
+        // No extracodes in long commands.
+        return;
+    }
+    auto opcode = (RK >> 12) & 077;
+    if (opcode >= 050 && opcode <= 077) {
+        // Extracode - print executive address,
+        auto reg = (RK >> 20) & 017;
+        if (reg != 0 || core.apply_mod_reg != 0) {
+            auto addr = RK & 07777;
+            if (RK & ONEBIT(19)) {
+                addr |= 070000;
+            }
+            if (reg > 0) {
+                addr = ADDR(core.M[reg]);
+            }
+            if (core.apply_mod_reg) {
+                addr = ADDR(addr + core.MOD);
+            }
+
+            auto &out       = Machine::get_trace_stream();
+            auto save_flags = out.flags();
+            out << " = " << std::oct << addr;
+            out.flags(save_flags);
+        }
+    }
 }
 
 //

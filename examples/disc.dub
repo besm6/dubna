@@ -1,3 +1,4 @@
 *name disc
-*disc:76/system,workin
+*disc:foo
+*file:bar,41,w
 *end file

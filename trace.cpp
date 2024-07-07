@@ -206,7 +206,7 @@ void Processor::print_executive_address()
         return;
     }
     auto opcode = (RK >> 12) & 077;
-    if (opcode >= 050 && opcode <= 077) {
+    if (is_extracode(opcode)) {
         // Extracode - print executive address,
         auto reg = (RK >> 20) & 017;
         if (reg != 0 || core.apply_mod_reg != 0) {

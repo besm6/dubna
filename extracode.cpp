@@ -196,6 +196,61 @@ void Processor::e50()
 {
     auto addr = core.M[016];
     switch (addr) {
+    case 0:
+        // Square root function.
+        core.ACC = ieee_to_besm6(sqrt(besm6_to_ieee(core.ACC)));
+        if (isnan(core.ACC)) {
+            //TODO
+        }
+        break;
+    case 1:
+        // Sine function.
+        core.ACC = ieee_to_besm6(sin(besm6_to_ieee(core.ACC)));
+        if (isnan(core.ACC)) {
+            //TODO
+        }
+        break;
+    case 2:
+        // Cosine function.
+        core.ACC = ieee_to_besm6(cos(besm6_to_ieee(core.ACC)));
+        if (isnan(core.ACC)) {
+            //TODO
+        }
+        break;
+    case 3:
+        // Arc tangent function.
+        core.ACC = ieee_to_besm6(atan(besm6_to_ieee(core.ACC)));
+        if (isnan(core.ACC)) {
+            //TODO
+        }
+        break;
+    case 4:
+        // Arc sine function.
+        core.ACC = ieee_to_besm6(asin(besm6_to_ieee(core.ACC)));
+        if (isnan(core.ACC)) {
+            //TODO
+        }
+        break;
+    case 5:
+        // Natural logarithm function.
+        core.ACC = ieee_to_besm6(log(besm6_to_ieee(core.ACC)));
+        if (isnan(core.ACC)) {
+            //TODO
+        }
+        break;
+    case 6:
+        // Exponential function with natural base 'e'.
+        core.ACC = ieee_to_besm6(exp(besm6_to_ieee(core.ACC)));
+        if (isinf(core.ACC)) {
+            //TODO
+        }
+    case 7:
+        // Largest integral value not greater than argument.
+        core.ACC = ieee_to_besm6(floor(besm6_to_ieee(core.ACC)));
+        if (isnan(core.ACC)) {
+            //TODO
+        }
+        break;
     case 064:
         // Print some message.
         // TODO: print_iso(ADDR(core.ACC));
@@ -233,24 +288,12 @@ void Processor::e50()
     case 0103:
         // TODO: Intercept авост, for Forex.
         break;
-    case 0202: {
+    case 0202:
         // Convert tape number from internal format into 2-10 format.
-        //Word a = (core.ACC >> 24) & 0xf;
-        //Word b = (core.ACC >> 16) & 0xf;
-        //Word c = (core.ACC >> 8) & 0xf;
-        //Word d = core.ACC & 0xf;
-        //core.ACC = (a << 12) | (b << 8) | (c << 4) | d;
         break;
-    }
-    case 0203: {
+    case 0203:
         // Convert tape number from 2-10 format into internal format.
-        //Word a = (core.ACC >> 12) & 0xf;
-        //Word b = (core.ACC >> 8) & 0xf;
-        //Word c = (core.ACC >> 4) & 0xf;
-        //Word d = core.ACC & 0xf;
-        //core.ACC = (a << 24) | (b << 16) | (c << 8) | d;
         break;
-    }
     case 0210:
         // TODO: Lock/release semaphores.
         break;

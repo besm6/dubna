@@ -32,7 +32,8 @@
 //
 // Open binary image as disk.
 //
-Disk::Disk(Word id, Memory &m, const std::string &p, bool wp) : volume_id(id), memory(m), path(p), write_permit(wp)
+Disk::Disk(Word id, Memory &m, const std::string &p, bool wp)
+  : volume_id(id), memory(m), path(p), write_permit(wp)
 {
     // Open file.
     int open_flag   = write_permit ? O_RDWR : O_RDONLY;
@@ -45,6 +46,20 @@ Disk::Disk(Word id, Memory &m, const std::string &p, bool wp) : volume_id(id), m
     struct stat stat;
     fstat(file_descriptor, &stat);
     num_zones = stat.st_size / DISK_ZONE_NWORDS;
+}
+
+//
+// Clone the disk.
+//
+Disk::Disk(const Disk &other)
+  : volume_id(other.volume_id), memory(other.memory), path(other.path),
+    write_permit(other.write_permit), num_zones(other.num_zones)
+{
+    // Duplicate the file descriptor.
+    file_descriptor = dup(other.file_descriptor);
+    if (file_descriptor < 0) {
+        throw std::runtime_error("Cannot duplicate descriptor for " + other.path);
+    }
 }
 
 // Close file in destructor.

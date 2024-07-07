@@ -143,7 +143,7 @@ void Processor::e70()
             unsigned mapped_drum = machine.get_mapped_drum();
 
             if (this_drum >= mapped_drum) {
-                unsigned disk_unit = machine.get_mapped_disk() - 030;
+                unsigned disk_unit = machine.PHYS_IO_UNIT;
                 unsigned zone      = tract + (this_drum - mapped_drum) * 040;
 
                 if (info.drum.sect_io == 0) {
@@ -575,7 +575,9 @@ void Processor::e57()
         //
         // Release tapes according to bitmask on accumulator.
         //
-        machine.disk_release(core.ACC);
+        if (!(addr & READY)) {
+            machine.disk_release(core.ACC);
+        }
         core.ACC = 0;
         return;
     }

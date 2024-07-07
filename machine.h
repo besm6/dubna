@@ -39,8 +39,9 @@ private:
     std::array<std::unique_ptr<Disk>, NDISKS> disks;
     std::array<std::unique_ptr<Drum>, NDRUMS> drums;
 
-    unsigned mapped_disk{};
+    // Map drum to disk for so called phys.io.
     unsigned mapped_drum{};
+    std::unique_ptr<Disk> mapped_disk;
 
     // Simulate this number of instructions.
     uint64_t instr_limit{ DEFAULT_LIMIT };
@@ -89,6 +90,9 @@ public:
 
     // "MONSYS )" in TEXT encoding.
     static const Word TAPE_MONSYS = 055'57'56'63'71'63'00'11;
+
+    // Virtual disk unit for phys.io.
+    static const unsigned PHYS_IO_UNIT = 0100;
 
     // Constructor.
     explicit Machine(Memory &memory);
@@ -156,7 +160,6 @@ public:
 
     // "Phys.io": redirect drum r/w to disk.
     void map_drum_to_disk(unsigned drum, unsigned disk);
-    unsigned get_mapped_disk() const { return mapped_disk; }
     unsigned get_mapped_drum() const { return mapped_drum; }
 
     // Bootstrap the Monitoring System Dubna.

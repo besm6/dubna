@@ -471,9 +471,10 @@ TEST_F(dubna_session, aspid)
 TEST_F(dubna_session, whatis_monsys)
 {
     auto output = run_job_and_capture_output(R"(*name whatis
+*tape:9/monsys,31
 *library:23
 *call whatis
-3000000437
+3100000437
 *end file
 )");
     auto expect = file_contents(TEST_DIR "/expect_whatis_monsys.txt");

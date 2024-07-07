@@ -247,23 +247,35 @@ void Machine::drum_write_cosy(unsigned drum_unit, unsigned &offset, const std::s
 void Machine::disk_io(char op, unsigned disk_unit, unsigned zone, unsigned sector, unsigned addr,
                       unsigned nwords)
 {
-    if (disk_unit >= NDRUMS)
-        throw std::runtime_error("Invalid disk unit " + to_octal(disk_unit));
+    Disk *disk;
 
-    if (!disks[disk_unit]) {
-        // Disk must be previously configured using disk_mount().
-        throw std::runtime_error("Disk unit " + to_octal(disk_unit + 030) + " is not mounted");
+    if (disk_unit == PHYS_IO_UNIT) {
+        if (!mapped_disk) {
+            // Disk must be previously mapped using map_drum_to_disk().
+            throw std::runtime_error("No disk unit mapped for phys.io");
+        }
+        disk = mapped_disk.get();
+    } else {
+        if (disk_unit >= NDRUMS) {
+            throw std::runtime_error("Invalid disk unit " + to_octal(disk_unit));
+        }
+        if (!disks[disk_unit]) {
+            // Disk must be previously configured using disk_mount().
+            throw std::runtime_error("Disk unit " + to_octal(disk_unit + 030) + " is not mounted");
+        }
+        disk = disks[disk_unit].get();
     }
 
     if (op == 'r') {
-        disks[disk_unit]->disk_to_memory(zone, sector, addr, nwords);
+        disk->disk_to_memory(zone, sector, addr, nwords);
 
         // Debug: dump the data.
         if (dump_io_flag) {
-            memory.dump(++dump_serial_num, disk_unit + 030, zone, sector, addr, nwords);
+            auto unit = (disk_unit == PHYS_IO_UNIT) ? 0 : (disk_unit + 030);
+            memory.dump(++dump_serial_num, unit, zone, sector, addr, nwords);
         }
     } else {
-        disks[disk_unit]->memory_to_disk(zone, sector, addr, nwords);
+        disk->memory_to_disk(zone, sector, addr, nwords);
     }
 }
 
@@ -381,12 +393,13 @@ unsigned Machine::disk_find(Word tape_id)
 // Redirect drum to disk.
 // It's called Phys.IO in Dispak.
 //
-void Machine::map_drum_to_disk(unsigned drum, unsigned disk)
+void Machine::map_drum_to_disk(unsigned drum, unsigned disk_unit)
 {
+    // Clone the disk.
+    mapped_disk = std::make_unique<Disk>(*disks[disk_unit - 030].get());
     mapped_drum = drum;
-    mapped_disk = disk;
     if (trace_enabled()) {
-        std::cout << "Redirect drum " << to_octal(mapped_drum) << " to disk " << to_octal(mapped_disk)
+        std::cout << "Redirect drum " << to_octal(mapped_drum) << " to disk " << to_octal(disk_unit)
                   << std::endl;
     }
 }

@@ -42,7 +42,10 @@ private:
 
 public:
     // Constructor throws exception if the file cannot be opened.
-    explicit Disk(Word id, Memory &memory, const std::string &path, bool write_permit);
+    Disk(Word id, Memory &memory, const std::string &path, bool write_permit);
+
+    // Clone the disk.
+    Disk(const Disk &other);
 
     // Close file in destructor.
     ~Disk();

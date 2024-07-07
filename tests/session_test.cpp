@@ -537,6 +537,7 @@ TEST_F(dubna_session, lib1)
     auto output = run_job_and_capture_output(R"(*name библиотека 1
 *library:1
 *main lib1
+*no load list
 *execute
 *end file
 )");
@@ -552,6 +553,7 @@ TEST_F(dubna_session, lib2)
     auto output = run_job_and_capture_output(R"(*name библиотека 2
 *library:2
 *main lib2
+*no load list
 *execute
 *end file
 )");
@@ -567,6 +569,7 @@ TEST_F(dubna_session, lib3)
     auto output = run_job_and_capture_output(R"(*name библиотека 3
 *library:3
 *main alglib
+*no load list
 *execute
 *end file
 )");

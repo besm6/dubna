@@ -26,26 +26,8 @@
 *NAME БИБЛИOTEKA 1
 *LIBRARY:1
 *MAIN LIB1
-*EXECUTE
-      *LIBRA:01 = LIB1        LIBA1       LIBB1       LIBC1       LIBD1       LIBE1       LIBF1       LIBG1       LIBN1
-      LIBS1       LIBV1       LIBZ1
-≠
-         LIB1       01000                FT*002   E 12323                LIBN1      13751                ISOTCOSY   40205
-         BCDWRIT*   11454                FD*642   E 12324                LIBG1      14021                ISOTCOS1 E 40256
-         FT*621   E 11454                FD*722   E 12324                LIBF1      14761                FMRTAPE    40276
-         BCDENC*  E 11460                FC*722   E 12324                LIBE1      22515                OCTTDEC    41225
-         FT*611   E 11460                FC*642   E 12324                LIBD1      25130                LUNMUN   C 41260
-         FT*571   E 11462                FC*002   E 12324                LIBC1      32264                JERRIO*  C 41261
-         FT*561   E 11465                IOEND*   E 12331                LIBB1      36412                CARD2    C 41262
-         NEXTLET* E 11472                FT*643   E 12331                LIBA1      36627                ISOICTTR   41307
-         RK*      E 11534                FT*723   E 12331                BCDBEG*    37142                REVCARD    41344
-         WSY*     E 11772                FT*003   E 12331                FT2*     E 37447                *ICHECK* C 41371
-         I/O*ERR  E 12232                STOP*      13317                KONV1*   E 37462                *ПEPФOPA   41377
-         IOCONT*    12257                EXIT     E 13320                PRINT8     37556                KOД*CDC  E 41400
-         IOAC*    E 12310                LIBZ1      13346                TTPRINT    37737                CBOБOДHO   41440
-         FT*722   E 12323                LIBV1      13413                BCDPUN     37776
-         FT*642   E 12323                LIBS1      13613                EBCDPUN  E 40022
-≠
+*NO LOAD LIST
+*EXECUTE
                                                      PEBИЗИЯ 15
                                         OБЩEЙ БИБЛИOTEKИ ПPOГPAMM (OБП) БЭCM-6  25 MAЯ 1989 Г.
                               1.  B OБП-1 BKЛЮЧEHЫ HOBЫE ПPOГPAMMЫ:

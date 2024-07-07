@@ -26,27 +26,8 @@
 *NAME БИБЛИOTEKA 2
 *LIBRARY:2
 *MAIN LIB2
-*EXECUTE
-      *LIBRA:02 = LIB2        LIBW2       LIBX2       LIBY2       LIBQ2       LIBH2       LIBK2       LIBT2       LIBZ2
-      LIBS2       LIBI2       LIBJ2       LIBM2       LIBN2       LIBU2       LIBV2
-≠
-         LIB2       01000                FD*642   E 02673                LIBU2      10312                EBCDPUN  E 17630
-         BCDWRIT*   02023                FD*722   E 02673                LIBT2      10555                ISOTCOSY   20013
-         FT*621   E 02023                FC*722   E 02673                LIBS2      10651                ISOTCOS1 E 20064
-         BCDENC*  E 02027                FC*642   E 02673                LIBQ2      11045                FMRTAPE    20104
-         FT*611   E 02027                FC*002   E 02673                LIBN2      11477                OCTTDEC    21033
-         FT*571   E 02031                IOEND*   E 02700                LIBM2      11601                LUNMUN   C 21066
-         FT*561   E 02034                FT*643   E 02700                LIBK2      14017                JERRIO*  C 21067
-         NEXTLET* E 02041                FT*723   E 02700                LIBJ2      15003                CARD2    C 21070
-         RK*      E 02103                FT*003   E 02700                LIBI2      16202                ISOICTTR   21115
-         WSY*     E 02341                STOP*      03666                LIBH2      16503                REVCARD    21152
-         I/O*ERR  E 02601                EXIT     E 03667                BCDBEG*    16750                *ICHECK* C 21177
-         IOCONT*    02626                LIBZ2      03715                FT2*     E 17255                *ПEPФOPA   21205
-         IOAC*    E 02657                LIBY2      04061                KONV1*   E 17270                KOД*CDC  E 21206
-         FT*722   E 02672                LIBX2      04165                PRINT8     17364                CBOБOДHO   21246
-         FT*642   E 02672                LIBW2      04473                TTPRINT    17545
-         FT*002   E 02672                LIBV2      06406                BCDPUN     17604
-≠                      KATAЛOГ OБЩEЙ БИБЛИOTEKИ ПPOГPAMM (OБП-2) БЭCM-6          25 MAЯ 1989 Г.
+*NO LOAD LIST
+*EXECUTE                      KATAЛOГ OБЩEЙ БИБЛИOTEKИ ПPOГPAMM (OБП-2) БЭCM-6          25 MAЯ 1989 Г.
                      -------------------------------------------------
                     H.  TEXHИKA ИCCЛEДOBAHИЯ OПEPAЦИЙ И METOДЫ YПPABЛEHИЯ.
                     ------------------------------------------------------

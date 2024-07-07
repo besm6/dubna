@@ -1,5 +1,6 @@
 *name библиотека 1
 *library:1
 *main lib1
+*no load list
 *execute
 *end file

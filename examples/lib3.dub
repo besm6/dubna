@@ -1,5 +1,6 @@
 *name библиотека 3
 *library:3
 *main alglib
+*no load list
 *execute
 *end file

@@ -578,7 +578,9 @@ void Processor::e57()
         //
         // Release tapes according to bitmask on accumulator.
         //
-        if (!(addr & READY)) {
+        if (addr & READY) {
+            // Flush output buffers?
+        } else {
             machine.disk_release(core.ACC);
         }
         core.ACC = 0;

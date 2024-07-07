@@ -26,24 +26,6 @@
 *NAME БИБЛИOTEKA 3
 *LIBRARY:3
 *MAIN ALGLIB
+*NO LOAD LIST
 *EXECUTE
-      *LIBRA:03 = ALGLIB
-≠
-         ALGLIB     01000                FT*722   E 02003                A/DRUCK    03122                BCDPUN     04302
-         PROGRAM  E 01000                FT*642   E 02003                A/IPRI   E 03154                EBCDPUN  E 04326
-         A/STOP     01054                FT*002   E 02003                A/RPRI   E 03206                ISOTCOSY   04511
-         A/START  E 01060                FD*642   E 02004                A/BPRI   E 03242                ISOTCOS1 E 04562
-         BCDWRIT*   01134                FD*722   E 02004                A/SPRI   E 03251                FMRTAPE    04602
-         FT*621   E 01134                FC*722   E 02004                A/LPRI   E 03266                OCTTDEC    05531
-         BCDENC*  E 01140                FC*642   E 02004                A/NLINE  E 03332                LUNMUN   C 05564
-         FT*611   E 01140                FC*002   E 02004                A/NPAGE  E 03334                JERRIO*  C 05565
-         FT*571   E 01142                IOEND*   E 02011                A/I*ISO  E 03407                SYSBACK*   05566
-         FT*561   E 01145                FT*643   E 02011                A/R*ISO  E 03412                CARD2    C 05576
-         NEXTLET* E 01152                FT*723   E 02011                STOPFLG* C 03445                ISOICTTR   05623
-         RK*      E 01214                FT*003   E 02011                BCDBEG*    03446                REVCARD    05660
-         WSY*     E 01452                STOP*      02777                FT2*     E 03753                *ICHECK* C 05705
-         I/O*ERR  E 01712                EXIT     E 03000                KONV1*   E 03766                *ПEPФOPA   05713
-         IOCONT*    01737                A/ARRD/K   03026                PRINT8     04062                KOД*CDC  E 05714
-         IOAC*    E 01770                A/ARRD/V E 03031                TTPRINT    04243                CBOБOДHO   05754
-≠
           C 31.03.80 CПИCOK ПOДПPOГPAMM ГДP-AЛГOЛ-БИБ PACПOЛOЖEH HA MЛ C ИHCTPYKЦИЯMИ K БИБЛИOTEЧHЫM ПOДПPOГPAMMAM.

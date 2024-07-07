@@ -558,7 +558,7 @@ void Processor::e57_delay()
 }
 
 //
-// Extracode 057 10...77776: mount tapes.
+// Extracode 057 10...7777: mount tapes.
 //
 void Processor::e57_tape()
 {
@@ -612,7 +612,7 @@ void Processor::e57_tape()
 //
 void Processor::e57_file()
 {
-    throw Exception("Unimplemented extracode *57 " + to_octal(core.M[016]));
+    throw Exception("Unimplemented extracode *57 " + to_octal(core.M[016]) + " acc " + to_octal(core.ACC));
 }
 
 //

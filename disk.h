@@ -28,6 +28,9 @@
 
 class Disk {
 private:
+    // Tape name and number.
+    Word volume_id;
+
     // Reference to the BESM-6 memory.
     Memory &memory;
 
@@ -39,7 +42,7 @@ private:
 
 public:
     // Constructor throws exception if the file cannot be opened.
-    explicit Disk(Memory &memory, const std::string &path, bool write_permit);
+    explicit Disk(Word id, Memory &memory, const std::string &path, bool write_permit);
 
     // Close file in destructor.
     ~Disk();
@@ -47,6 +50,8 @@ public:
     // Data transfer.
     void disk_to_memory(unsigned zone, unsigned sector, unsigned addr, unsigned nwords);
     void memory_to_disk(unsigned zone, unsigned sector, unsigned addr, unsigned nwords);
+
+    Word get_id() { return volume_id; }
 };
 
 #endif // DUBNA_DISK_H

@@ -132,6 +132,7 @@ again:
 
     } catch (std::exception &ex) {
         // Something else.
+        cpu.finish();
         std::cerr << "Error: " << ex.what() << std::endl;
         throw 0;
     }
@@ -315,21 +316,43 @@ void Machine::drum_init(unsigned drum_unit)
 //
 // Open binary image and assign it to the disk unit.
 //
-void Machine::disk_mount(unsigned disk_unit, const std::string &filename, bool write_permit)
+void Machine::disk_mount(unsigned disk_unit, Word tape_id, bool write_permit)
 {
     if (disk_unit < 030 || disk_unit >= 070)
         throw std::runtime_error("Invalid disk unit " + to_octal(disk_unit) + " in disk_mount()");
 
     disk_unit -= 030;
-    if (disks[disk_unit])
-        throw std::runtime_error("Disk unit " + to_octal(disk_unit + 030) + " is already mounted");
+    if (disks[disk_unit]) {
+        // Already mounted.
+        auto mounted_id = disks[disk_unit]->get_id();
+        if (mounted_id == tape_id) {
+            // The same ID - disk is already opened.
+            return;
+        }
+        throw std::runtime_error("Disk unit " + to_octal(disk_unit + 030) +
+                                 " is already mounted as " + tape_name_string(mounted_id));
+    }
 
     // Open binary image as disk.
-    auto path        = disk_find(filename);
-    disks[disk_unit] = std::make_unique<Disk>(memory, path, write_permit);
+    auto path        = disk_path(tape_id);
+    disks[disk_unit] = std::make_unique<Disk>(tape_id, memory, path, write_permit);
 
     if (trace_enabled()) {
         std::cout << "Mount image '" << path << "' as disk " << to_octal(disk_unit + 030) << std::endl;
+    }
+}
+
+//
+// Find opened disk by tape ID.
+//
+unsigned Machine::disk_find(Word tape_id)
+{
+    if (tape_id == TAPE_MONSYS) {
+        // Tape MONSYS in mounted on direction #30.
+        return 030;
+    } else {
+        std::cout << "\nTape not found " << tape_name_string(tape_id) << '\n';
+        return 0;
     }
 }
 
@@ -353,12 +376,13 @@ void Machine::map_drum_to_disk(unsigned drum, unsigned disk)
 // 2. Try ~/.besm6 directory.
 // 3. Try /usr/local/share/besm6 directory.
 //
-std::string Machine::disk_find(const std::string &filename)
+std::string Machine::disk_path(Word tape_id)
 {
-    if (filename.find('/') != std::string::npos) {
-        // Slash is present in file name, so we assume it's absolute.
-        return filename;
-    }
+    // Build file name from tape number.
+    const unsigned tape_num = ((tape_id >> 8) & 0xf) * 100 +
+                              ((tape_id >> 4) & 0xf) * 10 +
+                               (tape_id & 0xf);
+    const std::string filename = std::to_string(tape_num);
 
     // Setup the list of directories to search.
     if (disk_search_path.empty()) {
@@ -397,27 +421,34 @@ std::string Machine::disk_find(const std::string &filename)
 // Name consists of up to 6 characters in TEXT encoding,
 // and up to three decimal digits in 2-10 format.
 //
-std::string tape_name_string(Word w)
+std::string tape_name_string(Word tape_id)
 {
     std::ostringstream buf;
-    unsigned const num = ((w >> 8) & 0xf) * 100 +
-                         ((w >> 4) & 0xf) * 10 +
-                         (w & 0xf);
+    unsigned const num = ((tape_id >> 8) & 0xf) * 100 +
+                         ((tape_id >> 4) & 0xf) * 10 +
+                         (tape_id & 0xf);
     buf << num << '/'
-        << (char) std::tolower(text_to_unicode(w >> 42))
-        << (char) std::tolower(text_to_unicode(w >> 36))
-        << (char) std::tolower(text_to_unicode(w >> 30))
-        << (char) std::tolower(text_to_unicode(w >> 24))
-        << (char) std::tolower(text_to_unicode(w >> 18))
-        << (char) std::tolower(text_to_unicode(w >> 12));
+        << (char) std::tolower(text_to_unicode(tape_id >> 42))
+        << (char) std::tolower(text_to_unicode(tape_id >> 36))
+        << (char) std::tolower(text_to_unicode(tape_id >> 30))
+        << (char) std::tolower(text_to_unicode(tape_id >> 24))
+        << (char) std::tolower(text_to_unicode(tape_id >> 18))
+        << (char) std::tolower(text_to_unicode(tape_id >> 12));
     return buf.str();
 }
 
 //
 // Load boot code for Monitoring System Dubna.
 //
-void Machine::boot_ms_dubna()
+void Machine::boot_ms_dubna(const std::string &path)
 {
+    // Mount tape 9/monsys as disk 30, read only.
+    disk_search_path = path;
+    disk_mount_readonly(030, TAPE_MONSYS);
+
+    // Phys i/o: re-direct drum 021 to disk 030.
+    map_drum_to_disk(021, 030);
+
     //
     // I got this magic code from Mikhail Popov.
     // See https://groups.google.com/g/besm6/c/e5jM_R1Oozc/m/aGfCePzsCwAJ

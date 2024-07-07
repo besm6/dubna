@@ -87,6 +87,9 @@ public:
     // BESM-6 processor.
     Processor cpu;
 
+    // "MONSYS )" in TEXT encoding.
+    static const Word TAPE_MONSYS = 055'57'56'63'71'63'00'11;
+
     // Constructor.
     explicit Machine(Memory &memory);
 
@@ -137,8 +140,10 @@ public:
     // Disk i/o.
     void disk_io(char op, unsigned disk_unit, unsigned zone, unsigned sector, unsigned addr,
                  unsigned nwords);
-    void disk_mount(unsigned disk, const std::string &filename, bool write_permit);
-    std::string disk_find(const std::string &filename);
+    std::string disk_path(Word tape_id);
+    void disk_mount(unsigned disk, Word tape_id, bool write_permit);
+    void disk_mount_readonly(unsigned disk, Word tape_id) { disk_mount(disk, tape_id, false); }
+    unsigned disk_find(Word tape_id);
 
     // Drum i/o.
     void drum_io(char op, unsigned drum_unit, unsigned zone, unsigned sector, unsigned addr,
@@ -154,7 +159,7 @@ public:
     unsigned get_mapped_drum() const { return mapped_drum; }
 
     // Bootstrap the Monitoring System Dubna.
-    void boot_ms_dubna();
+    void boot_ms_dubna(const std::string &path = "");
 
     //
     // Trace methods.

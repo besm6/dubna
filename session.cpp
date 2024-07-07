@@ -102,11 +102,7 @@ public:
         }
 
         try {
-            // Boot MS Dubna by default.
-            // Mount tape image 9 as disk 30, read only.
-            // Re-direct drum 21 to it.
-            machine.disk_mount(030, "9", false);
-            machine.map_drum_to_disk(021, 030);
+            // Boot the monitoring system.
             machine.boot_ms_dubna();
 
             // Run simulation.
@@ -206,7 +202,7 @@ public:
     void print_libraries(std::ostream &out)
     {
         // Mount tape image 9 as disk 30, read only.
-        machine.disk_mount(030, "9", false);
+        machine.disk_mount_readonly(030, machine.TAPE_MONSYS);
 
         // Read zone 6.
         static const unsigned ZONE = 6;
@@ -238,7 +234,7 @@ public:
     void print_commands(std::ostream &out)
     {
         // Mount tape image 9 as disk 30, read only.
-        machine.disk_mount(030, "9", false);
+        machine.disk_mount_readonly(030, machine.TAPE_MONSYS);
 
         // Create a list of available commands.
         std::vector<std::string> list;

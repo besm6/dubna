@@ -188,29 +188,32 @@ void Processor::e75()
 //
 void Processor::e50()
 {
-    static const Word     DAY   = 0x04;
-    static const Word     MONTH = 0x07; // July
-    static const Word     YEAR  = 0x24;
-    static const unsigned HOUR  = 0x23;
-    static const unsigned MIN   = 0x45;
-    static const unsigned SEC   = 0x56;
-
-    switch (core.M[016]) {
+    auto addr = core.M[016];
+    switch (addr) {
     case 064:
         // Print some message.
         // TODO: print_iso(ADDR(core.ACC));
         break;
-    case 067:
+    case 067: {
         // DATE*, OS Dubna specific.
+        // Always return the same date/time, for easy testing.
+        static const Word     DAY   = 0x04;
+        static const Word     MONTH = 0x07; // July
+        static const Word     YEAR  = 0x24;
+        static const unsigned HOUR  = 0x23;
+        static const unsigned MIN   = 0x45;
+        static const unsigned SEC   = 0x56;
+
         // Date: DD MON YY
         //        |  |   |
-        //       42  34  26
+        //       42  34  26 - shift
         // Time: 00.00.00
         //        |  |  |
-        //       20  16 4
+        //       20  16 4 - shift
         core.ACC = (DAY << 42) | (MONTH << 34) | (YEAR << 26) |
                    (HOUR << 20) | (MIN << 12) | (SEC << 4);
         break;
+    }
     case 075:
         // Unknown.
         break;
@@ -223,6 +226,27 @@ void Processor::e50()
         break;
     case 0103:
         // TODO: Intercept авост, for Forex.
+        break;
+    case 0202: {
+        // Convert tape number from 4x8bit format into 2-10 format.
+        Word a = (core.ACC >> 24) & 0xf;
+        Word b = (core.ACC >> 16) & 0xf;
+        Word c = (core.ACC >> 8) & 0xf;
+        Word d = core.ACC & 0xf;
+        core.ACC = (a << 12) | (b << 8) | (c << 4) | d;
+        break;
+    }
+    case 0203: {
+        // Convert tape number from 2-10 format into 4x8bit format.
+        Word a = (core.ACC >> 12) & 0xf;
+        Word b = (core.ACC >> 8) & 0xf;
+        Word c = (core.ACC >> 4) & 0xf;
+        Word d = core.ACC & 0xf;
+        core.ACC = (a << 24) | (b << 16) | (c << 8) | d;
+        break;
+    }
+    case 0210:
+        // TODO: Lock/release semaphores.
         break;
     case 0211:
         // Pause the task? Waiting for tape.
@@ -267,8 +291,11 @@ void Processor::e50()
     case 074673:
         // Unknown
         break;
+    case 076200:
+        // Unknown, for *tape
+        break;
     default:
-        throw Exception("Unimplemented extracode *50 " + to_octal(core.M[016]));
+        throw Exception("Unimplemented extracode *50 " + to_octal(addr));
     }
 }
 
@@ -502,9 +529,6 @@ void Processor::e76()
 //
 void Processor::e57()
 {
-    // "MONSYS )" in TEXT encoding.
-    static const Word MONSYS = 055'57'56'63'71'63'00'11;
-
     // Modes of *57 in address field.
     enum {
         DELAY    = 07,    // задержка задачи
@@ -518,8 +542,9 @@ void Processor::e57()
         ASSIGN   = 02000, // поиск c захватом ленты (мат.номер ленты - в 13 регистре)
         RELEASE  = 04000, // отказ от cвоиx лент, заданныx на сумматоре битовой шкалой:
     };                    // 48 разряд - лента 30 для мат.задач
+    auto addr = core.M[016];
 
-    switch (core.M[016] & DELAY) {
+    switch (addr & DELAY) {
     case 3:
     case 7:
         // Delay the task, presumably waiting for tape to be installed by operator.
@@ -528,8 +553,13 @@ void Processor::e57()
         // Unknown, for Forex.
         core.ACC = 0;
         return;
+    case 1:
+    case 2:
+    case 4:
+    case 6:
+        throw Exception("Unimplemented extracode *57 " + to_octal(addr));
     }
-    if (core.M[016] & RELEASE) {
+    if (addr & RELEASE) {
         //
         // Release tapes according to bitmask on accumulator.
         //
@@ -539,34 +569,21 @@ void Processor::e57()
         core.ACC = 0;
         return;
     }
-    if (core.M[016] & ASSIGN) {
+    if (addr & ASSIGN) {
         //
-        // Mount tape (by name) on given direction (in register #13).
+        // Mount tape (by name and number) on given disk number.
+        // Disk number is provided in register #13.
         //
-        if (core.ACC == MONSYS && core.M[015] == 030) {
-            // Tape MONSYS in mounted on direction #30.
-            core.ACC = 030;
-        } else {
-            std::cout << "\nCannot mount tape " << tape_name_string(core.ACC)
-                      << " on direction " << std::oct << core.M[015] << std::dec << '\n';
-            core.ACC = 0;
-        }
+        bool write_permit = false; // TODO
+        machine.disk_mount(core.M[015], core.ACC, write_permit);
+        core.ACC = core.M[015];
         return;
     } else {
         //
-        // Find mounted tape by name.
+        // Find mounted tape (by name and number).
+        // Return disk number in range 030-077.
         //
-        if (core.ACC == MONSYS) {
-            // Tape MONSYS in mounted on direction #30.
-            core.ACC = 030;
-        } else {
-            // Tape not found.
-            core.ACC = 0;
-
-            if (!(core.M[016] & ASSIGN)) {
-                std::cout << "\nTape not found " << tape_name_string(core.ACC) << '\n';
-            }
-        }
+        core.ACC = machine.disk_find(core.ACC);
         return;
     }
 }

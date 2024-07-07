@@ -43,7 +43,13 @@ void Processor::extracode(unsigned opcode)
         break;
 
     case 057: // Mount tapes.
-        e57();
+        if (core.M[016] == 077777) {
+            e57_file();
+        } else if (core.M[016] >= 010) {
+            e57_tape();
+        } else {
+            e57_delay();
+        }
         break;
 
     case 060: // Punch cards?
@@ -274,6 +280,9 @@ void Processor::e50()
     case 071223:
         // Unknown, for Forex.
         break;
+    case 072200:
+        // Unknown, for Dipol.
+        break;
     case 072211:
         // Set time limit?
         // TODO: show time limit on core.ACC
@@ -345,6 +354,7 @@ void Processor::e63()
         return;
     case 03000:
     case 03001:
+    case 03010:
         // Get words from some other descriptor.
         core.ACC = 0;
         return;
@@ -528,13 +538,32 @@ void Processor::e76()
 }
 
 //
-// Extracode 057: mount tapes.
+// Extracode 057 0...7: task delay.
 //
-void Processor::e57()
+void Processor::e57_delay()
+{
+    auto addr = core.M[016];
+    switch (addr) {
+    case 3:
+    case 7:
+        // Delay the task, presumably waiting for tape to be installed by operator.
+        throw Exception("Task paused waiting for tape");
+    case 5:
+        // Unknown, for Forex.
+        core.ACC = 0;
+        return;
+    default:
+        throw Exception("Unimplemented extracode *57 " + to_octal(addr));
+    }
+}
+
+//
+// Extracode 057 10...77776: mount tapes.
+//
+void Processor::e57_tape()
 {
     // Modes of *57 in address field.
     enum {
-        DELAY    = 07,    // задержка задачи
         NOTFOUND = 010,   // печать 'нет магнитной ленты'
         BUSY     = 020,   // печать 'занят магнитофон'
         READY    = 040,   // печать 'нe гoтов магнитофон'
@@ -546,22 +575,6 @@ void Processor::e57()
         RELEASE  = 04000, // отказ от cвоиx лент, заданныx на сумматоре битовой шкалой:
     };                    // 48 разряд - лента 30 для мат.задач
     auto addr = core.M[016];
-
-    switch (addr & DELAY) {
-    case 3:
-    case 7:
-        // Delay the task, presumably waiting for tape to be installed by operator.
-        throw Exception("Task paused waiting for tape");
-    case 5:
-        // Unknown, for Forex.
-        core.ACC = 0;
-        return;
-    case 1:
-    case 2:
-    case 4:
-    case 6:
-        throw Exception("Unimplemented extracode *57 " + to_octal(addr));
-    }
 
     if (addr & ASSIGN) {
         //
@@ -592,6 +605,14 @@ void Processor::e57()
     // Return disk number in range 030-077.
     //
     core.ACC = machine.disk_find(core.ACC);
+}
+
+//
+// Extracode 057 77777: mount files.
+//
+void Processor::e57_file()
+{
+    throw Exception("Unimplemented extracode *57 " + to_octal(core.M[016]));
 }
 
 //

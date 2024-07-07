@@ -104,7 +104,7 @@ private:
     // Extracodes.
     void extracode(unsigned opcode);
     void e50();
-    void e57();
+    void e57_delay(), e57_tape(), e57_file();
     void e60();
     void e61();
     void e63();

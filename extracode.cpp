@@ -21,6 +21,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
+#include <cmath>
 #include <iostream>
 
 #include "machine.h"
@@ -198,55 +199,55 @@ void Processor::e50()
     switch (addr) {
     case 0:
         // Square root function.
-        core.ACC = ieee_to_besm6(sqrt(besm6_to_ieee(core.ACC)));
+        core.ACC = ieee_to_besm6(std::sqrt(besm6_to_ieee(core.ACC)));
         if (isnan(core.ACC)) {
             //TODO
         }
         break;
     case 1:
         // Sine function.
-        core.ACC = ieee_to_besm6(sin(besm6_to_ieee(core.ACC)));
+        core.ACC = ieee_to_besm6(std::sin(besm6_to_ieee(core.ACC)));
         if (isnan(core.ACC)) {
             //TODO
         }
         break;
     case 2:
         // Cosine function.
-        core.ACC = ieee_to_besm6(cos(besm6_to_ieee(core.ACC)));
+        core.ACC = ieee_to_besm6(std::cos(besm6_to_ieee(core.ACC)));
         if (isnan(core.ACC)) {
             //TODO
         }
         break;
     case 3:
         // Arc tangent function.
-        core.ACC = ieee_to_besm6(atan(besm6_to_ieee(core.ACC)));
+        core.ACC = ieee_to_besm6(std::atan(besm6_to_ieee(core.ACC)));
         if (isnan(core.ACC)) {
             //TODO
         }
         break;
     case 4:
         // Arc sine function.
-        core.ACC = ieee_to_besm6(asin(besm6_to_ieee(core.ACC)));
+        core.ACC = ieee_to_besm6(std::asin(besm6_to_ieee(core.ACC)));
         if (isnan(core.ACC)) {
             //TODO
         }
         break;
     case 5:
         // Natural logarithm function.
-        core.ACC = ieee_to_besm6(log(besm6_to_ieee(core.ACC)));
+        core.ACC = ieee_to_besm6(std::log(besm6_to_ieee(core.ACC)));
         if (isnan(core.ACC)) {
             //TODO
         }
         break;
     case 6:
         // Exponential function with natural base 'e'.
-        core.ACC = ieee_to_besm6(exp(besm6_to_ieee(core.ACC)));
+        core.ACC = ieee_to_besm6(std::exp(besm6_to_ieee(core.ACC)));
         if (isinf(core.ACC)) {
             //TODO
         }
     case 7:
         // Largest integral value not greater than argument.
-        core.ACC = ieee_to_besm6(floor(besm6_to_ieee(core.ACC)));
+        core.ACC = ieee_to_besm6(std::floor(besm6_to_ieee(core.ACC)));
         if (isnan(core.ACC)) {
             //TODO
         }

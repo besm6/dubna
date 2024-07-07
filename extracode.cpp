@@ -268,6 +268,9 @@ void Processor::e50()
         // Asking for шифр?
         core.ACC = 0'1234'5670'1234'5670;
         break;
+    case 070217:
+        // Unknown
+        break;
     case 071223:
         // Unknown, for Forex.
         break;

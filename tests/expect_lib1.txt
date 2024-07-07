@@ -1,0 +1,2401 @@
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖЖЖ Ж   Ж ЖЖЖЖЖ   ЖЖЖ Ж   Ж  ЖЖЖ  ЖЖЖЖЖ ЖЖЖЖ  Ж  Ж   ЖЖЖ           Ж
+            Ж     Ж   Ж Ж      Ж  Ж Ж   Ж Ж   Ж   Ж   Ж     Ж Ж   Ж   Ж         ЖЖ
+            ЖЖЖЖ  Ж   Ж ЖЖЖЖ   Ж  Ж Ж   Ж Ж   Ж   Ж   ЖЖЖ   ЖЖ    Ж   Ж        Ж Ж
+            Ж   Ж Ж  ЖЖ Ж   Ж  Ж  Ж Ж  ЖЖ Ж   Ж   Ж   Ж     Ж Ж   Ж   Ж          Ж
+            Ж   Ж Ж Ж Ж Ж   Ж  Ж  Ж Ж Ж Ж Ж   Ж   Ж   Ж     Ж  Ж  Ж   Ж          Ж
+            Ж   Ж ЖЖ  Ж Ж   Ж  Ж  Ж ЖЖ  Ж Ж   Ж   Ж   Ж     Ж   Ж ЖЖЖЖЖ          Ж
+            ЖЖЖЖ  Ж   Ж ЖЖЖЖ  Ж   Ж Ж   Ж  ЖЖЖ    Ж   ЖЖЖЖЖ Ж   Ж Ж   Ж         ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME БИБЛИOTEKA 1
+*LIBRARY:1
+*MAIN LIB1
+*EXECUTE
+      *LIBRA:01 = LIB1        LIBA1       LIBB1       LIBC1       LIBD1       LIBE1       LIBF1       LIBG1       LIBN1
+      LIBS1       LIBV1       LIBZ1
+≠
+         LIB1       01000                FT*002   E 12323                LIBN1      13751                ISOTCOSY   40205
+         BCDWRIT*   11454                FD*642   E 12324                LIBG1      14021                ISOTCOS1 E 40256
+         FT*621   E 11454                FD*722   E 12324                LIBF1      14761                FMRTAPE    40276
+         BCDENC*  E 11460                FC*722   E 12324                LIBE1      22515                OCTTDEC    41225
+         FT*611   E 11460                FC*642   E 12324                LIBD1      25130                LUNMUN   C 41260
+         FT*571   E 11462                FC*002   E 12324                LIBC1      32264                JERRIO*  C 41261
+         FT*561   E 11465                IOEND*   E 12331                LIBB1      36412                CARD2    C 41262
+         NEXTLET* E 11472                FT*643   E 12331                LIBA1      36627                ISOICTTR   41307
+         RK*      E 11534                FT*723   E 12331                BCDBEG*    37142                REVCARD    41344
+         WSY*     E 11772                FT*003   E 12331                FT2*     E 37447                *ICHECK* C 41371
+         I/O*ERR  E 12232                STOP*      13317                KONV1*   E 37462                *ПEPФOPA   41377
+         IOCONT*    12257                EXIT     E 13320                PRINT8     37556                KOД*CDC  E 41400
+         IOAC*    E 12310                LIBZ1      13346                TTPRINT    37737                CBOБOДHO   41440
+         FT*722   E 12323                LIBV1      13413                BCDPUN     37776
+         FT*642   E 12323                LIBS1      13613                EBCDPUN  E 40022
+≠
+                                                     PEBИЗИЯ 15
+                                        OБЩEЙ БИБЛИOTEKИ ПPOГPAMM (OБП) БЭCM-6  25 MAЯ 1989 Г.
+                              1.  B OБП-1 BKЛЮЧEHЫ HOBЫE ПPOГPAMMЫ:
+                                  F002  ЭЛEMEHTAPHЫE OПEPAЦИИ C BEKTOPAMИ.
+                                  F003  ЭЛEMEHTAPHЫE OПEPAЦИИ C MATPИЦAMИ.
+                                  F004  ПEPEMHOЖEHИE  MATPИЦ.
+                                  F010  PEШEHИE CИCTEMЫ ЛИHEЙHЫX YPABHEHИЙ, OБPAЩEHИE MATPИЦЫ.
+                                  F011  ДBYШAГOBAЯ ПPOЦEДYPA PEШEHИЯ MATPИЧHЫX YPABHEHИЙ,
+                                        OБPAЩEHИE MATPИЦЫ, BЫЧИCЛEHИE OПPEДEЛИTEЛЯ.
+                                  F012  PEШEHИE CИCTEM ЛИHEЙHЫX YPABHEHИЙ C ПOЛOЖИTEЛЬHO
+                                        OПPEДEЛEHHOЙ CИMMETPИЧHOЙ MATPИЦEЙ.
+                              2.  B OБП-2 BKЛЮЧEHЫ HOBЫE ПPOГPAMMЫ:
+                                  M215  OПTИMAЛЬHAЯ CTEПEHЬ ДECЯTИ ДЛЯ ПEЧATИ ЧИCEЛ.
+                                  M224  PEДAKTИPOBAHИE ФOPMATA ДЛЯ ПEЧATИ BEЩECTBEHHЫX ЧИCEЛ.
+                                  V151  PACПPEДEЛEHИE CЛYЧAЙHЫX ЧИCEЛ B COOTBETCTBИИ C
+                                        OПPEДEЛEHHOЙ ПOЛЬЗOBATEЛEM ФYHKЦИEЙ.
+                                  X202  TAБЛИЦA MACC ЧACTИЦ.
+                                  X203  TAБЛИЦA ИMEH ЧACTИЦ.
+                                  Y202  HAXOЖДEHИE KAHAЛA ГИCTOГPAMMЫ.
+                              3.  B OБП-1 BKЛЮЧEHЫ HOBЫE BEPCИИ ПPOГPAMM:
+                                  C205(RZERO)  - YЛYЧШEH AЛГOPИTM.
+                                  C312(BESJY)  - ДOБABЛEHЫ BXOДЫ ДЛЯ ПOЛЬЗOBATEЛЯ DBESJ0,DBESJ1,DBESY0,DBESY1.
+                                  C313(BESIK)  - ДOБABЛEHЫ BXOДЫ ДЛЯ ПOЛЬЗOBATEЛЯ DBESI0,DBESI1,DBESK0,DBESK1,
+                                                 DEBSI0,DEBSI1,DEBSK0,DEBSK1.
+                                  G901(RAN2VS) - ДOБABЛEHЫ BXOДЫ ДЛЯ ПOЛЬЗOBATEЛЯ VRAN2S,VRAN3S.
+                              4.  B OБП-2 BKЛЮЧEHA HOBAЯ BEPCИЯ ПPOГPAMMЫ J509(CONPRT) - YЛYЧШEH AЛГOPИTM.
+                              5.  ИHДEKC ПPOГPAMMЫ X601 ИЗMEHEH HA X602 .
+                              6.  ИЗ OБП-1 ИCKЛЮЧEHЫ И ЗAПИCAHЫ B APXИB (OБП-12):
+                                  F110(MXADD,MXSUB,MXTRA,MXNTR,MXMTR,MXDMR,MXDMAR,MXDML,MXDMAL,MXDMA) - MOЖHO
+                                      ИCПOЛЬЗOBATЬ COOTBETCTBYЮЩИE ПPOГPAMMЫ ИЗ F121,F003,F004,V301.
+                                  F133(CDOT)  - PEKOMEHДYEM PAБOTATЬ C F002.
+                                  F136(CDOTC) - PEKOMEHДYEM PAБOTATЬ C F004.
+                                  F303(CINV1) - PEKOMEHДYEM PAБOTATЬ C F010.
+                              7.  ИЗ OБП-2 ИCKЛЮЧEHЫ И ЗAПИCAHЫ B APXИB (OБП-12):
+                                  M210(DEZBEL) - HE ИCПOЛЬЗYETCЯ.
+                                  M251(MINCOD) - HE ИCПOЛЬЗYETCЯ.
+                                  M408(IPACK)  - PEKOMEHДYEM PAБOTATЬ C M422.
+                                  I901(UNPAK)  - PEKOMEHДYEM PAБOTATЬ C I302.
+                              8.  OПИCAHИЯ HOBЫX ПPOГPAMM F002,F003,F004,F010,F011,F012,M215,M224,V151,X202,X203,Y202
+                                  ЗAПИCAHЫ B ИHФOPMAЦИOHHO-CПPABOЧHYЮ CИCTEMY (ИCC).
+                                                     PEBИЗИЯ 14
+                                        OБЩEЙ БИБЛИOTEKИ ПPOГPAMM (OБП) БЭCM-6  1 ДEKAБPЯ 1987 Г.
+                              1.  B OБП-1 BKЛЮЧEHЫ HOBЫE ПPOГPAMMЫ:
+                                  D151 MHOГOMEPHOE ИHTEГPИPOBAHИE ИЛИ ГEHEPAЦИЯ MHOГOMEPHЫX CЛYЧAЙHЫX TOЧEK.
+                                  D515 ПPOГPAMMA ДЛЯ POБACTHOЙ MИHИMИЗAЦИИ KBAДPATИЧHOГO ФYHKЦИOHAЛA,
+                                       HEЛИHEЙHO ЗABИCЯЩEГO OT ПAPAMETPOB.
+                                  D611 ПAKET ПPOГPAMM ДЛЯ PEШEHИЯ ИHTEГPAЛЬHЫX YPABHEHИЙ.
+                                  D612 PEШEHИE ЛИHEЙHOГO ИHTEГPAЛЬHOГO YPABHEHИЯ ФPEДГOЛЬMA 1 POДA METOДOM
+                                       POБACTHOЙ ДИCKPИПTИBHOЙ PEГYЛЯPИЗAЦИИ.
+                              2.  B OБП-2 BKЛЮЧEHЫ HOBЫE ПPOГPAMMЫ:
+                                  M108   COPTИPOBKA CTPOK MATPИЦЫ.
+                                  M506   TИП APГYMEHTA.
+                              3.  B OБП-1 BKЛЮЧEHЫ HOBЫE BEPCИИ ПPOГPAMM:
+                                  C336 (SININT,COSINT) - YЛYЧШEH AЛГOPИTM.
+                                  D509 (MINVAR)        - YЛYЧШEH AЛГOPИTM.
+                              4.  ИЗ OБП-1 ИCKЛЮЧEHЫ И ЗAПИCAHЫ B APXИB (OБП-12):
+                                  D150 (DIVON2)      - PEKOMEHДYEM PAБOTATЬ C D151.
+                                  F119 (DIST,VMODUL) - ЭTИ OПEPAЦИИ BЫПOЛHЯЮTCЯ B F121 (VDIST,VMOD).
+                              5.  B CBЯЗИ C ПEPEПOЛHEHИEM CИCTEMHOЙ TAБЛИЦЫ ИMEH OБП-1 (>1K) MЫ BOЗBPATИЛИCЬ
+                                  K ПPEЖHEMY ПPИHЦИПY PAЗДEЛEHИЯ БИБЛИOTEKИ HA 2 ЧACTИ :
+                                  1) OБП-1 - ПPOГPAMMЫ ИHДEKCOB OT A ДO G .
+                                  2) OБП-2 - ПPOГPAMMЫ ИHДEKCOB OT H ДO Z.
+                                  ИCKЛЮЧEHИE COCTABЛЯЮT ПPOГPAMMЫ Z051 - ПOЛYЧEHИE CПИCKA OБП-1 И
+                                  N100,V104,V300,V301,S110,S120,Z002, KOTOPЫE ПPИCYTCTBYЮT И B OБП-1, TAK KAK
+                                  K HИM OБPAЩAЮTCЯ ПPOГPAMMЫ ИЗ OБП-1.
+                              6.  OПИCAHИЯ HOBЫX ПPOГPAMM D151,D515,D611,D612,M108,M506 ЗAПИCAHЫ
+                                  B ИHФOPMAЦИOHHO-CПPABOЧHYЮ CИCTEMY (ИCC).
+                                                     PEBИЗИЯ 13
+                                        OБЩEЙ БИБЛИOTEKИ ПPOГPAMM (OБП) БЭCM-6 1 HOЯБPЯ 1986 Г.
+                              1.  B OБП-1 BKЛЮЧEHЫ HOBЫE ПPOГPAMMЫ: F112,G900,G901,U102.
+                              2.  B OБП-1 BKЛЮЧEHЫ HOBЫE BEPCИИ ПPOГPAMM:
+                                  C303(COMBES, - YЛYЧШEH AЛГOPИTM, ДOБABЛEH BXOД ДЛЯ
+                                       CBESJY)   ПOЛЬЗOBATEЛЯ CBESJY.
+                                                   B H И M A H И E  !
+                                                 KOЛИЧECTBO ПAPAMETPOB B OБPAЩEHИИ K C303 ИЗMEHEHO,CTAЛO 10 , A HE 9 .
+                                                 B HOBOЙ BEPCИИ:
+                                                 CALL COMBES(X,Y,ALPHA,BETA,N,BJRE,BJIM,YRE,YIM,NY)
+                                                 CALL CBESJY(X,Y,ALPHA,BETA,N,BJRE,BJIM,YRE,YIM,NY)
+                                                 HOBЫЙ ПAPAMETP NY - ФИKTИBHЫЙ ДЛЯ COMBES, ДЛЯ CBESJY CM. OПИCAHИE B ИCC.
+                                  F116(DOTI)   - HOBЫЙ AЛГOPИTM, B CTAPOЙ BEPCИИ БЫЛO EЩE TPИ ИMEHИ ДЛЯ ПOЛЬЗOBATEЛЯ.
+                                  F301(DET,    - HOBЫЙ AЛГOPИTM DET
+                                       DDETER)     B H И M A H И E  !
+                                                 KOЛИЧECTBO ПAPAMETPOB B OБPAЩEHИИ K DET ИЗMEHEHO, CTAЛO 3 , A HE 4.
+                                                 B HOBOЙ BEPCИИ:
+                                                 D=DET(A,DIM,N)
+                                                 DDETER - CTAPAЯ BEPCИЯ F311, BЫЧИCЛЯЮЩAЯ ДETEPMИHAHT C ДBOЙHOЙ TOЧHOCTЬЮ.
+                                  U101(LOREN4) - (CTAPAЯ BEPCИЯ U121).
+                                                   B H И M A H И E  !
+                                                 ПPOГPAMMA ИMEET ДPYГOE ИMЯ ДЛЯ ПOЛЬЗOBATEЛЯ И ДPYГИE
+                                                 ПO COДEPЖAHИЮ ПAPAMETPЫ.
+                                                 B HOBOЙ BEPCИИ:
+                                                 CALL LOREN4(A,B,X)
+                              3.  ИЗ OБП-1 ИCKЛЮЧEHЫ И ЗAПИCAHЫ B OБП-12 CЛEДYЮЩИE ПPOГPAMMЫ:
+                                  A403(EX66ZF) - HE ИCПOЛЬЗYETCЯ.
+                                  D101(WTS)    - PEKOMEHДYEM PAБOTATЬ C D102.
+                                  F102(LINVER) - PEKOMEHДYEM PAБOTATЬ, HAПPИMEP, C F100,F101,F405 CM. TAKЖE ДPYГИE.
+                                  F140-F147    - ЭTИ OПEPAЦИИ BЫПOЛHЯЮTCЯ B F116,F117,F120,F121.
+                                  F311(DETERM) - PEKOMEHДYEM PAБOTATЬ C F301.
+                                  M205(CSIGN)  - HE ИCПOЛЬЗYETCЯ.
+                              4.  ИHДEKC ПPOГPAMMЫ U101(CLEBSH) ИЗMEHEH HA U121.
+                              5.  CДEЛAHЫ KOPPEKЦИИ B CЛEДYЮЩИX ПPOГPAMMAX:D105,E110,W700.
+                              6.  B APXИB OБП-12 BKЛЮЧEHЫ ПPOГPAMMЫ E200(CUR1FT), E201(CUR2FT),
+                                  ЗAПИCAHHЫE KAK SUBROUTINE (ПO ПPOCЬБE ПOЛЬЗOBATEЛEЙ):
+                                        CALL CUR1FT(NIN,NOUT)
+                                        CALL CUR2FT(NIN,NOUT), ГДE
+                                        NIN  - MATEMATИЧECKИЙ HOMEP BXOДHOГO  YCTPOЙCTBA ДЛЯ CЧИTЫBAHИЯ ДAHHЫX.
+                                        NOUT - MATEMATИЧECKИЙ HOMEP BЫXOДHOГO YCTPOЙCTBA ДЛЯ BЫДAЧИ PEЗYЛЬTATA.
+                              ИHФOPMAЦИOHHO-CПPABOЧHAЯ CИCTEMA ПPИBEДEHA B COOTBETCTBИE
+                              C ДAHHOЙ PEДAKЦИEЙ БИБЛИOTEKИ.
+                              OПИCAHИЯ APXИBHOЙ БИБЛИOTEKИ OБП-12 CЛEДYET CMOTPETЬ B
+                              PAБOTAX "БИБЛИOTEKA ПPOГPAMM HA ФOPTPAHE" T.T. 1-3,4,6 OИЯИ, ДYБHA, 1974-1983 Г.Г.
+                                                     PEBИЗИЯ 12
+                                        БИБЛИOTEKИ CП БЭCM-6 1 HOЯБPЯ 1985 Г.
+                              1.  B OБCП-1 BKЛЮЧEHЫ HOBЫE ПPOГPAMMЫ: D130,D131,E230,F406,F424,G101.
+                              2.  B OБCП-1 BKЛЮЧEHЫ HOBЫE BEPCИИ ПPOГPAMM:
+                                   C206(POLY2)  - YЛYЧШEH AЛГOPИTM.
+                                                   B H И M A H И E   !
+                                                  KOЛИЧECTBO ПAPAMETPOB B OБPAЩEHИИ K C206 ИЗMEHEHO, CTAЛO 6, A HE 7.
+                                                  B HOBOЙ BEPCИИ:
+                                                  CALL POLY2(A,N,ROOT,H,MAXFUN,MODE).
+                                   E104(FINT)   - YЛYЧШEH AЛГOPИTM.
+                                   F121(VECMAN) - B ПAKET ДOБABЛEHЫ ПOДПPOГPAMMЫ:
+                                                  VCOPYN (ПEPECЫЛKA ЭЛEMEHTOB C OБPATHЫM ЗHAKOM ИЗ OДHOГO MACCИBA B ДPYГOЙ),
+                                                  VDIST2 (CYMMA KBAДPATOB PAЗHOCTEЙ ЭЛEMEHTOB ДBYX MACCИBOB),
+                                                  VDIST  (ИЗBЛEЧEHИE KOPHЯ KBAДPATHOГO ИЗ VDIST2).
+                                   I312(PRINTF) - (CTAPAЯ BEPCИЯ M257) ДOБABЛEHЫ BXOДЫ:
+                                                  PRINTL (ПEЧATAET MACCИB C TEKCTOM),
+                                                  PRNT (ПEЧATAET OTДEЛЬHЫE ЧИCЛA ПO CПИCKY).
+                              3.  B OБCП-2 BKЛЮЧEHA HOBAЯ BEPCИЯ ПPOГPAMMЫ
+                                   H100(SIMPLE) - CДEЛAHЫ HEБOЛЬШИE ИЗMEHEHИЯ B AЛГOPИTME,
+                                                  ИЗMEHEHO ИMЯ ПPOГPAMMЫ.
+                              4.  ИCKЛЮЧEHHAЯ B 1979 Г. ИЗ OБCП-1 D108(TRAPER) BHOBЬ
+                                  BKЛЮЧEHA B БИБЛИOTEKY ПO ПPOCЬБE ПOЛЬЗOBATEЛEЙ.
+                              5.  CДEЛAHЫ KOPPEKЦИИ B CЛEДYЮЩИX ПPOГPAMMAX:
+                                  C318,D106,D128,D129,D150,D221,F220,N100.
+                              6.  ИЗ OБCП-1 ИCKЛЮЧEHA ПPOГPAMMA
+                                  F403(BLEQ).  PEKOMEHДYEM PAБOTATЬ C F406.
+                              7.  ИЗMEHEHЫ ИHДEKCЫ CЛEДYЮЩИX ПPOГPAMM:
+                                        D516(MINUIL)  HA  D506,
+                                        D520(FUMILI)  HA  D510,
+                                        M255(UREAD)   HA  I310,
+                                        M256(IMPORT)  HA  I311,
+                                        M257(PRINTF)  HA  I312.
+                              8.  COЗДAH APXИB OБCП-12, KOTOPЫЙ COДEPЖИT ПPOГPAMMЫ:
+                                   A) ИCKЛЮЧEHHЫE ИЗ OБCП-1 ЗA ПEPИOД 1978-1985 Г.Г.;
+                                   Б) CTAPЫE BEPCИИ ПPOГPAMM, ECЛИ B HOBЫX ИЗMEHИЛOCЬ OБPAЩEHИE;
+                                   B) ПPOГPAMMЫ E202(LSQFIT), E204(PSI1), ЗAПИCAHHЫE KAK SUBROUTINE
+                                      (ПO ПPOCЬБE ПOЛЬЗOBATEЛEЙ):
+                                        CALL LSQFIT(NIN,NOUT)
+                                        CALL PSI1(NIN,NOUT) , ГДE
+                                      NIN  - MATEMATИЧECKИЙ HOMEP BXOДHOГO YCTPOЙCTBA ДЛЯ CЧИTЫBAHИЯ ДAHHЫX,
+                                      NOUT - MATEMATAЧECKИЙ HOMEP BЫXOДHOГO YCTPOЙCTBA ДЛЯ BЫДAЧИ PEЗYЛЬTATA.
+                              ИHФOPMAЦИOHHO-CПPABOЧHAЯ CИCTEMA (ИCC) ПPИBEДEHA
+                              B COOTBETCTBИE C ДAHHOЙ PEДAKЦИEЙ БИБЛИOTEKИ.
+                              ДOБABЛEHA ИHФOPMAЦИЯ (KЛЮЧ TEACH) O PAБOTE ИCC
+                              B PEЖИME ДИAЛOГA B OC "ДИCПAK".
+                                                    PEBИЗИЯ 11
+                                        БИБЛИOTEKИ CП БЭCM-6 1 HOЯБPЯ 1984 Г.
+                              1.  B OБCП-1 BKЛЮЧEHЫ HOBЫE ПPOГPAMMЫ: D150,F423,M103,
+                                   V105,V106,V116,V130.
+                                   OПИCAHИЯ ЭTИX ПPOГPAMM BKЛЮЧEHЫ B ИHФOPMAЦИOHHO-CПPABOЧHYЮ
+                                   CИCTEMY (ИCC).
+                              2.  B OБCП-1 BKЛЮЧEHЫ HOBЫE BEPCИИ ПPOГPAMM:
+                                   C205(RZERO)  - YЛYЧШEH AЛГOPИTM.
+                                   M101(SORTZV) - AДAПTИPOBAHA ФOPTPAHHAЯ BEPCИЯ ДЛЯ
+                                                  COPTИPOBKИ ЦEЛЫX И BEЩECTBEHHЫX ЧИCEЛ. ДЛЯ COPTИPOBKИ
+                                                  CИMBOЛOB BKЛЮЧEHA ПPOГPAMMA HA MAДЛEHE
+                                                  (ABTOP A.П.CAПOЖHИKOB).
+                              OБPAЩAEM BHИMAHИE ПOЛЬЗOBATEЛEЙ HA TO, ЧTO KOЛИЧECTBO
+                              ПAPAMETPOB B OБPAЩEHИИ K M101 HA БЭCM-6 B HACTOЯЩEM
+                              BAPИAHTE  6  (CM. OПИCAHИE B ИCC), A HE  8  .
+                              OБPAЩEHИE K M101 B HOBOЙ BEPCИИ:
+                              CALL SORTZV(A,INDEX,N,MODE,NWAY,NSORT).
+                                                   PEBИЗИЯ 10
+                                        БИБЛИOTEKИ CП БЭCM-6 1 HOЯБPЯ 1983 Г.
+                              1.  B OБCП-1 BKЛЮЧEHЫ HOBЫE ПPOГPAMMЫ: C351,D209,D703,
+                                   D704,E221,E250,F150.
+                                   OПИCAHИЯ ЭTИX ПPOГPAMM BKЛЮЧEHЫ B ИHФOPMAЦИOHHO-CПPABOЧHYЮ
+                                   CИCTEMY (ИCC).
+                              2.  ИЗ OБCП-1 ИCKЛЮЧEHЫ ПPOГPAMMЫ:
+                                   D203 - PEKOMEHДYEM PAБOTATЬ C D209,
+                                   D800 - PEKOMEHДYEM PAБOTATЬ C D704.
+                              3.  ИHДEKC ПPOГPAMMЫ C327 (FGETA) ИЗMEHEH HA C361.
+                              4.  OБPAЩAEM BHИMAHИE HA TO, ЧTO B D221 BBEДEH
+                                   ДOПOЛHИTEЛЬHЫЙ ФOPMAЛЬHЫЙ ПAPAMETP W. W - PAБOЧИЙ MACCИB
+                                   PAЗMEPHOCTИ (N,3). BЫЗOB ПPOГPAMMЫ:
+                                   CALL INSAUT(N,X,Y,H,EPS,T,R,EXTERN,W) ИЛИ
+                                   CALL INSINT(N,X,Y,H,EPS,T,R,EXTERN,W).
+                                                  PEBИЗИЯ 9
+                                        БИБЛИOTEKИ CП БЭCM-6 1 HOЯБPЯ 1982 Г.
+                              1.  B OБCП-1 BKЛЮЧEHЫ HOBЫE ПPOГPAMMЫ:C318,C319,C320,E220,E410.
+                              2.  ИЗ OБCП-1 ИCKЛЮЧEHA ПPOГPAMMA D540 - PEKOMEHДYEM
+                                   PAБOTATЬ C E220.
+                              3.  ИЗ OБCП-1 ИCKЛЮЧEHЫ ПPOГPAMMЫ, PEAЛИЗYЮЩИE KOMПЛEKCHYЮ
+                                   APИФMETИKY C БOЛЬШИM ДИAПAЗOHOM ПOPЯДKOB(CM.Г.Л.MAЗHЫЙ
+                                   -PEAЛИЗAЦИЯ KOMПЛEKCHOЙ APИФMETИKИ C БOЛЬШИM ДИAПAЗOHOM
+                                   ПOPЯДKOB HA ЭBM БЭCM-6  - OИЯИ 11-8667, ДYБHA, 1975 Г.) И
+                                   ЗAПИCAHЫ B PERSONAL LIBRARY. ДЛЯ PAБOTЫ C ПPOГPAMMAMИ
+                                   C325 И E410 HEOБXOДИMO ЗAKAЗATЬ B YПPABЛЯЮЩИX KAPTAX:
+                                        *DISC:667-SYSTEM,BESM6
+                                        *FILE:LTEST,31,R
+                                        *PERSO:31010
+                              4.  B COOTBETCTBИИ C БИБЛИOTEKOЙ ЦEPH ИMЯ ПPOГPAMMЫ
+                                   MULLRC(C204) ИЗMEHEHO HA MULLER.
+                              5.  CДEЛAHЫ HOBЫE OПИCAHИЯ ПPOГPAMM И BKЛЮЧEHЫ B ИCC C316,
+                                   C326,C332,C400,D125,D205,D207,D600,E204,E205,E209,
+                                   E402-E403,E404-E405,F103,F403.
+                                   ПOДPOБHЫE OПИCAHИЯ K ЭTИM ПPOГPAMMAM ЛИKBИДИPOBAHЫ, T.K.
+                                   HOBЫE OПИCAHИЯ COДEPЖAT ПOЛHYЮ ИHФOPMAЦИЮ ПO ИCПOЛЬЗOBAHИЮ
+                                   ЭTИX ПPOГPAMM.
+                                                  PEBИЗИЯ 8
+                                        БИБЛИOTEKИ CП БЭCM-6 1 HOЯБPЯ 1981 Г.
+                              1.  B OБCП-1 BKЛЮЧEHЫ HOBЫE ПPOГPAMMЫ:D521,F500,F600,
+                                   J530,U500
+                                   ПPOГPAMMЫ F110-F115 OБЬEДИHEHЫ B OДHY ПOД ИHДEKCOM F110.
+                              2.  ИHДEKC ПPOГPAMMЫ F240 ИЗMEHEH HA F220(EISPACK),
+                                   A  V101  HA  V104(RNDM) .
+                                   ПPOГPAMMЫ OИЯИ KIM И COPLOT БYДYT ИMETЬ ИHДEKCЫ
+                                   COOTBETCTBEHHO F240 И J531.
+                              3.  CДEЛAHЫ HOBЫE OПИCAHИЯ ПPOГPAMM И BKЛЮЧEHЫ B ИCC
+                                     D103,D400,D701,F401-F402.
+                                   ПOДPOБHЫE  OПИCAHИЯ  K  ПEPEЧИCЛEHHЫM  ПPOГPAMMAM
+                                   ЛИKBИДИPOBAHЫ, T.K. HOBЫE OПИCAHИЯ COДEPЖAT ПOЛHYЮ
+                                   ИHФOPMAЦИЮ ПO ИCПOЛЬЗOBAHИЮ ЭTИX ПPOГPAMM.
+                                                  PEBИЗИЯ 7
+                                        БИБЛИOTEKИ CП БЭCM-6 1 HOЯБPЯ 1980Г.
+                              1.  B OБCП-1 BKЛЮЧEHЫ HOBЫE ПPOГPAMMЫ-C301,C349,C350,
+                                   E106,E255,F223,F230,F405,G104,G106,V110,V111,V112,V150,
+                                   OПИCAHИЯ KOTOPЫX BKЛЮЧEHЫ B ИCC.
+                              2.  B OБCП-2 BKЛЮЧEHЫ HOBЫE ПPOГPAMMЫ-X401,Z054,OПИCAHИЯ
+                                   KOTOPЫX CM. B ИCC.
+                              3.   ИCKЛЮЧEHЫ CЛEДYЮЩИE ПPOГPAMMЫ:
+                                   D201 - PEKOMEHДYEM PAБOTATЬ C D203-D208,
+                                   D202 - PEKOMEHДYEM PAБOTATЬ C D203-D208,
+                                   E101 - PEKOMEHДYEM PAБOTATЬ C E106,
+                                   E200 - PEKOMEHДYEM PAБOTATЬ C E201,
+                                   E406,
+                                   F200 - PEKOMEHДYEM PAБOTATЬ C F223,
+                                   F201 - PEKOMEHДYEM PAБOTATЬ C F223,
+                                   M203,
+                                   M204,
+                                   Q830 - PEKOMEHДYEM PAБOTATЬ C PEДAKTOPOM EDIT.
+                              4.   ПPOГPAMMЫ C204 И C220 OБЬEДИHEHЫ B OДHY
+                                   ПPOГPAMMY C ИHДEKCOM C204.
+                              5.   ПPOГPAMMЫ F311 И F320 OБЬEДИHEHЫ B OДHY
+                                   ПPOГPAMMY C ИHДEKCOM F311.
+                              6.   B COOTBETCTBИИ C БИБЛИOTEKOЙ ЦEPH ИHДEKC ПPOГPAMMЫ
+                                   M258 ИЗMEHEH HA I302.
+                              7.   ПPOГPAMMA S120 (DILLIB,INFLIB) HAXOДИTCЯ И HA
+                                   OБCП-1 И HA OБCП-2.
+                              8.   ПPOГPAMMA Z051(LIB1) ПEPEHECEHA ИЗ OБCП-2 B OБCП-1.
+                              9.   ПPOГPAMMЫ K100,K403,K405, ЗAПИCAHHЫE B OБCП-2,
+                                   BKЛЮЧEHЫ И B OБCП-1.
+                              10.  B ПPOГPAMME K100 ИMЯ CLEAR ЗAMEHEHO HA FSWOP
+                                   (T.K. CLEAR ИMEETCЯ B T110).
+                                                  PEBИЗИЯ 6
+                                        БИБЛИOTEKИ CП БЭCM-6  1 HOЯБPЯ 1979Г.
+                              1.  B OБCП-1 BKЛЮЧEHЫ HOBЫE ПPOГPAMMЫ:D701,F221,F222,
+                                   F224,F225,F240,F404,G102,G110,G111.
+                              2.   ИCKЛЮЧEHЫ CЛEДYЮЩИE ПPOГPAMMЫ:
+                                   A500
+                                   C202 - PEKOMEHДYEM PAБOTATЬ C C206.
+                                   D108 - MOЖHO PAБOTATЬ,HAПPИMEP, C D103.
+                                   D500 - PEKOMEHДYEM PAБOTATЬ C D516.
+                                   D504 - PEKOMEHДYEM PAБOTATЬ C D516.
+                                   D505 - PEKOMEHДYEM PAБOTATЬ C D516.
+                                   F203 - PEKOMEHДYEM PAБOTATЬ C F221.
+                                                  PEBИЗИЯ 5
+                                        БИБЛИOTEKИ CП БЭCM-6  1 HOЯБPЯ 1978Г.
+                              1.  ЗAПИCAHЫ HOBЫE ПPOГPAMMЫ:D702,M258.
+                              2.  ЗAПИCAHA HOBAЯ BEPCИЯ ПPOГPAMMЫ C400.  B HEЙ
+                                   ИЗMEHИЛOCЬ KOЛИЧECTBO ПAPAMETPOB ПO CPABHEHИЮ C BEPCИEЙ
+                                   OT 1 HOЯБPЯ 1977ГOДA, T. E. OБPAЩEHИE БYДET:
+                                   CALL NEWTON(X,F,N,DF,NDIM1,NDIM2,HNSQ,FNORM,MAXIT,IFAIL).
+                                   OПИCAHИE HOBOЙ BEPCИИ ПPOГPAMMЫ C400 BHECEHO B
+                                   ИHФOPMAЦИOHHO-CПPABOЧHYЮ CИCTEMY (ИCC).
+                              3.  ИCKЛЮЧEHA ПPOГPAMMA D506(MINUIS), PEKOMEHДYEM
+                                   PAБOTATЬ C D516(MINUIL).
+                                                  PEBИЗИЯ 4
+                                        БИБЛИOTEKИ CП БЭCM-6  1 HOЯБPЯ 1977Г.
+                              1.  ЗAПИCAHЫ HOBЫE ПPOГPAMMЫ:C220,C327,D127,D128,
+                                   D129,F320,K453,M450,S120.
+                              2.   ЗAПИCAHЫ HOBЫE BEPCИИ ПPOГPAMM:
+                                   A)B F102 ИЗMEHИЛOCЬ KOЛИЧECTBO ПAPAMETPOB B OБPAЩEHИИ
+                                     ПO CPABHEHИЮ C BEPCИEЙ 1 HOЯБPЯ 1976ГOДA,T.E. OБPAЩEHИE
+                                     БYДET TAKOE ЖE,KAK B BAPИAHTE CERN:CALL LINVER(A,B,X,N,
+                                     M,DET,IEX,CNR,SING,KA,SCR1,SCR2,SCR3,SCR4,SCR5,SCR6).
+                                   Б)F101,F402-ИЗMEHEHЫ AЛГOPИTMЫ C YЧETOM OCOБEHHOCTEЙ
+                                     ЭBM-БЭCM-6.
+                                                  PEBИЗИЯ 3
+                                        БИБЛИOTEKИ CП БЭCM-6 1 HOЯБPЯ 1976Г.
+                              1.  ЗAПИCAHЫ HOBЫE ПPOГPAMMЫ:C231,K452,M257,S110.
+                              2.  ЗAПИCAHA HOBAЯ BEPCИЯ ПPOГPAMMЫ M101(OБPAЩATЬCЯ
+                                   ПO-CTAPOMY).
+                              ЗAMEЧAHИЯ: 1)HAПOMИHAEM ПOЛЬЗOBATEЛЯM,ЧTO C 30HOЯБPЯ
+                                           1973Г. ЗAПИCAHA HOBAЯ BEPCИЯ F104(SYMINV),ИMEЮЩAЯ 5
+                                           ПAPAMETPOB(CTAPAЯ BEPCИЯ ИMEЛA 3 ПAPAMETPA).
+                                         2)HA TEKCTOBOЙ ЛEHTE ПPOГPAMMA M412 ИMEETCЯ B ДBYX
+                                           BAPИAHTAX:
+                                             A)C TAБЛИЦEЙ KOДOB CИMBOЛOB БЭCM-6(KAK HA OБCП-1).
+                                             Б)C TAБЛИЦEЙ KOДOB CИMBOЛOB CDC.
+                                                  PEBИЗИЯ 2
+                                        БИБЛИOTEKИ CП БЭCM-6 1 HOЯБPЯ 1975Г.
+                              1.  ЗAПИCAHA HOBAЯ ПPOГPAMMA D126 B OБCП-1.
+                              2.  ЗAПИCAHЫ HOBЫE BEPCИИ ПPOГPAMM:C316,C326-CДEЛAHЫ
+                                  HEKOTOPЫE ИЗMEHEHИЯ,BBEДEHA ДBOЙHAЯ TOЧHOCTЬ(OБPAЩATЬCЯ
+                                  ПO-CTAPOMY),M409-ЗAПИCAH ABTOKOДHЫЙ BAPИAHT ПPOГPAMMЫ.
+                                                  PEBИЗИЯ 1
+                                        БИБЛИOTEKИ CП БЭCM-6 1 MAЯ 1975 ГOДA.
+                              1.  ЗAПИCAHЫ HOBЫE ПPOГPAMMЫ:
+                                   B OБCП-1:D610,F422,J551,M251,M256,M415,M416.
+                                   B OБCП-2:K101,T110,W601.
+                              2.  ЗAПИCAHЫ HOBЫE BEPCИИ ПPOГPAMM:
+                                   A)C325-CДEЛAHЫ HEKOTOPЫE ИЗMEHEHИЯ B CBЯЗИ C ПPИMEHEHИEM
+                                     KOMПЛEKCHOЙ APИФMETИKИ PACШИPEHHOГO ДИAПAЗOHA(CM.OПИCAHИE).
+                                   B)C333-HOBAЯ BEPCИЯ ЦEPH(OБPAЩATЬCЯ ПO-CTAPOMY).
+                                   C)M-250-ЗAПИCAH HOBЫЙ BAPИAHT ПPOГPAMMЫ(OБPAЩATЬCЯ
+                                     ПO-CTAPOMY).
+                                   D)M419-ПOЛHOCTЬЮ ЗAПИCAHA BEPCИЯ ЦEPH(ДOБABЛEH BXOД LEFT).
+                              3.  ПPOГPAMMЫ H100,K100,K403,K405,K450,K508 ПEPEHECEHЫ
+                                   ИЗ OБCП-1 B OБCП-2.
+                              4.  ПPOГPAMMЫ D500,D504,D505,D516 ПEPEHECEHЫ ИЗ OБCП-2
+                                   B OБCП-1.
+                              5.  OБCП-4 AHHYЛИPOBAHA, ПPOГPAMMЫ GENERAL SECTION B
+                                   OБCП-1 И B OБCП-2.
+                              6.  J-530-ИCПPABЛEH CTAHДAPTHЫЙ MACCИB HA OБCП-1.                      KATAЛOГ OБЩEЙ БИБЛИOTEKИ ПPOГPAMM (OБП-1) БЭCM-6          25 MAЯ 1989 Г.
+                     -------------------------------------------------
+                    A.  APИФMETИЧECKИE ПPOГPAMMЫ.
+                    -----------------------------
+              1.   A200.  KOMПЛEKCHAЯ APИФMETИKA C ДBOЙHOЙ TOЧHOCTЬЮ
+                          (DPCPLX,DREAL,DAIMAG,DCABS,DCMPLX,DCONJG,DCADD,
+                          DCSUB,DCMPY,DCDIV,DCSQRT,DCEXP,DCLOG,DCSIN,DCCOS).
+              2.   A400.  48-PAЗPЯДHAЯ БYЛEBAЯ APИФMETИKA (AND,OR,COMPL,OCTAL,BOOL,HOLITH).
+              3.   A401.  ЛOГИЧECKOE TOЖДECTBO (IDENZB).
+              4.   A402.  CPABHEHИE ДBYX 48-PAЗPЯДHЫX CЛOB (SAME).
+              5.   A404.  ЛOГИЧECKOE ПPOИЗBEДEHИE И CYMMA ДBYX БYЛEBCKИX ФYHKЦИЙ ДEЙCTBИTEЛЬHOГO ПEPEMEHHOГO (ANDOR).
+                    B.  ЭЛEMEHTAPHЫE ФYHKЦИИ.
+                    -------------------------
+              6.   B101.  APKTAHГEHC (ATG).
+              7.   B102.  ПPИBEДEHИE YГЛA K ЗAДAHHOMY ИHTEPBAЛY (PROXIM).
+              8.   B200.  BЫЧИCЛEHИE ГИПEPБOЛИЧECKИX ФYHKЦИЙ
+                          (DCOSH,DSICOH,DSINH,SICOH,COSH,SINH).
+              9.   B400.  ГEHEPATOP CTEПEHHOГO PЯДA  (POWEZE).
+                    C.  ПOЛИHOMЫ И CПEЦИAЛЬHЫE ФYHKЦИИ.
+                    -----------------------------------
+             10.   C100.  ПOЛИHOMИAЛЬHAЯ ФYHKЦИЯ (POLY).
+             11.   C101.  HAXOЖДEHИE PЯДA ШTYPMA И ИHДEKCA ШTYPMA
+                          (CHAIM,STURM,STURMO,EUKLID,PORM,DIFPOL,DEBUG,HORNER,POLDIV).
+             12.   C110.  ПPOИЗBEДEHИE ПOЛИHOMOB (ABMNS).
+             13.   C201.  KOPHИ KYБИЧECKOГO YPABHEHИЯ (ДBOЙHAЯ TOЧHOCTЬ) (DDVETA).
+             14.   C203.  ЧИCЛO HYЛEЙ KOMПЛEKCHOЙ ФYHKЦИИ (NZEROS,NEAR1,PREP6).
+             15.   C204.  HAXOЖДEHИE KOPHEЙ MHOГOЧЛEHA (MULLER,MULLRD).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (DCADD,DCDIV,DCMPY,DCONJG,DCSUB - A200).
+             16.   C205.  HYЛЬ ФYHKЦИИ OДHOЙ ПEPEMEHHOЙ (RZERO).
+             17.   C206.  KOPHИ KOMПЛEKCHЫX ПOЛИHOMOB(POLY2,CIRCLE,DEFLAT,VP).
+             18.   C230.  HYЛИ ФYHKЦИЙ БECCEЛЯ J0,J1,Y0,Y1 (ZBESJ0,ZBESJ1,ZBESY0, ZBESY1,ZBESJY).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (BESJY - C312).
+             19.   C231.  ИЗBЛEЧEHИE KYБИЧECKOГO KOPHЯ (CBRT).
+             20.   C300.  ФYHKЦИЯ OШИБOK И ФYHKЦИЯ HOPMAЛЬHOГO PACПPEДEЛEHИЯ (ERF,FREQ,ERFC,ERFXX).
+             21.   C301.  ФYHKЦИЯ, OБPATHAЯ ФYHKЦИИ HOPMAЛЬHOГO PACПPEДEЛEHИЯ (GAUSIN).
+             22.   C302.  ФYHKЦИИ БECCEЛЯ HYЛEBOГO И ПEPBOГO ПOPЯДKA (BESSEL).
+             23.   C303.  ФYHKЦИИ БECCEЛЯ KOMПЛEKCHOГO APГYMEHTA И ПOPЯДKA
+                          (COMBES,CBESJY,COMBMN,COMEXP,COMLOG,CCOSH,COMFAC,HANKEL,
+                          JNORM,JRECUR,JSUM,LOGGAM,NEGN,START1,XTEST,YTEST,YKNU,JRECUR,YSUM,YZERO,YGNU,YGREC1).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (SINH,COSH - B200).
+             24.   C304.  ДИЛOГAPИФMИЧECKAЯ ФYHKЦИЯ (DILOG).
+             25.   C305.  ГAMMA-ФYHKЦИЯ (GAMMA).
+             26.   C306.  KOMПЛEKCHAЯ ГAMMA-ФYHKЦИЯ (CGAMMA,ZFACT).
+             27.   C307.  ДИГAMMA (PSI) ФYHKЦИЯ KOMПЛEKCHOГO APГYMEHTA (CDIGAM,PSIFN).
+             28.   C308.  ПOЛHЫE ЭЛЛИПTИЧECKИE ИHTEГPAЛЫ  K И E (ELLICK,ELLICE).
+             29.   C309.  ИHTEГPAЛ ФPEHEЛЯ (FRECS,FRICS).
+             30.   C310.  OTHOШEHИE KOMПЛEKCHЫX ГAMMA-ФYHKЦИЙ (CRAGAM,RGAM).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (CLOGAM - C333).
+             31.   C311.  ФYHKЦИИ ЛEЖAHДPA (LEGFN,LEGZ,LEG1,LEGV,TRDZ,HYPGM,CRIT,NINT,CSQRTK,CLOGOK,LEGOR).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (PSIFN - C307)
+                                        (RGAM - C310).
+             32.   C312.  ФYHKЦИИ БECCEЛЯ J0,J1,Y0,Y1 (BESJY,BESJ0,BESJ1,BESY0,BESY1,DBESJ0,DBESJ1,DBESY0,DBESY1).
+             33.   C313.  MOДИФИЦИPOBAHHЫE ФYHKЦИИ БECCEЛЯ I0,I1,K0,K1
+                          (BESIK,BESI0,BESI1,BESK0,BESK1,EBESI0,EBESI1,EBESK0,EBESK1,
+                          DBESI0,DBESI1,DBESK0,DBESK1,DEBSI0,DEBSI1,DEBSK0,DEBSK1).
+             34.   C314.  TЭTA-ФYHKЦИИ И ЭЛЛИПTИЧECKИE ФYHKЦИИ ЯKOБИ (THETA1,THETA2,THETA3,THETA4,QFUNCT).
+             35.   C315.  ПPИCOEДИHEHHЫЙ ПOЛИHOM ЛEЖAHДPA (ALEGF).
+             36.   C316.  PEГYЛЯPHAЯ BOЛHOBAЯ ФYHKЦИЯ KYЛOHA (COUL1).
+             37.   C317.  ДИГAMMA (PSI) ФYHKЦИЯ (ADIGAM).
+             38.   C318.  ЭЛЛИПTИЧECKИE ФYHKЦИИ ЯKOБИ SN,CN,DN (ELFUN).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (DSINH - B200).
+             39.   C319.  HEПOЛHЫЙ ЭЛЛИПTИЧECKИЙ ИHTEГPAЛ ПEPBOГO POДA (ELIN1).
+             40.   C320.  KOMПЛEKCHЫE ЭЛЛИПTИЧECKИE ФYHKЦИИ ЯKOБИ SN,CN,DN (CELFUN).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (DSINH - B200).
+             41.   C322.  ГAMMA-ФYHKЦИЯ C ДBOЙHOЙ TOЧHOCTЬЮ (DGAMMA)
+             42.   C323.  OБOБЩEHHЫE ПOЛИЛOГAPИФMЫ (GPLOG).
+             43.   C324.  KOMПЛEKCHЫE ЗHAЧEHИЯ OБOБЩEHHЫX ПOЛИЛOГAPИФMOB (CGPLOG).
+             44.   C325.  ФYHKЦИЯ YИTTEKEPA (WHIT,BEWW,BOUND,T).
+                              ИCПOЛЬЗYETCЯ KOMПЛEKCHAЯ APИФMETИKA
+                               PACШИPEHHOГO ДИAПAЗOHA (CM. ИCC, KЛЮЧ "ARIF").
+             45.   C326.  BOЛHOBЫE ФYHKЦИИ KYЛOHA (COUL2).
+             46.   C329.  MOДИФИЦИPOBAHHЫE ФYHKЦИИ БECCEЛЯ I(X) C ДBOЙHOЙ TOЧHOCTЬЮ (DBESIN).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (DGAMMA - C322).
+             47.   C330.  ФYHKЦИИ БECCEЛЯ J(X) C ДBOЙHOЙ TOЧHOCTЬЮ (DBESJN).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (DGAMMA - C322).
+             48.   C332.  KOMПЛEKCHЫE ФYHKЦИИ БECCEЛЯ J(Z) C ДBOЙHOЙ TOЧHOCTЬЮ (DBESCJ).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (DGAMMA - C322).
+             49.   C333.  ЛOГAPИФM KOMПЛEKCHOЙ ГAMMA-ФYHKЦИИ (CLOGAM).
+             50.   C335.  KOMПЛEKCHAЯ ФYHKЦИЯ OШИБOK (CWERF).
+             51.   C336.  ИHTEГPAЛЬHЫЙ CИHYC И KOCИHYC (SININT,COSINT).
+             52.   C337.  ЭKCПOHEHЦИAЛЬHЫЙ ИHTEГPAЛ (EXPINT).
+             53.   C338.  ФYHKЦИЯ ФEPMИ-ДИPAKA (FERDIR).
+             54.   C339.  ИHTEГPAЛ ДABCOHA (DAWSON).
+             55.   C340.  MOДИФИЦИPOBAHHЫE ФYHKЦИИ БECCEЛЯ I,K ПOPЯДKA 1/3 , 2/3 (BSIKR3,EBSIR3,BSKR3,EBSKR3,BSIR3).
+             56.   C341.  ЛOГAPИФM ГAMMA-ФYHKЦИИ (ALOGAM).
+             57.   C342.  ФYHKЦИИ CTPYBE H0,H1 (STRH0,STRH1).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (BESJY - C312).
+             58.   C349.  БЫCTPOE HAXOЖДEHИE CИHYC И KOCИHYC-OБPAЗA ФYPЬE OT
+                          ЭKCПOHEHЦИAЛЬHO YБЫBAЮЩEЙ ФYHKЦИИ(SFUSIN,SFUCOS,FUC,FUS).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (GAUSS - D103)
+                                        (CAUCHY - D104).
+             59.   C350.  ЭKCПOHEHЦИAЛЬHЫЙ ИHTEГPAЛ OT KOMПЛEKCHOГO APГYMEHTA
+                          (EXPE1Z,EXPEIZ,SFUTR1,FU1,SFUTRI,FUI).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (GAUSS - D103),
+                                        (GAUCHY - D104).
+             60.   C351.  ФYHKЦИИ ЭЙPИ AI(X),BI(X) (AIRY).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (DBESJN - C330).
+             61.   C360.  ГИПEPГEOMETPИЧECKAЯ ФYHKЦИЯ - CПEЦ. CЛYЧAЙ (H2F1).
+             62.   C361.  ПOДПPOГPAMMA ДЛЯ BЫЧИCЛEHИЯ KYЛOHOBCKИX ФYHKЦИЙ(FGETA).
+             63.   C368.  HEПOЛHЫE ЭЛЛИПTИЧECKИE ИHTEГPAЛЫ (ELPHIK).
+             64.   C400.  PEШEHИE CИCTEMЫ HEЛИHEЙHЫX YPABHEHИЙ (NEWTON).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (MATIN1 - F100).
+             65.   C401.  PEШEHИE CИCTEM HEЛИHEЙHЫX YPABHEHИЙ HA OCHOBE PEГYЛЯPИЗOBAHHЫX
+                          ИTEPAЦИOHHЫX ПPOЦECCOB ГAYCCA-HЬЮTOHA (COMPIL).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (SILLC,REGN,OUTRGN,TRAM,AMAXF,ANQRZF - F421).
+                    D.  OПEPAЦИИ HAД ФYHKЦИЯMИ И PEШEHИE ДИФФEPEHЦИAЛЬHЫX И  ИHTEГPAЛЬHЫX YPABHEHИЙ.
+                    --------------------------------------------------------------------------------
+             66.   D100.  ИHTEГPИPOBAHИE ПO CИMПCOHY (ARSIMP).
+             67.   D102.  ИHTEГPИPOBAHИE ПO ГAYCCY (GAUSS1).
+             68.   D103.  ИHTEГPИPOBAHИE ПO ГAYCCY (GAUSS,GAUSS2).
+             69.   D104.  ИHTEГPИPOBAHИE B CMЫCЛE ГЛABHOГO ЗHAЧEHИЯ ПO KOШИ (CAUCHY).
+             70.   D105.  ИHTEГPИPOBAHИE ПO ПOBEPXHOCTИ,ЗAДAHHOЙ TPEYГOЛЬHИKOM (TRIINT).
+             71.   D106.  N-TOЧEЧHAЯ KBAДPATYPA ГAYCCA (GQUAD,GSET).
+             72.   D108.  ИHTEГPИPOBAHИE ПO ФOPMYЛE TPAПEЦИЙ C AHAЛИЗOM OШИБOK (TRAPER).
+             73.   D109.  ИHTEГPИPOBAHИE ПO ГAYCCY C ДBOЙHOЙ TOЧHOCTЬЮ (DGAUSS).
+             74.   D110.  OCHOBHAЯ ПPOГPAMMA ДЛЯ BЫЧИCЛEHИЯ ИHTEГPAЛOB (GPINSP).
+             75.   D111.  OCHOBHAЯ ПPOГPAMMA ИHTEГPИPOBAHИЯ C ДBOЙHOЙ TOЧHOCTЬЮ (GPINDP).
+             76.   D113.  ИHTEГPAЛ ФYHKЦИИ KOMПЛEKCHOЙ ПEPEMEHHOЙ ПO ДYГE (CGAUSS).
+             77.   D114.  MHOГOMEPHOE ИHTEГPИPOBAHИE ПO MOHTE-KAPЛO (RIWIAD).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (RNDM - V104),
+                                        (XLOC - N100).
+             78.   D1141. MHOГOMEPHOE ИHTEГPИPOBAHИE ПO MOHTE-KAPЛO (RIWIA,STD114).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (RNDM - V104),
+                                        (XLOC - N100).
+             79.   D115.  ИHTEГPИPOBAHИE ПO KЛEHШAY-KYPTИCY C ДBOЙHOЙ TOЧHOCTЬЮ
+                          (CHEBQU,DATZ1,DATZ2,DATZ3,DATZ4,DATZ5,DATZ6,DATZ7,DATZ8,DATZ9,DATZ10,DATZ11).
+             80.   D120.  ИHTEГPИPOBAHИE ПO CИMПCOHY C ABTOMATИЧECKИM BЫБOPOM ШAГA C ЗAДAHHOЙ TOЧHOCTЬЮ
+                          (SIMPS,SIMPT,SIMPU,SIMPV,SIMPW).
+             81.   D121.  BЫЧИCЛEHИE KPATHЫX ИHTEГPAЛOB METOДOM KOPOБOBA (MIKOR,DATKOR,INKOR,PERIOD,MITIME).
+             82.   D122.  BЫЧИCЛEHИE N OПPEДEЛEHHЫX ИHTEГPAЛOB ПO CИMПCOHY (GROUPI).
+             83.   D123.  ИHTHГPИPOBAHИE ПO CИMПCOHY C PABHOMEPHЫM ШAГOM (ERSIMP).
+             84.   D124.  ИHTEГPИPOBAHИE METOДOM ГAYCCA-KPOHPOДA (KGAUSS).
+             85.   D125.  ИHTEГPИPOBAHИE OCЦИЛЛИPYЮЩИX ФYHKЦИЙ (ELON).
+             86.   D126.  ИHTEГPИPOBAHИE B CMЫCЛE ГЛABHOГO ЗHAЧEHИЯ ПPИ HAЛИЧИИ Y ПOДЫHTEГPAЛЬHOЙ ФYHKЦИИ
+                          ПOЛЮCOB ПEPBOГO ПOPЯДKA, ПOЛOЖEHИE KOTOPЫX BHYTPИ ИHTEPBAЛA ИHTEГPИPOBAHИЯ ЗAPAHEE HEИЗBECTHO (VPINT).
+             87.   D127.  ИHTEГPИPOBAHИE KOMПЛEKCHOЙ ФYHKЦИИ ДEЙCTBИTEЛЬHOЙ ПEPEMEHHOЙ METOДOM CИMПCOHA
+                          C PABHOMEPHЫM ШAГOM (CSIMPS).
+             88.   D128.  ИHTEГPИPOBAHИE KOMПЛEKCHOЙ ФYHKЦИИ ДEЙCTBИTEЛЬHOЙ ПEPEMEHHOЙ (CKGAUS).
+             89.   D129.  ИHTEГPИPOBAHИE OCЦИЛЛИPYЮЩИX KOMПЛEKCHЫX ФYHKЦИЙ OT ДEЙCTBИTEЛЬHOЙ ПEPEMEHHOЙ (CELON).
+             90.   D130.  ИHTEГPИPOBAHИE OCЦИЛЛИPYЮЩИX ФYHKЦИЙ HA ПOЛYБECKOHEЧHOM ИHTEPBAЛE (SUMIR).
+             91.   D131.  ИHTEГPИPOBAHИE KOMПЛEKCHЫX OCЦИЛЛИPYЮЩИX ФYHKЦИЙ HA ПOЛYБECKOHEЧHOM ИHTEPBAЛE (CSUMIR).
+             92.   D151.  MHOГOMEPHOE ИHTEГPИPOBAHИE ИЛИ ГEHEPAЦИЯ MHOГOMEPHЫX CЛYЧAЙHЫX TOЧEK
+                          (PARTN,INTGRL,USRINT,GENPNT,RANGEN,TREDMP,BUKDMP,USRTRM,DIVON,DVNOPT,DVNBKD,EXMBUC,
+                          SPLIT,QUASI,RECPAR,BOUNDS,TREAUD,NODAUD,BUCMVE,QUAD,FEQN,NOCUT,TSTEXT,DELSLV,FUN,
+                          BUFOPT,BNDOPT,SETTOL,BNDTST,DVCOPY,GRDCMP,DELETE,BFGS,MODCHL,NMDCHL,DVDOT,LDLSOL,SHRNK,
+                          FEASMV,ADDBND,MULCHK,DELBND,LOCSCH,MXSTEP,NEWPTR,RLEN,RANUMS,ORTHVC).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (UCOPY - V301).
+             93.   D204.  ИHTEГPИPOBAHИE CИCTEMЫ ДИФФEPEHЦИAЛЬHЫX YPABHEHИЙ (DFEQS1 ).
+             94.   D205.  ИHTEГPИPOBAHИE CИCTEMЫ ДИФФEPEHЦИAЛЬHЫX YPABHEHИЙ METOДOM "ПPEДCKAЗAHИE-KOPPEKЦИЯ" (DFEQS2).
+             95.   D206.  ИHTEГPИPOBAHИE CИCTEMЫ ДИФФEPEHЦИAЛЬHЫX YPABHEHИЙ METOДOM HOPCИKA (NORSIK).
+             96.   D207.  ИHTEГPИPOBAHИE CИCTEMЫ OБЫKHOBEHHЫX ДИФФEPEHЦИAЛЬHЫX YPABHEHИЙ ПEPBOГO ПOPЯДKA METOДOM
+                          ЭKCTPAПOЛЯЦИИ C ПEPEMEHHЫM ШAГOM (BULSTO).
+             97.   D208.  ИHTEГPИPOBAHИE ПO MEPCOHY (MERSON).
+             98.   D209.  ИHTEГPИPOBAHИE CИCTEMЫ ДИФФEPEHЦИAЛЬHЫX YPABHEHИЙ METOДOM PYHГE-KYTTA (RKSTP,DRKSTP).
+             99.   D221.  ИHTEГPИPOBAHИE CИCTEMЫ ДИФФEPEHЦИAЛЬHЫX YPABHEHИЙ
+                          C ABTOMATИЧECKИM BЫБOPOM  ШAГA (INSAUT,VRLTV,INSINT).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (RKSTP - D209).
+            100.   D300.  PEШEHИE KBAЗИЛИHEЙHЫX ДИФФEPEHЦИAЛЬHЫX YPABHEHИЙ B ЧACTHЫX ПPOИЗBOДHЫX ЭЛЛИПTИЧECKOГO TИПA
+                          BTOPOГO ПOPЯДKA METOДOM ПOCЛEДOBATEЛЬHЫX CBEPXPEЛAKCAЦИЙ
+                          (EPDE1,SEGMT1,FNDBPS,SORT,LOCAT,ININ,JEJE,CEJE,FXORFL,CHECK,
+                          MAKTAB,DECC,ITRATE,CHAIN,DARRAY,RDDRUM,WRRD,WRDRUM).
+            101.   D302.  ИCПOЛЬЗOBAHИE БЫCTPЫX ПPEOБPAЗOBAHИЙ ФYPЬE ДЛЯ PEШEHИЯ ДИФФEPEHЦИAЛЬHЫX YPABHEHИЙ B ЧACTHЫX
+                          ПPOИЗBOДHЫX B ФИЗИKE (ELPAHY,NEWRO,ANAL,SOLVE6,SYNT,MFT).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (RFT - D700).
+            102.   D400.  ЧИCЛEHHOE ДИФФEPEHЦИPOBAHИE (NUMDI1).
+            103.   D506.  MИHИMИЗAЦИЯ ФYHKЦИИ MHOГИX ПEPEMEHHЫX, BЫЧИCЛEHИE KOBAPИAHTHOЙ MATPИЦЫ И HAXOЖДEHИE ИCTИHHЫX OШИБOK
+                          (MINUIL,CALFCN,COMAND,CONTOU,DERIVE,EXTOIN,FIXPAR,FTIME,
+                          HESSE,IMPROV,INTOEX,MATOUT,MIDATA,MIGRAD,MINNEW,MINOS,
+                          MPRINT,MPUNCH,PINTF,PLTCON,RAZZIA,RESTOR,SEEK,MSIMPL,STAND,
+                          VERMIN,ALLOW,AMINIM).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (RNDM - V104)
+                                        (UBLANK,UZERO - V300)
+                                        (UCOPY - V301)
+                                        (TIMEZB - Z002).
+            104.   D507.  MИHИMИЗAЦИЯ CYMMЫ KBAДPATOB ФYHKЦИЙ  (MINSQ,VD01A,FCN1).
+            105.   D508.  ФИTИPOBAHИE ПO METOДY HAИMEHЬШИX KBAДPATOB C ЛИHEЙHOЙ ЗABИCИMOCTЬЮ ПAPAMETPOB
+                          (LINSQ,Q).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (MATIN2 - F101)
+                                        (LINEQ2 - F402).
+            106.   D509.  MИHИMYM ФYHKЦИИ OДHOЙ ПEPEMEHHOЙ (MINVAR,HILL,FA,FB).
+            107.   D510.  MИHИMИЗAЦИЯ KBAДPATИЧHOГO ФYHKЦИOHAЛA
+                          (FUMILI,SCAL,SGZ,MCONV,MONITO,ERRORF,LIKELM,*AU*,*AL*,ARITHM).
+            108.   D511.  ПPOBEPKA AHAЛИTИЧECKИX ПPOИЗBOДHЫX (CHED).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (ARITHM - D510)
+                                        (VSCALE - F121).
+            109.   D515.  ПPOГPAMMA ДЛЯ POБACTHOЙ MИHИMИЗAЦИИ KBAДPATИЧHOГO ФYHKЦИOHAЛA, HEЛИHEЙHO
+                          ЗABИCЯЩEГO OT ПAPAMETPOB (ROLSM,PARCA,FIXA,PODEM,OUTIN,SMXIN).
+            110.   D522.  BЫЧИCЛEHИE KOPHEЙ ФYHKЦИИ  OДHOЙ ПEPEMEHHOЙ METOДOM ДEЛEHИЯ OTPEЗKA ПOПOЛAM (KOR).
+            111.   D600.  PEШEHИE ЛИHEЙHЫX ИHTEГPAЛЬHЫX YPABHEHИЙ (FRED1,FRED2,FRED3).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (GSET,GOUAD - D106)
+                                        (MATIN1 - F100)
+                                        (MATRIX,VCHECK - F103)
+                                        (KIM - F240)
+                                        (LINEQ1 - F401).
+            112.   D610.  PEШEHИE ЛИHEЙHOГO ИHTEГPAЛЬHOГO YPABHEHИЯ ПEPBOГO POДA
+                          METOДOM PEГYЛЯPИЗAЦИИ(FREDI,KOK1,SLAYMR,PEШEH,SLAY,ERROU,
+                          VOLTRS,ALHBC,ALKBA3,ALOTH,DD,DD1).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (SYMINV - F104).
+            113.   D611.  ПAKET ПPOГPAMM ДЛЯ PEШEHИЯ ИHTEГPAЛЬHЫX YPABHEHИЙ
+                          (INTEQU,VOLTS1,VOLTF1,FREST1,FREST2,FREST3,TIKH1,TIKH2,TIKH3,TIKH4,TIKH5,
+                          CONV1,CONV2,CONV3,CONV4,CONV5,FRIED1,FRIED2,XNI,YDY,COEF,REM,ZGF,CKK,SOL1,GDISC,
+                          UVLF,INF,Q12,SOL2,SOL3,TYPE1,TYPE2,TYPE3,TYPE4,TYPE5,TYPE6,TYPE7,TYPE8,F2F,QAT,CHD,
+                          RHO,INNUM,DISC,NORML2,NORMC,RATEL2,RATEC,DOMEGA,SIGMA,LAMBDA,CDISC,DGELG,SIMQ,MFSD,MTDS,SINV).
+            114.   D612.  PEШEHИE ЛИHEЙHOГO ИHTEГPAЛЬHOГO YPABHEHИЯ ФPEДГOЛЬMA 1 POДA METOДOM POБACTHOЙ
+                          ДИCKPИПTИBHOЙ PEГYЛЯPИЗAЦИИ (ROBAST,MAKEA,MATFA,MATOGR,DEFIMA,CONVER,ANSWER,ROBRG,MAINER,
+                          SUBBER,GRADER,ROBPE4,NABOR,LIMITR,BOUN,SEND,PLUSER,SENDER,SENDIN,MATVEC,SCALAR,FHUBER).
+            115.   D700.  ДEЙCTBИTEЛЬHOE БЫCTPOE ПPEOБPAЗOBAHИE ФYPЬE (RFT,RPA,RCA,RSA,RPS,SETFT).
+            116.   D701.  БЫCTPOE ПPEOБPAЗOBAHИE ФYPЬE ДЛЯ ДEЙCTBИTEЛЬHЫX ИЛИ KOMПЛEKCHЫX ФYHKЦИЙ (FFTRC,I16
+                          D16,I32,D32,I64,D64,I128,D128,S64,C64,S128,C128,S256,C256,S512,C512,D701BD).
+            117.   D702.  KOMПЛEKCHOE БЫCTPOE ПPEOБPAЗOBAHИE ФYPЬE(CFT).
+            118.   D703.  ДEЙCTBИTEЛЬHOE БЫCTPOE ПPEOБPAЗOBAHИE ФYPЬE (RFFT).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (CFFT - D704).
+            119.   D704.  KOMПЛEKCHOE БЫCTPOE ПPEOБPAЗOBAHИE ФYPЬE (CFFT).
+                    E.  ИHTEPПOЛЯЦИЯ И AППPOKCИMAЦИЯ.
+                    ---------------------------------
+            120.   E100.  ПOЛИHOMИAЛЬHAЯ ИHTEPПOЛЯЦИЯ (POLINT).
+            121.   E102.  MAKCИMAЛЬHЫЙ И MИHИMAЛЬHЫЙ ЭЛEMEHTЫ MACCИBA (MAXIZE,MINIZE,MAXFZE,MINFZE).
+            122.   E103.  HAИБOЛЬШAЯ AБCOЛЮTHAЯ BEЛИЧИHA KOMПOHEHTЫ B COBOKYПHOCTИ BEKTOPOB (AMAXMU).
+            123.   E104.  MHOГOMEPHAЯ ИHTEPПOЛЯЦИЯ (FINT).
+            124.   E105.  ИHTEPПOЛЯЦИЯ C ИCПOЛЬЗOBAHИEM PAЗHOCTHЫX OTHOШEHИЙ (DIVDIF).
+            125.   E106.  ПOИCK ЗAДAHHOГO ЭЛEMEHTA B YПOPЯДOЧEHHOM MACCИBE (LOCATF,LOCATI).
+            126.   E110.  KBAДPATИЧHAЯ ИHTEPПOЛЯЦИЯ C ПOCTOЯHHЫM ШAГOM (PARINT).
+            127.   E111.  KBAДPATИЧHAЯ ИHTEPПOЛЯЦИЯ C ПPOИЗBOЛЬHЫM ШAГOM(PARINV).
+            128.   E112.  ПPOГPAMMA KBAДPATИЧHOЙ  ИHTEPПOЛЯЦИИ C YПOPЯДOЧEHИEM TAБЛИЦ (FINTER,REORDN).
+            129.   E113.  ЛИHEЙHAЯ ИHTEPПOЛЯЦИЯ И ЭKCTPAПOЛЯЦИЯ K ФYHKЦИЙ F(X,Y) C  ПEPEMEHHЫM ШAГOM ПO OБOИM APГYMEHTAM
+                          (EXTINT).
+            130.   E201.  AППPOKCИMAЦИЯ ЭKCПEPИMEHTAЛЬHЫX ДAHHЫX ПOЛИHOMOM ИЛИ ЭKCПOHEHTOЙ C ДBYMЯ ИЛИ TPEMЯ
+                          ПAPAMETPAMИ (CUR2FT).
+            131.   E202.  AППPOKCИMAЦИЯ ПOЛИHOMAMИ METOДOM HAИMEHЬШИX KBAДPATOB CO CTATИCTИЧECKИM AHAЛИЗOM
+                          (LSQFIT,POLYNL,POLFIT,ESTEY,STDDEV,COVAR).
+            132.   E204.  AППPOKCИMAЦИЯ ПOЛИHOMOM OT ДBYX ПEPEMEHHЫX METOДOM HAИMEHЬШИX KBAДPATOB
+                          (PSI1,J1,PSI,AL,COEFF).
+            133.   E205.  AППPOKCИMAЦИЯ ПOЛИHOMAMИ OT MHOГИX ПEPEMEHHЫX METOДOM HAИMEHЬШИX KBAДPATOB
+                          (PSI2,ENTR1,TIST,J15,PSI5,AL5,COEFF5).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (UZERO - V300).
+            134.   E206.  KOЭФФИЦИEHTЫ TPИГOHOMETPИЧECKИX PЯДOB (TRICOF).
+            135.   E207.  CYMMA TPИГOHOMETPИЧECKИX PЯДOB (TRISUM).
+            136.   E208.  ПPИБЛИЖEHИE ПO METOДY HAИMEHЬШИX KBAДPATOB (LSQ).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (MATIN1 - F100)
+                                        (UZERO - V300)
+                                        (UCOPY - V301).
+            137.,  E209.  CПЛAЙH-AППPOKCИMAЦИЯ TPETЬEГO ПOPЯДKA (SPLIN3).
+            138.   E220.  PEШEHИE ПEPEOПPEДEЛEHHOЙ CИCTEMЫ ЛИHEЙHЫX YPABHEHИЙ
+                          METOДOM HAИMEHЬШИX KBAДPATOB C ПPИMEHEHИEM ПPEOБPAЗOBAHИЙ
+                          XAYCXOЛДEPA  (LSQQR,DECOMP,SLV,PROD1,PROD2,PROC1).
+            139.   E221.  PEШEHИE ПEPEOПPEДEЛEHHOЙ CИCTEMЫ ЛИHEЙHЫX YPABHEHИЙ B ЧEБЫШEBCKOЙ HOPME (CHEB).
+            140.   E230.  PEШEHИE ПEPEOПPEДEЛEHHOЙ CИCTEMЫ ЛИHEЙHЫX YPABHEHИЙ METOДOM HAИMEHЬШИX KBAДPATOB
+                          C ЛИHEЙHЫMИ OГPAHИЧEHИЯMИ И БEЗ OГPAHИЧEHИЙ
+                          (TLSC,TLS,TLERR,TLRES,TLSMSQ,TLSWOP,TLUK,TLSTEP,TLPIV).
+            141.   E240.  AППPOKCИMAЦИЯ И ДИФФEPEHЦИPOBAHИE  ФYHKЦИИ OДHOЙ ПEPEMEHHOЙ,ЗAДAHHOЙ TAБЛИЧHЫMИ ЗHAЧEHИЯMИ
+                          (SPLINC,F1PR2P,PR1COF).
+            142.   E250.  ПPИБЛИЖEHИE ПPЯMOЙ ЛИHИEЙ ПO METOДY HAИMEHЬШИX KBAДPATOB  (LFIT,LFITW).
+            143.   E255.  AППPOKCИMAЦИЯ ПAPAБOЛOЙ METOДOM HAИMEHЬШИX  KBAДPATOB (PARLSQ).
+            144.   E400.  ПPEOБPAЗOBAHИE ЧEБЫШEBCKOГO PЯДA B CTEПEHHOЙ PЯД ИЛИ HAOБOPOT,
+                          И TEЛECKOПИЧECKИЙ CДBИГ CTEПEHHOГO PЯДA (ECTRAN,ECONSE,TAYCHE,BIN,TRANST,CHEB01).
+            145.   E401.  ПPEOБPAЗOBAHИE ЧEБЫШEBCKOГO PЯДA B CTEПEHHOЙ ИЛИ HAOБOPOT, И TEЛECKOПИЧECKИЙ CДBИГ CTEПEHHOГO
+                           PЯДA (ДBOЙHAЯ TOЧHOCTЬ) (ECONDE,CHEB02,ECTRAD,TAYCHD,BIND,TRANSD).
+            146.   E402.  CYMMA N ЧЛEHOB PAЗЛOЖEHИЯ ПO ПOЛИHOMAM ЧEБЫШEBA (CHSUM1).
+            147.   E403.  CYMMA N ЧЛEHOB PAЗЛOЖEHИЯ ПO ПOЛИHOMAM ЧEБЫШEBA (ДBOЙHAЯ TOЧHOCTЬ) (CHSUM2).
+            148.   E404.  BЫЧИCЛEHИE KOЭФФИЦИEHTOB PAЗЛOЖEHИЯ ПO ПOЛИHOMAM ЧEБЫШEBA (CHCOF1).
+            149.   E405.  BЫЧИCЛEHИE KOЭФФИЦИEHTOB PAЗЛOЖEHИЯ ПO ПOЛИHOMAM ЧEБЫШEBA (ДBOЙHAЯ TOЧHOCTЬ) (CHECOF).
+            150.   E410.  BЫЧИCЛEHИE KOЭФФИЦИEHTOB KOMПЛEKCHOГO CTEПEHHOГO PЯДA (CPSC,CPSC1).
+                    F.  ДEЙCTBИЯ HAД MATPИЦAMИ,BEKTOPAMИ,PEШEHИE CИCTEM ЛИHEЙHЫX YPABHEHИЙ.TEHЗOPHЫЙ AHAЛИЗ.
+                    ----------------------------------------------------------------------------------------
+            151.   F002. ЭЛEMEHTAPHЫE OПEPAЦИИ C BEKTOPAMИ (TVADD,TVCPY,TVDIV,TVMPA,TVMPY,TVMUL,TVMULA,TVMUNA,
+                          TVRAN,TVSCA,TVSCL,TVSCS,TVSET,TVSUB,TVSUM,TVXCH(T=R,D,C)).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (LOCF - N100)
+                                        (RANF,DRANF - G900).
+            152.   F003. ЭЛEMEHTAPHЫE OПEPAЦИИ C MATPИЦAMИ (TMADD,TMBIL,TMCPY,TMMNA,TMMNS,TMMPA,TMMPS,TMMPY,TMRAN,
+                          TMSCL,TMSET,TMSUB,TMULT,TUMNA,TUMNS,TUMPA,TUMPS,TUMPY,TRSCL(T=R,D,C)).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (LOCF - N100)
+                                        (RANF,DRANF - G900).
+            153.   F004.  ПEPEMHOЖEHИE MATPИЦ (TMMLT,TMMLA,TMMLS,TMNMA,TMNMS(T=R,D,C),CMMLTC).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (LOCF - N100).
+            154.   F010.  PEШEHИE CИCTEMЫ ЛИHEЙHЫX YPABHEHИЙ, OБPAЩEHИE MATPИЦЫ (TEQN,TINV,TEQINV(T=R,D,C),F010PR).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (TFACT,TFEQN,TFINV(T=R,D,C),TMPRNT - F011).
+            155.   F011.  ДBYШAГOBAЯ ПPOЦEДYPA PEШEHИЯ MATPИЧHЫX YPABHEHИЙ, OБPAЩEHИE MATPИЦЫ,
+                           BЫЧИCЛEHИE OПPEДEЛИTEЛЯ (TFACT,TFEQN,TFINV(T=R,D,C),TMPRNT).
+            156.   F012.  PEШEHИE CИCTEM ЛИHEЙHЫX YPABHEHИЙ C ПOЛOЖИTEЛЬHO OПPEДEЛEHHOЙ CИMMETPИЧHOЙ MATPИЦEЙ
+                          (TSFACT,TSEQN,TSFEQN,TSINV,TSFINV(T=R,D,C)).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (TMPRNT - F011).
+            157.   F100.  OБPAЩEHИE MATPИЦЫ И PEШEHИE CИCTEMЫ ЛИHEЙHЫX YPABHEHИЙ (MATIN1).
+            158.   F101.  OБPAЩEHИE MATPИЦЫ И PEШEHИE CИCTEMЫ ЛИHEЙHЫX YPABHEHИЙ (ДBOЙHAЯ TOЧHOCTЬ) (MATIN2).
+            159.   F103.  ПPOГPAMMA MATPИЧHOЙ AЛГEБPЫ (MATRIX,VCHECK).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (MATIN1 - F100)
+                                        (KIM - F240)
+                                        (LINEQ1 - F401).
+            160.   F104.  OБPAЩEHИE CИMMETPИЧECKOЙ MATPИЦЫ (SYMINV).
+            161.   F105.  BPAЩEHИE TPEXMEPHOЙ ПOЛЯPHOЙ CИCTEMЫ KOOPДИHAT (POLROT).
+            162.   F106.  OБPAЩEHИE YПAKOBAHHOЙ CИMMETPИЧHOЙ MATPИЦЫ (SPXINV).
+            163.   F107.  OБPAЩEHИE CИMMETPИЧHOЙ MATPИЦЫ (SMXINV).
+            164.   F108.  ПEPEMHOЖEHИE KBAДPATHЫX KOMПЛEKCHЫX MATPИЦ (MUXMAC).
+            165.   F109.  MATPИЧHЫE YPABHEHИЯ (MXEQU,MXEQU1).
+            166.   F110.  MATPИЧHЫE OПEPAЦИИ MXPACK (MXMAD,MXMAD1,MXMAD2,MXMAD3,MXMPY,MXMPY1,MXMPY2,MXMPY3,
+                          MXMUB,MXMUB1,MXMUB2,MXMUB3,MXTRP,MXUTY,MXMLRT,MXMLTR).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (UCOPY - V301).
+            167.   F112.  MAHИПYЛЯЦИИ C TPEYГOЛЬHЫMИ И CИMMETPИЧHЫMИ MATPИЦAMИ
+                          (TR,TRAAT,TRAL,TRALT,TRAS,TRASAT,TRATA,TRATS,TRATSA,TRCHLU,
+                          TRCHUL,TRINV,TRLA,TRLTA,TRPCK,TRQSQ,TRSA,TRSAT,TRSINV,TRSMLU,TRSMUL,TRUPCK).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (VZERO - F121).
+            168.   F116.  CKAЛЯPHOE ПPOИЗBEДEHИE (DOTI).
+            169.   F117.  BEKTOPHOE ПPOИЗBEДEHИE ДBYX BEKTOPOB (CROSS).
+            170.   F118.  ПOBOPOT BEKTOPA (ROT).
+            171.   F120.  HAПPABЛЯЮЩИE KOCИHYCЫ (DIRCOS,ERDIRC).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (MXMPY - F110)
+                                        (UZERO - V300)
+                                        (UCOPY - V301).
+            172.   F121.  BEKTOPHAЯ AЛГEБPA (LVMAX,LVMAXA,LVMIN,LVMINA,
+                            VADD,VASUM,VBIAS,VBLANK,VDOT,VDOTN,VDOTN2,VFIX,VFLOAT,
+                            VEXCUM,VFILL,VLINE,VMATL,VMATR,VMAX,VMAXA,VMIN,VMINA,
+                            VMOD,VMUL,VSCALE,VSUB,VSUM,VUNIT,VZERO,VDIST,VDIST2,VCOPYN).
+            173.   F122.  ЗAЧEPKИBAHИE ЗAДAHHЫX CTPOK И CTOЛБЦOB B MATPИЦE (MATRED).
+            174.   F123.  YMHOЖEHИE ДEЙCTBИTEЛЬHЫX И KOMПЛEKCHЫX MATPИЦ
+                          (CMXPAK,RCMPY,RCMAD,RCMUB,RCMPY1,RCMAD1,RCMUB1,
+                          RCMPY2,RCMAD2,RCMUB2,RCMPY3,RCMAD3,RCMUB3,CRMPY,CRMAD,
+                          CRMUB,CRMPY1,CRMAD1,CRMUB1,CRMPY2,CRMAD2,CRMUB2,CRMPY3,
+                          CRMAD3,CRMUB3,CCMPY,CCMAD,CCMUB,CCMPY1,CCMAD1,CCMUB1,
+                          CCMPY2,CCMAD2,CCMUB2,CCMPY3,CCMAD3,CCMUB3,RRMPY,RRMAD,RRMUB,
+                          RRMPY1,RRMDA1,RRMUB1,RRMPY2,RRMAD2,RRMUB2,RRMPY3,RRMAD3,RRMUB3).
+            175.   F124.  PAЗДEЛEHИE/OБЬEДИHEHИE KOMПЛEKCHOЙ MATPИЦЫ HA EE ДEЙCTBИTEЛЬHYЮ И MHИMYЮ ЧACTИ (CXSPLT,CXJOIN).
+            176.   F150.  ПPЯMOE ИЛИ TEHЗOPHOE ПPOИЗBEДEHИE ДBYX MATPИЦ (MXDIPR).
+            177.   F202.  COБCTBEHHЫE ЗHAЧEHИЯ BEЩECTBEHHOЙ CИMMETPИЧHOЙ ЛEHTOЧHOЙ MATPИЦЫ (LRCH).
+            178.   F220.  ПAKET ПPOГPAMM ДЛЯ BЫЧИCЛEHИЯ COБCTBEHHЫX ЗHAЧEHИЙ
+                          И COБCTBEHHЫX BEKTOPOB MATPИЦ  EISPACK (BALANC,BALBAK,CBAL,
+                          CBABK2,ELMHES,TRED1,TRED2,TRBAK1,COMHES,HTRIDI,HTRIBK,HQR,
+                          HQR2,TQL1,TQL2,IMTQL1,IMTQL2,BISECT,COMLR,COMLR2,ELTRAN,TINVIT).
+            179.   F221.  BЫЧИCЛEHИE COБCTBEHHЫX ЗHAЧEHИЙ И COБCTBEHHЫX
+                          BEKTOPOB KOMПЛEKCHOЙ MATPИЦЫ OБЩEГO BИДA(EISCG1,EISCG2).
+                              BHEШHИE ПPOГPAMMЫ
+                                        (CBAL,COMHES,COMLR2,CBABK2,COMLR - F220).
+            180.   F222.  BЫЧИCЛEHИE COБCTBEHHЫX ЗHAЧEHИЙ И COБCTBEHHЫX BEKTOPOB
+                          KOMПЛEKCHOЙ ЭPMИTOBOЙ MATPИЦЫ (EISCH1,EISCH2,EISCH3, EISCH4).
+                              BHEШHИE ПPOГPAMMЫ
+                                        (HTRIDI,TQL2,HTRIBK,TQL1,BISECT,TINVIT - F220).
+            181.   F223.  BЫЧИCЛEHИE COБCTBEHHЫX ЗHAЧEHИЙ И COБCTBEHHЫX
+                          BEKTOPOB BEЩECTBEHHOЙ MATPИЦЫ OБЩEГO BИДA  (EISRG1,EISRG2).
+                              BHEШHИE ПPOГPAMM:
+                                        (BALANC,ELMHES,ELTRAN,HQR2,BALBAK,HQR - F220).
+            182.   F224.  BЫЧИCЛEHИE COБCTBEHHЫX ЗHAЧEHИЙ И COБCTBEHHЫX BEKTOPOB
+                          BEЩECTBEHHOЙ CИMMETPИЧHOЙ MATPИЦЫ(EISRS1,EISRS2,EISRS3,EISRS4).
+                              BHEШHИE ПPOГPAMMЫ
+                                        (TRED2,TQL2,TRED1,TQL1,BISECT,TINVIT,TRBAK1 - F220).
+            183.   F225.  BЫЧИCЛEHИE COБCTBEHHЫX ЗHAЧEHИЙ И COБCTBEHHЫX BEKTOPOB
+                          BEЩECTBEHHOЙ CИMMETPИЧHOЙ TPEXДИAГOHAЛЬHOЙ MATPИЦЫ (EISST1,EISST2,EISST3,EISST4).
+                              BHEШHИE ПPOГPAMMЫ
+                                        (IMTQL2,IMTQL1,BISECT,TINVIT - F220).
+            184.   F230.  ПOHИЖEHИE ПOPЯДKA MATPИЦЫ, KOГДA ИЗBECTHЫ COБCTBEHHOE
+                          ЗHAЧEHИE И COOTBETCTBYЮЩИЙ COБCTBEHHЫЙ BEKTOP  (DEFL,DEFLS,DEFLSS,SKAL).
+            185.   F240.  ПPOГPAMMA HAXOЖДEHИЯ COБCTBEHHЫX ЗHAЧEHИЙ И COБCTBEHHЫX
+                          BEKTOPOB BEЩECTBEHHOЙ CИMMETPИЧHOЙ MATPИЦЫ (KIM).
+            186.   F301.  OПPEДEЛИTEЛЬ MATPИЦЫ (DET,DDETER).
+            187.   F401.  PEШEHИE CИCTEMЫ ЛИHEЙHЫX YPABHEHИЙ (LINEQ1).
+            188.   F402.  PEШEHИE CИCTEMЫ ЛИHEЙHЫX YPABHEHИЙ C ДBOЙHOЙ TOЧHOCTЬЮ (LINEQ2).
+            189.   F404.  PEШEHИE CИCTEMЫ YPABHEHИЙ C TPEXДИAГOHAЛЬHOЙ MATPИЦEЙ (TRIDIA,TRISOL).
+                              BHEШHИE ПPOГPAMMЫ
+                                        (RNDM - V104).
+            190.   F405.  PEШEHИE ПЛOXOOБYCЛOBЛEHHЫX CИCTEM ЛИHEЙHЫX YPABHEHИЙ C ИTEPAЦИOHHЫM YTOЧHEHИEM
+                          (LINSYS,BLNC,CRT,LSOLVE,USOLVE,RSDL).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (VASUM - F121).
+            191.   F406.  PEШEHИE CИCTEMЫ ЛИHEЙHЫX YPABHEHИЙ C ЛEHTOЧHOЙ MATPИЦEЙ (RBEQN,DBEQN).
+            192.   F413.  KOMПЛEKCHЫЙ ДETEPMИHAHT, ЛИHEЙHЫE YPABHEHИЯ И OБPAЩEHИE MATPИЦЫ (CMLIN,CDOT).
+            193.   F420.  PEШEHИE CИCTEMЫ ЛИHEЙHЫX AЛГEБPAИЧECKИX YPABHEHИЙ C MATPИЦEЙ KOЭФФИЦИEHTOB TPEXДИAГOHAЛЬHOГO BИДA
+                          (PATVIL,PATERW).
+            194.   F421.  OБOБЩEHHOE HOPMAЛЬHOE PEШEHИE ЛИHEЙHOЙ AЛГEБPAИЧECKOЙ CИCTEMЫ
+                          (SILLC,REGN,TRAM,SYMIN,REML,RELAD,ANORZF,AMAXF,OUTRGN,RELADI,RPROB).
+            195.   F422.  PEШEHИE CИCTEM ЛИHEЙHЫX YPABHEHИЙ C TPEXДИAГOHAЛЬHOЙ
+                          MATPИЦEЙ METOДOM HEMOHOTOHHOЙ ПPOГOHKИ (TSYS).
+            196.   F423.  PEШEHИE БOЛЬШИX CИCTEM ЛИHEЙHЫX YPABHEHИЙ C ИCПOЛЬЗOBAHИEM BHEШHEЙ ПAMЯTИ (AGAUSS).
+            197.   F424.  PEШEHИE БOЛЬШИX CИCTEM ЛИHEЙHЫX YPABHEHИЙ C CИMMETPИЧHЫMИ MATPИЦAMИ
+                          C ИCПOЛЬЗOBAHИEM BHEШHEЙ ПAMЯTИ (SQROOT).
+            198.   F500.  ПPOГPAMMA ДЛЯ PEШEHИЯ CИCTEMЫ OДHOPOДHЫX ЛИHEЙHЫX HEPABEHCTB (LIHOIN).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (MATRIX - F103).
+            199.   F600.  PAЗЛOЖEHИE MATPИЦЫ ПO CИHГYЛЯPHЫM ЧИCЛAM (SVD,ROTATE).
+                    G.  CTATИCTИЧECKИЙ AHAЛИЗ И BEPOЯTHOCTЬ.
+                    ----------------------------------------
+            200.   G100.  BЫЧИCЛEHИE BEPOЯTHOCTИ XИ-KBAДPAT PACПPEДEЛEHИЯ (PROB).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (FREQ - C300).
+            201.   G101.  ФYHKЦИЯ, OБPATHAЯ K XИ-KBAДPAT PACПPEДEЛEHИЮ (CHISIN).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (GAUSIN - C301).
+            202.   G102.  PACПPEДEЛEHИE KOЛMOГOPOBA (PROBKL).
+            203.   G104.  BЫЧИCЛEHИE ФYHKЦИИ T-PACПPEДEЛEHИЯ BEPOЯTHOCTEЙ CTЬЮДEHTA И EE OБPATHOЙ BEЛИЧИHЫ
+                          (STUDIS,STUDIN).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (GAUSIN - C301).
+            204.   G106.  HEПOЛHAЯ ГAMMA-ФYHKЦИЯ (GAMDIS).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (ALOGAM - C341).
+            205.   G110.  PACПPEДEЛEHИE ЛAHДAY И ГEHEPAЦИЯ COOTBETCTBYЮЩИX CЛYЧAЙHЫX ЧИCEЛ (DISLAN,DINLAN).
+            206.   G111.  PACПPEДEЛEHИE BABИЛOBA И ГEHEPAЦИЯ COOTBETCTBYЮЩИX CЛYЧAЙHЫX ЧИCEЛ
+                          (DISVAV,DINVAV,COEDIS,COEDIN,VAVZRO,VAVFCN).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (SININT,COSINT - C336),
+                                        (EXPINT - C337).
+            207.   G200.  KOЭФФИЦИEHTЫ  CTЬЮДEHTA (STUDNT,DISTRB).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (SIMPS - D120).
+            208.   G900.  ГEHEPATOP PABHOMEPHO PACПPEДEЛEHHЫX CЛYЧAЙHЫX ЧИCEЛ (RANF,DRANF,RANGET,RANSET).
+            209.   G901.  CЛYЧAЙHЫE ЧИCЛA HA OKPYЖHOCTИ ИЛИ CФEPE (RAN2VS,RAN3VS,VRAN2S,VRAN3S).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (RANF - G900).
+                    N.  ПPOГPAMMЫ OTЛAДKИ.
+                    ----------------------
+            210.   N100.  AБCOЛЮTHЫЙ AДPEC ПEPEMEHHOЙ (XLOC,LOCF).
+                    S.  ПPOГPAMMЫ ДЛЯ COПPOBOЖДEHИЯ БИБЛИOTEKИ.
+                    -------------------------------------------
+            211.   S120.  ИHФOPMAЦИOHHO-CПPABOЧHAЯ CИCTEMA ДЛЯ БИБЛИOTEKИ ПPOГPAMM (DILLIB,INFLIB,R,T1,T2,EW,W,R2,PUTPUL).
+            212.   S121.  ПOЛYЧEHИE KATAЛOГA ПPOГPAMM БИБЛИOTEKИ 1 (LIB1).
+                    V.  ГEHEPATOPЫ CЛYЧAЙHЫX ЧИCEЛ И OБЩИE YTИЛИTAPHЫE ПPOГPAMMЫ.
+                    -------------------------------------------------------------
+            213.   V104.  ГEHEPATOP CЛYЧAЙHЫX ЧИCEЛ C PABHOMEPHЫM PACПPEДEЛEHИEM (RNDM,RNDM1).
+            214.   V300.  ЗACЫЛKA HYЛEЙ, ПPOБEЛOB ИЛИ ЗAДAHHOЙ BEЛИЧИHЫ B MACCИB (UBLANK,UZERO,UFILL).
+            215.   V301.  KOПИPOBAHИE MACCИBA (UCOPY,UCOPY2,UCOPIV,UCOPYN).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (XLOC - N100).
+                    Z.  CИCTEMHOЗABИCИMЫE ПPOГPAMMЫ.
+                    --------------------------------
+            216.   Z002.  TEKYЩEE BPEMЯ (TIMEZB).
+                                                     PEBИЗИЯ 15
+                                        OБЩEЙ БИБЛИOTEKИ ПPOГPAMM (OБП) БЭCM-6  25 MAЯ 1989 Г.
+                              1.  B OБП-1 BKЛЮЧEHЫ HOBЫE ПPOГPAMMЫ:
+                                  F002  ЭЛEMEHTAPHЫE OПEPAЦИИ C BEKTOPAMИ.
+                                  F003  ЭЛEMEHTAPHЫE OПEPAЦИИ C MATPИЦAMИ.
+                                  F004  ПEPEMHOЖEHИE  MATPИЦ.
+                                  F010  PEШEHИE CИCTEMЫ ЛИHEЙHЫX YPABHEHИЙ, OБPAЩEHИE MATPИЦЫ.
+                                  F011  ДBYШAГOBAЯ ПPOЦEДYPA PEШEHИЯ MATPИЧHЫX YPABHEHИЙ,
+                                        OБPAЩEHИE MATPИЦЫ, BЫЧИCЛEHИE OПPEДEЛИTEЛЯ.
+                                  F012  PEШEHИE CИCTEM ЛИHEЙHЫX YPABHEHИЙ C ПOЛOЖИTEЛЬHO
+                                        OПPEДEЛEHHOЙ CИMMETPИЧHOЙ MATPИЦEЙ.
+                              2.  B OБП-2 BKЛЮЧEHЫ HOBЫE ПPOГPAMMЫ:
+                                  M215  OПTИMAЛЬHAЯ CTEПEHЬ ДECЯTИ ДЛЯ ПEЧATИ ЧИCEЛ.
+                                  M224  PEДAKTИPOBAHИE ФOPMATA ДЛЯ ПEЧATИ BEЩECTBEHHЫX ЧИCEЛ.
+                                  V151  PACПPEДEЛEHИE CЛYЧAЙHЫX ЧИCEЛ B COOTBETCTBИИ C
+                                        OПPEДEЛEHHOЙ ПOЛЬЗOBATEЛEM ФYHKЦИEЙ.
+                                  X202  TAБЛИЦA MACC ЧACTИЦ.
+                                  X203  TAБЛИЦA ИMEH ЧACTИЦ.
+                                  Y202  HAXOЖДEHИE KAHAЛA ГИCTOГPAMMЫ.
+                              3.  B OБП-1 BKЛЮЧEHЫ HOBЫE BEPCИИ ПPOГPAMM:
+                                  C205(RZERO)  - YЛYЧШEH AЛГOPИTM.
+                                  C312(BESJY)  - ДOБABЛEHЫ BXOДЫ ДЛЯ ПOЛЬЗOBATEЛЯ DBESJ0,DBESJ1,DBESY0,DBESY1.
+                                  C313(BESIK)  - ДOБABЛEHЫ BXOДЫ ДЛЯ ПOЛЬЗOBATEЛЯ DBESI0,DBESI1,DBESK0,DBESK1,
+                                                 DEBSI0,DEBSI1,DEBSK0,DEBSK1.
+                                  G901(RAN2VS) - ДOБABЛEHЫ BXOДЫ ДЛЯ ПOЛЬЗOBATEЛЯ VRAN2S,VRAN3S.
+                              4.  B OБП-2 BKЛЮЧEHA HOBAЯ BEPCИЯ ПPOГPAMMЫ J509(CONPRT) - YЛYЧШEH AЛГOPИTM.
+                              5.  ИHДEKC ПPOГPAMMЫ X601 ИЗMEHEH HA X602 .
+                              6.  ИЗ OБП-1 ИCKЛЮЧEHЫ И ЗAПИCAHЫ B APXИB (OБП-12):
+                                  F110(MXADD,MXSUB,MXTRA,MXNTR,MXMTR,MXDMR,MXDMAR,MXDML,MXDMAL,MXDMA) - MOЖHO
+                                      ИCПOЛЬЗOBATЬ COOTBETCTBYЮЩИE ПPOГPAMMЫ ИЗ F121,F003,F004,V301.
+                                  F133(CDOT)  - PEKOMEHДYEM PAБOTATЬ C F002.
+                                  F136(CDOTC) - PEKOMEHДYEM PAБOTATЬ C F004.
+                                  F303(CINV1) - PEKOMEHДYEM PAБOTATЬ C F010.
+                              7.  ИЗ OБП-2 ИCKЛЮЧEHЫ И ЗAПИCAHЫ B APXИB (OБП-12):
+                                  M210(DEZBEL) - HE ИCПOЛЬЗYETCЯ.
+                                  M251(MINCOD) - HE ИCПOЛЬЗYETCЯ.
+                                  M408(IPACK)  - PEKOMEHДYEM PAБOTATЬ C M422.
+                                  I901(UNPAK)  - PEKOMEHДYEM PAБOTATЬ C I302.
+                              8.  OПИCAHИЯ HOBЫX ПPOГPAMM F002,F003,F004,F010,F011,F012,M215,M224,V151,X202,X203,Y202
+                                  ЗAПИCAHЫ B ИHФOPMAЦИOHHO-CПPABOЧHYЮ CИCTEMY (ИCC).
+                                                     PEBИЗИЯ 14
+                                        OБЩEЙ БИБЛИOTEKИ ПPOГPAMM (OБП) БЭCM-6  1 ДEKAБPЯ 1987 Г.
+                              1.  B OБП-1 BKЛЮЧEHЫ HOBЫE ПPOГPAMMЫ:
+                                  D151 MHOГOMEPHOE ИHTEГPИPOBAHИE ИЛИ ГEHEPAЦИЯ MHOГOMEPHЫX CЛYЧAЙHЫX TOЧEK.
+                                  D515 ПPOГPAMMA ДЛЯ POБACTHOЙ MИHИMИЗAЦИИ KBAДPATИЧHOГO ФYHKЦИOHAЛA,
+                                       HEЛИHEЙHO ЗABИCЯЩEГO OT ПAPAMETPOB.
+                                  D611 ПAKET ПPOГPAMM ДЛЯ PEШEHИЯ ИHTEГPAЛЬHЫX YPABHEHИЙ.
+                                  D612 PEШEHИE ЛИHEЙHOГO ИHTEГPAЛЬHOГO YPABHEHИЯ ФPEДГOЛЬMA 1 POДA METOДOM
+                                       POБACTHOЙ ДИCKPИПTИBHOЙ PEГYЛЯPИЗAЦИИ.
+                              2.  B OБП-2 BKЛЮЧEHЫ HOBЫE ПPOГPAMMЫ:
+                                  M108   COPTИPOBKA CTPOK MATPИЦЫ.
+                                  M506   TИП APГYMEHTA.
+                              3.  B OБП-1 BKЛЮЧEHЫ HOBЫE BEPCИИ ПPOГPAMM:
+                                  C336 (SININT,COSINT) - YЛYЧШEH AЛГOPИTM.
+                                  D509 (MINVAR)        - YЛYЧШEH AЛГOPИTM.
+                              4.  ИЗ OБП-1 ИCKЛЮЧEHЫ И ЗAПИCAHЫ B APXИB (OБП-12):
+                                  D150 (DIVON2)      - PEKOMEHДYEM PAБOTATЬ C D151.
+                                  F119 (DIST,VMODUL) - ЭTИ OПEPAЦИИ BЫПOЛHЯЮTCЯ B F121 (VDIST,VMOD).
+                              5.  B CBЯЗИ C ПEPEПOЛHEHИEM CИCTEMHOЙ TAБЛИЦЫ ИMEH OБП-1 (>1K) MЫ BOЗBPATИЛИCЬ
+                                  K ПPEЖHEMY ПPИHЦИПY PAЗДEЛEHИЯ БИБЛИOTEKИ HA 2 ЧACTИ :
+                                  1) OБП-1 - ПPOГPAMMЫ ИHДEKCOB OT A ДO G .
+                                  2) OБП-2 - ПPOГPAMMЫ ИHДEKCOB OT H ДO Z.
+                                  ИCKЛЮЧEHИE COCTABЛЯЮT ПPOГPAMMЫ Z051 - ПOЛYЧEHИE CПИCKA OБП-1 И
+                                  N100,V104,V300,V301,S110,S120,Z002, KOTOPЫE ПPИCYTCTBYЮT И B OБП-1, TAK KAK
+                                  K HИM OБPAЩAЮTCЯ ПPOГPAMMЫ ИЗ OБП-1.
+                              6.  OПИCAHИЯ HOBЫX ПPOГPAMM D151,D515,D611,D612,M108,M506 ЗAПИCAHЫ
+                                  B ИHФOPMAЦИOHHO-CПPABOЧHYЮ CИCTEMY (ИCC).
+                                                     PEBИЗИЯ 13
+                                        OБЩEЙ БИБЛИOTEKИ ПPOГPAMM (OБП) БЭCM-6 1 HOЯБPЯ 1986 Г.
+                              1.  B OБП-1 BKЛЮЧEHЫ HOBЫE ПPOГPAMMЫ: F112,G900,G901,U102.
+                              2.  B OБП-1 BKЛЮЧEHЫ HOBЫE BEPCИИ ПPOГPAMM:
+                                  C303(COMBES, - YЛYЧШEH AЛГOPИTM, ДOБABЛEH BXOД ДЛЯ
+                                       CBESJY)   ПOЛЬЗOBATEЛЯ CBESJY.
+                                                   B H И M A H И E  !
+                                                 KOЛИЧECTBO ПAPAMETPOB B OБPAЩEHИИ K C303 ИЗMEHEHO,CTAЛO 10 , A HE 9 .
+                                                 B HOBOЙ BEPCИИ:
+                                                 CALL COMBES(X,Y,ALPHA,BETA,N,BJRE,BJIM,YRE,YIM,NY)
+                                                 CALL CBESJY(X,Y,ALPHA,BETA,N,BJRE,BJIM,YRE,YIM,NY)
+                                                 HOBЫЙ ПAPAMETP NY - ФИKTИBHЫЙ ДЛЯ COMBES, ДЛЯ CBESJY CM. OПИCAHИE B ИCC.
+                                  F116(DOTI)   - HOBЫЙ AЛГOPИTM, B CTAPOЙ BEPCИИ БЫЛO EЩE TPИ ИMEHИ ДЛЯ ПOЛЬЗOBATEЛЯ.
+                                  F301(DET,    - HOBЫЙ AЛГOPИTM DET
+                                       DDETER)     B H И M A H И E  !
+                                                 KOЛИЧECTBO ПAPAMETPOB B OБPAЩEHИИ K DET ИЗMEHEHO, CTAЛO 3 , A HE 4.
+                                                 B HOBOЙ BEPCИИ:
+                                                 D=DET(A,DIM,N)
+                                                 DDETER - CTAPAЯ BEPCИЯ F311, BЫЧИCЛЯЮЩAЯ ДETEPMИHAHT C ДBOЙHOЙ TOЧHOCTЬЮ.
+                                  U101(LOREN4) - (CTAPAЯ BEPCИЯ U121).
+                                                   B H И M A H И E  !
+                                                 ПPOГPAMMA ИMEET ДPYГOE ИMЯ ДЛЯ ПOЛЬЗOBATEЛЯ И ДPYГИE
+                                                 ПO COДEPЖAHИЮ ПAPAMETPЫ.
+                                                 B HOBOЙ BEPCИИ:
+                                                 CALL LOREN4(A,B,X)
+                              3.  ИЗ OБП-1 ИCKЛЮЧEHЫ И ЗAПИCAHЫ B OБП-12 CЛEДYЮЩИE ПPOГPAMMЫ:
+                                  A403(EX66ZF) - HE ИCПOЛЬЗYETCЯ.
+                                  D101(WTS)    - PEKOMEHДYEM PAБOTATЬ C D102.
+                                  F102(LINVER) - PEKOMEHДYEM PAБOTATЬ, HAПPИMEP, C F100,F101,F405 CM. TAKЖE ДPYГИE.
+                                  F140-F147    - ЭTИ OПEPAЦИИ BЫПOЛHЯЮTCЯ B F116,F117,F120,F121.
+                                  F311(DETERM) - PEKOMEHДYEM PAБOTATЬ C F301.
+                                  M205(CSIGN)  - HE ИCПOЛЬЗYETCЯ.
+                              4.  ИHДEKC ПPOГPAMMЫ U101(CLEBSH) ИЗMEHEH HA U121.
+                              5.  CДEЛAHЫ KOPPEKЦИИ B CЛEДYЮЩИX ПPOГPAMMAX:D105,E110,W700.
+                              6.  B APXИB OБП-12 BKЛЮЧEHЫ ПPOГPAMMЫ E200(CUR1FT), E201(CUR2FT),
+                                  ЗAПИCAHHЫE KAK SUBROUTINE (ПO ПPOCЬБE ПOЛЬЗOBATEЛEЙ):
+                                        CALL CUR1FT(NIN,NOUT)
+                                        CALL CUR2FT(NIN,NOUT), ГДE
+                                        NIN  - MATEMATИЧECKИЙ HOMEP BXOДHOГO  YCTPOЙCTBA ДЛЯ CЧИTЫBAHИЯ ДAHHЫX.
+                                        NOUT - MATEMATИЧECKИЙ HOMEP BЫXOДHOГO YCTPOЙCTBA ДЛЯ BЫДAЧИ PEЗYЛЬTATA.
+                              ИHФOPMAЦИOHHO-CПPABOЧHAЯ CИCTEMA ПPИBEДEHA B COOTBETCTBИE
+                              C ДAHHOЙ PEДAKЦИEЙ БИБЛИOTEKИ.
+                              OПИCAHИЯ APXИBHOЙ БИБЛИOTEKИ OБП-12 CЛEДYET CMOTPETЬ B
+                              PAБOTAX "БИБЛИOTEKA ПPOГPAMM HA ФOPTPAHE" T.T. 1-3,4,6 OИЯИ, ДYБHA, 1974-1983 Г.Г.
+                                                     PEBИЗИЯ 12
+                                        БИБЛИOTEKИ CП БЭCM-6 1 HOЯБPЯ 1985 Г.
+                              1.  B OБCП-1 BKЛЮЧEHЫ HOBЫE ПPOГPAMMЫ: D130,D131,E230,F406,F424,G101.
+                              2.  B OБCП-1 BKЛЮЧEHЫ HOBЫE BEPCИИ ПPOГPAMM:
+                                   C206(POLY2)  - YЛYЧШEH AЛГOPИTM.
+                                                   B H И M A H И E   !
+                                                  KOЛИЧECTBO ПAPAMETPOB B OБPAЩEHИИ K C206 ИЗMEHEHO, CTAЛO 6, A HE 7.
+                                                  B HOBOЙ BEPCИИ:
+                                                  CALL POLY2(A,N,ROOT,H,MAXFUN,MODE).
+                                   E104(FINT)   - YЛYЧШEH AЛГOPИTM.
+                                   F121(VECMAN) - B ПAKET ДOБABЛEHЫ ПOДПPOГPAMMЫ:
+                                                  VCOPYN (ПEPECЫЛKA ЭЛEMEHTOB C OБPATHЫM ЗHAKOM ИЗ OДHOГO MACCИBA B ДPYГOЙ),
+                                                  VDIST2 (CYMMA KBAДPATOB PAЗHOCTEЙ ЭЛEMEHTOB ДBYX MACCИBOB),
+                                                  VDIST  (ИЗBЛEЧEHИE KOPHЯ KBAДPATHOГO ИЗ VDIST2).
+                                   I312(PRINTF) - (CTAPAЯ BEPCИЯ M257) ДOБABЛEHЫ BXOДЫ:
+                                                  PRINTL (ПEЧATAET MACCИB C TEKCTOM),
+                                                  PRNT (ПEЧATAET OTДEЛЬHЫE ЧИCЛA ПO CПИCKY).
+                              3.  B OБCП-2 BKЛЮЧEHA HOBAЯ BEPCИЯ ПPOГPAMMЫ
+                                   H100(SIMPLE) - CДEЛAHЫ HEБOЛЬШИE ИЗMEHEHИЯ B AЛГOPИTME,
+                                                  ИЗMEHEHO ИMЯ ПPOГPAMMЫ.
+                              4.  ИCKЛЮЧEHHAЯ B 1979 Г. ИЗ OБCП-1 D108(TRAPER) BHOBЬ
+                                  BKЛЮЧEHA B БИБЛИOTEKY ПO ПPOCЬБE ПOЛЬЗOBATEЛEЙ.
+                              5.  CДEЛAHЫ KOPPEKЦИИ B CЛEДYЮЩИX ПPOГPAMMAX:
+                                  C318,D106,D128,D129,D150,D221,F220,N100.
+                              6.  ИЗ OБCП-1 ИCKЛЮЧEHA ПPOГPAMMA
+                                  F403(BLEQ).  PEKOMEHДYEM PAБOTATЬ C F406.
+                              7.  ИЗMEHEHЫ ИHДEKCЫ CЛEДYЮЩИX ПPOГPAMM:
+                                        D516(MINUIL)  HA  D506,
+                                        D520(FUMILI)  HA  D510,
+                                        M255(UREAD)   HA  I310,
+                                        M256(IMPORT)  HA  I311,
+                                        M257(PRINTF)  HA  I312.
+                              8.  COЗДAH APXИB OБCП-12, KOTOPЫЙ COДEPЖИT ПPOГPAMMЫ:
+                                   A) ИCKЛЮЧEHHЫE ИЗ OБCП-1 ЗA ПEPИOД 1978-1985 Г.Г.;
+                                   Б) CTAPЫE BEPCИИ ПPOГPAMM, ECЛИ B HOBЫX ИЗMEHИЛOCЬ OБPAЩEHИE;
+                                   B) ПPOГPAMMЫ E202(LSQFIT), E204(PSI1), ЗAПИCAHHЫE KAK SUBROUTINE
+                                      (ПO ПPOCЬБE ПOЛЬЗOBATEЛEЙ):
+                                        CALL LSQFIT(NIN,NOUT)
+                                        CALL PSI1(NIN,NOUT) , ГДE
+                                      NIN  - MATEMATИЧECKИЙ HOMEP BXOДHOГO YCTPOЙCTBA ДЛЯ CЧИTЫBAHИЯ ДAHHЫX,
+                                      NOUT - MATEMATAЧECKИЙ HOMEP BЫXOДHOГO YCTPOЙCTBA ДЛЯ BЫДAЧИ PEЗYЛЬTATA.
+                              ИHФOPMAЦИOHHO-CПPABOЧHAЯ CИCTEMA (ИCC) ПPИBEДEHA
+                              B COOTBETCTBИE C ДAHHOЙ PEДAKЦИEЙ БИБЛИOTEKИ.
+                              ДOБABЛEHA ИHФOPMAЦИЯ (KЛЮЧ TEACH) O PAБOTE ИCC
+                              B PEЖИME ДИAЛOГA B OC "ДИCПAK".
+                                                    PEBИЗИЯ 11
+                                        БИБЛИOTEKИ CП БЭCM-6 1 HOЯБPЯ 1984 Г.
+                              1.  B OБCП-1 BKЛЮЧEHЫ HOBЫE ПPOГPAMMЫ: D150,F423,M103,
+                                   V105,V106,V116,V130.
+                                   OПИCAHИЯ ЭTИX ПPOГPAMM BKЛЮЧEHЫ B ИHФOPMAЦИOHHO-CПPABOЧHYЮ
+                                   CИCTEMY (ИCC).
+                              2.  B OБCП-1 BKЛЮЧEHЫ HOBЫE BEPCИИ ПPOГPAMM:
+                                   C205(RZERO)  - YЛYЧШEH AЛГOPИTM.
+                                   M101(SORTZV) - AДAПTИPOBAHA ФOPTPAHHAЯ BEPCИЯ ДЛЯ
+                                                  COPTИPOBKИ ЦEЛЫX И BEЩECTBEHHЫX ЧИCEЛ. ДЛЯ COPTИPOBKИ
+                                                  CИMBOЛOB BKЛЮЧEHA ПPOГPAMMA HA MAДЛEHE
+                                                  (ABTOP A.П.CAПOЖHИKOB).
+                              OБPAЩAEM BHИMAHИE ПOЛЬЗOBATEЛEЙ HA TO, ЧTO KOЛИЧECTBO
+                              ПAPAMETPOB B OБPAЩEHИИ K M101 HA БЭCM-6 B HACTOЯЩEM
+                              BAPИAHTE  6  (CM. OПИCAHИE B ИCC), A HE  8  .
+                              OБPAЩEHИE K M101 B HOBOЙ BEPCИИ:
+                              CALL SORTZV(A,INDEX,N,MODE,NWAY,NSORT).
+                                                   PEBИЗИЯ 10
+                                        БИБЛИOTEKИ CП БЭCM-6 1 HOЯБPЯ 1983 Г.
+                              1.  B OБCП-1 BKЛЮЧEHЫ HOBЫE ПPOГPAMMЫ: C351,D209,D703,
+                                   D704,E221,E250,F150.
+                                   OПИCAHИЯ ЭTИX ПPOГPAMM BKЛЮЧEHЫ B ИHФOPMAЦИOHHO-CПPABOЧHYЮ
+                                   CИCTEMY (ИCC).
+                              2.  ИЗ OБCП-1 ИCKЛЮЧEHЫ ПPOГPAMMЫ:
+                                   D203 - PEKOMEHДYEM PAБOTATЬ C D209,
+                                   D800 - PEKOMEHДYEM PAБOTATЬ C D704.
+                              3.  ИHДEKC ПPOГPAMMЫ C327 (FGETA) ИЗMEHEH HA C361.
+                              4.  OБPAЩAEM BHИMAHИE HA TO, ЧTO B D221 BBEДEH
+                                   ДOПOЛHИTEЛЬHЫЙ ФOPMAЛЬHЫЙ ПAPAMETP W. W - PAБOЧИЙ MACCИB
+                                   PAЗMEPHOCTИ (N,3). BЫЗOB ПPOГPAMMЫ:
+                                   CALL INSAUT(N,X,Y,H,EPS,T,R,EXTERN,W) ИЛИ
+                                   CALL INSINT(N,X,Y,H,EPS,T,R,EXTERN,W).
+                                                  PEBИЗИЯ 9
+                                        БИБЛИOTEKИ CП БЭCM-6 1 HOЯБPЯ 1982 Г.
+                              1.  B OБCП-1 BKЛЮЧEHЫ HOBЫE ПPOГPAMMЫ:C318,C319,C320,E220,E410.
+                              2.  ИЗ OБCП-1 ИCKЛЮЧEHA ПPOГPAMMA D540 - PEKOMEHДYEM
+                                   PAБOTATЬ C E220.
+                              3.  ИЗ OБCП-1 ИCKЛЮЧEHЫ ПPOГPAMMЫ, PEAЛИЗYЮЩИE KOMПЛEKCHYЮ
+                                   APИФMETИKY C БOЛЬШИM ДИAПAЗOHOM ПOPЯДKOB(CM.Г.Л.MAЗHЫЙ
+                                   -PEAЛИЗAЦИЯ KOMПЛEKCHOЙ APИФMETИKИ C БOЛЬШИM ДИAПAЗOHOM
+                                   ПOPЯДKOB HA ЭBM БЭCM-6  - OИЯИ 11-8667, ДYБHA, 1975 Г.) И
+                                   ЗAПИCAHЫ B PERSONAL LIBRARY. ДЛЯ PAБOTЫ C ПPOГPAMMAMИ
+                                   C325 И E410 HEOБXOДИMO ЗAKAЗATЬ B YПPABЛЯЮЩИX KAPTAX:
+                                        *DISC:667-SYSTEM,BESM6
+                                        *FILE:LTEST,31,R
+                                        *PERSO:31010
+                              4.  B COOTBETCTBИИ C БИБЛИOTEKOЙ ЦEPH ИMЯ ПPOГPAMMЫ
+                                   MULLRC(C204) ИЗMEHEHO HA MULLER.
+                              5.  CДEЛAHЫ HOBЫE OПИCAHИЯ ПPOГPAMM И BKЛЮЧEHЫ B ИCC C316,
+                                   C326,C332,C400,D125,D205,D207,D600,E204,E205,E209,
+                                   E402-E403,E404-E405,F103,F403.
+                                   ПOДPOБHЫE OПИCAHИЯ K ЭTИM ПPOГPAMMAM ЛИKBИДИPOBAHЫ, T.K.
+                                   HOBЫE OПИCAHИЯ COДEPЖAT ПOЛHYЮ ИHФOPMAЦИЮ ПO ИCПOЛЬЗOBAHИЮ
+                                   ЭTИX ПPOГPAMM.
+                                                  PEBИЗИЯ 8
+                                        БИБЛИOTEKИ CП БЭCM-6 1 HOЯБPЯ 1981 Г.
+                              1.  B OБCП-1 BKЛЮЧEHЫ HOBЫE ПPOГPAMMЫ:D521,F500,F600,
+                                   J530,U500
+                                   ПPOГPAMMЫ F110-F115 OБЬEДИHEHЫ B OДHY ПOД ИHДEKCOM F110.
+                              2.  ИHДEKC ПPOГPAMMЫ F240 ИЗMEHEH HA F220(EISPACK),
+                                   A  V101  HA  V104(RNDM) .
+                                   ПPOГPAMMЫ OИЯИ KIM И COPLOT БYДYT ИMETЬ ИHДEKCЫ
+                                   COOTBETCTBEHHO F240 И J531.
+                              3.  CДEЛAHЫ HOBЫE OПИCAHИЯ ПPOГPAMM И BKЛЮЧEHЫ B ИCC
+                                     D103,D400,D701,F401-F402.
+                                   ПOДPOБHЫE  OПИCAHИЯ  K  ПEPEЧИCЛEHHЫM  ПPOГPAMMAM
+                                   ЛИKBИДИPOBAHЫ, T.K. HOBЫE OПИCAHИЯ COДEPЖAT ПOЛHYЮ
+                                   ИHФOPMAЦИЮ ПO ИCПOЛЬЗOBAHИЮ ЭTИX ПPOГPAMM.
+                                                  PEBИЗИЯ 7
+                                        БИБЛИOTEKИ CП БЭCM-6 1 HOЯБPЯ 1980Г.
+                              1.  B OБCП-1 BKЛЮЧEHЫ HOBЫE ПPOГPAMMЫ-C301,C349,C350,
+                                   E106,E255,F223,F230,F405,G104,G106,V110,V111,V112,V150,
+                                   OПИCAHИЯ KOTOPЫX BKЛЮЧEHЫ B ИCC.
+                              2.  B OБCП-2 BKЛЮЧEHЫ HOBЫE ПPOГPAMMЫ-X401,Z054,OПИCAHИЯ
+                                   KOTOPЫX CM. B ИCC.
+                              3.   ИCKЛЮЧEHЫ CЛEДYЮЩИE ПPOГPAMMЫ:
+                                   D201 - PEKOMEHДYEM PAБOTATЬ C D203-D208,
+                                   D202 - PEKOMEHДYEM PAБOTATЬ C D203-D208,
+                                   E101 - PEKOMEHДYEM PAБOTATЬ C E106,
+                                   E200 - PEKOMEHДYEM PAБOTATЬ C E201,
+                                   E406,
+                                   F200 - PEKOMEHДYEM PAБOTATЬ C F223,
+                                   F201 - PEKOMEHДYEM PAБOTATЬ C F223,
+                                   M203,
+                                   M204,
+                                   Q830 - PEKOMEHДYEM PAБOTATЬ C PEДAKTOPOM EDIT.
+                              4.   ПPOГPAMMЫ C204 И C220 OБЬEДИHEHЫ B OДHY
+                                   ПPOГPAMMY C ИHДEKCOM C204.
+                              5.   ПPOГPAMMЫ F311 И F320 OБЬEДИHEHЫ B OДHY
+                                   ПPOГPAMMY C ИHДEKCOM F311.
+                              6.   B COOTBETCTBИИ C БИБЛИOTEKOЙ ЦEPH ИHДEKC ПPOГPAMMЫ
+                                   M258 ИЗMEHEH HA I302.
+                              7.   ПPOГPAMMA S120 (DILLIB,INFLIB) HAXOДИTCЯ И HA
+                                   OБCП-1 И HA OБCП-2.
+                              8.   ПPOГPAMMA Z051(LIB1) ПEPEHECEHA ИЗ OБCП-2 B OБCП-1.
+                              9.   ПPOГPAMMЫ K100,K403,K405, ЗAПИCAHHЫE B OБCП-2,
+                                   BKЛЮЧEHЫ И B OБCП-1.
+                              10.  B ПPOГPAMME K100 ИMЯ CLEAR ЗAMEHEHO HA FSWOP
+                                   (T.K. CLEAR ИMEETCЯ B T110).
+                                                  PEBИЗИЯ 6
+                                        БИБЛИOTEKИ CП БЭCM-6  1 HOЯБPЯ 1979Г.
+                              1.  B OБCП-1 BKЛЮЧEHЫ HOBЫE ПPOГPAMMЫ:D701,F221,F222,
+                                   F224,F225,F240,F404,G102,G110,G111.
+                              2.   ИCKЛЮЧEHЫ CЛEДYЮЩИE ПPOГPAMMЫ:
+                                   A500
+                                   C202 - PEKOMEHДYEM PAБOTATЬ C C206.
+                                   D108 - MOЖHO PAБOTATЬ,HAПPИMEP, C D103.
+                                   D500 - PEKOMEHДYEM PAБOTATЬ C D516.
+                                   D504 - PEKOMEHДYEM PAБOTATЬ C D516.
+                                   D505 - PEKOMEHДYEM PAБOTATЬ C D516.
+                                   F203 - PEKOMEHДYEM PAБOTATЬ C F221.
+                                                  PEBИЗИЯ 5
+                                        БИБЛИOTEKИ CП БЭCM-6  1 HOЯБPЯ 1978Г.
+                              1.  ЗAПИCAHЫ HOBЫE ПPOГPAMMЫ:D702,M258.
+                              2.  ЗAПИCAHA HOBAЯ BEPCИЯ ПPOГPAMMЫ C400.  B HEЙ
+                                   ИЗMEHИЛOCЬ KOЛИЧECTBO ПAPAMETPOB ПO CPABHEHИЮ C BEPCИEЙ
+                                   OT 1 HOЯБPЯ 1977ГOДA, T. E. OБPAЩEHИE БYДET:
+                                   CALL NEWTON(X,F,N,DF,NDIM1,NDIM2,HNSQ,FNORM,MAXIT,IFAIL).
+                                   OПИCAHИE HOBOЙ BEPCИИ ПPOГPAMMЫ C400 BHECEHO B
+                                   ИHФOPMAЦИOHHO-CПPABOЧHYЮ CИCTEMY (ИCC).
+                              3.  ИCKЛЮЧEHA ПPOГPAMMA D506(MINUIS), PEKOMEHДYEM
+                                   PAБOTATЬ C D516(MINUIL).
+                                                  PEBИЗИЯ 4
+                                        БИБЛИOTEKИ CП БЭCM-6  1 HOЯБPЯ 1977Г.
+                              1.  ЗAПИCAHЫ HOBЫE ПPOГPAMMЫ:C220,C327,D127,D128,
+                                   D129,F320,K453,M450,S120.
+                              2.   ЗAПИCAHЫ HOBЫE BEPCИИ ПPOГPAMM:
+                                   A)B F102 ИЗMEHИЛOCЬ KOЛИЧECTBO ПAPAMETPOB B OБPAЩEHИИ
+                                     ПO CPABHEHИЮ C BEPCИEЙ 1 HOЯБPЯ 1976ГOДA,T.E. OБPAЩEHИE
+                                     БYДET TAKOE ЖE,KAK B BAPИAHTE CERN:CALL LINVER(A,B,X,N,
+                                     M,DET,IEX,CNR,SING,KA,SCR1,SCR2,SCR3,SCR4,SCR5,SCR6).
+                                   Б)F101,F402-ИЗMEHEHЫ AЛГOPИTMЫ C YЧETOM OCOБEHHOCTEЙ
+                                     ЭBM-БЭCM-6.
+                                                  PEBИЗИЯ 3
+                                        БИБЛИOTEKИ CП БЭCM-6 1 HOЯБPЯ 1976Г.
+                              1.  ЗAПИCAHЫ HOBЫE ПPOГPAMMЫ:C231,K452,M257,S110.
+                              2.  ЗAПИCAHA HOBAЯ BEPCИЯ ПPOГPAMMЫ M101(OБPAЩATЬCЯ
+                                   ПO-CTAPOMY).
+                              ЗAMEЧAHИЯ: 1)HAПOMИHAEM ПOЛЬЗOBATEЛЯM,ЧTO C 30HOЯБPЯ
+                                           1973Г. ЗAПИCAHA HOBAЯ BEPCИЯ F104(SYMINV),ИMEЮЩAЯ 5
+                                           ПAPAMETPOB(CTAPAЯ BEPCИЯ ИMEЛA 3 ПAPAMETPA).
+                                         2)HA TEKCTOBOЙ ЛEHTE ПPOГPAMMA M412 ИMEETCЯ B ДBYX
+                                           BAPИAHTAX:
+                                             A)C TAБЛИЦEЙ KOДOB CИMBOЛOB БЭCM-6(KAK HA OБCП-1).
+                                             Б)C TAБЛИЦEЙ KOДOB CИMBOЛOB CDC.
+                                                  PEBИЗИЯ 2
+                                        БИБЛИOTEKИ CП БЭCM-6 1 HOЯБPЯ 1975Г.
+                              1.  ЗAПИCAHA HOBAЯ ПPOГPAMMA D126 B OБCП-1.
+                              2.  ЗAПИCAHЫ HOBЫE BEPCИИ ПPOГPAMM:C316,C326-CДEЛAHЫ
+                                  HEKOTOPЫE ИЗMEHEHИЯ,BBEДEHA ДBOЙHAЯ TOЧHOCTЬ(OБPAЩATЬCЯ
+                                  ПO-CTAPOMY),M409-ЗAПИCAH ABTOKOДHЫЙ BAPИAHT ПPOГPAMMЫ.
+                                                  PEBИЗИЯ 1
+                                        БИБЛИOTEKИ CП БЭCM-6 1 MAЯ 1975 ГOДA.
+                              1.  ЗAПИCAHЫ HOBЫE ПPOГPAMMЫ:
+                                   B OБCП-1:D610,F422,J551,M251,M256,M415,M416.
+                                   B OБCП-2:K101,T110,W601.
+                              2.  ЗAПИCAHЫ HOBЫE BEPCИИ ПPOГPAMM:
+                                   A)C325-CДEЛAHЫ HEKOTOPЫE ИЗMEHEHИЯ B CBЯЗИ C ПPИMEHEHИEM
+                                     KOMПЛEKCHOЙ APИФMETИKИ PACШИPEHHOГO ДИAПAЗOHA(CM.OПИCAHИE).
+                                   B)C333-HOBAЯ BEPCИЯ ЦEPH(OБPAЩATЬCЯ ПO-CTAPOMY).
+                                   C)M-250-ЗAПИCAH HOBЫЙ BAPИAHT ПPOГPAMMЫ(OБPAЩATЬCЯ
+                                     ПO-CTAPOMY).
+                                   D)M419-ПOЛHOCTЬЮ ЗAПИCAHA BEPCИЯ ЦEPH(ДOБABЛEH BXOД LEFT).
+                              3.  ПPOГPAMMЫ H100,K100,K403,K405,K450,K508 ПEPEHECEHЫ
+                                   ИЗ OБCП-1 B OБCП-2.
+                              4.  ПPOГPAMMЫ D500,D504,D505,D516 ПEPEHECEHЫ ИЗ OБCП-2
+                                   B OБCП-1.
+                              5.  OБCП-4 AHHYЛИPOBAHA, ПPOГPAMMЫ GENERAL SECTION B
+                                   OБCП-1 И B OБCП-2.
+                              6.  J-530-ИCПPABЛEH CTAHДAPTHЫЙ MACCИB HA OБCП-1.                      KATAЛOГ OБЩEЙ БИБЛИOTEKИ ПPOГPAMM (OБП-1) БЭCM-6          25 MAЯ 1989 Г.
+                     -------------------------------------------------
+                    A.  APИФMETИЧECKИE ПPOГPAMMЫ.
+                    -----------------------------
+              1.   A200.  KOMПЛEKCHAЯ APИФMETИKA C ДBOЙHOЙ TOЧHOCTЬЮ
+                          (DPCPLX,DREAL,DAIMAG,DCABS,DCMPLX,DCONJG,DCADD,
+                          DCSUB,DCMPY,DCDIV,DCSQRT,DCEXP,DCLOG,DCSIN,DCCOS).
+              2.   A400.  48-PAЗPЯДHAЯ БYЛEBAЯ APИФMETИKA (AND,OR,COMPL,OCTAL,BOOL,HOLITH).
+              3.   A401.  ЛOГИЧECKOE TOЖДECTBO (IDENZB).
+              4.   A402.  CPABHEHИE ДBYX 48-PAЗPЯДHЫX CЛOB (SAME).
+              5.   A404.  ЛOГИЧECKOE ПPOИЗBEДEHИE И CYMMA ДBYX БYЛEBCKИX ФYHKЦИЙ ДEЙCTBИTEЛЬHOГO ПEPEMEHHOГO (ANDOR).
+                    B.  ЭЛEMEHTAPHЫE ФYHKЦИИ.
+                    -------------------------
+              6.   B101.  APKTAHГEHC (ATG).
+              7.   B102.  ПPИBEДEHИE YГЛA K ЗAДAHHOMY ИHTEPBAЛY (PROXIM).
+              8.   B200.  BЫЧИCЛEHИE ГИПEPБOЛИЧECKИX ФYHKЦИЙ
+                          (DCOSH,DSICOH,DSINH,SICOH,COSH,SINH).
+              9.   B400.  ГEHEPATOP CTEПEHHOГO PЯДA  (POWEZE).
+                    C.  ПOЛИHOMЫ И CПEЦИAЛЬHЫE ФYHKЦИИ.
+                    -----------------------------------
+             10.   C100.  ПOЛИHOMИAЛЬHAЯ ФYHKЦИЯ (POLY).
+             11.   C101.  HAXOЖДEHИE PЯДA ШTYPMA И ИHДEKCA ШTYPMA
+                          (CHAIM,STURM,STURMO,EUKLID,PORM,DIFPOL,DEBUG,HORNER,POLDIV).
+             12.   C110.  ПPOИЗBEДEHИE ПOЛИHOMOB (ABMNS).
+             13.   C201.  KOPHИ KYБИЧECKOГO YPABHEHИЯ (ДBOЙHAЯ TOЧHOCTЬ) (DDVETA).
+             14.   C203.  ЧИCЛO HYЛEЙ KOMПЛEKCHOЙ ФYHKЦИИ (NZEROS,NEAR1,PREP6).
+             15.   C204.  HAXOЖДEHИE KOPHEЙ MHOГOЧЛEHA (MULLER,MULLRD).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (DCADD,DCDIV,DCMPY,DCONJG,DCSUB - A200).
+             16.   C205.  HYЛЬ ФYHKЦИИ OДHOЙ ПEPEMEHHOЙ (RZERO).
+             17.   C206.  KOPHИ KOMПЛEKCHЫX ПOЛИHOMOB(POLY2,CIRCLE,DEFLAT,VP).
+             18.   C230.  HYЛИ ФYHKЦИЙ БECCEЛЯ J0,J1,Y0,Y1 (ZBESJ0,ZBESJ1,ZBESY0, ZBESY1,ZBESJY).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (BESJY - C312).
+             19.   C231.  ИЗBЛEЧEHИE KYБИЧECKOГO KOPHЯ (CBRT).
+             20.   C300.  ФYHKЦИЯ OШИБOK И ФYHKЦИЯ HOPMAЛЬHOГO PACПPEДEЛEHИЯ (ERF,FREQ,ERFC,ERFXX).
+             21.   C301.  ФYHKЦИЯ, OБPATHAЯ ФYHKЦИИ HOPMAЛЬHOГO PACПPEДEЛEHИЯ (GAUSIN).
+             22.   C302.  ФYHKЦИИ БECCEЛЯ HYЛEBOГO И ПEPBOГO ПOPЯДKA (BESSEL).
+             23.   C303.  ФYHKЦИИ БECCEЛЯ KOMПЛEKCHOГO APГYMEHTA И ПOPЯДKA
+                          (COMBES,CBESJY,COMBMN,COMEXP,COMLOG,CCOSH,COMFAC,HANKEL,
+                          JNORM,JRECUR,JSUM,LOGGAM,NEGN,START1,XTEST,YTEST,YKNU,JRECUR,YSUM,YZERO,YGNU,YGREC1).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (SINH,COSH - B200).
+             24.   C304.  ДИЛOГAPИФMИЧECKAЯ ФYHKЦИЯ (DILOG).
+             25.   C305.  ГAMMA-ФYHKЦИЯ (GAMMA).
+             26.   C306.  KOMПЛEKCHAЯ ГAMMA-ФYHKЦИЯ (CGAMMA,ZFACT).
+             27.   C307.  ДИГAMMA (PSI) ФYHKЦИЯ KOMПЛEKCHOГO APГYMEHTA (CDIGAM,PSIFN).
+             28.   C308.  ПOЛHЫE ЭЛЛИПTИЧECKИE ИHTEГPAЛЫ  K И E (ELLICK,ELLICE).
+             29.   C309.  ИHTEГPAЛ ФPEHEЛЯ (FRECS,FRICS).
+             30.   C310.  OTHOШEHИE KOMПЛEKCHЫX ГAMMA-ФYHKЦИЙ (CRAGAM,RGAM).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (CLOGAM - C333).
+             31.   C311.  ФYHKЦИИ ЛEЖAHДPA (LEGFN,LEGZ,LEG1,LEGV,TRDZ,HYPGM,CRIT,NINT,CSQRTK,CLOGOK,LEGOR).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (PSIFN - C307)
+                                        (RGAM - C310).
+             32.   C312.  ФYHKЦИИ БECCEЛЯ J0,J1,Y0,Y1 (BESJY,BESJ0,BESJ1,BESY0,BESY1,DBESJ0,DBESJ1,DBESY0,DBESY1).
+             33.   C313.  MOДИФИЦИPOBAHHЫE ФYHKЦИИ БECCEЛЯ I0,I1,K0,K1
+                          (BESIK,BESI0,BESI1,BESK0,BESK1,EBESI0,EBESI1,EBESK0,EBESK1,
+                          DBESI0,DBESI1,DBESK0,DBESK1,DEBSI0,DEBSI1,DEBSK0,DEBSK1).
+             34.   C314.  TЭTA-ФYHKЦИИ И ЭЛЛИПTИЧECKИE ФYHKЦИИ ЯKOБИ (THETA1,THETA2,THETA3,THETA4,QFUNCT).
+             35.   C315.  ПPИCOEДИHEHHЫЙ ПOЛИHOM ЛEЖAHДPA (ALEGF).
+             36.   C316.  PEГYЛЯPHAЯ BOЛHOBAЯ ФYHKЦИЯ KYЛOHA (COUL1).
+             37.   C317.  ДИГAMMA (PSI) ФYHKЦИЯ (ADIGAM).
+             38.   C318.  ЭЛЛИПTИЧECKИE ФYHKЦИИ ЯKOБИ SN,CN,DN (ELFUN).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (DSINH - B200).
+             39.   C319.  HEПOЛHЫЙ ЭЛЛИПTИЧECKИЙ ИHTEГPAЛ ПEPBOГO POДA (ELIN1).
+             40.   C320.  KOMПЛEKCHЫE ЭЛЛИПTИЧECKИE ФYHKЦИИ ЯKOБИ SN,CN,DN (CELFUN).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (DSINH - B200).
+             41.   C322.  ГAMMA-ФYHKЦИЯ C ДBOЙHOЙ TOЧHOCTЬЮ (DGAMMA)
+             42.   C323.  OБOБЩEHHЫE ПOЛИЛOГAPИФMЫ (GPLOG).
+             43.   C324.  KOMПЛEKCHЫE ЗHAЧEHИЯ OБOБЩEHHЫX ПOЛИЛOГAPИФMOB (CGPLOG).
+             44.   C325.  ФYHKЦИЯ YИTTEKEPA (WHIT,BEWW,BOUND,T).
+                              ИCПOЛЬЗYETCЯ KOMПЛEKCHAЯ APИФMETИKA
+                               PACШИPEHHOГO ДИAПAЗOHA (CM. ИCC, KЛЮЧ "ARIF").
+             45.   C326.  BOЛHOBЫE ФYHKЦИИ KYЛOHA (COUL2).
+             46.   C329.  MOДИФИЦИPOBAHHЫE ФYHKЦИИ БECCEЛЯ I(X) C ДBOЙHOЙ TOЧHOCTЬЮ (DBESIN).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (DGAMMA - C322).
+             47.   C330.  ФYHKЦИИ БECCEЛЯ J(X) C ДBOЙHOЙ TOЧHOCTЬЮ (DBESJN).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (DGAMMA - C322).
+             48.   C332.  KOMПЛEKCHЫE ФYHKЦИИ БECCEЛЯ J(Z) C ДBOЙHOЙ TOЧHOCTЬЮ (DBESCJ).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (DGAMMA - C322).
+             49.   C333.  ЛOГAPИФM KOMПЛEKCHOЙ ГAMMA-ФYHKЦИИ (CLOGAM).
+             50.   C335.  KOMПЛEKCHAЯ ФYHKЦИЯ OШИБOK (CWERF).
+             51.   C336.  ИHTEГPAЛЬHЫЙ CИHYC И KOCИHYC (SININT,COSINT).
+             52.   C337.  ЭKCПOHEHЦИAЛЬHЫЙ ИHTEГPAЛ (EXPINT).
+             53.   C338.  ФYHKЦИЯ ФEPMИ-ДИPAKA (FERDIR).
+             54.   C339.  ИHTEГPAЛ ДABCOHA (DAWSON).
+             55.   C340.  MOДИФИЦИPOBAHHЫE ФYHKЦИИ БECCEЛЯ I,K ПOPЯДKA 1/3 , 2/3 (BSIKR3,EBSIR3,BSKR3,EBSKR3,BSIR3).
+             56.   C341.  ЛOГAPИФM ГAMMA-ФYHKЦИИ (ALOGAM).
+             57.   C342.  ФYHKЦИИ CTPYBE H0,H1 (STRH0,STRH1).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (BESJY - C312).
+             58.   C349.  БЫCTPOE HAXOЖДEHИE CИHYC И KOCИHYC-OБPAЗA ФYPЬE OT
+                          ЭKCПOHEHЦИAЛЬHO YБЫBAЮЩEЙ ФYHKЦИИ(SFUSIN,SFUCOS,FUC,FUS).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (GAUSS - D103)
+                                        (CAUCHY - D104).
+             59.   C350.  ЭKCПOHEHЦИAЛЬHЫЙ ИHTEГPAЛ OT KOMПЛEKCHOГO APГYMEHTA
+                          (EXPE1Z,EXPEIZ,SFUTR1,FU1,SFUTRI,FUI).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (GAUSS - D103),
+                                        (GAUCHY - D104).
+             60.   C351.  ФYHKЦИИ ЭЙPИ AI(X),BI(X) (AIRY).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (DBESJN - C330).
+             61.   C360.  ГИПEPГEOMETPИЧECKAЯ ФYHKЦИЯ - CПEЦ. CЛYЧAЙ (H2F1).
+             62.   C361.  ПOДПPOГPAMMA ДЛЯ BЫЧИCЛEHИЯ KYЛOHOBCKИX ФYHKЦИЙ(FGETA).
+             63.   C368.  HEПOЛHЫE ЭЛЛИПTИЧECKИE ИHTEГPAЛЫ (ELPHIK).
+             64.   C400.  PEШEHИE CИCTEMЫ HEЛИHEЙHЫX YPABHEHИЙ (NEWTON).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (MATIN1 - F100).
+             65.   C401.  PEШEHИE CИCTEM HEЛИHEЙHЫX YPABHEHИЙ HA OCHOBE PEГYЛЯPИЗOBAHHЫX
+                          ИTEPAЦИOHHЫX ПPOЦECCOB ГAYCCA-HЬЮTOHA (COMPIL).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (SILLC,REGN,OUTRGN,TRAM,AMAXF,ANQRZF - F421).
+                    D.  OПEPAЦИИ HAД ФYHKЦИЯMИ И PEШEHИE ДИФФEPEHЦИAЛЬHЫX И  ИHTEГPAЛЬHЫX YPABHEHИЙ.
+                    --------------------------------------------------------------------------------
+             66.   D100.  ИHTEГPИPOBAHИE ПO CИMПCOHY (ARSIMP).
+             67.   D102.  ИHTEГPИPOBAHИE ПO ГAYCCY (GAUSS1).
+             68.   D103.  ИHTEГPИPOBAHИE ПO ГAYCCY (GAUSS,GAUSS2).
+             69.   D104.  ИHTEГPИPOBAHИE B CMЫCЛE ГЛABHOГO ЗHAЧEHИЯ ПO KOШИ (CAUCHY).
+             70.   D105.  ИHTEГPИPOBAHИE ПO ПOBEPXHOCTИ,ЗAДAHHOЙ TPEYГOЛЬHИKOM (TRIINT).
+             71.   D106.  N-TOЧEЧHAЯ KBAДPATYPA ГAYCCA (GQUAD,GSET).
+             72.   D108.  ИHTEГPИPOBAHИE ПO ФOPMYЛE TPAПEЦИЙ C AHAЛИЗOM OШИБOK (TRAPER).
+             73.   D109.  ИHTEГPИPOBAHИE ПO ГAYCCY C ДBOЙHOЙ TOЧHOCTЬЮ (DGAUSS).
+             74.   D110.  OCHOBHAЯ ПPOГPAMMA ДЛЯ BЫЧИCЛEHИЯ ИHTEГPAЛOB (GPINSP).
+             75.   D111.  OCHOBHAЯ ПPOГPAMMA ИHTEГPИPOBAHИЯ C ДBOЙHOЙ TOЧHOCTЬЮ (GPINDP).
+             76.   D113.  ИHTEГPAЛ ФYHKЦИИ KOMПЛEKCHOЙ ПEPEMEHHOЙ ПO ДYГE (CGAUSS).
+             77.   D114.  MHOГOMEPHOE ИHTEГPИPOBAHИE ПO MOHTE-KAPЛO (RIWIAD).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (RNDM - V104),
+                                        (XLOC - N100).
+             78.   D1141. MHOГOMEPHOE ИHTEГPИPOBAHИE ПO MOHTE-KAPЛO (RIWIA,STD114).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (RNDM - V104),
+                                        (XLOC - N100).
+             79.   D115.  ИHTEГPИPOBAHИE ПO KЛEHШAY-KYPTИCY C ДBOЙHOЙ TOЧHOCTЬЮ
+                          (CHEBQU,DATZ1,DATZ2,DATZ3,DATZ4,DATZ5,DATZ6,DATZ7,DATZ8,DATZ9,DATZ10,DATZ11).
+             80.   D120.  ИHTEГPИPOBAHИE ПO CИMПCOHY C ABTOMATИЧECKИM BЫБOPOM ШAГA C ЗAДAHHOЙ TOЧHOCTЬЮ
+                          (SIMPS,SIMPT,SIMPU,SIMPV,SIMPW).
+             81.   D121.  BЫЧИCЛEHИE KPATHЫX ИHTEГPAЛOB METOДOM KOPOБOBA (MIKOR,DATKOR,INKOR,PERIOD,MITIME).
+             82.   D122.  BЫЧИCЛEHИE N OПPEДEЛEHHЫX ИHTEГPAЛOB ПO CИMПCOHY (GROUPI).
+             83.   D123.  ИHTHГPИPOBAHИE ПO CИMПCOHY C PABHOMEPHЫM ШAГOM (ERSIMP).
+             84.   D124.  ИHTEГPИPOBAHИE METOДOM ГAYCCA-KPOHPOДA (KGAUSS).
+             85.   D125.  ИHTEГPИPOBAHИE OCЦИЛЛИPYЮЩИX ФYHKЦИЙ (ELON).
+             86.   D126.  ИHTEГPИPOBAHИE B CMЫCЛE ГЛABHOГO ЗHAЧEHИЯ ПPИ HAЛИЧИИ Y ПOДЫHTEГPAЛЬHOЙ ФYHKЦИИ
+                          ПOЛЮCOB ПEPBOГO ПOPЯДKA, ПOЛOЖEHИE KOTOPЫX BHYTPИ ИHTEPBAЛA ИHTEГPИPOBAHИЯ ЗAPAHEE HEИЗBECTHO (VPINT).
+             87.   D127.  ИHTEГPИPOBAHИE KOMПЛEKCHOЙ ФYHKЦИИ ДEЙCTBИTEЛЬHOЙ ПEPEMEHHOЙ METOДOM CИMПCOHA
+                          C PABHOMEPHЫM ШAГOM (CSIMPS).
+             88.   D128.  ИHTEГPИPOBAHИE KOMПЛEKCHOЙ ФYHKЦИИ ДEЙCTBИTEЛЬHOЙ ПEPEMEHHOЙ (CKGAUS).
+             89.   D129.  ИHTEГPИPOBAHИE OCЦИЛЛИPYЮЩИX KOMПЛEKCHЫX ФYHKЦИЙ OT ДEЙCTBИTEЛЬHOЙ ПEPEMEHHOЙ (CELON).
+             90.   D130.  ИHTEГPИPOBAHИE OCЦИЛЛИPYЮЩИX ФYHKЦИЙ HA ПOЛYБECKOHEЧHOM ИHTEPBAЛE (SUMIR).
+             91.   D131.  ИHTEГPИPOBAHИE KOMПЛEKCHЫX OCЦИЛЛИPYЮЩИX ФYHKЦИЙ HA ПOЛYБECKOHEЧHOM ИHTEPBAЛE (CSUMIR).
+             92.   D151.  MHOГOMEPHOE ИHTEГPИPOBAHИE ИЛИ ГEHEPAЦИЯ MHOГOMEPHЫX CЛYЧAЙHЫX TOЧEK
+                          (PARTN,INTGRL,USRINT,GENPNT,RANGEN,TREDMP,BUKDMP,USRTRM,DIVON,DVNOPT,DVNBKD,EXMBUC,
+                          SPLIT,QUASI,RECPAR,BOUNDS,TREAUD,NODAUD,BUCMVE,QUAD,FEQN,NOCUT,TSTEXT,DELSLV,FUN,
+                          BUFOPT,BNDOPT,SETTOL,BNDTST,DVCOPY,GRDCMP,DELETE,BFGS,MODCHL,NMDCHL,DVDOT,LDLSOL,SHRNK,
+                          FEASMV,ADDBND,MULCHK,DELBND,LOCSCH,MXSTEP,NEWPTR,RLEN,RANUMS,ORTHVC).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (UCOPY - V301).
+             93.   D204.  ИHTEГPИPOBAHИE CИCTEMЫ ДИФФEPEHЦИAЛЬHЫX YPABHEHИЙ (DFEQS1 ).
+             94.   D205.  ИHTEГPИPOBAHИE CИCTEMЫ ДИФФEPEHЦИAЛЬHЫX YPABHEHИЙ METOДOM "ПPEДCKAЗAHИE-KOPPEKЦИЯ" (DFEQS2).
+             95.   D206.  ИHTEГPИPOBAHИE CИCTEMЫ ДИФФEPEHЦИAЛЬHЫX YPABHEHИЙ METOДOM HOPCИKA (NORSIK).
+             96.   D207.  ИHTEГPИPOBAHИE CИCTEMЫ OБЫKHOBEHHЫX ДИФФEPEHЦИAЛЬHЫX YPABHEHИЙ ПEPBOГO ПOPЯДKA METOДOM
+                          ЭKCTPAПOЛЯЦИИ C ПEPEMEHHЫM ШAГOM (BULSTO).
+             97.   D208.  ИHTEГPИPOBAHИE ПO MEPCOHY (MERSON).
+             98.   D209.  ИHTEГPИPOBAHИE CИCTEMЫ ДИФФEPEHЦИAЛЬHЫX YPABHEHИЙ METOДOM PYHГE-KYTTA (RKSTP,DRKSTP).
+             99.   D221.  ИHTEГPИPOBAHИE CИCTEMЫ ДИФФEPEHЦИAЛЬHЫX YPABHEHИЙ
+                          C ABTOMATИЧECKИM BЫБOPOM  ШAГA (INSAUT,VRLTV,INSINT).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (RKSTP - D209).
+            100.   D300.  PEШEHИE KBAЗИЛИHEЙHЫX ДИФФEPEHЦИAЛЬHЫX YPABHEHИЙ B ЧACTHЫX ПPOИЗBOДHЫX ЭЛЛИПTИЧECKOГO TИПA
+                          BTOPOГO ПOPЯДKA METOДOM ПOCЛEДOBATEЛЬHЫX CBEPXPEЛAKCAЦИЙ
+                          (EPDE1,SEGMT1,FNDBPS,SORT,LOCAT,ININ,JEJE,CEJE,FXORFL,CHECK,
+                          MAKTAB,DECC,ITRATE,CHAIN,DARRAY,RDDRUM,WRRD,WRDRUM).
+            101.   D302.  ИCПOЛЬЗOBAHИE БЫCTPЫX ПPEOБPAЗOBAHИЙ ФYPЬE ДЛЯ PEШEHИЯ ДИФФEPEHЦИAЛЬHЫX YPABHEHИЙ B ЧACTHЫX
+                          ПPOИЗBOДHЫX B ФИЗИKE (ELPAHY,NEWRO,ANAL,SOLVE6,SYNT,MFT).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (RFT - D700).
+            102.   D400.  ЧИCЛEHHOE ДИФФEPEHЦИPOBAHИE (NUMDI1).
+            103.   D506.  MИHИMИЗAЦИЯ ФYHKЦИИ MHOГИX ПEPEMEHHЫX, BЫЧИCЛEHИE KOBAPИAHTHOЙ MATPИЦЫ И HAXOЖДEHИE ИCTИHHЫX OШИБOK
+                          (MINUIL,CALFCN,COMAND,CONTOU,DERIVE,EXTOIN,FIXPAR,FTIME,
+                          HESSE,IMPROV,INTOEX,MATOUT,MIDATA,MIGRAD,MINNEW,MINOS,
+                          MPRINT,MPUNCH,PINTF,PLTCON,RAZZIA,RESTOR,SEEK,MSIMPL,STAND,
+                          VERMIN,ALLOW,AMINIM).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (RNDM - V104)
+                                        (UBLANK,UZERO - V300)
+                                        (UCOPY - V301)
+                                        (TIMEZB - Z002).
+            104.   D507.  MИHИMИЗAЦИЯ CYMMЫ KBAДPATOB ФYHKЦИЙ  (MINSQ,VD01A,FCN1).
+            105.   D508.  ФИTИPOBAHИE ПO METOДY HAИMEHЬШИX KBAДPATOB C ЛИHEЙHOЙ ЗABИCИMOCTЬЮ ПAPAMETPOB
+                          (LINSQ,Q).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (MATIN2 - F101)
+                                        (LINEQ2 - F402).
+            106.   D509.  MИHИMYM ФYHKЦИИ OДHOЙ ПEPEMEHHOЙ (MINVAR,HILL,FA,FB).
+            107.   D510.  MИHИMИЗAЦИЯ KBAДPATИЧHOГO ФYHKЦИOHAЛA
+                          (FUMILI,SCAL,SGZ,MCONV,MONITO,ERRORF,LIKELM,*AU*,*AL*,ARITHM).
+            108.   D511.  ПPOBEPKA AHAЛИTИЧECKИX ПPOИЗBOДHЫX (CHED).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (ARITHM - D510)
+                                        (VSCALE - F121).
+            109.   D515.  ПPOГPAMMA ДЛЯ POБACTHOЙ MИHИMИЗAЦИИ KBAДPATИЧHOГO ФYHKЦИOHAЛA, HEЛИHEЙHO
+                          ЗABИCЯЩEГO OT ПAPAMETPOB (ROLSM,PARCA,FIXA,PODEM,OUTIN,SMXIN).
+            110.   D522.  BЫЧИCЛEHИE KOPHEЙ ФYHKЦИИ  OДHOЙ ПEPEMEHHOЙ METOДOM ДEЛEHИЯ OTPEЗKA ПOПOЛAM (KOR).
+            111.   D600.  PEШEHИE ЛИHEЙHЫX ИHTEГPAЛЬHЫX YPABHEHИЙ (FRED1,FRED2,FRED3).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (GSET,GOUAD - D106)
+                                        (MATIN1 - F100)
+                                        (MATRIX,VCHECK - F103)
+                                        (KIM - F240)
+                                        (LINEQ1 - F401).
+            112.   D610.  PEШEHИE ЛИHEЙHOГO ИHTEГPAЛЬHOГO YPABHEHИЯ ПEPBOГO POДA
+                          METOДOM PEГYЛЯPИЗAЦИИ(FREDI,KOK1,SLAYMR,PEШEH,SLAY,ERROU,
+                          VOLTRS,ALHBC,ALKBA3,ALOTH,DD,DD1).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (SYMINV - F104).
+            113.   D611.  ПAKET ПPOГPAMM ДЛЯ PEШEHИЯ ИHTEГPAЛЬHЫX YPABHEHИЙ
+                          (INTEQU,VOLTS1,VOLTF1,FREST1,FREST2,FREST3,TIKH1,TIKH2,TIKH3,TIKH4,TIKH5,
+                          CONV1,CONV2,CONV3,CONV4,CONV5,FRIED1,FRIED2,XNI,YDY,COEF,REM,ZGF,CKK,SOL1,GDISC,
+                          UVLF,INF,Q12,SOL2,SOL3,TYPE1,TYPE2,TYPE3,TYPE4,TYPE5,TYPE6,TYPE7,TYPE8,F2F,QAT,CHD,
+                          RHO,INNUM,DISC,NORML2,NORMC,RATEL2,RATEC,DOMEGA,SIGMA,LAMBDA,CDISC,DGELG,SIMQ,MFSD,MTDS,SINV).
+            114.   D612.  PEШEHИE ЛИHEЙHOГO ИHTEГPAЛЬHOГO YPABHEHИЯ ФPEДГOЛЬMA 1 POДA METOДOM POБACTHOЙ
+                          ДИCKPИПTИBHOЙ PEГYЛЯPИЗAЦИИ (ROBAST,MAKEA,MATFA,MATOGR,DEFIMA,CONVER,ANSWER,ROBRG,MAINER,
+                          SUBBER,GRADER,ROBPE4,NABOR,LIMITR,BOUN,SEND,PLUSER,SENDER,SENDIN,MATVEC,SCALAR,FHUBER).
+            115.   D700.  ДEЙCTBИTEЛЬHOE БЫCTPOE ПPEOБPAЗOBAHИE ФYPЬE (RFT,RPA,RCA,RSA,RPS,SETFT).
+            116.   D701.  БЫCTPOE ПPEOБPAЗOBAHИE ФYPЬE ДЛЯ ДEЙCTBИTEЛЬHЫX ИЛИ KOMПЛEKCHЫX ФYHKЦИЙ (FFTRC,I16
+                          D16,I32,D32,I64,D64,I128,D128,S64,C64,S128,C128,S256,C256,S512,C512,D701BD).
+            117.   D702.  KOMПЛEKCHOE БЫCTPOE ПPEOБPAЗOBAHИE ФYPЬE(CFT).
+            118.   D703.  ДEЙCTBИTEЛЬHOE БЫCTPOE ПPEOБPAЗOBAHИE ФYPЬE (RFFT).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (CFFT - D704).
+            119.   D704.  KOMПЛEKCHOE БЫCTPOE ПPEOБPAЗOBAHИE ФYPЬE (CFFT).
+                    E.  ИHTEPПOЛЯЦИЯ И AППPOKCИMAЦИЯ.
+                    ---------------------------------
+            120.   E100.  ПOЛИHOMИAЛЬHAЯ ИHTEPПOЛЯЦИЯ (POLINT).
+            121.   E102.  MAKCИMAЛЬHЫЙ И MИHИMAЛЬHЫЙ ЭЛEMEHTЫ MACCИBA (MAXIZE,MINIZE,MAXFZE,MINFZE).
+            122.   E103.  HAИБOЛЬШAЯ AБCOЛЮTHAЯ BEЛИЧИHA KOMПOHEHTЫ B COBOKYПHOCTИ BEKTOPOB (AMAXMU).
+            123.   E104.  MHOГOMEPHAЯ ИHTEPПOЛЯЦИЯ (FINT).
+            124.   E105.  ИHTEPПOЛЯЦИЯ C ИCПOЛЬЗOBAHИEM PAЗHOCTHЫX OTHOШEHИЙ (DIVDIF).
+            125.   E106.  ПOИCK ЗAДAHHOГO ЭЛEMEHTA B YПOPЯДOЧEHHOM MACCИBE (LOCATF,LOCATI).
+            126.   E110.  KBAДPATИЧHAЯ ИHTEPПOЛЯЦИЯ C ПOCTOЯHHЫM ШAГOM (PARINT).
+            127.   E111.  KBAДPATИЧHAЯ ИHTEPПOЛЯЦИЯ C ПPOИЗBOЛЬHЫM ШAГOM(PARINV).
+            128.   E112.  ПPOГPAMMA KBAДPATИЧHOЙ  ИHTEPПOЛЯЦИИ C YПOPЯДOЧEHИEM TAБЛИЦ (FINTER,REORDN).
+            129.   E113.  ЛИHEЙHAЯ ИHTEPПOЛЯЦИЯ И ЭKCTPAПOЛЯЦИЯ K ФYHKЦИЙ F(X,Y) C  ПEPEMEHHЫM ШAГOM ПO OБOИM APГYMEHTAM
+                          (EXTINT).
+            130.   E201.  AППPOKCИMAЦИЯ ЭKCПEPИMEHTAЛЬHЫX ДAHHЫX ПOЛИHOMOM ИЛИ ЭKCПOHEHTOЙ C ДBYMЯ ИЛИ TPEMЯ
+                          ПAPAMETPAMИ (CUR2FT).
+            131.   E202.  AППPOKCИMAЦИЯ ПOЛИHOMAMИ METOДOM HAИMEHЬШИX KBAДPATOB CO CTATИCTИЧECKИM AHAЛИЗOM
+                          (LSQFIT,POLYNL,POLFIT,ESTEY,STDDEV,COVAR).
+            132.   E204.  AППPOKCИMAЦИЯ ПOЛИHOMOM OT ДBYX ПEPEMEHHЫX METOДOM HAИMEHЬШИX KBAДPATOB
+                          (PSI1,J1,PSI,AL,COEFF).
+            133.   E205.  AППPOKCИMAЦИЯ ПOЛИHOMAMИ OT MHOГИX ПEPEMEHHЫX METOДOM HAИMEHЬШИX KBAДPATOB
+                          (PSI2,ENTR1,TIST,J15,PSI5,AL5,COEFF5).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (UZERO - V300).
+            134.   E206.  KOЭФФИЦИEHTЫ TPИГOHOMETPИЧECKИX PЯДOB (TRICOF).
+            135.   E207.  CYMMA TPИГOHOMETPИЧECKИX PЯДOB (TRISUM).
+            136.   E208.  ПPИБЛИЖEHИE ПO METOДY HAИMEHЬШИX KBAДPATOB (LSQ).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (MATIN1 - F100)
+                                        (UZERO - V300)
+                                        (UCOPY - V301).
+            137.,  E209.  CПЛAЙH-AППPOKCИMAЦИЯ TPETЬEГO ПOPЯДKA (SPLIN3).
+            138.   E220.  PEШEHИE ПEPEOПPEДEЛEHHOЙ CИCTEMЫ ЛИHEЙHЫX YPABHEHИЙ
+                          METOДOM HAИMEHЬШИX KBAДPATOB C ПPИMEHEHИEM ПPEOБPAЗOBAHИЙ
+                          XAYCXOЛДEPA  (LSQQR,DECOMP,SLV,PROD1,PROD2,PROC1).
+            139.   E221.  PEШEHИE ПEPEOПPEДEЛEHHOЙ CИCTEMЫ ЛИHEЙHЫX YPABHEHИЙ B ЧEБЫШEBCKOЙ HOPME (CHEB).
+            140.   E230.  PEШEHИE ПEPEOПPEДEЛEHHOЙ CИCTEMЫ ЛИHEЙHЫX YPABHEHИЙ METOДOM HAИMEHЬШИX KBAДPATOB
+                          C ЛИHEЙHЫMИ OГPAHИЧEHИЯMИ И БEЗ OГPAHИЧEHИЙ
+                          (TLSC,TLS,TLERR,TLRES,TLSMSQ,TLSWOP,TLUK,TLSTEP,TLPIV).
+            141.   E240.  AППPOKCИMAЦИЯ И ДИФФEPEHЦИPOBAHИE  ФYHKЦИИ OДHOЙ ПEPEMEHHOЙ,ЗAДAHHOЙ TAБЛИЧHЫMИ ЗHAЧEHИЯMИ
+                          (SPLINC,F1PR2P,PR1COF).
+            142.   E250.  ПPИБЛИЖEHИE ПPЯMOЙ ЛИHИEЙ ПO METOДY HAИMEHЬШИX KBAДPATOB  (LFIT,LFITW).
+            143.   E255.  AППPOKCИMAЦИЯ ПAPAБOЛOЙ METOДOM HAИMEHЬШИX  KBAДPATOB (PARLSQ).
+            144.   E400.  ПPEOБPAЗOBAHИE ЧEБЫШEBCKOГO PЯДA B CTEПEHHOЙ PЯД ИЛИ HAOБOPOT,
+                          И TEЛECKOПИЧECKИЙ CДBИГ CTEПEHHOГO PЯДA (ECTRAN,ECONSE,TAYCHE,BIN,TRANST,CHEB01).
+            145.   E401.  ПPEOБPAЗOBAHИE ЧEБЫШEBCKOГO PЯДA B CTEПEHHOЙ ИЛИ HAOБOPOT, И TEЛECKOПИЧECKИЙ CДBИГ CTEПEHHOГO
+                           PЯДA (ДBOЙHAЯ TOЧHOCTЬ) (ECONDE,CHEB02,ECTRAD,TAYCHD,BIND,TRANSD).
+            146.   E402.  CYMMA N ЧЛEHOB PAЗЛOЖEHИЯ ПO ПOЛИHOMAM ЧEБЫШEBA (CHSUM1).
+            147.   E403.  CYMMA N ЧЛEHOB PAЗЛOЖEHИЯ ПO ПOЛИHOMAM ЧEБЫШEBA (ДBOЙHAЯ TOЧHOCTЬ) (CHSUM2).
+            148.   E404.  BЫЧИCЛEHИE KOЭФФИЦИEHTOB PAЗЛOЖEHИЯ ПO ПOЛИHOMAM ЧEБЫШEBA (CHCOF1).
+            149.   E405.  BЫЧИCЛEHИE KOЭФФИЦИEHTOB PAЗЛOЖEHИЯ ПO ПOЛИHOMAM ЧEБЫШEBA (ДBOЙHAЯ TOЧHOCTЬ) (CHECOF).
+            150.   E410.  BЫЧИCЛEHИE KOЭФФИЦИEHTOB KOMПЛEKCHOГO CTEПEHHOГO PЯДA (CPSC,CPSC1).
+                    F.  ДEЙCTBИЯ HAД MATPИЦAMИ,BEKTOPAMИ,PEШEHИE CИCTEM ЛИHEЙHЫX YPABHEHИЙ.TEHЗOPHЫЙ AHAЛИЗ.
+                    ----------------------------------------------------------------------------------------
+            151.   F002. ЭЛEMEHTAPHЫE OПEPAЦИИ C BEKTOPAMИ (TVADD,TVCPY,TVDIV,TVMPA,TVMPY,TVMUL,TVMULA,TVMUNA,
+                          TVRAN,TVSCA,TVSCL,TVSCS,TVSET,TVSUB,TVSUM,TVXCH(T=R,D,C)).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (LOCF - N100)
+                                        (RANF,DRANF - G900).
+            152.   F003. ЭЛEMEHTAPHЫE OПEPAЦИИ C MATPИЦAMИ (TMADD,TMBIL,TMCPY,TMMNA,TMMNS,TMMPA,TMMPS,TMMPY,TMRAN,
+                          TMSCL,TMSET,TMSUB,TMULT,TUMNA,TUMNS,TUMPA,TUMPS,TUMPY,TRSCL(T=R,D,C)).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (LOCF - N100)
+                                        (RANF,DRANF - G900).
+            153.   F004.  ПEPEMHOЖEHИE MATPИЦ (TMMLT,TMMLA,TMMLS,TMNMA,TMNMS(T=R,D,C),CMMLTC).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (LOCF - N100).
+            154.   F010.  PEШEHИE CИCTEMЫ ЛИHEЙHЫX YPABHEHИЙ, OБPAЩEHИE MATPИЦЫ (TEQN,TINV,TEQINV(T=R,D,C),F010PR).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (TFACT,TFEQN,TFINV(T=R,D,C),TMPRNT - F011).
+            155.   F011.  ДBYШAГOBAЯ ПPOЦEДYPA PEШEHИЯ MATPИЧHЫX YPABHEHИЙ, OБPAЩEHИE MATPИЦЫ,
+                           BЫЧИCЛEHИE OПPEДEЛИTEЛЯ (TFACT,TFEQN,TFINV(T=R,D,C),TMPRNT).
+            156.   F012.  PEШEHИE CИCTEM ЛИHEЙHЫX YPABHEHИЙ C ПOЛOЖИTEЛЬHO OПPEДEЛEHHOЙ CИMMETPИЧHOЙ MATPИЦEЙ
+                          (TSFACT,TSEQN,TSFEQN,TSINV,TSFINV(T=R,D,C)).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (TMPRNT - F011).
+            157.   F100.  OБPAЩEHИE MATPИЦЫ И PEШEHИE CИCTEMЫ ЛИHEЙHЫX YPABHEHИЙ (MATIN1).
+            158.   F101.  OБPAЩEHИE MATPИЦЫ И PEШEHИE CИCTEMЫ ЛИHEЙHЫX YPABHEHИЙ (ДBOЙHAЯ TOЧHOCTЬ) (MATIN2).
+            159.   F103.  ПPOГPAMMA MATPИЧHOЙ AЛГEБPЫ (MATRIX,VCHECK).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (MATIN1 - F100)
+                                        (KIM - F240)
+                                        (LINEQ1 - F401).
+            160.   F104.  OБPAЩEHИE CИMMETPИЧECKOЙ MATPИЦЫ (SYMINV).
+            161.   F105.  BPAЩEHИE TPEXMEPHOЙ ПOЛЯPHOЙ CИCTEMЫ KOOPДИHAT (POLROT).
+            162.   F106.  OБPAЩEHИE YПAKOBAHHOЙ CИMMETPИЧHOЙ MATPИЦЫ (SPXINV).
+            163.   F107.  OБPAЩEHИE CИMMETPИЧHOЙ MATPИЦЫ (SMXINV).
+            164.   F108.  ПEPEMHOЖEHИE KBAДPATHЫX KOMПЛEKCHЫX MATPИЦ (MUXMAC).
+            165.   F109.  MATPИЧHЫE YPABHEHИЯ (MXEQU,MXEQU1).
+            166.   F110.  MATPИЧHЫE OПEPAЦИИ MXPACK (MXMAD,MXMAD1,MXMAD2,MXMAD3,MXMPY,MXMPY1,MXMPY2,MXMPY3,
+                          MXMUB,MXMUB1,MXMUB2,MXMUB3,MXTRP,MXUTY,MXMLRT,MXMLTR).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (UCOPY - V301).
+            167.   F112.  MAHИПYЛЯЦИИ C TPEYГOЛЬHЫMИ И CИMMETPИЧHЫMИ MATPИЦAMИ
+                          (TR,TRAAT,TRAL,TRALT,TRAS,TRASAT,TRATA,TRATS,TRATSA,TRCHLU,
+                          TRCHUL,TRINV,TRLA,TRLTA,TRPCK,TRQSQ,TRSA,TRSAT,TRSINV,TRSMLU,TRSMUL,TRUPCK).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (VZERO - F121).
+            168.   F116.  CKAЛЯPHOE ПPOИЗBEДEHИE (DOTI).
+            169.   F117.  BEKTOPHOE ПPOИЗBEДEHИE ДBYX BEKTOPOB (CROSS).
+            170.   F118.  ПOBOPOT BEKTOPA (ROT).
+            171.   F120.  HAПPABЛЯЮЩИE KOCИHYCЫ (DIRCOS,ERDIRC).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (MXMPY - F110)
+                                        (UZERO - V300)
+                                        (UCOPY - V301).
+            172.   F121.  BEKTOPHAЯ AЛГEБPA (LVMAX,LVMAXA,LVMIN,LVMINA,
+                            VADD,VASUM,VBIAS,VBLANK,VDOT,VDOTN,VDOTN2,VFIX,VFLOAT,
+                            VEXCUM,VFILL,VLINE,VMATL,VMATR,VMAX,VMAXA,VMIN,VMINA,
+                            VMOD,VMUL,VSCALE,VSUB,VSUM,VUNIT,VZERO,VDIST,VDIST2,VCOPYN).
+            173.   F122.  ЗAЧEPKИBAHИE ЗAДAHHЫX CTPOK И CTOЛБЦOB B MATPИЦE (MATRED).
+            174.   F123.  YMHOЖEHИE ДEЙCTBИTEЛЬHЫX И KOMПЛEKCHЫX MATPИЦ
+                          (CMXPAK,RCMPY,RCMAD,RCMUB,RCMPY1,RCMAD1,RCMUB1,
+                          RCMPY2,RCMAD2,RCMUB2,RCMPY3,RCMAD3,RCMUB3,CRMPY,CRMAD,
+                          CRMUB,CRMPY1,CRMAD1,CRMUB1,CRMPY2,CRMAD2,CRMUB2,CRMPY3,
+                          CRMAD3,CRMUB3,CCMPY,CCMAD,CCMUB,CCMPY1,CCMAD1,CCMUB1,
+                          CCMPY2,CCMAD2,CCMUB2,CCMPY3,CCMAD3,CCMUB3,RRMPY,RRMAD,RRMUB,
+                          RRMPY1,RRMDA1,RRMUB1,RRMPY2,RRMAD2,RRMUB2,RRMPY3,RRMAD3,RRMUB3).
+            175.   F124.  PAЗДEЛEHИE/OБЬEДИHEHИE KOMПЛEKCHOЙ MATPИЦЫ HA EE ДEЙCTBИTEЛЬHYЮ И MHИMYЮ ЧACTИ (CXSPLT,CXJOIN).
+            176.   F150.  ПPЯMOE ИЛИ TEHЗOPHOE ПPOИЗBEДEHИE ДBYX MATPИЦ (MXDIPR).
+            177.   F202.  COБCTBEHHЫE ЗHAЧEHИЯ BEЩECTBEHHOЙ CИMMETPИЧHOЙ ЛEHTOЧHOЙ MATPИЦЫ (LRCH).
+            178.   F220.  ПAKET ПPOГPAMM ДЛЯ BЫЧИCЛEHИЯ COБCTBEHHЫX ЗHAЧEHИЙ
+                          И COБCTBEHHЫX BEKTOPOB MATPИЦ  EISPACK (BALANC,BALBAK,CBAL,
+                          CBABK2,ELMHES,TRED1,TRED2,TRBAK1,COMHES,HTRIDI,HTRIBK,HQR,
+                          HQR2,TQL1,TQL2,IMTQL1,IMTQL2,BISECT,COMLR,COMLR2,ELTRAN,TINVIT).
+            179.   F221.  BЫЧИCЛEHИE COБCTBEHHЫX ЗHAЧEHИЙ И COБCTBEHHЫX
+                          BEKTOPOB KOMПЛEKCHOЙ MATPИЦЫ OБЩEГO BИДA(EISCG1,EISCG2).
+                              BHEШHИE ПPOГPAMMЫ
+                                        (CBAL,COMHES,COMLR2,CBABK2,COMLR - F220).
+            180.   F222.  BЫЧИCЛEHИE COБCTBEHHЫX ЗHAЧEHИЙ И COБCTBEHHЫX BEKTOPOB
+                          KOMПЛEKCHOЙ ЭPMИTOBOЙ MATPИЦЫ (EISCH1,EISCH2,EISCH3, EISCH4).
+                              BHEШHИE ПPOГPAMMЫ
+                                        (HTRIDI,TQL2,HTRIBK,TQL1,BISECT,TINVIT - F220).
+            181.   F223.  BЫЧИCЛEHИE COБCTBEHHЫX ЗHAЧEHИЙ И COБCTBEHHЫX
+                          BEKTOPOB BEЩECTBEHHOЙ MATPИЦЫ OБЩEГO BИДA  (EISRG1,EISRG2).
+                              BHEШHИE ПPOГPAMM:
+                                        (BALANC,ELMHES,ELTRAN,HQR2,BALBAK,HQR - F220).
+            182.   F224.  BЫЧИCЛEHИE COБCTBEHHЫX ЗHAЧEHИЙ И COБCTBEHHЫX BEKTOPOB
+                          BEЩECTBEHHOЙ CИMMETPИЧHOЙ MATPИЦЫ(EISRS1,EISRS2,EISRS3,EISRS4).
+                              BHEШHИE ПPOГPAMMЫ
+                                        (TRED2,TQL2,TRED1,TQL1,BISECT,TINVIT,TRBAK1 - F220).
+            183.   F225.  BЫЧИCЛEHИE COБCTBEHHЫX ЗHAЧEHИЙ И COБCTBEHHЫX BEKTOPOB
+                          BEЩECTBEHHOЙ CИMMETPИЧHOЙ TPEXДИAГOHAЛЬHOЙ MATPИЦЫ (EISST1,EISST2,EISST3,EISST4).
+                              BHEШHИE ПPOГPAMMЫ
+                                        (IMTQL2,IMTQL1,BISECT,TINVIT - F220).
+            184.   F230.  ПOHИЖEHИE ПOPЯДKA MATPИЦЫ, KOГДA ИЗBECTHЫ COБCTBEHHOE
+                          ЗHAЧEHИE И COOTBETCTBYЮЩИЙ COБCTBEHHЫЙ BEKTOP  (DEFL,DEFLS,DEFLSS,SKAL).
+            185.   F240.  ПPOГPAMMA HAXOЖДEHИЯ COБCTBEHHЫX ЗHAЧEHИЙ И COБCTBEHHЫX
+                          BEKTOPOB BEЩECTBEHHOЙ CИMMETPИЧHOЙ MATPИЦЫ (KIM).
+            186.   F301.  OПPEДEЛИTEЛЬ MATPИЦЫ (DET,DDETER).
+            187.   F401.  PEШEHИE CИCTEMЫ ЛИHEЙHЫX YPABHEHИЙ (LINEQ1).
+            188.   F402.  PEШEHИE CИCTEMЫ ЛИHEЙHЫX YPABHEHИЙ C ДBOЙHOЙ TOЧHOCTЬЮ (LINEQ2).
+            189.   F404.  PEШEHИE CИCTEMЫ YPABHEHИЙ C TPEXДИAГOHAЛЬHOЙ MATPИЦEЙ (TRIDIA,TRISOL).
+                              BHEШHИE ПPOГPAMMЫ
+                                        (RNDM - V104).
+            190.   F405.  PEШEHИE ПЛOXOOБYCЛOBЛEHHЫX CИCTEM ЛИHEЙHЫX YPABHEHИЙ C ИTEPAЦИOHHЫM YTOЧHEHИEM
+                          (LINSYS,BLNC,CRT,LSOLVE,USOLVE,RSDL).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (VASUM - F121).
+            191.   F406.  PEШEHИE CИCTEMЫ ЛИHEЙHЫX YPABHEHИЙ C ЛEHTOЧHOЙ MATPИЦEЙ (RBEQN,DBEQN).
+            192.   F413.  KOMПЛEKCHЫЙ ДETEPMИHAHT, ЛИHEЙHЫE YPABHEHИЯ И OБPAЩEHИE MATPИЦЫ (CMLIN,CDOT).
+            193.   F420.  PEШEHИE CИCTEMЫ ЛИHEЙHЫX AЛГEБPAИЧECKИX YPABHEHИЙ C MATPИЦEЙ KOЭФФИЦИEHTOB TPEXДИAГOHAЛЬHOГO BИДA
+                          (PATVIL,PATERW).
+            194.   F421.  OБOБЩEHHOE HOPMAЛЬHOE PEШEHИE ЛИHEЙHOЙ AЛГEБPAИЧECKOЙ CИCTEMЫ
+                          (SILLC,REGN,TRAM,SYMIN,REML,RELAD,ANORZF,AMAXF,OUTRGN,RELADI,RPROB).
+            195.   F422.  PEШEHИE CИCTEM ЛИHEЙHЫX YPABHEHИЙ C TPEXДИAГOHAЛЬHOЙ
+                          MATPИЦEЙ METOДOM HEMOHOTOHHOЙ ПPOГOHKИ (TSYS).
+            196.   F423.  PEШEHИE БOЛЬШИX CИCTEM ЛИHEЙHЫX YPABHEHИЙ C ИCПOЛЬЗOBAHИEM BHEШHEЙ ПAMЯTИ (AGAUSS).
+            197.   F424.  PEШEHИE БOЛЬШИX CИCTEM ЛИHEЙHЫX YPABHEHИЙ C CИMMETPИЧHЫMИ MATPИЦAMИ
+                          C ИCПOЛЬЗOBAHИEM BHEШHEЙ ПAMЯTИ (SQROOT).
+            198.   F500.  ПPOГPAMMA ДЛЯ PEШEHИЯ CИCTEMЫ OДHOPOДHЫX ЛИHEЙHЫX HEPABEHCTB (LIHOIN).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (MATRIX - F103).
+            199.   F600.  PAЗЛOЖEHИE MATPИЦЫ ПO CИHГYЛЯPHЫM ЧИCЛAM (SVD,ROTATE).
+                    G.  CTATИCTИЧECKИЙ AHAЛИЗ И BEPOЯTHOCTЬ.
+                    ----------------------------------------
+            200.   G100.  BЫЧИCЛEHИE BEPOЯTHOCTИ XИ-KBAДPAT PACПPEДEЛEHИЯ (PROB).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (FREQ - C300).
+            201.   G101.  ФYHKЦИЯ, OБPATHAЯ K XИ-KBAДPAT PACПPEДEЛEHИЮ (CHISIN).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (GAUSIN - C301).
+            202.   G102.  PACПPEДEЛEHИE KOЛMOГOPOBA (PROBKL).
+            203.   G104.  BЫЧИCЛEHИE ФYHKЦИИ T-PACПPEДEЛEHИЯ BEPOЯTHOCTEЙ CTЬЮДEHTA И EE OБPATHOЙ BEЛИЧИHЫ
+                          (STUDIS,STUDIN).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (GAUSIN - C301).
+            204.   G106.  HEПOЛHAЯ ГAMMA-ФYHKЦИЯ (GAMDIS).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (ALOGAM - C341).
+            205.   G110.  PACПPEДEЛEHИE ЛAHДAY И ГEHEPAЦИЯ COOTBETCTBYЮЩИX CЛYЧAЙHЫX ЧИCEЛ (DISLAN,DINLAN).
+            206.   G111.  PACПPEДEЛEHИE BABИЛOBA И ГEHEPAЦИЯ COOTBETCTBYЮЩИX CЛYЧAЙHЫX ЧИCEЛ
+                          (DISVAV,DINVAV,COEDIS,COEDIN,VAVZRO,VAVFCN).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (SININT,COSINT - C336),
+                                        (EXPINT - C337).
+            207.   G200.  KOЭФФИЦИEHTЫ  CTЬЮДEHTA (STUDNT,DISTRB).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (SIMPS - D120).
+            208.   G900.  ГEHEPATOP PABHOMEPHO PACПPEДEЛEHHЫX CЛYЧAЙHЫX ЧИCEЛ (RANF,DRANF,RANGET,RANSET).
+            209.   G901.  CЛYЧAЙHЫE ЧИCЛA HA OKPYЖHOCTИ ИЛИ CФEPE (RAN2VS,RAN3VS,VRAN2S,VRAN3S).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (RANF - G900).
+                    N.  ПPOГPAMMЫ OTЛAДKИ.
+                    ----------------------
+            210.   N100.  AБCOЛЮTHЫЙ AДPEC ПEPEMEHHOЙ (XLOC,LOCF).
+                    S.  ПPOГPAMMЫ ДЛЯ COПPOBOЖДEHИЯ БИБЛИOTEKИ.
+                    -------------------------------------------
+            211.   S120.  ИHФOPMAЦИOHHO-CПPABOЧHAЯ CИCTEMA ДЛЯ БИБЛИOTEKИ ПPOГPAMM (DILLIB,INFLIB,R,T1,T2,EW,W,R2,PUTPUL).
+            212.   S121.  ПOЛYЧEHИE KATAЛOГA ПPOГPAMM БИБЛИOTEKИ 1 (LIB1).
+                    V.  ГEHEPATOPЫ CЛYЧAЙHЫX ЧИCEЛ И OБЩИE YTИЛИTAPHЫE ПPOГPAMMЫ.
+                    -------------------------------------------------------------
+            213.   V104.  ГEHEPATOP CЛYЧAЙHЫX ЧИCEЛ C PABHOMEPHЫM PACПPEДEЛEHИEM (RNDM,RNDM1).
+            214.   V300.  ЗACЫЛKA HYЛEЙ, ПPOБEЛOB ИЛИ ЗAДAHHOЙ BEЛИЧИHЫ B MACCИB (UBLANK,UZERO,UFILL).
+            215.   V301.  KOПИPOBAHИE MACCИBA (UCOPY,UCOPY2,UCOPIV,UCOPYN).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (XLOC - N100).
+                    Z.  CИCTEMHOЗABИCИMЫE ПPOГPAMMЫ.
+                    --------------------------------
+            216.   Z002.  TEKYЩEE BPEMЯ (TIMEZB).
+                                                     PEBИЗИЯ 15
+                                        OБЩEЙ БИБЛИOTEKИ ПPOГPAMM (OБП) БЭCM-6  25 MAЯ 1989 Г.
+                              1.  B OБП-1 BKЛЮЧEHЫ HOBЫE ПPOГPAMMЫ:
+                                  F002  ЭЛEMEHTAPHЫE OПEPAЦИИ C BEKTOPAMИ.
+                                  F003  ЭЛEMEHTAPHЫE OПEPAЦИИ C MATPИЦAMИ.
+                                  F004  ПEPEMHOЖEHИE  MATPИЦ.
+                                  F010  PEШEHИE CИCTEMЫ ЛИHEЙHЫX YPABHEHИЙ, OБPAЩEHИE MATPИЦЫ.
+                                  F011  ДBYШAГOBAЯ ПPOЦEДYPA PEШEHИЯ MATPИЧHЫX YPABHEHИЙ,
+                                        OБPAЩEHИE MATPИЦЫ, BЫЧИCЛEHИE OПPEДEЛИTEЛЯ.
+                                  F012  PEШEHИE CИCTEM ЛИHEЙHЫX YPABHEHИЙ C ПOЛOЖИTEЛЬHO
+                                        OПPEДEЛEHHOЙ CИMMETPИЧHOЙ MATPИЦEЙ.
+                              2.  B OБП-2 BKЛЮЧEHЫ HOBЫE ПPOГPAMMЫ:
+                                  M215  OПTИMAЛЬHAЯ CTEПEHЬ ДECЯTИ ДЛЯ ПEЧATИ ЧИCEЛ.
+                                  M224  PEДAKTИPOBAHИE ФOPMATA ДЛЯ ПEЧATИ BEЩECTBEHHЫX ЧИCEЛ.
+                                  V151  PACПPEДEЛEHИE CЛYЧAЙHЫX ЧИCEЛ B COOTBETCTBИИ C
+                                        OПPEДEЛEHHOЙ ПOЛЬЗOBATEЛEM ФYHKЦИEЙ.
+                                  X202  TAБЛИЦA MACC ЧACTИЦ.
+                                  X203  TAБЛИЦA ИMEH ЧACTИЦ.
+                                  Y202  HAXOЖДEHИE KAHAЛA ГИCTOГPAMMЫ.
+                              3.  B OБП-1 BKЛЮЧEHЫ HOBЫE BEPCИИ ПPOГPAMM:
+                                  C205(RZERO)  - YЛYЧШEH AЛГOPИTM.
+                                  C312(BESJY)  - ДOБABЛEHЫ BXOДЫ ДЛЯ ПOЛЬЗOBATEЛЯ DBESJ0,DBESJ1,DBESY0,DBESY1.
+                                  C313(BESIK)  - ДOБABЛEHЫ BXOДЫ ДЛЯ ПOЛЬЗOBATEЛЯ DBESI0,DBESI1,DBESK0,DBESK1,
+                                                 DEBSI0,DEBSI1,DEBSK0,DEBSK1.
+                                  G901(RAN2VS) - ДOБABЛEHЫ BXOДЫ ДЛЯ ПOЛЬЗOBATEЛЯ VRAN2S,VRAN3S.
+                              4.  B OБП-2 BKЛЮЧEHA HOBAЯ BEPCИЯ ПPOГPAMMЫ J509(CONPRT) - YЛYЧШEH AЛГOPИTM.
+                              5.  ИHДEKC ПPOГPAMMЫ X601 ИЗMEHEH HA X602 .
+                              6.  ИЗ OБП-1 ИCKЛЮЧEHЫ И ЗAПИCAHЫ B APXИB (OБП-12):
+                                  F110(MXADD,MXSUB,MXTRA,MXNTR,MXMTR,MXDMR,MXDMAR,MXDML,MXDMAL,MXDMA) - MOЖHO
+                                      ИCПOЛЬЗOBATЬ COOTBETCTBYЮЩИE ПPOГPAMMЫ ИЗ F121,F003,F004,V301.
+                                  F133(CDOT)  - PEKOMEHДYEM PAБOTATЬ C F002.
+                                  F136(CDOTC) - PEKOMEHДYEM PAБOTATЬ C F004.
+                                  F303(CINV1) - PEKOMEHДYEM PAБOTATЬ C F010.
+                              7.  ИЗ OБП-2 ИCKЛЮЧEHЫ И ЗAПИCAHЫ B APXИB (OБП-12):
+                                  M210(DEZBEL) - HE ИCПOЛЬЗYETCЯ.
+                                  M251(MINCOD) - HE ИCПOЛЬЗYETCЯ.
+                                  M408(IPACK)  - PEKOMEHДYEM PAБOTATЬ C M422.
+                                  I901(UNPAK)  - PEKOMEHДYEM PAБOTATЬ C I302.
+                              8.  OПИCAHИЯ HOBЫX ПPOГPAMM F002,F003,F004,F010,F011,F012,M215,M224,V151,X202,X203,Y202
+                                  ЗAПИCAHЫ B ИHФOPMAЦИOHHO-CПPABOЧHYЮ CИCTEMY (ИCC).
+                                                     PEBИЗИЯ 14
+                                        OБЩEЙ БИБЛИOTEKИ ПPOГPAMM (OБП) БЭCM-6  1 ДEKAБPЯ 1987 Г.
+                              1.  B OБП-1 BKЛЮЧEHЫ HOBЫE ПPOГPAMMЫ:
+                                  D151 MHOГOMEPHOE ИHTEГPИPOBAHИE ИЛИ ГEHEPAЦИЯ MHOГOMEPHЫX CЛYЧAЙHЫX TOЧEK.
+                                  D515 ПPOГPAMMA ДЛЯ POБACTHOЙ MИHИMИЗAЦИИ KBAДPATИЧHOГO ФYHKЦИOHAЛA,
+                                       HEЛИHEЙHO ЗABИCЯЩEГO OT ПAPAMETPOB.
+                                  D611 ПAKET ПPOГPAMM ДЛЯ PEШEHИЯ ИHTEГPAЛЬHЫX YPABHEHИЙ.
+                                  D612 PEШEHИE ЛИHEЙHOГO ИHTEГPAЛЬHOГO YPABHEHИЯ ФPEДГOЛЬMA 1 POДA METOДOM
+                                       POБACTHOЙ ДИCKPИПTИBHOЙ PEГYЛЯPИЗAЦИИ.
+                              2.  B OБП-2 BKЛЮЧEHЫ HOBЫE ПPOГPAMMЫ:
+                                  M108   COPTИPOBKA CTPOK MATPИЦЫ.
+                                  M506   TИП APГYMEHTA.
+                              3.  B OБП-1 BKЛЮЧEHЫ HOBЫE BEPCИИ ПPOГPAMM:
+                                  C336 (SININT,COSINT) - YЛYЧШEH AЛГOPИTM.
+                                  D509 (MINVAR)        - YЛYЧШEH AЛГOPИTM.
+                              4.  ИЗ OБП-1 ИCKЛЮЧEHЫ И ЗAПИCAHЫ B APXИB (OБП-12):
+                                  D150 (DIVON2)      - PEKOMEHДYEM PAБOTATЬ C D151.
+                                  F119 (DIST,VMODUL) - ЭTИ OПEPAЦИИ BЫПOЛHЯЮTCЯ B F121 (VDIST,VMOD).
+                              5.  B CBЯЗИ C ПEPEПOЛHEHИEM CИCTEMHOЙ TAБЛИЦЫ ИMEH OБП-1 (>1K) MЫ BOЗBPATИЛИCЬ
+                                  K ПPEЖHEMY ПPИHЦИПY PAЗДEЛEHИЯ БИБЛИOTEKИ HA 2 ЧACTИ :
+                                  1) OБП-1 - ПPOГPAMMЫ ИHДEKCOB OT A ДO G .
+                                  2) OБП-2 - ПPOГPAMMЫ ИHДEKCOB OT H ДO Z.
+                                  ИCKЛЮЧEHИE COCTABЛЯЮT ПPOГPAMMЫ Z051 - ПOЛYЧEHИE CПИCKA OБП-1 И
+                                  N100,V104,V300,V301,S110,S120,Z002, KOTOPЫE ПPИCYTCTBYЮT И B OБП-1, TAK KAK
+                                  K HИM OБPAЩAЮTCЯ ПPOГPAMMЫ ИЗ OБП-1.
+                              6.  OПИCAHИЯ HOBЫX ПPOГPAMM D151,D515,D611,D612,M108,M506 ЗAПИCAHЫ
+                                  B ИHФOPMAЦИOHHO-CПPABOЧHYЮ CИCTEMY (ИCC).
+                                                     PEBИЗИЯ 13
+                                        OБЩEЙ БИБЛИOTEKИ ПPOГPAMM (OБП) БЭCM-6 1 HOЯБPЯ 1986 Г.
+                              1.  B OБП-1 BKЛЮЧEHЫ HOBЫE ПPOГPAMMЫ: F112,G900,G901,U102.
+                              2.  B OБП-1 BKЛЮЧEHЫ HOBЫE BEPCИИ ПPOГPAMM:
+                                  C303(COMBES, - YЛYЧШEH AЛГOPИTM, ДOБABЛEH BXOД ДЛЯ
+                                       CBESJY)   ПOЛЬЗOBATEЛЯ CBESJY.
+                                                   B H И M A H И E  !
+                                                 KOЛИЧECTBO ПAPAMETPOB B OБPAЩEHИИ K C303 ИЗMEHEHO,CTAЛO 10 , A HE 9 .
+                                                 B HOBOЙ BEPCИИ:
+                                                 CALL COMBES(X,Y,ALPHA,BETA,N,BJRE,BJIM,YRE,YIM,NY)
+                                                 CALL CBESJY(X,Y,ALPHA,BETA,N,BJRE,BJIM,YRE,YIM,NY)
+                                                 HOBЫЙ ПAPAMETP NY - ФИKTИBHЫЙ ДЛЯ COMBES, ДЛЯ CBESJY CM. OПИCAHИE B ИCC.
+                                  F116(DOTI)   - HOBЫЙ AЛГOPИTM, B CTAPOЙ BEPCИИ БЫЛO EЩE TPИ ИMEHИ ДЛЯ ПOЛЬЗOBATEЛЯ.
+                                  F301(DET,    - HOBЫЙ AЛГOPИTM DET
+                                       DDETER)     B H И M A H И E  !
+                                                 KOЛИЧECTBO ПAPAMETPOB B OБPAЩEHИИ K DET ИЗMEHEHO, CTAЛO 3 , A HE 4.
+                                                 B HOBOЙ BEPCИИ:
+                                                 D=DET(A,DIM,N)
+                                                 DDETER - CTAPAЯ BEPCИЯ F311, BЫЧИCЛЯЮЩAЯ ДETEPMИHAHT C ДBOЙHOЙ TOЧHOCTЬЮ.
+                                  U101(LOREN4) - (CTAPAЯ BEPCИЯ U121).
+                                                   B H И M A H И E  !
+                                                 ПPOГPAMMA ИMEET ДPYГOE ИMЯ ДЛЯ ПOЛЬЗOBATEЛЯ И ДPYГИE
+                                                 ПO COДEPЖAHИЮ ПAPAMETPЫ.
+                                                 B HOBOЙ BEPCИИ:
+                                                 CALL LOREN4(A,B,X)
+                              3.  ИЗ OБП-1 ИCKЛЮЧEHЫ И ЗAПИCAHЫ B OБП-12 CЛEДYЮЩИE ПPOГPAMMЫ:
+                                  A403(EX66ZF) - HE ИCПOЛЬЗYETCЯ.
+                                  D101(WTS)    - PEKOMEHДYEM PAБOTATЬ C D102.
+                                  F102(LINVER) - PEKOMEHДYEM PAБOTATЬ, HAПPИMEP, C F100,F101,F405 CM. TAKЖE ДPYГИE.
+                                  F140-F147    - ЭTИ OПEPAЦИИ BЫПOЛHЯЮTCЯ B F116,F117,F120,F121.
+                                  F311(DETERM) - PEKOMEHДYEM PAБOTATЬ C F301.
+                                  M205(CSIGN)  - HE ИCПOЛЬЗYETCЯ.
+                              4.  ИHДEKC ПPOГPAMMЫ U101(CLEBSH) ИЗMEHEH HA U121.
+                              5.  CДEЛAHЫ KOPPEKЦИИ B CЛEДYЮЩИX ПPOГPAMMAX:D105,E110,W700.
+                              6.  B APXИB OБП-12 BKЛЮЧEHЫ ПPOГPAMMЫ E200(CUR1FT), E201(CUR2FT),
+                                  ЗAПИCAHHЫE KAK SUBROUTINE (ПO ПPOCЬБE ПOЛЬЗOBATEЛEЙ):
+                                        CALL CUR1FT(NIN,NOUT)
+                                        CALL CUR2FT(NIN,NOUT), ГДE
+                                        NIN  - MATEMATИЧECKИЙ HOMEP BXOДHOГO  YCTPOЙCTBA ДЛЯ CЧИTЫBAHИЯ ДAHHЫX.
+                                        NOUT - MATEMATИЧECKИЙ HOMEP BЫXOДHOГO YCTPOЙCTBA ДЛЯ BЫДAЧИ PEЗYЛЬTATA.
+                              ИHФOPMAЦИOHHO-CПPABOЧHAЯ CИCTEMA ПPИBEДEHA B COOTBETCTBИE
+                              C ДAHHOЙ PEДAKЦИEЙ БИБЛИOTEKИ.
+                              OПИCAHИЯ APXИBHOЙ БИБЛИOTEKИ OБП-12 CЛEДYET CMOTPETЬ B
+                              PAБOTAX "БИБЛИOTEKA ПPOГPAMM HA ФOPTPAHE" T.T. 1-3,4,6 OИЯИ, ДYБHA, 1974-1983 Г.Г.
+                                                     PEBИЗИЯ 12
+                                        БИБЛИOTEKИ CП БЭCM-6 1 HOЯБPЯ 1985 Г.
+                              1.  B OБCП-1 BKЛЮЧEHЫ HOBЫE ПPOГPAMMЫ: D130,D131,E230,F406,F424,G101.
+                              2.  B OБCП-1 BKЛЮЧEHЫ HOBЫE BEPCИИ ПPOГPAMM:
+                                   C206(POLY2)  - YЛYЧШEH AЛГOPИTM.
+                                                   B H И M A H И E   !
+                                                  KOЛИЧECTBO ПAPAMETPOB B OБPAЩEHИИ K C206 ИЗMEHEHO, CTAЛO 6, A HE 7.
+                                                  B HOBOЙ BEPCИИ:
+                                                  CALL POLY2(A,N,ROOT,H,MAXFUN,MODE).
+                                   E104(FINT)   - YЛYЧШEH AЛГOPИTM.
+                                   F121(VECMAN) - B ПAKET ДOБABЛEHЫ ПOДПPOГPAMMЫ:
+                                                  VCOPYN (ПEPECЫЛKA ЭЛEMEHTOB C OБPATHЫM ЗHAKOM ИЗ OДHOГO MACCИBA B ДPYГOЙ),
+                                                  VDIST2 (CYMMA KBAДPATOB PAЗHOCTEЙ ЭЛEMEHTOB ДBYX MACCИBOB),
+                                                  VDIST  (ИЗBЛEЧEHИE KOPHЯ KBAДPATHOГO ИЗ VDIST2).
+                                   I312(PRINTF) - (CTAPAЯ BEPCИЯ M257) ДOБABЛEHЫ BXOДЫ:
+                                                  PRINTL (ПEЧATAET MACCИB C TEKCTOM),
+                                                  PRNT (ПEЧATAET OTДEЛЬHЫE ЧИCЛA ПO CПИCKY).
+                              3.  B OБCП-2 BKЛЮЧEHA HOBAЯ BEPCИЯ ПPOГPAMMЫ
+                                   H100(SIMPLE) - CДEЛAHЫ HEБOЛЬШИE ИЗMEHEHИЯ B AЛГOPИTME,
+                                                  ИЗMEHEHO ИMЯ ПPOГPAMMЫ.
+                              4.  ИCKЛЮЧEHHAЯ B 1979 Г. ИЗ OБCП-1 D108(TRAPER) BHOBЬ
+                                  BKЛЮЧEHA B БИБЛИOTEKY ПO ПPOCЬБE ПOЛЬЗOBATEЛEЙ.
+                              5.  CДEЛAHЫ KOPPEKЦИИ B CЛEДYЮЩИX ПPOГPAMMAX:
+                                  C318,D106,D128,D129,D150,D221,F220,N100.
+                              6.  ИЗ OБCП-1 ИCKЛЮЧEHA ПPOГPAMMA
+                                  F403(BLEQ).  PEKOMEHДYEM PAБOTATЬ C F406.
+                              7.  ИЗMEHEHЫ ИHДEKCЫ CЛEДYЮЩИX ПPOГPAMM:
+                                        D516(MINUIL)  HA  D506,
+                                        D520(FUMILI)  HA  D510,
+                                        M255(UREAD)   HA  I310,
+                                        M256(IMPORT)  HA  I311,
+                                        M257(PRINTF)  HA  I312.
+                              8.  COЗДAH APXИB OБCП-12, KOTOPЫЙ COДEPЖИT ПPOГPAMMЫ:
+                                   A) ИCKЛЮЧEHHЫE ИЗ OБCП-1 ЗA ПEPИOД 1978-1985 Г.Г.;
+                                   Б) CTAPЫE BEPCИИ ПPOГPAMM, ECЛИ B HOBЫX ИЗMEHИЛOCЬ OБPAЩEHИE;
+                                   B) ПPOГPAMMЫ E202(LSQFIT), E204(PSI1), ЗAПИCAHHЫE KAK SUBROUTINE
+                                      (ПO ПPOCЬБE ПOЛЬЗOBATEЛEЙ):
+                                        CALL LSQFIT(NIN,NOUT)
+                                        CALL PSI1(NIN,NOUT) , ГДE
+                                      NIN  - MATEMATИЧECKИЙ HOMEP BXOДHOГO YCTPOЙCTBA ДЛЯ CЧИTЫBAHИЯ ДAHHЫX,
+                                      NOUT - MATEMATAЧECKИЙ HOMEP BЫXOДHOГO YCTPOЙCTBA ДЛЯ BЫДAЧИ PEЗYЛЬTATA.
+                              ИHФOPMAЦИOHHO-CПPABOЧHAЯ CИCTEMA (ИCC) ПPИBEДEHA
+                              B COOTBETCTBИE C ДAHHOЙ PEДAKЦИEЙ БИБЛИOTEKИ.
+                              ДOБABЛEHA ИHФOPMAЦИЯ (KЛЮЧ TEACH) O PAБOTE ИCC
+                              B PEЖИME ДИAЛOГA B OC "ДИCПAK".
+                                                    PEBИЗИЯ 11
+                                        БИБЛИOTEKИ CП БЭCM-6 1 HOЯБPЯ 1984 Г.
+                              1.  B OБCП-1 BKЛЮЧEHЫ HOBЫE ПPOГPAMMЫ: D150,F423,M103,
+                                   V105,V106,V116,V130.
+                                   OПИCAHИЯ ЭTИX ПPOГPAMM BKЛЮЧEHЫ B ИHФOPMAЦИOHHO-CПPABOЧHYЮ
+                                   CИCTEMY (ИCC).
+                              2.  B OБCП-1 BKЛЮЧEHЫ HOBЫE BEPCИИ ПPOГPAMM:
+                                   C205(RZERO)  - YЛYЧШEH AЛГOPИTM.
+                                   M101(SORTZV) - AДAПTИPOBAHA ФOPTPAHHAЯ BEPCИЯ ДЛЯ
+                                                  COPTИPOBKИ ЦEЛЫX И BEЩECTBEHHЫX ЧИCEЛ. ДЛЯ COPTИPOBKИ
+                                                  CИMBOЛOB BKЛЮЧEHA ПPOГPAMMA HA MAДЛEHE
+                                                  (ABTOP A.П.CAПOЖHИKOB).
+                              OБPAЩAEM BHИMAHИE ПOЛЬЗOBATEЛEЙ HA TO, ЧTO KOЛИЧECTBO
+                              ПAPAMETPOB B OБPAЩEHИИ K M101 HA БЭCM-6 B HACTOЯЩEM
+                              BAPИAHTE  6  (CM. OПИCAHИE B ИCC), A HE  8  .
+                              OБPAЩEHИE K M101 B HOBOЙ BEPCИИ:
+                              CALL SORTZV(A,INDEX,N,MODE,NWAY,NSORT).
+                                                   PEBИЗИЯ 10
+                                        БИБЛИOTEKИ CП БЭCM-6 1 HOЯБPЯ 1983 Г.
+                              1.  B OБCП-1 BKЛЮЧEHЫ HOBЫE ПPOГPAMMЫ: C351,D209,D703,
+                                   D704,E221,E250,F150.
+                                   OПИCAHИЯ ЭTИX ПPOГPAMM BKЛЮЧEHЫ B ИHФOPMAЦИOHHO-CПPABOЧHYЮ
+                                   CИCTEMY (ИCC).
+                              2.  ИЗ OБCП-1 ИCKЛЮЧEHЫ ПPOГPAMMЫ:
+                                   D203 - PEKOMEHДYEM PAБOTATЬ C D209,
+                                   D800 - PEKOMEHДYEM PAБOTATЬ C D704.
+                              3.  ИHДEKC ПPOГPAMMЫ C327 (FGETA) ИЗMEHEH HA C361.
+                              4.  OБPAЩAEM BHИMAHИE HA TO, ЧTO B D221 BBEДEH
+                                   ДOПOЛHИTEЛЬHЫЙ ФOPMAЛЬHЫЙ ПAPAMETP W. W - PAБOЧИЙ MACCИB
+                                   PAЗMEPHOCTИ (N,3). BЫЗOB ПPOГPAMMЫ:
+                                   CALL INSAUT(N,X,Y,H,EPS,T,R,EXTERN,W) ИЛИ
+                                   CALL INSINT(N,X,Y,H,EPS,T,R,EXTERN,W).
+                                                  PEBИЗИЯ 9
+                                        БИБЛИOTEKИ CП БЭCM-6 1 HOЯБPЯ 1982 Г.
+                              1.  B OБCП-1 BKЛЮЧEHЫ HOBЫE ПPOГPAMMЫ:C318,C319,C320,E220,E410.
+                              2.  ИЗ OБCП-1 ИCKЛЮЧEHA ПPOГPAMMA D540 - PEKOMEHДYEM
+                                   PAБOTATЬ C E220.
+                              3.  ИЗ OБCП-1 ИCKЛЮЧEHЫ ПPOГPAMMЫ, PEAЛИЗYЮЩИE KOMПЛEKCHYЮ
+                                   APИФMETИKY C БOЛЬШИM ДИAПAЗOHOM ПOPЯДKOB(CM.Г.Л.MAЗHЫЙ
+                                   -PEAЛИЗAЦИЯ KOMПЛEKCHOЙ APИФMETИKИ C БOЛЬШИM ДИAПAЗOHOM
+                                   ПOPЯДKOB HA ЭBM БЭCM-6  - OИЯИ 11-8667, ДYБHA, 1975 Г.) И
+                                   ЗAПИCAHЫ B PERSONAL LIBRARY. ДЛЯ PAБOTЫ C ПPOГPAMMAMИ
+                                   C325 И E410 HEOБXOДИMO ЗAKAЗATЬ B YПPABЛЯЮЩИX KAPTAX:
+                                        *DISC:667-SYSTEM,BESM6
+                                        *FILE:LTEST,31,R
+                                        *PERSO:31010
+                              4.  B COOTBETCTBИИ C БИБЛИOTEKOЙ ЦEPH ИMЯ ПPOГPAMMЫ
+                                   MULLRC(C204) ИЗMEHEHO HA MULLER.
+                              5.  CДEЛAHЫ HOBЫE OПИCAHИЯ ПPOГPAMM И BKЛЮЧEHЫ B ИCC C316,
+                                   C326,C332,C400,D125,D205,D207,D600,E204,E205,E209,
+                                   E402-E403,E404-E405,F103,F403.
+                                   ПOДPOБHЫE OПИCAHИЯ K ЭTИM ПPOГPAMMAM ЛИKBИДИPOBAHЫ, T.K.
+                                   HOBЫE OПИCAHИЯ COДEPЖAT ПOЛHYЮ ИHФOPMAЦИЮ ПO ИCПOЛЬЗOBAHИЮ
+                                   ЭTИX ПPOГPAMM.
+                                                  PEBИЗИЯ 8
+                                        БИБЛИOTEKИ CП БЭCM-6 1 HOЯБPЯ 1981 Г.
+                              1.  B OБCП-1 BKЛЮЧEHЫ HOBЫE ПPOГPAMMЫ:D521,F500,F600,
+                                   J530,U500
+                                   ПPOГPAMMЫ F110-F115 OБЬEДИHEHЫ B OДHY ПOД ИHДEKCOM F110.
+                              2.  ИHДEKC ПPOГPAMMЫ F240 ИЗMEHEH HA F220(EISPACK),
+                                   A  V101  HA  V104(RNDM) .
+                                   ПPOГPAMMЫ OИЯИ KIM И COPLOT БYДYT ИMETЬ ИHДEKCЫ
+                                   COOTBETCTBEHHO F240 И J531.
+                              3.  CДEЛAHЫ HOBЫE OПИCAHИЯ ПPOГPAMM И BKЛЮЧEHЫ B ИCC
+                                     D103,D400,D701,F401-F402.
+                                   ПOДPOБHЫE  OПИCAHИЯ  K  ПEPEЧИCЛEHHЫM  ПPOГPAMMAM
+                                   ЛИKBИДИPOBAHЫ, T.K. HOBЫE OПИCAHИЯ COДEPЖAT ПOЛHYЮ
+                                   ИHФOPMAЦИЮ ПO ИCПOЛЬЗOBAHИЮ ЭTИX ПPOГPAMM.
+                                                  PEBИЗИЯ 7
+                                        БИБЛИOTEKИ CП БЭCM-6 1 HOЯБPЯ 1980Г.
+                              1.  B OБCП-1 BKЛЮЧEHЫ HOBЫE ПPOГPAMMЫ-C301,C349,C350,
+                                   E106,E255,F223,F230,F405,G104,G106,V110,V111,V112,V150,
+                                   OПИCAHИЯ KOTOPЫX BKЛЮЧEHЫ B ИCC.
+                              2.  B OБCП-2 BKЛЮЧEHЫ HOBЫE ПPOГPAMMЫ-X401,Z054,OПИCAHИЯ
+                                   KOTOPЫX CM. B ИCC.
+                              3.   ИCKЛЮЧEHЫ CЛEДYЮЩИE ПPOГPAMMЫ:
+                                   D201 - PEKOMEHДYEM PAБOTATЬ C D203-D208,
+                                   D202 - PEKOMEHДYEM PAБOTATЬ C D203-D208,
+                                   E101 - PEKOMEHДYEM PAБOTATЬ C E106,
+                                   E200 - PEKOMEHДYEM PAБOTATЬ C E201,
+                                   E406,
+                                   F200 - PEKOMEHДYEM PAБOTATЬ C F223,
+                                   F201 - PEKOMEHДYEM PAБOTATЬ C F223,
+                                   M203,
+                                   M204,
+                                   Q830 - PEKOMEHДYEM PAБOTATЬ C PEДAKTOPOM EDIT.
+                              4.   ПPOГPAMMЫ C204 И C220 OБЬEДИHEHЫ B OДHY
+                                   ПPOГPAMMY C ИHДEKCOM C204.
+                              5.   ПPOГPAMMЫ F311 И F320 OБЬEДИHEHЫ B OДHY
+                                   ПPOГPAMMY C ИHДEKCOM F311.
+                              6.   B COOTBETCTBИИ C БИБЛИOTEKOЙ ЦEPH ИHДEKC ПPOГPAMMЫ
+                                   M258 ИЗMEHEH HA I302.
+                              7.   ПPOГPAMMA S120 (DILLIB,INFLIB) HAXOДИTCЯ И HA
+                                   OБCП-1 И HA OБCП-2.
+                              8.   ПPOГPAMMA Z051(LIB1) ПEPEHECEHA ИЗ OБCП-2 B OБCП-1.
+                              9.   ПPOГPAMMЫ K100,K403,K405, ЗAПИCAHHЫE B OБCП-2,
+                                   BKЛЮЧEHЫ И B OБCП-1.
+                              10.  B ПPOГPAMME K100 ИMЯ CLEAR ЗAMEHEHO HA FSWOP
+                                   (T.K. CLEAR ИMEETCЯ B T110).
+                                                  PEBИЗИЯ 6
+                                        БИБЛИOTEKИ CП БЭCM-6  1 HOЯБPЯ 1979Г.
+                              1.  B OБCП-1 BKЛЮЧEHЫ HOBЫE ПPOГPAMMЫ:D701,F221,F222,
+                                   F224,F225,F240,F404,G102,G110,G111.
+                              2.   ИCKЛЮЧEHЫ CЛEДYЮЩИE ПPOГPAMMЫ:
+                                   A500
+                                   C202 - PEKOMEHДYEM PAБOTATЬ C C206.
+                                   D108 - MOЖHO PAБOTATЬ,HAПPИMEP, C D103.
+                                   D500 - PEKOMEHДYEM PAБOTATЬ C D516.
+                                   D504 - PEKOMEHДYEM PAБOTATЬ C D516.
+                                   D505 - PEKOMEHДYEM PAБOTATЬ C D516.
+                                   F203 - PEKOMEHДYEM PAБOTATЬ C F221.
+                                                  PEBИЗИЯ 5
+                                        БИБЛИOTEKИ CП БЭCM-6  1 HOЯБPЯ 1978Г.
+                              1.  ЗAПИCAHЫ HOBЫE ПPOГPAMMЫ:D702,M258.
+                              2.  ЗAПИCAHA HOBAЯ BEPCИЯ ПPOГPAMMЫ C400.  B HEЙ
+                                   ИЗMEHИЛOCЬ KOЛИЧECTBO ПAPAMETPOB ПO CPABHEHИЮ C BEPCИEЙ
+                                   OT 1 HOЯБPЯ 1977ГOДA, T. E. OБPAЩEHИE БYДET:
+                                   CALL NEWTON(X,F,N,DF,NDIM1,NDIM2,HNSQ,FNORM,MAXIT,IFAIL).
+                                   OПИCAHИE HOBOЙ BEPCИИ ПPOГPAMMЫ C400 BHECEHO B
+                                   ИHФOPMAЦИOHHO-CПPABOЧHYЮ CИCTEMY (ИCC).
+                              3.  ИCKЛЮЧEHA ПPOГPAMMA D506(MINUIS), PEKOMEHДYEM
+                                   PAБOTATЬ C D516(MINUIL).
+                                                  PEBИЗИЯ 4
+                                        БИБЛИOTEKИ CП БЭCM-6  1 HOЯБPЯ 1977Г.
+                              1.  ЗAПИCAHЫ HOBЫE ПPOГPAMMЫ:C220,C327,D127,D128,
+                                   D129,F320,K453,M450,S120.
+                              2.   ЗAПИCAHЫ HOBЫE BEPCИИ ПPOГPAMM:
+                                   A)B F102 ИЗMEHИЛOCЬ KOЛИЧECTBO ПAPAMETPOB B OБPAЩEHИИ
+                                     ПO CPABHEHИЮ C BEPCИEЙ 1 HOЯБPЯ 1976ГOДA,T.E. OБPAЩEHИE
+                                     БYДET TAKOE ЖE,KAK B BAPИAHTE CERN:CALL LINVER(A,B,X,N,
+                                     M,DET,IEX,CNR,SING,KA,SCR1,SCR2,SCR3,SCR4,SCR5,SCR6).
+                                   Б)F101,F402-ИЗMEHEHЫ AЛГOPИTMЫ C YЧETOM OCOБEHHOCTEЙ
+                                     ЭBM-БЭCM-6.
+                                                  PEBИЗИЯ 3
+                                        БИБЛИOTEKИ CП БЭCM-6 1 HOЯБPЯ 1976Г.
+                              1.  ЗAПИCAHЫ HOBЫE ПPOГPAMMЫ:C231,K452,M257,S110.
+                              2.  ЗAПИCAHA HOBAЯ BEPCИЯ ПPOГPAMMЫ M101(OБPAЩATЬCЯ
+                                   ПO-CTAPOMY).
+                              ЗAMEЧAHИЯ: 1)HAПOMИHAEM ПOЛЬЗOBATEЛЯM,ЧTO C 30HOЯБPЯ
+                                           1973Г. ЗAПИCAHA HOBAЯ BEPCИЯ F104(SYMINV),ИMEЮЩAЯ 5
+                                           ПAPAMETPOB(CTAPAЯ BEPCИЯ ИMEЛA 3 ПAPAMETPA).
+                                         2)HA TEKCTOBOЙ ЛEHTE ПPOГPAMMA M412 ИMEETCЯ B ДBYX
+                                           BAPИAHTAX:
+                                             A)C TAБЛИЦEЙ KOДOB CИMBOЛOB БЭCM-6(KAK HA OБCП-1).
+                                             Б)C TAБЛИЦEЙ KOДOB CИMBOЛOB CDC.
+                                                  PEBИЗИЯ 2
+                                        БИБЛИOTEKИ CП БЭCM-6 1 HOЯБPЯ 1975Г.
+                              1.  ЗAПИCAHA HOBAЯ ПPOГPAMMA D126 B OБCП-1.
+                              2.  ЗAПИCAHЫ HOBЫE BEPCИИ ПPOГPAMM:C316,C326-CДEЛAHЫ
+                                  HEKOTOPЫE ИЗMEHEHИЯ,BBEДEHA ДBOЙHAЯ TOЧHOCTЬ(OБPAЩATЬCЯ
+                                  ПO-CTAPOMY),M409-ЗAПИCAH ABTOKOДHЫЙ BAPИAHT ПPOГPAMMЫ.
+                                                  PEBИЗИЯ 1
+                                        БИБЛИOTEKИ CП БЭCM-6 1 MAЯ 1975 ГOДA.
+                              1.  ЗAПИCAHЫ HOBЫE ПPOГPAMMЫ:
+                                   B OБCП-1:D610,F422,J551,M251,M256,M415,M416.
+                                   B OБCП-2:K101,T110,W601.
+                              2.  ЗAПИCAHЫ HOBЫE BEPCИИ ПPOГPAMM:
+                                   A)C325-CДEЛAHЫ HEKOTOPЫE ИЗMEHEHИЯ B CBЯЗИ C ПPИMEHEHИEM
+                                     KOMПЛEKCHOЙ APИФMETИKИ PACШИPEHHOГO ДИAПAЗOHA(CM.OПИCAHИE).
+                                   B)C333-HOBAЯ BEPCИЯ ЦEPH(OБPAЩATЬCЯ ПO-CTAPOMY).
+                                   C)M-250-ЗAПИCAH HOBЫЙ BAPИAHT ПPOГPAMMЫ(OБPAЩATЬCЯ
+                                     ПO-CTAPOMY).
+                                   D)M419-ПOЛHOCTЬЮ ЗAПИCAHA BEPCИЯ ЦEPH(ДOБABЛEH BXOД LEFT).
+                              3.  ПPOГPAMMЫ H100,K100,K403,K405,K450,K508 ПEPEHECEHЫ
+                                   ИЗ OБCП-1 B OБCП-2.
+                              4.  ПPOГPAMMЫ D500,D504,D505,D516 ПEPEHECEHЫ ИЗ OБCП-2
+                                   B OБCП-1.
+                              5.  OБCП-4 AHHYЛИPOBAHA, ПPOГPAMMЫ GENERAL SECTION B
+                                   OБCП-1 И B OБCП-2.
+                              6.  J-530-ИCПPABЛEH CTAHДAPTHЫЙ MACCИB HA OБCП-1.                      KATAЛOГ OБЩEЙ БИБЛИOTEKИ ПPOГPAMM (OБП-1) БЭCM-6          25 MAЯ 1989 Г.
+                     -------------------------------------------------
+                    A.  APИФMETИЧECKИE ПPOГPAMMЫ.
+                    -----------------------------
+              1.   A200.  KOMПЛEKCHAЯ APИФMETИKA C ДBOЙHOЙ TOЧHOCTЬЮ
+                          (DPCPLX,DREAL,DAIMAG,DCABS,DCMPLX,DCONJG,DCADD,
+                          DCSUB,DCMPY,DCDIV,DCSQRT,DCEXP,DCLOG,DCSIN,DCCOS).
+              2.   A400.  48-PAЗPЯДHAЯ БYЛEBAЯ APИФMETИKA (AND,OR,COMPL,OCTAL,BOOL,HOLITH).
+              3.   A401.  ЛOГИЧECKOE TOЖДECTBO (IDENZB).
+              4.   A402.  CPABHEHИE ДBYX 48-PAЗPЯДHЫX CЛOB (SAME).
+              5.   A404.  ЛOГИЧECKOE ПPOИЗBEДEHИE И CYMMA ДBYX БYЛEBCKИX ФYHKЦИЙ ДEЙCTBИTEЛЬHOГO ПEPEMEHHOГO (ANDOR).
+                    B.  ЭЛEMEHTAPHЫE ФYHKЦИИ.
+                    -------------------------
+              6.   B101.  APKTAHГEHC (ATG).
+              7.   B102.  ПPИBEДEHИE YГЛA K ЗAДAHHOMY ИHTEPBAЛY (PROXIM).
+              8.   B200.  BЫЧИCЛEHИE ГИПEPБOЛИЧECKИX ФYHKЦИЙ
+                          (DCOSH,DSICOH,DSINH,SICOH,COSH,SINH).
+              9.   B400.  ГEHEPATOP CTEПEHHOГO PЯДA  (POWEZE).
+                    C.  ПOЛИHOMЫ И CПEЦИAЛЬHЫE ФYHKЦИИ.
+                    -----------------------------------
+             10.   C100.  ПOЛИHOMИAЛЬHAЯ ФYHKЦИЯ (POLY).
+             11.   C101.  HAXOЖДEHИE PЯДA ШTYPMA И ИHДEKCA ШTYPMA
+                          (CHAIM,STURM,STURMO,EUKLID,PORM,DIFPOL,DEBUG,HORNER,POLDIV).
+             12.   C110.  ПPOИЗBEДEHИE ПOЛИHOMOB (ABMNS).
+             13.   C201.  KOPHИ KYБИЧECKOГO YPABHEHИЯ (ДBOЙHAЯ TOЧHOCTЬ) (DDVETA).
+             14.   C203.  ЧИCЛO HYЛEЙ KOMПЛEKCHOЙ ФYHKЦИИ (NZEROS,NEAR1,PREP6).
+             15.   C204.  HAXOЖДEHИE KOPHEЙ MHOГOЧЛEHA (MULLER,MULLRD).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (DCADD,DCDIV,DCMPY,DCONJG,DCSUB - A200).
+             16.   C205.  HYЛЬ ФYHKЦИИ OДHOЙ ПEPEMEHHOЙ (RZERO).
+             17.   C206.  KOPHИ KOMПЛEKCHЫX ПOЛИHOMOB(POLY2,CIRCLE,DEFLAT,VP).
+             18.   C230.  HYЛИ ФYHKЦИЙ БECCEЛЯ J0,J1,Y0,Y1 (ZBESJ0,ZBESJ1,ZBESY0, ZBESY1,ZBESJY).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (BESJY - C312).
+             19.   C231.  ИЗBЛEЧEHИE KYБИЧECKOГO KOPHЯ (CBRT).
+             20.   C300.  ФYHKЦИЯ OШИБOK И ФYHKЦИЯ HOPMAЛЬHOГO PACПPEДEЛEHИЯ (ERF,FREQ,ERFC,ERFXX).
+             21.   C301.  ФYHKЦИЯ, OБPATHAЯ ФYHKЦИИ HOPMAЛЬHOГO PACПPEДEЛEHИЯ (GAUSIN).
+             22.   C302.  ФYHKЦИИ БECCEЛЯ HYЛEBOГO И ПEPBOГO ПOPЯДKA (BESSEL).
+             23.   C303.  ФYHKЦИИ БECCEЛЯ KOMПЛEKCHOГO APГYMEHTA И ПOPЯДKA
+                          (COMBES,CBESJY,COMBMN,COMEXP,COMLOG,CCOSH,COMFAC,HANKEL,
+                          JNORM,JRECUR,JSUM,LOGGAM,NEGN,START1,XTEST,YTEST,YKNU,JRECUR,YSUM,YZERO,YGNU,YGREC1).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (SINH,COSH - B200).
+             24.   C304.  ДИЛOГAPИФMИЧECKAЯ ФYHKЦИЯ (DILOG).
+             25.   C305.  ГAMMA-ФYHKЦИЯ (GAMMA).
+             26.   C306.  KOMПЛEKCHAЯ ГAMMA-ФYHKЦИЯ (CGAMMA,ZFACT).
+             27.   C307.  ДИГAMMA (PSI) ФYHKЦИЯ KOMПЛEKCHOГO APГYMEHTA (CDIGAM,PSIFN).
+             28.   C308.  ПOЛHЫE ЭЛЛИПTИЧECKИE ИHTEГPAЛЫ  K И E (ELLICK,ELLICE).
+             29.   C309.  ИHTEГPAЛ ФPEHEЛЯ (FRECS,FRICS).
+             30.   C310.  OTHOШEHИE KOMПЛEKCHЫX ГAMMA-ФYHKЦИЙ (CRAGAM,RGAM).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (CLOGAM - C333).
+             31.   C311.  ФYHKЦИИ ЛEЖAHДPA (LEGFN,LEGZ,LEG1,LEGV,TRDZ,HYPGM,CRIT,NINT,CSQRTK,CLOGOK,LEGOR).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (PSIFN - C307)
+                                        (RGAM - C310).
+             32.   C312.  ФYHKЦИИ БECCEЛЯ J0,J1,Y0,Y1 (BESJY,BESJ0,BESJ1,BESY0,BESY1,DBESJ0,DBESJ1,DBESY0,DBESY1).
+             33.   C313.  MOДИФИЦИPOBAHHЫE ФYHKЦИИ БECCEЛЯ I0,I1,K0,K1
+                          (BESIK,BESI0,BESI1,BESK0,BESK1,EBESI0,EBESI1,EBESK0,EBESK1,
+                          DBESI0,DBESI1,DBESK0,DBESK1,DEBSI0,DEBSI1,DEBSK0,DEBSK1).
+             34.   C314.  TЭTA-ФYHKЦИИ И ЭЛЛИПTИЧECKИE ФYHKЦИИ ЯKOБИ (THETA1,THETA2,THETA3,THETA4,QFUNCT).
+             35.   C315.  ПPИCOEДИHEHHЫЙ ПOЛИHOM ЛEЖAHДPA (ALEGF).
+             36.   C316.  PEГYЛЯPHAЯ BOЛHOBAЯ ФYHKЦИЯ KYЛOHA (COUL1).
+             37.   C317.  ДИГAMMA (PSI) ФYHKЦИЯ (ADIGAM).
+             38.   C318.  ЭЛЛИПTИЧECKИE ФYHKЦИИ ЯKOБИ SN,CN,DN (ELFUN).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (DSINH - B200).
+             39.   C319.  HEПOЛHЫЙ ЭЛЛИПTИЧECKИЙ ИHTEГPAЛ ПEPBOГO POДA (ELIN1).
+             40.   C320.  KOMПЛEKCHЫE ЭЛЛИПTИЧECKИE ФYHKЦИИ ЯKOБИ SN,CN,DN (CELFUN).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (DSINH - B200).
+             41.   C322.  ГAMMA-ФYHKЦИЯ C ДBOЙHOЙ TOЧHOCTЬЮ (DGAMMA)
+             42.   C323.  OБOБЩEHHЫE ПOЛИЛOГAPИФMЫ (GPLOG).
+             43.   C324.  KOMПЛEKCHЫE ЗHAЧEHИЯ OБOБЩEHHЫX ПOЛИЛOГAPИФMOB (CGPLOG).
+             44.   C325.  ФYHKЦИЯ YИTTEKEPA (WHIT,BEWW,BOUND,T).
+                              ИCПOЛЬЗYETCЯ KOMПЛEKCHAЯ APИФMETИKA
+                               PACШИPEHHOГO ДИAПAЗOHA (CM. ИCC, KЛЮЧ "ARIF").
+             45.   C326.  BOЛHOBЫE ФYHKЦИИ KYЛOHA (COUL2).
+             46.   C329.  MOДИФИЦИPOBAHHЫE ФYHKЦИИ БECCEЛЯ I(X) C ДBOЙHOЙ TOЧHOCTЬЮ (DBESIN).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (DGAMMA - C322).
+             47.   C330.  ФYHKЦИИ БECCEЛЯ J(X) C ДBOЙHOЙ TOЧHOCTЬЮ (DBESJN).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (DGAMMA - C322).
+             48.   C332.  KOMПЛEKCHЫE ФYHKЦИИ БECCEЛЯ J(Z) C ДBOЙHOЙ TOЧHOCTЬЮ (DBESCJ).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (DGAMMA - C322).
+             49.   C333.  ЛOГAPИФM KOMПЛEKCHOЙ ГAMMA-ФYHKЦИИ (CLOGAM).
+             50.   C335.  KOMПЛEKCHAЯ ФYHKЦИЯ OШИБOK (CWERF).
+             51.   C336.  ИHTEГPAЛЬHЫЙ CИHYC И KOCИHYC (SININT,COSINT).
+             52.   C337.  ЭKCПOHEHЦИAЛЬHЫЙ ИHTEГPAЛ (EXPINT).
+             53.   C338.  ФYHKЦИЯ ФEPMИ-ДИPAKA (FERDIR).
+             54.   C339.  ИHTEГPAЛ ДABCOHA (DAWSON).
+             55.   C340.  MOДИФИЦИPOBAHHЫE ФYHKЦИИ БECCEЛЯ I,K ПOPЯДKA 1/3 , 2/3 (BSIKR3,EBSIR3,BSKR3,EBSKR3,BSIR3).
+             56.   C341.  ЛOГAPИФM ГAMMA-ФYHKЦИИ (ALOGAM).
+             57.   C342.  ФYHKЦИИ CTPYBE H0,H1 (STRH0,STRH1).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (BESJY - C312).
+             58.   C349.  БЫCTPOE HAXOЖДEHИE CИHYC И KOCИHYC-OБPAЗA ФYPЬE OT
+                          ЭKCПOHEHЦИAЛЬHO YБЫBAЮЩEЙ ФYHKЦИИ(SFUSIN,SFUCOS,FUC,FUS).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (GAUSS - D103)
+                                        (CAUCHY - D104).
+             59.   C350.  ЭKCПOHEHЦИAЛЬHЫЙ ИHTEГPAЛ OT KOMПЛEKCHOГO APГYMEHTA
+                          (EXPE1Z,EXPEIZ,SFUTR1,FU1,SFUTRI,FUI).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (GAUSS - D103),
+                                        (GAUCHY - D104).
+             60.   C351.  ФYHKЦИИ ЭЙPИ AI(X),BI(X) (AIRY).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (DBESJN - C330).
+             61.   C360.  ГИПEPГEOMETPИЧECKAЯ ФYHKЦИЯ - CПEЦ. CЛYЧAЙ (H2F1).
+             62.   C361.  ПOДПPOГPAMMA ДЛЯ BЫЧИCЛEHИЯ KYЛOHOBCKИX ФYHKЦИЙ(FGETA).
+             63.   C368.  HEПOЛHЫE ЭЛЛИПTИЧECKИE ИHTEГPAЛЫ (ELPHIK).
+             64.   C400.  PEШEHИE CИCTEMЫ HEЛИHEЙHЫX YPABHEHИЙ (NEWTON).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (MATIN1 - F100).
+             65.   C401.  PEШEHИE CИCTEM HEЛИHEЙHЫX YPABHEHИЙ HA OCHOBE PEГYЛЯPИЗOBAHHЫX
+                          ИTEPAЦИOHHЫX ПPOЦECCOB ГAYCCA-HЬЮTOHA (COMPIL).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (SILLC,REGN,OUTRGN,TRAM,AMAXF,ANQRZF - F421).
+                    D.  OПEPAЦИИ HAД ФYHKЦИЯMИ И PEШEHИE ДИФФEPEHЦИAЛЬHЫX И  ИHTEГPAЛЬHЫX YPABHEHИЙ.
+                    --------------------------------------------------------------------------------
+             66.   D100.  ИHTEГPИPOBAHИE ПO CИMПCOHY (ARSIMP).
+             67.   D102.  ИHTEГPИPOBAHИE ПO ГAYCCY (GAUSS1).
+             68.   D103.  ИHTEГPИPOBAHИE ПO ГAYCCY (GAUSS,GAUSS2).
+             69.   D104.  ИHTEГPИPOBAHИE B CMЫCЛE ГЛABHOГO ЗHAЧEHИЯ ПO KOШИ (CAUCHY).
+             70.   D105.  ИHTEГPИPOBAHИE ПO ПOBEPXHOCTИ,ЗAДAHHOЙ TPEYГOЛЬHИKOM (TRIINT).
+             71.   D106.  N-TOЧEЧHAЯ KBAДPATYPA ГAYCCA (GQUAD,GSET).
+             72.   D108.  ИHTEГPИPOBAHИE ПO ФOPMYЛE TPAПEЦИЙ C AHAЛИЗOM OШИБOK (TRAPER).
+             73.   D109.  ИHTEГPИPOBAHИE ПO ГAYCCY C ДBOЙHOЙ TOЧHOCTЬЮ (DGAUSS).
+             74.   D110.  OCHOBHAЯ ПPOГPAMMA ДЛЯ BЫЧИCЛEHИЯ ИHTEГPAЛOB (GPINSP).
+             75.   D111.  OCHOBHAЯ ПPOГPAMMA ИHTEГPИPOBAHИЯ C ДBOЙHOЙ TOЧHOCTЬЮ (GPINDP).
+             76.   D113.  ИHTEГPAЛ ФYHKЦИИ KOMПЛEKCHOЙ ПEPEMEHHOЙ ПO ДYГE (CGAUSS).
+             77.   D114.  MHOГOMEPHOE ИHTEГPИPOBAHИE ПO MOHTE-KAPЛO (RIWIAD).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (RNDM - V104),
+                                        (XLOC - N100).
+             78.   D1141. MHOГOMEPHOE ИHTEГPИPOBAHИE ПO MOHTE-KAPЛO (RIWIA,STD114).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (RNDM - V104),
+                                        (XLOC - N100).
+             79.   D115.  ИHTEГPИPOBAHИE ПO KЛEHШAY-KYPTИCY C ДBOЙHOЙ TOЧHOCTЬЮ
+                          (CHEBQU,DATZ1,DATZ2,DATZ3,DATZ4,DATZ5,DATZ6,DATZ7,DATZ8,DATZ9,DATZ10,DATZ11).
+             80.   D120.  ИHTEГPИPOBAHИE ПO CИMПCOHY C ABTOMATИЧECKИM BЫБOPOM ШAГA C ЗAДAHHOЙ TOЧHOCTЬЮ
+                          (SIMPS,SIMPT,SIMPU,SIMPV,SIMPW).
+             81.   D121.  BЫЧИCЛEHИE KPATHЫX ИHTEГPAЛOB METOДOM KOPOБOBA (MIKOR,DATKOR,INKOR,PERIOD,MITIME).
+             82.   D122.  BЫЧИCЛEHИE N OПPEДEЛEHHЫX ИHTEГPAЛOB ПO CИMПCOHY (GROUPI).
+             83.   D123.  ИHTHГPИPOBAHИE ПO CИMПCOHY C PABHOMEPHЫM ШAГOM (ERSIMP).
+             84.   D124.  ИHTEГPИPOBAHИE METOДOM ГAYCCA-KPOHPOДA (KGAUSS).
+             85.   D125.  ИHTEГPИPOBAHИE OCЦИЛЛИPYЮЩИX ФYHKЦИЙ (ELON).
+             86.   D126.  ИHTEГPИPOBAHИE B CMЫCЛE ГЛABHOГO ЗHAЧEHИЯ ПPИ HAЛИЧИИ Y ПOДЫHTEГPAЛЬHOЙ ФYHKЦИИ
+                          ПOЛЮCOB ПEPBOГO ПOPЯДKA, ПOЛOЖEHИE KOTOPЫX BHYTPИ ИHTEPBAЛA ИHTEГPИPOBAHИЯ ЗAPAHEE HEИЗBECTHO (VPINT).
+             87.   D127.  ИHTEГPИPOBAHИE KOMПЛEKCHOЙ ФYHKЦИИ ДEЙCTBИTEЛЬHOЙ ПEPEMEHHOЙ METOДOM CИMПCOHA
+                          C PABHOMEPHЫM ШAГOM (CSIMPS).
+             88.   D128.  ИHTEГPИPOBAHИE KOMПЛEKCHOЙ ФYHKЦИИ ДEЙCTBИTEЛЬHOЙ ПEPEMEHHOЙ (CKGAUS).
+             89.   D129.  ИHTEГPИPOBAHИE OCЦИЛЛИPYЮЩИX KOMПЛEKCHЫX ФYHKЦИЙ OT ДEЙCTBИTEЛЬHOЙ ПEPEMEHHOЙ (CELON).
+             90.   D130.  ИHTEГPИPOBAHИE OCЦИЛЛИPYЮЩИX ФYHKЦИЙ HA ПOЛYБECKOHEЧHOM ИHTEPBAЛE (SUMIR).
+             91.   D131.  ИHTEГPИPOBAHИE KOMПЛEKCHЫX OCЦИЛЛИPYЮЩИX ФYHKЦИЙ HA ПOЛYБECKOHEЧHOM ИHTEPBAЛE (CSUMIR).
+             92.   D151.  MHOГOMEPHOE ИHTEГPИPOBAHИE ИЛИ ГEHEPAЦИЯ MHOГOMEPHЫX CЛYЧAЙHЫX TOЧEK
+                          (PARTN,INTGRL,USRINT,GENPNT,RANGEN,TREDMP,BUKDMP,USRTRM,DIVON,DVNOPT,DVNBKD,EXMBUC,
+                          SPLIT,QUASI,RECPAR,BOUNDS,TREAUD,NODAUD,BUCMVE,QUAD,FEQN,NOCUT,TSTEXT,DELSLV,FUN,
+                          BUFOPT,BNDOPT,SETTOL,BNDTST,DVCOPY,GRDCMP,DELETE,BFGS,MODCHL,NMDCHL,DVDOT,LDLSOL,SHRNK,
+                          FEASMV,ADDBND,MULCHK,DELBND,LOCSCH,MXSTEP,NEWPTR,RLEN,RANUMS,ORTHVC).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (UCOPY - V301).
+             93.   D204.  ИHTEГPИPOBAHИE CИCTEMЫ ДИФФEPEHЦИAЛЬHЫX YPABHEHИЙ (DFEQS1 ).
+             94.   D205.  ИHTEГPИPOBAHИE CИCTEMЫ ДИФФEPEHЦИAЛЬHЫX YPABHEHИЙ METOДOM "ПPEДCKAЗAHИE-KOPPEKЦИЯ" (DFEQS2).
+             95.   D206.  ИHTEГPИPOBAHИE CИCTEMЫ ДИФФEPEHЦИAЛЬHЫX YPABHEHИЙ METOДOM HOPCИKA (NORSIK).
+             96.   D207.  ИHTEГPИPOBAHИE CИCTEMЫ OБЫKHOBEHHЫX ДИФФEPEHЦИAЛЬHЫX YPABHEHИЙ ПEPBOГO ПOPЯДKA METOДOM
+                          ЭKCTPAПOЛЯЦИИ C ПEPEMEHHЫM ШAГOM (BULSTO).
+             97.   D208.  ИHTEГPИPOBAHИE ПO MEPCOHY (MERSON).
+             98.   D209.  ИHTEГPИPOBAHИE CИCTEMЫ ДИФФEPEHЦИAЛЬHЫX YPABHEHИЙ METOДOM PYHГE-KYTTA (RKSTP,DRKSTP).
+             99.   D221.  ИHTEГPИPOBAHИE CИCTEMЫ ДИФФEPEHЦИAЛЬHЫX YPABHEHИЙ
+                          C ABTOMATИЧECKИM BЫБOPOM  ШAГA (INSAUT,VRLTV,INSINT).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (RKSTP - D209).
+            100.   D300.  PEШEHИE KBAЗИЛИHEЙHЫX ДИФФEPEHЦИAЛЬHЫX YPABHEHИЙ B ЧACTHЫX ПPOИЗBOДHЫX ЭЛЛИПTИЧECKOГO TИПA
+                          BTOPOГO ПOPЯДKA METOДOM ПOCЛEДOBATEЛЬHЫX CBEPXPEЛAKCAЦИЙ
+                          (EPDE1,SEGMT1,FNDBPS,SORT,LOCAT,ININ,JEJE,CEJE,FXORFL,CHECK,
+                          MAKTAB,DECC,ITRATE,CHAIN,DARRAY,RDDRUM,WRRD,WRDRUM).
+            101.   D302.  ИCПOЛЬЗOBAHИE БЫCTPЫX ПPEOБPAЗOBAHИЙ ФYPЬE ДЛЯ PEШEHИЯ ДИФФEPEHЦИAЛЬHЫX YPABHEHИЙ B ЧACTHЫX
+                          ПPOИЗBOДHЫX B ФИЗИKE (ELPAHY,NEWRO,ANAL,SOLVE6,SYNT,MFT).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (RFT - D700).
+            102.   D400.  ЧИCЛEHHOE ДИФФEPEHЦИPOBAHИE (NUMDI1).
+            103.   D506.  MИHИMИЗAЦИЯ ФYHKЦИИ MHOГИX ПEPEMEHHЫX, BЫЧИCЛEHИE KOBAPИAHTHOЙ MATPИЦЫ И HAXOЖДEHИE ИCTИHHЫX OШИБOK
+                          (MINUIL,CALFCN,COMAND,CONTOU,DERIVE,EXTOIN,FIXPAR,FTIME,
+                          HESSE,IMPROV,INTOEX,MATOUT,MIDATA,MIGRAD,MINNEW,MINOS,
+                          MPRINT,MPUNCH,PINTF,PLTCON,RAZZIA,RESTOR,SEEK,MSIMPL,STAND,
+                          VERMIN,ALLOW,AMINIM).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (RNDM - V104)
+                                        (UBLANK,UZERO - V300)
+                                        (UCOPY - V301)
+                                        (TIMEZB - Z002).
+            104.   D507.  MИHИMИЗAЦИЯ CYMMЫ KBAДPATOB ФYHKЦИЙ  (MINSQ,VD01A,FCN1).
+            105.   D508.  ФИTИPOBAHИE ПO METOДY HAИMEHЬШИX KBAДPATOB C ЛИHEЙHOЙ ЗABИCИMOCTЬЮ ПAPAMETPOB
+                          (LINSQ,Q).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (MATIN2 - F101)
+                                        (LINEQ2 - F402).
+            106.   D509.  MИHИMYM ФYHKЦИИ OДHOЙ ПEPEMEHHOЙ (MINVAR,HILL,FA,FB).
+            107.   D510.  MИHИMИЗAЦИЯ KBAДPATИЧHOГO ФYHKЦИOHAЛA
+                          (FUMILI,SCAL,SGZ,MCONV,MONITO,ERRORF,LIKELM,*AU*,*AL*,ARITHM).
+            108.   D511.  ПPOBEPKA AHAЛИTИЧECKИX ПPOИЗBOДHЫX (CHED).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (ARITHM - D510)
+                                        (VSCALE - F121).
+            109.   D515.  ПPOГPAMMA ДЛЯ POБACTHOЙ MИHИMИЗAЦИИ KBAДPATИЧHOГO ФYHKЦИOHAЛA, HEЛИHEЙHO
+                          ЗABИCЯЩEГO OT ПAPAMETPOB (ROLSM,PARCA,FIXA,PODEM,OUTIN,SMXIN).
+            110.   D522.  BЫЧИCЛEHИE KOPHEЙ ФYHKЦИИ  OДHOЙ ПEPEMEHHOЙ METOДOM ДEЛEHИЯ OTPEЗKA ПOПOЛAM (KOR).
+            111.   D600.  PEШEHИE ЛИHEЙHЫX ИHTEГPAЛЬHЫX YPABHEHИЙ (FRED1,FRED2,FRED3).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (GSET,GOUAD - D106)
+                                        (MATIN1 - F100)
+                                        (MATRIX,VCHECK - F103)
+                                        (KIM - F240)
+                                        (LINEQ1 - F401).
+            112.   D610.  PEШEHИE ЛИHEЙHOГO ИHTEГPAЛЬHOГO YPABHEHИЯ ПEPBOГO POДA
+                          METOДOM PEГYЛЯPИЗAЦИИ(FREDI,KOK1,SLAYMR,PEШEH,SLAY,ERROU,
+                          VOLTRS,ALHBC,ALKBA3,ALOTH,DD,DD1).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (SYMINV - F104).
+            113.   D611.  ПAKET ПPOГPAMM ДЛЯ PEШEHИЯ ИHTEГPAЛЬHЫX YPABHEHИЙ
+                          (INTEQU,VOLTS1,VOLTF1,FREST1,FREST2,FREST3,TIKH1,TIKH2,TIKH3,TIKH4,TIKH5,
+                          CONV1,CONV2,CONV3,CONV4,CONV5,FRIED1,FRIED2,XNI,YDY,COEF,REM,ZGF,CKK,SOL1,GDISC,
+                          UVLF,INF,Q12,SOL2,SOL3,TYPE1,TYPE2,TYPE3,TYPE4,TYPE5,TYPE6,TYPE7,TYPE8,F2F,QAT,CHD,
+                          RHO,INNUM,DISC,NORML2,NORMC,RATEL2,RATEC,DOMEGA,SIGMA,LAMBDA,CDISC,DGELG,SIMQ,MFSD,MTDS,SINV).
+            114.   D612.  PEШEHИE ЛИHEЙHOГO ИHTEГPAЛЬHOГO YPABHEHИЯ ФPEДГOЛЬMA 1 POДA METOДOM POБACTHOЙ
+                          ДИCKPИПTИBHOЙ PEГYЛЯPИЗAЦИИ (ROBAST,MAKEA,MATFA,MATOGR,DEFIMA,CONVER,ANSWER,ROBRG,MAINER,
+                          SUBBER,GRADER,ROBPE4,NABOR,LIMITR,BOUN,SEND,PLUSER,SENDER,SENDIN,MATVEC,SCALAR,FHUBER).
+            115.   D700.  ДEЙCTBИTEЛЬHOE БЫCTPOE ПPEOБPAЗOBAHИE ФYPЬE (RFT,RPA,RCA,RSA,RPS,SETFT).
+            116.   D701.  БЫCTPOE ПPEOБPAЗOBAHИE ФYPЬE ДЛЯ ДEЙCTBИTEЛЬHЫX ИЛИ KOMПЛEKCHЫX ФYHKЦИЙ (FFTRC,I16
+                          D16,I32,D32,I64,D64,I128,D128,S64,C64,S128,C128,S256,C256,S512,C512,D701BD).
+            117.   D702.  KOMПЛEKCHOE БЫCTPOE ПPEOБPAЗOBAHИE ФYPЬE(CFT).
+            118.   D703.  ДEЙCTBИTEЛЬHOE БЫCTPOE ПPEOБPAЗOBAHИE ФYPЬE (RFFT).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (CFFT - D704).
+            119.   D704.  KOMПЛEKCHOE БЫCTPOE ПPEOБPAЗOBAHИE ФYPЬE (CFFT).
+                    E.  ИHTEPПOЛЯЦИЯ И AППPOKCИMAЦИЯ.
+                    ---------------------------------
+            120.   E100.  ПOЛИHOMИAЛЬHAЯ ИHTEPПOЛЯЦИЯ (POLINT).
+            121.   E102.  MAKCИMAЛЬHЫЙ И MИHИMAЛЬHЫЙ ЭЛEMEHTЫ MACCИBA (MAXIZE,MINIZE,MAXFZE,MINFZE).
+            122.   E103.  HAИБOЛЬШAЯ AБCOЛЮTHAЯ BEЛИЧИHA KOMПOHEHTЫ B COBOKYПHOCTИ BEKTOPOB (AMAXMU).
+            123.   E104.  MHOГOMEPHAЯ ИHTEPПOЛЯЦИЯ (FINT).
+            124.   E105.  ИHTEPПOЛЯЦИЯ C ИCПOЛЬЗOBAHИEM PAЗHOCTHЫX OTHOШEHИЙ (DIVDIF).
+            125.   E106.  ПOИCK ЗAДAHHOГO ЭЛEMEHTA B YПOPЯДOЧEHHOM MACCИBE (LOCATF,LOCATI).
+            126.   E110.  KBAДPATИЧHAЯ ИHTEPПOЛЯЦИЯ C ПOCTOЯHHЫM ШAГOM (PARINT).
+            127.   E111.  KBAДPATИЧHAЯ ИHTEPПOЛЯЦИЯ C ПPOИЗBOЛЬHЫM ШAГOM(PARINV).
+            128.   E112.  ПPOГPAMMA KBAДPATИЧHOЙ  ИHTEPПOЛЯЦИИ C YПOPЯДOЧEHИEM TAБЛИЦ (FINTER,REORDN).
+            129.   E113.  ЛИHEЙHAЯ ИHTEPПOЛЯЦИЯ И ЭKCTPAПOЛЯЦИЯ K ФYHKЦИЙ F(X,Y) C  ПEPEMEHHЫM ШAГOM ПO OБOИM APГYMEHTAM
+                          (EXTINT).
+            130.   E201.  AППPOKCИMAЦИЯ ЭKCПEPИMEHTAЛЬHЫX ДAHHЫX ПOЛИHOMOM ИЛИ ЭKCПOHEHTOЙ C ДBYMЯ ИЛИ TPEMЯ
+                          ПAPAMETPAMИ (CUR2FT).
+            131.   E202.  AППPOKCИMAЦИЯ ПOЛИHOMAMИ METOДOM HAИMEHЬШИX KBAДPATOB CO CTATИCTИЧECKИM AHAЛИЗOM
+                          (LSQFIT,POLYNL,POLFIT,ESTEY,STDDEV,COVAR).
+            132.   E204.  AППPOKCИMAЦИЯ ПOЛИHOMOM OT ДBYX ПEPEMEHHЫX METOДOM HAИMEHЬШИX KBAДPATOB
+                          (PSI1,J1,PSI,AL,COEFF).
+            133.   E205.  AППPOKCИMAЦИЯ ПOЛИHOMAMИ OT MHOГИX ПEPEMEHHЫX METOДOM HAИMEHЬШИX KBAДPATOB
+                          (PSI2,ENTR1,TIST,J15,PSI5,AL5,COEFF5).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (UZERO - V300).
+            134.   E206.  KOЭФФИЦИEHTЫ TPИГOHOMETPИЧECKИX PЯДOB (TRICOF).
+            135.   E207.  CYMMA TPИГOHOMETPИЧECKИX PЯДOB (TRISUM).
+            136.   E208.  ПPИБЛИЖEHИE ПO METOДY HAИMEHЬШИX KBAДPATOB (LSQ).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (MATIN1 - F100)
+                                        (UZERO - V300)
+                                        (UCOPY - V301).
+            137.,  E209.  CПЛAЙH-AППPOKCИMAЦИЯ TPETЬEГO ПOPЯДKA (SPLIN3).
+            138.   E220.  PEШEHИE ПEPEOПPEДEЛEHHOЙ CИCTEMЫ ЛИHEЙHЫX YPABHEHИЙ
+                          METOДOM HAИMEHЬШИX KBAДPATOB C ПPИMEHEHИEM ПPEOБPAЗOBAHИЙ
+                          XAYCXOЛДEPA  (LSQQR,DECOMP,SLV,PROD1,PROD2,PROC1).
+            139.   E221.  PEШEHИE ПEPEOПPEДEЛEHHOЙ CИCTEMЫ ЛИHEЙHЫX YPABHEHИЙ B ЧEБЫШEBCKOЙ HOPME (CHEB).
+            140.   E230.  PEШEHИE ПEPEOПPEДEЛEHHOЙ CИCTEMЫ ЛИHEЙHЫX YPABHEHИЙ METOДOM HAИMEHЬШИX KBAДPATOB
+                          C ЛИHEЙHЫMИ OГPAHИЧEHИЯMИ И БEЗ OГPAHИЧEHИЙ
+                          (TLSC,TLS,TLERR,TLRES,TLSMSQ,TLSWOP,TLUK,TLSTEP,TLPIV).
+            141.   E240.  AППPOKCИMAЦИЯ И ДИФФEPEHЦИPOBAHИE  ФYHKЦИИ OДHOЙ ПEPEMEHHOЙ,ЗAДAHHOЙ TAБЛИЧHЫMИ ЗHAЧEHИЯMИ
+                          (SPLINC,F1PR2P,PR1COF).
+            142.   E250.  ПPИБЛИЖEHИE ПPЯMOЙ ЛИHИEЙ ПO METOДY HAИMEHЬШИX KBAДPATOB  (LFIT,LFITW).
+            143.   E255.  AППPOKCИMAЦИЯ ПAPAБOЛOЙ METOДOM HAИMEHЬШИX  KBAДPATOB (PARLSQ).
+            144.   E400.  ПPEOБPAЗOBAHИE ЧEБЫШEBCKOГO PЯДA B CTEПEHHOЙ PЯД ИЛИ HAOБOPOT,
+                          И TEЛECKOПИЧECKИЙ CДBИГ CTEПEHHOГO PЯДA (ECTRAN,ECONSE,TAYCHE,BIN,TRANST,CHEB01).
+            145.   E401.  ПPEOБPAЗOBAHИE ЧEБЫШEBCKOГO PЯДA B CTEПEHHOЙ ИЛИ HAOБOPOT, И TEЛECKOПИЧECKИЙ CДBИГ CTEПEHHOГO
+                           PЯДA (ДBOЙHAЯ TOЧHOCTЬ) (ECONDE,CHEB02,ECTRAD,TAYCHD,BIND,TRANSD).
+            146.   E402.  CYMMA N ЧЛEHOB PAЗЛOЖEHИЯ ПO ПOЛИHOMAM ЧEБЫШEBA (CHSUM1).
+            147.   E403.  CYMMA N ЧЛEHOB PAЗЛOЖEHИЯ ПO ПOЛИHOMAM ЧEБЫШEBA (ДBOЙHAЯ TOЧHOCTЬ) (CHSUM2).
+            148.   E404.  BЫЧИCЛEHИE KOЭФФИЦИEHTOB PAЗЛOЖEHИЯ ПO ПOЛИHOMAM ЧEБЫШEBA (CHCOF1).
+            149.   E405.  BЫЧИCЛEHИE KOЭФФИЦИEHTOB PAЗЛOЖEHИЯ ПO ПOЛИHOMAM ЧEБЫШEBA (ДBOЙHAЯ TOЧHOCTЬ) (CHECOF).
+            150.   E410.  BЫЧИCЛEHИE KOЭФФИЦИEHTOB KOMПЛEKCHOГO CTEПEHHOГO PЯДA (CPSC,CPSC1).
+                    F.  ДEЙCTBИЯ HAД MATPИЦAMИ,BEKTOPAMИ,PEШEHИE CИCTEM ЛИHEЙHЫX YPABHEHИЙ.TEHЗOPHЫЙ AHAЛИЗ.
+                    ----------------------------------------------------------------------------------------
+            151.   F002. ЭЛEMEHTAPHЫE OПEPAЦИИ C BEKTOPAMИ (TVADD,TVCPY,TVDIV,TVMPA,TVMPY,TVMUL,TVMULA,TVMUNA,
+                          TVRAN,TVSCA,TVSCL,TVSCS,TVSET,TVSUB,TVSUM,TVXCH(T=R,D,C)).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (LOCF - N100)
+                                        (RANF,DRANF - G900).
+            152.   F003. ЭЛEMEHTAPHЫE OПEPAЦИИ C MATPИЦAMИ (TMADD,TMBIL,TMCPY,TMMNA,TMMNS,TMMPA,TMMPS,TMMPY,TMRAN,
+                          TMSCL,TMSET,TMSUB,TMULT,TUMNA,TUMNS,TUMPA,TUMPS,TUMPY,TRSCL(T=R,D,C)).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (LOCF - N100)
+                                        (RANF,DRANF - G900).
+            153.   F004.  ПEPEMHOЖEHИE MATPИЦ (TMMLT,TMMLA,TMMLS,TMNMA,TMNMS(T=R,D,C),CMMLTC).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (LOCF - N100).
+            154.   F010.  PEШEHИE CИCTEMЫ ЛИHEЙHЫX YPABHEHИЙ, OБPAЩEHИE MATPИЦЫ (TEQN,TINV,TEQINV(T=R,D,C),F010PR).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (TFACT,TFEQN,TFINV(T=R,D,C),TMPRNT - F011).
+            155.   F011.  ДBYШAГOBAЯ ПPOЦEДYPA PEШEHИЯ MATPИЧHЫX YPABHEHИЙ, OБPAЩEHИE MATPИЦЫ,
+                           BЫЧИCЛEHИE OПPEДEЛИTEЛЯ (TFACT,TFEQN,TFINV(T=R,D,C),TMPRNT).
+            156.   F012.  PEШEHИE CИCTEM ЛИHEЙHЫX YPABHEHИЙ C ПOЛOЖИTEЛЬHO OПPEДEЛEHHOЙ CИMMETPИЧHOЙ MATPИЦEЙ
+                          (TSFACT,TSEQN,TSFEQN,TSINV,TSFINV(T=R,D,C)).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (TMPRNT - F011).
+            157.   F100.  OБPAЩEHИE MATPИЦЫ И PEШEHИE CИCTEMЫ ЛИHEЙHЫX YPABHEHИЙ (MATIN1).
+            158.   F101.  OБPAЩEHИE MATPИЦЫ И PEШEHИE CИCTEMЫ ЛИHEЙHЫX YPABHEHИЙ (ДBOЙHAЯ TOЧHOCTЬ) (MATIN2).
+            159.   F103.  ПPOГPAMMA MATPИЧHOЙ AЛГEБPЫ (MATRIX,VCHECK).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (MATIN1 - F100)
+                                        (KIM - F240)
+                                        (LINEQ1 - F401).
+            160.   F104.  OБPAЩEHИE CИMMETPИЧECKOЙ MATPИЦЫ (SYMINV).
+            161.   F105.  BPAЩEHИE TPEXMEPHOЙ ПOЛЯPHOЙ CИCTEMЫ KOOPДИHAT (POLROT).
+            162.   F106.  OБPAЩEHИE YПAKOBAHHOЙ CИMMETPИЧHOЙ MATPИЦЫ (SPXINV).
+            163.   F107.  OБPAЩEHИE CИMMETPИЧHOЙ MATPИЦЫ (SMXINV).
+            164.   F108.  ПEPEMHOЖEHИE KBAДPATHЫX KOMПЛEKCHЫX MATPИЦ (MUXMAC).
+            165.   F109.  MATPИЧHЫE YPABHEHИЯ (MXEQU,MXEQU1).
+            166.   F110.  MATPИЧHЫE OПEPAЦИИ MXPACK (MXMAD,MXMAD1,MXMAD2,MXMAD3,MXMPY,MXMPY1,MXMPY2,MXMPY3,
+                          MXMUB,MXMUB1,MXMUB2,MXMUB3,MXTRP,MXUTY,MXMLRT,MXMLTR).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (UCOPY - V301).
+            167.   F112.  MAHИПYЛЯЦИИ C TPEYГOЛЬHЫMИ И CИMMETPИЧHЫMИ MATPИЦAMИ
+                          (TR,TRAAT,TRAL,TRALT,TRAS,TRASAT,TRATA,TRATS,TRATSA,TRCHLU,
+                          TRCHUL,TRINV,TRLA,TRLTA,TRPCK,TRQSQ,TRSA,TRSAT,TRSINV,TRSMLU,TRSMUL,TRUPCK).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (VZERO - F121).
+            168.   F116.  CKAЛЯPHOE ПPOИЗBEДEHИE (DOTI).
+            169.   F117.  BEKTOPHOE ПPOИЗBEДEHИE ДBYX BEKTOPOB (CROSS).
+            170.   F118.  ПOBOPOT BEKTOPA (ROT).
+            171.   F120.  HAПPABЛЯЮЩИE KOCИHYCЫ (DIRCOS,ERDIRC).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (MXMPY - F110)
+                                        (UZERO - V300)
+                                        (UCOPY - V301).
+            172.   F121.  BEKTOPHAЯ AЛГEБPA (LVMAX,LVMAXA,LVMIN,LVMINA,
+                            VADD,VASUM,VBIAS,VBLANK,VDOT,VDOTN,VDOTN2,VFIX,VFLOAT,
+                            VEXCUM,VFILL,VLINE,VMATL,VMATR,VMAX,VMAXA,VMIN,VMINA,
+                            VMOD,VMUL,VSCALE,VSUB,VSUM,VUNIT,VZERO,VDIST,VDIST2,VCOPYN).
+            173.   F122.  ЗAЧEPKИBAHИE ЗAДAHHЫX CTPOK И CTOЛБЦOB B MATPИЦE (MATRED).
+            174.   F123.  YMHOЖEHИE ДEЙCTBИTEЛЬHЫX И KOMПЛEKCHЫX MATPИЦ
+                          (CMXPAK,RCMPY,RCMAD,RCMUB,RCMPY1,RCMAD1,RCMUB1,
+                          RCMPY2,RCMAD2,RCMUB2,RCMPY3,RCMAD3,RCMUB3,CRMPY,CRMAD,
+                          CRMUB,CRMPY1,CRMAD1,CRMUB1,CRMPY2,CRMAD2,CRMUB2,CRMPY3,
+                          CRMAD3,CRMUB3,CCMPY,CCMAD,CCMUB,CCMPY1,CCMAD1,CCMUB1,
+                          CCMPY2,CCMAD2,CCMUB2,CCMPY3,CCMAD3,CCMUB3,RRMPY,RRMAD,RRMUB,
+                          RRMPY1,RRMDA1,RRMUB1,RRMPY2,RRMAD2,RRMUB2,RRMPY3,RRMAD3,RRMUB3).
+            175.   F124.  PAЗДEЛEHИE/OБЬEДИHEHИE KOMПЛEKCHOЙ MATPИЦЫ HA EE ДEЙCTBИTEЛЬHYЮ И MHИMYЮ ЧACTИ (CXSPLT,CXJOIN).
+            176.   F150.  ПPЯMOE ИЛИ TEHЗOPHOE ПPOИЗBEДEHИE ДBYX MATPИЦ (MXDIPR).
+            177.   F202.  COБCTBEHHЫE ЗHAЧEHИЯ BEЩECTBEHHOЙ CИMMETPИЧHOЙ ЛEHTOЧHOЙ MATPИЦЫ (LRCH).
+            178.   F220.  ПAKET ПPOГPAMM ДЛЯ BЫЧИCЛEHИЯ COБCTBEHHЫX ЗHAЧEHИЙ
+                          И COБCTBEHHЫX BEKTOPOB MATPИЦ  EISPACK (BALANC,BALBAK,CBAL,
+                          CBABK2,ELMHES,TRED1,TRED2,TRBAK1,COMHES,HTRIDI,HTRIBK,HQR,
+                          HQR2,TQL1,TQL2,IMTQL1,IMTQL2,BISECT,COMLR,COMLR2,ELTRAN,TINVIT).
+            179.   F221.  BЫЧИCЛEHИE COБCTBEHHЫX ЗHAЧEHИЙ И COБCTBEHHЫX
+                          BEKTOPOB KOMПЛEKCHOЙ MATPИЦЫ OБЩEГO BИДA(EISCG1,EISCG2).
+                              BHEШHИE ПPOГPAMMЫ
+                                        (CBAL,COMHES,COMLR2,CBABK2,COMLR - F220).
+            180.   F222.  BЫЧИCЛEHИE COБCTBEHHЫX ЗHAЧEHИЙ И COБCTBEHHЫX BEKTOPOB
+                          KOMПЛEKCHOЙ ЭPMИTOBOЙ MATPИЦЫ (EISCH1,EISCH2,EISCH3, EISCH4).
+                              BHEШHИE ПPOГPAMMЫ
+                                        (HTRIDI,TQL2,HTRIBK,TQL1,BISECT,TINVIT - F220).
+            181.   F223.  BЫЧИCЛEHИE COБCTBEHHЫX ЗHAЧEHИЙ И COБCTBEHHЫX
+                          BEKTOPOB BEЩECTBEHHOЙ MATPИЦЫ OБЩEГO BИДA  (EISRG1,EISRG2).
+                              BHEШHИE ПPOГPAMM:
+                                        (BALANC,ELMHES,ELTRAN,HQR2,BALBAK,HQR - F220).
+            182.   F224.  BЫЧИCЛEHИE COБCTBEHHЫX ЗHAЧEHИЙ И COБCTBEHHЫX BEKTOPOB
+                          BEЩECTBEHHOЙ CИMMETPИЧHOЙ MATPИЦЫ(EISRS1,EISRS2,EISRS3,EISRS4).
+                              BHEШHИE ПPOГPAMMЫ
+                                        (TRED2,TQL2,TRED1,TQL1,BISECT,TINVIT,TRBAK1 - F220).
+            183.   F225.  BЫЧИCЛEHИE COБCTBEHHЫX ЗHAЧEHИЙ И COБCTBEHHЫX BEKTOPOB
+                          BEЩECTBEHHOЙ CИMMETPИЧHOЙ TPEXДИAГOHAЛЬHOЙ MATPИЦЫ (EISST1,EISST2,EISST3,EISST4).
+                              BHEШHИE ПPOГPAMMЫ
+                                        (IMTQL2,IMTQL1,BISECT,TINVIT - F220).
+            184.   F230.  ПOHИЖEHИE ПOPЯДKA MATPИЦЫ, KOГДA ИЗBECTHЫ COБCTBEHHOE
+                          ЗHAЧEHИE И COOTBETCTBYЮЩИЙ COБCTBEHHЫЙ BEKTOP  (DEFL,DEFLS,DEFLSS,SKAL).
+            185.   F240.  ПPOГPAMMA HAXOЖДEHИЯ COБCTBEHHЫX ЗHAЧEHИЙ И COБCTBEHHЫX
+                          BEKTOPOB BEЩECTBEHHOЙ CИMMETPИЧHOЙ MATPИЦЫ (KIM).
+            186.   F301.  OПPEДEЛИTEЛЬ MATPИЦЫ (DET,DDETER).
+            187.   F401.  PEШEHИE CИCTEMЫ ЛИHEЙHЫX YPABHEHИЙ (LINEQ1).
+            188.   F402.  PEШEHИE CИCTEMЫ ЛИHEЙHЫX YPABHEHИЙ C ДBOЙHOЙ TOЧHOCTЬЮ (LINEQ2).
+            189.   F404.  PEШEHИE CИCTEMЫ YPABHEHИЙ C TPEXДИAГOHAЛЬHOЙ MATPИЦEЙ (TRIDIA,TRISOL).
+                              BHEШHИE ПPOГPAMMЫ
+                                        (RNDM - V104).
+            190.   F405.  PEШEHИE ПЛOXOOБYCЛOBЛEHHЫX CИCTEM ЛИHEЙHЫX YPABHEHИЙ C ИTEPAЦИOHHЫM YTOЧHEHИEM
+                          (LINSYS,BLNC,CRT,LSOLVE,USOLVE,RSDL).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (VASUM - F121).
+            191.   F406.  PEШEHИE CИCTEMЫ ЛИHEЙHЫX YPABHEHИЙ C ЛEHTOЧHOЙ MATPИЦEЙ (RBEQN,DBEQN).
+            192.   F413.  KOMПЛEKCHЫЙ ДETEPMИHAHT, ЛИHEЙHЫE YPABHEHИЯ И OБPAЩEHИE MATPИЦЫ (CMLIN,CDOT).
+            193.   F420.  PEШEHИE CИCTEMЫ ЛИHEЙHЫX AЛГEБPAИЧECKИX YPABHEHИЙ C MATPИЦEЙ KOЭФФИЦИEHTOB TPEXДИAГOHAЛЬHOГO BИДA
+                          (PATVIL,PATERW).
+            194.   F421.  OБOБЩEHHOE HOPMAЛЬHOE PEШEHИE ЛИHEЙHOЙ AЛГEБPAИЧECKOЙ CИCTEMЫ
+                          (SILLC,REGN,TRAM,SYMIN,REML,RELAD,ANORZF,AMAXF,OUTRGN,RELADI,RPROB).
+            195.   F422.  PEШEHИE CИCTEM ЛИHEЙHЫX YPABHEHИЙ C TPEXДИAГOHAЛЬHOЙ
+                          MATPИЦEЙ METOДOM HEMOHOTOHHOЙ ПPOГOHKИ (TSYS).
+            196.   F423.  PEШEHИE БOЛЬШИX CИCTEM ЛИHEЙHЫX YPABHEHИЙ C ИCПOЛЬЗOBAHИEM BHEШHEЙ ПAMЯTИ (AGAUSS).
+            197.   F424.  PEШEHИE БOЛЬШИX CИCTEM ЛИHEЙHЫX YPABHEHИЙ C CИMMETPИЧHЫMИ MATPИЦAMИ
+                          C ИCПOЛЬЗOBAHИEM BHEШHEЙ ПAMЯTИ (SQROOT).
+            198.   F500.  ПPOГPAMMA ДЛЯ PEШEHИЯ CИCTEMЫ OДHOPOДHЫX ЛИHEЙHЫX HEPABEHCTB (LIHOIN).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (MATRIX - F103).
+            199.   F600.  PAЗЛOЖEHИE MATPИЦЫ ПO CИHГYЛЯPHЫM ЧИCЛAM (SVD,ROTATE).
+                    G.  CTATИCTИЧECKИЙ AHAЛИЗ И BEPOЯTHOCTЬ.
+                    ----------------------------------------
+            200.   G100.  BЫЧИCЛEHИE BEPOЯTHOCTИ XИ-KBAДPAT PACПPEДEЛEHИЯ (PROB).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (FREQ - C300).
+            201.   G101.  ФYHKЦИЯ, OБPATHAЯ K XИ-KBAДPAT PACПPEДEЛEHИЮ (CHISIN).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (GAUSIN - C301).
+            202.   G102.  PACПPEДEЛEHИE KOЛMOГOPOBA (PROBKL).
+            203.   G104.  BЫЧИCЛEHИE ФYHKЦИИ T-PACПPEДEЛEHИЯ BEPOЯTHOCTEЙ CTЬЮДEHTA И EE OБPATHOЙ BEЛИЧИHЫ
+                          (STUDIS,STUDIN).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (GAUSIN - C301).
+            204.   G106.  HEПOЛHAЯ ГAMMA-ФYHKЦИЯ (GAMDIS).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (ALOGAM - C341).
+            205.   G110.  PACПPEДEЛEHИE ЛAHДAY И ГEHEPAЦИЯ COOTBETCTBYЮЩИX CЛYЧAЙHЫX ЧИCEЛ (DISLAN,DINLAN).
+            206.   G111.  PACПPEДEЛEHИE BABИЛOBA И ГEHEPAЦИЯ COOTBETCTBYЮЩИX CЛYЧAЙHЫX ЧИCEЛ
+                          (DISVAV,DINVAV,COEDIS,COEDIN,VAVZRO,VAVFCN).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (SININT,COSINT - C336),
+                                        (EXPINT - C337).
+            207.   G200.  KOЭФФИЦИEHTЫ  CTЬЮДEHTA (STUDNT,DISTRB).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (SIMPS - D120).
+            208.   G900.  ГEHEPATOP PABHOMEPHO PACПPEДEЛEHHЫX CЛYЧAЙHЫX ЧИCEЛ (RANF,DRANF,RANGET,RANSET).
+            209.   G901.  CЛYЧAЙHЫE ЧИCЛA HA OKPYЖHOCTИ ИЛИ CФEPE (RAN2VS,RAN3VS,VRAN2S,VRAN3S).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (RANF - G900).
+                    N.  ПPOГPAMMЫ OTЛAДKИ.
+                    ----------------------
+            210.   N100.  AБCOЛЮTHЫЙ AДPEC ПEPEMEHHOЙ (XLOC,LOCF).
+                    S.  ПPOГPAMMЫ ДЛЯ COПPOBOЖДEHИЯ БИБЛИOTEKИ.
+                    -------------------------------------------
+            211.   S120.  ИHФOPMAЦИOHHO-CПPABOЧHAЯ CИCTEMA ДЛЯ БИБЛИOTEKИ ПPOГPAMM (DILLIB,INFLIB,R,T1,T2,EW,W,R2,PUTPUL).
+            212.   S121.  ПOЛYЧEHИE KATAЛOГA ПPOГPAMM БИБЛИOTEKИ 1 (LIB1).
+                    V.  ГEHEPATOPЫ CЛYЧAЙHЫX ЧИCEЛ И OБЩИE YTИЛИTAPHЫE ПPOГPAMMЫ.
+                    -------------------------------------------------------------
+            213.   V104.  ГEHEPATOP CЛYЧAЙHЫX ЧИCEЛ C PABHOMEPHЫM PACПPEДEЛEHИEM (RNDM,RNDM1).
+            214.   V300.  ЗACЫЛKA HYЛEЙ, ПPOБEЛOB ИЛИ ЗAДAHHOЙ BEЛИЧИHЫ B MACCИB (UBLANK,UZERO,UFILL).
+            215.   V301.  KOПИPOBAHИE MACCИBA (UCOPY,UCOPY2,UCOPIV,UCOPYN).
+                              BHEШHИE ПPOГPAMMЫ:
+                                        (XLOC - N100).
+                    Z.  CИCTEMHOЗABИCИMЫE ПPOГPAMMЫ.
+                    --------------------------------
+            216.   Z002.  TEKYЩEE BPEMЯ (TIMEZB).
+*END FILE

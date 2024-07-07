@@ -528,3 +528,48 @@ TEST_F(dubna_session, tape37)
     auto expect = file_contents(TEST_DIR "/expect_tape37.txt");
     check_output(output, expect);
 }
+
+//
+// Show instructions for library 1.
+//
+TEST_F(dubna_session, lib1)
+{
+    auto output = run_job_and_capture_output(R"(*name библиотека 1
+*library:1
+*main lib1
+*execute
+*end file
+)");
+    auto expect = file_contents(TEST_DIR "/expect_lib1.txt");
+    check_output(output, expect);
+}
+
+//
+// Show instructions for library 2.
+//
+TEST_F(dubna_session, lib2)
+{
+    auto output = run_job_and_capture_output(R"(*name библиотека 2
+*library:2
+*main lib2
+*execute
+*end file
+)");
+    auto expect = file_contents(TEST_DIR "/expect_lib2.txt");
+    check_output(output, expect);
+}
+
+//
+// Show instructions for library 3.
+//
+TEST_F(dubna_session, lib3)
+{
+    auto output = run_job_and_capture_output(R"(*name библиотека 3
+*library:3
+*main alglib
+*execute
+*end file
+)");
+    auto expect = file_contents(TEST_DIR "/expect_lib3.txt");
+    check_output(output, expect);
+}

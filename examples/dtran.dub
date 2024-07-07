@@ -1,6 +1,8 @@
 *name dtran
+*call putflag*
+61
 *library:23
-*call dtran(stop*)
+*call dtran(putflag*)
 *assem
 *read:1
 *end file

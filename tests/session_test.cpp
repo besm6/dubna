@@ -495,3 +495,35 @@ TEST_F(dubna_session, dtran)
     auto expect = file_contents(TEST_DIR "/expect_dtran.txt");
     check_output(output, expect);
 }
+
+//
+// Mount tape 12/librar.
+//
+TEST_F(dubna_session, tape12)
+{
+    auto output = run_job_and_capture_output(R"(*name заказ ленты 12
+*tape:12/librar,32
+*library:23
+*call whatis
+3200000477
+*end file
+)");
+    auto expect = file_contents(TEST_DIR "/expect_tape12.txt");
+    check_output(output, expect);
+}
+
+//
+// Mount tape 37/librar.
+//
+TEST_F(dubna_session, tape37)
+{
+    auto output = run_job_and_capture_output(R"(*name заказ ленты 37
+*tape:37/librar,37
+*library:23
+*call whatis
+3700000647
+*end file
+)");
+    auto expect = file_contents(TEST_DIR "/expect_tape37.txt");
+    check_output(output, expect);
+}

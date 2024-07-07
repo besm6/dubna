@@ -228,21 +228,21 @@ void Processor::e50()
         // TODO: Intercept авост, for Forex.
         break;
     case 0202: {
-        // Convert tape number from 4x8bit format into 2-10 format.
-        Word a = (core.ACC >> 24) & 0xf;
-        Word b = (core.ACC >> 16) & 0xf;
-        Word c = (core.ACC >> 8) & 0xf;
-        Word d = core.ACC & 0xf;
-        core.ACC = (a << 12) | (b << 8) | (c << 4) | d;
+        // Convert tape number from internal format into 2-10 format.
+        //Word a = (core.ACC >> 24) & 0xf;
+        //Word b = (core.ACC >> 16) & 0xf;
+        //Word c = (core.ACC >> 8) & 0xf;
+        //Word d = core.ACC & 0xf;
+        //core.ACC = (a << 12) | (b << 8) | (c << 4) | d;
         break;
     }
     case 0203: {
-        // Convert tape number from 2-10 format into 4x8bit format.
-        Word a = (core.ACC >> 12) & 0xf;
-        Word b = (core.ACC >> 8) & 0xf;
-        Word c = (core.ACC >> 4) & 0xf;
-        Word d = core.ACC & 0xf;
-        core.ACC = (a << 24) | (b << 16) | (c << 8) | d;
+        // Convert tape number from 2-10 format into internal format.
+        //Word a = (core.ACC >> 12) & 0xf;
+        //Word b = (core.ACC >> 8) & 0xf;
+        //Word c = (core.ACC >> 4) & 0xf;
+        //Word d = core.ACC & 0xf;
+        //core.ACC = (a << 24) | (b << 16) | (c << 8) | d;
         break;
     }
     case 0210:

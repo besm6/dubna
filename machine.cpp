@@ -383,6 +383,9 @@ std::string Machine::disk_path(Word tape_id)
                               ((tape_id >> 4) & 0xf) * 10 +
                                (tape_id & 0xf);
     const std::string filename = std::to_string(tape_num);
+    //std::cout << "\n--- tape id 0" << std::oct << tape_id << std::dec
+    //          << ' ' << tape_name_string(tape_id)
+    //          << ", filename " << filename << '\n';
 
     // Setup the list of directories to search.
     if (disk_search_path.empty()) {

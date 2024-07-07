@@ -1,5 +1,6 @@
 *name заказ ленты 12
 *tape:12/librar,32
+*library:23
 *call whatis
 3200000477
 *end file

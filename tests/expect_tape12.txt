@@ -1,0 +1,53 @@
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+             ЖЖ    ЖЖЖ  Ж  Ж   ЖЖЖ   ЖЖ           ЖЖЖ ЖЖЖЖ  Ж   Ж ЖЖЖЖЖ Ж   Ж          Ж   ЖЖЖ
+            Ж  Ж  Ж   Ж Ж Ж   Ж   Ж Ж  Ж         Ж  Ж Ж     Ж   Ж   Ж   Ж   Ж         ЖЖ  Ж   Ж
+              Ж   Ж   Ж ЖЖ    Ж   Ж   Ж          Ж  Ж ЖЖЖ   ЖЖЖЖЖ   Ж   ЖЖ           Ж Ж      Ж
+               Ж  Ж   Ж Ж Ж   Ж   Ж    Ж         Ж  Ж Ж     Ж   Ж   Ж   Ж Ж Ж          Ж     Ж
+                Ж Ж   Ж Ж  Ж  Ж   Ж     Ж        Ж  Ж Ж     Ж   Ж   Ж   Ж Ж Ж          Ж    Ж
+            Ж   Ж ЖЖЖЖЖ Ж   Ж ЖЖЖЖЖ Ж   Ж        Ж  Ж Ж     Ж   Ж   Ж   Ж Ж Ж          Ж   Ж
+             ЖЖЖ  Ж   Ж Ж   Ж Ж   Ж  ЖЖЖ        Ж   Ж ЖЖЖЖЖ Ж   Ж   Ж    Ж  Ж         ЖЖЖ ЖЖЖЖЖ
+
+
+
+
+
+
+
+
+*NAME ЗAKAЗ ЛEHTЫ 12
+*TAPE:12/******,32
+*LIBRARY:23
+*CALL WHATIS
+ HA ЛEHTE 32    B ЗOHAX 0000-0477 OБHAPYЖEHO:
+   TEKCT   OT 0120  1-AЯ KAPTA: П°O PROBABILITY CAN NOT BE SKIPPED//)                                           .
+   ИCПOPЧEH B 0120
+    PERSO:   B 0366       LIBRARY OT  18/06/85
+   TEKCT   OT 0373  1-AЯ KAPTA:       PROGRAMMA                                                                 .
+          0373                :       END                                                                       .
+          0373  TERIN         :       SUBROUTINE TERIN(A,N)                                                     .
+          0373  TEROUT        :       ENTRY TEROUT                                                              .
+          0373                :       END                                                                       .
+          0373  TERIN1        :  TERIN1 : , NAME,                                                               .
+          0373                :           , END ,                                                               .
+          0373  OBMPUL        :  OBMPUL : , NAME,                                                               .
+          0373                :           , END ,                                                               .
+          0373  HAЧ11         :  HAЧ11  :   ,NAME,                                                              .
+          0373                :           , END ,                                                               .
+          0373  KDD           :  KDD     :, NAME,                                                               .
+          0373                :                   ,END,                                                         .
+          0373  DFWORD        :  DFWORD :,NAME,                                                                 .
+          0374                :  ,END,                                                                          .
+          0374  IFPULT        :       FUNCTION IFPULT(I)                                                        .
+          0374                :       END                                                                       .
+           ДO 0374
+                          OБCП:
+*END FILE

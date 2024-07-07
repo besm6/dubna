@@ -343,6 +343,27 @@ void Machine::disk_mount(unsigned disk_unit, Word tape_id, bool write_permit)
 }
 
 //
+// Release volumes according to bitmask on accumulator.
+//
+void Machine::disk_release(Word bitmask)
+{
+    if (trace_enabled()) {
+        std::cout << "\nRelease tapes 0" << std::oct << bitmask << std::dec << '\n';
+    }
+    for (unsigned disk_unit = 0; disk_unit < NDISKS; disk_unit++) {
+        bool release_flag = (bitmask >> (47 - disk_unit)) & 1;
+        if (release_flag && disks[disk_unit]) {
+            if (trace_enabled()) {
+                auto mounted_id = disks[disk_unit]->get_id();
+                std::cout << "Release disk " << std::oct << (disk_unit + 030) << std::dec
+                          << ", mounted as " << tape_name_string(mounted_id) << '\n';
+            }
+            disks[disk_unit].reset();
+        }
+    }
+}
+
+//
 // Find opened disk by tape ID.
 //
 unsigned Machine::disk_find(Word tape_id)

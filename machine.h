@@ -143,6 +143,7 @@ public:
     std::string disk_path(Word tape_id);
     void disk_mount(unsigned disk, Word tape_id, bool write_permit);
     void disk_mount_readonly(unsigned disk, Word tape_id) { disk_mount(disk, tape_id, false); }
+    void disk_release(Word mask);
     unsigned disk_find(Word tape_id);
 
     // Drum i/o.

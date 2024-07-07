@@ -559,16 +559,7 @@ void Processor::e57()
     case 6:
         throw Exception("Unimplemented extracode *57 " + to_octal(addr));
     }
-    if (addr & RELEASE) {
-        //
-        // Release tapes according to bitmask on accumulator.
-        //
-        if (machine.trace_enabled()) {
-            std::cout << "\nRelease tapes 0" << std::oct << core.ACC << std::dec << '\n';
-        }
-        core.ACC = 0;
-        return;
-    }
+
     if (addr & ASSIGN) {
         //
         // Mount tape (by name and number) on given disk number.
@@ -578,14 +569,22 @@ void Processor::e57()
         machine.disk_mount(core.M[015], core.ACC, write_permit);
         core.ACC = core.M[015];
         return;
-    } else {
+    }
+
+    if (addr & RELEASE) {
         //
-        // Find mounted tape (by name and number).
-        // Return disk number in range 030-077.
+        // Release tapes according to bitmask on accumulator.
         //
-        core.ACC = machine.disk_find(core.ACC);
+        machine.disk_release(core.ACC);
+        core.ACC = 0;
         return;
     }
+
+    //
+    // Find mounted tape (by name and number).
+    // Return disk number in range 030-077.
+    //
+    core.ACC = machine.disk_find(core.ACC);
 }
 
 //

@@ -43,14 +43,32 @@ void Processor::extracode(unsigned opcode)
         e50();
         break;
 
+    case 051: // sin() function.
+        e51();
+        break;
+
+    case 052: // cos() function.
+        e52();
+        break;
+
+    case 053: // arctan() function.
+        e53();
+        break;
+
+    case 054: // arcsin() function.
+        e54();
+        break;
+
+    case 055: // log() function.
+        e55();
+        break;
+
+    case 056: // exp() function.
+        e56();
+        break;
+
     case 057: // Mount tapes.
-        if (core.M[016] == 077777) {
-            e57_file();
-        } else if (core.M[016] >= 010) {
-            e57_tape();
-        } else {
-            e57_delay();
-        }
+        e57();
         break;
 
     case 060: // Punch cards?
@@ -245,6 +263,7 @@ void Processor::e50()
         if (isinf(core.ACC)) {
             //TODO
         }
+        break;
     case 7:
         // Largest integral value not greater than argument.
         core.ACC = ieee_to_besm6(std::floor(besm6_to_ieee(core.ACC)));
@@ -352,6 +371,120 @@ void Processor::e50()
         break;
     default:
         throw Exception("Unimplemented extracode *50 " + to_octal(addr));
+    }
+}
+
+//
+// Extracode 051: sin() function.
+//
+void Processor::e51()
+{
+    auto addr = core.M[016];
+    switch (addr) {
+    case 0:
+        // Sine function.
+        core.ACC = ieee_to_besm6(std::sin(besm6_to_ieee(core.ACC)));
+        if (isnan(core.ACC)) {
+            //TODO
+        }
+        break;
+    default:
+        throw Exception("Unimplemented extracode *51 " + to_octal(addr));
+    }
+}
+
+//
+// Extracode 052: cos() function.
+//
+void Processor::e52()
+{
+    auto addr = core.M[016];
+    switch (addr) {
+    case 0:
+        // Cosine function.
+        core.ACC = ieee_to_besm6(std::cos(besm6_to_ieee(core.ACC)));
+        if (isnan(core.ACC)) {
+            //TODO
+        }
+        break;
+    default:
+        throw Exception("Unimplemented extracode *52 " + to_octal(addr));
+    }
+}
+
+//
+// Extracode 053: arctan() function.
+//
+void Processor::e53()
+{
+    auto addr = core.M[016];
+    switch (addr) {
+    case 0:
+        // Arc tangent function.
+        core.ACC = ieee_to_besm6(std::atan(besm6_to_ieee(core.ACC)));
+        if (isnan(core.ACC)) {
+            //TODO
+        }
+        break;
+    default:
+        throw Exception("Unimplemented extracode *53 " + to_octal(addr));
+    }
+}
+
+//
+// Extracode 054: arcsin() function.
+//
+void Processor::e54()
+{
+    auto addr = core.M[016];
+    switch (addr) {
+    case 0:
+        // Arc sine function.
+        core.ACC = ieee_to_besm6(std::asin(besm6_to_ieee(core.ACC)));
+        if (isnan(core.ACC)) {
+            //TODO
+        }
+        break;
+    default:
+        throw Exception("Unimplemented extracode *54 " + to_octal(addr));
+    }
+}
+
+//
+// Extracode 055: log() function.
+//
+void Processor::e55()
+{
+    auto addr = core.M[016];
+    switch (addr) {
+    case 0:
+        // Natural logarithm function.
+        core.ACC = ieee_to_besm6(std::log(besm6_to_ieee(core.ACC)));
+        if (isnan(core.ACC)) {
+            //TODO
+        }
+        break;
+    default:
+        throw Exception("Unimplemented extracode *55 " + to_octal(addr));
+    }
+}
+
+//
+// Extracode 056: exp() function.
+//
+void Processor::e56()
+{
+    auto addr = core.M[016];
+    switch (addr) {
+    case 0:
+        // Exponential function with natural base 'e'.
+        core.ACC = ieee_to_besm6(std::exp(besm6_to_ieee(core.ACC)));
+        if (isinf(core.ACC)) {
+            //TODO
+        }
+        break;
+    default:
+        throw Exception("Unimplemented extracode *56 " + to_octal(addr));
     }
 }
 
@@ -601,12 +734,19 @@ void Processor::e76()
 }
 
 //
-// Extracode 057 0...7: task delay.
+// Extracode 057.
 //
-void Processor::e57_delay()
+void Processor::e57()
 {
     auto addr = core.M[016];
     switch (addr) {
+    case 0:
+        // Largest integral value not greater than argument.
+        core.ACC = ieee_to_besm6(std::floor(besm6_to_ieee(core.ACC)));
+        if (isnan(core.ACC)) {
+            //TODO
+        }
+        return;
     case 3:
     case 7:
         // Delay the task, presumably waiting for tape to be installed by operator.
@@ -615,7 +755,16 @@ void Processor::e57_delay()
         // Unknown, for Forex.
         core.ACC = 0;
         return;
+    case 077777:
+        // Manage discs and files.
+        e57_file();
+        return;
     default:
+        if (addr >= 010) {
+            // Manage tapes.
+            e57_tape();
+            return;
+        }
         throw Exception("Unimplemented extracode *57 " + to_octal(addr));
     }
 }

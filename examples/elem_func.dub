@@ -1,0 +1,262 @@
+*name элем. функции
+*no list
+*ftn
+        program main
+c---------------------------
+с Test elementary functions
+c
+        real dsqrt(5)
+        data dsqrt/2.0, 99999.0, 1.01, 0.99, 0.0003/
+        real dsin(8)
+        data dsin/0.0001, -0.0001, 0.7854, -0.7854,
+     +            1.5, -1.6, 3141.6, -3141.6/
+        real dcos(8)
+        data dcos/0.01, -0.01, 0.7854, -0.7854,
+     +            1.5, -1.6, 3141.6, -3141.6/
+        real datan(8)
+        data datan/0.0001, -0.0001, 0.5, -0.5,
+     +             2, -2, 999.9, -999.9/
+        real dasin(8)
+        data dasin/0.0001, -0.0001, 0.5, -0.5,
+     +             0.99, -0.99, 0.9999, -0.9999/
+        real dlog(8)
+        data dlog/0.0001, 0.5, 0.9999, 1.0001,
+     +            2.0, 4.0, 8.0, 99999.0/
+        real dexp(5)
+        data dexp/-6.0, -1.0, 0.0001, 1.0, 6.0/
+        real dfloor(8)
+        data dfloor/-98.7777, 98.7777, -5.4444, 5.4444,
+     +              -0.9999, 0.9999, -0.1111, 0.1111/
+c
+c---------------------------
+c   э50 0 - sqrt()
+c
+        name = ' sqrt'
+        do 10 i=1, 5
+            x = dsqrt(i)
+            a = e50(x)
+ 10         print 100, name, x, a
+ 100    format(' ', A5, '(', F10.4, ') = ', F10.6)
+с
+c---------------------------
+c   э50 1 - sin()
+c
+        name = '  sin'
+        do 20 i=1, 8
+            x = dsin(i)
+            a = e50a1(x)
+ 20         print 100, name, x, a
+с
+c---------------------------
+c   э51 0 - sin()
+c
+        name = '  sin'
+        do 25 i=1, 8
+            x = dsin(i)
+            a = e51(x)
+ 25         print 100, name, x, a
+с
+c---------------------------
+c   э50 2 - cos()
+c
+        name = '  cos'
+        do 30 i=1, 8
+            x = dcos(i)
+            a = e50a2(x)
+ 30         print 100, name, x, a
+с
+c---------------------------
+c   э52 0 - cos()
+c
+        name = '  cos'
+        do 35 i=1, 8
+            x = dcos(i)
+            a = e52(x)
+ 35         print 100, name, x, a
+с
+c---------------------------
+c   э50 3 - atan()
+c
+        name = ' atan'
+        do 40 i=1, 8
+            x = datan(i)
+            a = e50a3(x)
+ 40         print 100, name, x, a
+с
+c---------------------------
+c   э53 0 - atan()
+c
+        name = ' atan'
+        do 45 i=1, 8
+            x = datan(i)
+            a = e53(x)
+ 45         print 100, name, x, a
+с
+c---------------------------
+c   э50 4 - asin()
+c
+        name = ' asin'
+        do 50 i=1, 8
+            x = dasin(i)
+            a = e50a4(x)
+ 50         print 100, name, x, a
+с
+c---------------------------
+c   э54 0 - asin()
+c
+        name = ' asin'
+        do 55 i=1, 8
+            x = dasin(i)
+            a = e54(x)
+ 55         print 100, name, x, a
+с
+c---------------------------
+c   э50 5 - log()
+c
+        name = '  log'
+        do 60 i=1, 8
+            x = dlog(i)
+            a = e50a5(x)
+ 60         print 100, name, x, a
+с
+c---------------------------
+c   э55 0 - log()
+c
+        name = '  log'
+        do 65 i=1, 8
+            x = dlog(i)
+            a = e55(x)
+ 65         print 100, name, x, a
+с
+c---------------------------
+c   э50 6 - exp()
+c
+        name = '  exp'
+        do 70 i=1, 5
+            x = dexp(i)
+            a = e50a6(x)
+ 70         print 100, name, x, a
+с
+c---------------------------
+c   э56 0 - exp()
+c
+        name = '  exp'
+        do 75 i=1, 5
+            x = dexp(i)
+            a = e56(x)
+ 75         print 100, name, x, a
+с
+c---------------------------
+c   э50 7 - floor()
+c
+        name = 'floor'
+        do 80 i=1, 8
+            x = dfloor(i)
+            a = e50a7(x)
+ 80         print 100, name, x, a
+с
+c---------------------------
+c   э57 0 - floor()
+c
+        name = 'floor'
+        do 85 i=1, 8
+            x = dfloor(i)
+            a = e57(x)
+ 85         print 100, name, x, a
+с
+c---------------------------
+        end
+*assem
+ e50    :   ,name,      . sqrt(x)
+            ,ati , 11
+         11 ,xta ,
+            ,*50 , 0
+         13 ,uj  ,
+            ,end ,
+ e50a1  :   ,name,      . sin(x)
+            ,ati , 11
+         11 ,xta ,
+            ,*50 , 1
+         13 ,uj  ,
+            ,end ,
+ e50a2  :   ,name,      . cos(x)
+            ,ati , 11
+         11 ,xta ,
+            ,*50 , 2
+         13 ,uj  ,
+            ,end ,
+ e50a3  :   ,name,      . atan(x)
+            ,ati , 11
+         11 ,xta ,
+            ,*50 , 3
+         13 ,uj  ,
+            ,end ,
+ e50a4  :   ,name,      . asin(x)
+            ,ati , 11
+         11 ,xta ,
+            ,*50 , 4
+         13 ,uj  ,
+            ,end ,
+ e50a5  :   ,name,      . log(x)
+            ,ati , 11
+         11 ,xta ,
+            ,*50 , 5
+         13 ,uj  ,
+            ,end ,
+ e50a6  :   ,name,      . exp(x)
+            ,ati , 11
+         11 ,xta ,
+            ,*50 , 6
+         13 ,uj  ,
+            ,end ,
+ e50a7  :   ,name,      . floor(x)
+            ,ati , 11
+         11 ,xta ,
+            ,*50 , 7
+         13 ,uj  ,
+            ,end ,
+ e51    :   ,name,      . sin(x)
+            ,ati , 11
+         11 ,xta ,
+            ,*51 ,
+         13 ,uj  ,
+            ,end ,
+ e52    :   ,name,      . cos(x)
+            ,ati , 11
+         11 ,xta ,
+            ,*52 ,
+         13 ,uj  ,
+            ,end ,
+ e53    :   ,name,      . atan(x)
+            ,ati , 11
+         11 ,xta ,
+            ,*53 ,
+         13 ,uj  ,
+            ,end ,
+ e54    :   ,name,      . asin(x)
+            ,ati , 11
+         11 ,xta ,
+            ,*54 ,
+         13 ,uj  ,
+            ,end ,
+ e55    :   ,name,      . log(x)
+            ,ati , 11
+         11 ,xta ,
+            ,*55 ,
+         13 ,uj  ,
+            ,end ,
+ e56    :   ,name,      . exp(x)
+            ,ati , 11
+         11 ,xta ,
+            ,*56 ,
+         13 ,uj  ,
+            ,end ,
+ e57    :   ,name,      . floor(x)
+            ,ati , 11
+         11 ,xta ,
+            ,*57 ,
+         13 ,uj  ,
+            ,end ,
+*no load list
+*execute
+*end file

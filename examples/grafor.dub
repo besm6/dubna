@@ -1,8 +1,8 @@
 *name графор
-*call plotter:calcomp
-*       call plotter:wx4675
-*       call plotter:tektronix
-*       call plotter:buffer
+*call plotter:calcomp,direct
+*       call plotter:wx4675,direct
+*       call plotter:tektronix,direct
+*       call plotter:buffer,direct
 *ftn
         program grafor
         real x(100), y(100), z(100)

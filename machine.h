@@ -235,7 +235,7 @@ public:
     static void print_e70(const E70_Info &info);
     void print_e64(const E64_Info &info, unsigned start_addr, unsigned end_addr);
     void print_e64_dubna(unsigned start_addr, unsigned end_addr);
-    static void print_e57_file(const E57_File_Info &info);
+    void print_e57_file(const E57_File_Info &info);
 };
 
 //

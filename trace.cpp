@@ -531,39 +531,50 @@ void Machine::print_e57_file(const E57_File_Info &info)
     auto &out       = Machine::get_trace_stream();
     auto save_flags = out.flags();
 
-    switch (info.field.op) {
-    case E57_File_Info::VOLUME_OPEN:
-        out << "      Open Volume";
-        break;
-    case E57_File_Info::VOLUME_RELEASE:
-        out << "      Release Volume";
-        break;
-    case E57_File_Info::FILE_SEARCH:
-        out << "      Search File";
-        break;
-    case E57_File_Info::FILE_OPEN:
-        out << "      Open File";
-        break;
-    case E57_File_Info::SCRATCH_OPEN:
-        out << "      Open Scratch";
-        break;
-    case E57_File_Info::FILE_RELEASE:
-        out << "      Release File";
-        break;
-    case E57_File_Info::ALL_RELEASE:
-        out << "      Release All";
-        break;
-    case E57_File_Info::FILE_CONTROL:
-        out << "      Change File Status";
-        break;
-    default:
-        out << "      Unknown";
-        break;
-    }
-    out << " Addr=" << std::setfill('0') << std::setw(5) << std::oct << info.field.addr
+    out << "      Op=" << info.field.op
+        << " Addr=" << std::setfill('0') << std::setw(5) << std::oct << info.field.addr
         << " Flags=" << info.field.flags
         << " Key=" << ((info.word & E57_File_Info::KEY_BITMASK) >> 18)
-        << std::endl;
+        << '\n';
+    switch (info.field.op) {
+    case E57_File_Info::VOLUME_OPEN:
+        out << "      Open Volume " << tape_name_string(mem_load(info.field.addr + 1)) << '\n';
+        break;
+    case E57_File_Info::VOLUME_RELEASE:
+        out << "      Release Volume\n";
+        break;
+    case E57_File_Info::FILE_SEARCH:
+        out << "      Search File " << tape_name_string(mem_load(info.field.addr)) << '\n';
+        break;
+    case E57_File_Info::FILE_OPEN:
+        out << "      Open File " << tape_name_string(mem_load(info.field.addr)) << '\n';
+        break;
+    case E57_File_Info::SCRATCH_OPEN:
+        out << "      Open Scratch\n";
+        break;
+    case E57_File_Info::FILE_RELEASE:
+        out << "      Release File\n";
+        break;
+    case E57_File_Info::ALL_RELEASE:
+        out << "      Release All\n";
+        break;
+    case E57_File_Info::FILE_CONTROL:
+        out << "      Change File Status\n";
+        break;
+    }
+    out << "      Info0 = ";
+    besm6_print_word_octal(out, mem_load(info.field.addr));
+    out << "\n      Info1 = ";
+    besm6_print_word_octal(out, mem_load(info.field.addr + 1));
+    out << "\n      Info2 = ";
+    besm6_print_word_octal(out, mem_load(info.field.addr + 2));
+    out << "\n      Info3 = ";
+    besm6_print_word_octal(out, mem_load(info.field.addr + 3));
+    out << "\n      Info4 = ";
+    besm6_print_word_octal(out, mem_load(info.field.addr + 4));
+    out << "\n      Info5 = ";
+    besm6_print_word_octal(out, mem_load(info.field.addr + 5));
+    out << '\n';
 
     // Restore.
     out.flags(save_flags);

@@ -522,3 +522,49 @@ done:
     // Restore.
     out.flags(save_flags);
 }
+
+//
+// Print details about extracode e57 77777.
+//
+void Machine::print_e57_file(const E57_File_Info &info)
+{
+    auto &out       = Machine::get_trace_stream();
+    auto save_flags = out.flags();
+
+    switch (info.field.op) {
+    case E57_File_Info::VOLUME_OPEN:
+        out << "      Open Volume";
+        break;
+    case E57_File_Info::VOLUME_RELEASE:
+        out << "      Release Volume";
+        break;
+    case E57_File_Info::FILE_SEARCH:
+        out << "      Search File";
+        break;
+    case E57_File_Info::FILE_OPEN:
+        out << "      Open File";
+        break;
+    case E57_File_Info::SCRATCH_OPEN:
+        out << "      Open Scratch";
+        break;
+    case E57_File_Info::FILE_RELEASE:
+        out << "      Release File";
+        break;
+    case E57_File_Info::ALL_RELEASE:
+        out << "      Release All";
+        break;
+    case E57_File_Info::FILE_CONTROL:
+        out << "      Change File Status";
+        break;
+    default:
+        out << "      Unknown";
+        break;
+    }
+    out << " Addr=" << std::setfill('0') << std::setw(5) << std::oct << info.field.addr
+        << " Flags=" << info.field.flags
+        << " Key=" << ((info.word & E57_File_Info::KEY_BITMASK) >> 18)
+        << std::endl;
+
+    // Restore.
+    out.flags(save_flags);
+}

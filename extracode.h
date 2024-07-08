@@ -184,6 +184,43 @@ union E64_Info {
     } field;
 };
 
+//
+// Экстракод 057 77777: заказ файловых ресурсов.
+//
+// Информационное слово на сумматоре задаёт параметры обмена.
+//
+union E57_File_Info {
+    Word word;
+
+    struct {
+        // Разряды 15-1 - адрес информационного поля
+        // Разряды 20-16 - код операции
+        // Разряды 24-21, 48-30 содержат ключ доступа
+        // Разряды 29-25 - дополнительная информация
+        //
+        unsigned addr : 15; // Address of info field
+        unsigned op : 5;    // Operation
+        unsigned key1 : 4;  // Access key, part 1
+        unsigned flags : 5; // Additional info
+        unsigned key2 : 19; // Access key, part 2
+    } field;
+
+    // Коды операций
+    enum {
+        VOLUME_OPEN    = 0,   // заказ пакетов
+        VOLUME_RELEASE = 1,   // отказ от пакетов
+        FILE_SEARCH    = 2,   // запрос координат файлов
+        FILE_OPEN      = 3,   // заказ обычных файлов
+        SCRATCH_OPEN   = 4,   // заказ scratch файлов
+        FILE_RELEASE   = 5,   // отказ от файлов
+        ALL_RELEASE    = 6,   // отказ от всех дисковых ресурсов
+        FILE_CONTROL   = 037, // изменение статуса файла
+    };
+
+    // Access key
+    static const Word KEY_VALUE   = 0'6470'7240'4000'0000;
+    static const Word KEY_BITMASK = 0'7777'7740'7400'0000;
+};
 #pragma pack(pop)
 
 #endif // DUBNA_EXTRACODE_H

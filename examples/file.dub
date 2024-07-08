@@ -1,3 +1,4 @@
-*name scratch
-*file:scratch,61,w,100
+*name disc
+*disc:foo
+*file:bar,41,w
 *end file

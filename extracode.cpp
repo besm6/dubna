@@ -545,11 +545,11 @@ void Processor::e65()
         core.ACC = 01000;
         return;
     case 0575:
-        // Unknows, for *DOS.
+        // Unknown, for *DOS.
         core.ACC = 011000;
         return;
     case 0576:
-        // Unknows, for *DOS.
+        // Unknown, for *DOS.
         core.ACC = 07000;
         return;
     case 0760:
@@ -617,7 +617,7 @@ void Processor::e65()
     case 011015:
     case 011016:
     case 011017:
-        // Unknows, for *DOS.
+        // Unknown, for *DOS.
         core.ACC = 0;
         return;
     default:
@@ -763,7 +763,18 @@ void Processor::e57_tape()
 //
 void Processor::e57_file()
 {
-    throw Exception("Unimplemented extracode *57 " + to_octal(core.M[016]) + " acc " + to_octal(core.ACC));
+    // Use control word at accumulator.
+    E57_File_Info info;
+    info.word = core.ACC;
+
+    machine.trace_e57_file(info);
+
+    if ((info.word & E57_File_Info::KEY_BITMASK) != E57_File_Info::KEY_VALUE) {
+        throw Exception("Wrong access key in *57 77777");
+    }
+    //TODO
+
+    throw Exception("Unimplemented extracode *57 77777");
 }
 
 //

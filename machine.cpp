@@ -123,7 +123,7 @@ again:
             return;
         }
         std::cerr << "Error: " << message << std::endl;
-        trace_exception(message);
+        //trace_exception(message);
 
         if (cpu.intercept(message)) {
             goto again;

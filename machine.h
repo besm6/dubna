@@ -223,12 +223,19 @@ public:
             print_e64_dubna(start_addr, end_addr);
     }
 
+    void trace_e57_file(const E57_File_Info &info)
+    {
+        if (debug_extracodes)
+            print_e57_file(info);
+    }
+
     static void print_exception(const char *message);
     static void print_fetch(unsigned addr, Word val);
     static void print_memory_access(unsigned addr, Word val, const char *opname);
     static void print_e70(const E70_Info &info);
     void print_e64(const E64_Info &info, unsigned start_addr, unsigned end_addr);
     void print_e64_dubna(unsigned start_addr, unsigned end_addr);
+    static void print_e57_file(const E57_File_Info &info);
 };
 
 //

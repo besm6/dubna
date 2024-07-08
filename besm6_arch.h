@@ -139,6 +139,18 @@ std::string to_octal(unsigned val);
 std::string encode_cosy(std::string line);
 
 //
+// Elementary functions.
+//
+Word besm6_sqrt(Word input);
+Word besm6_sin(Word input);
+Word besm6_cos(Word input);
+Word besm6_arctan(Word input);
+Word besm6_arcsin(Word input);
+Word besm6_log(Word input);
+Word besm6_exp(Word input);
+Word besm6_floor(Word input);
+
+//
 // Bits of memory word, from right to left, starting from 1.
 //
 #define ONEBIT(n)      (1ULL << (n - 1))             // один бит, от 1 до 64

@@ -21,7 +21,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
-#include <cmath>
 #include <iostream>
 
 #include "machine.h"
@@ -216,60 +215,28 @@ void Processor::e50()
     auto addr = core.M[016];
     switch (addr) {
     case 0:
-        // Square root function.
-        core.ACC = ieee_to_besm6(std::sqrt(besm6_to_ieee(core.ACC)));
-        if (isnan(core.ACC)) {
-            //TODO
-        }
+        core.ACC = besm6_sqrt(core.ACC);
         break;
     case 1:
-        // Sine function.
-        core.ACC = ieee_to_besm6(std::sin(besm6_to_ieee(core.ACC)));
-        if (isnan(core.ACC)) {
-            //TODO
-        }
+        core.ACC = besm6_sin(core.ACC);
         break;
     case 2:
-        // Cosine function.
-        core.ACC = ieee_to_besm6(std::cos(besm6_to_ieee(core.ACC)));
-        if (isnan(core.ACC)) {
-            //TODO
-        }
+        core.ACC = besm6_cos(core.ACC);
         break;
     case 3:
-        // Arc tangent function.
-        core.ACC = ieee_to_besm6(std::atan(besm6_to_ieee(core.ACC)));
-        if (isnan(core.ACC)) {
-            //TODO
-        }
+        core.ACC = besm6_arctan(core.ACC);
         break;
     case 4:
-        // Arc sine function.
-        core.ACC = ieee_to_besm6(std::asin(besm6_to_ieee(core.ACC)));
-        if (isnan(core.ACC)) {
-            //TODO
-        }
+        core.ACC = besm6_arcsin(core.ACC);
         break;
     case 5:
-        // Natural logarithm function.
-        core.ACC = ieee_to_besm6(std::log(besm6_to_ieee(core.ACC)));
-        if (isnan(core.ACC)) {
-            //TODO
-        }
+        core.ACC = besm6_log(core.ACC);
         break;
     case 6:
-        // Exponential function with natural base 'e'.
-        core.ACC = ieee_to_besm6(std::exp(besm6_to_ieee(core.ACC)));
-        if (isinf(core.ACC)) {
-            //TODO
-        }
+        core.ACC = besm6_exp(core.ACC);
         break;
     case 7:
-        // Largest integral value not greater than argument.
-        core.ACC = ieee_to_besm6(std::floor(besm6_to_ieee(core.ACC)));
-        if (isnan(core.ACC)) {
-            //TODO
-        }
+        core.ACC = besm6_floor(core.ACC);
         break;
     case 064:
         // Print some message.
@@ -382,11 +349,7 @@ void Processor::e51()
     auto addr = core.M[016];
     switch (addr) {
     case 0:
-        // Sine function.
-        core.ACC = ieee_to_besm6(std::sin(besm6_to_ieee(core.ACC)));
-        if (isnan(core.ACC)) {
-            //TODO
-        }
+        core.ACC = besm6_sin(core.ACC);
         break;
     default:
         throw Exception("Unimplemented extracode *51 " + to_octal(addr));
@@ -401,11 +364,7 @@ void Processor::e52()
     auto addr = core.M[016];
     switch (addr) {
     case 0:
-        // Cosine function.
-        core.ACC = ieee_to_besm6(std::cos(besm6_to_ieee(core.ACC)));
-        if (isnan(core.ACC)) {
-            //TODO
-        }
+        core.ACC = besm6_cos(core.ACC);
         break;
     default:
         throw Exception("Unimplemented extracode *52 " + to_octal(addr));
@@ -420,11 +379,7 @@ void Processor::e53()
     auto addr = core.M[016];
     switch (addr) {
     case 0:
-        // Arc tangent function.
-        core.ACC = ieee_to_besm6(std::atan(besm6_to_ieee(core.ACC)));
-        if (isnan(core.ACC)) {
-            //TODO
-        }
+        core.ACC = besm6_arctan(core.ACC);
         break;
     default:
         throw Exception("Unimplemented extracode *53 " + to_octal(addr));
@@ -439,11 +394,7 @@ void Processor::e54()
     auto addr = core.M[016];
     switch (addr) {
     case 0:
-        // Arc sine function.
-        core.ACC = ieee_to_besm6(std::asin(besm6_to_ieee(core.ACC)));
-        if (isnan(core.ACC)) {
-            //TODO
-        }
+        core.ACC = besm6_arcsin(core.ACC);
         break;
     default:
         throw Exception("Unimplemented extracode *54 " + to_octal(addr));
@@ -458,11 +409,7 @@ void Processor::e55()
     auto addr = core.M[016];
     switch (addr) {
     case 0:
-        // Natural logarithm function.
-        core.ACC = ieee_to_besm6(std::log(besm6_to_ieee(core.ACC)));
-        if (isnan(core.ACC)) {
-            //TODO
-        }
+        core.ACC = besm6_log(core.ACC);
         break;
     default:
         throw Exception("Unimplemented extracode *55 " + to_octal(addr));
@@ -477,11 +424,7 @@ void Processor::e56()
     auto addr = core.M[016];
     switch (addr) {
     case 0:
-        // Exponential function with natural base 'e'.
-        core.ACC = ieee_to_besm6(std::exp(besm6_to_ieee(core.ACC)));
-        if (isinf(core.ACC)) {
-            //TODO
-        }
+        core.ACC = besm6_exp(core.ACC);
         break;
     default:
         throw Exception("Unimplemented extracode *56 " + to_octal(addr));
@@ -741,11 +684,7 @@ void Processor::e57()
     auto addr = core.M[016];
     switch (addr) {
     case 0:
-        // Largest integral value not greater than argument.
-        core.ACC = ieee_to_besm6(std::floor(besm6_to_ieee(core.ACC)));
-        if (isnan(core.ACC)) {
-            //TODO
-        }
+        core.ACC = besm6_floor(core.ACC);
         return;
     case 3:
     case 7:

@@ -330,3 +330,99 @@ std::string encode_cosy(std::string line)
     }
     return line;
 }
+
+//
+// Square root function.
+//
+Word besm6_sqrt(Word input)
+{
+    const double result = std::sqrt(besm6_to_ieee(input));
+    if (isnan(result)) {
+        throw std::runtime_error("Function sqrt() failed");
+    }
+    return ieee_to_besm6(result);
+}
+
+//
+// Sine function.
+//
+Word besm6_sin(Word input)
+{
+    const double result = std::sin(besm6_to_ieee(input));
+    if (isnan(result)) {
+        throw std::runtime_error("Function sin() failed");
+    }
+    return ieee_to_besm6(result);
+}
+
+//
+// Cosine function.
+//
+Word besm6_cos(Word input)
+{
+    const double result = std::cos(besm6_to_ieee(input));
+    if (isnan(result)) {
+        throw std::runtime_error("Function cos() failed");
+    }
+    return ieee_to_besm6(result);
+}
+
+//
+// Arc tangent function.
+//
+Word besm6_arctan(Word input)
+{
+    const double result = std::atan(besm6_to_ieee(input));
+    if (isnan(result)) {
+        throw std::runtime_error("Function arctan() failed");
+    }
+    return ieee_to_besm6(result);
+}
+
+//
+// Arc sine function.
+//
+Word besm6_arcsin(Word input)
+{
+    const double result = std::asin(besm6_to_ieee(input));
+    if (isnan(result)) {
+        throw std::runtime_error("Function arcsin() failed");
+    }
+    return ieee_to_besm6(result);
+}
+
+//
+// Natural logarithm function.
+//
+Word besm6_log(Word input)
+{
+    const double result = std::log(besm6_to_ieee(input));
+    if (isnan(result)) {
+        throw std::runtime_error("Function log() failed");
+    }
+    return ieee_to_besm6(result);
+}
+
+//
+// Exponential function with natural base 'e'.
+//
+Word besm6_exp(Word input)
+{
+    const double result = std::exp(besm6_to_ieee(input));
+    if (isinf(result)) {
+        throw std::runtime_error("Function exp() failed");
+    }
+    return ieee_to_besm6(result);
+}
+
+//
+// Largest integral value not greater than argument.
+//
+Word besm6_floor(Word input)
+{
+    const double result = std::floor(besm6_to_ieee(input));
+    if (isnan(result)) {
+        throw std::runtime_error("Function floor() failed");
+    }
+    return ieee_to_besm6(result);
+}

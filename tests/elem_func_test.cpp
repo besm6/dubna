@@ -228,3 +228,55 @@ TEST_F(dubna_session, elem_func)
     auto expect = file_contents(TEST_DIR "/expect_elem_func.txt");
     check_output(output, expect);
 }
+
+TEST_F(dubna_session, e50_print_real)
+{
+    auto output = run_job_and_capture_output(R"(*name e50 17
+*ftn
+        program main
+        integer buf(5)
+        buf(1) = '      '
+        buf(2) = '      '
+        buf(3) = '      '
+        buf(4) = '      '
+        buf(5) = '      '
+        pi = 4 * atan(1.0)
+        call e50a17(buf, pi, 18, 16)
+        print 18, buf
+ 18     format(':', A18, ':')
+        end
+*assem
+c
+c Call:
+c       nchars = e50a17(buf, value, width, precision, overflow)
+c
+ e50a17 :   ,name,
+            ,sti , 12       . overflow
+            ,sti , 11       . precision
+            ,sti , 10       . width
+            ,sti , 9        . value
+            ,ati , 8        . buf - destination address
+c       --------------
+            ,its , 9        . source address (value)
+            ,asn , 64-24
+         15 ,aox ,
+         10 ,xts ,          . width
+            ,asn , 64-39
+         15 ,aox ,
+         11 ,xts ,          . precision and right align flag
+            ,asn , 64-15
+         15 ,aox ,
+c       --------------
+            ,*50 , 17в      . on return, accumulator has number of chars
+            ,its , 14       . register 14 has overflow flag
+            ,aox ,=:64
+         12 ,stx ,          . save overflow flag as integer
+         13 ,uj  ,
+            ,end ,
+*no load list
+*execute
+*end file
+)");
+    auto expect = file_contents(TEST_DIR "/expect_e50_print_real.txt");
+    check_output(output, expect);
+}

@@ -238,6 +238,10 @@ void Processor::e50()
     case 7:
         core.ACC = besm6_floor(core.ACC);
         break;
+    case 15:
+        // TODO: Format convertion.
+        core.ACC = 0;
+        break;
     case 064:
         // Print some message.
         // TODO: print_iso(ADDR(core.ACC));

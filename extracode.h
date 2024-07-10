@@ -221,6 +221,39 @@ union E57_File_Info {
     static const Word KEY_VALUE   = 0'6470'7240'4000'0000;
     static const Word KEY_BITMASK = 0'7777'7740'7400'0000;
 };
+
+//
+// Экстракод 050 015, 016, 017: форматные преобразования из двоичного кода в ISO.
+//
+// Информационное слово на сумматоре задаёт параметры обмена.
+//
+// Результат работы для всех трех экстракодов: сумматор - длина
+// выходной строки в символах, и.р.14 = 1, если превышен размер поля,
+// иначе и.р.14 = 0. В каждый момент времени последнее
+// слово выходной строки дополнено до конца пробелами.
+//
+union E50_Format_Info {
+    Word word;
+
+    struct {
+        // Разряды 15-1 - адрес выходной строки или 0, если результат
+        //                пишется с текущей позиции выходной строки
+        // Разряды 19-16 - число цифр мантиссы
+        // Разряд 20 - флаг выравнивания текста внутри своего поля (1 - вправо, 0 - влево)
+        // Разряды 24-21 - индекс.регистр выходной строки
+        // Разряды 39-25 - адрес входного числа
+        // Разряды 44-40 - число позиций для размещения полученного текстового фрагмента
+        // Разряды 48-45 - индекс.регистр входного числа
+        //
+        unsigned dest_addr : 15;  // Address of output text
+        unsigned precision : 4;   // Number of digits in mantissa
+        unsigned right_align : 1; // 1 - right align, 0 - left align
+        unsigned dest_reg : 4;    // Register of output address
+        unsigned src_addr : 15;   // Address of input value
+        unsigned width : 5;       // Width of resulting text
+        unsigned src_reg : 4;     // Register of input address
+    } field;
+};
 #pragma pack(pop)
 
 #endif // DUBNA_EXTRACODE_H

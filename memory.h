@@ -85,12 +85,27 @@ public:
     uint8_t get_byte()
     {
         auto ch = peek_byte();
+        increment();
+        return ch;
+    }
+
+    // Store byte at the pointer, and increment.
+    void put_byte(uint8_t ch)
+    {
+        Word *ptr = memory.get_ptr(word_addr);
+        const unsigned shift = 40 - byte_index * 8;
+        *ptr = (*ptr & ~(0xffull << shift)) | ((Word)ch << shift);
+        increment();
+    }
+
+    // Store byte at the pointer, and increment.
+    void increment()
+    {
         byte_index++;
         if (byte_index == 6) {
             byte_index = 0;
             word_addr++;
         }
-        return ch;
     }
 
     // Check whether '231' or other EOF symbol is present in the current word.

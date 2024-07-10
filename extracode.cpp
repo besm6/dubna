@@ -22,6 +22,8 @@
 // SOFTWARE.
 //
 #include <iostream>
+#include <iomanip>
+#include <sstream>
 
 #include "machine.h"
 #include "encoding.h"
@@ -208,6 +210,74 @@ void Processor::e75()
 }
 
 //
+// Extracode e50 15: format real number.
+//
+Word Processor::e50_format_real(Word input, unsigned &overflow)
+{
+    E50_Format_Info info;
+    info.word = input;
+    machine.trace_e50_format_real(info);
+
+    const bool right_align   = info.field.right_align;
+    const unsigned width     = info.field.width;
+    const unsigned precision = info.field.precision;
+
+    // Source value.
+    const unsigned src_addr = ADDR(info.field.src_addr + core.M[info.field.src_reg]);
+    const double value      = besm6_to_ieee(machine.mem_load(src_addr));
+
+    // Destination pointer.
+    static unsigned dest_addr;
+    if (info.field.dest_addr != 0 || info.field.dest_reg != 0)
+        dest_addr = ADDR(info.field.dest_addr + core.M[info.field.dest_reg]);
+    BytePointer bp(memory, dest_addr);
+
+    if (width == 0) {
+        // Nothing to do.
+        overflow = 0;
+        return 0;
+    }
+
+    // Format as fixed point or as scientific.
+    std::ostringstream fixed_point, scientific;
+    fixed_point << std::fixed << std::setprecision(precision) << value;
+    scientific << std::scientific << std::setprecision(precision) << value;
+
+    const std::string result = (fixed_point.str().size() <= scientific.str().size()) ?
+                               fixed_point.str() : scientific.str();
+    overflow = (result.size() > width);
+    if (!right_align) {
+        // Align to the left.
+        unsigned i = 0;
+        for (; i < result.size() && i < width; i++) {
+            bp.put_byte(result[i]);
+        }
+        for (; i < width; i++) {
+            bp.put_byte(' ');
+        }
+    } else if (overflow) {
+        // Align to the right, skip first few bytes.
+        for (unsigned i = result.size() - width; i < result.size(); i++) {
+            bp.put_byte(result[i]);
+        }
+    } else {
+        // Align to the right, fill with spaces.
+        for (unsigned i = 0; i + result.size() < width; i++) {
+            bp.put_byte(' ');
+        }
+        for (unsigned i = 0; i < result.size(); i++) {
+            bp.put_byte(result[i]);
+        }
+    }
+
+    // Fill last word with zeroes.
+    while (bp.byte_index) {
+        bp.put_byte(' ');
+    }
+    return width;
+}
+
+//
 // Extracode 050: elementary math functions and other services.
 //
 void Processor::e50()
@@ -238,9 +308,9 @@ void Processor::e50()
     case 7:
         core.ACC = besm6_floor(core.ACC);
         break;
-    case 15:
-        // TODO: Format convertion.
-        core.ACC = 0;
+    case 017:
+        // Format real numbers.
+        core.ACC = e50_format_real(core.ACC, core.M[14]);
         break;
     case 064:
         // Print some message.

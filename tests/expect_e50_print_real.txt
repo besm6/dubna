@@ -28,68 +28,52 @@
  Ф O P T P A H - Г Д P
       (09.07.81)
   001                 PROGRAM MAIN
-  002                 INTEGER BUF(5)
+  002                 INTEGER BUF(5), OVERFL
   003                 BUF(1) = ′      ′
   004                 BUF(2) = ′      ′
   005                 BUF(3) = ′      ′
   006                 BUF(4) = ′      ′
   007                 BUF(5) = ′      ′
   008                 PI = 4 * ATAN(1.0)
-  009                 CALL E50A17(BUF, PI, 18, 16)
-  010                 PRINT 18, BUF
-  011          18     FORMAT(′:′, A18, ′:′)
-  012                 END
+  009                 CALL E50A17(BUF(1), PI, 18, 15, OVERFL)
+  010                 CALL PRINTA(BUF(1), BUF(5), 1)
+  011                 END
 
   STATEMENT    RELATIVE ADDRESSES OF STATEMENTS (OCTAL)
    00001        :00000   00000   00000   00001  :00002
-   00006         00002  :00003   00003  :00006  :00013
-   00011        :00022  :00022
+   00006         00002  :00003   00003  :00006  :00014
+   00011        :00020
      *** EXTERNALS ***
-    ATAN     E50A17
+    ATAN     E50A17   PRINTA
      *** ENTRIES ***   >LOCATION<
     MAIN    >00000<   PROGRA  >00000<
- >> MAIN   <<    LENGTH: 00034 00042B   INPUT CARDS: 00012
+ >> MAIN   <<    LENGTH: 00030 00036B   INPUT CARDS: 00011
 *ASSEM                                             04 ИЮЛ 24 23.45
  ABTOKOД  MADLEN
    (1.10.72)
-                   C
-                   C CALL:
-                   C       NCHARS = E50A17(BUF, VALUE, WIDTH, P
-                                                RECISION, OVERF
-                                                LOW)
-                   C
                     E50A17  :  , NAME,
- 0000                          , STI ,12      . OVERFLOW
-  -                            , STI ,11      . PRECISION
- 0001                          , STI ,10      . WIDTH
-  -                            , STI ,9       . VALUE
- 0002                          , ATI ,8       . BUF - DESTINATI
-                                                ON ADDRESS
-                   C       --------------
-  -                            , ITS ,9       . SOURCE ADDRESS
-                                                (VALUE)
+ 0000                          , STI ,12
+  -                            , STI ,11
+ 0001                          , STI ,10
+  -                            , STI ,9
+ 0002                          , ATI ,8
+  -                            , ITS ,9
  0003                          , ASN ,64-24
   -                          15, AOX ,
- 0004                        10, XTS ,        . WIDTH
+ 0004                        10, XTS ,
   -                            , ASN ,64-39
  0005                        15, AOX ,
-  -                          11, XTS ,        . PRECISION AND R
-                                                IGHT ALIGN FLAG
+  -                          11, XTS ,
  0006                          , ASN ,64-15
   -                          15, AOX ,
-                   C       --------------
- 0007                          , *50 ,17B     . ON RETURN, ACCU
-                                                MULATOR HAS NUM
-                                                BER OF CHARS
+ 0007                          , *50 ,17B
   -
- 0010                          , ITS ,14      . REGISTER 14 HAS
-                                                 OVERFLOW FLAG
+ 0010                          , ITS ,14
   -                            , AOX ,=:64
- 0011                        12, STX ,        . SAVE OVERFLOW F
-                                                LAG AS INTEGER
+ 0011                        12, STX ,
   -                          13, UJ  ,
                                , END ,
- ЧИCЛO ПEPФ. 0027      ЧИCЛO OШИБ. OПEPATOPOB  0000
+ ЧИCЛO ПEPФ. 0021      ЧИCЛO OШИБ. OПEPATOPOB  0000
 *NO LOAD LIST
 *EXECUTE
-: 3.141592653589793:
+ 3.141592653588305

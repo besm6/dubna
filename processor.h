@@ -144,6 +144,9 @@ private:
     bool e64_line_dirty{};
     bool e64_overprint{};
 
+    // Format word as real number.
+    Word e50_format_real(Word input, unsigned &overflow);
+
 public:
     // Exception for unexpected situations.
     class Exception : public std::exception {

@@ -579,3 +579,26 @@ void Machine::print_e57_file(const E57_File_Info &info)
     // Restore.
     out.flags(save_flags);
 }
+
+//
+// Print details about extracode e50 015/016/017.
+//
+void Machine::print_e50_format_real(const E50_Format_Info &info)
+{
+    auto &out          = Machine::get_trace_stream();
+    auto save_flags    = out.flags();
+    unsigned src_addr  = ADDR(info.field.src_addr + cpu.get_m(info.field.src_reg));
+    unsigned dest_addr = ADDR(info.field.dest_addr + cpu.get_m(info.field.dest_reg));
+
+    out << "      Src=" << std::oct << info.field.src_addr << '(' << std::dec << info.field.src_reg << ')'
+        << "=" << std::oct << src_addr
+        << " Dest=" << std::oct << info.field.dest_addr << '(' << std::dec << info.field.dest_reg << ')'
+        << "=" << std::oct << dest_addr
+        << " Width=" << std::dec << info.field.width
+        << " Precision=" << info.field.precision
+        << " Align=" << (info.field.right_align ? 'R' : 'L')
+        << '\n';
+
+    // Restore.
+    out.flags(save_flags);
+}

@@ -272,26 +272,21 @@ Word Processor::e50_format_real(Word input, unsigned &overflow)
     overflow = (result.size() > width);
     if (!right_align) {
         // Align to the left.
-        unsigned i = 0;
-        for (; i < result.size() && i < width; i++) {
-            bp.put_byte(result[i]);
-        }
-        for (; i < width; i++) {
-            bp.put_byte(' ');
+        if (result.size() < width) {
+            result.append(width - result.size(), ' ');
+        } else if (overflow) {
+            result.erase(width);
         }
     } else if (overflow) {
         // Align to the right, skip first few bytes.
-        for (unsigned i = result.size() - width; i < result.size(); i++) {
-            bp.put_byte(result[i]);
-        }
-    } else {
+        result.erase(0, result.size() - width);
+    } else if (result.size() < width) {
         // Align to the right, fill with spaces.
-        for (unsigned i = 0; i + result.size() < width; i++) {
-            bp.put_byte(' ');
-        }
-        for (unsigned i = 0; i < result.size(); i++) {
-            bp.put_byte(result[i]);
-        }
+        result.insert(0, width - result.size(), ' ');
+    }
+
+    for (char ch : result) {
+        bp.put_byte(ch);
     }
 
     // Fill last word with zeroes.

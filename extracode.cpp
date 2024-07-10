@@ -24,6 +24,7 @@
 #include <iostream>
 #include <iomanip>
 #include <sstream>
+#include <cmath>
 
 #include "machine.h"
 #include "encoding.h"
@@ -213,10 +214,13 @@ void Processor::e75()
 // Check whether value is large enough to be printed
 // in fixed format with given precision.
 //
-static bool large_enough_for_fixed_format(double value, int precision)
+static bool good_for_fixed_format(double value, int precision)
 {
     if (value < 0) {
         value = -value;
+    }
+    if (value == 0) {
+        return true;
     }
     if (value >= 1) {
         return true;
@@ -259,7 +263,7 @@ Word Processor::e50_format_real(Word input, unsigned &overflow)
     scientific << std::scientific << std::uppercase << std::setprecision(precision) << value;
     std::string result = scientific.str();
 
-    if (large_enough_for_fixed_format(value, precision)) {
+    if (good_for_fixed_format(value, precision)) {
         std::ostringstream fixed_point;
         fixed_point << std::fixed << std::setprecision(precision) << value;
 
@@ -962,7 +966,25 @@ void Processor::e57_file()
 //
 void Processor::e61()
 {
-    core.ACC = 0;
+    auto addr = core.M[016];
+    switch (addr) {
+    case 077777: {
+        // Output to Watanabe plotter?
+        BytePointer bp(memory, ADDR(core.ACC));
+        //std::cout << '\n';
+        for (;;) {
+            uint8_t ch = bp.get_byte();
+            if (ch == 0)
+                break;
+            std::cout << ch;
+        }
+        core.ACC = 0;
+        return;
+    }
+    default:
+        // Unknown.
+        core.ACC = 0;
+    }
 }
 
 //

@@ -31,6 +31,7 @@
 #include "disk.h"
 #include "drum.h"
 #include "gost10859.h"
+#include "plotter.h"
 #include "processor.h"
 
 class Machine {
@@ -87,6 +88,9 @@ public:
 
     // BESM-6 processor.
     Processor cpu;
+
+    // BESM-6 processor.
+    Plotter plotter;
 
     // "MONSYS )" in TEXT encoding.
     static const Word TAPE_MONSYS = 055'57'56'63'71'63'00'11;

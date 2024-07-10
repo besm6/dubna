@@ -41,6 +41,7 @@ add_library(simulator STATIC
     disk.cpp
     e64.cpp
     encoding.cpp
+    plotter.cpp
 )
 
 # Build executable file

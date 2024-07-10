@@ -969,14 +969,15 @@ void Processor::e61()
     auto addr = core.M[016];
     switch (addr) {
     case 077777: {
-        // Output to Watanabe plotter?
+        // Output to Watanabe plotter.
+        // TODO: write to file "watanabe.out".
+        // TODO: convert to SVG format and save as "plotter.svg".
         BytePointer bp(memory, ADDR(core.ACC));
-        //std::cout << '\n';
         for (;;) {
-            uint8_t ch = bp.get_byte();
+            char ch = bp.get_byte();
             if (ch == 0)
                 break;
-            std::cout << ch;
+            machine.plotter.watanabe_putch(ch);
         }
         core.ACC = 0;
         return;

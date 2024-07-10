@@ -67,6 +67,33 @@ protected:
     }
 
     //
+    // Compare contents of two text files.
+    //
+    void check_contents(const std::string &output_str, const std::string &expect_str)
+    {
+        std::stringstream output(output_str);
+        std::stringstream expect(expect_str);
+
+        // Compare line by line.
+        for (unsigned lineno = 1; expect.good(); lineno++) {
+            EXPECT_TRUE(output.good()) << "Output is too short";
+
+            std::string output_line;
+            getline(output, output_line);
+            if (output_line == "" && output.eof())
+                break;
+
+            // Remove trailing spaces.
+            output_line.resize(1 + output_line.find_last_not_of(' '));
+
+            std::string expect_line;
+            getline(expect, expect_line);
+            EXPECT_EQ(output_line, expect_line)
+                << "line #" << lineno;
+        }
+    }
+
+    //
     // Compare output of the Dubna session.
     // Ignore header and footer.
     //

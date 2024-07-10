@@ -576,3 +576,42 @@ TEST_F(dubna_session, lib3)
     auto expect = file_contents(TEST_DIR "/expect_lib3.txt");
     check_output(output, expect);
 }
+
+//
+// Draw Grafor picture on Watanabe plotter.
+//
+TEST_F(dubna_session, grafor_watanabe)
+{
+    auto output = run_job_and_capture_output(R"(*name графор
+*call plotter:wx4675,direct
+*ftn
+        program grafor
+        real x(100), y(100), z(100)
+        x(1) = -1.9
+        y(1) = sin(x(1))
+        z(1) = cos(x(1)) * 1.5
+        do 5 i = 2, 90
+            x(i) = x(i-1) + 0.1
+            y(i) = sin(x(i))
+            z(i) = cos(x(i)) * 1.5
+  5         continue
+        call page(15., 20., 'PAGE', 4, 1)
+        call limits(-2., 7., -1.5, 1.5)
+        call region(3., 3., 10., 15., 'REGION', 6, 1)
+        call axes('X axis', 6, 1., 5, 'Y axis', 6, 0.3, 4, 0)
+        call linemo(x, y, 85, 2, 10)
+        call broken(0.5, 0.2, 0.3, 0.2)
+        call brline(x, z, 85)
+        call endpg(0)
+        end
+*execute
+*end file
+)");
+    auto expect = file_contents(TEST_DIR "/expect_grafor_watanabe.txt");
+    check_output(output, expect);
+
+    // Check plotter output.
+    auto watanabe = file_contents("watanabe.out");
+    expect = file_contents(TEST_DIR "/expect_watanabe_output.txt");
+    check_contents(watanabe, expect);
+}

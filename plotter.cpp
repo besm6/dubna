@@ -32,9 +32,11 @@
 // Finish operation.
 // Save all data files.
 //
-Plotter::~Plotter()
+void Plotter::finish()
 {
-    watanabe_save();
+    if (! watanabe.empty()) {
+        watanabe_save();
+    }
     // TODO: calcomp
     // TODO: tektronix
 }
@@ -44,9 +46,6 @@ Plotter::~Plotter()
 //
 void Plotter::watanabe_save()
 {
-    if (watanabe.empty())
-        return;
-
     // Save raw output to this filename.
     const std::string filename = "watanabe.out";
 
@@ -56,4 +55,6 @@ void Plotter::watanabe_save()
         return;
     }
     out << watanabe;
+    out.close();
+    watanabe.erase();
 }

@@ -133,6 +133,10 @@ public:
                     print_footer(out, sec, instr_per_sec);
                 }
             }
+
+            // Save plotter data.
+            machine.plotter.finish();
+
         } catch (const std::exception &ex) {
             // Print exception message.
             std::cerr << "Error: " << ex.what() << std::endl;

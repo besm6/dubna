@@ -32,7 +32,7 @@ private:
 
 public:
     // Save all data files.
-    ~Plotter();
+    void finish();
 
     // Send one byte to Watanabe WX4675 plotter.
     void watanabe_putch(char ch) { watanabe += ch; }

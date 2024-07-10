@@ -49,6 +49,10 @@ std::string get_test_name()
 std::string file_contents(const std::string &filename)
 {
     std::ifstream input(filename);
+    if (!input.is_open()) {
+        std::cerr << filename << ": " << std::strerror(errno) << std::endl;
+        return "";
+    }
     std::stringstream contents;
     contents << input.rdbuf();
     return contents.str();

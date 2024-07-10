@@ -232,17 +232,87 @@ TEST_F(dubna_session, elem_func)
 TEST_F(dubna_session, e50_print_real)
 {
     auto output = run_job_and_capture_output(R"(*name e50 17
+*no list
 *ftn
-        program main
+        subroutine format(value, n, m)
         integer buf(5), overfl
         buf(1) = '      '
         buf(2) = '      '
         buf(3) = '      '
         buf(4) = '      '
         buf(5) = '      '
-        pi = 4 * atan(1.0)
-        call e50a17(buf(1), pi, 18, 15, overfl)
+        call e50a17(buf(1), value, n, m, overfl)
         call printa(buf(1), buf(5), 1)
+        if (overfl .ne. 0) print 10
+ 10     format(' overflow')
+        return
+        end
+        program main
+        pi = 4 * atan(1.0)
+        call format(pi, 4+18, 15)
+        call format(pi, 4+13, 10)
+        call format(pi, 4+5, 2)
+        call format(pi, 4+4, 1)
+        call format(pi, 4+4, 0)
+        call format(pi, 4+3, 1)
+        call format(pi, 4+2, 1)
+        call format(pi, 4+1, 0)
+        call format(-pi, 4+18, 15)
+        call format(-pi, 4+13, 10)
+        call format(-pi, 4+5, 2)
+        call format(-pi, 4+4, 1)
+        call format(-pi, 4+4, 0)
+        call format(-pi, 4+3, 1)
+        call format(-pi, 4+2, 1)
+        call format(-pi, 4+1, 0)
+        call format(1.23456789123456789e3, 4+18, 15)
+        call format(1.23456789123456789e3, 4+13, 10)
+        call format(1.23456789123456789e3, 4+5, 2)
+        call format(1.23456789123456789e3, 4+4, 1)
+        call format(1.23456789123456789e3, 4+4, 0)
+        call format(1.23456789123456789e3, 4+3, 1)
+        call format(1.23456789123456789e3, 4+2, 1)
+        call format(1.23456789123456789e3, 4+1, 0)
+        call format(-1.23456789123456789e3, 4+18, 15)
+        call format(-1.23456789123456789e3, 4+13, 10)
+        call format(-1.23456789123456789e3, 4+5, 2)
+        call format(-1.23456789123456789e3, 4+4, 1)
+        call format(-1.23456789123456789e3, 4+4, 0)
+        call format(-1.23456789123456789e3, 4+3, 1)
+        call format(-1.23456789123456789e3, 4+2, 1)
+        call format(-1.23456789123456789e3, 4+1, 0)
+        call format(1.23456789123456789e10, 4+18, 15)
+        call format(1.23456789123456789e10, 4+13, 10)
+        call format(1.23456789123456789e10, 4+5, 2)
+        call format(1.23456789123456789e10, 4+4, 1)
+        call format(1.23456789123456789e10, 4+4, 0)
+        call format(1.23456789123456789e10, 4+3, 1)
+        call format(1.23456789123456789e10, 4+2, 1)
+        call format(1.23456789123456789e10, 4+1, 0)
+        call format(-1.23456789123456789e10, 4+18, 15)
+        call format(-1.23456789123456789e10, 4+13, 10)
+        call format(-1.23456789123456789e10, 4+5, 2)
+        call format(-1.23456789123456789e10, 4+4, 1)
+        call format(-1.23456789123456789e10, 4+4, 0)
+        call format(-1.23456789123456789e10, 4+3, 1)
+        call format(-1.23456789123456789e10, 4+2, 1)
+        call format(-1.23456789123456789e10, 4+1, 0)
+        call format(1.23456789123456789e-10, 6+18, 5)
+        call format(1.23456789123456789e-10, 6+13, 1)
+        call format(1.23456789123456789e-10, 4+5, 2)
+        call format(1.23456789123456789e-10, 4+4, 1)
+        call format(1.23456789123456789e-10, 4+4, 0)
+        call format(1.23456789123456789e-10, 4+3, 1)
+        call format(1.23456789123456789e-10, 4+2, 1)
+        call format(1.23456789123456789e-10, 4+1, 0)
+        call format(-1.23456789123456789e-10, 6+18, 5)
+        call format(-1.23456789123456789e-10, 6+13, 1)
+        call format(-1.23456789123456789e-10, 4+5, 2)
+        call format(-1.23456789123456789e-10, 4+4, 1)
+        call format(-1.23456789123456789e-10, 4+4, 0)
+        call format(-1.23456789123456789e-10, 4+3, 1)
+        call format(-1.23456789123456789e-10, 4+2, 1)
+        call format(-1.23456789123456789e-10, 4+1, 0)
         end
 *assem
  e50a17 :   ,name,
@@ -250,7 +320,8 @@ TEST_F(dubna_session, e50_print_real)
             ,sti , 11
             ,sti , 10
             ,sti , 9
-            ,ati , 8
+            ,sti , 8
+            ,ita , 8
             ,its , 9
             ,asn , 64-24
          15 ,aox ,

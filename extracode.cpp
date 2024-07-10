@@ -210,6 +210,22 @@ void Processor::e75()
 }
 
 //
+// Check whether value is large enough to be printed
+// in fixed format with given precision.
+//
+static bool large_enough_for_fixed_format(double value, int precision)
+{
+    if (value < 0) {
+        value = -value;
+    }
+    if (value >= 1) {
+        return true;
+    }
+    value *= std::pow(10, precision);
+    return (value >= 1);
+}
+
+//
 // Extracode e50 15: format real number.
 //
 Word Processor::e50_format_real(Word input, unsigned &overflow)
@@ -239,12 +255,20 @@ Word Processor::e50_format_real(Word input, unsigned &overflow)
     }
 
     // Format as fixed point or as scientific.
-    std::ostringstream fixed_point, scientific;
-    fixed_point << std::fixed << std::setprecision(precision) << value;
-    scientific << std::scientific << std::setprecision(precision) << value;
+    std::ostringstream scientific;
+    scientific << std::scientific << std::uppercase << std::setprecision(precision) << value;
+    std::string result = scientific.str();
 
-    const std::string result = (fixed_point.str().size() <= scientific.str().size()) ?
-                               fixed_point.str() : scientific.str();
+    if (large_enough_for_fixed_format(value, precision)) {
+        std::ostringstream fixed_point;
+        fixed_point << std::fixed << std::setprecision(precision) << value;
+
+        if (fixed_point.str().size() <= scientific.str().size()) {
+            // Fixed point format is shorter.
+            result = fixed_point.str();
+        }
+    }
+
     overflow = (result.size() > width);
     if (!right_align) {
         // Align to the left.

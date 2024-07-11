@@ -23,5 +23,6 @@
 5           continue
         call endpg(0)
         end
+*no load list
 *execute
 *end file

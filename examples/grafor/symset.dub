@@ -47,5 +47,6 @@
         call symbol(1.0, 1.0, 0.8, 'pqrstuvwxyz{|}~ ', 16, 0.0)
         call endpg(0)
         end
+*no load list
 *execute
 *end file

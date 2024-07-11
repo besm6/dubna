@@ -30,5 +30,6 @@
      *          xf1, yf1, rmax, rmin, 500)
         call endpg('    ')
         end
+*no load list
 *execute
 *end file

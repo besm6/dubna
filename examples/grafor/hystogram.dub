@@ -19,5 +19,6 @@
         call histgm(0., 1., y0, yv, -12, 4)
         call endpg(0)
         end
+*no load list
 *execute
 *end file

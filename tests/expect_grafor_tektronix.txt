@@ -1,0 +1,79 @@
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖЖЖ ЖЖЖЖ   ЖЖЖ    Ж    ЖЖЖ  ЖЖЖЖ
+            Ж     Ж   Ж Ж   Ж ЖЖЖЖЖ Ж   Ж Ж   Ж
+            Ж     Ж   Ж Ж   Ж Ж Ж Ж Ж   Ж Ж   Ж
+            Ж     Ж   Ж Ж   Ж Ж Ж Ж Ж   Ж Ж   Ж
+            Ж     ЖЖЖЖ  Ж   Ж ЖЖЖЖЖ Ж   Ж ЖЖЖЖ
+            Ж     Ж     ЖЖЖЖЖ   Ж   Ж   Ж Ж
+            Ж     Ж     Ж   Ж   Ж    ЖЖЖ  Ж
+
+
+
+
+
+
+
+
+*NAME ГPAФOP
+*CALL PLOTTER:TEKTRONIX,DIRECT
+*FTN                                             04 ИЮЛ 24 23.45
+ Ф O P T P A H - Г Д P
+      (09.07.81)
+  001                 PROGRAM GRAFOR
+  002                 CALL PAGE(10.0, 10.0, ′PAGE′, 4, 1)
+  003                 CALL LIMITS(0.0, 10.0, 0.0, 10.0)
+  004                 CALL BOX(1.0, 1.0, 8.0, 8.0)
+  005                 CALL BOX(2.0, 2.0, 6.0, 6.0)
+  006                 CALL BOX(3.0, 3.0, 4.0, 4.0)
+  007                 CALL BOX(4.0, 4.0, 2.0, 2.0)
+  008                 CALL ENDPG(0)
+  009                 END
+
+  STATEMENT    RELATIVE ADDRESSES OF STATEMENTS (OCTAL)
+   00001        :00000   00000  :00006  :00013  :00020
+   00006        :00025  :00032  :00037  :00041
+     *** EXTERNALS ***
+    PAGE     LIMITS   BOX      ENDPG
+     *** ENTRIES ***   >LOCATION<
+    GRAFOR  >00000<   PROGRA  >00000<
+ >> GRAFOR <<    LENGTH: 00046 00056B   INPUT CARDS: 00009
+*EXECUTE
+      *LIBRA:05 = SYMTAB      *GFATRN*    RDB         IRDB        WDB         IWDB        SET         BOX         REBLAN
+      SYMBOL      MOVE        LIMITS      ATRST       RENTCH      NUMBER      *GFTAB*     PAGE        ENDPG
+      *LIBRA:21 = LOCF
+      *LIBRA:23 = IPUTS       JEXTRA
+≠
+         GRAFOR     01000                *GFERR*  C 02167                *GFATRN*   03463                JEXTRA   E 03734
+         PROGRAM  E 01000                *PLONAM* C 02174                *GFBLAN* C 03472                JEXTRI   E 03735
+         PAGE       01056                F/START    02175                *GFAFTR* C 03505                IGETS      03744
+         LIMITS     01254                F/FSTART E 02175                *GFATRM* C 03507                IPUTS    E 03745
+         BOX        01324                F/SNOSV  E 02177                *GFGOBS* C 03524                IGETSL   E 03770
+         ENDPG      01375                F/NOSVR  E 02201                *GFNTCH* C 03550                IPUTSL   E 03771
+         STOP*      01616                F/FNOSV  E 02204                *GFBET*  C 03633                CTIME      04003
+         EXIT     E 01617                F/SSTART E 02206                *GFGEL*  C 03636                PTIME    E 04020
+         SET        01645                F/SAVER  E 02210                *SPLOT*  C 03672                ITIME    E 04021
+         ITALIC   E 01671                F/FRETNR E 02222                FLOAT      03674                LOCF     E 04024
+         WDB        01677                F/FRET   E 02223                ABS      E 03677                XLOC     E 04024
+         AMAX0      01714                F/SRET   E 02224                IABS     E 03702                SYMTAB     04030
+         AMAX1    E 01714                F/SRETNR E 02230                IFIX     E 03704                A/AND      05002
+         MAX0     E 01715                RESET      02233                AINT     E 03706                A/EQUIV  E 05005
+         MAX1     E 01715                ATRST    E 02274                INT      E 03710                A/NOT    E 05006
+         AMIN0    E 01731                RENTCH     02307                SQRT     E 03712                A/IMPL   E 05011
+         AMIN1    E 01731                REBLAN     02374                SIN      E 03713                A/RTOI   E 05014
+         MIN0     E 01732                PLOTTX     02433                COS      E 03714                ENTIER*  E 05017
+         MIN1     E 01732                PLOT     E 02433                ATAN     E 03715                A/RHOCHI E 05021
+         MOVE       01734                SYMBOL     02672                ALOG     E 03716                A/IHOCHI E 05034
+         RDB        02072                NUMBER     03207                EXP      E 03717                A/SIGN   E 05041
+         IWDB       02107                R*TO*INT   03446                ALOG10   E 03723                CBOБOДHO   05051
+         IRDB       02124                R*TO*I   E 03447                MEMORR     03727
+         *GFTAB*    02141                *GFBFTR* C 03461                MEMORW   E 03731
+≠

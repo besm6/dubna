@@ -615,3 +615,32 @@ TEST_F(dubna_session, grafor_watanabe)
     expect = file_contents(TEST_DIR "/expect_watanabe_output.txt");
     check_contents(watanabe, expect);
 }
+
+//
+// Draw Grafor picture on Tektronix plotter.
+//
+TEST_F(dubna_session, grafor_tektronix)
+{
+    auto output = run_job_and_capture_output(R"(*name графор
+*call plotter:tektronix,direct
+*ftn
+        program grafor
+        call page(10.0, 10.0, 'PAGE', 4, 1)
+        call limits(0.0, 10.0, 0.0, 10.0)
+        call box(1.0, 1.0, 8.0, 8.0)
+        call box(2.0, 2.0, 6.0, 6.0)
+        call box(3.0, 3.0, 4.0, 4.0)
+        call box(4.0, 4.0, 2.0, 2.0)
+        call endpg(0)
+        end
+*execute
+*end file
+)");
+    auto expect = file_contents(TEST_DIR "/expect_grafor_tektronix.txt");
+    check_output(output, expect);
+
+    // Check plotter output.
+    auto tektronix = file_contents("tektronix.out");
+    expect = file_contents(TEST_DIR "/expect_tektronix_output.txt");
+    check_contents(tektronix, expect);
+}

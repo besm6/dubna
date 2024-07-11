@@ -36,5 +36,6 @@
         call getpen(1)
         call endpg('flower')
         end
+*no load list
 *execute
 *end file

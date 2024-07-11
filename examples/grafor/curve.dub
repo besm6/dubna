@@ -41,5 +41,6 @@
         call hallne(dx, dy, dz, n2, 1, n2, nclust, n2, g, tol, ityp)
         call endpg(' ')
         end
+*no load list
 *execute
 *end file

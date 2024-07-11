@@ -1,8 +1,7 @@
 *name dtran
-*call putflag*
-61
+*call setftn:one,long
 *library:23
-*call dtran(putflag*)
+*call dtran(print8)
 *assem
 *read:1
 *end file

@@ -1,6 +1,5 @@
 *name Edit
-*call putflag*
-61
+*call setftn:one,long
 *edit
 *R:300316
 *LL

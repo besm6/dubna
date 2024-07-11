@@ -24,6 +24,7 @@
 #include "util.h"
 
 #include <fstream>
+#include <cstring>
 
 #include "fixture_machine.h"
 #include "fixture_session.h"

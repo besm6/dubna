@@ -641,6 +641,35 @@ TEST_F(dubna_session, grafor_tektronix)
 
     // Check plotter output.
     auto tektronix = file_contents("tektronix.out");
-    expect = file_contents(TEST_DIR "/expect_tektronix_output.txt");
-    check_contents(tektronix, expect);
+    expect = file_contents(TEST_DIR "/expect_tektronix_output.bin");
+    EXPECT_EQ(tektronix, expect);
+}
+
+//
+// Draw Grafor picture on Calcomp plotter.
+//
+TEST_F(dubna_session, grafor_calcomp)
+{
+    auto output = run_job_and_capture_output(R"(*name графор
+*call plotter:calcomp,direct
+*ftn
+        program grafor
+        call page(10.0, 10.0, 'PAGE', 4, 1)
+        call limits(0.0, 10.0, 0.0, 10.0)
+        call box(1.0, 1.0, 8.0, 8.0)
+        call box(2.0, 2.0, 6.0, 6.0)
+        call box(3.0, 3.0, 4.0, 4.0)
+        call box(4.0, 4.0, 2.0, 2.0)
+        call endpg(0)
+        end
+*execute
+*end file
+)");
+    auto expect = file_contents(TEST_DIR "/expect_grafor_calcomp.txt");
+    check_output(output, expect);
+
+    // Check plotter output.
+    auto calcomp = file_contents("calcomp.out");
+    expect = file_contents(TEST_DIR "/expect_calcomp_output.bin");
+    EXPECT_EQ(calcomp, expect);
 }

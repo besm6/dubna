@@ -71,9 +71,22 @@ void Plotter::save_to_file(const std::string &filename, const std::string &data)
 //
 void Plotter::watanabe_convert_svg(const std::string &filename)
 {
+    // Default color is black.
+    unsigned color = 1;
+    static const std::string color_name[6] = {
+        "black",
+        "red",
+        "green",
+        "blue",
+        "goldenrod", // yellow
+        "darkcyan",  // cyan
+    };
+
     // Get dimensions.
     unsigned maxx{}, maxy{};
     watanabe_parse([&](char ch, unsigned x, unsigned y) {
+        if (ch == 'J')
+            return;
         if (x > maxx)
             maxx = x;
         if (y > maxy)
@@ -100,16 +113,33 @@ void Plotter::watanabe_convert_svg(const std::string &filename)
     // Write lines.
     std::vector<std::pair<unsigned, unsigned>> path;
     watanabe_parse([&](char ch, unsigned x, unsigned y) {
-        if (ch == 'M') {
+        if (ch != 'D') {
+            // Write path.
             if (path.size() > 1) {
-                // Write path.
                 out << "<path d=\"M";
                 for (auto const &item : path) {
                     out << ' ' << item.first << ' ' << item.second;
                 }
                 out << "\"/>\n";
             }
-            path.clear();
+            if (ch == 'J' && path.size() > 0) {
+                // Restore last position.
+                auto last = path.back();
+                path.clear();
+                path.push_back(last);
+            } else {
+                path.clear();
+            }
+        }
+        if (ch == 'J') {
+            // Change color.
+            if (x >= 1 && x <= 6 && x != color) {
+                color = x;
+                out << "</g>\n"
+                    << "<g fill=\"none\" stroke=\"" << color_name[color-1]
+                    << "\" stroke-linecap=\"round\" stroke-width=\"3\">\n";
+            }
+            return;
         }
         path.push_back({x, maxy - y});
     });
@@ -127,10 +157,21 @@ void Plotter::watanabe_parse(const std::function<void(char, unsigned, unsigned&)
     std::istringstream input(watanabe);
     std::string line;
     while (std::getline(input, line)) {
-        char ch;
+        if (line.size() < 1) {
+            // Ignore empty line.
+            continue;
+        }
+        char ch = line[0];
+        line.erase(0, 1);
+        if (ch == 'J') {
+            // Select color.
+            unsigned color = std::stoul(line);
+            func(ch, color, color);
+            continue;
+        }
         unsigned x, y;
-        int num_read = std::sscanf(line.c_str(), "%c%u,%u", &ch, &x, &y);
-        if (num_read != 3) {
+        int num_read = std::sscanf(line.c_str(), "%u,%u", &x, &y);
+        if (num_read != 2) {
             // Ignore bad line.
             continue;
         }

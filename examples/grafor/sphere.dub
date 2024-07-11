@@ -18,7 +18,9 @@
                 b(i, j) = - a(i, j)
 50              continue
 60          continue
+        call getpen(4)
         call page(30., 22., 'SPHERE', 6, 1)
+        call getpen(3)
         call region(5., 3., 20., 16., 0, 0, 0)
         call mnmx(-50., -75., 40., x, y, a, 41, 41, 1, 41, 1, 41, s)
         call mnmx(-50., -75., 40., x, y, b, 41, 41, -1, 41, 1, 41, s)

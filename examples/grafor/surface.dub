@@ -18,8 +18,10 @@
      *                                (y(j) - ya) ** 2) +
      *                      2. / sqrt((x(i) - xb) ** 2 +
      *                                (y(j) - yb) ** 2))
+        call getpen(3)
         call page(32., 22., 'SURFACE', 7, 1)
         call region(1., 1., 30., 20., 0, 0, 0)
+        call getpen(5)
         call mnmx(-15., -20., 10., x, y, a, 42, 42, 1, 42, 1, 42, s)
         call prsp(-15., -20., 10., x, y, a, 42, 42, 1, 42, 1, 42, xf1,
      *            yf1, rmax, rmin, 500)

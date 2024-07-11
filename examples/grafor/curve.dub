@@ -32,10 +32,12 @@
                 dy(1, j) = y
                 dz(1, j) = z
   10    continue
+        call getpen(4)
         call page(32., 22., 0, 0, 1)
         call region(6., 1., 20., 20., 0, 0, 0)
         call prjhl(1, 15., 8., 3.)
         call vplim(dx, dy, dz, n2, 1, n2, s)
+        call getpen(6)
         call hallne(dx, dy, dz, n2, 1, n2, nclust, n2, g, tol, ityp)
         call endpg(' ')
         end

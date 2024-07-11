@@ -6,10 +6,13 @@
         call surf(x, y, z)
         call init
         call isomet
+        call getpen(2)
         call page(30., 22., 'CAP', 3, 1)
+        call getpen(5)
         call tdlim(x, y, z, 41, 41, 1, 41, 1, 41, s)
         call region(5., 7., 20., 8., 0, 0, 0)
         call threed(x, y, z, 41, 41, 1, 41, 1, 41, 0, 100, a, ar)
+        call getpen(3)
         call endpg('pup ')
         end
         subroutine surf(x, y, z)

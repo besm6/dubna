@@ -339,6 +339,12 @@ void Processor::e50()
         // Print some message.
         // TODO: print_iso(ADDR(core.ACC));
         break;
+    case 066:
+        // Get reply from operator.
+        // Change page on plotter.
+        machine.plotter.change_page();
+        core.ACC = 0;
+        break;
     case 067: {
         // DATE*, OS Dubna specific.
         // Always return the same date/time, for easy testing.

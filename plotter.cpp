@@ -37,27 +37,58 @@
 void Plotter::finish()
 {
     if (!watanabe.empty()) {
-        save_to_file("watanabe.out", watanabe);
-        watanabe_convert_svg("watanabe.svg");
+        save_to_file("watanabe", watanabe);
+        watanabe_convert_svg("watanabe");
         watanabe.erase();
     }
     if (!calcomp.empty()) {
-        save_to_file("calcomp.out", calcomp);
-        calcomp_convert_svg("calcomp.svg");
+        save_to_file("calcomp", calcomp);
+        calcomp_convert_svg("calcomp");
         calcomp.erase();
     }
     if (!tektronix.empty()) {
-        save_to_file("tektronix.out", tektronix);
-        tektronix_convert_svg("tektronix.svg");
+        save_to_file("tektronix", tektronix);
+        tektronix_convert_svg("tektronix");
         tektronix.erase();
     }
 }
 
 //
+// Finish current page and start new one.
+//
+void Plotter::change_page()
+{
+    if (watanabe.empty() && calcomp.empty() && tektronix.empty()) {
+        // No reason to increase page number.
+        return;
+    }
+    if (page_number == 0) {
+        // Enable page numbers.
+        page_number = 1;
+    }
+    finish();
+    page_number += 1;
+}
+
+//
+// Append suffix to a file base name.
+// Also optionally append a page number.
+//
+std::string Plotter::append_suffix(const std::string &basename, const std::string &suffix)
+{
+    if (page_number > 0) {
+        // Page numbering is enabled.
+        return basename + std::to_string(page_number) + suffix;
+    }
+    return basename + suffix;
+}
+
+//
 // Save raw output.
 //
-void Plotter::save_to_file(const std::string &filename, const std::string &data)
+void Plotter::save_to_file(std::string filename, const std::string &data)
 {
+    filename = append_suffix(filename, ".out");
     std::ofstream out(filename);
     if (!out.is_open()) {
         std::cerr << filename << ": " << std::strerror(errno) << std::endl;
@@ -69,17 +100,17 @@ void Plotter::save_to_file(const std::string &filename, const std::string &data)
 //
 // Convert Watanabe output to SVG format.
 //
-void Plotter::watanabe_convert_svg(const std::string &filename)
+void Plotter::watanabe_convert_svg(std::string filename)
 {
     // Default color is black.
     unsigned color = 1;
     static const std::string color_name[6] = {
-        "black",
-        "red",
-        "green",
-        "blue",
-        "goldenrod", // yellow
-        "darkcyan",  // cyan
+        "black",     // pen #1 - black
+        "red",       // pen #2 - red
+        "green",     // pen #3 - green
+        "blue",      // pen #4 - blue
+        "goldenrod", // pen #5 - yellow
+        "darkcyan",  // pen #6 - cyan
     };
 
     // Get dimensions.
@@ -94,6 +125,7 @@ void Plotter::watanabe_convert_svg(const std::string &filename)
     });
 
     // Open file for SVG output.
+    filename = append_suffix(filename, ".svg");
     std::ofstream out(filename);
     if (!out.is_open()) {
         std::cerr << filename << ": " << std::strerror(errno) << std::endl;
@@ -182,7 +214,7 @@ void Plotter::watanabe_parse(const std::function<void(char, unsigned, unsigned&)
 //
 // Convert Tektronix output to SVG format.
 //
-void Plotter::tektronix_convert_svg(const std::string &filename)
+void Plotter::tektronix_convert_svg(std::string filename)
 {
     // Get dimensions.
     unsigned maxx{}, maxy{};
@@ -194,6 +226,7 @@ void Plotter::tektronix_convert_svg(const std::string &filename)
     });
 
     // Open file for SVG output.
+    filename = append_suffix(filename, ".svg");
     std::ofstream out(filename);
     if (!out.is_open()) {
         std::cerr << filename << ": " << std::strerror(errno) << std::endl;
@@ -278,7 +311,7 @@ static inline bool is_collinear(int ax, int ay, int bx, int by)
 //
 // Convert Calcomp output to SVG format.
 //
-void Plotter::calcomp_convert_svg(const std::string &filename)
+void Plotter::calcomp_convert_svg(std::string filename)
 {
     // Get dimensions.
     int x{}, y{}, minx{}, miny{}, maxx{}, maxy{};
@@ -296,6 +329,7 @@ void Plotter::calcomp_convert_svg(const std::string &filename)
     });
 
     // Open file for SVG output.
+    filename = append_suffix(filename, ".svg");
     std::ofstream out(filename);
     if (!out.is_open()) {
         std::cerr << filename << ": " << std::strerror(errno) << std::endl;

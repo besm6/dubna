@@ -34,6 +34,10 @@ private:
     std::string calcomp;
     std::string tektronix;
 
+    // Page number starts from 1 and is incremented for each next page.
+    // By default it's zero which means page numbers are disabled (single page).
+    unsigned page_number{};
+
 public:
     // Save all data files.
     void finish();
@@ -47,19 +51,26 @@ public:
     // Send one byte to Tektronix plotter.
     void tektronix_putch(char ch) { tektronix += ch; }
 
+    // Finish current page and start new one.
+    void change_page();
+
 private:
     // Save output, if available.
-    void save_to_file(const std::string &filename, const std::string &data);
+    void save_to_file(std::string filename, const std::string &data);
 
     // Convert output to SVG format.
-    void watanabe_convert_svg(const std::string &filename);
-    void calcomp_convert_svg(const std::string &filename);
-    void tektronix_convert_svg(const std::string &filename);
+    void watanabe_convert_svg(std::string filename);
+    void calcomp_convert_svg(std::string filename);
+    void tektronix_convert_svg(std::string filename);
 
     // Parse raw file and invoke given routine for each line.
     void watanabe_parse(const std::function<void(char, unsigned, unsigned&)> &func);
     void tektronix_parse(const std::function<void(bool, unsigned, unsigned&)> &func);
     void calcomp_parse(const std::function<void(bool, int, int&)> &func);
+
+    // Append suffix to a file base name.
+    // Also optionally append a page number.
+    std::string append_suffix(const std::string &basename, const std::string &suffix);
 };
 
 #endif // DUBNA_PLOTTER_H

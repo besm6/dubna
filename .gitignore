@@ -1,9 +1,9 @@
 build/
 .idea
 .DS_Store
-watanabe.svg
-tektronix.svg
-calcomp.svg
+watanabe*.svg
+tektronix*.svg
+calcomp*.svg
 *.trace
 *.cpp-
 *.h-

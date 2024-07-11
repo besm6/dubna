@@ -1,5 +1,6 @@
 *name графор
 *call plotter:wx4675,direct
+*no list
 *ftn
         program grafor
         call getpen(2)

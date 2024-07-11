@@ -625,12 +625,9 @@ TEST_F(dubna_session, grafor_tektronix)
 *call plotter:tektronix,direct
 *ftn
         program grafor
-        call page(10.0, 10.0, 'PAGE', 4, 1)
-        call limits(0.0, 10.0, 0.0, 10.0)
-        call box(1.0, 1.0, 8.0, 8.0)
-        call box(2.0, 2.0, 6.0, 6.0)
-        call box(3.0, 3.0, 4.0, 4.0)
-        call box(4.0, 4.0, 2.0, 2.0)
+        call page(14.0, 10.0, 'PAGE', 4, 0)
+        call limits(0.0, 14.0, 0.0, 10.0)
+        call symbol(0.5, 4.0, 2.5, 'Tektronix', 9, 0.0)
         call endpg(0)
         end
 *execute
@@ -654,12 +651,9 @@ TEST_F(dubna_session, grafor_calcomp)
 *call plotter:calcomp,direct
 *ftn
         program grafor
-        call page(10.0, 10.0, 'PAGE', 4, 1)
-        call limits(0.0, 10.0, 0.0, 10.0)
-        call box(1.0, 1.0, 8.0, 8.0)
-        call box(2.0, 2.0, 6.0, 6.0)
-        call box(3.0, 3.0, 4.0, 4.0)
-        call box(4.0, 4.0, 2.0, 2.0)
+        call page(14.0, 10.0, 'PAGE', 4, 0)
+        call limits(0.0, 14.0, 0.0, 10.0)
+        call symbol(0.1, 3.5, 3.3, 'Calcomp', 7, 0.0)
         call endpg(0)
         end
 *execute

@@ -38,29 +38,35 @@
   008                     Y(I) = SIN(X(I))
   009                     Z(I) = COS(X(I)) * 1.5
   010           5         CONTINUE
-  011                 CALL PAGE(15., 20., ′PAGE′, 4, 1)
-  012                 CALL LIMITS(-2., 7., -1.5, 1.5)
-  013                 CALL REGION(3., 3., 10., 15., ′REGION′,
+  011                 CALL GETPEN(2)
+  012                 CALL PAGE(15., 20., ′PAGE′, 4, 1)
+  013                 CALL GETPEN(3)
+  014                 CALL LIMITS(-2., 7., -1.5, 1.5)
+  015                 CALL REGION(3., 3., 10., 15., ′REGION′,
                                       6, 1)
-  014                 CALL AXES(′X AXIS′, 6, 1., 5, ′Y AXIS′,
+  016                 CALL GETPEN(6)
+  017                 CALL AXES(′X AXIS′, 6, 1., 5, ′Y AXIS′,
                                       6, 0.3, 4, 0)
-  015                 CALL LINEMO(X, Y, 85, 2, 10)
-  016                 CALL BROKEN(0.5, 0.2, 0.3, 0.2)
-  017                 CALL BRLINE(X, Z, 85)
-  018                 CALL ENDPG(0)
-  019                 END
+  018                 CALL GETPEN(5)
+  019                 CALL LINEMO(X, Y, 85, 2, 10)
+  020                 CALL BROKEN(0.5, 0.2, 0.3, 0.2)
+  021                 CALL BRLINE(X, Z, 85)
+  022                 CALL ENDPG(0)
+  023                 END
 
   STATEMENT    RELATIVE ADDRESSES OF STATEMENTS (OCTAL)
    00001        :00000   00000   00000   00001   00002
    00006        :00005   00010  :00014  :00016  :00022
-   00011        :00023  :00031  :00036  :00046  :00060
-   00016        :00066  :00073  :00077  :00101
+   00011        :00023  :00025  :00033  :00035  :00042
+   00016        :00052  :00054  :00066  :00070  :00076
+   00021        :00103  :00107  :00111
      *** EXTERNALS ***
-    SIN      COS      PAGE     LIMITS   REGION
-    AXES     LINEMO   BROKEN   BRLINE   ENDPG
+    SIN      COS      GETPEN   PAGE     LIMITS
+    REGION   AXES     LINEMO   BROKEN   BRLINE
+    ENDPG
      *** ENTRIES ***   >LOCATION<
     GRAFOR  >00000<   PROGRA  >00000<
- >> GRAFOR <<    LENGTH: 00395 00613B   INPUT CARDS: 00019
+ >> GRAFOR <<    LENGTH: 00404 00624B   INPUT CARDS: 00023
 *EXECUTE
       *LIBRA:05 = IBCD        BCD         SYMTAB      *GFATRN*    RDB         IRDB        WDB         IWDB        SET
       BOX         REBLAN      SYMBOL      MOVE        REGION      TMF         LIMITS      WHERE       LINEMO      MARKER
@@ -69,34 +75,34 @@
       *LIBRA:23 = IPUTS       IGETS       JOPER       JEXTRA      PUTG
       *LIBRA:21 = TEXISO
 ≠
-         GRAFOR     01000                ALOG10   E 04574                IBCD     E 06076                *GFAFTR* C 07570
-         PROGRAM  E 01000                BOX        04600                WHERE      06307                *GFATRM* C 07572
-         SIN*       01613                SET        04651                TMF        06330                *GFGOBS* C 07607
-         COS*     E 01614                ITALIC   E 04675                MARKER     06363                *GFNTCH* C 07633
-         SQRT*    E 01615                WDB        04703                *GFBRO*  C 06576                *GFBET*  C 07716
-         LN*      E 01616                AMAX0      04720                *GFERR*  C 06603                *GFGEL*  C 07721
-         ARCTAN*  E 01617                AMAX1    E 04720                *PLONAM* C 06610                SYMTAB     07755
-         EXP*     E 01620                MAX0     E 04721                F/START    06611                *SPLOT*  C 10727
-         PAGE       01623                MAX1     E 04721                F/FSTART E 06611                *PNUMB*  C 10731
-         LIMITS     02021                AMIN0    E 04735                F/SNOSV  E 06613                JOPER      10733
-         REGION     02071                AMIN1    E 04735                F/NOSVR  E 06615                CTIME      11031
-         AXES       02240                MIN0     E 04736                F/FNOSV  E 06620                PTIME    E 11046
-         LINEMO     03537                MIN1     E 04736                F/SSTART E 06622                ITIME    E 11047
-         BROKEN     03762                MOVE       04740                F/SAVER  E 06624                LOCF     E 11052
-         BRLINE     04010                RDB        05076                F/FRETNR E 06636                XLOC     E 11052
-         ENDPG      04275                IWDB       05113                F/FRET   E 06637                MEMORR     11056
-         STOP*      04516                IRDB       05130                F/SRET   E 06640                MEMORW   E 11060
-         EXIT     E 04517                *GFTAB*    05145                F/SRETNR E 06644                JEXTRA   E 11063
-         FLOAT      04545                SYMBOL     05173                RESET      06647                JEXTRI   E 11064
-         ABS      E 04550                A/AND      05510                ATRST    E 06710                SCANER     11073
-         IABS     E 04553                A/EQUIV  E 05513                RENTCH     06723                PUTH     E 11074
-         IFIX     E 04555                A/NOT    E 05514                REBLAN     07010                PUTO     E 11075
-         AINT     E 04557                A/IMPL   E 05517                PLOTWX     07047                PUTG     E 11076
-         INT      E 04561                A/RTOI   E 05522                PLOT     E 07047                IGETS      11157
-         SQRT     E 04563                ENTIER*  E 05525                NUMBER     07272                IPUTS    E 11160
-         SIN      E 04564                A/RHOCHI E 05527                R*TO*INT   07531                IGETSL   E 11203
-         COS      E 04565                A/IHOCHI E 05542                R*TO*I   E 07532                IPUTSL   E 11204
-         ATAN     E 04566                A/SIGN   E 05547                *GFBFTR* C 07544                TEXISO     11216
-         ALOG     E 04567                ASTEP      05557                *GFATRN*   07546                CBOБOДHO   11264
-         EXP      E 04570                BCD        06075                *GFBLAN* C 07555
+         GRAFOR     01000                EXP      E 04616                *GFTAB*    05233                *GFATRN*   07576
+         PROGRAM  E 01000                ALOG10   E 04622                SYMBOL     05261                *GFBLAN* C 07605
+         SIN*       01624                *PNUMB*  C 04626                A/AND      05576                *GFAFTR* C 07620
+         COS*     E 01625                F/START    04630                A/EQUIV  E 05601                *GFATRM* C 07622
+         SQRT*    E 01626                F/FSTART E 04630                A/NOT    E 05602                *GFGOBS* C 07637
+         LN*      E 01627                F/SNOSV  E 04632                A/IMPL   E 05605                *GFNTCH* C 07663
+         ARCTAN*  E 01630                F/NOSVR  E 04634                A/RTOI   E 05610                *GFBET*  C 07746
+         EXP*     E 01631                F/FNOSV  E 04637                ENTIER*  E 05613                *GFGEL*  C 07751
+         GETPEN     01634                F/SSTART E 04641                A/RHOCHI E 05615                SYMTAB     10005
+         PAGE       01651                F/SAVER  E 04643                A/IHOCHI E 05630                *SPLOT*  C 10757
+         LIMITS     02047                F/FRETNR E 04655                A/SIGN   E 05635                JOPER      10761
+         REGION     02117                F/FRET   E 04656                ASTEP      05645                CTIME      11057
+         AXES       02266                F/SRET   E 04657                BCD        06163                PTIME    E 11074
+         LINEMO     03565                F/SRETNR E 04663                IBCD     E 06164                ITIME    E 11075
+         BROKEN     04010                BOX        04666                WHERE      06375                LOCF     E 11100
+         BRLINE     04036                SET        04737                TMF        06416                XLOC     E 11100
+         ENDPG      04323                ITALIC   E 04763                MARKER     06451                MEMORR     11104
+         STOP*      04544                WDB        04771                *GFBRO*  C 06664                MEMORW   E 11106
+         EXIT     E 04545                AMAX0      05006                *GFERR*  C 06671                JEXTRA   E 11111
+         FLOAT      04573                AMAX1    E 05006                *PLONAM* C 06676                JEXTRI   E 11112
+         ABS      E 04576                MAX0     E 05007                RESET      06677                SCANER     11121
+         IABS     E 04601                MAX1     E 05007                ATRST    E 06740                PUTH     E 11122
+         IFIX     E 04603                AMIN0    E 05023                RENTCH     06753                PUTO     E 11123
+         AINT     E 04605                AMIN1    E 05023                REBLAN     07040                PUTG     E 11124
+         INT      E 04607                MIN0     E 05024                PLOTWX     07077                IGETS      11205
+         SQRT     E 04611                MIN1     E 05024                PLOT     E 07077                IPUTS    E 11206
+         SIN      E 04612                MOVE       05026                NUMBER     07322                IGETSL   E 11231
+         COS      E 04613                RDB        05164                R*TO*INT   07561                IPUTSL   E 11232
+         ATAN     E 04614                IWDB       05201                R*TO*I   E 07562                TEXISO     11244
+         ALOG     E 04615                IRDB       05216                *GFBFTR* C 07574                CBOБOДHO   11312
 ≠

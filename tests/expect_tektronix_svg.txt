@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink" baseProfile="full" version="1.1" width="920" height="512" viewBox="0 0 920 512">
+<g fill="none" stroke="black" stroke-linecap="round" stroke-width="1.5">
+<path d="M 53 279 53 222 25 222 82 222"/>
+<path d="M 167 265 153 279 124 279 110 265 110 236 124 222 153 222 167 236 167 250 110 250"/>
+<path d="M 195 279 195 194 195 250 238 222 195 250 238 279"/>
+<path d="M 309 279 309 222 281 222 337 222"/>
+<path d="M 366 279 366 222 366 236 380 222 408 222 422 236"/>
+<path d="M 451 236 465 222 493 222 508 236 508 265 493 279 465 279 451 265 451 236"/>
+<path d="M 536 279 536 222 536 236 550 222 579 222 593 236 593 279"/>
+<path d="M 650 279 650 222"/>
+<path d="M 650 208 650 194"/>
+<path d="M 706 279 763 222 735 250 706 222 763 279"/>
+<path d="M 817 0 817 511"/>
+</g>
+</svg>

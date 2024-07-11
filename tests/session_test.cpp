@@ -595,10 +595,14 @@ TEST_F(dubna_session, grafor_watanabe)
             y(i) = sin(x(i))
             z(i) = cos(x(i)) * 1.5
   5         continue
+        call getpen(2)
         call page(15., 20., 'PAGE', 4, 1)
+        call getpen(3)
         call limits(-2., 7., -1.5, 1.5)
         call region(3., 3., 10., 15., 'REGION', 6, 1)
+        call getpen(6)
         call axes('X axis', 6, 1., 5, 'Y axis', 6, 0.3, 4, 0)
+        call getpen(5)
         call linemo(x, y, 85, 2, 10)
         call broken(0.5, 0.2, 0.3, 0.2)
         call brline(x, z, 85)
@@ -614,6 +618,11 @@ TEST_F(dubna_session, grafor_watanabe)
     auto watanabe = file_contents("watanabe.out");
     expect = file_contents(TEST_DIR "/expect_watanabe_output.txt");
     check_contents(watanabe, expect);
+
+    // Check SVG output.
+    watanabe = file_contents("watanabe.svg");
+    expect = file_contents(TEST_DIR "/expect_watanabe_svg.txt");
+    EXPECT_EQ(watanabe, expect);
 }
 
 //
@@ -640,6 +649,11 @@ TEST_F(dubna_session, grafor_tektronix)
     auto tektronix = file_contents("tektronix.out");
     expect = file_contents(TEST_DIR "/expect_tektronix_output.bin");
     EXPECT_EQ(tektronix, expect);
+
+    // Check SVG output.
+    tektronix = file_contents("tektronix.svg");
+    expect = file_contents(TEST_DIR "/expect_tektronix_svg.txt");
+    EXPECT_EQ(tektronix, expect);
 }
 
 //
@@ -665,5 +679,10 @@ TEST_F(dubna_session, grafor_calcomp)
     // Check plotter output.
     auto calcomp = file_contents("calcomp.out");
     expect = file_contents(TEST_DIR "/expect_calcomp_output.bin");
+    EXPECT_EQ(calcomp, expect);
+
+    // Check SVG output.
+    calcomp = file_contents("calcomp.svg");
+    expect = file_contents(TEST_DIR "/expect_calcomp_svg.txt");
     EXPECT_EQ(calcomp, expect);
 }

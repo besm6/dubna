@@ -1,6 +1,6 @@
 *name графор
-*call plotter:wx4675,direct
-*       call plotter:calcomp,direct
+*       call plotter:wx4675,direct
+*call plotter:calcomp,direct
 *       call plotter:tektronix,direct
 *ftn
         program grafor

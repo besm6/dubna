@@ -784,7 +784,8 @@ void Processor::e57()
         core.ACC = besm6_floor(core.ACC);
         return;
     case 2:
-        // Unknown, for Grafor direct.
+        // Output to Calcomp plotter.
+        machine.plotter.calcomp_putch(core.ACC);
         core.ACC = 0;
         return;
     case 3:
@@ -970,8 +971,6 @@ void Processor::e61()
     switch (addr) {
     case 077777: {
         // Output to Watanabe plotter.
-        // TODO: write to file "watanabe.out".
-        // TODO: convert to SVG format and save as "plotter.svg".
         BytePointer bp(memory, ADDR(core.ACC));
         for (;;) {
             char ch = bp.get_byte();

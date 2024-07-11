@@ -31,6 +31,7 @@
 class Plotter {
 private:
     std::string watanabe;
+    std::string calcomp;
 
 public:
     // Save all data files.
@@ -39,12 +40,16 @@ public:
     // Send one byte to Watanabe WX4675 plotter.
     void watanabe_putch(char ch) { watanabe += ch; }
 
-private:
-    // Save Watanabe output, if available.
-    void watanabe_save(const std::string &filename);
+    // Send one byte to Calcomp plotter.
+    void calcomp_putch(char ch) { calcomp += ch; }
 
-    // Convert Watanabe output to SVG format.
+private:
+    // Save output, if available.
+    void save_to_file(const std::string &filename, const std::string &data);
+
+    // Convert output to SVG format.
     void watanabe_convert_svg(const std::string &filename);
+    void calcomp_convert_svg(const std::string &filename);
 
     // Parse Watanabe file and invoke given routine for each line.
     void watanabe_parse(const std::function<void(char, unsigned, unsigned&)> &func);

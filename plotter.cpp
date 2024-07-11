@@ -37,25 +37,29 @@
 void Plotter::finish()
 {
     if (!watanabe.empty()) {
-        watanabe_save("watanabe.out");
+        save_to_file("watanabe.out", watanabe);
         watanabe_convert_svg("plotter.svg");
         watanabe.erase();
     }
-    // TODO: calcomp
+    if (!calcomp.empty()) {
+        save_to_file("calcomp.out", calcomp);
+        //TODO: calcomp_convert_svg("plotter.svg");
+        calcomp.erase();
+    }
     // TODO: tektronix
 }
 
 //
-// Save Watanabe output, if available.
+// Save raw output.
 //
-void Plotter::watanabe_save(const std::string &filename)
+void Plotter::save_to_file(const std::string &filename, const std::string &data)
 {
     std::ofstream out(filename);
     if (!out.is_open()) {
         std::cerr << filename << ": " << std::strerror(errno) << std::endl;
         return;
     }
-    out << watanabe;
+    out << data;
 }
 
 //

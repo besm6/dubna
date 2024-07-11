@@ -120,7 +120,8 @@ double besm6_to_ieee(Word word);
 //
 // Print BESM-6 word.
 //
-void besm6_print_word_octal(std::ostream &out, Word cmd);
+void besm6_print_word_octal(std::ostream &out, Word value);
+void besm6_print_word_bytes(std::ostream &out, Word value);
 
 //
 // Print BESM-6 instruction.

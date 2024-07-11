@@ -265,6 +265,25 @@ void besm6_print_word_octal(std::ostream &out, Word value)
 }
 
 //
+// Print 48-bit value as bytes.
+//
+void besm6_print_word_bytes(std::ostream &out, Word value)
+{
+    auto save_flags = out.flags();
+
+    out << std::oct;
+    out << std::setfill('0') << std::setw(3) << ((int)(value >> 40) & BITS(8)) << ' ';
+    out << std::setfill('0') << std::setw(3) << ((int)(value >> 32) & BITS(8)) << ' ';
+    out << std::setfill('0') << std::setw(3) << ((int)(value >> 24) & BITS(8)) << ' ';
+    out << std::setfill('0') << std::setw(3) << ((int)(value >> 16) & BITS(8)) << ' ';
+    out << std::setfill('0') << std::setw(3) << ((int)(value >> 8) & BITS(8)) << ' ';
+    out << std::setfill('0') << std::setw(3) << ((int)value & BITS(8));
+
+    // Restore.
+    out.flags(save_flags);
+}
+
+//
 // Convert number to string as octal.
 //
 std::string to_octal(unsigned val)

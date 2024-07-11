@@ -46,7 +46,11 @@ void Plotter::finish()
         //TODO: calcomp_convert_svg("plotter.svg");
         calcomp.erase();
     }
-    // TODO: tektronix
+    if (!tektronix.empty()) {
+        save_to_file("tektronix.out", tektronix);
+        //TODO: tektronix_convert_svg("plotter.svg");
+        tektronix.erase();
+    }
 }
 
 //

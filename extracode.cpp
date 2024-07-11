@@ -970,13 +970,33 @@ void Processor::e61()
     auto addr = core.M[016];
     switch (addr) {
     case 077777: {
-        // Output to Watanabe plotter.
+        // Output to Watanabe or Tektronix plotter.
         BytePointer bp(memory, ADDR(core.ACC));
-        for (;;) {
-            char ch = bp.get_byte();
-            if (ch == 0)
-                break;
-            machine.plotter.watanabe_putch(ch);
+        switch (core.ACC >> 36) {
+        case 0:
+            // Watanabe.
+            for (;;) {
+                char ch = bp.get_byte();
+                if (ch == 0)
+                    break;
+                machine.plotter.watanabe_putch(ch);
+            }
+            break;
+        case 01400:
+            // Tektronix.
+            if (bp.word_addr == 0) {
+                // Start new command.
+            } else {
+                for (;;) {
+                    char ch = bp.get_byte();
+                    if (ch == 0)
+                        break;
+                    machine.plotter.tektronix_putch(ch);
+                }
+            }
+            break;
+        default:
+            throw Exception("Extracode *61 77777: unknown target " + to_octal(core.ACC >> 36));
         }
         core.ACC = 0;
         return;

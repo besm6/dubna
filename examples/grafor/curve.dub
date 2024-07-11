@@ -1,0 +1,43 @@
+*name графор
+*call plotter:wx4675,direct
+*ftn
+        program grafor
+        real dx(2, 880), dy(2, 880), dz(2, 880)
+        integer nclust(880)
+        g = 0.05
+        ityp = 5
+        m = 3
+        n = 4
+        n1 = 110
+        nn = 8
+        tol = 0.2
+        n2 = nn * n1
+        h1 = 3.5 / nn
+        h2 = 4.5 / nn
+        fi = h1
+        psi = h2
+        do 10 j = 1, n2
+            fi = fi + h1 / n1
+            psi = psi + h2 / n1
+            th = 6.283 * (j-1) / (n1-1)
+            x = sin(th)
+            y = 1.2 * sin(m*th + fi)
+            z = 1.5 * sin(n*th + psi)
+            if (j .eq. 1) goto 5
+                dx(2, j-1) = x
+                dy(2, j-1) = y
+                dz(2, j-1) = z
+  5         if (j .eq. n2) goto 10
+                dx(1, j) = x
+                dy(1, j) = y
+                dz(1, j) = z
+  10    continue
+        call page(32., 22., 0, 0, 1)
+        call region(6., 1., 20., 20., 0, 0, 0)
+        call prjhl(1, 15., 8., 3.)
+        call vplim(dx, dy, dz, n2, 1, n2, s)
+        call hallne(dx, dy, dz, n2, 1, n2, nclust, n2, g, tol, ityp)
+        call endpg(' ')
+        end
+*execute
+*end file

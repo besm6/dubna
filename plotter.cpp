@@ -38,17 +38,17 @@ void Plotter::finish()
 {
     if (!watanabe.empty()) {
         save_to_file("watanabe.out", watanabe);
-        watanabe_convert_svg("plotter.svg");
+        watanabe_convert_svg("watanabe.svg");
         watanabe.erase();
     }
     if (!calcomp.empty()) {
         save_to_file("calcomp.out", calcomp);
-        calcomp_convert_svg("plotter.svg");
+        calcomp_convert_svg("calcomp.svg");
         calcomp.erase();
     }
     if (!tektronix.empty()) {
         save_to_file("tektronix.out", tektronix);
-        tektronix_convert_svg("plotter.svg");
+        tektronix_convert_svg("tektronix.svg");
         tektronix.erase();
     }
 }
@@ -252,6 +252,30 @@ void Plotter::tektronix_parse(const std::function<void(bool, unsigned, unsigned&
 }
 
 //
+// Do two value have the same sign, or both zero?
+//
+static inline bool same_sign(int a, int b)
+{
+    if (a == 0)
+        return (b == 0);
+    return (a < 0) == (b < 0);
+}
+
+//
+// Return true when vector (ax,ay) is collinear with vector (bx,by)
+//
+static inline bool is_collinear(int ax, int ay, int bx, int by)
+{
+    if (ax == 0) {
+        return (bx == 0) && same_sign(ay, by);
+    }
+    if (ay == 0) {
+        return (by == 0) && same_sign(ax, bx);
+    }
+    return (ax*by == ay*bx);
+}
+
+//
 // Convert Calcomp output to SVG format.
 //
 void Plotter::calcomp_convert_svg(const std::string &filename)
@@ -291,14 +315,14 @@ void Plotter::calcomp_convert_svg(const std::string &filename)
         << "<g fill=\"none\" stroke=\"black\" stroke-linecap=\"round\" stroke-width=\"1\">\n";
 
     // Write lines.
-    std::vector<std::pair<unsigned, unsigned>> path;
+    std::vector<std::pair<int, int>> path;
     x = 0;
     y = 0;
     calcomp_parse([&](bool new_path, int dx, int dy) {
         x += dx;
         y += dy;
         if (new_path) {
-            if (path.size() > 1) {
+            if (path.size() >= 2) {
                 // Write path.
                 out << "<path d=\"M";
                 for (auto const &item : path) {
@@ -308,7 +332,22 @@ void Plotter::calcomp_convert_svg(const std::string &filename)
             }
             path.clear();
         }
-        path.push_back({x - minx, maxy - y});
+        auto dev_x = x - minx;
+        auto dev_y = maxy - y;
+        if (path.size() >= 2) {
+            // Optimize the path.
+            auto last = *std::prev(path.end());
+            auto prev = *std::prev(std::prev(path.end()));
+            auto ax   = dev_x - last.first;
+            auto ay   = dev_y - last.second;
+            auto bx   = last.first - prev.first;
+            auto by   = last.second - prev.second;
+            if (is_collinear(ax, ay, bx, by)) {
+                // Ignore previous point it's exactly in the same direction.
+                path.pop_back();
+            }
+        }
+        path.push_back({dev_x, dev_y});
     });
 
     // Write SVG footer.

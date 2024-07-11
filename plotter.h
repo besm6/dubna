@@ -24,6 +24,8 @@
 #ifndef DUBNA_PLOTTER_H
 #define DUBNA_PLOTTER_H
 
+#include <functional>
+
 #include "memory.h"
 
 class Plotter {
@@ -38,7 +40,14 @@ public:
     void watanabe_putch(char ch) { watanabe += ch; }
 
 private:
-    void watanabe_save();
+    // Save Watanabe output, if available.
+    void watanabe_save(const std::string &filename);
+
+    // Convert Watanabe output to SVG format.
+    void watanabe_convert_svg(const std::string &filename);
+
+    // Parse Watanabe file and invoke given routine for each line.
+    void watanabe_parse(const std::function<void(char, unsigned, unsigned&)> &func);
 };
 
 #endif // DUBNA_PLOTTER_H

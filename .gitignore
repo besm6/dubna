@@ -6,3 +6,5 @@ build/
 *.h-
 *.c-
 *.dub-
+*.o
+*.out

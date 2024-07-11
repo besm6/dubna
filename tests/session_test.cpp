@@ -621,7 +621,7 @@ TEST_F(dubna_session, grafor_watanabe)
 
     // Check SVG output.
     watanabe = file_contents("watanabe.svg");
-    expect = file_contents(TEST_DIR "/expect_watanabe_svg.txt");
+    expect = file_contents(TEST_DIR "/expect_watanabe.svg");
     EXPECT_EQ(watanabe, expect);
 }
 
@@ -652,7 +652,7 @@ TEST_F(dubna_session, grafor_tektronix)
 
     // Check SVG output.
     tektronix = file_contents("tektronix.svg");
-    expect = file_contents(TEST_DIR "/expect_tektronix_svg.txt");
+    expect = file_contents(TEST_DIR "/expect_tektronix.svg");
     EXPECT_EQ(tektronix, expect);
 }
 
@@ -683,6 +683,6 @@ TEST_F(dubna_session, grafor_calcomp)
 
     // Check SVG output.
     calcomp = file_contents("calcomp.svg");
-    expect = file_contents(TEST_DIR "/expect_calcomp_svg.txt");
+    expect = file_contents(TEST_DIR "/expect_calcomp.svg");
     EXPECT_EQ(calcomp, expect);
 }

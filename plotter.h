@@ -59,6 +59,7 @@ private:
     // Parse raw file and invoke given routine for each line.
     void watanabe_parse(const std::function<void(char, unsigned, unsigned&)> &func);
     void tektronix_parse(const std::function<void(bool, unsigned, unsigned&)> &func);
+    void calcomp_parse(const std::function<void(bool, int, int&)> &func);
 };
 
 #endif // DUBNA_PLOTTER_H

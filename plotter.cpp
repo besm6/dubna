@@ -43,7 +43,7 @@ void Plotter::finish()
     }
     if (!calcomp.empty()) {
         save_to_file("calcomp.out", calcomp);
-        //TODO: calcomp_convert_svg("plotter.svg");
+        calcomp_convert_svg("plotter.svg");
         calcomp.erase();
     }
     if (!tektronix.empty()) {
@@ -145,7 +145,7 @@ void Plotter::tektronix_convert_svg(const std::string &filename)
 {
     // Get dimensions.
     unsigned maxx{}, maxy{};
-    tektronix_parse([&](char ch, unsigned x, unsigned y) {
+    tektronix_parse([&](bool flag, unsigned x, unsigned y) {
         if (x > maxx)
             maxx = x;
         if (y > maxy)
@@ -207,5 +207,95 @@ void Plotter::tektronix_parse(const std::function<void(bool, unsigned, unsigned&
         h = (*ptr++ & 037) << 5;
         unsigned x = (*ptr++ & 037) | h;
         func(flag, x, y);
+    }
+}
+
+//
+// Convert Calcomp output to SVG format.
+//
+void Plotter::calcomp_convert_svg(const std::string &filename)
+{
+    // Get dimensions.
+    int x{}, y{}, minx{}, miny{}, maxx{}, maxy{};
+    calcomp_parse([&](bool flag, int dx, int dy) {
+        x += dx;
+        y += dy;
+        if (x < minx)
+            minx = x;
+        if (y < miny)
+            miny = y;
+        if (x > maxx)
+            maxx = x;
+        if (y > maxy)
+            maxy = y;
+    });
+
+    // Open file for SVG output.
+    std::ofstream out(filename);
+    if (!out.is_open()) {
+        std::cerr << filename << ": " << std::strerror(errno) << std::endl;
+        return;
+    }
+
+    // Write SVG header.
+    int width = maxx + 1 - minx;
+    int height = maxy + 1 - miny;
+    out << "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n"
+        << "<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:ev=\"http://www.w3.org/2001/xml-events\""
+        << " xmlns:xlink=\"http://www.w3.org/1999/xlink\" baseProfile=\"full\" version=\"1.1\""
+        << " width=\"" << width
+        << "\" height=\"" << height
+        << "\" viewBox=\"0 0 " << width
+        << " " << height << "\">\n"
+        << "<g fill=\"none\" stroke=\"black\" stroke-linecap=\"round\" stroke-width=\"1\">\n";
+
+    // Write lines.
+    std::vector<std::pair<unsigned, unsigned>> path;
+    x = 0;
+    y = 0;
+    calcomp_parse([&](bool new_path, int dx, int dy) {
+        x += dx;
+        y += dy;
+        if (new_path) {
+            if (path.size() > 1) {
+                // Write path.
+                out << "<path d=\"M";
+                for (auto const &item : path) {
+                    out << ' ' << item.first << ' ' << item.second;
+                }
+                out << "\"/>\n";
+            }
+            path.clear();
+        }
+        path.push_back({x - minx, maxy - y});
+    });
+
+    // Write SVG footer.
+    out << "</g>\n";
+    out << "</svg>\n";
+}
+
+//
+// Parse Calcomp file and invoke given routine for each line.
+//
+void Plotter::calcomp_parse(const std::function<void(bool, int, int&)> &func)
+{
+    bool pen_up{};
+    for (auto const byte : calcomp) {
+        int dx{}, dy{};
+        if (byte & 1)
+            dx = -1;
+        if (byte & 2)
+            dx = 1;
+        if (byte & 4)
+            pen_up = true;
+        if (byte & 010)
+            pen_up = false;
+        if (byte & 020)
+            dy = 1;
+        if (byte & 040)
+            dy = -1;
+        if (dx || dy)
+            func(pen_up, dx, dy);
     }
 }

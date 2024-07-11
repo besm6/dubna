@@ -56,8 +56,9 @@ private:
     void calcomp_convert_svg(const std::string &filename);
     void tektronix_convert_svg(const std::string &filename);
 
-    // Parse Watanabe file and invoke given routine for each line.
+    // Parse raw file and invoke given routine for each line.
     void watanabe_parse(const std::function<void(char, unsigned, unsigned&)> &func);
+    void tektronix_parse(const std::function<void(bool, unsigned, unsigned&)> &func);
 };
 
 #endif // DUBNA_PLOTTER_H

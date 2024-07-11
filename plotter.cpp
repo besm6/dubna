@@ -48,7 +48,7 @@ void Plotter::finish()
     }
     if (!tektronix.empty()) {
         save_to_file("tektronix.out", tektronix);
-        //TODO: tektronix_convert_svg("plotter.svg");
+        tektronix_convert_svg("plotter.svg");
         tektronix.erase();
     }
 }
@@ -128,12 +128,84 @@ void Plotter::watanabe_parse(const std::function<void(char, unsigned, unsigned&)
     std::string line;
     while (std::getline(input, line)) {
         char ch;
-        unsigned int x, y;
+        unsigned x, y;
         int num_read = std::sscanf(line.c_str(), "%c%u,%u", &ch, &x, &y);
         if (num_read != 3) {
             // Ignore bad line.
             continue;
         }
         func(ch, x, y);
+    }
+}
+
+//
+// Convert Tektronix output to SVG format.
+//
+void Plotter::tektronix_convert_svg(const std::string &filename)
+{
+    // Get dimensions.
+    unsigned maxx{}, maxy{};
+    tektronix_parse([&](char ch, unsigned x, unsigned y) {
+        if (x > maxx)
+            maxx = x;
+        if (y > maxy)
+            maxy = y;
+    });
+
+    // Open file for SVG output.
+    std::ofstream out(filename);
+    if (!out.is_open()) {
+        std::cerr << filename << ": " << std::strerror(errno) << std::endl;
+        return;
+    }
+
+    // Write SVG header.
+    out << "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n"
+        << "<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:ev=\"http://www.w3.org/2001/xml-events\""
+        << " xmlns:xlink=\"http://www.w3.org/1999/xlink\" baseProfile=\"full\" version=\"1.1\""
+        << " width=\"" << (maxx+1)
+        << "\" height=\"" << (maxy+1)
+        << "\" viewBox=\"0 0 " << (maxx+1)
+        << " " << (maxy+1) << "\">\n"
+        << "<g fill=\"none\" stroke=\"black\" stroke-linecap=\"round\" stroke-width=\"1.5\">\n";
+
+    // Write lines.
+    std::vector<std::pair<unsigned, unsigned>> path;
+    tektronix_parse([&](bool new_path, unsigned x, unsigned y) {
+        if (new_path) {
+            if (path.size() > 1) {
+                // Write path.
+                out << "<path d=\"M";
+                for (auto const &item : path) {
+                    out << ' ' << item.first << ' ' << item.second;
+                }
+                out << "\"/>\n";
+            }
+            path.clear();
+        }
+        path.push_back({x, maxy - y});
+    });
+
+    // Write SVG footer.
+    out << "</g>\n";
+    out << "</svg>\n";
+}
+
+//
+// Parse Tektronix file and invoke given routine for each line.
+//
+void Plotter::tektronix_parse(const std::function<void(bool, unsigned, unsigned&)> &func)
+{
+    static const char GS = 035;
+    for (auto ptr = tektronix.cbegin(); ptr < tektronix.cend(); ) {
+        bool flag = (*ptr == GS);
+        if (flag) {
+            ptr++;
+        }
+        unsigned h = (*ptr++ & 037) << 5;
+        unsigned y = (*ptr++ & 037) | h;
+        h = (*ptr++ & 037) << 5;
+        unsigned x = (*ptr++ & 037) | h;
+        func(flag, x, y);
     }
 }

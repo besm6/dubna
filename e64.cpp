@@ -28,8 +28,6 @@
 //
 #include <unistd.h>
 
-#include <cstring>
-#include <iomanip>
 #include <iostream>
 
 #include "encoding.h"

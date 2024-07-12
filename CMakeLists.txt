@@ -39,6 +39,8 @@ add_library(simulator STATIC
     trace.cpp
     drum.cpp
     disk.cpp
+    e50.cpp
+    e57.cpp
     e64.cpp
     encoding.cpp
     plotter.cpp

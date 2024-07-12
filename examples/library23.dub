@@ -1,5 +1,6 @@
 *name библиотека 23
 *perso:300320
 *
+*call setftn:one,long
 *call tcatalog
 *end file

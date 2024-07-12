@@ -1,6 +1,7 @@
 *name whatis
 *tape:9/monsys,31
 *library:23
+*call setftn:one,long
 *call whatis
 3100000437
 *end file

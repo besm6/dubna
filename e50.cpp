@@ -22,6 +22,7 @@
 // SOFTWARE.
 //
 #include <cmath>
+#include <cstring>
 #include <iomanip>
 #include <sstream>
 
@@ -82,7 +83,7 @@ Word Processor::e50_parse(Word input, unsigned &result)
     const int src_reg  = (input >> 20) & 15;
     static int index;
     static uint8_t ident[128];
-    static int ident_len;
+    static unsigned ident_len;
     uint64_t value;
     bool negate = false;
     static unsigned last_word_addr;

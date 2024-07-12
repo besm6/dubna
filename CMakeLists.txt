@@ -73,7 +73,7 @@ install(TARGETS
 )
 
 # Install disk images
-install(FILES tapes/9 tapes/12 tapes/37
+install(FILES tapes/9 tapes/12 tapes/37 tapes/739
     DESTINATION $ENV{HOME}/.besm6
     PERMISSIONS OWNER_READ GROUP_READ WORLD_READ
 )

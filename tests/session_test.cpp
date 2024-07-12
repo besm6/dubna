@@ -158,6 +158,38 @@ TEST_F(dubna_session, madlen)
 }
 
 //
+// Run *BEMSH example and check output.
+//
+TEST_F(dubna_session, bemsh)
+{
+    auto output = run_job_and_capture_output(R"(*name бемш
+*bemsh
+ввд$$$
+prog    старт   512
+        э64     инф64
+        пб      (13)
+инф64   мода    текст
+        мода    текст
+        конк    к'000010000'
+        конк    к'100000000'
+текст   текст   п'Приветик! Это автокод БЕМШ.'
+        конд    м40b'231'
+        финиш
+квч$$$
+трн$$$
+0-0
+блмак
+бтмалф
+кнц$$$
+*main prog
+*execute
+*end file
+)");
+    auto expect = file_contents(TEST_DIR "/expect_bemsh.txt");
+    check_output(output, expect);
+}
+
+//
 // Run *FORTRAN example and check output.
 //
 TEST_F(dubna_session, fortran)

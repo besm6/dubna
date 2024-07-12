@@ -301,6 +301,10 @@ void Processor::e56()
 void Processor::e63()
 {
     switch (core.M[016]) {
+    case 1:
+        // Unknown, for BEMSH.
+        core.ACC = 0;
+        return;
     case 4:
         // Get CPU time in 1/50 of seconds.
         // Use fixed value for easy testing.

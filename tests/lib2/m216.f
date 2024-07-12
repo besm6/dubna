@@ -1,0 +1,11 @@
+      PROGRAM M216
+      DOUBLE PRECISION X
+      DIMENSION H(30)
+      X=4.D0*DATAN(1.D0)
+      CALL FDCONV (X,H,24,20)
+      PRINT 100,H
+  100 FORMAT(1X,'PI=' ,5(4A1,1X))
+      END
+*EXECUTE
+*
+*

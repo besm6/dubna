@@ -1,0 +1,46 @@
+      PROGRAM F101
+      DIMENSION A(8,8),B(8,8),C(8,8),D(8,8),F(8,8),G(8,8),
+     1          I1(8,2),I2(8,8)
+      DOUBLE PRECISION D,F,G,S2
+      DO 3 I=1,8
+      DO 3 J=1,8,2
+   3  CALL RANNOR(A(I,J),A(I,J+1))
+      DO 1 I=1,8
+      DO 1 J=1,8
+      D(I,J)=A(I,J)
+      G(I,J)=0.0 D0
+      B(I,J)=A(I,J)
+      C(I,J)=0.0
+   1  F(I,J)=D(I,J)
+      CALL MATIN1 (A,8,8,8,0,I1,N1,S1)
+      CALL MATIN2 (D,8,8,8,0,I2,N3,S2)
+      DO 2 I=1,8
+      DO 2 J=1,8
+      DO 2 K=1,8
+      C(I,J)=C(I,J)+A(I,K)*B(K,J)
+   2  G(I,J)=G(I,J)+D(I,K)*F(K,J)
+      PRINT 100,((B(I,J),J=1,8),I=1,8),((A(I,J),J=1,8),(D(I,J),J=1,8),
+     1I=1,8),((C(I,J),J=1,8),(G(I,J),J=1,8),I=1,8),S1,S2
+C     TRY A LINEARLY DEPENDANT SYSTEM
+      DO 4 I=1,8
+      A(I,3)=0.
+   4  D(I,3)=0.
+      CALL MATIN1 (A,8,8,8,0,I1,N1,S1)
+      CALL MATIN2 (D,8,8,8,0,I2,N3,S2)
+      PRINT 101,N1,N3
+C      SOLVE CASE N=1
+      CALL MATIN1 (B,8,1,8,2,I1,N1,S1)
+      CALL MATIN2 (F,8,1,8,2,I2,N3,S2)
+  100 FORMAT(1H1, 40X,40HTWO PROGRAMS, INVERTING THE SAME MATRIX./1H0,
+     1 13HGIVEN MATRIX. ,/1H0, 8(8E15.8,/1H ),  /1H0, 16HINVERTED MATRIX
+     2.//8(7HMATIN1./2(4E20.11/)//7HMATIN2./4(2D43.23/)//)///
+     3 14HCOMPUTED UNIT.///8(7HMATIN1./2(4E20.11/)//7HMATIN2./
+     4 4(2D43.23/)//)///18HTHE DETERMINANT IS ,E20.11,D43.23///)
+  101 FORMAT(5X,9H0NERROR= ,2I5//)
+      PRINT 102 ,B(1,1),B(1,2),B(1,3),F(1,1),F(1,2),F(1,3)
+  102 FORMAT ( ,21H0FIRST 3 OF MATRIX B ,3E20.11//5X,21H FIRST 3 OF MATR
+     1IX F ,5X,2D43.23/26X,D43.23)
+      END
+*EXECUTE
+*
+*

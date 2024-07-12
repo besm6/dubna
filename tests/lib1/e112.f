@@ -1,0 +1,30 @@
+      PROGRAM E112
+      DIMENSION A(6),B(6),F(6),G(6),C(7)
+      DATA A/0.,0.35,-0.2,0.6,-0.45,0.5/,
+     1     F/0.,0.3429,-0.1987,0.5646,-0.4350,0.4794/,
+     2     C/-0.15,0.4,-0.5,0.35,0.65,-0.25,0.1/
+      PRINT 10,A,F
+      DO 5 K=1,6
+      B(K)=A(K)
+      G(K)=F(K)
+  5   CONTINUE
+      DO 1 I=1,7
+       X=C(I)
+      CALL FINTER(X,A,F,6,R)
+      PRINT 2,X,R
+  1   CONTINUE
+C
+      PRINT 3,B,G
+      PRINT 4
+      CALL REORDN(B,G,6)
+      PRINT 3,B,G
+  2   FORMAT(40X,F7.2,10X,E20.11)
+  3   FORMAT(///20X,2HB=,6F12.2//20X,2HG=,6F12.4//)
+  4   FORMAT(///80X,///80X,15HTEST FOR REORDN//)
+   10 FORMAT(/50X,9HTEST E112///20X,2HA=,6F12.2//20X,2HF=,6F12.4//44X,
+     1 1HX,17X,1HR,17X,15HTEST FOR FINTER/)
+      STOP
+      END
+*EXECUTE
+*
+*

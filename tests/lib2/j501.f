@@ -1,0 +1,52 @@
+      PROGRAM J501
+C
+C---  TEST PLOTTING SYSTEM
+C
+      DIMENSION X(100),Y(100),P(111),KKK(14)
+      DIMENSION PP(90)
+      DIMENSION A(6)
+      DATA(PP   =120HOPTION 8 IS CHOSEN HERE   TO  DEMON-STRATEHOW TOWRI
+     *TE A MES- SAGE  DOWN  THE   PAGE AT THE LEFT OF THE PLOT USING THE
+     * P )
+      DATA(PP(26)=6HARRAY.)
+      DATA(A=1.,.5,.25,.125,.0625,.03125)
+      DATA(BLANK=6H      )
+      EQUIVALENCE (PP,P(17))
+      DO 4 I=12,16
+   4  P(I)=BLANK
+      NFIG = 0
+      CALL HOLITH(P(2),1H8)
+      P(3) = 5.
+      P(4) = 5.
+      P(5) = 6.
+      NPTS = 26
+    2 CONTINUE
+      READ 40,KODE
+      NFIG = NFIG+1
+      DO 1 I = 1,NPTS
+      Y(I) = .06*(I-1)
+    1 X(I) = COS(Y(I))
+      CALL SORTXY(X,Y,NPTS)
+      P(1) = FLOAT(NPTS)
+      PRINT 10,NFIG,KODE
+      CALL PLOTXY(X,Y,KODE,P)
+      PRINT 20
+      READ 30,ISW
+      IF(ISW)  2,3,2
+   3  STOP
+   10 FORMAT(9H1FIGURE  ,I2,60X,17HPLOTXY --- KODE = ,I3)
+   20 FORMAT( 42X    ,23HDATA USED FOR THIS PLOT,5X,
+     *26HX = COSY AND Y = 0(.06)1.5)
+   30 FORMAT(I1)
+   40 FORMAT(I5)
+   50 FORMAT(9H1FIGURE  ,I2,60X,17HPLOTMY --- KODE = ,I3)
+      END
+*EXECUTE
+    4
+1
+    8
+1
+   72
+0
+*
+*

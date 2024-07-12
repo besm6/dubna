@@ -1,0 +1,23 @@
+      PROGRAM F120
+      DIMENSION A(3),B(3),GA(9),GB(9)
+      A(1)=0.345
+      A(2)=1.0
+      CALL DIRCOS(A,B)
+      PRINT 10,A(1),A(2),B(1),B(2),B(3)
+      X=COS(A(1))*COS(A(2))
+      Y=COS(A(1))*SIN(A(2))
+      Z=SIN(A(1))
+      Z=SIN(A(1))
+      PRINT 11,X,Y,Z
+      CALL ERDIRC(GA,GB)
+      PRINT 12,GA
+      PRINT 14,GB
+ 10   FORMAT(1H1,3X'ANGLES'2F15.7///3X'DIRECTION  COSINES'
+     */10X,3E20.8)
+ 11   FORMAT(3X//3X'FOR COMPARISON'/10X,3E20.8)
+ 12   FORMAT(///3X'ERROR MATRIX GA'//1(3E20.8))
+ 14   FORMAT(///3X'ERROR MATRIX GB'//1(3E20.8))
+      END
+*EXECUTE
+*
+*

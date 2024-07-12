@@ -1,0 +1,20 @@
+      PROGRAM U102
+      DIMENSION A(4),B(4),X(4)
+      DATA A/1.,2.,3.,0.0/,B/4.,5.,6.,0.0/,SM1,SM2/0.9382,0.139/
+C     MACCA ПPOTOHA  SM1=0.9382
+C     MACCA ПИOHA  SM2=0.139
+      A(4)=SQRT(A(1)**2+A(2)**2+A(3)**2+SM1**2)
+      B(4)=SQRT(B(1)**2+B(2)**2+B(3)**2+SM2**2)
+      PRINT 1,A(4),B(4)
+      CALL LORENF(SM1,A,B,X)
+      PRINT 2,X
+      CALL LORENB(SM1,A,X,B)
+      PRINT 3,B
+  1   FORMAT(50X,9HTECT U102//10X,5HA(4)=, E20.11,5X,5HB(4)=,E20.11)
+  2   FORMAT(//10X,2HX=,4E20.11)
+  3   FORMAT(//10X,2HB=,4E20.11)
+      STOP
+      END
+*EXECUTE
+*
+*

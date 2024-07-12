@@ -1,0 +1,46 @@
+      PROGRAM G104
+C    PROGRAM TO TEST THE ROUTINES
+C          STUDIN
+C          STUDIS
+      DIMENSION P(6),S(6,33), P2(6),NB(33)
+      DATA P/0.95, 0.8, 0.5, 0.2, 0.01, 0.005/
+C    COMPUTE TABLE VALUES TO TEST STUDIN
+      N1=1
+      DO 1 I=1,6
+      X=0.5*(1.+P(I))
+      S(I,31)=STUDIN(X,40)
+      S(I,32)=STUDIN(X,60)
+      S(I,33)=STUDIN(X,120)
+      DO 1 N=1,30
+    1 S(I,N)=STUDIN(X,N)
+C      PRINT TABLE VALUES
+      PRINT 11
+   11 FORMAT(1H1,10X,' TEST VALUES FOR STUDIN'//)
+    6 PRINT 2,(P(I),I=1,6)
+      DO 3 N=1,30
+    3 PRINT 4,N,(S(I,N),I=1,6)
+      N=40
+      PRINT 4,N,(S(I,31),I=1,6)
+      N=60
+      PRINT 4,N,(S(I,32),I=1,6)
+      N=120
+      PRINT 4,N,(S(I,33),I=1,6)
+      IF(N1. EQ. 2) STOP
+C     COMPUTE INVERSE TABLE VALUES TO TEST STUDIS
+  10  PRINT 12
+   12 FORMAT(1H1,10X,' TEST VALUES FOR STUDIS'//)
+      DO 5 I=1,6
+      S(I,31)=2.*STUDIS(S(I,31),40) -1.
+      S(I,32)=2.*STUDIS(S(I,32),60) -1.
+      S(I,33)=2.*STUDIS(S(I,33),120)-1.
+      DO 5 N=1,30
+    5 S(I,N)=2.*STUDIS(S(I,N),N)-1.
+      N1=N1+1
+C    PRINT INVERSE TABLE VALUES
+      GO TO 6
+    2 FORMAT (7X,6F18.9/)
+    4 FORMAT (2X,I5,6F18.9)
+      END
+*EXECUTE
+*
+*

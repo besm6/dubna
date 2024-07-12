@@ -1,0 +1,21 @@
+      PROGRAM V304
+      DIMENSION IVEC (20)
+      DO 10 I=1,15
+      IVEC(I)=I+3
+      PRINT 11, I, IVEC(I)
+   10 CONTINUE
+      J=IUCOMP(6,IVEC,10)
+      PRINT 12,J
+      J=IUCOMP(121.5,IVEC,5)
+      PRINT 12,J
+      J=IUFIND(6,IVEC,2,10)
+      PRINT 14,J
+      J=IUFIND(121.5,IVEC,5,7)
+      PRINT 14,J
+   12 FORMAT(///3X,'IUCOMP'10X,I5)
+   14 FORMAT(///3X,'IUFIND' 10X,I5)
+   11 FORMAT(3X,      3X,5HIVEC(,I2,2H)=,I3)
+      END
+*EXECUTE
+*
+*

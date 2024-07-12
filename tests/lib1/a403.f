@@ -1,0 +1,17 @@
+      PROGRAM A403
+      DATA  (A=70707B) , (B=0707070B)
+      PRINT 1
+      PRINT 2,A,B
+      C=AN66ZF(A,B)
+      D=OR66ZF(A,B)
+      E=EX66ZF(A,B)
+      PRINT 3,C,D,E
+  1   FORMAT(50X,'BOOLEAN ARITHMETIC',40X,'TEST A403'/50X,18(1H*),40X,
+     19(1H*)//)
+  2   FORMAT(//30X,'A=',O20,5X,'B=',O20//)
+  3   FORMAT(5X,'AN66ZF(A,B)=',O20/35X,'OR66ZF(A,B)=',O20/65X,'EX66ZF(A,
+     1B)=',O20)
+      END
+*EXECUTE
+*
+*

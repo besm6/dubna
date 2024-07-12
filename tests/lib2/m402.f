@@ -1,0 +1,9 @@
+      PROGRAM M402
+      DIMENSION R(100)
+      CALL HOLN (R,25HTHIS IS R TEST FOR BESM-6,5)
+      PRINT 10,(R(I),I=1,5)
+ 10   FORMAT(3X,5A6)
+      END
+*EXECUTE
+*
+*

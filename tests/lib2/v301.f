@@ -1,0 +1,27 @@
+      PROGRAM V301
+      DIMENSION A(15),B(15),C(15)
+      EQUIVALENCE (A(5),B(1))
+      PRINT 100
+      DO 10 I=1,15
+   10 A(I)=I
+      CALL UCOPYN(A,C,10)
+      PRINT 11
+      PRINT 12,(A(I),C(I),I=1,10)
+      CALL UCOPIV(A,C,10)
+      PRINT 14
+      PRINT 12,(A(I),C(I),I=1,10)
+      CALL UCOPY2(A,B,10)
+      PRINT 15
+      PRINT 12,(A(I),B(I),I=1,10)
+      CALL UCOPY(B,A,10) $ PRINT 16
+      PRINT 12,(A(I),B(I),I=1,10)
+  100 FORMAT(1H1)
+  11  FORMAT(///10X,'UCOPYN'//5X'A(1-10)'10X'B(1-10)'/)
+   12 FORMAT(3X,F12.1,F12.1)
+   14 FORMAT(///10X,'UCOPIV'//5X'A(1-10)'10X'C(1-10)'/)
+   15 FORMAT(///10X,'UCOPY2'//5X'A(1-10)'10X'B(1-10)'/)
+   16 FORMAT(///10X,'UCOPY'//5X'A(1-10)'10X'B(1-10)'/)
+      END
+*EXECUTE
+*
+*

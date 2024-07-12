@@ -1,0 +1,16 @@
+      PROGRAM E103
+      DIMENSION A(12)
+      DATA(A=2.,5.,1.,4.,3.,6.,1.,0.,6.,8.,10.,15.)
+      PRINT 10,A
+      X=AMAXMU(A,4,1,2)
+      PRINT 1,X
+      X=AMAXMU(A,1,12,0)
+      PRINT 2,X
+      STOP
+  1   FORMAT(40X,2HX=,F4.1,10X,15HAMAXMU(A,4,1,2))
+  2   FORMAT(40X,2HX=,F4.1,10X,16HAMAXMU(A,1,12,0))
+  10  FORMAT(//50X,9HTEST E103///40X,2HA=,12(F4.1,1H,)/)
+      END
+*EXECUTE
+*
+*

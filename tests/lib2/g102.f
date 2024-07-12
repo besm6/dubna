@@ -1,0 +1,25 @@
+      PROGRAM G102
+C         MAKE TABLE OF FUNCTION VALUES
+      Z = 0.
+      PRINT 510
+      DO 100 I= 1,170
+      Z = Z + 0.025
+      P = PROBKL(Z)
+      PRINT 500, Z,P
+  100 CONTINUE
+C         TEST CONTINUITY AROUND 1.
+      Z = 0.99995
+      DO 300 I= 1, 20
+      P1 = PROBKL(Z)
+      Z = Z + 0.000005
+      P2 = PROBKL(Z)
+      PDIFF = P2-P1
+      PRINT 530, Z,P2, PDIFF
+  300 CONTINUE
+  500 FORMAT (10X,F10.5,E17.9)
+  510 FORMAT (1H1)
+  530 FORMAT (20X,F12.8,E17.9,E14.6)
+      END
+*EXECUTE
+*
+*

@@ -1,0 +1,19 @@
+      PROGRAM A401
+      LOGICAL IDENZB,Y
+      A=3.1415926535
+      B=3.1415926535
+      PRINT 2
+      Y=IDENZB(A,B)
+      PRINT 1,A,B,Y,Y
+      A=3.141592
+      B=3.14159265
+      Y=IDENZB(A,B)
+      PRINT 1,A,B,Y,Y
+  1   FORMAT(//5X,'IDENZB(',F13.10,' ,',F13.10,' )',5X,'Y=',L3,5X,'Y=',O
+     116//)
+  2   FORMAT(50X,'LOGICAL IDENTITY',40X,'TEST A401'/50X,16(1H*),40X,
+     19(1H*)//)
+      END
+*EXECUTE
+*
+*

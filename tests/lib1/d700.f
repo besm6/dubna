@@ -1,0 +1,62 @@
+      PROGRAM D700
+      DIMENSION X(1,100),Y(1,100)
+      COMMON /FDATA/N,N2,M,F,RTTWO,NC,NS,ND,NR
+      COMMON /FWORK/W(384)
+      PRINT 10
+      READ 11, (X(1,I),I=1,17)
+   11 FORMAT (17F3.0)
+      CALL RFT (4,X,1,Y,1,1)
+      DO  1  I=1,17
+      PRINT 20,X(1,I),Y(1,I)
+  1   CONTINUE
+      PRINT 30
+      CALL RFT (4,Y,1,X,1,4)
+      DO  2  I=1,17
+      PRINT 20,Y(1,I),X(1,I)
+  2   CONTINUE
+      READ 11, (X(1,I),I=1,17)
+      PRINT 10
+      CALL RFT (4,X,1,Y,1,1)
+      DO  35  I=1,17
+      PRINT 20, X(1,I),Y(1,I)
+   35 CONTINUE
+      PRINT 40
+      CALL RFT (4,X,1,Y,1,2)
+      DO  3  I=1,17
+      PRINT 20,X(1,I),Y(1,I)
+  3   CONTINUE
+      PRINT 50
+      CALL RFT (4,Y,1,X,1,5)
+      DO 4 I=1,17
+      PRINT 20,Y(1,I),X(1,I)
+  4   CONTINUE
+      READ 11, (X(1,I),I=1,17)
+      PRINT 10
+      CALL RFT (4,X,1,Y,1,1)
+      DO  33  I=1,17
+      PRINT 20, X(1,I),Y(1,I)
+   33 CONTINUE
+      PRINT 60
+      CALL RFT (4,X,1,Y,1,3)
+      DO  5  I=1,17
+      PRINT 20,X(1,I),Y(1,I)
+  5   CONTINUE
+      PRINT 70
+      CALL RFT (4,Y,1,X,1,6)
+      DO  6  I=1,17
+      PRINT 20,Y(1,I),X(1,I)
+  6   CONTINUE
+  10  FORMAT(1H1,20X,17HGENERAL  ANALYSIS//15X,1HX,9X,1HY//)
+  20  FORMAT(10X,2F10.4)
+  30  FORMAT(///20X,18HGENERAL  SYNTHESIS//15X,1HY,9X,1HX//)
+  40  FORMAT(1H1,20X,18HREAL EVEN ANALYSIS//15X,1HX,9X,1HY//)
+  50  FORMAT(///20X,19HREAL EVEN SYNTHESIS//15X,1HY,9X,1HX//)
+  60  FORMAT(1H1,20X,17HREAL ODD ANALYSIS//15X,1HX,9X,1HY//)
+  70  FORMAT(///20X,18HREAL ODD SYNTHESIS//15X,1HY,9X,1HX//)
+      END
+*EXECUTE
+ 1. 1. 1. 1. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 1.
+ 0. 0. 0. 0. 0. 0. 1. 1. 0. 1. 1. 0. 0. 0. 0. 0. 0. 0. 0.
+ 0. 0. 0. 0. 0. 0. 1. 1. 0.-1.-1. 0. 0. 0. 0. 0. 0. 0. 0.
+*
+*

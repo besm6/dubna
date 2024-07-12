@@ -1,0 +1,97 @@
+      PROGRAM K451B
+C1       YПPABЛЯЮЩИE KAPTЫ
+C2       *ASSIGN FTAPE 01 W(1)
+C3       *CHECK(1) 000 NO CHECK
+C4       *MAIN BUFMT9
+      DIMENSION A(500),B(500),C(512),D(512)
+      COMMON/ICHECK/ICH(6)
+      COMMON/BUFMT9/BUFMT9(1024)
+      INTEGER A,B,C,D
+      DATA(READ=1),(WRITE=2),(FORWD=3),(REVERS=4)
+      DATA(FTOMF=5),(RTOMF=6),(REWIND=7),(REWALL=8)
+      DATA(WRTMF=9)
+      DO1I=1,500
+      A(I)=1+I
+    1 CONTINUE
+      NT=1
+       IPLOTN=1
+      CALL DNSMT9(IPLOTN)
+      CALL MT9NT(NT)
+      CALL MT9EC(NT,REWIND)
+       DO 12 J=1,256
+      C(J)=A(J)
+      C(J+256)=A(J)
+   12  CONTINUE
+      N=0
+      DO2 I=1,4
+      CALL WR9MT(A,500)
+      PRINT 30,I
+  30  FORMAT('ПИШEM WR9MT',I4)
+    2 CONTINUE
+      DO 100 I=1,4
+  100 CALL BSP9MT
+      PRINT 100
+ 100  FORMAT(' 4 BACKSPASE')
+    3 CONTINUE
+      DO4 I=1,4
+      CALL RD9MT(B,500)
+      N=N+1
+      PRINT 50,I
+  50  FORMAT('ЧИTAEM RD9MT',I4)
+      A(10)=20
+      L=0
+      DO5 J=1,500
+      IF(A(J).EQ.B(J)) GOTO 5
+      L=L+1
+  80  PRINT81
+  81  FORMAT('OSHIBKA')
+      PRINT8,N,J,A(J),B(J)
+   8  FORMAT(4I10)
+      IF(L.EQ.10)GOTO4
+    5 CONTINUE
+    4 CONTINUE
+      CALL MT9EC(NT,WRTMF)
+      PRINT 22
+  22  FORMAT('MK FILE')
+       DO 11 I=1,2
+      CALL MT9WR(C,256)
+      PRINT 60
+  60  FORMAT('WRTBUF')
+   11  CONTINUE
+      CALL MT9EC(NT,REVERS)
+      CALL MT9EC(NT,REVERS)
+      CALL MT9EC(NT,RTOMF)
+      CALL MT9EC(NT,FTOMF)
+      PRINT 23
+  23  FORMAT(' REV,REV,RTOMF,FTOMF')
+      N=N+1
+      CALL MT9RD(D,NSL)
+      N=N+1
+      CALL MT9RD(B,NSL)
+      N=N+1
+      DO13I=1,256
+      D(256+I)=B(I)
+   13  CONTINUE
+      C(10)=20
+      C(500)=500
+      L=0
+      DO 16 K=1,512
+      IF(C(K).EQ.D(K)) GOTO16
+      L=L+1
+  70  PRINT71
+  71  FORMAT('OSHIBKA')
+      PRINT21,N,K,C(K),D(K)
+  21  FORMAT(4I10)
+      IF(L.EQ.10)GOTO33
+   16  CONTINUE
+  33  CONTINUE
+       PRINT 20
+  20  FORMAT('FINISH')
+      CALL MT9EC(NT,REWIND)
+      PRINT 40
+  40  FORMAT('RIWIND')
+       END
+*MAIN BUFMT9
+*EXECUTE
+*
+*

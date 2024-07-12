@@ -1,0 +1,45 @@
+      PROGRAM TEST4
+      EXTERNAL KERNEL,G3
+      REAL F(37),X(37),Y(37),DY(37),PI,H,LAMBDA,P,XI,YT
+      INTEGER I,IER
+      DOUBLE PRECISION A(1443)
+      REAL A1(1500)
+      COMMON /MULT/ P
+      PI=3.14159265359
+      H=PI/18.
+      LAMBDA=1E2
+      P=LAMBDA*.3/PI
+      DO 1 I=1,37
+        XI=-PI+H*FLOAT(I-1)
+        X(I)=XI
+        YT=8.5+128./17.*COS(2.*XI)
+ 1      F(I)=G3(XI)*YT-LAMBDA*(YT-25.+16.*SIN(XI)**2)
+      CALL FREST2(F,X,37,KERNEL,G3,Y,DY,IER,A)
+      PRINT 2,IER
+ 2    FORMAT(6H TEST4/14H FREST2   IER=,I2)
+      IF(IER.GT.0) STOP
+      PRINT 3,(Y(I),I=1,37)
+3     FORMAT(14H SOLUTON Y(X)=/(8E15.7))
+      PRINT 4,(DY(I),I=1,37)
+ 4    FORMAT(34H ERRORS OF SOLUTON ABS(DELTAY(X))=/(8E15.7))
+      CALL FREST1(F,X,37,KERNEL,G3,Y,DY,IER,A1)
+      PRINT 5
+ 5    FORMAT(7H FREST1)
+      PRINT 3,(Y(I),I=1,37)
+      PRINT 4,(DY(I),I=1,37)
+      PRINT 20
+ 20   FORMAT(///50X,16H E N D     TEST4)
+      CALL EXIT
+      END
+      REAL FUNCTION KERNEL(X,S)
+      REAL X,S,P
+      COMMON /MULT/ P
+      KERNEL=P/(.64*COS((X+S)/2.)**2-1.)
+      RETURN
+      END
+      REAL FUNCTION G3(X)
+      REAL X
+      G3=1E-6*COS(X)
+      RETURN
+      END
+*EXECUTE

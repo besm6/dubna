@@ -1,0 +1,29 @@
+      PROGRAM C368
+    5 FORMAT(2X,6HALPHA=,F4.1,3X,4HPHI=,F4.1,10X,3HV1=,F15.10,5X,3HV2=,
+     *F15.10,5X,3HV3=,F15.10,5X,3HV4=,F15.10)
+    6 FORMAT (79X,3HV5=,F15.10,5X,3HV6=,F15.10)
+   11 FORMAT(1H1)
+      PRINT 11
+       DO 1 I=1,10
+         ALPHA=(I-1)*10.
+         AK=ALPHA*3.141592653631960/180.0
+         AK=SIN(AK)
+         BK=(1.-AK*AK)
+       DO 2 J=1,10
+         PHI=(J-1)*10.
+         FI=PHI*3.141592653631960/180.0
+       CALL ELPHIK( FI,AK,1.0,1.0,V1)
+       CALL ELPHIK( FI,AK,1.0,BK,V2)
+       CALL ELPHIK( FI,AK,0.0,1.0,V3)
+       CALL ELPHIK( FI,AK,1.0,0.0,V4)
+      PRINT 5,ALPHA,PHI,V1,V2,V3,V4
+      IF(AK) 3,2,3
+  3   V5=(V1-V2)/(AK*AK)
+         V6=(V2-BK*V1)/(AK*AK)
+      PRINT 6,V5,V6
+    2 CONTINUE
+    1 CONTINUE
+      END
+*EXECUTE
+*
+*

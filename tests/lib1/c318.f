@@ -1,0 +1,13 @@
+      PROGRAM C318
+      DIMENSION X(5),AM(5)
+      DATA X/.2,.61802,.75342,-15.,44./,AM/.19,.5,.7,.6,.8/
+      DO 1 I=1,5
+      CALL ELFUN (X(I),AM(I),SN,CN,DN)
+  1   PRINT 2,X(I),SN,CN,DN
+  2   FORMAT(5X,2HX=,F10.3,5X,3HSN=,E20.10,5X,3HCN=,E20.10,5X,3HDN=,E20.
+     *10)
+      STOP
+      END
+*EXECUTE
+*
+*

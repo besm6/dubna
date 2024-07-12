@@ -1,0 +1,16 @@
+       PROGRAM C336
+       DIMENSION AB(10)
+       DATA(AB=-0.5,1.3,0.8,-0.35,5.1,6.9,8.0,10.5,19.1,3.8)
+       PRINT 10
+       DO 1 L=1,10
+       X=AB(L)
+       C=SININT(X)
+       D=COSINT(X)
+       PRINT 2,X,C,D
+ 1     CONTINUE
+ 2     FORMAT(30X,F6.2,2F30.18)
+  10   FORMAT(1H1//50X'TEST C336'//33X'X'18X'SININT(X)'15X'COSINT(X)'/)
+       END
+*EXECUTE
+*
+*

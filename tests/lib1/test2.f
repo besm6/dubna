@@ -1,0 +1,25 @@
+      PROGRAM TEST2
+      EXTERNAL K
+      REAL F(71),X(71),Y(71),DY(71),C(71)
+      INTEGER I,IER
+      DO 1 I=1,71
+        X(I)=.05*FLOAT(I-1)
+ 1      F(I)=X(I)**2
+      CALL VOLTF1(F,X,71,K,1E-15,Y,DY,IER,C)
+      PRINT 2,IER
+ 2    FORMAT(21H TEST2(VOLTF1)   IER=,I1)
+      IF(IER.GT.0) GO TO 5
+      PRINT 3,Y
+ 3    FORMAT(14H SOLUTON Y(X)=/(8E15.7))
+      PRINT 4,DY
+ 4    FORMAT(29H ERRORS OF SOLUTON DELTAY(X)=/(8E15.7))
+      PRINT 20
+ 20   FORMAT(///50X,16H E N D     TEST2)
+ 5    CALL EXIT
+      END
+      REAL FUNCTION K(X,S)
+      REAL X,S
+      K=2.+X**2-S**2
+      RETURN
+      END
+*EXECUTE

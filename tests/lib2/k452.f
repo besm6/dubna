@@ -1,0 +1,12 @@
+      PROGRAM K452
+      CALL REWRMT
+      STOP
+      END
+*EXECUTE
+RGM 7
+DNS 7 800
+ RCRD 30
+END
+*
+*
+*FORTRAN

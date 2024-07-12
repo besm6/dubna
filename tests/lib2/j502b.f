@@ -1,0 +1,25 @@
+      PROGRAM J502B
+      DIMENSION X(51),Y(51)
+      DLTX=0.01
+      DO 10 I=1,3
+      DLTX=DLTX+0.01
+      X(1)=DLTX
+      DO 20 J=1,50
+      Y(J)=(X(J)+6.)*(5.-X(J)**I)*(X(J)+3.)/(X(J)+2.)
+   20 X(J+1)=X(J)+DLTX
+      CALL SCALES(X,50,7.0,XMIN,DX,1)
+      CALL SCALES(Y,50,10.,YMIN,DY,1)
+      CALL PLTIN(8.)
+      ENCODE(6,30,TEXT) I
+      CALL SYMBL4(.5,.5,.28,TEXT,0.,5)
+      CALL LINEAR(X,Y,50,1)
+      CALL AXIS(0.,0.,6HHORIZ.,-6,7.0,0.,XMIN,DX)
+   10 CALL AXIS(0.,0.,8HVERTICAL,8,10.,90.,YMIN,DY)
+      CALL ENDPZD
+      STOP
+  30  FORMAT(3HI =,I2)
+      END
+*EXECUTE
+SOMEBODY    FKH-322        600
+*
+*

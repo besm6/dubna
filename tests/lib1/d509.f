@@ -1,0 +1,29 @@
+      PROGRAM D509
+      EXTERNAL FCN
+      DIMENSION A(2),B(2),X(2)
+      DATA(A=3.5,-2.),(B=6.28,0.),(X=4.,-1.4)
+      PRINT 10
+      DO 1 I=1,2
+      PRINT 2,A(I),B(I),X(I)
+      CALL MINVAR(X(I),Y,R,0.1E-2,0.01,100,A(I),B(I),FCN)
+   1  PRINT 3,X(I),Y,R
+      PRINT 4
+      CALL MINVAR(X(1),Y,R,0.1E-2,0.01,2,A(1),B(1),FCN)
+      PRINT 3,X(1),Y,R
+   2  FORMAT(/30X,2HA=,F4.1,10X,2HB=,F4.1,10X,2HX=,F4.1)
+   3  FORMAT(30X,2HX=,F10.5,5X,2HY=,F10.5,5X,2HR=,F10.5)
+  4   FORMAT(///40X,10H MAXFUN=2 )
+  10  FORMAT(//50X,9HTEST D509///40X,13HFCN=SIN(X)+2./40X,11HEPSI=0.1E-2
+     1/40X,9HSTEP=0.01/40X,10HMAXFUN=100/)
+      STOP
+      END
+         REAL FUNCTION FCN(X,I)
+          INTEGER I
+         REAL X
+          FCN=SIN(X)+2.0
+          RETURN
+          END
+*CALL PTIME
+*EXECUTE
+*
+*

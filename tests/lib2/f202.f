@@ -1,0 +1,17 @@
+      PROGRAM F202
+      DIMENSION A(6,6),SCR(9,3),FLAMB(6)
+      DATA A/32.,16.,8.,4.,2.,1.,16.,0.,4.,2.,1.,0.,8.,4.,0.,1.,0.,0.,
+     *18*0./
+      PRINT 10,((A(I,J),J=1,3),I=1,6)
+      LOWER=1
+      CALL LRCH(6,3,A,0.1E-9,LOWER,FLAMB,6,9,SCR)
+      PRINT 1,FLAMB
+      LOWER=-1
+      CALL LRCH(6,3,A,0.1E-9,LOWER,FLAMB,6,9,SCR)
+  1   FORMAT(2X,6E18.10/)
+  10  FORMAT(//50X,9HTEST F202//30X,1HA//6(20X,3F10.1/)//)
+      STOP
+      END
+*EXECUTE
+*
+*

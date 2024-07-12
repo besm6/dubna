@@ -1,0 +1,22 @@
+      PROGRAM E106
+      DIMENSION A(1000),B(1000)
+      INTEGER A,OBJ
+      PRINT 1
+      N=1000
+      S=N+N/10
+      DO 2 I=1,1000
+      B(I)=2.*I
+  2   A(I)=2*I
+      DO 5 I=1,10
+      OBJ=RNDM(-1.)*S
+      EOBJ=OBJ
+      LF=LOCATF(B,N,EOBJ)
+      LI=LOCATI(A,N,OBJ)
+   5  PRINT 10,EOBJ,LF,OBJ,LI
+  1   FORMAT(50X,9HTEST E106///20X,4HEOBJ,7X,2HLF,20X,3HOBJ,7X,2HLI//)
+  10  FORMAT(15X,F10.5,I8,20X,I5,I8)
+      STOP
+      END
+*EXECUTE
+*
+*

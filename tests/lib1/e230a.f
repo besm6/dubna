@@ -1,0 +1,21 @@
+      PROGRAM E230 A
+C     ПPИMEP  B  OПИCAHИИ  1985Г.
+      DIMENSION A(6,2),B(6,1),X(2,1),AUX(4),IPIV(2),E(2,2)
+      COMMON /TLSDIM/M1,M,N,L,IER
+      DATA A/1.,1.,1.,2.,1.,3.,1.,4.,1.,5.,1.,6./,
+     +     B/0.85714285714,1.,2.,2.,3.,3./,
+     +     M1,M,N,L/1,6,2,1/
+      CALL TLSC(A,B,AUX,IPIV,0.1,X)
+      PRINT 1,IER,X
+      CALL TLERR(A,E,AUX,IPIV)
+      PRINT 2,E
+      CALL TLRES(A,B,AUX)
+      PRINT 3,B
+  1   FORMAT(25X,'MATRIX  X',5X,'IER=',I6/(2X,2E15.6/))
+  2   FORMAT(20X,'COVARIANCE MATRIX'/(2X,2E11.3/))
+  3   FORMAT(20X,'RESIDUAL MATRIX'/(2X, E15.6/))
+      STOP
+      END
+*EXECUTE
+*
+*

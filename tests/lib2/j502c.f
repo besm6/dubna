@@ -1,0 +1,57 @@
+      PROGRAM J502C
+      DIMENSION SYMBOL(64)
+      DATA((SYMBOL(I),I= 1,32)=
+     1    00B, 1HA, 1HB, 1HC, 1HD, 1HE, 1HF, 1HG,
+     1    1HH, 1HI, 1HJ, 1HK, 1HL, 1HM, 1HN, 1HO,
+     1    1HP, 1HQ, 1HR, 1HS, 1HT, 1HU, 1HV, 1HW,
+     1    1HX, 1HY, 1HZ, 33B, 34B, 35B, 36B, 37B)
+      DATA((SYMBOL(I),I=33,64)=
+     1    1H , 41B, 42B, 43B, 1H$, 45B, 46B, 1H',
+     1    1H(, 1H), 1H*, 1H+, 1H,, 1H-, 1H., 1H/,
+     1    1H0, 1H1, 1H2, 1H3, 1H4, 1H5, 1H6, 1H7,
+     1    1H8, 1H9, 72B, 73B, 74B, 1H=, 1H , 1H )
+      DATA(ZERO=0B)
+      DATA(OBIT=7760000000000000B)
+      DIMENSION TEXT(6)
+      DATA(TEXT=32H PLOT. CHAR. CODES FOR BESM-6   )
+      DIMENSION TEXT1(6)
+      DATA((TEXT1(I),I=1,4)=24H (PROGRAM J 502)        )
+      CALL PLTIN(10.)
+      DO 4 I=1,8
+      L=I-1
+      Y=1.0+L*0.82
+      ENCODE(6,10,ZAHL) L
+    4 CALL SYMBL4(0.,Y,0.21,ZAHL,90.,2)
+      CALL PLOT(0.2,Y+0.48,3)
+      CALL PLOT(0.2,0.,2)
+      DO 1 I=1,8
+      L=I-1
+      X=FLOAT(I)
+      ENCODE(6,11,ZAHL) L
+    1 CALL SYMBL4(X,0.,0.21,ZAHL,90.,2)
+      CALL PLOT(X+0.3,0.6,3)
+      CALL PLOT(-0.3,0.6,2)
+      DO 2 I=1,64
+      X=FLOAT(1+(I-1)/8)
+      Y=1.0+0.82*MOD(I-1,8)
+      IF(SAME(AND(SYMBOL(I),OBIT),ZERO))   6,5,6
+    5 SYMBOL(I)=SHIFTB(SYMBOL(I),-40)
+      XX=X-0.25
+      YY=Y+0.25
+      CALL SYMBL4(XX,YY,0.28,1H*,90.,1)
+    6 CALL SYMBL4(X,Y,0.56,SYMBOL(I),90.,1)
+    2 CONTINUE
+      CALL PLOT(X+0.3,Y+0.48,3)
+      CALL PLOT(X+0.3,0.,2)
+      CALL SYMBL4(9.,0.,0.28,TEXT,90.,30)
+      CALL DATEZB(TEXT1(4))
+      CALL SYMBL4(9.5,0.,0.28,TEXT1,90., 30)
+      CALL ENDPZD
+      STOP
+   10 FORMAT(1H0,I1)
+   11 FORMAT(I1,1H0)
+      END
+*EXECUTE
+SOMEBODY    LWTA           600
+*
+*

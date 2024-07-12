@@ -1,0 +1,19 @@
+      PROGRAM M108
+      DIMENSION X(3,3),MX(3,3)
+      DATA MX/3,4,1,1,8,2,4,5,2/,
+     *     X/3.2,4.,1.7,1.5,8.1,2.,4.6,5.,2.3/
+      PRINT 10,MX
+      PRINT 11,X
+      CALL SORTMQ(MX,3,3,1)
+      PRINT 1,MX
+      CALL SORTMQ( X,3,3,-2)
+      PRINT 11,X
+ 1    FORMAT(45X,6HRESULT //45X,2HMX//3(30X,3I3/)//)
+ 10   FORMAT(//50X,9HTEST M108///45X,2HMX//3(30X,3I5/)//)
+ 11   FORMAT(45X,1HX//3(30X,3F10.3/)//)
+      STOP
+      END
+*CALL PTIME
+*EXECUTE
+*
+*

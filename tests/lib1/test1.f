@@ -1,0 +1,43 @@
+      PROGRAM TEST1
+      EXTERNAL K
+      REAL F(67),X(67),Y(67),DY(67),D(67)
+      REAL A1,A2,XI,A3,F2X,F2F
+      INTEGER I,IER
+      A1=COS(1.)
+      A2=SIN(1.)
+      DO 1 I=1,67
+        IF(I.LE.13) XI=.1*FLOAT(I-1)
+        IF(I.GT.13.AND.I.LE.27) XI=1.2+.05*FLOAT(I-13)
+        IF(I.GT.27.AND.I.LE.47) XI=1.9+.02*FLOAT(I-27)
+        IF(I.GT.47) XI=2.3+.01*FLOAT(I-47)
+        X(I)=XI
+        A3=EXP(2.*XI)
+ 1      F(I)=(1.-XI*A3)*A1-A3*A2
+      F2X=F2F(1.6,2.2,.8,1.3,1.2)
+      PRINT 2,F2X
+ 2    FORMAT(15H TEST1   F2(X)=,E14.7)
+      CALL VOLTS1(F,X,67,K,1E-5,Y,DY,IER,D)
+      PRINT 3,IER
+ 3    FORMAT(14H VOLTS1   IER=,I2)
+      IF(IER.GT.0) GO TO 9
+      PRINT 4,Y
+ 4    FORMAT(14H SOLUTON Y(X)=/(8E15.7))
+      PRINT 5,DY
+ 5    FORMAT(29H ERRORS OF SOLUTON DELTAY(X)=/(8E15.7))
+      CALL YDY(F,X,D,67,K,1,Y,DY)
+      PRINT 6
+ 6    FORMAT(4H YDY)
+      PRINT 7,Y
+ 7    FORMAT(3H Y=/(8E15.7))
+      PRINT 8,DY
+ 8    FORMAT(4H DY=/(8E15.7))
+      PRINT 20
+ 20   FORMAT(/50X,16H E N D     TEST1)
+ 9    CALL EXIT
+      END
+      REAL FUNCTION K(X,S)
+      REAL X,S
+      K=1.-(X-S)*EXP(2.*X)
+      RETURN
+      END
+*EXECUTE

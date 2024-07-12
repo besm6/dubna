@@ -1,0 +1,16 @@
+      PROGRAM V306
+      DIMENSION A(15),B(15)
+      EQUIVALENCE (A(5),B(1))
+      DO 10 I=1,15
+   10 A(I)=I
+      PRINT 11
+      CALL MOVE(A,B,-10)
+      PRINT 12,(A(I),B(I),I=1,10)
+      CALL MOVE(B,A,10)
+      PRINT 11
+      PRINT 12,(A(I),B(I),I=1,10)
+   11 FORMAT(1H1,10X,2H A,15X,2H B/)
+   12 FORMAT(3X,F12.1,F12.1)
+      END
+*EXECUTE
+*

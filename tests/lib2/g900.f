@@ -1,0 +1,20 @@
+      PROGRAM G900
+      DOUBLE PRECISION D(10),DRANF,SEED,A(10)
+      DIMENSION B(6),R(10)
+      DUMMY=1.
+      DO 1 I=1,10
+      R(I)=RANF(DUMMY)
+      CALL RANGET(SEED)
+  1   A(I)=SEED
+      PRINT 2,R,A
+  2   FORMAT(//50X,'TEST OF G900'//5X,'R=',10E10.4/5X,'A=',10D10.4)
+      CALL RANSET(A(5))
+      DO 4 I=1,6
+  4   B(I)=RANF(DUMMY)
+      PRINT 5,B
+  5   FORMAT(5X,'B=',6E10.4)
+      STOP
+      END
+*EXECUTE
+*
+*

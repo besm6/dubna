@@ -1,0 +1,19 @@
+      PROGRAM A404
+      DIMENSION U(5),V(7),W(12),A1(7),A2(7)
+      DATA(U=-1.0,0.0,2.0,3.0,5.0)
+      DATA(V=-2.0,-1.0,0.0,1.0,2.0,4.0,5.0)
+      PRINT 10
+      CALL ANDOR(1,U,5,0,V,7,1,W,NW,IW)
+      PRINT 1,W
+      CALL ANDOR(2,U,5,0,V,7,1,W,NW,IW)
+      PRINT 2,W
+   1   FORMAT(24X,'LOGICAL PRODUCT W=',12F5.1/)
+   2   FORMAT(24X,'LOGICAL     SUM W=',12F5.1)
+ 10   FORMAT(//20X,'LOGICAL PRODUCT OR SUM OF TWO BOOLEAN FUNCTIONS OF A
+     1 REAL VARIABLE',20X,'TEST A404'/20X,66(1H*),20X,9(1H*)//40X,'IU=0
+     2     ,       IV=1'/40X,'U= -1.0  0.0  2.0  3.0  5.0'/40X,'V= -2.0
+     3-1.0  0.0  1.0  2.0  4.0  0.5'//)
+      END
+*EXECUTE
+*
+*

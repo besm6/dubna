@@ -1,0 +1,32 @@
+      PROGRAM M250T
+      DIMENSION A(13),B(13),C(13),D(13)
+      DIMENSION E(13)
+      K=13
+      CALL RABM4(A,K)
+      PRINT 20
+      PRINT 10,A
+      PRINT 100
+      CALL RABM4(B,K)
+      PRINT 30
+      PRINT 10,B
+      PRINT 100
+      CALL RABM4(C,K)
+      PRINT 40
+      PRINT 10,C
+      PRINT 100
+      CALL RABM4(D,K)
+      PRINT 50
+      PRINT 10,D
+      PRINT 100
+   10 FORMAT(7E10.2/6E10.2)
+   20 FORMAT(8HMACCИB A)
+   30 FORMAT(8HMACCИB B)
+   40 FORMAT(8HMACCИB C)
+   50 FORMAT(8HMACCИB D)
+  100 FORMAT(1H0)
+      STOP
+      END
+*CALL PTIME
+*EXECUTE
+*
+*

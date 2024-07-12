@@ -1,0 +1,64 @@
+      PROGRAM F423
+      DIMENSION A1(5000),A(5000),C(600),X(600),IIJ(600)
+      NN=0
+      DO 70 JU=1,2
+      NN=NN+100
+      JOB=1
+      REWIND 1
+      NNN0=5000
+      NN1=NNN0/NN
+      IF(NN1.GT.NN)NN1=NN
+      KT0=NN1
+      LLLL=0
+      NNNN=0
+      KKKK=0
+      DO 2 K=1,NN
+2     C(K)=0.
+      LLL0=0
+      DO 1 K=1,NN
+      LLLL=LLLL+1
+      KKKK=KKKK+1
+      DO 3 L=1,NN
+      NNNN=NNNN+1
+      A(NNNN)=RNDM(-1.)-0.5
+      C(L)=C(L)+A(NNNN)*KKKK
+3     CONTINUE
+      IF(LLLL.NE.NN1)GO TO 1
+      LLLL=0
+      NNNN=0
+      WRITE(1) (A(LK),LK=1,NNN0)
+      LLL0=LLL0+1
+1     CONTINUE
+      IF(LLLL.NE.0)WRITE(1) (A(LK),LK=1,NNN0)
+      IF(LLLL.NE.0)LLL0=LLL0+1
+      CALL AGAUSS(NNN0,NN,NN1,A,A1,IIJ,C,X,JOB)
+      JOB=2
+      PRINT 1000,(X(K),K=1,NN)
+      DO 4 K=1,NN
+4     C(K)=0.
+      REWIND 1
+      KKKK=0
+      DO 5 K=1,LLL0
+      READ(1) (A(LK),LK=1,NNN0)
+      NNNN=0
+      IF(KKKK+KT0.GT.NN)KT0=NN-KKKK
+      DO 6 L=1,KT0
+      KKKK=KKKK+1
+      DO 7 M=1,NN
+      NNNN=NNNN+1
+      C(M)=C(M)+A(NNNN)*KKKK
+7     CONTINUE
+6     CONTINUE
+5     CONTINUE
+      JOB=2
+      CALL AGAUSS(NNN0,NN,NN1,A,A1,IIJ,C,X,JOB)
+      PRINT 1000,(X(K),K=1,NN)
+70    CONTINUE
+1000  FORMAT(1X,4E20.10)
+      STOP
+      END
+*CALL FT*REGIM:F1=BUF
+*CALL FT*REGIM:F2=BUF
+*EXECUTE
+*
+*

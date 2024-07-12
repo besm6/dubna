@@ -1,0 +1,15 @@
+      PROGRAM M203
+      COMPLEX A,CFLOAT,B
+      PRINT 10
+      I=3
+      A=(2.01304201,3.120031)*CFLOAT(I)
+      B=(2.01304201,3.120031)*CMPLX(FLOAT(I),0.0)
+      PRINT 1,A,B
+  1   FORMAT(20X,2HA=,1H(,E18.11,1H,,E18.11,1H)/
+     *       20X,2HB=,1H(,E18.11,1H,,E18.11,1H))
+  10  FORMAT(//50X,9HTEST M203///)
+      STOP
+       END
+*EXECUTE
+*
+*

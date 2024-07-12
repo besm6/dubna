@@ -1,0 +1,19 @@
+      PROGRAM D130 A
+C        ПPИMEP B OПИCAHИИ 1985 Г.
+      DIMENSION ZERO(50),V(50,2)
+      EXTERNAL KGAUSS,FEX
+      DO 1 I=1,50
+  1   ZERO(I)=(I-1)*3.14159
+      CALL SUMIR(KGAUSS,0.,100.,0.,FEX,ZERO,30,V,1.E-9,SUM,ERROR,N,K)
+      PRINT 2,SUM,ERROR,N,K
+  2   FORMAT(1X,'SUM=', E20.11,2X,'ERROR=', E20.11,5X,2I3)
+      STOP
+      END
+      FUNCTION FEX(X)
+      FEX=200.
+      IF(X.NE.0.) FEX=2.*SIN(100.*X)/X
+      RETURN
+      END
+*EXECUTE
+*
+*

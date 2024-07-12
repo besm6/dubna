@@ -1,0 +1,21 @@
+      PROGRAM F303
+      DIMENSION A(2,6),INDEX(4)
+      COMPLEX A
+      DATAA/1.,2.,3.,2.,-1.,-1.,1.,-1.,-1.,0.,5.,0.,-0.5,0.,2.5,0.,8*0./
+      IDIM1=2
+      N=2
+      M=2
+      PRINT 10,A
+      CALL CINV1(A,IDIM1,N,M,INDEX,NERROR)
+      PRINT 5,A
+      PRINT 2,NERROR
+  2   FORMAT(10X,7HNERROR=I2)
+  5   FORMAT(15X,5HA(-1)/2(10X,4E20.11/)//15X,9HZ=A(-1)*B/2(10X,4E20.11/
+     * )//15X,8F8.1)///)
+  10  FORMAT(//50X,9HTEST F303//30X,1HA/2(10X,4F10.1/)//30X,1HB/2(10X,
+     * 4F10.1/)//15X,8F8.1)///)
+      STOP
+      END
+*EXECUTE
+*
+*

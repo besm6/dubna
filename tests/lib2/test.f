@@ -1,0 +1,66 @@
+      PROGRAM TEST
+CH    TEST FOR THE FLOWER
+C     BEGIN
+      COMMON A,B,
+     1       C,
+     2       D(100)
+      COMMON /F/L(5)/G/K(5,5)
+      DOUBLE PRECISION C,
+     1                 D
+      REAL K
+      LOGICAL H
+      DIMENSION A(100,100),B(1,1)
+      DATA ((L(I),I=1,5)=1,2,3(55)),
+C  INSTRUKTION
+C        GO  TO
+      GO TO 1
+      A(3)=5*A(4) $ GO TO 50
+    1 ASSIGN 10 TO IS
+      GO TO IS , (5,10,15,20)
+    5 NIS=1
+      GO TO (10,15,20),NIS
+C                IF
+   10 IF(L(1)-L(3)) 30,40,50
+C       IF     LOGICAL
+   20 IF(H) GO TO 50
+C         LOOP   DO
+   40 DO 41 I=1,100
+      DO 41 IK=1,99,2
+      DO 42 J=1,10
+      DO 43 JK=1,15,5
+      DO 44 IJ=10,100,10
+      DO 44 IJK=1,33,2
+      A(I)=A(IK)*A(J) $ A(IJ)=A(IJK) $ IF(H) A(IK)=A(IK)*0.5
+      K(3,4)=5.45 $ IF(A(IJ)) 44,43,44
+   44 CONTINUE
+      CALL LINK
+   43  CONTINUE
+      X=0.15
+      Y=A(J)/X
+      Z=SIN(X)*Y/A(I)
+      IF(A(I)-A(I-1)) 41,41,42
+   42 CONTINUE
+      CALL  BULK
+   41 CALL ABC
+   15 CALL AIS
+   30 PAUSE
+      CALL EXITE5
+ 1000 FORMAT(1H,4(10X,I6,7X,I3,1X))
+C        INPUT   AND    OUTPUT
+   50 PRINT 1000,A
+      PUNCH 1000,A
+      WRITE (51,1000) A
+      WRITE (1) A(I),(D(IK),IK=1,100)
+      READ (50,1000) A
+      READ (1) ((A(I,J),I=1,100),J=1,100)
+      BACKSPACE 1
+      END FILE 1
+      REWIND 1
+      ENCODE (6,100,L(1)) L(2)
+  100 FORMAT (A6)
+      DECODE (6,100,L(2)) L(3)
+      STOP
+      END
+*END SEGMENT
+*
+*

@@ -1,0 +1,19 @@
+      PROGRAM C322
+      DOUBLE PRECISION X(50),DGAMMA,F
+      PRINT 10
+      X(1)=-1.D1
+      DO 1 I=1,41
+      F=DGAMMA(X(I))
+      X(I+1)=X(I)+0.5
+      PRINT 5,X(I),F
+ 1    CONTINUE
+      X(1)=1.5D2
+      F=DGAMMA(X(1))
+      PRINT 5,X(1),F
+  5   FORMAT(35X,D9.1,5X,D24.17)
+  10  FORMAT(1H1//50X,9HTEST C322///38X,1HX,20X,9HDGAMMA(X)/)
+      END
+*CALL PTIME
+*EXECUTE
+*
+*

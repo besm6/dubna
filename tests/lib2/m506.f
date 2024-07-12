@@ -1,0 +1,12 @@
+      PROGRAM M506
+      DATA A,K/25.,12/
+      I=IUMODE(A)
+      J=IUMODE(K)
+      PRINT 1,A,I,K,J
+ 1    FORMAT(//50X,9HTECT M506//10X,2HA=,F10.2,5X,10HIUMODE(A)=,I3/
+     *10X,2HK=,I3,12X,10HIUMODE(K)=,I3)
+      STOP
+      END
+*EXECUTE
+*
+*

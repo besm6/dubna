@@ -1,0 +1,14 @@
+      PROGRAM V304A
+      DIMENSION M(10)
+      DATA (M=1,3,7,5,8,4,10,9,2,6)
+      K=IUCOMP(5,M,10)
+      PRINT 10,K
+  10  FORMAT(10X,2HK=,I2)
+      J1=IUHUNT (10,M,10,2)
+      J2=IUHUNT(9,M,10,2)
+      PRINT 20,J1,J2
+   20 FORMAT(10X,3HJ1=,I2,5X,3HJ2=,I2)
+      END
+*EXECUTE
+*
+*

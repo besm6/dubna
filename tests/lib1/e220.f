@@ -1,0 +1,123 @@
+      PROGRAM E220
+      DIMENSION A1(6,5),B1(6,3),X1(5,3),WORK(75)
+      DIMENSION RE(6,3)
+      DOUBLE PRECISION RESID
+      LOGICAL ERFLAG
+      DATA  IM,IN/6,5/
+C
+C     IM = MAXIMUM NUMBER OF EQUATIONS TO BE TESTED
+C     IN = MAXIMUM NUMBER OF UNKNOWNS TO BE TESTED
+C
+      READ 100,NO
+      PRINT 100,NO
+ 100  FORMAT(I2)
+C      NO = NUMBER OF TEST EXAMPLES
+C
+      DO 35  INT=1,NO
+      ERFLAG=.TRUE.
+      READ 150,M,N,IP
+      PRINT 150,M,N,IP
+ 150  FORMAT(I2,3X,I2,3X,I2)
+      DO 5  I=1,M
+  5   READ 200,(A1(I,J),J=1,N)
+ 200  FORMAT(8F10.5)
+      DO 10  I=1,M
+ 10   READ 300,(B1(I,J),J=1,IP)
+ 300  FORMAT(5F15.12)
+      PRINT 350,INT
+ 350  FORMAT(1H1,25H**** TEST EXAMPLE NUMBER ,I2,5H ****////)
+      PRINT 400
+ 400  FORMAT(1H0,35X,8HMATRIX A///)
+      DO 15  I=1,M
+ 15   PRINT 500,(A1(I,J),J=1,N)
+ 500  FORMAT(1H0,7(E14.7,5X))
+      PRINT 600
+ 600  FORMAT(////1H ,35X,8HMATRIX B///)
+      DO 20  I=1,M
+ 20   PRINT 700,(B1(I,J),J=1,IP)
+ 700  FORMAT(1H0,10X,6(E14.7,5X))
+C
+      CALL LSQQR (A1,X1,B1,M,N,IP,IM,IN,ERFLAG,WORK)
+C
+      IF(ERFLAG) GO TO 25
+      PRINT 750
+ 750  FORMAT(1H0,20X,27HTHE PROBLEM HAS NO SOLUTION)
+      GO TO 35
+C
+ 25   PRINT 800
+ 800  FORMAT(1H0,35X,8HMATRIX X///)
+      DO 30  I=1,N
+  30  PRINT 900,(X1(I,J),J=1,IP)
+ 900  FORMAT(1H0,10X,5(E17.10,5X))
+      DO 33  JO=1,IP
+      DO 32  I=1,M
+      RESID=0.
+      DO 31  J=1,N
+ 31   RESID=RESID+A1(I,J)*X1(J,JO)
+ 32   RE(I,JO)=RESID-B1(I,JO)
+ 33   CONTINUE
+      PRINT 920
+ 920  FORMAT(///1H0,10X,15HRESIDUAL MATRIX)
+      DO 34  I=1,M
+ 34   PRINT 900,(RE(I,J),J=1,IP)
+ 35   CONTINUE
+      END
+*EXECUTE
+ 7
+ 6    5    2
+     3.6E1    -6.3E2    3.36E3   -7.56E3    7.56E3
+    -6.3E2    1.47E4   -8.82E4  2.1168E5  -2.205E5
+    3.36E3   -8.82E4  5.6448E5 -1.4112E6   1.512E6
+   -7.56E3  2.1168E5 -1.4112E6  3.6288E6  -3.969E6
+    7.56E3  -2.205E5   1.512E6  -3.969E6    4.41E6
+  -2.772E3   8.316E4 -5.8212E5 1.55232E6-1.74636E6
+         4.63E2       -4.157E3
+       -1.386E4       -1.782E4
+        9.702E4       9.3555E4
+      -2.5872E5       -2.618E5
+       2.9106E5      2.88288E5
+     -1.16424E5     -1.18944E5
+ 2    2    1
+6.0       13.5
+13.5      39.75
+63.5
+184.0
+ 2    2    1
+ 2.0        1.0
+ 2.0        1.0
+ 10.0
+ 8.0
+ 2    2    1
+  4.0      10.0
+ 10.0      30.0
+  40.0
+  50.0
+ 3    3    2
+  9.0     42.0      248.5
+ 42.0     248.5     1656.78
+ 248.5    1656.78   11806.36
+  22.5            63.0
+  127.75         345.0
+     839.64        2217.50
+ 3    3    2
+  6.0     34.0      380.82
+  34.0    380.82    4859.62
+ 380.82   4859.62   66335.51
+  9845.7       9841.1
+ 121962.5      121901.64
+1646182.842    1645105.67
+ 6    2    1
+1.0         1.0
+1.0        2.0
+1.0        3.0
+1.0         4.0
+1.0         5.0
+1.0        6.0
+1.0
+1.0
+2.0
+2.0
+3.0
+3.0
+*
+*

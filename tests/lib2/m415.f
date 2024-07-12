@@ -1,0 +1,10 @@
+      PROGRAM M415
+      DIMENSION A(5)
+      CALL UHOLLR(A,16,28HTHIS IS A TEST FOR HOLLERITH)
+      PRINT 1,A
+  1   FORMAT((10X,A6)//)
+      STOP
+      END
+*EXECUTE
+*
+*

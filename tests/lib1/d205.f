@@ -1,0 +1,25 @@
+      PROGRAM D205
+C
+      DIMENSION Y(2),F(2)
+      EXTERNAL EXTERN
+      PRINT 10
+      Y(1)=0.
+      Y(2)=1.
+      X=0.
+      CALL DFEQS2(1,2,.1,X,Y,.0,EXTERN)
+      DO 2 I=1,60
+      CALL DFEQS2(2,2,.1,X,Y,.0,EXTERN)
+      PRINT 20,X,Y
+  2   CONTINUE
+  10  FORMAT(//50X,9HTEST D205///33X,1HX,20X,2HY1,20X,2HY2//)
+  20  FORMAT(30X,F4.1,10X,2F20.11)
+      END
+      SUBROUTINE EXTERN(X,Y,F)
+      DIMENSION Y(2),F(2)
+      F(1)=Y(2)
+      F(2)=-Y(1)
+      RETURN
+      END
+*EXECUTE
+*
+*

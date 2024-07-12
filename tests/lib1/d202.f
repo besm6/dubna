@@ -1,0 +1,30 @@
+      PROGRAM D202
+      DIMENSION Y(2)
+      EXTERNAL ECARD1
+      EXTERNAL ECARD2
+      PRINT 10
+      H=0.1
+      X=0.0
+      Y(1)=0.0
+      Y(2)=0.00998
+      CALL DIFEQ2(1,ECARD1,ECARD2,H,X,Y(1),Y(2))
+      DO 1 I=1,20
+      CALL DIFEQ2(2,ECARD1,ECARD2,H,X,Y(1),Y(2))
+      PRINT 2,X,Y
+  1   CONTINUE
+  2   FORMAT(30X,F5.2,2F20.11)
+  10  FORMAT(1H1//50X,9HTEST D202///32X,1HX,12X,2HY1,20X,2HY2//)
+      END
+      FUNCTION ECARD1(X)
+      DIMENSION Y(2)
+      ECARD1=-1.0
+      RETURN
+      END
+      FUNCTION ECARD2(X)
+      DIMENSION Y(2)
+      ECARD2=2.0*COS(X)
+      RETURN
+      END
+*EXECUTE
+*
+*

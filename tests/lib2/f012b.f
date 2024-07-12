@@ -1,0 +1,39 @@
+      PROGRAM F012 B
+      DOUBLE PRECISION A1(4,4),A2(4,4),A3(4,4),B1(4,2),B2(4,2),B3(4,2)
+      DOUBLE PRECISION DET
+      DATA A1/1.D0,.42D0,.54D0,.66D0,.42D0,1.D0,.32D0,.44D0,.54D0,.32D0,
+     *        1.D0,.22D0,.66D0,.44D0,.22D0,1.D0/,
+     *     B1/4.D0,3.D0,2.D0,1.D0,3.D0,3.D0,2.D0,1.D0/
+      DO 10 I=1,4
+      DO 10 J=1,4
+      A2(I,J)=A1(I,J)
+ 10   A3(I,J)=A1(I,J)
+      DO 20 I=1,4
+      DO 20 J=1,2
+      B2(I,J)=B1(I,J)
+ 20   B3(I,J)=B1(I,J)
+      CALL DSINV(4,A1,4,IFAIL)
+      PRINT 1,IFAIL,((A1(I,J),J=1,4),I=1,4)
+      CALL DSEQN(4,A2,4,IFAIL,2,B1)
+      PRINT 2,IFAIL,((B1(I,J),J=1,2),I=1,4)
+      CALL DSFACT(4,A3,4,IFAIL,DET,JFAIL)
+      PRINT 3,IFAIL,JFAIL,DET
+      CALL DSFEQN(4,A3,4,1,B2)
+      PRINT 4,(B2(I,1),I=1,4)
+      CALL DSFEQN(4,A3,4,2,B3)
+      PRINT 5,((B3(I,J),J=1,2),I=1,4)
+      CALL DSFINV(4,A3,4)
+      PRINT 6,((A3(I,J),J=1,4),I=1,4)
+ 1    FORMAT(1H1,1X,'DSINV',5X,'IFAIL=',I2,15X,'A'/(5X,4D26.15/))
+ 2    FORMAT(/1X,'DSEQN',5X,'IFAIL=',I2,10X,'A'/(5X,2D26.15/))
+ 3    FORMAT(/1X,'DSFACT'/5X,'IFAIL=',I2,5X,'JFAIL=',I2,5X,'DET=',
+     *       D23.15)
+ 4    FORMAT(/1X,'DSFEQN'/1X,'B=',4D23.15)
+ 5    FORMAT(/1X,'RSFEQN',10X,'B '/(5X,2D26.15/))
+ 6    FORMAT(/1X,'DSFINV',15X,'A'/(5X,4D26.15/))
+      CALL EXIT
+      END
+*CALL PTIME
+*EXECUTE
+*
+*

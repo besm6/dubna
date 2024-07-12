@@ -1,0 +1,17 @@
+      PROGRAM J530
+      DIMENSION AL(6),AH(6),NA(6)
+      DATA AL/1.83,-4.12,-2.88,1.22,3.6,1.21/,
+     1     AH/1.978,-12.105,1.87,1.17,2.37,1.21/,
+     2     NA/ 28 , 24 , 1 , 0 , -1 , 8 /
+      PRINT 1
+      DO 2 I=1,6
+      CALL BINSIZ(AL(I),AH(I),NA(I),BL,BH,NB,BWID)
+  2    PRINT  3 ,AL(I),AH(I),NA(I),BL,BH,NB,BWID
+  1   FORMAT(//50X,9HTEST J530//6X,2HAL,8X,2HAH,10X,2HNA,10X,2HBL,
+     1       10X,2HBH,9X,2HNB,10X,4HBWID)
+   3  FORMAT (2F10.4,I10,5X,2F10.4,I10,F18.9/)
+      STOP
+      END
+*EXECUTE
+*
+*

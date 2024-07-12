@@ -1,0 +1,16 @@
+      PROGRAM F117
+      COMMON/SLATE/Z1,Z2,XQX(38)
+      DIMENSION A(3),B(3),C(3)
+      DATA A/1.,3.,4./
+      DATA B/5.,6.,3./
+      PRINT 10
+      CALL CROSS(A,B,C)
+      PRINT 1,A,B,C
+      PRINT 20,Z1,Z2
+   1  FORMAT(10X,2HA=,3F7.2//10X,2HB=, 3F7.2//10X,2HC=,3F7.2//)
+  10  FORMAT(///50X,9HTEST F117///)
+  20  FORMAT(10X,3HZ1=,F7.2,10X,3HZ2=,F7.2)
+      END
+*EXECUTE
+*
+*

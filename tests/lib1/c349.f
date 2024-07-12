@@ -1,0 +1,53 @@
+      PROGRAM C349
+      COMMON/HELP/RS
+C
+      DP=.1E-7
+      PRINT 12,DP
+      PRINT 11
+C
+      A1Z=0.
+      AIZ=0.
+      AIE1Z=0.
+      AIEIZ=0.
+      DO 1 I=1,4
+      AIMZ=(I-1)*2.
+      REZ=.25
+      DO 2 J=1,5
+      REZ=2*REZ
+      RS=1.
+      R1Z=SFUCOS(AIMZ,REZ,RS,DP)
+      RS=-1.
+      RIZ=SFUCOS(AIMZ,REZ,RS,DP)
+      IF(AIMZ.EQ.0.) GO TO 3
+      RS=1.
+      A1Z=-SFUSIN(AIMZ,REZ,RS,DP)
+      RS=-1.
+      AIZ=-SFUSIN(AIMZ,REZ,RS,DP)
+ 3    CONTINUE
+      EXP1=EXP(-REZ)
+      EXP2=EXP(REZ)
+      REE1Z=R1Z*EXP1
+      REEIZ=-RIZ*EXP2
+      IF(REZ.LE.2..AND.AIMZ.EQ.0.) GO TO 5
+      REE1Z=REZ*R1Z-AIMZ*A1Z
+      AIE1Z=REZ*A1Z+AIMZ*R1Z
+      REEIZ=-REZ*RIZ+AIMZ*AIZ
+      AIEIZ=-REZ*AIZ-AIMZ*RIZ
+ 5    CONTINUE
+      PRINT 10,I,J,REZ,AIMZ,REE1Z,AIE1Z,REEIZ,AIEIZ
+ 2    CONTINUE
+ 1    CONTINUE
+C
+ 11   FORMAT(2X,'I',2X,'J',3X,'REZ',2X,'AIMZ',10X,'REE1Z',12X,
+     *'AIE1Z',12X,'REEIZ',14X,'AIEIZ')
+ 10   FORMAT(1X,2I3,2F5.2,2(2X,2E18.10))
+ 12   FORMAT(1X,'DP=',E10.2)
+      END
+      FUNCTION FCHTER(X)
+      COMMON/HELP/RS
+      FCHTER=1./(X+RS)
+      RETURN
+      END
+*EXECUTE
+*
+*

@@ -1,0 +1,20 @@
+      PROGRAM D120
+      EXTERNAL FUNCT
+      REAL I,IH,IABS
+      A1=0.1
+      B1=1.7
+      H1=0.2
+      REPS1=0.
+      AEPS1=0.
+      X=0.1
+      CALL SIMPS(A1,B1,H1,REPS1,AEPS1,FUNCT,X,I,IH,IABS)
+      PRINT 10,X,I,IH,IABS
+  10  FORMAT(3X,F6.2,3F12.5)
+      END
+      FUNCTION FUNCT(X)
+      FUNCT=1./SQRT(X)
+      RETURN
+      END
+*EXECUTE
+*
+*

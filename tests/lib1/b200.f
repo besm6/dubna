@@ -1,0 +1,41 @@
+      PROGRAM B200
+      DOUBLE PRECISION DSINH,DCOSH,DSICOH,X1,Y1,Y2,DSH,DCH,DX1
+      DIMENSION X1(10),X2(10),Y1(10),Y2(10),Y3(10),Y4(10),DSH(10),DCH(10
+     1),SH(10),CH(10)
+      PRINT 10
+      X1(1)=0.0D0
+      DX1=0.01D0
+      DO 2 K=1,3
+      DO 1 I=1,10
+      Y1(I)=DSINH(X1(I))
+      Y2(I)=DCOSH(X1(I))
+      CALL DSICOH(X1(I),DSH(I),DCH(I))
+      PRINT 3,X1(I),Y1(I),Y2(I),DSH(I),DCH(I)
+      X1(I+1)=X1(I)+DX1
+  1   CONTINUE
+      DX1=DX1*10
+      X1(1)=DX1
+  2   CONTINUE
+      PRINT 5
+      X2(1)=0.0
+      DX2=0.01
+      DO 6 K=1,3
+      DO 7 I=1,10
+      Y3(I)=SINH(X2(I))
+      Y4(I)=COSH(X2(I))
+      CALL SICOH(X2(I),SH(I),CH(I))
+      PRINT 4,X2(I),Y3(I),Y4(I),SH(I),CH(I)
+      X2(I+1)=X2(I)+DX2
+  7   CONTINUE
+      DX2=DX2*10
+      X2(1)=DX2
+  6   CONTINUE
+  3   FORMAT(6X,D10.4,4D25.17)
+  4   FORMAT(6X,E10.4,4E25.11)
+  5   FORMAT(//10X,'X',18X'SINH',23X,'COSH',22X,'SH',22X,'CH'/)
+  10  FORMAT ( 40X, 'HYPERBOLIC FUNCTIONS' ,40X,'TEST B200'/40X,20(1H*),
+     140X,9(1H*)//10X,'X',12X'DSINH',23X,'DCOSH',22X,'DSH',23X,'DCH'/)
+      END
+*EXECUTE
+*
+*

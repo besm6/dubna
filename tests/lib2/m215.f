@@ -1,0 +1,31 @@
+      PROGRAM M215
+      DIMENSION A(8),B(100),AFACT(8)
+      DATA A/1234567800.,1234567.8,1234.5678,1.2345678,0.0012345678,
+     *    1234.5678E-9,1234.5678E-12,0.0/
+      DO 1 I=1,20
+      B(I)=RNDM(-1.)
+      B(I+20)=10*RNDM(-1.)
+      B(I+40)=-B(I+20)
+      B(I+60)=10**2+RNDM(-1.)
+      B(I+80)=0.1*RNDM(-1.)
+ 1    CONTINUE
+      PRINT 3,B
+      BMAX=AMAXMU(B,1,100,0)
+      FACT=PSCALE(N,9,BMAX,4)
+      FF=FACT*BMAX
+      PRINT 2,N,FACT,FF
+      DO 4 I=1,100
+ 4    B(I)=FACT*B(I)
+      PRINT 3,B
+      DO 7 I=1,8
+ 7    AFACT(I)=PSCALE(N,9,A(I),4)
+      PRINT 6,AFACT
+ 2    FORMAT(1X,'N=',I2,5X,'FACT=',E10.1,5X,'FF=',F10.3)
+ 3    FORMAT(1X,10F10.3/)
+ 6    FORMAT(1X,'*******'/1X,'AFACT=',8E10.1)
+      STOP
+      END
+*CALL PTIME
+*EXECUTE
+*
+*

@@ -1,0 +1,27 @@
+       PROGRAM D108
+      DIMENSION X(5)
+      DIMENSION Y(5)
+      DIMENSION E(5)
+      DATA(X=0.0,1.5708,3.1416,4.7124,6.2832)
+      DATA(Y=0.0,1.0,0.0,1.0,0.0)
+      DATA(E=0.1,0.15,0.2,0.12,0.26)
+       N=5
+       A=0.0
+       B=6.2832
+      PRINT 1
+  1   FORMAT (1H1, ' * * * * * TRAPEZOIDAL RULE INTEGRATION WITH AN
+     *ESTIMATED ERROR * * * * * TEST  D108 * * * * * ')
+      CALL TRAPER(X,Y,E,N,A,B,RE,SD)
+      PRINT 10,X
+  10  FORMAT (//5X,2HX=,5F10.4)
+      PRINT 11,Y
+  11  FORMAT (//5X,2HY=,5F10.4)
+      PRINT 12,E
+  12  FORMAT (//5X,2HE=,5F10.4)
+       PRINT 13,N,A,B,RE,SD
+  13  FORMAT (//5X,2HN=,F10.4/5X,2HA=,F10.4/5X,2HB=,F10.4/
+     *5X,3HRE=,F10.4/5X,3HSD=,F10.4)
+       END
+*EXECUTE
+*
+*

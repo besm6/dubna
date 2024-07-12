@@ -1,0 +1,17 @@
+      PROGRAM X203
+      DATA A/3HNEX/
+      DO 3 I=1,50
+      PNAME=PAROFI(I)
+      KOD=IOFPAR(PNAME)
+      PRINT 2,KOD,PNAME
+ 3    CONTINUE
+      PNAME=A
+      KOD=IOFPAR(PNAME)
+      PRINT 2,KOD,PNAME
+ 2    FORMAT(5X,I2,10X,A6)
+      STOP
+      END
+*CALL PTIME
+*EXECUTE
+*
+*

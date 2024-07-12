@@ -1,0 +1,41 @@
+*             CERN
+      PROGRAM E104T
+      DIMENSION ARG(3),NENT(3),ENT(30), TABLE(10,10,10)
+      PI=3.1415926
+      PIBY2=PI/2.
+      NARG=3
+      ARG(1)=PIBY2+.05
+      ARG(2)=PIBY2+.05
+      ARG(3)=PIBY2+.05
+      NENT(1)=10
+      NENT(2)=10
+      NENT(3)=10
+      DO 10 I=1,10
+      PIBYI=FLOAT(I)*PI/10.
+      J=I+10
+      K=I+20
+      ENT(I)=PIBYI
+      ENT(J)=PIBYI
+      ENT(K)=PIBYI
+   10 CONTINUE
+      DO 40 I=1,10
+      X=FLOAT(I)*PI/10.
+      DO 30 J=1,10
+      Y= FLOAT(J)*PI/10.
+      DO 20 K=1,10
+      Z=FLOAT(K)*PI/10.
+      TABLE(I,J,K)=SIN(X)*SIN(Y)*SIN(Z)
+   20 CONTINUE
+   30 CONTINUE
+   40 CONTINUE
+      A=FINT(NARG,ARG,NENT,ENT,TABLE)
+      B=SIN(ARG(1))*SIN(ARG(2))*SIN(ARG(3))
+      PRINT 100,A,B
+  100 FORMAT (1H1,  70H INTERPOLATE THE FUNCTION  SIN(X)*SIN(Y)*SIN(Z)
+     1    AT X=Y=Z=PI/2+.05//  16H INTERPOL VAL = F15.7,  12H TRUE VAL =
+     2 F15.7)
+      END
+*CALL PTIME
+*EXECUTE
+*
+*

@@ -1,0 +1,20 @@
+      PROGRAM F320
+      DOUBLE PRECISION A,B,DY,DDETER
+      DIMENSION A(4,6),B(4,6),N(3)
+      DATA B/2.D0,2.D0,4.D0,1.D0,5.D0,-7.D0,0.D0,0.D0,9.D0,12.D0,3.D0,
+     *6.D0,4.D0,8.D0,-5.D0,4.D0,8*0.D0/,N/4,3,2/
+      PRINT 10,B
+      DO 1 I=1,3
+      DO 5 L=1,4
+      DO 5 K=1,6
+  5   A(L,K)=B(L,K)
+      DY=DDETER(A,4,N(I))
+  1   PRINT 2,N(I),DY
+  2   FORMAT(10X,I3,10X,D20.11)
+   10    FORMAT(//50X,9HTEST F320//30X,1HA//6(10X,4D10.1/)//11X,1HN,20X,
+     * 1HY/)
+      STOP
+      END
+*EXECUTE
+*
+*

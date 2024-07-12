@@ -1,0 +1,18 @@
+      PROGRAM M103
+      DIMENSION A(1000),IA(1000)
+      DO 1 I=1,1000
+      A(I)=RNDM(-1.)
+   1  IA(I)=RNDM( 1.)
+      PRINT 2,(A(K),K=100,1000,100)
+      CALL FLPSOR(A,1000)
+      PRINT 2,(A(K),K=100,1000,100)
+      PRINT 3,(IA(K),K=100,1000,100)
+      CALL INTSOR(IA,1000)
+      PRINT 3,(IA(K),K=100,1000,100)
+   2  FORMAT(1X,2HA=,10F10.5)
+   3  FORMAT(2(1X,3HIA=,5I15/))
+      STOP
+      END
+*EXECUTE
+*
+*

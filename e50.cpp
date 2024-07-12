@@ -27,6 +27,272 @@
 
 #include "machine.h"
 
+static inline bool IS_DIGIT(uint8_t c)
+{
+    return (c >= '0') && (c <= '9');
+}
+
+static inline bool IS_CHAR(uint8_t c)
+{
+    return (c >= 0101 && c <= 0132) ||
+           (c >= 0140 && c <= 0176);
+}
+
+//
+// Э50 014 - распознаватель текстовой строки.
+// А.П.Сапожников 22/12/80
+//
+Word Processor::e50_parse(Word input, unsigned &result)
+{
+    //
+    // Строка подается в isо или в соsу. Признак конца - байт '000' или '012'.
+    // Информация для экстракода на сумматоре:
+    //     1-15, 21-24 разряды - индексированный адрес начала строки или 0, если работа с
+    //          текущего места строки.
+    //     16 - признак поглощения пробелов
+    //     17 - символы '*' и '/' суть буквы.
+    //     18 - восьмеричные числа задаются без суффикса "в"
+    //     19 - посимвольное сканирование
+    //
+    // Результатом работы является тип фрагмента в индекс-регистре 14
+    // и сам фрагмент. Пробелы в начале фрагмента типа "число"
+    // всегда сглатываются. Если фрагмент - число, то это число
+    // выдается на сумматоре, а в РМР выдается (1-8 разряды) код
+    // ограничителя и (25-33 разряды) позиция этого ограничителя во
+    // входной строке. Если фрагмент - идентификатор или текст,
+    // заключенный в апострофы, то он выдается на сумматоре (начало) и
+    // в РМР (продолжение). Хвост текста заполняется пробелами. Если
+    // текст более 12 символов, то этот факт запоминается, и остаток
+    // текста будет выдан при следующем обращении.
+    //
+    // Возможные значения индекс-регистра 14:
+    //     0 - ошибка, фрагмент не распознан
+    //     1 - восьмеричное (123в, 99d, -10в)
+    //     2 - целое (8000, -999)
+    //     3 - вещественное (3.62, -3.141е-3)
+    //     4 - идентификатор или текст в апострофах
+    //     5 - то же, но длиной > 12 символов
+    //     6 - пустой фрагмент
+    //
+    unsigned src_addr = input & 077777;
+    // const int skip_spaces = (input >> 15) & 1;
+    const int star_slash_flag = (input >> 16) & 1;
+    // const int octal_flag = (input >> 17) & 1;
+    const int char_mode = (input >> 18) & 1;
+    const int src_reg  = (input >> 20) & 15;
+    static int index;
+    static uint8_t ident[128];
+    static int ident_len;
+    uint64_t value;
+    bool negate = false;
+    static unsigned last_word_addr;
+    static unsigned last_byte_index;
+    BytePointer bp{memory, last_word_addr, last_byte_index};
+
+    // std::cout << "--- e50_parse: acc = "; besm6_print_word_octal(std::cout, input); std::cout << '\n';
+    if (src_reg) {
+        src_addr = ADDR(src_addr + core.M[src_reg]);
+    }
+    if (src_addr != 0) {
+        // Set source pointer.
+        bp.word_addr = src_addr;
+        bp.byte_index = 0;
+        index = 0;
+    } else {
+        // Continue from current place.
+        if (last_word_addr == 0) {
+            // Parse error.
+            result = 0;
+            // std::cout << "--- Parse error\n";
+            return 0;
+        }
+    }
+#if 0
+    BytePointer tp{memory, bp.word_addr, bp.byte_index};
+    while (tp.word_addr != 0) {
+            int c = tp.get_byte();
+            // std::cout << '-' << std::oct << c << std::dec;
+            std::cout << (c ? (char)c : '@');
+
+            if (c == 0 || c == 012)
+                    break;
+    }
+    std::cout << '\n';
+#endif
+    if (char_mode) {
+        //
+        // В режиме посимвольного сканирования текущий символ строки выдается на
+        // сумматоре (прижат влево и дополнен пробелами) и в 1-8 разряды РМР.
+        // В 25-33 разрядах РМР выдается номер позиции символа в строке.
+        // Пробелы при необходимости поглощаются.
+        //
+        // Тип символа выдается в индекс-регистре 14:
+        //     0 - конец строки ('000','012')
+        //     1 - цифра (0 - 9)
+        //     2 - буква (а-z-я, по заказу: /, *)
+        //     3 - разделитель (не цифра и не буква)
+        //
+        for (;;) {
+            if (bp.word_addr == 0) {
+                // Error.
+                result = 0;
+                core.RMR = (Word)index << 24;
+                // std::cout << "--- Error\n";
+                return 0;
+            }
+            uint8_t c = bp.get_byte();
+            index++;
+            switch (c) {
+            case 0:
+            case 012:
+                // End of line.
+                // std::cout << "--- End of line, index = " << index << '\n';
+                result = 0;
+ret:
+                core.RMR = (Word)index << 24 | c;
+                return ((Word)c << 40) | ((Word)' ' << 32) | (' ' << 24) |
+                        (' ' << 16) | (' ' << 8) | ' ';
+
+            case '0':
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+            case '5':
+            case '6':
+            case '7':
+            case '8':
+            case '9':
+                // Digit.
+                result = 1;
+                // std::cout << "--- Digit = " << (c-'0') << ", index = " << index << '\n';
+                goto ret;
+
+            case '*':
+            case '/':
+                if (star_slash_flag)
+                    goto letter;
+                goto delimiter;
+
+            default:
+                if (IS_CHAR(c)) {
+                letter:
+                    result = 2;
+                    // std::cout << "--- Letter = '" << (char)c << "', index = " << index << '\n';
+                    goto ret;
+                }
+            delimiter:
+                result = 3;
+                // std::cout << "--- Delimiter = '" << (char)c << "', index = " << index << '\n';
+                goto ret;
+            }
+        }
+    }
+
+    for (;;) {
+        if (bp.word_addr == 0) {
+            // Error.
+            result = 0;
+            // std::cout << "--- Error\n";
+            return 0;
+        }
+        uint8_t c = bp.get_byte();
+        index++;
+        switch (c) {
+        case 0:
+        case 012:
+            // Empty fragment.
+empty:
+            result = 6;
+            // std::cout << "--- Delimiter = '" << (char)c << "'\n";
+            last_word_addr = bp.word_addr;
+            last_byte_index = bp.byte_index;
+            return c;
+
+        case ' ':
+            continue;
+
+        case '0':
+        case '1':
+        case '2':
+        case '3':
+        case '4':
+        case '5':
+        case '6':
+        case '7':
+        case '8':
+        case '9':
+        number:
+            value = c - '0';
+            for (;;) {
+                c = bp.get_byte();
+                index++;
+
+                if (!IS_DIGIT(c))
+                    break;
+
+                // Currently only octal numbers are supported.
+                value = (value << 3) + (c - '0');
+            }
+            if (negate)
+                value = -value;
+
+            // Return value, delimiter and it's index.
+            result = 1;
+            core.RMR = (Word)index << 24 | c;
+            // std::cout << "--- Number = 0" << std::oct << value << std::dec << ", delimiter = '" << (char)c << "', index = " << index << '\n';
+            last_word_addr = bp.word_addr;
+            last_byte_index = bp.byte_index;
+            return value;
+
+        case '-':
+            c = bp.peek_byte();
+            if (IS_DIGIT(c)) {
+                negate = true;
+                goto number;
+            }
+            c = '-';
+            goto empty;
+
+        case '*':
+        case '/':
+            if (star_slash_flag)
+                goto ident;
+            goto empty;
+
+        default:
+            if (!IS_CHAR(c))
+                goto empty;
+
+            // Get identifier.
+ident:
+            ident[0]  = c;
+            ident_len = 1;
+            memset(ident + 1, ' ', sizeof(ident) - 1);
+            while (ident_len < sizeof(ident)) {
+                c = bp.get_byte();
+                index++;
+
+                if (!IS_CHAR(c) && !IS_DIGIT(c) && (!star_slash_flag || (c != '*' && c != '/')))
+                    break;
+
+                // Currently only octal numbers are supported.
+                ident[ident_len++] = c;
+            }
+
+            // Only short identifiers are supported for now.
+            result = 4;
+            // std::cout << "--- Identifier = '" << std::setw(12) << ident << "'\n";
+            last_word_addr = bp.word_addr;
+            last_byte_index = bp.byte_index;
+            core.RMR = ((Word)ident[6] << 40) | ((Word)ident[7] << 32) | (ident[8] << 24) |
+                       (ident[9] << 16) | (ident[10] << 8) | ident[11];
+            return ((Word)ident[0] << 40) | ((Word)ident[1] << 32) | (ident[2] << 24) |
+                   (ident[3] << 16) | (ident[4] << 8) | ident[5];
+        }
+    }
+}
+
 //
 // Check whether value is large enough to be printed
 // in fixed format with given precision.
@@ -148,6 +414,10 @@ void Processor::e50()
     case 7:
         core.ACC = besm6_floor(core.ACC);
         break;
+    case 014:
+        // Parse a string.
+        core.ACC = e50_parse(core.ACC, core.M[14]);
+        break;
     case 017:
         // Format real numbers.
         core.ACC = e50_format_real(core.ACC, core.M[14]);
@@ -165,12 +435,12 @@ void Processor::e50()
     case 067: {
         // DATE*, OS Dubna specific.
         // Always return the same date/time, for easy testing.
-        static const Word     DAY   = 0x04;
-        static const Word     MONTH = 0x07; // July
-        static const Word     YEAR  = 0x24;
-        static const unsigned HOUR  = 0x23;
-        static const unsigned MIN   = 0x45;
-        static const unsigned SEC   = 0x56;
+        static const Word DAY      = 0x04;
+        static const Word MONTH    = 0x07; // July
+        static const Word YEAR     = 0x24;
+        static const unsigned HOUR = 0x23;
+        static const unsigned MIN  = 0x45;
+        static const unsigned SEC  = 0x56;
 
         // Date: DD MON YY
         //        |  |   |
@@ -178,8 +448,8 @@ void Processor::e50()
         // Time: 00.00.00
         //        |  |  |
         //       20  16 4 - shift
-        core.ACC = (DAY << 42) | (MONTH << 34) | (YEAR << 26) |
-                   (HOUR << 20) | (MIN << 12) | (SEC << 4);
+        core.ACC =
+            (DAY << 42) | (MONTH << 34) | (YEAR << 26) | (HOUR << 20) | (MIN << 12) | (SEC << 4);
         break;
     }
     case 075:
@@ -226,6 +496,9 @@ void Processor::e50()
         break;
     case 070217:
         // Unknown
+        break;
+    case 070236:
+        // Unknown, for DIPOL.
         break;
     case 071223:
         // Unknown, for Forex.

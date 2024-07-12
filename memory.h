@@ -70,7 +70,8 @@ public:
     unsigned word_addr;
     unsigned byte_index;
 
-    BytePointer(Memory &m, unsigned wa, unsigned bi = 0) : memory(m), word_addr(wa), byte_index(bi)
+    BytePointer(Memory &m, unsigned wa, unsigned bi = 0)
+        : memory(m), word_addr(wa), byte_index(bi)
     {
     }
 

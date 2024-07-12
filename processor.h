@@ -147,6 +147,9 @@ private:
     // Format word as real number.
     Word e50_format_real(Word input, unsigned &overflow);
 
+    // Parse text string.
+    Word e50_parse(Word input, unsigned &result);
+
 public:
     // Exception for unexpected situations.
     class Exception : public std::exception {

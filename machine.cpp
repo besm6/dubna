@@ -384,7 +384,7 @@ unsigned Machine::disk_find(Word tape_id)
         // Tape MONSYS in mounted on direction #30.
         return 030;
     } else {
-        std::cout << "\nTape not found " << tape_name_string(tape_id) << '\n';
+        std::cout << "\nTape not found: " << tape_name_string(tape_id) << '\n';
         return 0;
     }
 }

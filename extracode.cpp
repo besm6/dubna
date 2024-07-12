@@ -318,6 +318,10 @@ void Processor::e63()
         // Get phys.address of limits descriptor.
         core.ACC = 04000;
         return;
+    case 0575:
+        // Unknown, for DIPOL.
+        core.ACC = 05000;
+        return;
     case 0704:
         // Get page mode.
         // Bit 44 means disable page numbering.

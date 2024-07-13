@@ -43,7 +43,8 @@ const uint64_t Machine::DEFAULT_LIMIT = 100ULL * 1000 * 1000 * 1000;
 // Initialize the machine.
 //
 Machine::Machine(Memory &m)
-    : progress_time_last(std::chrono::steady_clock::now()), memory(m), cpu(*this, m)
+    : progress_time_last(std::chrono::steady_clock::now()), memory(m),
+      cpu(*this, m), puncher(m)
 {
 }
 
@@ -213,7 +214,10 @@ void Machine::load(std::istream &input)
         // Get next line.
         std::string line;
         getline(input, line);
-
+        if (line[0] == '`') {
+            Word word = std::stoul(line.c_str() + 1, nullptr, 8);
+            drum_write_word(1, offset++, word);
+        } else
         // Write to drum in COSY format.
         drum_write_cosy(1, offset, line);
     }

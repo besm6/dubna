@@ -302,8 +302,13 @@ void Processor::e63()
 {
     switch (core.M[016]) {
     case 1:
-        // Unknown, for BEMSH.
-        core.ACC = 0;
+#if 0
+        std::cout << "\nВРЕМЯ СЧЕТА: " << std::fixed <<
+            std::setprecision(2) << 1.0*clock() / CLOCKS_PER_SEC << '\n';
+#endif
+        core.ACC = 412 / 2;
+        return;
+    case 3:
         return;
     case 4:
         // Get CPU time in 1/50 of seconds.
@@ -598,7 +603,34 @@ void Processor::e61()
 //
 void Processor::e71()
 {
-    core.ACC = 0;
+    // Get start and end addresses from control word #0.
+    unsigned ctl_addr = core.M[016];
+    E64_Pointer ptr;
+    ptr.word = machine.mem_load(ctl_addr);
+
+    unsigned start = ADDR(ptr.field.start_addr + core.M[ptr.field.start_reg]);
+    unsigned end   = ADDR(ptr.field.end_addr + core.M[ptr.field.end_reg]);
+
+    switch (ptr.field.flags) {
+    case 1:                     // Punch
+        if ((end - start + 1) % 24 != 0)
+            throw Exception("Punched card buffer " + to_octal(start) +
+                            "-" + to_octal(end) + " has fractional cards");
+        machine.puncher.punch(start, end);
+        return;
+    case 4:                     // Terminal output?
+    {
+        auto a1 = start, a2 = end;
+        while (a1 <= a2) {
+            BytePointer bp(memory, ADDR(a1));
+            for (int i = 0; i < 6; ++i)
+                std::cout << std::oct << bp.get_byte() << ' ';
+            ++a1;
+        }
+        std::cout << std::endl;
+        return;
+    }
+    }
 }
 
 //

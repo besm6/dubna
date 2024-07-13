@@ -32,6 +32,7 @@
 #include "drum.h"
 #include "gost10859.h"
 #include "plotter.h"
+#include "puncher.h"
 #include "processor.h"
 
 class Machine {
@@ -89,8 +90,11 @@ public:
     // BESM-6 processor.
     Processor cpu;
 
-    // BESM-6 processor.
+    // Generic plotter interface.
     Plotter plotter;
+
+    // Output to punched cards.
+    Puncher puncher;
 
     // "MONSYS )" in TEXT encoding.
     static const Word TAPE_MONSYS = 055'57'56'63'71'63'00'11;

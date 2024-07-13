@@ -31,6 +31,7 @@ add_executable(unit_tests EXCLUDE_FROM_ALL
     session_test.cpp
     e64_test.cpp
     elem_func_test.cpp
+    cernlib_test.cpp
     util.cpp
 )
 add_dependencies(unit_tests ${PROJECT_NAME})

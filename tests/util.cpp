@@ -113,6 +113,23 @@ void create_file(const std::string &filename, const std::string &contents)
 }
 
 //
+// Create file with given contents.
+//
+void create_file(const std::string &dest_filename, const std::string &prolog,
+                 const std::string &src_filename, const std::string &epilog)
+{
+    std::ofstream output(dest_filename);
+    EXPECT_TRUE(output.is_open()) << dest_filename;
+
+    std::ifstream input(src_filename);
+    EXPECT_TRUE(input.is_open()) << src_filename;
+
+    output << prolog;
+    output << input.rdbuf();
+    output << epilog;
+}
+
+//
 // Check whether string starts with given prefix.
 //
 bool starts_with(const std::string &str, const char *prefix)

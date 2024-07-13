@@ -60,6 +60,8 @@ std::string stream_contents(FILE *input);
 // Create file with given contents.
 //
 void create_file(const std::string &filename, const std::string &contents);
+void create_file(const std::string &dest_filename, const std::string &prolog,
+                 const std::string &src_filename, const std::string &epilog);
 
 //
 // Check whether string starts with given prefix.

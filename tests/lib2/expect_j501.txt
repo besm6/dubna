@@ -1,0 +1,58 @@
+Read job 'cernlib_j501.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+              ЖЖЖ ЖЖЖЖ   ЖЖЖ     Ж
+                Ж Ж     Ж   Ж   ЖЖ
+                Ж ЖЖЖЖ  Ж   Ж  Ж Ж
+                Ж     Ж Ж   Ж    Ж
+                Ж     Ж Ж   Ж    Ж
+            Ж   Ж Ж   Ж Ж   Ж    Ж
+             ЖЖЖ   ЖЖЖ   ЖЖЖ    ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME J501
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         J501       01000                FT*643   E 02271                INT      E 04125                EBCDPUN  E 06044
+    OTCYTCTBYET  PLOTXY                  FT*723   E 02271                SQRT     E 04127                ISOTCOSY   06227
+    OTCYTCTBYET  SORTXY                  FT*003   E 02271                SIN      E 04130                ISOTCOS1 E 06300
+         PROGRAM  E 01000                BCDWRIT*   03257                COS      E 04131                OCTTDEC    06320
+         BCDREAD*   01722                FT*621   E 03257                ATAN     E 04132                R*TO*INT   06353
+         FT*521   E 01722                BCDENC*  E 03263                ALOG     E 04133                R*TO*I   E 06354
+         BCDDEC*  E 01726                FT*611   E 03263                EXP      E 04134                MONREAD*   06366
+         FT*531   E 01726                FT*571   E 03265                ALOG10   E 04140                READ*ERR E 06446
+         FT*541   E 01730                FT*561   E 03270                HOLITH     04144                *ICHECK* C 06472
+         IOCONT*    02217                NEXTLET* E 03275                READ*      04147                CARD2    C 06500
+         IOAC*    E 02250                RK*      E 03337                TTREAD     04175                ISOICTTR   06525
+         FT*722   E 02263                WSY*     E 03575                BCDBEG*    04233                REVCARD    06562
+         FT*642   E 02263                I/O*ERR  E 04035                FT2*     E 04540                DRUMTAP*   06607
+         FT*002   E 02263                STOP*      04062                KONV1*   E 04553                COSYTISO   06640
+         FD*642   E 02264                EXIT     E 04063                FMRTAPE    04647                *ПEPФOPA   06714
+         FD*722   E 02264                FLOAT      04111                LUNMUN   C 05576                KOД*CDC  E 06715
+         FC*722   E 02264                ABS      E 04114                PRINT8     05577                CHKWORD* C 06755
+         FC*642   E 02264                IABS     E 04117                JERRIO*  C 05760                CBOБOДHO   06756
+         FC*002   E 02264                IFIX     E 04121                TTPRINT    05761
+         IOEND*   E 02271                AINT     E 04123                BCDPUN     06020
+≠
+------------------------------------------------------------
+   Elapsed time: 0.057 seconds
+      Simulated: 2653452 instructions
+Simulation rate: 46287060 instructions/sec

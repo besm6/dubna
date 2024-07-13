@@ -1,0 +1,42 @@
+Read job 'cernlib_f404.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖЖЖ     Ж  ЖЖЖ      Ж
+            Ж        ЖЖ Ж   Ж    ЖЖ
+            ЖЖЖЖ    Ж Ж Ж   Ж   Ж Ж
+            Ж      Ж  Ж Ж   Ж  Ж  Ж
+            Ж     Ж   Ж Ж   Ж Ж   Ж
+            Ж     ЖЖЖЖЖ Ж   Ж ЖЖЖЖЖ
+            Ж         Ж  ЖЖЖ      Ж
+
+
+
+
+
+
+
+
+*NAME F404
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+                  11
+                   1
+                   0
+                   1
+                   1
+                   0
+------------------------------------------------------------
+   Elapsed time: 0.050 seconds
+      Simulated: 2334838 instructions
+Simulation rate: 46765037 instructions/sec

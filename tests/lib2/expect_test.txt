@@ -1,0 +1,40 @@
+Read job 'cernlib_test.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖЖЖ ЖЖЖЖ   ЖЖЖ  ЖЖЖЖЖ
+              Ж   Ж     Ж       Ж
+              Ж   ЖЖЖ    ЖЖЖ    Ж
+              Ж   Ж         Ж   Ж
+              Ж   Ж         Ж   Ж
+              Ж   Ж     Ж   Ж   Ж
+              Ж   ЖЖЖЖЖ  ЖЖЖ    Ж
+
+
+
+
+
+
+
+
+*NAME TEST
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*END SEGMENT
+ ***  ПЛOXAЯ YПPABЛЯЮЩAЯ KAPTA
+*
+*
+*END FILE
+------------------------------------------------------------
+   Elapsed time: 0.075 seconds
+      Simulated: 3254536 instructions
+Simulation rate: 43524386 instructions/sec

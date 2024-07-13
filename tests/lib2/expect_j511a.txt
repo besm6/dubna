@@ -1,0 +1,44 @@
+Read job 'cernlib_j511a.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+              ЖЖЖ ЖЖЖЖ     Ж     Ж   ЖЖЖ
+                Ж Ж       ЖЖ    ЖЖ  Ж   Ж
+                Ж ЖЖЖЖ   Ж Ж   Ж Ж  Ж   Ж
+                Ж     Ж    Ж     Ж  Ж   Ж
+                Ж     Ж    Ж     Ж  Ж   Ж
+            Ж   Ж Ж   Ж    Ж     Ж  ЖЖЖЖЖ
+             ЖЖЖ   ЖЖЖ    ЖЖЖ   ЖЖЖ Ж   Ж
+
+
+
+
+
+
+
+
+*NAME J511A
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         J511A      01000                FLOAT      01075                SQRT     E 01113                ALOG10   E 01124
+    OTCYTCTBYET  MAP                     ABS      E 01100                SIN      E 01114                R*TO*INT   01130
+         PROGRAM  E 01000                IABS     E 01103                COS      E 01115                R*TO*I   E 01131
+         STOP*      01030                IFIX     E 01105                ATAN     E 01116                CBOБOДHO   01143
+         EXIT     E 01031                AINT     E 01107                ALOG     E 01117
+         F          01057                INT      E 01111                EXP      E 01120
+≠
+------------------------------------------------------------
+   Elapsed time: 0.035 seconds
+      Simulated: 1749050 instructions
+Simulation rate: 50166356 instructions/sec

@@ -1,0 +1,41 @@
+Read job 'cernlib_g200.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+             ЖЖЖ   ЖЖЖ   ЖЖЖ   ЖЖЖ
+            Ж   Ж Ж   Ж Ж   Ж Ж   Ж
+            Ж         Ж Ж   Ж Ж   Ж
+            Ж        Ж  Ж   Ж Ж   Ж
+            Ж  ЖЖ   Ж   Ж   Ж Ж   Ж
+            Ж   Ж  Ж    Ж   Ж Ж   Ж
+             ЖЖЖ  ЖЖЖЖЖ  ЖЖЖ   ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME G200
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+                                                  TEST G200
+ INAPPROPRIATE PROBABILITY FOR SUBROUTINE STUDNT.  P= -2.0000000000-01           MUST BE  0.LT.P.AND.P.LT.1
+ CALLED FROM B25..1                                                                MIST= 2
+ INAPPROPRIATE ACCURACY FOR SUBROUTINE STUDNT.  A= -1.0000000000-09              MUST BE  0.00000001.LE.A.AND.A.LE.1
+ CALLED FROM B25..2                                                                MIST= 3
+ INAPPROPRIATE ACCURACY FOR SUBROUTINE STUDNT.  A=  3.7000000000+01              MUST BE  0.00000001.LE.A.AND.A.LE.1
+ CALLED FROM B25..3                                                                MIST= 3
+ IT IS NOT ENOUGH NUMBER OF TRIALS FOR SUBROUTINE STUDNT.  N=  -600         MUST BE N.GT.1
+ CALLED FROM B25..4                                                                MIST= 4

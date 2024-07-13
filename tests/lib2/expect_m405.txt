@@ -1,0 +1,51 @@
+Read job 'cernlib_m405.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            Ж   Ж     Ж  ЖЖЖ  ЖЖЖЖ
+            ЖЖ ЖЖ    ЖЖ Ж   Ж Ж
+            Ж Ж Ж   Ж Ж Ж   Ж ЖЖЖЖ
+            Ж Ж Ж  Ж  Ж Ж   Ж     Ж
+            Ж   Ж Ж   Ж Ж   Ж     Ж
+            Ж   Ж ЖЖЖЖЖ Ж   Ж Ж   Ж
+            Ж   Ж     Ж  ЖЖЖ   ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME M405
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         M405       01000                IOCONT*    01674                FT*003   E 01746                OCTTDEC    05046
+    OTCYTCTBYET  INVERT                  IOAC*    E 01725                STOP*      02734                LUNMUN   C 05101
+         PROGRAM  E 01000                FT*722   E 01740                EXIT     E 02735                JERRIO*  C 05102
+         BCDWRIT*   01071                FT*642   E 01740                BCDBEG*    02763                CARD2    C 05103
+         FT*621   E 01071                FT*002   E 01740                FT2*     E 03270                ISOICTTR   05130
+         BCDENC*  E 01075                FD*642   E 01741                KONV1*   E 03303                REVCARD    05165
+         FT*611   E 01075                FD*722   E 01741                PRINT8     03377                *ICHECK* C 05212
+         FT*571   E 01077                FC*722   E 01741                TTPRINT    03560                *ПEPФOPA   05220
+         FT*561   E 01102                FC*642   E 01741                BCDPUN     03617                KOД*CDC  E 05221
+         NEXTLET* E 01107                FC*002   E 01741                EBCDPUN  E 03643                CBOБOДHO   05261
+         RK*      E 01151                IOEND*   E 01746                ISOTCOSY   04026
+         WSY*     E 01407                FT*643   E 01746                ISOTCOS1 E 04077
+         I/O*ERR  E 01647                FT*723   E 01746                FMRTAPE    04117
+≠
+------------------------------------------------------------
+   Elapsed time: 0.035 seconds
+      Simulated: 1735637 instructions
+Simulation rate: 48931155 instructions/sec

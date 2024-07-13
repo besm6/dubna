@@ -1,0 +1,52 @@
+Read job 'cernlib_d540.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖ   ЖЖЖЖ      Ж  ЖЖЖ
+            Ж  Ж  Ж        ЖЖ Ж   Ж
+            Ж   Ж ЖЖЖЖ    Ж Ж Ж   Ж
+            Ж   Ж     Ж  Ж  Ж Ж   Ж
+            Ж   Ж     Ж Ж   Ж Ж   Ж
+            Ж   Ж Ж   Ж ЖЖЖЖЖ Ж   Ж
+            ЖЖЖЖ   ЖЖЖ      Ж  ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME D540
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         D540       01000                I/O*ERR  E 02720                FT*003   E 03017                ISOTCOS1 E 05174
+    OTCYTCTBYET  HLSE                    IOCONT*    02745                STOP*      04005                FMRTAPE    05214
+    OTCYTCTBYET  HLSR                    IOAC*    E 02776                EXIT     E 04006                OCTTDEC    06143
+    OTCYTCTBYET  HLS                     FT*722   E 03011                I*DI*I     04034                LUNMUN   C 06176
+         PROGRAM  E 01000                FT*642   E 03011                I*ST*L   E 04044                JERRIO*  C 06177
+         BCDWRIT*   02142                FT*002   E 03011                I*MU*I   E 04045                CARD2    C 06200
+         FT*621   E 02142                FD*642   E 03012                BCDBEG*    04060                ISOICTTR   06225
+         BCDENC*  E 02146                FD*722   E 03012                FT2*     E 04365                REVCARD    06262
+         FT*611   E 02146                FC*722   E 03012                KONV1*   E 04400                *ICHECK* C 06307
+         FT*571   E 02150                FC*642   E 03012                PRINT8     04474                *ПEPФOPA   06315
+         FT*561   E 02153                FC*002   E 03012                TTPRINT    04655                KOД*CDC  E 06316
+         NEXTLET* E 02160                IOEND*   E 03017                BCDPUN     04714                CBOБOДHO   06356
+         RK*      E 02222                FT*643   E 03017                EBCDPUN  E 04740
+         WSY*     E 02460                FT*723   E 03017                ISOTCOSY   05123
+≠
+------------------------------------------------------------
+   Elapsed time: 0.069 seconds
+      Simulated: 3079778 instructions
+Simulation rate: 44951076 instructions/sec

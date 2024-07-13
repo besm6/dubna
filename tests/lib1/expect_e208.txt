@@ -1,0 +1,56 @@
+Read job 'cernlib_e208.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖЖ   ЖЖЖ   ЖЖЖ   ЖЖЖ
+            Ж     Ж   Ж Ж   Ж Ж   Ж
+            ЖЖЖ       Ж Ж   Ж  Ж Ж
+            Ж        Ж  Ж   Ж   Ж
+            Ж       Ж   Ж   Ж  Ж Ж
+            Ж      Ж    Ж   Ж Ж   Ж
+            ЖЖЖЖЖ ЖЖЖЖЖ  ЖЖЖ   ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME E208
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         E208       01000                FD*722   E 02036                EBCDPUN  E 05206                ABS      E 07222
+         PROGRAM  E 01000                FC*722   E 02036                ISOTCOSY   05371                IABS     E 07225
+         BCDWRIT*   01166                FC*642   E 02036                ISOTCOS1 E 05442                IFIX     E 07227
+         FT*621   E 01166                FC*002   E 02036                FMRTAPE    05462                AINT     E 07231
+         BCDENC*  E 01172                IOEND*   E 02043                OCTTDEC    06411                INT      E 07233
+         FT*611   E 01172                FT*643   E 02043                LUNMUN   C 06444                SQRT     E 07235
+         FT*571   E 01174                FT*723   E 02043                JERRIO*  C 06445                SIN      E 07236
+         FT*561   E 01177                FT*003   E 02043                MATIN1     06446                COS      E 07237
+         NEXTLET* E 01204                STOP*      03031                UCOPY      07007                ATAN     E 07240
+         RK*      E 01246                EXIT     E 03032                I*MUI*     07050                ALOG     E 07241
+         WSY*     E 01504                LSQ        03060                I*DI*I     07056                EXP      E 07242
+         I/O*ERR  E 01744           OTCYTCTBYET  UZERO                   I*ST*L   E 07066                ALOG10   E 07246
+         IOCONT*    01771                BCDBEG*    04326                I*MU*I   E 07067                *ПEPФOPA   07252
+         IOAC*    E 02022                FT2*     E 04633                CARD2    C 07102                KOД*CDC  E 07253
+         FT*722   E 02035                KONV1*   E 04646                ISOICTTR   07127                R*TO*INT   07313
+         FT*642   E 02035                PRINT8     04742                REVCARD    07164                R*TO*I   E 07314
+         FT*002   E 02035                TTPRINT    05123                *ICHECK* C 07211                CBOБOДHO   07326
+         FD*642   E 02036                BCDPUN     05162                FLOAT      07217
+≠
+------------------------------------------------------------
+   Elapsed time: 0.054 seconds
+      Simulated: 2513909 instructions
+Simulation rate: 46307753 instructions/sec

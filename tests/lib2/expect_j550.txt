@@ -1,0 +1,40 @@
+Read job 'cernlib_j550.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+              ЖЖЖ ЖЖЖЖ  ЖЖЖЖ   ЖЖЖ
+                Ж Ж     Ж     Ж   Ж
+                Ж ЖЖЖЖ  ЖЖЖЖ  Ж   Ж
+                Ж     Ж     Ж Ж   Ж
+                Ж     Ж     Ж Ж   Ж
+            Ж   Ж Ж   Ж Ж   Ж Ж   Ж
+             ЖЖЖ   ЖЖЖ   ЖЖЖ   ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME J550
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         J550       01000                PROGRAM  E 01000                EXIT     E 05013                CBOБOДHO   05047
+    OTCYTCTBYET  AREAPT                  STOP*      05012                I*MUI*     05041
+≠
+------------------------------------------------------------
+   Elapsed time: 0.030 seconds
+      Simulated: 1421698 instructions
+Simulation rate: 47461125 instructions/sec

@@ -1,0 +1,54 @@
+Read job 'cernlib_f203.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖЖЖ  ЖЖЖ   ЖЖЖ  ЖЖЖЖЖ
+            Ж     Ж   Ж Ж   Ж    Ж
+            ЖЖЖЖ      Ж Ж   Ж   Ж
+            Ж        Ж  Ж   Ж    Ж
+            Ж       Ж   Ж   Ж     Ж
+            Ж      Ж    Ж   Ж Ж   Ж
+            Ж     ЖЖЖЖЖ  ЖЖЖ   ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME F203
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         F203       01000                FT*642   E 03025                STOP*      04316                READ*      06473
+    OTCYTCTBYET  EIMA                    FT*002   E 03025                EXIT     E 04317                TTREAD     06521
+         PROGRAM  E 01000                FD*642   E 03026                I*MUI*     04345                CARD2    C 06557
+         BCDWRIT*   02156                FD*722   E 03026                BCDBEG*    04353                ISOICTTR   06604
+         FT*621   E 02156                FC*722   E 03026                FT2*     E 04660                REVCARD    06641
+         BCDENC*  E 02162                FC*642   E 03026                KONV1*   E 04673                *ICHECK* C 06666
+         FT*611   E 02162                FC*002   E 03026                PRINT8     04767                MONREAD*   06674
+         FT*571   E 02164                IOEND*   E 03033                TTPRINT    05150                READ*ERR E 06754
+         FT*561   E 02167                FT*643   E 03033                BCDPUN     05207                *ПEPФOPA   07000
+         NEXTLET* E 02174                FT*723   E 03033                EBCDPUN  E 05233                KOД*CDC  E 07001
+         RK*      E 02236                FT*003   E 03033                ISOTCOSY   05416                DRUMTAP*   07041
+         WSY*     E 02474                BCDREAD*   04021                ISOTCOS1 E 05467                COSYTISO   07072
+         I/O*ERR  E 02734                FT*521   E 04021                FMRTAPE    05507                CHKWORD* C 07146
+         IOCONT*    02761                BCDDEC*  E 04025                OCTTDEC    06436                CBOБOДHO   07147
+         IOAC*    E 03012                FT*531   E 04025                LUNMUN   C 06471
+         FT*722   E 03025                FT*541   E 04027                JERRIO*  C 06472
+≠
+------------------------------------------------------------
+   Elapsed time: 0.058 seconds
+      Simulated: 2811200 instructions
+Simulation rate: 48786922 instructions/sec

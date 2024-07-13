@@ -1,0 +1,40 @@
+Read job 'cernlib_k451a.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            Ж  Ж      Ж ЖЖЖЖ     Ж   ЖЖЖ
+            Ж Ж      ЖЖ Ж       ЖЖ  Ж   Ж
+            ЖЖ      Ж Ж ЖЖЖЖ   Ж Ж  Ж   Ж
+            Ж Ж    Ж  Ж     Ж    Ж  Ж   Ж
+            Ж  Ж  Ж   Ж     Ж    Ж  Ж   Ж
+            Ж   Ж ЖЖЖЖЖ Ж   Ж    Ж  ЖЖЖЖЖ
+            Ж   Ж     Ж  ЖЖЖ    ЖЖЖ Ж   Ж
+
+
+
+
+
+
+
+
+*NAME K451A
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*MAIN BUFMT9
+*EXECUTE
+≠
+    OTCYTCTBYET  BUFMT9                  CBOБOДHO   01000
+≠
+------------------------------------------------------------
+   Elapsed time: 0.064 seconds
+      Simulated: 2751879 instructions
+Simulation rate: 43242701 instructions/sec

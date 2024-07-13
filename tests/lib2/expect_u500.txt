@@ -1,0 +1,55 @@
+Read job 'cernlib_u500.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            Ж   Ж ЖЖЖЖ   ЖЖЖ   ЖЖЖ
+            Ж   Ж Ж     Ж   Ж Ж   Ж
+            Ж   Ж ЖЖЖЖ  Ж   Ж Ж   Ж
+            Ж   Ж     Ж Ж   Ж Ж   Ж
+            Ж   Ж     Ж Ж   Ж Ж   Ж
+            Ж   Ж Ж   Ж Ж   Ж Ж   Ж
+             ЖЖЖ   ЖЖЖ   ЖЖЖ   ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME U500
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         U500       01000                FT*002   E 02322                IFIX     E 03544                ISOTCOSY   04632
+    OTCYTCTBYET  DSMALL                  FD*642   E 02323                AINT     E 03546                ISOTCOS1 E 04703
+         PROGRAM  E 01000                FD*722   E 02323                INT      E 03550                FMRTAPE    04723
+         BCDWRIT*   01453                FC*722   E 02323                SQRT     E 03552                OCTTDEC    05652
+         FT*621   E 01453                FC*642   E 02323                SIN      E 03553                LUNMUN   C 05705
+         BCDENC*  E 01457                FC*002   E 02323                COS      E 03554                JERRIO*  C 05706
+         FT*611   E 01457                IOEND*   E 02330                ATAN     E 03555                R*TO*INT   05707
+         FT*571   E 01461                FT*643   E 02330                ALOG     E 03556                R*TO*I   E 05710
+         FT*561   E 01464                FT*723   E 02330                EXP      E 03557                CARD2    C 05722
+         NEXTLET* E 01471                FT*003   E 02330                ALOG10   E 03563                ISOICTTR   05747
+         RK*      E 01533                STOP*      03316                BCDBEG*    03567                REVCARD    06004
+         WSY*     E 01771                EXIT     E 03317                FT2*     E 04074                *ICHECK* C 06031
+         I/O*ERR  E 02231                VZERO      03345                KONV1*   E 04107                *ПEPФOPA   06037
+         IOCONT*    02256                FTEST      03404                PRINT8     04203                KOД*CDC  E 06040
+         IOAC*    E 02307                FLOAT      03534                TTPRINT    04364                CBOБOДHO   06100
+         FT*722   E 02322                ABS      E 03537                BCDPUN     04423
+         FT*642   E 02322                IABS     E 03542                EBCDPUN  E 04447
+≠
+------------------------------------------------------------
+   Elapsed time: 0.105 seconds
+      Simulated: 4640806 instructions
+Simulation rate: 44247879 instructions/sec

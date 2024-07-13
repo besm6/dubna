@@ -1,0 +1,163 @@
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖЖЖ Ж   Ж ЖЖЖЖЖ   ЖЖЖ Ж   Ж  ЖЖЖ  ЖЖЖЖЖ ЖЖЖЖ  Ж  Ж   ЖЖЖ           Ж   ЖЖЖ
+            Ж     Ж   Ж Ж      Ж  Ж Ж   Ж Ж   Ж   Ж   Ж     Ж Ж   Ж   Ж         ЖЖ  Ж   Ж
+            ЖЖЖЖ  Ж   Ж ЖЖЖЖ   Ж  Ж Ж   Ж Ж   Ж   Ж   ЖЖЖ   ЖЖ    Ж   Ж        Ж Ж      Ж
+            Ж   Ж Ж  ЖЖ Ж   Ж  Ж  Ж Ж  ЖЖ Ж   Ж   Ж   Ж     Ж Ж   Ж   Ж          Ж     Ж
+            Ж   Ж Ж Ж Ж Ж   Ж  Ж  Ж Ж Ж Ж Ж   Ж   Ж   Ж     Ж  Ж  Ж   Ж          Ж    Ж
+            Ж   Ж ЖЖ  Ж Ж   Ж  Ж  Ж ЖЖ  Ж Ж   Ж   Ж   Ж     Ж   Ж ЖЖЖЖЖ          Ж   Ж
+            ЖЖЖЖ  Ж   Ж ЖЖЖЖ  Ж   Ж Ж   Ж  ЖЖЖ    Ж   ЖЖЖЖЖ Ж   Ж Ж   Ж         ЖЖЖ ЖЖЖЖЖ
+
+
+
+
+
+
+
+
+*NAME БИБЛИOTEKA 12
+*TAPE:12/******,32
+*PERSO:320375
+*
+*CALL SETFTN:ONE,LONG
+*CALL TCATALOG                                             04 ИЮЛ 24 23.45
+                      TEMPORARY LIBRARY
+                     CBOБOДHO  22 35 36
+
+   ACOMP      21 10 33  00244    FACTOR     22 11 22  00106
+   AL         21 33 26  00336    FFT        21 30 11  00317
+   AN66ZF   (EX66ZF  )  00003    FIGI       22 31 31  00143
+   ANGL       21 07 17  00071    FIGI2      22 32 17  00252
+   BAKVEC     22 31 25  00176    FIN      (DEC     )  00001
+   BLEQ       22 06 36  01205    FINT       21 30 24  00274
+   BOUNDS     22 23 15  00234    FIXPAR     21 21 04  00146
+   BUCMVE     22 24 11  00151    FLOW       22 25 22  00605
+   BUKDMP   (TREDMP  )  00001    FLTSOR     22 10 01  00165
+   CDOTC      22 34 12  00116    FNC        21 14 20  00370
+   CFIX       22 10 06  00022    FRATIO     21 05 00  00131
+   CFLOAT     22 10 05  00026    GAUSS2     22 14 31  00031
+   CHECAL     21 34 06  01120    GENPNT     22 20 07  00346
+   CINV1      22 34 00  00457    GS10       22 12 01  00132
+   CINVIT     22 26 36  01335    GS12       22 11 37  00074
+   COEFF      21 33 36  00355    HESS       22 04 01  00713
+   COMBAK     22 31 17  00270    HESSEN     22 01 27  00540
+   COMBES     22 10 15  00234    HHPIV      21 27 36  00065
+   COVAR      21 32 12  00300    HHSMSQ     21 30 00  00044
+   CPOLY      21 05 07  12722    HHSTEP     21 30 02  00121
+   CRONOR   (ERCROS  )  00001    HHSWOP     21 30 05  00045
+   CROUT      22 13 35  00542    HHUK       21 30 07  00075
+   CSIGN      22 14 32  00051    HLS        21 27 01  01017
+   CUR1FT     22 16 11  01403    HLSE       21 27 25  00443
+   CUR2FT     22 14 34  02635    HLSR       21 27 21  00173
+   CXSQRT     22 03 36  00106    IDEN     (RATIO   )  00011
+   DEC        21 13 14  04027    INSALL   (INSLIB  )  00001
+   DET        22 15 31  00357    INSAUT     21 11 34  00433
+   DETERM     22 16 01  00406    INSINT   (INSAUT  )  00001
+   DEXDIN     21 20 36  00123    INSLIB     22 32 36  01214
+   DEZBEL     22 25 37  00117    INTGRL     22 17 31  00633
+   DIFEQ1     21 11 20  00156    INTOEX     21 21 11  00045
+   DIFEQ2     21 11 24  00222    INTSOR     22 07 35  00166
+   DIFF     (FRATIO  )  00003    INTSTP     21 11 30  00262
+   DIR      (RATIO   )  00004    INUM     (RATIO   )  00010
+   DIST       22 16 22  00035    INV      (RATIO   )  00013
+   DIVID      21 06 37  00201    INVIT      22 30 16  02041
+   DOT        22 15 17  00061    IPACK      22 26 17  00041
+   DOT4     (DOT     )  00002    J1         21 33 21  00037
+   DOTI     (DOT     )  00001    JNORM      22 11 01  00145
+   DOTNOR     22 15 21  00052    JRECUR     22 10 32  00132
+   DUMMY      22 26 22  00024    JSUM       22 10 35  00176
+   DVNBKD     22 16 24  00023    LAG        22 02 35  03102
+   DVNOPT     22 16 31  00025    LIBLIST    22 26 21  00001
+   EDICO      22 13 10  00244    LINVER     22 13 16  00746
+   EIG5       22 02 21  00603    LOGGAM     22 11 25  00341
+   EIMA       22 04 17  03741    LOOKUP     21 30 20  00163
+   ELMBAK     22 32 12  00235    LORENC     22 15 23  00103
+   ENDING     21 11 13  00224    LOTRAN     22 15 26  00115
+   EQUILI     22 14 13  00166    LSQFIT     21 30 31  35057
+   ERCROS     22 12 03  00270    MALIK      21 12 04  02437
+   ERDOT      22 12 23  00244    MATIN      21 21 13  01004
+   ERDOTN   (ERDOT   )  00001    MATIN4     21 14 32  00756
+   ERMIV    (ERMOD   )  00001    METHOD     21 10 17  00305
+   ERMOD      22 13 01  00107    MIDATA     21 21 27  00725
+   ERNORM     22 13 04  00133    MINCOD     22 26 02  00312
+   ERSCAL     22 12 31  00117    MINCON     21 16 23  22775
+   ESTEY      21 31 24  00577    MINOS      21 22 10  03247
+   EX66ZF     22 14 30  00011    MINPRI     22 26 10  00301
+   EXCLIB   (INSLIB  )  00672    MINPUN   (MINPRI  )  00001
+   EXMBUC     22 20 27  00664    MINROS     21 13 13  00012
+   EXTOIN     21 21 02  00046    MINUIT     21 20 25  00311
+   MPRINT     21 23 22  00403    SPLIT      22 21 06  06544
+   MPUNCH     21 23 34  00131    START1     22 10 30  00066
+   MULLRC     21 07 21  00755    STAT       21 11 01  00525
+   MXADD      22 33 34  00172    STDDEV     21 32 00  00477
+   MXDMA      22 33 24  00106    STREAM     22 24 37  01134
+   MXDMAL     22 33 27  00230    SUMM     (FRATIO  )  00001
+   MXDMAR   (MXDMAL  )  00001    TASUM2     21 35 36  00121
+   MXDML    (MXDMAL  )  00002    TAUROS     21 26 11  05024
+   MXDMR    (MXDMAL  )  00003    TEST       21 06 10  00711
+   MXEQU      21 13 01  00461    TRACE      22 03 33  00103
+   MXEQU1   (MXEQU   )  00001    TREAUD     22 23 23  00761
+   MXMTR    (MXADD   )  00003    TREDMP     22 20 17  00364
+   MXNTR    (MXADD   )  00004    TRISCA     22 12 34  00215
+   MXSUB    (MXADD   )  00001    TRIVEC     22 12 12  00376
+   MXTRA    (MXADD   )  00002    TSTURM     22 27 25  01454
+   NCOEF      21 06 27  00077    USRINT     22 16 33  00042
+   NEAR       21 07 15  00040    USRTRM     22 16 32  00022
+   NEG        21 05 04  00026    VALUE      21 05 05  00030
+   NEGN       22 10 24  00201    VALUE2     21 06 31  00264
+   NEWLIB   (INSLIB  )  00670    VMODUL     22 16 23  00027
+   NODAUD     22 24 00  00571    VP         21 20 24  00040
+   OR66ZF   (EX66ZF  )  00006    VRLTV      21 12 03  00005
+   ORTBAK     22 31 35  00245    VV         21 11 10  00131
+   ORTHES     22 32 02  00410    WIEL       22 05 37  02317
+   ORTRAN     22 32 25  00314    WRONSK     22 10 22  00114
+   OVER       21 05 24  00070    WTS        22 11 34  00100
+   OVER1      21 05 26  00300    XPLSDX     21 26 03  00047
+   OVER2      21 06 03  00222    YGNU       22 11 11  00217
+   OVER3      21 05 34  00335    YRECUR     22 11 15  00137
+   PAER       21 15 07  03753    YSUM       22 11 04  00267
+   PAER6      21 24 01  02603    YZERO      22 11 20  00047
+   PARTN      22 16 35  01471    ZEROS      21 07 04  00426
+   PEXTF      21 25 10  00065    ZZR        21 10 26  00207
+   PINTF      21 25 13  00176
+   POLFIT     21 31 12  00533
+   POLY2      21 10 01  01124
+   POLYNL     21 31 03  00351
+   POW      (FRATIO  )  00005
+   PRINTF     22 10 07  00263
+   PRINTX     21 34 32  02167
+   PROD     (FRATIO  )  00002
+   PRODUC     22 14 10  00127
+   PROGRAM  (DUMMY   )  00000
+   PROGRAM  (MINCON  )  00000
+   PSI        21 33 22  00177
+   PSI1       21 32 20  30160
+   PUNCHX     21 36 01  06455
+   QREIG      22 01 14  00562
+   QRT        22 02 02  00757
+   QUAD       22 24 15  05045
+   QUASI      22 22 12  00627
+   QUOT     (FRATIO  )  00004
+   RATIO      21 05 06  00017
+   RATQR      22 26 23  00555
+   RDSTAR     22 32 33  00073
+   REC      (RATIO   )  00006
+   RECPAR     22 22 27  01726
+   RESIDU     22 14 17  00163
+   RESTOR     21 25 20  00133
+   SEEK       21 25 24  01702
+   SETSW      21 20 22  00051
+   SETSW4     21 14 30  00054
+   SOLVE      22 14 23  00225
+   SORTZV     22 07 21  01230
+   SPEED      21 26 05  00123
+
+*END FILE

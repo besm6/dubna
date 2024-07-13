@@ -1,0 +1,54 @@
+Read job 'cernlib_m404.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            Ж   Ж     Ж  ЖЖЖ      Ж
+            ЖЖ ЖЖ    ЖЖ Ж   Ж    ЖЖ
+            Ж Ж Ж   Ж Ж Ж   Ж   Ж Ж
+            Ж Ж Ж  Ж  Ж Ж   Ж  Ж  Ж
+            Ж   Ж Ж   Ж Ж   Ж Ж   Ж
+            Ж   Ж ЖЖЖЖЖ Ж   Ж ЖЖЖЖЖ
+            Ж   Ж     Ж  ЖЖЖ      Ж
+
+
+
+
+
+
+
+
+*NAME M404
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         M404       01000                FC*642   E 01475                STOP*      03273                OCTTDEC    05473
+    OTCYTCTBYET  IMBDZA                  FC*002   E 01475                EXIT     E 03274                MONREAD*   05526
+         PROGRAM  E 01000                IOEND*   E 01502                READ*      03322                READ*ERR E 05606
+         BCDREAD*   01133                FT*643   E 01502                TTREAD     03350                *ICHECK* C 05632
+         FT*521   E 01133                FT*723   E 01502                BCDBEG*    03406                CARD2    C 05640
+         BCDDEC*  E 01137                FT*003   E 01502                FT2*     E 03713                ISOICTTR   05665
+         FT*531   E 01137                BCDWRIT*   02470                KONV1*   E 03726                REVCARD    05722
+         FT*541   E 01141                FT*621   E 02470                FMRTAPE    04022                DRUMTAP*   05747
+         IOCONT*    01430                BCDENC*  E 02474                LUNMUN   C 04751                COSYTISO   06000
+         IOAC*    E 01461                FT*611   E 02474                PRINT8     04752                *ПEPФOPA   06054
+         FT*722   E 01474                FT*571   E 02476                JERRIO*  C 05133                KOД*CDC  E 06055
+         FT*642   E 01474                FT*561   E 02501                TTPRINT    05134                CHKWORD* C 06115
+         FT*002   E 01474                NEXTLET* E 02506                BCDPUN     05173                CBOБOДHO   06116
+         FD*642   E 01475                RK*      E 02550                EBCDPUN  E 05217
+         FD*722   E 01475                WSY*     E 03006                ISOTCOSY   05402
+         FC*722   E 01475                I/O*ERR  E 03246                ISOTCOS1 E 05453
+≠
+------------------------------------------------------------
+   Elapsed time: 0.043 seconds
+      Simulated: 2067664 instructions
+Simulation rate: 48630321 instructions/sec

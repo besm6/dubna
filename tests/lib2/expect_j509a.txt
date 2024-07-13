@@ -1,0 +1,54 @@
+Read job 'cernlib_j509a.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+              ЖЖЖ ЖЖЖЖ   ЖЖЖ   ЖЖЖ   ЖЖЖ
+                Ж Ж     Ж   Ж Ж   Ж Ж   Ж
+                Ж ЖЖЖЖ  Ж   Ж Ж   Ж Ж   Ж
+                Ж     Ж Ж   Ж Ж   Ж Ж   Ж
+                Ж     Ж Ж   Ж  ЖЖЖЖ Ж   Ж
+            Ж   Ж Ж   Ж Ж   Ж     Ж ЖЖЖЖЖ
+             ЖЖЖ   ЖЖЖ   ЖЖЖ   ЖЖЖ  Ж   Ж
+
+
+
+
+
+
+
+
+*NAME J509A
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         J509A      01000                FC*642   E 01633                STOP*      03431                ISOTCOS1 E 05617
+    OTCYTCTBYET  CONPRT                  FC*002   E 01633                EXIT     E 03432                OCTTDEC    05637
+         PROGRAM  E 01000                IOEND*   E 01640                I*MUI*     03460                MONREAD*   05672
+         BCDREAD*   01271                FT*643   E 01640                READ*      03466                READ*ERR E 05752
+         FT*521   E 01271                FT*723   E 01640                TTREAD     03514                *ICHECK* C 05776
+         BCDDEC*  E 01275                FT*003   E 01640                BCDBEG*    03552                CARD2    C 06004
+         FT*531   E 01275                BCDWRIT*   02626                FT2*     E 04057                ISOICTTR   06031
+         FT*541   E 01277                FT*621   E 02626                KONV1*   E 04072                REVCARD    06066
+         IOCONT*    01566                BCDENC*  E 02632                FMRTAPE    04166                DRUMTAP*   06113
+         IOAC*    E 01617                FT*611   E 02632                LUNMUN   C 05115                COSYTISO   06144
+         FT*722   E 01632                FT*571   E 02634                PRINT8     05116                *ПEPФOPA   06220
+         FT*642   E 01632                FT*561   E 02637                JERRIO*  C 05277                KOД*CDC  E 06221
+         FT*002   E 01632                NEXTLET* E 02644                TTPRINT    05300                CHKWORD* C 06261
+         FD*642   E 01633                RK*      E 02706                BCDPUN     05337                CBOБOДHO   06262
+         FD*722   E 01633                WSY*     E 03144                EBCDPUN  E 05363
+         FC*722   E 01633                I/O*ERR  E 03404                ISOTCOSY   05546
+≠
+------------------------------------------------------------
+   Elapsed time: 0.042 seconds
+      Simulated: 2023771 instructions
+Simulation rate: 47632711 instructions/sec

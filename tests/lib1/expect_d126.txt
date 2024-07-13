@@ -1,0 +1,36 @@
+Read job 'cernlib_d126.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖ      Ж   ЖЖЖ   ЖЖЖ
+            Ж  Ж    ЖЖ  Ж   Ж Ж
+            Ж   Ж  Ж Ж      Ж ЖЖЖЖ
+            Ж   Ж    Ж     Ж  Ж   Ж
+            Ж   Ж    Ж    Ж   Ж   Ж
+            Ж   Ж    Ж   Ж    Ж   Ж
+            ЖЖЖЖ    ЖЖЖ ЖЖЖЖЖ  ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME D126
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+                                        THE TEST OF THE SUBROUTINE D126(VPINT)
+                                        THE INTEGRAND FUNCTION IS F(X)=TAN(C*X)
+                                                       EXSAMPLE 1
+                    A=  1.000-02     B=  6.700+00     H=  1.000-02     EPS=  1.000-04     C=  4.000+02

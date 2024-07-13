@@ -1,0 +1,40 @@
+Read job 'cernlib_w100a.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            Ж   Ж    Ж   ЖЖЖ   ЖЖЖ   ЖЖЖ
+            Ж   Ж   ЖЖ  Ж   Ж Ж   Ж Ж   Ж
+            Ж   Ж  Ж Ж  Ж   Ж Ж   Ж Ж   Ж
+            Ж   Ж    Ж  Ж   Ж Ж   Ж Ж   Ж
+            Ж Ж Ж    Ж  Ж   Ж Ж   Ж Ж   Ж
+            Ж Ж Ж    Ж  Ж   Ж Ж   Ж ЖЖЖЖЖ
+             Ж Ж    ЖЖЖ  ЖЖЖ   ЖЖЖ  Ж   Ж
+
+
+
+
+
+
+
+
+*NAME W100A
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         W100A      01000                PROGRAM  E 01000                EXIT     E 01013
+    OTCYTCTBYET  TRAMP1                  STOP*      01012                CBOБOДHO   01041
+≠
+------------------------------------------------------------
+   Elapsed time: 0.021 seconds
+      Simulated: 1020828 instructions
+Simulation rate: 49045258 instructions/sec

@@ -1,0 +1,52 @@
+Read job 'cernlib_f112a.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖЖЖ    Ж     Ж   ЖЖЖ   ЖЖЖ
+            Ж       ЖЖ    ЖЖ  Ж   Ж Ж   Ж
+            ЖЖЖЖ   Ж Ж   Ж Ж      Ж Ж   Ж
+            Ж        Ж     Ж     Ж  Ж   Ж
+            Ж        Ж     Ж    Ж   Ж   Ж
+            Ж        Ж     Ж   Ж    ЖЖЖЖЖ
+            Ж       ЖЖЖ   ЖЖЖ ЖЖЖЖЖ Ж   Ж
+
+
+
+
+
+
+
+
+*NAME F112A
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         F112A      01000                WSY*     E 02025                FT*723   E 02364                ISOTCOS1 E 04702
+    OTCYTCTBYET  MXDMR                   I/O*ERR  E 02265                FT*003   E 02364                FMRTAPE    04722
+    OTCYTCTBYET  MXDML                   IOCONT*    02312                STOP*      03352                OCTTDEC    05651
+    OTCYTCTBYET  MXDMAR                  IOAC*    E 02343                EXIT     E 03353                LUNMUN   C 05704
+    OTCYTCTBYET  MXDMAL                  FT*722   E 02356                MXUTY      03401                JERRIO*  C 05705
+         PROGRAM  E 01000                FT*642   E 02356                MXTRP      03475                CARD2    C 05706
+         BCDWRIT*   01507                FT*002   E 02356                BCDBEG*    03566                ISOICTTR   05733
+         FT*621   E 01507                FD*642   E 02357                FT2*     E 04073                REVCARD    05770
+         BCDENC*  E 01513                FD*722   E 02357                KONV1*   E 04106                *ICHECK* C 06015
+         FT*611   E 01513                FC*722   E 02357                PRINT8     04202                *ПEPФOPA   06023
+         FT*571   E 01515                FC*642   E 02357                TTPRINT    04363                KOД*CDC  E 06024
+         FT*561   E 01520                FC*002   E 02357                BCDPUN     04422                CBOБOДHO   06064
+         NEXTLET* E 01525                IOEND*   E 02364                EBCDPUN  E 04446
+         RK*      E 01567                FT*643   E 02364                ISOTCOSY   04631
+≠
+------------------------------------------------------------
+   Elapsed time: 0.080 seconds
+      Simulated: 3366068 instructions
+Simulation rate: 42202986 instructions/sec

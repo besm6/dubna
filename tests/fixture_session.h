@@ -74,14 +74,15 @@ protected:
         std::string job_filename    = get_test_name() + ".dub";
         std::string input_dir       = (lib_num == 1) ? (TEST_DIR "/lib1/") : (TEST_DIR "/lib2/");
         std::string input_filename  = input_dir + file_base + ".f";
-//      std::string expect_filename = TEST_DIR "/expect_" + file_base + ".txt";
-        std::string prolog          = "*name cernlib\n"
-                                      "*no list\n"
+        std::string expect_filename = input_dir + "/expect_" + file_base + ".txt";
+        std::string prolog          = "*name " + file_base + "\n" +
+                                      "*library:1,2,3,12\n" +
+                                      "*call setftn:one,long\n" +
+                                      "*no list\n" +
                                       "*no load list\n";
         std::string epilog          = "*end file\n";
 
         // Create job file.
-        prolog += (lib_num == 1) ? "*library:1\n" : "*library:2\n";
         create_file(job_filename, prolog, input_filename, epilog);
         session->set_job_file(job_filename);
 
@@ -96,14 +97,13 @@ protected:
         // Get output.
         std::cout.rdbuf(save_cout);
         std::string result = output.str();
-#if 0
-        // Check result.
-        auto expect = file_contents(expect_filename);
-        check_output(result, expect);
-#else
+#if 1
         // Save result for debug.
         create_file("expect_" + file_base + ".txt", result);
 #endif
+        // Check result.
+        auto expect = file_contents(expect_filename);
+        check_output(result, expect);
     }
 
     //

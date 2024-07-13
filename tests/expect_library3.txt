@@ -1,0 +1,294 @@
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖЖЖ Ж   Ж ЖЖЖЖЖ   ЖЖЖ Ж   Ж  ЖЖЖ  ЖЖЖЖЖ ЖЖЖЖ  Ж  Ж   ЖЖЖ        ЖЖЖЖЖ
+            Ж     Ж   Ж Ж      Ж  Ж Ж   Ж Ж   Ж   Ж   Ж     Ж Ж   Ж   Ж          Ж
+            ЖЖЖЖ  Ж   Ж ЖЖЖЖ   Ж  Ж Ж   Ж Ж   Ж   Ж   ЖЖЖ   ЖЖ    Ж   Ж         Ж
+            Ж   Ж Ж  ЖЖ Ж   Ж  Ж  Ж Ж  ЖЖ Ж   Ж   Ж   Ж     Ж Ж   Ж   Ж          Ж
+            Ж   Ж Ж Ж Ж Ж   Ж  Ж  Ж Ж Ж Ж Ж   Ж   Ж   Ж     Ж  Ж  Ж   Ж           Ж
+            Ж   Ж ЖЖ  Ж Ж   Ж  Ж  Ж ЖЖ  Ж Ж   Ж   Ж   Ж     Ж   Ж ЖЖЖЖЖ       Ж   Ж
+            ЖЖЖЖ  Ж   Ж ЖЖЖЖ  Ж   Ж Ж   Ж  ЖЖЖ    Ж   ЖЖЖЖЖ Ж   Ж Ж   Ж        ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME БИБЛИOTEKA 3
+*TAPE:37/******,32
+*PERSO:320340
+                  ИCПOPЧEHЫ ПOДПPOГPAMMЫ:
+                          FFT32K
+*
+*CALL SETFTN:ONE,LONG
+*CALL TCATALOG                                             04 ИЮЛ 24 23.45
+                      TEMPORARY LIBRARY
+                     CBOБOДHO  25 04 23
+
+   *ALFAVI*   24 32 26  00102    CRPATH     22 14 36  00215
+   *BUKVA*    24 36 06  00063    CUBL       23 26 17  00631
+   *GOST*     21 27 07  00421    CYCLOD     24 17 17  00522
+   *GOST*P  (*GOST*  )  00003    DATIMA   (DATTIM  )  00004
+   ABSMAX     21 25 24  00040    DATTIM     23 37 02  00027
+   ABSMIN     21 25 26  00040    DAWSON     21 33 34  00404
+   AIT0       21 23 21  00077    DBINT5     22 25 20  00354
+   ALGLIB     23 36 27  00054    DECO       23 34 12  00021
+   ALPHA      24 21 11  04331    DET        21 32 14  00461
+   ALPHW      24 00 15  00477    DETER      21 22 37  00237
+   AOV1       24 31 32  00421    DETERM     21 23 05  00255
+   AOVB       23 31 20  01004    DFL        22 14 00  00563
+   AOVPAC     23 32 02  00404    DIAGM1     21 21 25  00051
+   AOVPRI     23 32 13  00752    DIAGM2     21 25 13  00050
+   AOVPRM     24 13 17  01216    DIAGVE     21 22 01  00030
+   AOVSYN     24 00 30  00530    DILOG      21 33 27  00215
+   ARG        21 26 00  00052    DINT77     21 17 31  00340
+   ASSTAP     23 37 07  00057    DIRECT     21 11 07  00262
+   B4BITS     22 00 17  00133    DIV        21 24 33  00065
+   B4DEC      21 27 23  00550    EDITM      24 34 35  00001
+   B4OCT      21 27 34  00133    EDITMA   (EDITMM  )  00001
+   BAIRS      22 03 15  00337    EDITMM     24 34 36  00651
+   BANDSO     21 16 02  00377    EGR978     23 37 06  00004
+   BCHKOR     22 27 02  00702    EIGENJ     22 07 23  00551
+   BEGACH     24 01 24  00063    EILER1     21 13 05  00142
+   BEGCHEC* (CHECCOD*)  00046    EKZ        22 02 33  00150
+   BEGRND   (RND     )  00013    ELUR       24 36 12  06757
+   BEGRUC   (RUCOAH  )  00005    ENDACH   (BEGACH  )  00000
+   BEGTIN     22 16 04  00110    ENDCHN     24 02 06  00050
+   BESSET     21 06 07  00250    EQVMEA     22 13 02  00111
+   BEUSER     23 36 31  03127    ERFC       23 34 13  00177
+   BIB        21 26 15  00023    ESTCOM     23 30 30  00250
+   BICOD      24 16 02  00770    ESTFAC     23 30 15  00342
+   BISEC      21 25 17  00102    EUKLID     24 15 20  00452
+   BISECT     22 07 14  00276    EULER      21 33 00  00117
+   BOZP       23 27 01  00055    EXCLIB   (INSLIB  )  00672
+   BQR        21 31 07  00767    EXPINT     22 02 31  00065
+   BROOTS     24 04 00  00067    EXPO       21 30 33  00035
+   BSL        24 32 31  01175    EXTR       22 27 36  00274
+   C          21 11 05  00052    EXTREM     22 23 36  01120
+   CARCTG     21 25 36  00034    FACT       21 22 25  00135
+   CHEBFI     21 20 16  00376    FACT1      22 03 25  00031
+   CHECCOD*   21 26 16  00053    FACTOR     21 22 16  00310
+   CHI2CO     23 30 10  00162    FAKTCO     23 37 11  00316
+   CHI2FA     22 12 34  00201    FAKTRE     24 00 01  00125
+   CHOBAN     22 16 07  00204    FCHI2      21 34 34  00030
+   CHOIC8     21 05 00  00044    FERF       21 22 35  00060
+   CHOICE     21 05 02  00030    FF         22 13 30  00346
+   CHOICO     22 00 22  00035    FFISHE     23 30 02  00247
+   CHOSOL     22 16 14  00173    FFT2       21 30 20  00470
+   CLOD       24 16 23  01526    FFT32K     22 01 33  01615
+   CLS2D      24 17 33  01672    FGAMMA     21 34 27  00170
+   COMEIG     21 05 04  01327    FILON      21 12 10  00343
+   COMPLE     22 15 07  00103    FILOTH     21 11 37  00356
+   CONFCO     23 30 25  00072    FILSMO     23 32 34  01004
+   CONFR1     22 05 03  00047    FORMTA     24 35 14  00046
+   CONFR2     22 05 05  00254    FRCOS      21 12 23  00062
+   CONFRE     23 30 36  00222    FRESNE     21 12 20  00117
+   CONGRA     21 15 27  00237    FRSIN      21 12 25  00063
+   CONSUM     24 01 26  00046    FSTUDE     22 07 37  00203
+   CORRFU     22 16 21  00175    G          23 33 30  00065
+   COSI       21 31 30  00040    GAMMA      24 20 32  00350
+   GAUSS      21 23 13  00226    KVIT       24 01 21  00106
+   GAUSSM     23 37 32  00321    LAG        22 02 37  00056
+   GIVETIME   21 27 01  00001    LAG1       22 03 01  00055
+   GIVSTE   (TAKSTE  )  00003    LAGR2      23 33 36  00406
+   GLIN       21 34 14  00272    LAGRAN     23 26 15  00062
+   GRAD1      22 25 37  00450    LEG        22 03 03  00053
+   GRAF       23 34 20  00426    LEGEND     22 03 05  00226
+   GRAF1      23 34 33  00467    LETI       21 23 24  00251
+   GRAF2      23 35 07  00645    LIBLIST    22 15 12  00001
+   GRAF3      23 35 26  00573    LININT     21 20 32  00055
+   GRAF4      23 36 04  00755    LINP       21 23 36  00053
+   HEAD       24 25 36  01720    LINT       21 24 00  00063
+   HERMIT     21 20 27  00102    LIST46   (LIST64  )  00006
+   I0         21 26 10  00106    LIST64     22 01 32  00013
+   I1         21 24 02  00110    LOO3       22 02 12  00106
+   I4IBM    (R4IBM   )  00037    LRCH       21 06 24  01150
+   IASORT     24 25 17  00217    LTEQGT     23 36 37  00014
+   II         22 05 20  01032    MAKC       21 22 11  00043
+   II1        22 06 02  00500    MAKC1      21 22 07  00057
+   INGAUS     23 33 32  00134    MATR       21 07 15  00123
+   INPUT      24 23 22  00046    MAXIM      21 25 32  00036
+   INSALL   (INSLIB  )  00001    MAXIMU     21 07 35  02170
+   INSLIB     22 15 13  01214    MBVSIM     21 35 25  01575
+   INT655     21 17 15  00267    MCOMP      22 11 24  00632
+   INTERM     22 06 26  00121    MDIAG1     21 21 23  00051
+   INTP       22 05 13  00215    MDIAG2     21 25 11  00050
+   INV1       21 14 00  00271    MF         22 25 31  00113
+   INV58      21 13 31  00321    MHK        25 02 23  00621
+   INV66      21 15 04  00157    MIH        23 26 35  00043
+   INVER      21 14 07  00320    MIH1       23 26 37  00057
+   INVER1     21 14 31  00316    MINCOG     24 07 10  00220
+   INVER2     21 14 16  00507    MINIM      21 25 30  00036
+   INVERG     23 37 20  00434    MINMAX     21 25 22  00055
+   INVERT     21 15 00  00131    MINMFL     22 04 11  01432
+   IPARTW     23 37 00  00012    MINONR     21 36 23  01221
+   ISAME7     24 36 10  00074    MISTER     24 34 34  00013
+   ISIMV      21 34 23  00043    MLFACT     23 31 04  00521
+   ISORT1     24 25 00  00201    MMULT1     21 21 17  00135
+   ISORT2     24 25 04  00627    MSIMPL     21 33 04  01070
+   ISOUPP     24 35 20  00052    MSQ1       21 21 13  00131
+   ISSYMB     24 34 32  00034    MSQ2       21 25 06  00117
+   ISTURM     24 03 30  00110    MULLER     21 35 04  00762
+   IZOL       24 32 04  01003    MVEC1      21 22 02  00047
+   J0         21 26 05  00112    MVEC2      21 21 37  00050
+   J1         21 26 02  00117    MXORD      22 26 12  00110
+   JACOBI     21 13 11  00366    N8T10      21 27 21  00054
+   JAVN3      22 30 05  05247    NAME4      22 01 31  00005
+   JAVN4      23 03 21  05354    NEWINT     21 17 24  00170
+   JAVNA      23 00 33  05210    NEWLIB   (INSLIB  )  00670
+   JAVNMA     23 06 13  05177    NEWLIS     21 27 02  00012
+   JAVNY      24 07 16  05610    NEWT       22 26 15  00237
+   K0         21 24 25  00115    NEWTEX     24 04 26  01124
+   K1         21 24 22  00120    NNR        23 33 16  00103
+   KFL        22 14 15  01002    NOLEQ      21 11 16  01005
+   KIF        23 26 04  00067    NORM       21 24 07  00074
+   KO         22 02 07  00106    NOTLIS   (NEWLIS  )  00006
+   KOCHN      22 26 23  00671    NQUANT     22 10 04  00144
+   KODIR      24 25 31  00176    NR         23 33 25  00114
+   KOPPBC     22 16 26  00145    NROOT      21 24 35  00075
+   KOPPCO     22 10 16  00411    NROOTS     24 04 02  00143
+   KOPPHE     22 10 35  00163    NTYPVT   (MISTER  )  00004
+   KPP        24 14 05  00206    NUMBER     24 02 11  00142
+   KTOS       24 24 27  00217    OBLAST     24 26 32  03561
+   KUTTAM     22 27 23  00407    ODCF       22 16 35  00367
+   KVINT      21 25 03  00112    ODCH       22 17 06  01017
+   OPTERM     22 01 30  00027    RFSTAP   (ASSTAP  )  00033
+   ORTX       24 00 05  00346    RGAFTI   (BEGTIN  )  00057
+   OTKAZ      21 34 26  00006    RGAM       21 34 05  00112
+   OTKCHN     24 02 10  00002    RGBETI   (BEGTIN  )  00051
+   OZENKA     22 12 02  01020    RK1STE     21 12 27  00145
+   P0460      22 00 25  00031    RND        22 01 21  00025
+   P0507      22 00 26  00036    RNDRND     23 36 25  00052
+   P0512      22 00 24  00030    ROMBIN     22 24 22  00136
+   P0513    (P0513N  )  00015    ROOT       21 22 31  00141
+   P0513A     22 00 30  00054    ROOTNP     24 03 23  00210
+   P0513C   (P0513N  )  00001    ROOTSP     24 04 06  00665
+   P0513N     24 14 36  00025    ROTF       22 11 14  00310
+   P137       21 15 17  00344    RPFL       25 01 34  00035
+   PAR3       24 05 13  03551    RR         23 33 23  00040
+   PATT       22 13 06  01042    RROOT3     24 02 20  00666
+   PERE2      24 25 27  00012    RROOT4     24 02 37  01122
+   PERFO      24 34 24  00073    RRR        23 33 21  00062
+   PMATR      21 07 11  00136    RTRANS     21 30 01  00153
+   POISKN     21 34 25  00014    RUCOAH     22 01 22  00012
+   POLIGR     24 14 12  00657    RUKUT      21 12 33  00455
+   POLYFI     21 20 01  00570    SARR       24 25 30  00012
+   POLYX      22 02 25  00127    SCALAR     21 25 34  00032
+   POWC       21 24 30  00076    SCALPR     24 13 03  00014
+   PRANAL     21 37 11  00512    SERDIV     22 02 23  00060
+   PRBYTE     23 37 03  00065    SFBESJ     21 34 10  00140
+   PRIBYT   (PRBYTE  )  00022    SHIFT      24 14 35  00013
+   PRINT8*    21 27 03  00161    SIM        21 16 16  00052
+   PRINT8   (PRINT8* )  00000    SIM1       21 16 20  00240
+   PRINTR     22 00 04  00476    SIMP       21 17 04  00243
+   PRITRA     22 20 36  00122    SIMP1      21 16 26  00342
+   PROBNE     22 12 24  00332    SIMPF      21 16 36  00232
+   PROGRAM  (ALGLIB  )  00000    SIMPS1     21 07 21  00114
+   PROPRI     22 01 23  00161    SIMPSA     21 17 12  00107
+   PRPO3      23 11 01  06300    SIMUL      21 13 22  00317
+   PRPO4      22 32 34  06334    SINE       21 27 37  00040
+   PRPOP      23 14 11  06154    SISTEM     21 15 35  00170
+   PRREGR     22 01 05  00476    SLOJI      24 23 24  00443
+   PUTALG*    21 26 36  00070    SLOJJ      24 23 37  00500
+   QUAD       21 16 13  00104    SLOJK      24 24 13  00503
+   QUICKE     21 07 24  00230    SLOR       22 36 05  05147
+   R4IBM      24 34 30  00060    SLSCHN     24 01 30  00050
+   RAD1       22 25 34  00124    SMOT13     23 26 12  00074
+   RANDOM     21 07 32  00047    SMOT35     23 26 06  00153
+   RANG       22 23 20  00633    SOR        23 17 17  05074
+   RASTR      24 35 27  00234    SOR3       23 23 15  05244
+   RATQR      22 25 12  00250    SORT       22 15 03  00127
+   RAUSS      21 22 13  00122    SPFACT     22 11 07  00215
+   RDSTAR     22 16 01  00073    SPHBEN     22 27 21  00046
+   RE46CH     24 01 14  00206    SRED       22 10 27  00106
+   READMG   (WRITMG  )  00004    SSTURM     24 15 32  00324
+   READPL     24 34 23  00007    STAND      22 10 32  00113
+   REALTR     21 30 14  00143    STATAN     24 30 30  01775
+   REBAKA     22 07 06  00077    STEEP1     21 32 27  00367
+   REBAKB     22 07 11  00104    STOK       24 24 35  00101
+   RECHN      24 01 04  00314    STURMI     24 03 33  00201
+   REDUC1     22 06 31  00270    SUBSRE     21 37 24  00717
+   REDUC2     22 07 00  00246    SUM        21 25 15  00033
+   REFUSE     24 14 34  00011    SUPLIS     21 07 34  00004
+   RELAX      24 33 17  02050    SYMIN      21 15 11  00234
+   REMEZ      22 00 32  00474    SYMLEF     21 32 04  00300
+   REML       24 21 03  00117    SYMRIG     21 31 32  00421
+   REORDE     21 30 06  00225    SYSTEM     21 23 32  00133
+   RESLIS   (SUPLIS  )  00002    TABLE2*    21 26 23  00174
+   RESTIM     23 37 01  00002    TABLE3*    21 26 33  00174
+   RETAPE     24 14 32  00045    TAKSTE     22 27 35  00005
+   REVFFT     21 05 34  00507    TCHEBY     22 03 13  00052
+   TEBETI   (BEGTIN  )  00047
+   TELE1      22 06 15  00147
+   TELE2      22 06 21  00175
+   TESTER     24 14 37  00735
+   TEXT1      23 34 10  00013
+   TEXT2      23 34 07  00013
+   TEXT3      23 34 11  00013
+   TGL1       23 27 05  00305
+   TGL2       23 27 14  00375
+   TP5        23 22 03  02401
+   TPAH       21 21 07  00046
+   TPAK       21 21 11  00053
+   TQUANT     22 10 10  00222
+   TRANS1     21 21 05  00056
+   TRANSB     22 20 10  01172
+   TRANSF     22 03 26  01066
+   TRANSL     22 21 02  04611
+   TRANSM     21 24 05  00060
+   TRED1      21 06 15  00314
+   TRED2      21 30 35  00436
+   TREQ       24 13 04  00555
+   TREQL      22 16 32  00105
+   TRIANG     24 12 14  01230
+   TRIDAG     21 11 03  00063
+   TRIDG      21 20 34  00364
+   TRIREG     23 27 25  00576
+   TRIS       21 25 00  00073
+   TRISMO     22 11 02  00214
+   TRISTU     22 24 26  01130
+   TRNSM20*   21 26 26  00172
+   TRNSUPP*   21 26 20  00071
+   TSIMPL     22 17 30  00733
+   UNR        22 01 20  00025
+   UPPISO     24 35 16  00043
+   UR         21 26 13  00044
+   VECTMU     21 22 04  00073
+   W          21 34 36  00236
+   WAITNS     23 37 05  00006
+   WCROSS     25 02 06  00546
+   WPFL       24 34 27  00010
+   WR64CH     24 02 02  00123
+   WRCHN      24 01 32  00337
+   WRIML      24 21 06  00117
+   WRITMG     24 02 15  00144
+   WRTAPE   (RETAPE  )  00033
+   Y0         21 24 16  00141
+   Y1         21 24 12  00146
+   YBYB       23 27 03  00055
+   YDM        21 21 33  00052
+   YESLIS   (NEWLIS  )  00010
+   YMABEK     25 01 36  00033
+   YMACTP     25 02 22  00033
+   YMB        21 21 35  00051
+   YMB3       25 02 00  00011
+   YMD        21 21 31  00052
+   YMKBM2     25 02 01  00322
+   YMM        21 21 27  00063
+   YMMATP     25 02 03  00342
+   ZAMALF     24 25 22  00223
+   ZAMENA     24 35 25  00626
+   ZAMSI      24 35 34  00475
+   ZEROS1     22 02 15  00260
+   ZONA       24 35 22  00111
+
+*END FILE

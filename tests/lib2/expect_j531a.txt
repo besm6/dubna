@@ -1,0 +1,44 @@
+Read job 'cernlib_j531a.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+              ЖЖЖ ЖЖЖЖ  ЖЖЖЖЖ    Ж   ЖЖЖ
+                Ж Ж        Ж    ЖЖ  Ж   Ж
+                Ж ЖЖЖЖ    Ж    Ж Ж  Ж   Ж
+                Ж     Ж    Ж     Ж  Ж   Ж
+                Ж     Ж     Ж    Ж  Ж   Ж
+            Ж   Ж Ж   Ж Ж   Ж    Ж  ЖЖЖЖЖ
+             ЖЖЖ   ЖЖЖ   ЖЖЖ    ЖЖЖ Ж   Ж
+
+
+
+
+
+
+
+
+*NAME J531A
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         J531A      01000                ABS      E 02013                SIN      E 02027                R*TO*INT   02043
+    OTCYTCTBYET  COPLOT                  IABS     E 02016                COS      E 02030                R*TO*I   E 02044
+         PROGRAM  E 01000                IFIX     E 02020                ATAN     E 02031                CBOБOДHO   02056
+         STOP*      01761                AINT     E 02022                ALOG     E 02032
+         EXIT     E 01762                INT      E 02024                EXP      E 02033
+         FLOAT      02010                SQRT     E 02026                ALOG10   E 02037
+≠
+------------------------------------------------------------
+   Elapsed time: 0.035 seconds
+      Simulated: 1706682 instructions
+Simulation rate: 48724755 instructions/sec

@@ -1,0 +1,34 @@
+Read job 'cernlib_i312b.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+             ЖЖЖ  ЖЖЖЖЖ    Ж   ЖЖЖ  ЖЖЖЖ
+              Ж      Ж    ЖЖ  Ж   Ж Ж  Ж
+              Ж     Ж    Ж Ж      Ж ЖЖЖ
+              Ж      Ж     Ж     Ж  Ж  Ж
+              Ж       Ж    Ж    Ж   Ж   Ж
+              Ж   Ж   Ж    Ж   Ж    Ж   Ж
+             ЖЖЖ   ЖЖЖ    ЖЖЖ ЖЖЖЖЖ ЖЖЖЖ
+
+
+
+
+
+
+
+
+*NAME I312B
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+          OШИБKA HOMEP 05022   B   00003-M    OПEPATOPE, CЛEДYЮЩEM ЗA METKOЙ 00000    I312B
+   CЛИШKOM БOЛЬШAЯ KOHCTAHTA (ПEPEПOЛHEHИE).
+*CALL PTIME

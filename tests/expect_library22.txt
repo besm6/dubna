@@ -27,72 +27,138 @@
 *PERSO:300172
  310888
 *  !        Ъ!  Ъ!  Ъ!!
+*CALL SETFTN:ONE,LONG
 *CALL TCATALOG                                             04 ИЮЛ 24 23.45
-                      TEMPORARY LIBRARY                             P/BP     (P/PB    )  00011    P/RR       21 22 31  00011
-                     CBOБOДHO  22 07 05                             P/BX       21 24 23  00026    P/RSR      21 22 20  00016
-                                                                    P/CA       21 25 25  00013    P/SC       21 25 21  00010
-   *ASPID   (ASPID*  )  00000    INTTOCHA (ANTRA   )  00261         P/CE     (P/CI    )  00025    P/SETEXF   21 21 24  00011
-   *PUNCHER (MADLENI*)  01000    IRA      (IWA     )  00016         P/CI       21 23 02  00040    P/SP       21 21 23  00006
-   /MACPAR/ (MADLENI*)  06405    IRB      (IWB     )  00016         P/CK       21 20 20  00044    P/SS       21 20 10  00002
-   ANTRA      21 02 13  01566    ITC        21 13 15  00403         P/CO     (P/SYS   )  00034    P/STAR     21 20 23  00012
-   ASCARD   (ASPID*W )  00015    IWA        21 13 13  00034         P/CP       21 21 30  00020    P/SYS      21 25 27  00761
-   ASPID      21 13 30  00100    IWB        21 01 00  00034         P/CW       21 17 30  00002    P/TF     (P/SYS   )  00726
-   ASPID*     21 12 24  00003    KETVIRTA   21 04 01  02215         P/D1       21 21 34  00007    P/TR       21 22 35  00003
-   ASPID*D  (ASPID*W )  00002    KLAIDA   (PIRMA   )  00017         P/DA       21 20 15  00013    P/TRPAGE   21 20 04  00032
-   ASPID*W    21 17 01  00177    LADR     (IWA     )  00031         P/DD       21 26 13  00017    P/TXGOST   21 20 12  00032
-   ASWRIT     21 16 34  00042    LIBSUB     21 26 17  00054         P/DI       21 17 37  00004    P/UN       21 17 35  00005
-   BCD        21 12 34  00212    LINE       21 14 36  00542         P/DIV    (P/SYS   )  00020    P/WA       21 23 04  00010
-   BEGPAGE  (ANTRA   )  01154    LSPACE     21 15 35  00023         P/DS       21 22 37  00071    P/WC       21 17 33  00005
-   BEGPR      21 16 01  00115    MACRO      21 14 12  00217         P/E      (P/EF    )  00003    P/WI       21 22 01  00061
-   BEGSTRIN (ANTRA   )  00675    MADLEN*3   21 35 15  12606         P/EA       21 22 24  00020    P/WL     (P/SYS   )  00571
-   BUFCH      21 16 21  00130    MADLENI*   21 31 24  06704         P/EDIH   (P/HIDE  )  00003    P/WO       21 20 24  00031
-   BUFPER   (MADLENI*)  01000    MDL*6T8S (MDL*REF )  00377         P/EF       21 22 14  00006    P/WOLN   (P/SYS   )  00570
-   CENTER     21 11 37  00074    MDL*6T8W (MDL*REF )  00353         P/EL       21 21 27  00005    P/WR       21 25 04  00212
-   CHARTOIN (PIRMA   )  00533    MDL*REF    22 03 15  00737         P/EN     (P/BX    )  00012    P/WX       21 25 02  00025
-   CHTYPE     21 12 30  00064    MDLCARD*   21 31 00  00743         P/EO       21 20 03  00001    P/WXD    (P/WX    )  00007
-   CLEARSTR (ANTRA   )  00230    MIDDLE   (PENKTA  )  00232         P/EQ       21 24 30  00014    PACK       21 12 11  00016
-   CNVRTN     21 11 35  00050    NEWPAGE  (PIRMA   )  01106         P/ER       21 25 22  00007    PAGE       21 14 25  00322
-   CONSUM     21 10 22  02263    NEWSTRIN (TRECIA  )  00017         P/FM     (P/MF    )  00012    PAGECHAN (ANTRA   )  00156
-   COPAGE     21 12 01  00051    OBPROG     21 26 16  00014         P/GD     (P/NW    )  00054    PAGESTAN (ANTRA   )  00051
-   DEBUGING (PIRMA   )  00140    OCTDEC   (FORIN   )  00033         P/GE     (P/EQ    )  00005    PAIB     (LIBSUB  )  00067
-   DISCRIPT (MADLENI*)  00000    OUTBEG     21 12 14  00246         P/GF     (P/SYS   )  00312    PASACD     21 24 37  00016
-   DOUBLE   (TRECIA  )  00352    OUTEND   (OUTBEG  )  00002         P/HIDE     21 17 31  00006    PASADD   (PASBIND )  00025
-   ENDPAGE  (ANTRA   )  01315    OUTPAG   (OUTBEG  )  00001         P/HT       21 25 26  00012    PASBD    (PASBDI  )  00062
-   ENDPR      21 16 05  00362    OUTPUT     21 11 21  01066         P/IN       21 20 01  00010    PASBDE     21 24 36  00001
-   ENDSTRIN (ANTRA   )  01417    P/00       21 21 06  00016         P/IS       21 17 36  00003    PASBDI     21 24 31  00123
-   ERROR      21 15 31  00100    P/01       21 20 26  00225         P/IT     (P/SYS   )  00032    PASBIND    21 22 11  00042
-   EXECINST (REDTXT  )  02005    P/02       21 20 33  00115         P/KC       21 20 22  00013    PASCODAD   21 21 35  00005
-   EXFILTOM (TRECIA  )  00725    P/03       21 20 36  00065         P/LDAR     21 20 16  00010    PASCONTR   21 22 36  00001
-   EXMASE   (KETVIRTA)  02000    P/04       21 21 00  00051         P/LDARIN   21 20 17  00010    PASCTRP  (P/SYS   )  00237
-   EXNEWTOL (TRECIA  )  00135    P/06       21 21 02  00035         P/LNGPAR   21 20 14  00006    PASDIH   (PASHID  )  00003
-   EXTITC   (PENKTA  )  01470    P/07       21 21 07  00013         P/LV       21 24 27  00003    PASDIV     21 22 13  00014
-   EXVERTOS (PIRMA   )  01450    P/08       21 21 04  00027         P/MD       21 20 06  00007    PASENDED   21 22 32  00021
-   FINDINST (FINSIGN )  01021    P/0П       21 21 05  00021         P/MF       21 24 25  00024    PASEOF     21 24 11  00017
-   FINSIGN    21 06 13  01233    P/1        21 24 22  00004         P/MI       21 20 07  00003    PASEVN     21 22 07  00021
-   FMDEL    (FMOPEN  )  00023    P/2        21 17 23  00004         P/MOD    (P/SYS   )  00014    PASGIVEP (P/SYS   )  00456
-   FMGET    (FMOPEN  )  00022    P/3        21 17 24  00004         P/NN       21 26 11  00046    PASGOST    21 21 10  00015
-   FMISGO     21 26 26  00013    P/31       21 17 11  00002         P/NW       21 24 17  00062    PASGOST7   21 21 11  00425
-   FMMOD    (FMOPEN  )  00024    P/4        21 17 25  00004         P/PA       21 17 34  00007    PASGVNF    21 24 13  00113
-   FMOPEN     21 17 07  00025    P/41       21 17 12  00003         P/PAGES    21 25 20  00001    PASHELP    21 23 06  01463
-   FMPUT    (FMOPEN  )  00021    P/42       21 17 13  00002         P/PAMPAM   21 21 26  00003    PASHID     21 22 06  00007
-   FOMA***    22 03 37  02242    P/5        21 17 26  00004         P/PB       21 22 21  00103    PASINBUF (P/SYS   )  00421
-   FORBEG   (FORIN   )  00026    P/51       21 17 14  00004         P/PF     (P/SYS   )  00537    PASINP   (PASBIND )  00031
-   FORIN      21 12 25  00071    P/52       21 17 15  00003         P/PI       21 20 00  00007    PASISOCD   21 22 33  00001
-   FORNUM   (FORIN   )  00015    P/53       21 17 16  00002         P/PMDSET (PASPMD  )  00033    PASISOXT   21 24 12  00032
-   FRINP    (PENKTA  )  00136    P/6        21 17 27  00004         P/PRINT  (PASOUT  )  00001    PASLIST    21 21 25  00011
-   FRSTRHEL (PENKTA  )  00160    P/61       21 17 17  00005         P/RA       21 23 05  00011    PASMON2    21 24 26  00004
-   GETCH      21 16 36  00065    P/62       21 17 20  00004         P/RA7      21 22 16  00026    PASNB8     21 22 05  00010
-   GETINT     21 11 33  00070    P/63       21 17 21  00003         P/RACPAK (P/SYS   )  00351    PASOUT     21 30 35  00104
-   GETSTRIN (REDTXT  )  00161    P/64       21 17 22  00002         P/RC       21 20 02  00024    PASPMD     21 22 25  00141
-   GSTEXT*  (MADLENI*)  06525    P/6A       21 17 32  00002         P/RDI      21 21 31  00043    PASRED     21 25 12  00246
-   HIS        21 17 06  00023    P/7A       21 20 13  00015         P/RDR      21 25 23  00041    PASSETAR   21 25 00  00006
-   HYPHEN     21 15 13  00325    P/7AD    (P/7A    )  00002         P/RE       21 26 14  00026    PASTENS  (P/WR    )  00166
-   IBCD     (BCD     )  00001    P/A6       21 22 10  00007         P/RE1    (P/SYS   )  00042    PASTIME    21 21 36  00063
-   IDENTIFY (REDTXT  )  01461    P/A7       21 20 11  00006         P/RE2    (P/SYS   )  00204    PASTN    (PASOUT  )  00037
-   IDIC       21 13 01  00441    P/AB     (P/CP    )  00013         P/RF     (P/SYS   )  00643    PASTPR     21 22 04  00004
-   INIT       21 14 04  00053    P/B6     (P/PB    )  00007         P/RI       21 25 01  00002    PASWHT   (PASOUT  )  00053
-   INITLIB  (MADLENI*)  06207    P/B7     (P/PB    )  00003         P/RILN     21 21 33  00007    PENKTA     21 05 12  01625
-   INTSYM     21 12 07  00005    P/BEXF     21 24 10  00005         P/RL     (P/RILN  )  00001    PIRMA      21 01 02  02140
+                      TEMPORARY LIBRARY
+                     CBOБOДHO  22 07 05
+
+   *ASPID   (ASPID*  )  00000    INTTOCHA (ANTRA   )  00261
+   *PUNCHER (MADLENI*)  01000    IRA      (IWA     )  00016
+   /MACPAR/ (MADLENI*)  06405    IRB      (IWB     )  00016
+   ANTRA      21 02 13  01566    ITC        21 13 15  00403
+   ASCARD   (ASPID*W )  00015    IWA        21 13 13  00034
+   ASPID      21 13 30  00100    IWB        21 01 00  00034
+   ASPID*     21 12 24  00003    KETVIRTA   21 04 01  02215
+   ASPID*D  (ASPID*W )  00002    KLAIDA   (PIRMA   )  00017
+   ASPID*W    21 17 01  00177    LADR     (IWA     )  00031
+   ASWRIT     21 16 34  00042    LIBSUB     21 26 17  00054
+   BCD        21 12 34  00212    LINE       21 14 36  00542
+   BEGPAGE  (ANTRA   )  01154    LSPACE     21 15 35  00023
+   BEGPR      21 16 01  00115    MACRO      21 14 12  00217
+   BEGSTRIN (ANTRA   )  00675    MADLEN*3   21 35 15  12606
+   BUFCH      21 16 21  00130    MADLENI*   21 31 24  06704
+   BUFPER   (MADLENI*)  01000    MDL*6T8S (MDL*REF )  00377
+   CENTER     21 11 37  00074    MDL*6T8W (MDL*REF )  00353
+   CHARTOIN (PIRMA   )  00533    MDL*REF    22 03 15  00737
+   CHTYPE     21 12 30  00064    MDLCARD*   21 31 00  00743
+   CLEARSTR (ANTRA   )  00230    MIDDLE   (PENKTA  )  00232
+   CNVRTN     21 11 35  00050    NEWPAGE  (PIRMA   )  01106
+   CONSUM     21 10 22  02263    NEWSTRIN (TRECIA  )  00017
+   COPAGE     21 12 01  00051    OBPROG     21 26 16  00014
+   DEBUGING (PIRMA   )  00140    OCTDEC   (FORIN   )  00033
+   DISCRIPT (MADLENI*)  00000    OUTBEG     21 12 14  00246
+   DOUBLE   (TRECIA  )  00352    OUTEND   (OUTBEG  )  00002
+   ENDPAGE  (ANTRA   )  01315    OUTPAG   (OUTBEG  )  00001
+   ENDPR      21 16 05  00362    OUTPUT     21 11 21  01066
+   ENDSTRIN (ANTRA   )  01417    P/00       21 21 06  00016
+   ERROR      21 15 31  00100    P/01       21 20 26  00225
+   EXECINST (REDTXT  )  02005    P/02       21 20 33  00115
+   EXFILTOM (TRECIA  )  00725    P/03       21 20 36  00065
+   EXMASE   (KETVIRTA)  02000    P/04       21 21 00  00051
+   EXNEWTOL (TRECIA  )  00135    P/06       21 21 02  00035
+   EXTITC   (PENKTA  )  01470    P/07       21 21 07  00013
+   EXVERTOS (PIRMA   )  01450    P/08       21 21 04  00027
+   FINDINST (FINSIGN )  01021    P/0П       21 21 05  00021
+   FINSIGN    21 06 13  01233    P/1        21 24 22  00004
+   FMDEL    (FMOPEN  )  00023    P/2        21 17 23  00004
+   FMGET    (FMOPEN  )  00022    P/3        21 17 24  00004
+   FMISGO     21 26 26  00013    P/31       21 17 11  00002
+   FMMOD    (FMOPEN  )  00024    P/4        21 17 25  00004
+   FMOPEN     21 17 07  00025    P/41       21 17 12  00003
+   FMPUT    (FMOPEN  )  00021    P/42       21 17 13  00002
+   FOMA***    22 03 37  02242    P/5        21 17 26  00004
+   FORBEG   (FORIN   )  00026    P/51       21 17 14  00004
+   FORIN      21 12 25  00071    P/52       21 17 15  00003
+   FORNUM   (FORIN   )  00015    P/53       21 17 16  00002
+   FRINP    (PENKTA  )  00136    P/6        21 17 27  00004
+   FRSTRHEL (PENKTA  )  00160    P/61       21 17 17  00005
+   GETCH      21 16 36  00065    P/62       21 17 20  00004
+   GETINT     21 11 33  00070    P/63       21 17 21  00003
+   GETSTRIN (REDTXT  )  00161    P/64       21 17 22  00002
+   GSTEXT*  (MADLENI*)  06525    P/6A       21 17 32  00002
+   HIS        21 17 06  00023    P/7A       21 20 13  00015
+   HYPHEN     21 15 13  00325    P/7AD    (P/7A    )  00002
+   IBCD     (BCD     )  00001    P/A6       21 22 10  00007
+   IDENTIFY (REDTXT  )  01461    P/A7       21 20 11  00006
+   IDIC       21 13 01  00441    P/AB     (P/CP    )  00013
+   INIT       21 14 04  00053    P/B6     (P/PB    )  00007
+   INITLIB  (MADLENI*)  06207    P/B7     (P/PB    )  00003
+   INTSYM     21 12 07  00005    P/BEXF     21 24 10  00005
+   P/BP     (P/PB    )  00011    P/RR       21 22 31  00011
+   P/BX       21 24 23  00026    P/RSR      21 22 20  00016
+   P/CA       21 25 25  00013    P/SC       21 25 21  00010
+   P/CE     (P/CI    )  00025    P/SETEXF   21 21 24  00011
+   P/CI       21 23 02  00040    P/SP       21 21 23  00006
+   P/CK       21 20 20  00044    P/SS       21 20 10  00002
+   P/CO     (P/SYS   )  00034    P/STAR     21 20 23  00012
+   P/CP       21 21 30  00020    P/SYS      21 25 27  00761
+   P/CW       21 17 30  00002    P/TF     (P/SYS   )  00726
+   P/D1       21 21 34  00007    P/TR       21 22 35  00003
+   P/DA       21 20 15  00013    P/TRPAGE   21 20 04  00032
+   P/DD       21 26 13  00017    P/TXGOST   21 20 12  00032
+   P/DI       21 17 37  00004    P/UN       21 17 35  00005
+   P/DIV    (P/SYS   )  00020    P/WA       21 23 04  00010
+   P/DS       21 22 37  00071    P/WC       21 17 33  00005
+   P/E      (P/EF    )  00003    P/WI       21 22 01  00061
+   P/EA       21 22 24  00020    P/WL     (P/SYS   )  00571
+   P/EDIH   (P/HIDE  )  00003    P/WO       21 20 24  00031
+   P/EF       21 22 14  00006    P/WOLN   (P/SYS   )  00570
+   P/EL       21 21 27  00005    P/WR       21 25 04  00212
+   P/EN     (P/BX    )  00012    P/WX       21 25 02  00025
+   P/EO       21 20 03  00001    P/WXD    (P/WX    )  00007
+   P/EQ       21 24 30  00014    PACK       21 12 11  00016
+   P/ER       21 25 22  00007    PAGE       21 14 25  00322
+   P/FM     (P/MF    )  00012    PAGECHAN (ANTRA   )  00156
+   P/GD     (P/NW    )  00054    PAGESTAN (ANTRA   )  00051
+   P/GE     (P/EQ    )  00005    PAIB     (LIBSUB  )  00067
+   P/GF     (P/SYS   )  00312    PASACD     21 24 37  00016
+   P/HIDE     21 17 31  00006    PASADD   (PASBIND )  00025
+   P/HT       21 25 26  00012    PASBD    (PASBDI  )  00062
+   P/IN       21 20 01  00010    PASBDE     21 24 36  00001
+   P/IS       21 17 36  00003    PASBDI     21 24 31  00123
+   P/IT     (P/SYS   )  00032    PASBIND    21 22 11  00042
+   P/KC       21 20 22  00013    PASCODAD   21 21 35  00005
+   P/LDAR     21 20 16  00010    PASCONTR   21 22 36  00001
+   P/LDARIN   21 20 17  00010    PASCTRP  (P/SYS   )  00237
+   P/LNGPAR   21 20 14  00006    PASDIH   (PASHID  )  00003
+   P/LV       21 24 27  00003    PASDIV     21 22 13  00014
+   P/MD       21 20 06  00007    PASENDED   21 22 32  00021
+   P/MF       21 24 25  00024    PASEOF     21 24 11  00017
+   P/MI       21 20 07  00003    PASEVN     21 22 07  00021
+   P/MOD    (P/SYS   )  00014    PASGIVEP (P/SYS   )  00456
+   P/NN       21 26 11  00046    PASGOST    21 21 10  00015
+   P/NW       21 24 17  00062    PASGOST7   21 21 11  00425
+   P/PA       21 17 34  00007    PASGVNF    21 24 13  00113
+   P/PAGES    21 25 20  00001    PASHELP    21 23 06  01463
+   P/PAMPAM   21 21 26  00003    PASHID     21 22 06  00007
+   P/PB       21 22 21  00103    PASINBUF (P/SYS   )  00421
+   P/PF     (P/SYS   )  00537    PASINP   (PASBIND )  00031
+   P/PI       21 20 00  00007    PASISOCD   21 22 33  00001
+   P/PMDSET (PASPMD  )  00033    PASISOXT   21 24 12  00032
+   P/PRINT  (PASOUT  )  00001    PASLIST    21 21 25  00011
+   P/RA       21 23 05  00011    PASMON2    21 24 26  00004
+   P/RA7      21 22 16  00026    PASNB8     21 22 05  00010
+   P/RACPAK (P/SYS   )  00351    PASOUT     21 30 35  00104
+   P/RC       21 20 02  00024    PASPMD     21 22 25  00141
+   P/RDI      21 21 31  00043    PASRED     21 25 12  00246
+   P/RDR      21 25 23  00041    PASSETAR   21 25 00  00006
+   P/RE       21 26 14  00026    PASTENS  (P/WR    )  00166
+   P/RE1    (P/SYS   )  00042    PASTIME    21 21 36  00063
+   P/RE2    (P/SYS   )  00204    PASTN    (PASOUT  )  00037
+   P/RF     (P/SYS   )  00643    PASTPR     21 22 04  00004
+   P/RI       21 25 01  00002    PASWHT   (PASOUT  )  00053
+   P/RILN     21 21 33  00007    PENKTA     21 05 12  01625
+   P/RL     (P/RILN  )  00001    PIRMA      21 01 02  02140
    POINT      21 12 13  00031
    PRENT      21 14 07  00050
    PRETTYPR   21 26 27  04143
@@ -127,4 +193,5 @@
    WRISTRPA (PIRMA   )  00070
    WRTOPREC (PIRMA   )  01264
    WTOLIB   (MADLENI*)  06214
+
 *END FILE

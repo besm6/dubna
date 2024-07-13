@@ -1,0 +1,58 @@
+Read job 'cernlib_j509.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+              ЖЖЖ ЖЖЖЖ   ЖЖЖ   ЖЖЖ
+                Ж Ж     Ж   Ж Ж   Ж
+                Ж ЖЖЖЖ  Ж   Ж Ж   Ж
+                Ж     Ж Ж   Ж Ж   Ж
+                Ж     Ж Ж   Ж  ЖЖЖЖ
+            Ж   Ж Ж   Ж Ж   Ж     Ж
+             ЖЖЖ   ЖЖЖ   ЖЖЖ   ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME J509
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         J509       01000                FC*722   E 03750                SQRT     E 05305                JERRIO*  C 07447
+    OTCYTCTBYET  CONPRT                  FC*642   E 03750                SIN      E 05306                READ*      07450
+         PROGRAM  E 01000                FC*002   E 03750                COS      E 05307                TTREAD     07476
+         BCDWRIT*   03100                IOEND*   E 03755                ATAN     E 05310                R*TO*INT   07534
+         FT*621   E 03100                FT*643   E 03755                ALOG     E 05311                R*TO*I   E 07535
+         BCDENC*  E 03104                FT*723   E 03755                EXP      E 05312                CARD2    C 07547
+         FT*611   E 03104                FT*003   E 03755                ALOG10   E 05316                ISOICTTR   07574
+         FT*571   E 03106                BCDREAD*   04743                I*MUI*     05322                REVCARD    07631
+         FT*561   E 03111                FT*521   E 04743                BCDBEG*    05330                *ICHECK* C 07656
+         NEXTLET* E 03116                BCDDEC*  E 04747                FT2*     E 05635                MONREAD*   07664
+         RK*      E 03160                FT*531   E 04747                KONV1*   E 05650                READ*ERR E 07744
+         WSY*     E 03416                FT*541   E 04751                PRINT8     05744                *ПEPФOPA   07770
+         I/O*ERR  E 03656                STOP*      05240                TTPRINT    06125                KOД*CDC  E 07771
+         IOCONT*    03703                EXIT     E 05241                BCDPUN     06164                DRUMTAP*   10031
+         IOAC*    E 03734                FLOAT      05267                EBCDPUN  E 06210                COSYTISO   10062
+         FT*722   E 03747                ABS      E 05272                ISOTCOSY   06373                CHKWORD* C 10136
+         FT*642   E 03747                IABS     E 05275                ISOTCOS1 E 06444                CBOБOДHO   10137
+         FT*002   E 03747                IFIX     E 05277                FMRTAPE    06464
+         FD*642   E 03750                AINT     E 05301                OCTTDEC    07413
+         FD*722   E 03750                INT      E 05303                LUNMUN   C 07446
+≠
+------------------------------------------------------------
+   Elapsed time: 0.060 seconds
+      Simulated: 2841425 instructions
+Simulation rate: 47275926 instructions/sec

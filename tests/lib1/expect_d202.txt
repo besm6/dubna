@@ -1,0 +1,55 @@
+Read job 'cernlib_d202.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖ    ЖЖЖ   ЖЖЖ   ЖЖЖ
+            Ж  Ж  Ж   Ж Ж   Ж Ж   Ж
+            Ж   Ж     Ж Ж   Ж     Ж
+            Ж   Ж    Ж  Ж   Ж    Ж
+            Ж   Ж   Ж   Ж   Ж   Ж
+            Ж   Ж  Ж    Ж   Ж  Ж
+            ЖЖЖЖ  ЖЖЖЖЖ  ЖЖЖ  ЖЖЖЖЖ
+
+
+
+
+
+
+
+
+*NAME D202
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         D202       01000                FT*002   E 01762                PRINT8     03463                SIN      E 05206
+    OTCYTCTBYET  DIFEQ2                  FD*642   E 01763                TTPRINT    03644                COS      E 05207
+         PROGRAM  E 01000                FD*722   E 01763                BCDPUN     03703                ATAN     E 05210
+         BCDWRIT*   01113                FC*722   E 01763                EBCDPUN  E 03727                ALOG     E 05211
+         FT*621   E 01113                FC*642   E 01763                ISOTCOSY   04112                EXP      E 05212
+         BCDENC*  E 01117                FC*002   E 01763                ISOTCOS1 E 04163                ALOG10   E 05216
+         FT*611   E 01117                IOEND*   E 01770                FMRTAPE    04203                CARD2    C 05222
+         FT*571   E 01121                FT*643   E 01770                OCTTDEC    05132                ISOICTTR   05247
+         FT*561   E 01124                FT*723   E 01770                LUNMUN   C 05165                REVCARD    05304
+         NEXTLET* E 01131                FT*003   E 01770                JERRIO*  C 05166                *ICHECK* C 05331
+         RK*      E 01173                STOP*      02756                FLOAT      05167                R*TO*INT   05337
+         WSY*     E 01431                EXIT     E 02757                ABS      E 05172                R*TO*I   E 05340
+         I/O*ERR  E 01671                ECARD2     03005                IABS     E 05175                *ПEPФOPA   05352
+         IOCONT*    01716                ECARD1     03027                IFIX     E 05177                KOД*CDC  E 05353
+         IOAC*    E 01747                BCDBEG*    03047                AINT     E 05201                CBOБOДHO   05413
+         FT*722   E 01762                FT2*     E 03354                INT      E 05203
+         FT*642   E 01762                KONV1*   E 03367                SQRT     E 05205
+≠
+------------------------------------------------------------
+   Elapsed time: 0.064 seconds
+      Simulated: 3064367 instructions
+Simulation rate: 47776224 instructions/sec

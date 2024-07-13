@@ -1,0 +1,41 @@
+Read job 'cernlib_t110a.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖЖЖ    Ж     Ж   ЖЖЖ   ЖЖЖ
+              Ж     ЖЖ    ЖЖ  Ж   Ж Ж   Ж
+              Ж    Ж Ж   Ж Ж  Ж   Ж Ж   Ж
+              Ж      Ж     Ж  Ж   Ж Ж   Ж
+              Ж      Ж     Ж  Ж   Ж Ж   Ж
+              Ж      Ж     Ж  Ж   Ж ЖЖЖЖЖ
+              Ж     ЖЖЖ   ЖЖЖ  ЖЖЖ  Ж   Ж
+
+
+
+
+
+
+
+
+*NAME T110A
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         T110A      01000                *N*      C 01012                *COMP*   C 01100                EXIT     E 01571
+    OTCYTCTBYET  APAMAK                  *B*      C 01062                *MK*     C 01132                CBOБOДHO   01617
+         PROGRAM  E 01000                *OR*     C 01066                STOP*      01570
+≠
+------------------------------------------------------------
+   Elapsed time: 0.029 seconds
+      Simulated: 1404591 instructions
+Simulation rate: 47899025 instructions/sec

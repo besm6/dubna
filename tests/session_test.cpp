@@ -433,6 +433,57 @@ TEST_F(dubna_session, sovcatal)
 }
 
 //
+// Print contents of library 3.
+//
+TEST_F(dubna_session, library3)
+{
+    auto output = run_job_and_capture_output(R"(*name библиотека 3
+*tape:37/librar,32
+*perso:320340
+*
+*call setftn:one,long
+*call tcatalog
+*end file
+)");
+    auto expect = file_contents(TEST_DIR "/expect_library3.txt");
+    check_output(output, expect);
+}
+
+//
+// Print contents of library 5.
+//
+TEST_F(dubna_session, library5)
+{
+    auto output = run_job_and_capture_output(R"(*name библиотека 5
+*tape:37/librar,32
+*perso:320545
+*
+*call setftn:one,long
+*call tcatalog
+*end file
+)");
+    auto expect = file_contents(TEST_DIR "/expect_library5.txt");
+    check_output(output, expect);
+}
+
+//
+// Print contents of library 12.
+//
+TEST_F(dubna_session, library12)
+{
+    auto output = run_job_and_capture_output(R"(*name библиотека 12
+*tape:12/librar,32
+*perso:320375
+*
+*call setftn:one,long
+*call tcatalog
+*end file
+)");
+    auto expect = file_contents(TEST_DIR "/expect_library12.txt");
+    check_output(output, expect);
+}
+
+//
 // Print contents of library 21.
 //
 TEST_F(dubna_session, library21)
@@ -440,6 +491,7 @@ TEST_F(dubna_session, library21)
     auto output = run_job_and_capture_output(R"(*name библиотека 21
 *perso:300240
 *
+*call setftn:one,long
 *call tcatalog
 *end file
 )");
@@ -455,6 +507,7 @@ TEST_F(dubna_session, library22)
     auto output = run_job_and_capture_output(R"(*name библиотека 22
 *perso:300172
 *
+*call setftn:one,long
 *call tcatalog
 *end file
 )");
@@ -470,6 +523,7 @@ TEST_F(dubna_session, library23)
     auto output = run_job_and_capture_output(R"(*name библиотека 23
 *perso:300320
 *
+*call setftn:one,long
 *call tcatalog
 *end file
 )");

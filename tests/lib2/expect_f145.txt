@@ -1,0 +1,51 @@
+Read job 'cernlib_f145.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖЖЖ    Ж      Ж ЖЖЖЖ
+            Ж       ЖЖ     ЖЖ Ж
+            ЖЖЖЖ   Ж Ж    Ж Ж ЖЖЖЖ
+            Ж        Ж   Ж  Ж     Ж
+            Ж        Ж  Ж   Ж     Ж
+            Ж        Ж  ЖЖЖЖЖ Ж   Ж
+            Ж       ЖЖЖ     Ж  ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME F145
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         F145       01000                I/O*ERR  E 02175                FT*723   E 02274                FMRTAPE    04445
+    OTCYTCTBYET  ERMIV                   IOCONT*    02222                FT*003   E 02274                OCTTDEC    05374
+    OTCYTCTBYET  ERMOD                   IOAC*    E 02253                STOP*      03262                LUNMUN   C 05427
+         PROGRAM  E 01000                FT*722   E 02266                EXIT     E 03263                JERRIO*  C 05430
+         BCDWRIT*   01417                FT*642   E 02266                BCDBEG*    03311                CARD2    C 05431
+         FT*621   E 01417                FT*002   E 02266                FT2*     E 03616                ISOICTTR   05456
+         BCDENC*  E 01423                FD*642   E 02267                KONV1*   E 03631                REVCARD    05513
+         FT*611   E 01423                FD*722   E 02267                PRINT8     03725                *ICHECK* C 05540
+         FT*571   E 01425                FC*722   E 02267                TTPRINT    04106                *ПEPФOPA   05546
+         FT*561   E 01430                FC*642   E 02267                BCDPUN     04145                KOД*CDC  E 05547
+         NEXTLET* E 01435                FC*002   E 02267                EBCDPUN  E 04171                CBOБOДHO   05607
+         RK*      E 01477                IOEND*   E 02274                ISOTCOSY   04354
+         WSY*     E 01735                FT*643   E 02274                ISOTCOS1 E 04425
+≠
+------------------------------------------------------------
+   Elapsed time: 0.059 seconds
+      Simulated: 2636680 instructions
+Simulation rate: 44966148 instructions/sec

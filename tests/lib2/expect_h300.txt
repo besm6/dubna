@@ -1,0 +1,54 @@
+Read job 'cernlib_h300.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            Ж   Ж ЖЖЖЖЖ  ЖЖЖ   ЖЖЖ
+            Ж   Ж    Ж  Ж   Ж Ж   Ж
+            ЖЖЖЖЖ   Ж   Ж   Ж Ж   Ж
+            Ж   Ж    Ж  Ж   Ж Ж   Ж
+            Ж   Ж     Ж Ж   Ж Ж   Ж
+            Ж   Ж Ж   Ж Ж   Ж Ж   Ж
+            Ж   Ж  ЖЖЖ   ЖЖЖ   ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME H300
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         H300       01000                FC*642   E 03462                STOP*      05260                ISOTCOS1 E 07446
+    OTCYTCTBYET  ASSIGN                  FC*002   E 03462                EXIT     E 05261                OCTTDEC    07466
+         PROGRAM  E 01000                IOEND*   E 03467                I*MUI*     05307                MONREAD*   07521
+         BCDREAD*   03120                FT*643   E 03467                READ*      05315                READ*ERR E 07601
+         FT*521   E 03120                FT*723   E 03467                TTREAD     05343                *ICHECK* C 07625
+         BCDDEC*  E 03124                FT*003   E 03467                BCDBEG*    05401                CARD2    C 07633
+         FT*531   E 03124                BCDWRIT*   04455                FT2*     E 05706                ISOICTTR   07660
+         FT*541   E 03126                FT*621   E 04455                KONV1*   E 05721                REVCARD    07715
+         IOCONT*    03415                BCDENC*  E 04461                FMRTAPE    06015                DRUMTAP*   07742
+         IOAC*    E 03446                FT*611   E 04461                LUNMUN   C 06744                COSYTISO   07773
+         FT*722   E 03461                FT*571   E 04463                PRINT8     06745                *ПEPФOPA   10047
+         FT*642   E 03461                FT*561   E 04466                JERRIO*  C 07126                KOД*CDC  E 10050
+         FT*002   E 03461                NEXTLET* E 04473                TTPRINT    07127                CHKWORD* C 10110
+         FD*642   E 03462                RK*      E 04535                BCDPUN     07166                CBOБOДHO   10111
+         FD*722   E 03462                WSY*     E 04773                EBCDPUN  E 07212
+         FC*722   E 03462                I/O*ERR  E 05233                ISOTCOSY   07375
+≠
+------------------------------------------------------------
+   Elapsed time: 0.068 seconds
+      Simulated: 3102673 instructions
+Simulation rate: 45903641 instructions/sec

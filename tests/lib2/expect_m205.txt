@@ -1,0 +1,55 @@
+Read job 'cernlib_m205.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            Ж   Ж  ЖЖЖ   ЖЖЖ  ЖЖЖЖ
+            ЖЖ ЖЖ Ж   Ж Ж   Ж Ж
+            Ж Ж Ж     Ж Ж   Ж ЖЖЖЖ
+            Ж Ж Ж    Ж  Ж   Ж     Ж
+            Ж   Ж   Ж   Ж   Ж     Ж
+            Ж   Ж  Ж    Ж   Ж Ж   Ж
+            Ж   Ж ЖЖЖЖЖ  ЖЖЖ   ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME M205
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         M205       01000                FT*002   E 01774                DIM      E 03032                ISOTCOS1 E 04245
+    OTCYTCTBYET  CSIGN                   FD*642   E 01775                C*AD*C     03036                FMRTAPE    04265
+         PROGRAM  E 01000                FD*722   E 01775                C*SU*C   E 03045                OCTTDEC    05214
+         BCDWRIT*   01125                FC*722   E 01775                C*MU*C   E 03052                LUNMUN   C 05247
+         FT*621   E 01125                FC*642   E 01775                C*DI*C   E 03065                JERRIO*  C 05250
+         BCDENC*  E 01131                FC*002   E 01775                C*ST*C   E 03105                R*TO*INT   05251
+         FT*611   E 01131                IOEND*   E 02002                C*LO*C   E 03107                R*TO*I   E 05252
+         FT*571   E 01133                FT*643   E 02002                C*LN*C   E 03111                CARD2    C 05264
+         FT*561   E 01136                FT*723   E 02002                C*COMP   E 03117                ISOICTTR   05311
+         NEXTLET* E 01143                FT*003   E 02002                BCDBEG*    03131                REVCARD    05346
+         RK*      E 01205                STOP*      02770                FT2*     E 03436                *ICHECK* C 05373
+         WSY*     E 01443                EXIT     E 02771                KONV1*   E 03451                *ПEPФOPA   05401
+         I/O*ERR  E 01703                REAL       03017                PRINT8     03545                KOД*CDC  E 05402
+         IOCONT*    01730                AIMAG    E 03021                TTPRINT    03726                CBOБOДHO   05442
+         IOAC*    E 01761                SIGN       03023                BCDPUN     03765
+         FT*722   E 01774                ISIGN    E 03027                EBCDPUN  E 04011
+         FT*642   E 01774                IDIM     E 03031                ISOTCOSY   04174
+≠
+------------------------------------------------------------
+   Elapsed time: 0.038 seconds
+      Simulated: 1875104 instructions
+Simulation rate: 48866465 instructions/sec

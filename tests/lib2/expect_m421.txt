@@ -1,0 +1,51 @@
+Read job 'cernlib_m421.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            Ж   Ж     Ж  ЖЖЖ     Ж
+            ЖЖ ЖЖ    ЖЖ Ж   Ж   ЖЖ
+            Ж Ж Ж   Ж Ж     Ж  Ж Ж
+            Ж Ж Ж  Ж  Ж    Ж     Ж
+            Ж   Ж Ж   Ж   Ж      Ж
+            Ж   Ж ЖЖЖЖЖ  Ж       Ж
+            Ж   Ж     Ж ЖЖЖЖЖ   ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME M421
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         M421       01000                WSY*     E 01523                FT*643   E 02062                ISOTCOS1 E 04213
+    OTCYTCTBYET  SBYT                    I/O*ERR  E 01763                FT*723   E 02062                FMRTAPE    04233
+    OTCYTCTBYET  JBYT                    IOCONT*    02010                FT*003   E 02062                OCTTDEC    05162
+    OTCYTCTBYET  JBIT                    IOAC*    E 02041                STOP*      03050                LUNMUN   C 05215
+         PROGRAM  E 01000                FT*722   E 02054                EXIT     E 03051                JERRIO*  C 05216
+         BCDWRIT*   01205                FT*642   E 02054                BCDBEG*    03077                CARD2    C 05217
+         FT*621   E 01205                FT*002   E 02054                FT2*     E 03404                ISOICTTR   05244
+         BCDENC*  E 01211                FD*642   E 02055                KONV1*   E 03417                REVCARD    05301
+         FT*611   E 01211                FD*722   E 02055                PRINT8     03513                *ICHECK* C 05326
+         FT*571   E 01213                FC*722   E 02055                TTPRINT    03674                *ПEPФOPA   05334
+         FT*561   E 01216                FC*642   E 02055                BCDPUN     03733                KOД*CDC  E 05335
+         NEXTLET* E 01223                FC*002   E 02055                EBCDPUN  E 03757                CBOБOДHO   05375
+         RK*      E 01265                IOEND*   E 02062                ISOTCOSY   04142
+≠
+------------------------------------------------------------
+   Elapsed time: 0.024 seconds
+      Simulated: 1915649 instructions
+Simulation rate: 81305929 instructions/sec

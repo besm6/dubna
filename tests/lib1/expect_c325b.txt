@@ -1,0 +1,36 @@
+Read job 'cernlib_c325b.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+             ЖЖЖЖ ЖЖЖЖЖ  ЖЖЖ  ЖЖЖЖ  ЖЖЖЖ
+            Ж        Ж  Ж   Ж Ж     Ж  Ж
+            Ж       Ж       Ж ЖЖЖЖ  ЖЖЖ
+            Ж        Ж     Ж      Ж Ж  Ж
+            Ж         Ж   Ж       Ж Ж   Ж
+            Ж     Ж   Ж  Ж    Ж   Ж Ж   Ж
+             ЖЖЖЖ  ЖЖЖ  ЖЖЖЖЖ  ЖЖЖ  ЖЖЖЖ
+
+
+
+
+
+
+
+
+*NAME C325B
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+------------------------------------------------------------
+   Elapsed time: 0.093 seconds
+      Simulated: 4093546 instructions
+Simulation rate: 44231121 instructions/sec

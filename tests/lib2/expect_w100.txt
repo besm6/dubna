@@ -1,0 +1,37 @@
+Read job 'cernlib_w100.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            Ж   Ж    Ж   ЖЖЖ   ЖЖЖ
+            Ж   Ж   ЖЖ  Ж   Ж Ж   Ж
+            Ж   Ж  Ж Ж  Ж   Ж Ж   Ж
+            Ж   Ж    Ж  Ж   Ж Ж   Ж
+            Ж Ж Ж    Ж  Ж   Ж Ж   Ж
+            Ж Ж Ж    Ж  Ж   Ж Ж   Ж
+             Ж Ж    ЖЖЖ  ЖЖЖ   ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME W100
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*
+*END FILE
+------------------------------------------------------------
+   Elapsed time: 0.025 seconds
+      Simulated: 1183427 instructions
+Simulation rate: 48295258 instructions/sec

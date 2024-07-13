@@ -1,0 +1,52 @@
+Read job 'cernlib_i302.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+             ЖЖЖ  ЖЖЖЖЖ  ЖЖЖ   ЖЖЖ
+              Ж      Ж  Ж   Ж Ж   Ж
+              Ж     Ж   Ж   Ж     Ж
+              Ж      Ж  Ж   Ж    Ж
+              Ж       Ж Ж   Ж   Ж
+              Ж   Ж   Ж Ж   Ж  Ж
+             ЖЖЖ   ЖЖЖ   ЖЖЖ  ЖЖЖЖЖ
+
+
+
+
+
+
+
+
+*NAME I302
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         I302       01000                IOCONT*    02004                STOP*      03044                ISOTCOSY   04163
+    OTCYTCTBYET  FFREAD                  IOAC*    E 02035                EXIT     E 03045                ISOTCOS1 E 04234
+         PROGRAM  E 01000                FT*722   E 02050                CTIME      03073                FMRTAPE    04254
+         *TEST*   C 01130                FT*642   E 02050                PTIME    E 03110                OCTTDEC    05203
+         BCDWRIT*   01201                FT*002   E 02050                ITIME    E 03111                LUNMUN   C 05236
+         FT*621   E 01201                FD*642   E 02051                LOCF     E 03114                JERRIO*  C 05237
+         BCDENC*  E 01205                FD*722   E 02051                XLOC     E 03114                CARD2    C 05240
+         FT*611   E 01205                FC*722   E 02051                BCDBEG*    03120                ISOICTTR   05265
+         FT*571   E 01207                FC*642   E 02051                FT2*     E 03425                REVCARD    05322
+         FT*561   E 01212                FC*002   E 02051                KONV1*   E 03440                *ICHECK* C 05347
+         NEXTLET* E 01217                IOEND*   E 02056                PRINT8     03534                *ПEPФOPA   05355
+         RK*      E 01261                FT*643   E 02056                TTPRINT    03715                KOД*CDC  E 05356
+         WSY*     E 01517                FT*723   E 02056                BCDPUN     03754                CBOБOДHO   05416
+         I/O*ERR  E 01757                FT*003   E 02056                EBCDPUN  E 04000
+≠
+------------------------------------------------------------
+   Elapsed time: 0.045 seconds
+      Simulated: 2114677 instructions
+Simulation rate: 46745590 instructions/sec

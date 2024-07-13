@@ -1,0 +1,41 @@
+Read job 'cernlib_f105.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖЖЖ    Ж   ЖЖЖ  ЖЖЖЖ
+            Ж       ЖЖ  Ж   Ж Ж
+            ЖЖЖЖ   Ж Ж  Ж   Ж ЖЖЖЖ
+            Ж        Ж  Ж   Ж     Ж
+            Ж        Ж  Ж   Ж     Ж
+            Ж        Ж  Ж   Ж Ж   Ж
+            Ж       ЖЖЖ  ЖЖЖ   ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME F105
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+                                                  TEST F105
+              THETA               PHI                 THPRIM              PHPRIM
+         6.99999999999-01    2.59999999999-01    2.44159274291+00    3.40159224955+00
+              THAXE               PHAXE               ROTANG
+         1.57079600000+00    0.00000000000+00    3.14159300000+00
+------------------------------------------------------------
+   Elapsed time: 0.039 seconds
+      Simulated: 1821225 instructions
+Simulation rate: 46812106 instructions/sec

@@ -1,0 +1,44 @@
+Read job 'cernlib_j551.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+              ЖЖЖ ЖЖЖЖ  ЖЖЖЖ     Ж
+                Ж Ж     Ж       ЖЖ
+                Ж ЖЖЖЖ  ЖЖЖЖ   Ж Ж
+                Ж     Ж     Ж    Ж
+                Ж     Ж     Ж    Ж
+            Ж   Ж Ж   Ж Ж   Ж    Ж
+             ЖЖЖ   ЖЖЖ   ЖЖЖ    ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME J551
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         J551       01000                EXIT     E 01242                INT      E 01304                EXP      E 01313
+    OTCYTCTBYET  FIGREL                  FLOAT      01270                SQRT     E 01306                ALOG10   E 01317
+    OTCYTCTBYET  FIGABS                  ABS      E 01273                SIN      E 01307                R*TO*INT   01323
+    OTCYTCTBYET  FIGURE                  IABS     E 01276                COS      E 01310                R*TO*I   E 01324
+         PROGRAM  E 01000                IFIX     E 01300                ATAN     E 01311                CBOБOДHO   01336
+         STOP*      01241                AINT     E 01302                ALOG     E 01312
+≠
+------------------------------------------------------------
+   Elapsed time: 0.030 seconds
+      Simulated: 1397570 instructions
+Simulation rate: 46165560 instructions/sec

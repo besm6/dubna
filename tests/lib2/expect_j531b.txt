@@ -1,0 +1,44 @@
+Read job 'cernlib_j531b.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+              ЖЖЖ ЖЖЖЖ  ЖЖЖЖЖ    Ж  ЖЖЖЖ
+                Ж Ж        Ж    ЖЖ  Ж  Ж
+                Ж ЖЖЖЖ    Ж    Ж Ж  ЖЖЖ
+                Ж     Ж    Ж     Ж  Ж  Ж
+                Ж     Ж     Ж    Ж  Ж   Ж
+            Ж   Ж Ж   Ж Ж   Ж    Ж  Ж   Ж
+             ЖЖЖ   ЖЖЖ   ЖЖЖ    ЖЖЖ ЖЖЖЖ
+
+
+
+
+
+
+
+
+*NAME J531B
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         J531B      01000                ABS      E 01162                SIN      E 01176                R*TO*INT   01212
+    OTCYTCTBYET  COPLOT                  IABS     E 01165                COS      E 01177                R*TO*I   E 01213
+         PROGRAM  E 01000                IFIX     E 01167                ATAN     E 01200                CBOБOДHO   01225
+         STOP*      01130                AINT     E 01171                ALOG     E 01201
+         EXIT     E 01131                INT      E 01173                EXP      E 01202
+         FLOAT      01157                SQRT     E 01175                ALOG10   E 01206
+≠
+------------------------------------------------------------
+   Elapsed time: 0.031 seconds
+      Simulated: 1590190 instructions
+Simulation rate: 50499857 instructions/sec

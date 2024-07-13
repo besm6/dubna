@@ -1,0 +1,53 @@
+Read job 'cernlib_d800.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖ    ЖЖЖ   ЖЖЖ   ЖЖЖ
+            Ж  Ж  Ж   Ж Ж   Ж Ж   Ж
+            Ж   Ж  Ж Ж  Ж   Ж Ж   Ж
+            Ж   Ж   Ж   Ж   Ж Ж   Ж
+            Ж   Ж  Ж Ж  Ж   Ж Ж   Ж
+            Ж   Ж Ж   Ж Ж   Ж Ж   Ж
+            ЖЖЖЖ   ЖЖЖ   ЖЖЖ   ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME D800
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         D800       01000                FT*722   E 02563                AIMAG    E 03610                BCDPUN     04547
+    OTCYTCTBYET  FFT                     FT*642   E 02563                I*MUI*     03612                EBCDPUN  E 04573
+         PROGRAM  E 01000                FT*002   E 02563                C*AD*C     03620                ISOTCOSY   04756
+         BCDWRIT*   01714                FD*642   E 02564                C*SU*C   E 03627                ISOTCOS1 E 05027
+         FT*621   E 01714                FD*722   E 02564                C*MU*C   E 03634                FMRTAPE    05047
+         BCDENC*  E 01720                FC*722   E 02564                C*DI*C   E 03647                OCTTDEC    05776
+         FT*611   E 01720                FC*642   E 02564                C*ST*C   E 03667                LUNMUN   C 06031
+         FT*571   E 01722                FC*002   E 02564                C*LO*C   E 03671                JERRIO*  C 06032
+         FT*561   E 01725                IOEND*   E 02571                C*LN*C   E 03673                CARD2    C 06033
+         NEXTLET* E 01732                FT*643   E 02571                C*COMP   E 03701                ISOICTTR   06060
+         RK*      E 01774                FT*723   E 02571                BCDBEG*    03713                REVCARD    06115
+         WSY*     E 02232                FT*003   E 02571                FT2*     E 04220                *ICHECK* C 06142
+         I/O*ERR  E 02472                STOP*      03557                KONV1*   E 04233                *ПEPФOPA   06150
+         IOCONT*    02517                EXIT     E 03560                PRINT8     04327                KOД*CDC  E 06151
+         IOAC*    E 02550                REAL       03606                TTPRINT    04510                CBOБOДHO   06211
+≠
+------------------------------------------------------------
+   Elapsed time: 0.057 seconds
+      Simulated: 2607726 instructions
+Simulation rate: 45385697 instructions/sec

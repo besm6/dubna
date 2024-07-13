@@ -1,0 +1,59 @@
+Read job 'cernlib_f120.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖЖЖ    Ж   ЖЖЖ   ЖЖЖ
+            Ж       ЖЖ  Ж   Ж Ж   Ж
+            ЖЖЖЖ   Ж Ж      Ж Ж   Ж
+            Ж        Ж     Ж  Ж   Ж
+            Ж        Ж    Ж   Ж   Ж
+            Ж        Ж   Ж    Ж   Ж
+            Ж       ЖЖЖ ЖЖЖЖЖ  ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME F120
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         F120       01000                FC*002   E 02063                EXP      E 03246                MXMPY1   E 05453
+         PROGRAM  E 01000                IOEND*   E 02070                ALOG10   E 03252                MXMPY2   E 05454
+         BCDWRIT*   01213                FT*643   E 02070                BCDBEG*    03256                MXMPY3   E 05455
+         FT*621   E 01213                FT*723   E 02070                FT2*     E 03563                MXMUB    E 05456
+         BCDENC*  E 01217                FT*003   E 02070                KONV1*   E 03576                MXMUB1   E 05457
+         FT*611   E 01217                STOP*      03056                PRINT8     03672                MXMUB2   E 05460
+         FT*571   E 01221                EXIT     E 03057                TTPRINT    04053                MXMUB3   E 05461
+         FT*561   E 01224                DIRCOS     03105                BCDPUN     04112                UCOPY      05760
+         NEXTLET* E 01231           OTCYTCTBYET  UZERO                   EBCDPUN  E 04136                R*TO*INT   06021
+         RK*      E 01273                ERDIRC   E 03106                ISOTCOSY   04321                R*TO*I   E 06022
+         WSY*     E 01531                FLOAT      03223                ISOTCOS1 E 04372                CARD2    C 06034
+         I/O*ERR  E 01771                ABS      E 03226                FMRTAPE    04412                ISOICTTR   06061
+         IOCONT*    02016                IABS     E 03231                OCTTDEC    05341                REVCARD    06116
+         IOAC*    E 02047                IFIX     E 03233                LUNMUN   C 05374                *ICHECK* C 06143
+         FT*722   E 02062                AINT     E 03235                JERRIO*  C 05375                I*DI*I     06151
+         FT*642   E 02062                INT      E 03237                *SLATE*  C 05376                I*ST*L   E 06161
+         FT*002   E 02062                SQRT     E 03241                MXMAD      05446                I*MU*I   E 06162
+         FD*642   E 02063                SIN      E 03242                MXMAD1   E 05447                *ПEPФOPA   06175
+         FD*722   E 02063                COS      E 03243                MXMAD2   E 05450                KOД*CDC  E 06176
+         FC*722   E 02063                ATAN     E 03244                MXMAD3   E 05451                CBOБOДHO   06236
+         FC*642   E 02063                ALOG     E 03245                MXMPY    E 05452
+≠
+------------------------------------------------------------
+   Elapsed time: 0.056 seconds
+      Simulated: 2577738 instructions
+Simulation rate: 45647111 instructions/sec

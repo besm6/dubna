@@ -8,13 +8,13 @@
 
 
 
-            ЖЖЖЖЖ ЖЖЖЖ   ЖЖЖ  ЖЖЖЖЖ
-              Ж   Ж     Ж       Ж
-              Ж   ЖЖЖ    ЖЖЖ    Ж
-              Ж   Ж         Ж   Ж
-              Ж   Ж         Ж   Ж
-              Ж   Ж     Ж   Ж   Ж
-              Ж   ЖЖЖЖЖ  ЖЖЖ    Ж
+             ЖЖЖ   ЖЖЖ   ЖЖЖ   ЖЖЖ
+            Ж   Ж Ж   Ж Ж   Ж Ж   Ж
+            Ж   Ж     Ж Ж   Ж Ж   Ж
+            Ж   Ж    Ж  Ж   Ж Ж   Ж
+            Ж   Ж   Ж   Ж   Ж Ж   Ж
+            ЖЖЖЖЖ  Ж    Ж   Ж Ж   Ж
+            Ж   Ж ЖЖЖЖЖ  ЖЖЖ   ЖЖЖ
 
 
 
@@ -23,120 +23,12 @@
 
 
 
-*NAME TEST
-*LIBRARY:1                                             04 ИЮЛ 24 23.45
- Ф O P T P A H
-   /16.07.73/
-                PROGRAM A200
-                DOUBLE PRECISION DREAL,DAIMAG,DCABS,Z(2),Y,X,F(2),Z1(2),Z2(2)
-                Z(1)=2.52343183811242525822321D0
-       2        Z(2)=3.125424320115743825743D0
-       3        PRINT 1
-       4        PRINT 2,Z
-       5        Y=DREAL(Z)
-       6        PRINT 3,Y
-       7        Y=DAIMAG(Z)
-       8        PRINT 4,Y
-       9        Y=DCABS(Z)
-      10        PRINT 5,Y
-      11        X=1.123456789121326D0
-      12        Y=0.223427862345861D0
-      13        CALL DCMPLX(X,Y,Z)
-      14        PRINT 6,X,Y,Z
-      15        CALL DCONJG(Z)
-      16        PRINT 7,Z
-      17        Z1(1)=0.12345627112618326D0
-      18        Z1(2)=3.23165472126181362D0
-      19        Z2(1)=3.23165472126181362D0
-      20        Z2(2)=0.12345627112618326D0
-      21        PRINT 8,Z1,Z2
-      22        CALL DCADD(Z1,Z2,Z)
-      23        PRINT 9,Z
-      24        CALL DCSUB(Z1,Z2,Z)
-      25        PRINT 10,Z
-      26        CALL DCMPY(Z1,Z2,Z)
-      27        PRINT 11,Z
-      28        CALL DCDIV(Z1,Z2,Z)
-      29        PRINT 12,Z
-      30        Z(1)=5.805D0
-      31        Z(2)=2.735D0
-      32        PRINT 2,Z
-      33        CALL DCSQRT(Z,F)
-      34        PRINT 13,F
-      35        CALL DCEXP(Z,F)
-      36        PRINT 14,F
-      37        CALL DCLOG (Z,F)
-      38        PRINT 15,F
-      39        CALL DCSIN(Z,F)
-      40        PRINT 16,F
-      41        CALL DCCOS(Z,F)
-      42        PRINT 17,F
-            1   FORMAT(1H1,40X,′DOUBLE PRECISION COMPLEX ARITHMETIC′,34X,′TEST A20
-               10′/40X,40(1H*),30X,9(1H*)/40X,40(1H*)/)
-            2   FORMAT(33X,′Z=(′D24.17′,′D24.17′)′/)
-             3  FORMAT(10X,′DREAL=′D24.17)
-             4  FORMAT(41X,′DAIMAG=′D24.17)
-             5  FORMAT(73X,′DCABS=′,D24.17/30X,60(1H*)/)
-             6  FORMAT(50X,′DCMPLX(X,Y,Z)′/5X,′X=′,D24.17,2X,′Y=′D24.17,2X,′Z=(′D2
-               14.17,′,′,D24.17,′)′/30X,60(1H*))
-             7  FORMAT(/50X,′DCONJG(Z)′/40X,′Z=(′,D24.17,′,′,D24.17,′)′/30X,60(1H*
-               1)/)
-            8   FORMAT(33X,′Z1=(′D24.17′,′D24.17′)′/33X,′Z2=(′D24.17′,′D24.17′)′/)
-            9   FORMAT(10X,′DCADD(Z1,Z2,Z)′,9X,′Z=(′D24.17′,′D24.17′)′/)
-            10  FORMAT(10X,′DCSUB(Z1,Z2,Z)′,9X,′Z=(′D24.17′,′D24.17′)′/)
-            11  FORMAT(10X,′DCMPY(Z1,Z2,Z)′,9X,′Z=(′D24.17′,′D24.17′)′/)
-           12   FORMAT(′ M =′,I3/′ N =′,I3/′ NC=′,I3)
-               1/)
-            13  FORMAT(10X,′DCSQRT(Z,F)′,12X,′F=(′D24.17′,′D24.17′)′/)
-            14  FORMAT(10X,′DCEXPT(Z,F)′,12X,′F=(′D24.17′,′D24.17′)′/)
-            15  FORMAT(10X,′DCLOGT(Z,F)′,12X,′F=(′D24.17′,′D24.17′)′/)
-            16  FORMAT(10X,′DCSINT(Z,F)′,12X,′F=(′D24.17′,′D24.17′)′/)
-            17  FORMAT(10X,′DCCOST(Z,F)′,12X,′F=(′D24.17′,′D24.17′)′/30X,60(1H*)/)
-                END
-
-
-                    BЫЗЫBAEMЫE ФYHKЦИИ И ПOДПPOГPAMMЫ
-
-
-       DCABS       DAIMAG      DREAL       DCCOS       DCSIN       DCLOG
-       DCEXP       DCSQRT      DCDIV       DCMPY       DCSUB       DCADD
-       DCONJG      DCMPLX
-                                      TAБЛИЦA  OTHOCИTEЛЬHЫX AДPECOB
-         1     2     3     4     5     6     7     8     9    10    11    12    13    14    15    16    17    18    19    20
- 000  :00001:00003:00005 00007:00025:00030 00034:00040 00044:00050 00054:00057:00061 00064:00106 00107:00125:00127:00131:00133
- 020  :00135:00165 00170:00206 00211:00227 00232:00250 00253:00271:00273:00275:00312 00314:00332 00334:00352 00354:00372 00374
- 040  :00412 00414
-*EXECUTE
-      *LIBRA:01 = DAIMAG      DCABS       DCONJG      DCMPLX      DCADD       DCSUB       DCMPY       DCDIV       DCSQRT
-      DCEXP       DCLOG       DCSIN       DCCOS       DSICOH      DREAL
-≠
-         A200       01000                IOCONTD*   03622                D*LO*D   E 05322                DABS       11371
-         PROGRAM  E 01000                FD*002   E 03671                D*ST*D   E 05324                VDSQRT     11375
-         BCDWRIT*   01757                STOP*      04172                BCDBEG*    05361                I*DI*I     11424
-         FT*621   E 01757                EXIT     E 04173                FT2*     E 05666                I*ST*L   E 11434
-         BCDENC*  E 01763                DCABS      04221                KONV1*   E 05701                I*MU*I   E 11435
-         FT*611   E 01763                DAIMAG     04257                PRINT8     05775                D*PO*I     11450
-         FT*571   E 01765                DREAL      04300                TTPRINT    06156                DSIGN      11515
-         FT*561   E 01770                DCCOS      04321                BCDPUN     06215                DINT       11564
-         NEXTLET* E 01775                DCSIN      04367                EBCDPUN  E 06241                D*ST*R     11627
-         RK*      E 02037                DCLOG      04435                ISOTCOSY   06424                D*TO*I   E 11642
-         WSY*     E 02275                DCEXP      04507                ISOTCOS1 E 06475                D*TO*R   E 11643
-         I/O*ERR  E 02535                DCSQRT     04542                FMRTAPE    06515                D*LO*R   E 11645
-         IOCONT*    02562                DCDIV      04627                OCTTDEC    07444                D*LN*R   E 11647
-         IOAC*    E 02613                DCMPY      04721                LUNMUN   C 07477                R*ST*D   E 11651
-         FT*722   E 02626                DCSUB      04774                JERRIO*  C 07500                D*ST*I     11663
-         FT*642   E 02626                DCADD      05025                DSQRT      07501                D*LO*I   E 11667
-         FT*002   E 02626                DCONJG     05056                DSIN       07735                D*LN*I   E 11671
-         FD*642   E 02627                DCMPLX     05074                DCOS     E 07736                I*ST*D   E 11673
-         FD*722   E 02627                I*MUI*     05121                DSICOH     10320                DATAN      11710
-         FC*722   E 02627                DUBLPREC   05127                DLOG       10550                *ПEPФOPA   12213
-         FC*642   E 02627                D*AD*D   E 05130                DATAN2     11007                KOД*CDC  E 12214
-         FC*002   E 02627                D*MU*D   E 05233                DEXP       11135                R*TO*INT   12254
-         IOEND*   E 02634                D*DI*D   E 05245                CARD2    C 11254                R*TO*I   E 12255
-         FT*643   E 02634                D*SU*D   E 05263                ISOICTTR   11301                R*ST*I     12267
-         FT*723   E 02634                D*COMP   E 05314                REVCARD    11336                CBOБOДHO   12277
-         FT*003   E 02634                D*LN*D   E 05316                *ICHECK* C 11363
-≠                                          DOUBLE PRECISION COMPLEX ARITHMETIC                                  TEST A200
+*NAME A200
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*
+*EXECUTE                                          DOUBLE PRECISION COMPLEX ARITHMETIC                                  TEST A200
                                         ****************************************                              *********
                                         ****************************************
                                  Z=( 2.52343183811242526+000, 3.12542432011574383+000)

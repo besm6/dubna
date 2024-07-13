@@ -1,0 +1,45 @@
+Read job 'cernlib_e105.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖЖ     Ж   ЖЖЖ  ЖЖЖЖ
+            Ж       ЖЖ  Ж   Ж Ж
+            ЖЖЖ    Ж Ж  Ж   Ж ЖЖЖЖ
+            Ж        Ж  Ж   Ж     Ж
+            Ж        Ж  Ж   Ж     Ж
+            Ж        Ж  Ж   Ж Ж   Ж
+            ЖЖЖЖЖ   ЖЖЖ  ЖЖЖ   ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME E105
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+                                                  TEST E105
+                    F=  1.00,  1.21,  1.44,  1.69,  1.96,  2.25,  2.56,  2.89,  3.24,  3.61,
+                    X=  1.00,  1.10,  1.20,  1.30,  1.40,  1.50,  1.60,  1.70,  1.80,  1.90,
+                    Z=  1.3855     M= 2
+                    Y=   1.9196102500
+                    Z=  1.3855     M=11
+     *** ERROR MESSAGE FUNCTION DIVDIF *** , ORDER OF INTERPOLATION M = 11 TOO HIGH,M IS REDUCED TO , 9
+                    Z=  2.0000     M= 1
+     *** ERROR MESSAGE FUNCTION DIVDIF *** , ARGUMENT Z =  2.00000000000000+00 OUTSIDE RANGE.
+------------------------------------------------------------
+   Elapsed time: 0.049 seconds
+      Simulated: 2268824 instructions
+Simulation rate: 46427601 instructions/sec

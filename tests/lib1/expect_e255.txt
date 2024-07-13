@@ -1,0 +1,37 @@
+Read job 'cernlib_e255.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖЖ   ЖЖЖ  ЖЖЖЖ  ЖЖЖЖ
+            Ж     Ж   Ж Ж     Ж
+            ЖЖЖ       Ж ЖЖЖЖ  ЖЖЖЖ
+            Ж        Ж      Ж     Ж
+            Ж       Ж       Ж     Ж
+            Ж      Ж    Ж   Ж Ж   Ж
+            ЖЖЖЖЖ ЖЖЖЖЖ  ЖЖЖ   ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME E255
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+     -5.25      5.75     -1.25      1.25
+------------------------------------------------------------
+   Elapsed time: 0.032 seconds
+      Simulated: 1645593 instructions
+Simulation rate: 52108708 instructions/sec

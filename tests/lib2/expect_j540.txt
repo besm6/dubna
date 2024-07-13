@@ -1,0 +1,55 @@
+Read job 'cernlib_j540.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+              ЖЖЖ ЖЖЖЖ      Ж  ЖЖЖ
+                Ж Ж        ЖЖ Ж   Ж
+                Ж ЖЖЖЖ    Ж Ж Ж   Ж
+                Ж     Ж  Ж  Ж Ж   Ж
+                Ж     Ж Ж   Ж Ж   Ж
+            Ж   Ж Ж   Ж ЖЖЖЖЖ Ж   Ж
+             ЖЖЖ   ЖЖЖ      Ж  ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME J540
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         J540       01000                FT*002   E 02450                INT      E 03507                EBCDPUN  E 04432
+    OTCYTCTBYET  XYPLOT                  FD*642   E 02451                SQRT     E 03511                ISOTCOSY   04615
+         PROGRAM  E 01000                FD*722   E 02451                SIN      E 03512                ISOTCOS1 E 04666
+         BCDWRIT*   01601                FC*722   E 02451                COS      E 03513                FMRTAPE    04706
+         FT*621   E 01601                FC*642   E 02451                ATAN     E 03514                OCTTDEC    05635
+         BCDENC*  E 01605                FC*002   E 02451                ALOG     E 03515                LUNMUN   C 05670
+         FT*611   E 01605                IOEND*   E 02456                EXP      E 03516                JERRIO*  C 05671
+         FT*571   E 01607                FT*643   E 02456                ALOG10   E 03522                R*TO*INT   05672
+         FT*561   E 01612                FT*723   E 02456                I*DI*I     03526                R*TO*I   E 05673
+         NEXTLET* E 01617                FT*003   E 02456                I*ST*L   E 03536                CARD2    C 05705
+         RK*      E 01661                STOP*      03444                I*MU*I   E 03537                ISOICTTR   05732
+         WSY*     E 02117                EXIT     E 03445                BCDBEG*    03552                REVCARD    05767
+         I/O*ERR  E 02357                FLOAT      03473                FT2*     E 04057                *ICHECK* C 06014
+         IOCONT*    02404                ABS      E 03476                KONV1*   E 04072                *ПEPФOPA   06022
+         IOAC*    E 02435                IABS     E 03501                PRINT8     04166                KOД*CDC  E 06023
+         FT*722   E 02450                IFIX     E 03503                TTPRINT    04347                CBOБOДHO   06063
+         FT*642   E 02450                AINT     E 03505                BCDPUN     04406
+≠
+------------------------------------------------------------
+   Elapsed time: 0.041 seconds
+      Simulated: 1933257 instructions
+Simulation rate: 47150310 instructions/sec

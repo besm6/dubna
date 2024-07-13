@@ -1,0 +1,41 @@
+Read job 'cernlib_c203.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+             ЖЖЖЖ  ЖЖЖ   ЖЖЖ  ЖЖЖЖЖ
+            Ж     Ж   Ж Ж   Ж    Ж
+            Ж         Ж Ж   Ж   Ж
+            Ж        Ж  Ж   Ж    Ж
+            Ж       Ж   Ж   Ж     Ж
+            Ж      Ж    Ж   Ж Ж   Ж
+             ЖЖЖЖ ЖЖЖЖЖ  ЖЖЖ   ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME C203
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+                                                  TEST C203
+          FCN=Z*CSIN(Z)
+          Z=(0.,0.)
+          R=4.
+          NZ=    4  R= 4.0
+------------------------------------------------------------
+   Elapsed time: 0.058 seconds
+      Simulated: 2847135 instructions
+Simulation rate: 49108008 instructions/sec

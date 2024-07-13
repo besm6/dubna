@@ -1,0 +1,34 @@
+Read job 'cernlib_c206a.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+             ЖЖЖЖ  ЖЖЖ   ЖЖЖ   ЖЖЖ   ЖЖЖ
+            Ж     Ж   Ж Ж   Ж Ж     Ж   Ж
+            Ж         Ж Ж   Ж ЖЖЖЖ  Ж   Ж
+            Ж        Ж  Ж   Ж Ж   Ж Ж   Ж
+            Ж       Ж   Ж   Ж Ж   Ж Ж   Ж
+            Ж      Ж    Ж   Ж Ж   Ж ЖЖЖЖЖ
+             ЖЖЖЖ ЖЖЖЖЖ  ЖЖЖ   ЖЖЖ  Ж   Ж
+
+
+
+
+
+
+
+
+*NAME C206A
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*  ПPOГPAMMA PAБOTAET C OБЫЧHOЙ KOMПЛEKCHOЙ APИФMETИKOЙ
+ ***  ПЛOXAЯ YПPABЛЯЮЩAЯ KAPTA
+*CALL PTIME

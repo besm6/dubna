@@ -1,0 +1,51 @@
+Read job 'cernlib_f144.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖЖЖ    Ж      Ж     Ж
+            Ж       ЖЖ     ЖЖ    ЖЖ
+            ЖЖЖЖ   Ж Ж    Ж Ж   Ж Ж
+            Ж        Ж   Ж  Ж  Ж  Ж
+            Ж        Ж  Ж   Ж Ж   Ж
+            Ж        Ж  ЖЖЖЖЖ ЖЖЖЖЖ
+            Ж       ЖЖЖ     Ж     Ж
+
+
+
+
+
+
+
+
+*NAME F144
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         F144       01000                IOCONT*    02275                FT*003   E 02347                OCTTDEC    05447
+    OTCYTCTBYET  TRISCA                  IOAC*    E 02326                STOP*      03335                LUNMUN   C 05502
+         PROGRAM  E 01000                FT*722   E 02341                EXIT     E 03336                JERRIO*  C 05503
+         BCDWRIT*   01472                FT*642   E 02341                BCDBEG*    03364                CARD2    C 05504
+         FT*621   E 01472                FT*002   E 02341                FT2*     E 03671                ISOICTTR   05531
+         BCDENC*  E 01476                FD*642   E 02342                KONV1*   E 03704                REVCARD    05566
+         FT*611   E 01476                FD*722   E 02342                PRINT8     04000                *ICHECK* C 05613
+         FT*571   E 01500                FC*722   E 02342                TTPRINT    04161                *ПEPФOPA   05621
+         FT*561   E 01503                FC*642   E 02342                BCDPUN     04220                KOД*CDC  E 05622
+         NEXTLET* E 01510                FC*002   E 02342                EBCDPUN  E 04244                CBOБOДHO   05662
+         RK*      E 01552                IOEND*   E 02347                ISOTCOSY   04427
+         WSY*     E 02010                FT*643   E 02347                ISOTCOS1 E 04500
+         I/O*ERR  E 02250                FT*723   E 02347                FMRTAPE    04520
+≠
+------------------------------------------------------------
+   Elapsed time: 0.067 seconds
+      Simulated: 3029649 instructions
+Simulation rate: 45221342 instructions/sec

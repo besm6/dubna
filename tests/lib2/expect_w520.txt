@@ -1,0 +1,62 @@
+Read job 'cernlib_w520.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            Ж   Ж ЖЖЖЖ   ЖЖЖ   ЖЖЖ
+            Ж   Ж Ж     Ж   Ж Ж   Ж
+            Ж   Ж ЖЖЖЖ      Ж Ж   Ж
+            Ж   Ж     Ж    Ж  Ж   Ж
+            Ж Ж Ж     Ж   Ж   Ж   Ж
+            Ж Ж Ж Ж   Ж  Ж    Ж   Ж
+             Ж Ж   ЖЖЖ  ЖЖЖЖЖ  ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME W520
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         W520       01000                FT*621   E 03042                I*MUI*     03727                PRINT8     05505
+    OTCYTCTBYET  PSCS                    BCDENC*  E 03046                C*ST*R     03735                JERRIO*  C 05666
+         PROGRAM  E 01000                FT*611   E 03046                C*LO*R   E 03736                TTPRINT    05667
+         *OST*    C 01411                FT*571   E 03050                C*LN*R   E 03740                BCDPUN     05726
+         BCDREAD*   01505                FT*561   E 03053                R*ST*C   E 03742                EBCDPUN  E 05752
+         FT*521   E 01505                NEXTLET* E 03060                C*AD*C     03745                ISOTCOSY   06135
+         BCDDEC*  E 01511                RK*      E 03122                C*SU*C   E 03754                ISOTCOS1 E 06206
+         FT*531   E 01511                WSY*     E 03360                C*MU*C   E 03761                OCTTDEC    06226
+         FT*541   E 01513                I/O*ERR  E 03620                C*DI*C   E 03774                R*TO*INT   06261
+         IOCONT*    02002                STOP*      03645                C*ST*C   E 04014                R*TO*I   E 06262
+         IOAC*    E 02033                EXIT     E 03646                C*LO*C   E 04016                MONREAD*   06274
+         FT*722   E 02046                FLOAT      03674                C*LN*C   E 04020                READ*ERR E 06354
+         FT*642   E 02046                ABS      E 03677                C*COMP   E 04026                *ICHECK* C 06400
+         FT*002   E 02046                IABS     E 03702                C*AD*R     04040                CARD2    C 06406
+         FD*642   E 02047                IFIX     E 03704                C*SU*R   E 04042                ISOICTTR   06433
+         FD*722   E 02047                AINT     E 03706                C*MU*R   E 04044                REVCARD    06470
+         FC*722   E 02047                INT      E 03710                C*DI*R   E 04046                DRUMTAP*   06515
+         FC*642   E 02047                SQRT     E 03712                READ*      04055                COSYTISO   06546
+         FC*002   E 02047                SIN      E 03713                TTREAD     04103                *ПEPФOPA   06622
+         IOEND*   E 02054                COS      E 03714                BCDBEG*    04141                KOД*CDC  E 06623
+         FT*643   E 02054                ATAN     E 03715                FT2*     E 04446                CHKWORD* C 06663
+         FT*723   E 02054                ALOG     E 03716                KONV1*   E 04461                CBOБOДHO   06664
+         FT*003   E 02054                EXP      E 03717                FMRTAPE    04555
+         BCDWRIT*   03042                ALOG10   E 03723                LUNMUN   C 05504
+≠
+------------------------------------------------------------
+   Elapsed time: 0.066 seconds
+      Simulated: 3016681 instructions
+Simulation rate: 45775952 instructions/sec

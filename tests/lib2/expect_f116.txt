@@ -1,0 +1,56 @@
+Read job 'cernlib_f116.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖЖЖ    Ж     Ж   ЖЖЖ
+            Ж       ЖЖ    ЖЖ  Ж
+            ЖЖЖЖ   Ж Ж   Ж Ж  ЖЖЖЖ
+            Ж        Ж     Ж  Ж   Ж
+            Ж        Ж     Ж  Ж   Ж
+            Ж        Ж     Ж  Ж   Ж
+            Ж       ЖЖЖ   ЖЖЖ  ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME F116
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         F116       01000                FT*002   E 01766                PRINT8     03532                AINT     E 05263
+    OTCYTCTBYET  DOT4                    FD*642   E 01767                TTPRINT    03713                INT      E 05265
+    OTCYTCTBYET  DOT                     FD*722   E 01767                BCDPUN     03752                SQRT     E 05267
+         PROGRAM  E 01000                FC*722   E 01767                EBCDPUN  E 03776                SIN      E 05270
+         BCDWRIT*   01117                FC*642   E 01767                ISOTCOSY   04161                COS      E 05271
+         FT*621   E 01117                FC*002   E 01767                ISOTCOS1 E 04232                ATAN     E 05272
+         BCDENC*  E 01123                IOEND*   E 01774                FMRTAPE    04252                ALOG     E 05273
+         FT*611   E 01123                FT*643   E 01774                OCTTDEC    05201                EXP      E 05274
+         FT*571   E 01125                FT*723   E 01774                LUNMUN   C 05234                ALOG10   E 05300
+         FT*561   E 01130                FT*003   E 01774                JERRIO*  C 05235                CARD2    C 05304
+         NEXTLET* E 01135                STOP*      02762                SIGN       05236                ISOICTTR   05331
+         RK*      E 01177                EXIT     E 02763                ISIGN    E 05242                REVCARD    05366
+         WSY*     E 01435                DOTNOR     03011                IDIM     E 05244                *ICHECK* C 05413
+         I/O*ERR  E 01675           OTCYTCTBYET  DOT                     DIM      E 05245                R*TO*INT   05421
+         IOCONT*    01722                DOTI       03063                FLOAT      05251                R*TO*I   E 05422
+         IOAC*    E 01753                BCDBEG*    03116                ABS      E 05254                *ПEPФOPA   05434
+         FT*722   E 01766                FT2*     E 03423                IABS     E 05257                KOД*CDC  E 05435
+         FT*642   E 01766                KONV1*   E 03436                IFIX     E 05261                CBOБOДHO   05475
+≠
+------------------------------------------------------------
+   Elapsed time: 0.043 seconds
+      Simulated: 2056350 instructions
+Simulation rate: 47363875 instructions/sec

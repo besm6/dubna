@@ -1,0 +1,43 @@
+Read job 'cernlib_a404.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+             ЖЖЖ      Ж  ЖЖЖ      Ж
+            Ж   Ж    ЖЖ Ж   Ж    ЖЖ
+            Ж   Ж   Ж Ж Ж   Ж   Ж Ж
+            Ж   Ж  Ж  Ж Ж   Ж  Ж  Ж
+            Ж   Ж Ж   Ж Ж   Ж Ж   Ж
+            ЖЖЖЖЖ ЖЖЖЖЖ Ж   Ж ЖЖЖЖЖ
+            Ж   Ж     Ж  ЖЖЖ      Ж
+
+
+
+
+
+
+
+
+*NAME A404
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+                    LOGICAL PRODUCT OR SUM OF TWO BOOLEAN FUNCTIONS OF A REAL VARIABLE                    TEST A404
+                    ******************************************************************                    *********
+                                        IU=0      ,       IV=1
+                                        U= -1.0  0.0  2.0  3.0  5.0
+                                        V= -2.0 -1.0  0.0  1.0  2.0  4.0  0.5
+                        LOGICAL PRODUCT W= -1.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0
+                        LOGICAL     SUM W= -2.0 -1.0  0.0  1.0  3.0  4.0  0.0  0.0  0.0  0.0  0.0  0.0
+------------------------------------------------------------
+   Elapsed time: 0.037 seconds
+      Simulated: 2118635 instructions
+Simulation rate: 57832478 instructions/sec

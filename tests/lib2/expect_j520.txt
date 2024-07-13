@@ -1,0 +1,55 @@
+Read job 'cernlib_j520.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+              ЖЖЖ ЖЖЖЖ   ЖЖЖ   ЖЖЖ
+                Ж Ж     Ж   Ж Ж   Ж
+                Ж ЖЖЖЖ      Ж Ж   Ж
+                Ж     Ж    Ж  Ж   Ж
+                Ж     Ж   Ж   Ж   Ж
+            Ж   Ж Ж   Ж  Ж    Ж   Ж
+             ЖЖЖ   ЖЖЖ  ЖЖЖЖЖ  ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME J520
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         J520       01000                IOAC*    E 02236                IABS     E 03302                EBCDPUN  E 04207
+    OTCYTCTBYET  GRAPH3                  FT*722   E 02251                IFIX     E 03304                ISOTCOSY   04372
+    OTCYTCTBYET  GRAPH2                  FT*642   E 02251                AINT     E 03306                ISOTCOS1 E 04443
+    OTCYTCTBYET  GRAPH4                  FT*002   E 02251                INT      E 03310                FMRTAPE    04463
+    OTCYTCTBYET  GRAPH1                  FD*642   E 02252                SQRT     E 03312                OCTTDEC    05412
+         PROGRAM  E 01000                FD*722   E 02252                SIN      E 03313                LUNMUN   C 05445
+         BCDWRIT*   01402                FC*722   E 02252                COS      E 03314                JERRIO*  C 05446
+         FT*621   E 01402                FC*642   E 02252                ATAN     E 03315                R*TO*INT   05447
+         BCDENC*  E 01406                FC*002   E 02252                ALOG     E 03316                R*TO*I   E 05450
+         FT*611   E 01406                IOEND*   E 02257                EXP      E 03317                CARD2    C 05462
+         FT*571   E 01410                FT*643   E 02257                ALOG10   E 03323                ISOICTTR   05507
+         FT*561   E 01413                FT*723   E 02257                BCDBEG*    03327                REVCARD    05544
+         NEXTLET* E 01420                FT*003   E 02257                FT2*     E 03634                *ICHECK* C 05571
+         RK*      E 01462                STOP*      03245                KONV1*   E 03647                *ПEPФOPA   05577
+         WSY*     E 01720                EXIT     E 03246                PRINT8     03743                KOД*CDC  E 05600
+         I/O*ERR  E 02160                FLOAT      03274                TTPRINT    04124                CBOБOДHO   05640
+         IOCONT*    02205                ABS      E 03277                BCDPUN     04163
+≠
+------------------------------------------------------------
+   Elapsed time: 0.052 seconds
+      Simulated: 2437800 instructions
+Simulation rate: 46665391 instructions/sec

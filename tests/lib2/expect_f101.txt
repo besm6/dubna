@@ -1,0 +1,60 @@
+Read job 'cernlib_f101.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖЖЖ    Ж   ЖЖЖ     Ж
+            Ж       ЖЖ  Ж   Ж   ЖЖ
+            ЖЖЖЖ   Ж Ж  Ж   Ж  Ж Ж
+            Ж        Ж  Ж   Ж    Ж
+            Ж        Ж  Ж   Ж    Ж
+            Ж        Ж  Ж   Ж    Ж
+            Ж       ЖЖЖ  ЖЖЖ    ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME F101
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         F101       01000                FC*002   E 03761                D*SU*D   E 06645                FLOAT      11113
+    OTCYTCTBYET  RANNOR                  IOEND*   E 03766                D*COMP   E 06676                ABS      E 11116
+         PROGRAM  E 01000                FT*643   E 03766                D*LN*D   E 06700                IABS     E 11121
+         BCDWRIT*   03111                FT*723   E 03766                D*LO*D   E 06704                IFIX     E 11123
+         FT*621   E 03111                FT*003   E 03766                D*ST*D   E 06706                AINT     E 11125
+         BCDENC*  E 03115                IOCONTD*   04754                BCDBEG*    06743                INT      E 11127
+         FT*611   E 03115                FD*002   E 05023                FT2*     E 07250                SQRT     E 11131
+         FT*571   E 03117                STOP*      05324                KONV1*   E 07263                SIN      E 11132
+         FT*561   E 03122                EXIT     E 05325                PRINT8     07357                COS      E 11133
+         NEXTLET* E 03127                MATIN2     05353                TTPRINT    07540                ATAN     E 11134
+         RK*      E 03171                MATIN1     06106                BCDPUN     07577                ALOG     E 11135
+         WSY*     E 03427                I*MUI*     06447                EBCDPUN  E 07623                EXP      E 11136
+         I/O*ERR  E 03667                D*ST*R     06455                ISOTCOSY   10006                ALOG10   E 11142
+         IOCONT*    03714                D*TO*I   E 06470                ISOTCOS1 E 10057                R*TO*INT   11146
+         IOAC*    E 03745                D*TO*R   E 06471                FMRTAPE    10077                R*TO*I   E 11147
+         FT*722   E 03760                D*LO*R   E 06473                OCTTDEC    11026                CARD2    C 11161
+         FT*642   E 03760                D*LN*R   E 06475                LUNMUN   C 11061                ISOICTTR   11206
+         FT*002   E 03760                R*ST*D   E 06477                JERRIO*  C 11062                REVCARD    11243
+         FD*642   E 03761                DUBLPREC   06511                DABS       11063                *ICHECK* C 11270
+         FD*722   E 03761                D*AD*D   E 06512                I*DI*I     11067                *ПEPФOPA   11276
+         FC*722   E 03761                D*MU*D   E 06615                I*ST*L   E 11077                KOД*CDC  E 11277
+         FC*642   E 03761                D*DI*D   E 06627                I*MU*I   E 11100                CBOБOДHO   11337
+≠
+------------------------------------------------------------
+   Elapsed time: 0.091 seconds
+      Simulated: 4116054 instructions
+Simulation rate: 45083232 instructions/sec

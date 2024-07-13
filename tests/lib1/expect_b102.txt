@@ -1,0 +1,41 @@
+Read job 'cernlib_b102.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖЖ     Ж   ЖЖЖ   ЖЖЖ
+            Ж  Ж    ЖЖ  Ж   Ж Ж   Ж
+            ЖЖЖ    Ж Ж  Ж   Ж     Ж
+            Ж  Ж     Ж  Ж   Ж    Ж
+            Ж   Ж    Ж  Ж   Ж   Ж
+            Ж   Ж    Ж  Ж   Ж  Ж
+            ЖЖЖЖ    ЖЖЖ  ЖЖЖ  ЖЖЖЖЖ
+
+
+
+
+
+
+
+
+*NAME B102
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+                                        BRING AN ANGLE INTO RANGE                                        TEST B102
+                                        *************************                                        *********
+                    PROXIM(6.388,4.346)     GAMMA =  6.38799999999
+                    PROXIM(0.96 ,4.346)     GAMMA =  7.24318529999
+                    PROXIM(4.346,0.96 )     GAMMA = -1.93718530000
+------------------------------------------------------------
+   Elapsed time: 0.033 seconds
+      Simulated: 1791868 instructions
+Simulation rate: 53885905 instructions/sec

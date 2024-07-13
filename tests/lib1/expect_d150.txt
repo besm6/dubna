@@ -1,0 +1,92 @@
+Read job 'cernlib_d150.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖ      Ж  ЖЖЖЖ   ЖЖЖ
+            Ж  Ж    ЖЖ  Ж     Ж   Ж
+            Ж   Ж  Ж Ж  ЖЖЖЖ  Ж   Ж
+            Ж   Ж    Ж      Ж Ж   Ж
+            Ж   Ж    Ж      Ж Ж   Ж
+            Ж   Ж    Ж  Ж   Ж Ж   Ж
+            ЖЖЖЖ    ЖЖЖ  ЖЖЖ   ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME D150
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*CALL ALLMEMORY
+*EXECUTE
+≠
+         D150       01000                FMRTAPE    06720                *GENINL* C 34770                D*PO*I     53027
+         PROGRAM  E 01000                OCTTDEC    07647                *SAMPLE* C 34771                R*PO*I     53074
+         *NFUN*   C 01126                LUNMUN   C 07702                *BNDLMT* C 34772                R*ST*I     53124
+         BCDWRIT*   01127                JERRIO*  C 07703                BINREAD*   34774                POWER      53134
+         FT*621   E 01127                R*TO*INT   07704                FT*641   E 34774                MONREAD*   53203
+         BCDENC*  E 01133                R*TO*I   E 07705                BINWRIT* E 35025                READ*ERR E 53263
+         FT*611   E 01133                *ISTRGE* C 07717                FT*721   E 35025                *Z0001*  C 53307
+         FT*571   E 01135                *RSTRGE* C 15300                *REWIN     35121                DELSLV     53312
+         FT*561   E 01140                *BUKSZE* C 25452                *BACKS   E 35122           OTCYTCTBYET  DFUN
+         NEXTLET* E 01145                *TRESZE* C 25453                *ENDFI   E 35123                NOCUT      55420
+         RK*      E 01207                *LIMITS* C 25455                SCHEOF   E 35124           OTCYTCTBYET  DFUN
+         WSY*     E 01445                *PRINT*  C 25501                EXMBUC     35132                TSTEXT     55700
+         I/O*ERR  E 01705                *FUNN*   C 25502                BUCMVE     36174                BUFOPT     56077
+         IOCONT*    01732                *QUADRE* C 25505                NODAUD     36347                DRUMTAP*   57042
+         IOAC*    E 01763                FUN        25506                TREAUD     37156                COSYTISO   57073
+         FT*722   E 01776                RANUMS     26036                RECPAR     40153                IOCONTD*   57147
+         FT*642   E 01776                QUASI      26203                AMAX0      42276                FD*002   E 57216
+         FT*002   E 01776                QUAD       27040                AMAX1    E 42276                DMAX1      57517
+         FD*642   E 01777                USRINT     34104                MAX0     E 42277                DMIN1    E 57536
+         FD*722   E 01777                BOUNDS     34146                MAX1     E 42277                RLEN       57565
+         FC*722   E 01777                I*DI*I     34400                AMIN0    E 42313                FEQN       57753
+         FC*642   E 01777                I*ST*L   E 34410                AMIN1    E 42313                SNGL       60064
+         FC*002   E 01777                I*MU*I   E 34411                MIN0     E 42314                IDINT    E 60067
+         IOEND*   E 02004                D*ST*R     34424                MIN1     E 42314                DBLE     E 60072
+         FT*643   E 02004                D*TO*I   E 34437                DVNBKD     42316                BNDOPT     60106
+         FT*723   E 02004                D*TO*R   E 34440                I*MUI*     42407           OTCYTCTBYET  DFUN
+         FT*003   E 02004                D*LO*R   E 34442                CARD2    C 42415                SETTOL     63077
+         STOP*      02772                D*LN*R   E 34444                ISOICTTR   42442                CHKWORD* C 63163
+         EXIT     E 02773                R*ST*D   E 34446                REVCARD    42477                D*ST*I     63164
+         FLOAT      03021                DUBLPREC   34460                *ICHECK* C 42524                D*LO*I   E 63170
+         ABS      E 03024                D*AD*D   E 34461                DATAN      42532                D*LN*I   E 63172
+         IABS     E 03027                D*MU*D   E 34564                DSQRT      43035                I*ST*D   E 63174
+         IFIX     E 03031                D*DI*D   E 34576                AMOD       43271                DVDOT      63211
+         AINT     E 03033                D*SU*D   E 34614                MOD      E 43302                DELBND     63311
+         INT      E 03035                D*COMP   E 34645                I*PO*I     43306                MULCHK     63566
+         SQRT     E 03037                D*LN*D   E 34647                I*PO*R   E 43317                BFGS       64006
+         SIN      E 03040                D*LO*D   E 34653                R*PO*R   E 43317                NEWPTQ     64341
+         COS      E 03041                D*ST*D   E 34655                BINARY     43322                ADDBND     66115
+         ATAN     E 03042                D*AD*R     34712                *ANSWER* C 43341                FEASMV     66315
+         ALOG     E 03043                D*SU*R   E 34714                *DEPTHS* C 43352                LDLSOL     66504
+         EXP      E 03044                D*MU*R   E 34716                *MAXERR* C 43354                LOCSCH     67045
+         ALOG10   E 03050                D*DI*R   E 34720                *SIGSPL* C 43356           OTCYTCTBYET  DFUN
+         INTGRL     03054                D*AD*I     34727                USRTRM     43362                GRDCMP     71002
+         PARTN      03754                D*SU*I   E 34731                SPLIT      43516           OTCYTCTBYET  DFUN
+         BCDBEG*    05564                D*MU*I   E 34733                *CUTOLS* C 52631                BNDTST     71203
+         FT2*     E 06071                D*DI*I   E 34735                *PRSTOP* C 52635                DVCOPY     71421
+         KONV1*   E 06104                I*DI*R     34747                *ZEETRM* C 52636                DELETE     71474
+         PRINT8     06200                R*DI*I   E 34754                DVNOPT     52637                NMDCHL     71563
+         TTPRINT    06361                *D151DT* C 34762                *ПEPФOPA   52664                MODCHL     72232
+         BCDPUN     06420                *MLIMIT* C 34764                KOД*CDC  E 52665                SHRNK      72625
+         EBCDPUN  E 06444                *START*  C 34765                DABS       52725                MXSTEP     73311
+         ISOTCOSY   06627                *EXFILE* C 34766                DSIGN      52731                ORTHVC     73412
+         ISOTCOS1 E 06700                *DISPOS* C 34767                VDSQRT     53000                CBOБOДHO   74030
+≠
+------------------------------------------------------------
+   Elapsed time: 0.197 seconds
+      Simulated: 9053805 instructions
+Simulation rate: 45863183 instructions/sec

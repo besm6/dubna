@@ -1,0 +1,52 @@
+Read job 'cernlib_j502b.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+              ЖЖЖ ЖЖЖЖ   ЖЖЖ   ЖЖЖ  ЖЖЖЖ
+                Ж Ж     Ж   Ж Ж   Ж Ж  Ж
+                Ж ЖЖЖЖ  Ж   Ж     Ж ЖЖЖ
+                Ж     Ж Ж   Ж    Ж  Ж  Ж
+                Ж     Ж Ж   Ж   Ж   Ж   Ж
+            Ж   Ж Ж   Ж Ж   Ж  Ж    Ж   Ж
+             ЖЖЖ   ЖЖЖ   ЖЖЖ  ЖЖЖЖЖ ЖЖЖЖ
+
+
+
+
+
+
+
+
+*NAME J502B
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         J502B      01000                NEXTLET* E 01371                IOEND*   E 02230                ISOTCOSY   04340
+    OTCYTCTBYET  ENDPZD                  RK*      E 01433                FT*643   E 02230                ISOTCOS1 E 04411
+    OTCYTCTBYET  AXIS                    WSY*     E 01671                FT*723   E 02230                FMRTAPE    04431
+    OTCYTCTBYET  LINEAR                  I/O*ERR  E 02131                FT*003   E 02230                OCTTDEC    05360
+    OTCYTCTBYET  SYMBL4                  IOCONT*    02156                STOP*      03216                LUNMUN   C 05413
+    OTCYTCTBYET  PLTIN                   IOAC*    E 02207                EXIT     E 03217                JERRIO*  C 05414
+    OTCYTCTBYET  SCALES                  FT*722   E 02222                R*PO*I     03245                CARD2    C 05415
+         PROGRAM  E 01000                FT*642   E 02222                BCDBEG*    03275                ISOICTTR   05442
+         BCDWRIT*   01353                FT*002   E 02222                FT2*     E 03602                REVCARD    05477
+         FT*621   E 01353                FD*642   E 02223                KONV1*   E 03615                *ICHECK* C 05524
+         BCDENC*  E 01357                FD*722   E 02223                PRINT8     03711                *ПEPФOPA   05532
+         FT*611   E 01357                FC*722   E 02223                TTPRINT    04072                KOД*CDC  E 05533
+         FT*571   E 01361                FC*642   E 02223                BCDPUN     04131                CBOБOДHO   05573
+         FT*561   E 01364                FC*002   E 02223                EBCDPUN  E 04155
+≠
+------------------------------------------------------------
+   Elapsed time: 0.049 seconds
+      Simulated: 2269081 instructions
+Simulation rate: 46468994 instructions/sec

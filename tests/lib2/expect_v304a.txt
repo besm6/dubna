@@ -1,0 +1,51 @@
+Read job 'cernlib_v304a.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            Ж   Ж ЖЖЖЖЖ  ЖЖЖ      Ж  ЖЖЖ
+            Ж   Ж    Ж  Ж   Ж    ЖЖ Ж   Ж
+            Ж   Ж   Ж   Ж   Ж   Ж Ж Ж   Ж
+            Ж   Ж    Ж  Ж   Ж  Ж  Ж Ж   Ж
+            Ж   Ж     Ж Ж   Ж Ж   Ж Ж   Ж
+             Ж Ж  Ж   Ж Ж   Ж ЖЖЖЖЖ ЖЖЖЖЖ
+              Ж    ЖЖЖ   ЖЖЖ      Ж Ж   Ж
+
+
+
+
+
+
+
+
+*NAME V304A
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         V304A      01000                I/O*ERR  E 01661                FT*723   E 01760                FMRTAPE    04131
+    OTCYTCTBYET  IUHUNT                  IOCONT*    01706                FT*003   E 01760                OCTTDEC    05060
+    OTCYTCTBYET  IUCOMP                  IOAC*    E 01737                STOP*      02746                LUNMUN   C 05113
+         PROGRAM  E 01000                FT*722   E 01752                EXIT     E 02747                JERRIO*  C 05114
+         BCDWRIT*   01103                FT*642   E 01752                BCDBEG*    02775                CARD2    C 05115
+         FT*621   E 01103                FT*002   E 01752                FT2*     E 03302                ISOICTTR   05142
+         BCDENC*  E 01107                FD*642   E 01753                KONV1*   E 03315                REVCARD    05177
+         FT*611   E 01107                FD*722   E 01753                PRINT8     03411                *ICHECK* C 05224
+         FT*571   E 01111                FC*722   E 01753                TTPRINT    03572                *ПEPФOPA   05232
+         FT*561   E 01114                FC*642   E 01753                BCDPUN     03631                KOД*CDC  E 05233
+         NEXTLET* E 01121                FC*002   E 01753                EBCDPUN  E 03655                CBOБOДHO   05273
+         RK*      E 01163                IOEND*   E 01760                ISOTCOSY   04040
+         WSY*     E 01421                FT*643   E 01760                ISOTCOS1 E 04111
+≠
+------------------------------------------------------------
+   Elapsed time: 0.038 seconds
+      Simulated: 1761835 instructions
+Simulation rate: 46452093 instructions/sec

@@ -1,0 +1,46 @@
+Read job 'cernlib_j502a.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+              ЖЖЖ ЖЖЖЖ   ЖЖЖ   ЖЖЖ   ЖЖЖ
+                Ж Ж     Ж   Ж Ж   Ж Ж   Ж
+                Ж ЖЖЖЖ  Ж   Ж     Ж Ж   Ж
+                Ж     Ж Ж   Ж    Ж  Ж   Ж
+                Ж     Ж Ж   Ж   Ж   Ж   Ж
+            Ж   Ж Ж   Ж Ж   Ж  Ж    ЖЖЖЖЖ
+             ЖЖЖ   ЖЖЖ   ЖЖЖ  ЖЖЖЖЖ Ж   Ж
+
+
+
+
+
+
+
+
+*NAME J502A
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         J502A      01000                EXIT     E 01314                SIN      E 01361                R*PO*R   E 01406
+    OTCYTCTBYET  ENDPZD                  FLOAT      01342                COS      E 01362                R*TO*INT   01411
+    OTCYTCTBYET  AXILOG                  ABS      E 01345                ATAN     E 01363                R*TO*I   E 01412
+    OTCYTCTBYET  LINEAR                  IABS     E 01350                ALOG     E 01364                R*PO*I     01424
+    OTCYTCTBYET  PLTIN                   IFIX     E 01352                EXP      E 01365                R*ST*I     01454
+    OTCYTCTBYET  SCALES                  AINT     E 01354                ALOG10   E 01371                POWER      01464
+         PROGRAM  E 01000                INT      E 01356                I*PO*I     01375                CBOБOДHO   01533
+         STOP*      01313                SQRT     E 01360                I*PO*R   E 01406
+≠
+------------------------------------------------------------
+   Elapsed time: 0.045 seconds
+      Simulated: 2017985 instructions
+Simulation rate: 44934980 instructions/sec

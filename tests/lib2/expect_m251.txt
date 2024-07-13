@@ -1,0 +1,40 @@
+Read job 'cernlib_m251.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            Ж   Ж  ЖЖЖ  ЖЖЖЖ     Ж
+            ЖЖ ЖЖ Ж   Ж Ж       ЖЖ
+            Ж Ж Ж     Ж ЖЖЖЖ   Ж Ж
+            Ж Ж Ж    Ж      Ж    Ж
+            Ж   Ж   Ж       Ж    Ж
+            Ж   Ж  Ж    Ж   Ж    Ж
+            Ж   Ж ЖЖЖЖЖ  ЖЖЖ    ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME M251
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         M251       01000                PROGRAM  E 01000                STOP*      36257                CBOБOДHO   36306
+    OTCYTCTBYET  MINCOD                  *MINIFL* C 36256                EXIT     E 36260
+≠
+------------------------------------------------------------
+   Elapsed time: 0.046 seconds
+      Simulated: 2254078 instructions
+Simulation rate: 49349286 instructions/sec

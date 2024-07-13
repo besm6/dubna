@@ -1,0 +1,38 @@
+Read job 'cernlib_c317.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+             ЖЖЖЖ ЖЖЖЖЖ    Ж  ЖЖЖЖЖ
+            Ж        Ж    ЖЖ  Ж   Ж
+            Ж       Ж    Ж Ж      Ж
+            Ж        Ж     Ж     Ж
+            Ж         Ж    Ж    Ж
+            Ж     Ж   Ж    Ж   Ж
+             ЖЖЖЖ  ЖЖЖ    ЖЖЖ  Ж
+
+
+
+
+
+
+
+
+*NAME C317
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+                                                  TEST C317
+                                        X                    Y
+------------------------------------------------------------
+   Elapsed time: 0.037 seconds
+      Simulated: 1690285 instructions
+Simulation rate: 45571298 instructions/sec

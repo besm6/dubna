@@ -1,0 +1,50 @@
+Read job 'cernlib_d130.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖ      Ж  ЖЖЖЖЖ  ЖЖЖ
+            Ж  Ж    ЖЖ     Ж  Ж   Ж
+            Ж   Ж  Ж Ж    Ж   Ж   Ж
+            Ж   Ж    Ж     Ж  Ж   Ж
+            Ж   Ж    Ж      Ж Ж   Ж
+            Ж   Ж    Ж  Ж   Ж Ж   Ж
+            ЖЖЖЖ    ЖЖЖ  ЖЖЖ   ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME D130
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+     INTEGRAL (2.*SIN(100.*X)/X*DX )=3.1415926536
+     -------------------------------------------------
+                    INTEGRAL SUMIR-KGAUSS
+                    ---------------------
+ NZ= 30     SUM=  3.14159265332+00     ERROR=  9.50-10     N= 14     K=  5     EPS=  1.00-09
+ ERROR IN SUMIR, FUNCTION HAS NOT ENOUGH ZEROS,   SUM=  3.14159374+00   ERROR=  4.73-06   N=   9   K=   3
+ NZ= 10     SUM=  3.14159373561+00     ERROR=  4.73-06     N=  9     K=  3     EPS=  1.00-09
+                    INTEGRAL SUMIR-ERSIMP
+                    ---------------------
+ NZ= 30     SUM=  3.14159265383+00     ERROR=  3.07-09     N= 14     K=  6     EPS=  1.00-09
+                    SERIE   SERIE   SERIE
+                    -----------------------
+ S(Z)=(1+Z+Z**2+Z**3+...)= 1/(1-Z) , SUM=S(2)
+ NZ= 30     SUM= -9.99999999956-01     ERROR=  5.82-11     N=  5     K=  1     EPS=  1.00-09
+------------------------------------------------------------
+   Elapsed time: 0.132 seconds
+      Simulated: 6189865 instructions
+Simulation rate: 46826579 instructions/sec

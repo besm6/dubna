@@ -1,0 +1,94 @@
+Read job 'cernlib_d1141.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖ      Ж     Ж      Ж    Ж
+            Ж  Ж    ЖЖ    ЖЖ     ЖЖ   ЖЖ
+            Ж   Ж  Ж Ж   Ж Ж    Ж Ж  Ж Ж
+            Ж   Ж    Ж     Ж   Ж  Ж    Ж
+            Ж   Ж    Ж     Ж  Ж   Ж    Ж
+            Ж   Ж    Ж     Ж  ЖЖЖЖЖ    Ж
+            ЖЖЖЖ    ЖЖЖ   ЖЖЖ     Ж   ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME D1141
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE  ............ RIEMANN INTEGRATION WITH INTERVAL ADJUSTMENT ....................................
+
+ ****** INPUT PARAMETERS ******
+RELATIVE  ACCURACY................1.00000
+DIMENSION OF INTEGRAL............. 2
+MAXIMUM NUMBER OF SUBVOLUMES......     100
+MAXIMUM NUMBER OF ITERATIONS......       5
+******INTERNAL PARAMETERS******
+NUMBER OF CALLS PER SUBVOLUME......      2
+RANDOM GENERATOR ..................    4020000000000000
+LEVEL OF CONFIDENCE (PER CENT).....     90
+CORRESPONDING FACTOR............... 1.65
+PRINT OPTION.......................    1
+CONVERGENCE CRITERION..............     1
+RESET OPTION.......................    0
+RATE OF CONVERGENCE............... ALFA=   0.30000
+                                   BETA=   0.30000
+                                   GAMMA=   0.30000
+                                   DELTA=   0.70000
+MINIMUM NUMBER OF INTERVALS........         2
+ ******ITERATION NUMBER  1  ******************
+VALUE OF INTEGRAL   ..........        1.64958-01
+ESTIMATED ERROR   ...........         2.74853-03
+ACCUMULATED VALUE   .........         1.64958-01
+ACCUMULATED ERROR   .........         2.74853-03
+CHI SQARE    ..............           0.00000+00
+NUMBER OF CALLS TO F     .....               200
+INTERVAL STRUCTURE    ........
+                                   MA(  1)=   10
+                                   MA(  2)=   10
+ ......AXIS NUMBER  1
+
+ INTERVAL CHOICE
+   1.00-01   1.00-01   1.00-01   1.00-01   1.00-01   1.00-01   1.00-01   1.00-01   1.00-01   1.00-01
+
+ RELATIVE CONTRIBUTION TO INTEGRAL
+   9.89-03   3.04-02   4.92-02   6.89-02   8.68-02   1.11-01   1.25-01   1.50-01   1.74-01   1.95-01
+
+ RELATIVE CONTRIBUTION TO ERROR
+   5.47-02   4.47-02   8.43-02   4.66-02   1.91-02   9.29-02   1.30-01   1.23-01   1.78-01   2.27-01
+ ......AXIS NUMBER  2
+
+ INTERVAL CHOICE
+   1.00-01   1.00-01   1.00-01   1.00-01   1.00-01   1.00-01   1.00-01   1.00-01   1.00-01   1.00-01
+
+ RELATIVE CONTRIBUTION TO INTEGRAL
+   1.18-03   8.31-03   1.72-02   3.62-02   5.90-02   9.33-02   1.30-01   1.66-01   2.22-01   2.67-01
+
+ RELATIVE CONTRIBUTION TO ERROR
+   1.24-03   5.56-03   8.18-03   3.98-02   4.60-02   9.98-02   1.58-01   1.48-01   1.97-01   2.96-01
+
+
+
+ ************************************************
+THE DESIRED ACCURACYWASOBTAINED  AFTER   1   ITERATIONS
+FINAL VALUE...   1.64958-01
+FINAL ERROR...   2.74853-03
+
+ ............................................................
+------------------------------------------------------------
+   Elapsed time: 0.075 seconds
+      Simulated: 3378816 instructions
+Simulation rate: 44990892 instructions/sec

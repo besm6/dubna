@@ -1,0 +1,44 @@
+Read job 'cernlib_d108.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖ      Ж   ЖЖЖ   ЖЖЖ
+            Ж  Ж    ЖЖ  Ж   Ж Ж   Ж
+            Ж   Ж  Ж Ж  Ж   Ж  Ж Ж
+            Ж   Ж    Ж  Ж   Ж   Ж
+            Ж   Ж    Ж  Ж   Ж  Ж Ж
+            Ж   Ж    Ж  Ж   Ж Ж   Ж
+            ЖЖЖЖ    ЖЖЖ  ЖЖЖ   ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME D108
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE   * * * * * TRAPEZOIDAL RULE INTEGRATION WITH AN     ESTIMATED ERROR * * * * * TEST  D108 * * * * *
+     X=    0.0000    1.5708    3.1416    4.7124    6.2832
+     Y=    0.0000    1.0000    0.0000    1.0000    0.0000
+     E=    0.1000    0.1500    0.2000    0.1200    0.2600
+     N=    5.0000
+     A=    0.0000
+     B=    6.2832
+     RE=    3.1416
+     SD=    0.4875
+------------------------------------------------------------
+   Elapsed time: 0.048 seconds
+      Simulated: 2219531 instructions
+Simulation rate: 46596498 instructions/sec

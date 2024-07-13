@@ -1,0 +1,56 @@
+Read job 'cernlib_c400.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+             ЖЖЖЖ     Ж  ЖЖЖ   ЖЖЖ
+            Ж        ЖЖ Ж   Ж Ж   Ж
+            Ж       Ж Ж Ж   Ж Ж   Ж
+            Ж      Ж  Ж Ж   Ж Ж   Ж
+            Ж     Ж   Ж Ж   Ж Ж   Ж
+            Ж     ЖЖЖЖЖ Ж   Ж Ж   Ж
+             ЖЖЖЖ     Ж  ЖЖЖ   ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME C400
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         C400       01000                FT*002   E 02140                KONV1*   E 04611                SIN      E 06430
+    OTCYTCTBYET  PERMU                   FD*642   E 02141                PRINT8     04705                COS      E 06431
+         PROGRAM  E 01000                FD*722   E 02141                TTPRINT    05066                ATAN     E 06432
+         *NEWTON* C 01266                FC*722   E 02141                BCDPUN     05125                ALOG     E 06433
+         BCDWRIT*   01271                FC*642   E 02141                EBCDPUN  E 05151                EXP      E 06434
+         FT*621   E 01271                FC*002   E 02141                ISOTCOSY   05334                ALOG10   E 06440
+         BCDENC*  E 01275                IOEND*   E 02146                ISOTCOS1 E 05405                FCN        06444
+         FT*611   E 01275                FT*643   E 02146                FMRTAPE    05425                I*MUI*     06603
+         FT*571   E 01277                FT*723   E 02146                OCTTDEC    06354                CARD2    C 06611
+         FT*561   E 01302                FT*003   E 02146                LUNMUN   C 06407                ISOICTTR   06636
+         NEXTLET* E 01307                STOP*      03134                JERRIO*  C 06410                REVCARD    06673
+         RK*      E 01351                EXIT     E 03135                FLOAT      06411                *ICHECK* C 06720
+         WSY*     E 01607                NEWTON     03163                ABS      E 06414                R*TO*INT   06726
+         I/O*ERR  E 02047           OTCYTCTBYET  MATIN1                  IABS     E 06417                R*TO*I   E 06727
+         IOCONT*    02074                RNDM       04172                IFIX     E 06421                *ПEPФOPA   06741
+         IOAC*    E 02125                RNDM1    E 04212                AINT     E 06423                KOД*CDC  E 06742
+         FT*722   E 02140                BCDBEG*    04271                INT      E 06425                CBOБOДHO   07002
+         FT*642   E 02140                FT2*     E 04576                SQRT     E 06427
+≠
+------------------------------------------------------------
+   Elapsed time: 0.080 seconds
+      Simulated: 3703402 instructions
+Simulation rate: 46417271 instructions/sec

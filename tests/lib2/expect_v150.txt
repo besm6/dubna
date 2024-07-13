@@ -1,0 +1,57 @@
+Read job 'cernlib_v150.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            Ж   Ж    Ж  ЖЖЖЖ   ЖЖЖ
+            Ж   Ж   ЖЖ  Ж     Ж   Ж
+            Ж   Ж  Ж Ж  ЖЖЖЖ  Ж   Ж
+            Ж   Ж    Ж      Ж Ж   Ж
+            Ж   Ж    Ж      Ж Ж   Ж
+             Ж Ж     Ж  Ж   Ж Ж   Ж
+              Ж     ЖЖЖ  ЖЖЖ   ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME V150
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         V150       01000                ALOG10   E 03576                FD*642   E 04476                PRINT8     06145
+         PROGRAM  E 01000                I*DI*I     03602                FD*722   E 04476                TTPRINT    06326
+         STOP*      03136                I*ST*L   E 03612                FC*722   E 04476                BCDPUN     06365
+         EXIT     E 03137                I*MU*I   E 03613                FC*642   E 04476                EBCDPUN  E 06411
+         HRTSUB     03165                BCDWRIT*   03626                FC*002   E 04476                ISOTCOSY   06574
+    OTCYTCTBYET  HISRAN                  FT*621   E 03626                IOEND*   E 04503                ISOTCOS1 E 06645
+    OTCYTCTBYET  HISPRE                  BCDENC*  E 03632                FT*643   E 04503                FMRTAPE    06665
+         FLOAT      03547                FT*611   E 03632                FT*723   E 04503                OCTTDEC    07614
+         ABS      E 03552                FT*571   E 03634                FT*003   E 04503                LUNMUN   C 07647
+         IABS     E 03555                FT*561   E 03637                CTIME      05471                JERRIO*  C 07650
+         IFIX     E 03557                NEXTLET* E 03644                PTIME    E 05506                CARD2    C 07651
+         AINT     E 03561                RK*      E 03706                ITIME    E 05507                ISOICTTR   07676
+         INT      E 03563                WSY*     E 04144                LOCF     E 05512                REVCARD    07733
+         SQRT     E 03565                I/O*ERR  E 04404                XLOC     E 05512                *ICHECK* C 07760
+         SIN      E 03566                IOCONT*    04431                R*TO*INT   05516                *ПEPФOPA   07766
+         COS      E 03567                IOAC*    E 04462                R*TO*I   E 05517                KOД*CDC  E 07767
+         ATAN     E 03570                FT*722   E 04475                BCDBEG*    05531                CBOБOДHO   10027
+         ALOG     E 03571                FT*642   E 04475                FT2*     E 06036
+         EXP      E 03572                FT*002   E 04475                KONV1*   E 06051
+≠
+------------------------------------------------------------
+   Elapsed time: 0.078 seconds
+      Simulated: 3600699 instructions
+Simulation rate: 46157482 instructions/sec

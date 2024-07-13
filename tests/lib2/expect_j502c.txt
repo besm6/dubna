@@ -1,0 +1,63 @@
+Read job 'cernlib_j502c.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+              ЖЖЖ ЖЖЖЖ   ЖЖЖ   ЖЖЖ   ЖЖЖЖ
+                Ж Ж     Ж   Ж Ж   Ж Ж
+                Ж ЖЖЖЖ  Ж   Ж     Ж Ж
+                Ж     Ж Ж   Ж    Ж  Ж
+                Ж     Ж Ж   Ж   Ж   Ж
+            Ж   Ж Ж   Ж Ж   Ж  Ж    Ж
+             ЖЖЖ   ЖЖЖ   ЖЖЖ  ЖЖЖЖЖ  ЖЖЖЖ
+
+
+
+
+
+
+
+
+*NAME J502C
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         J502C      01000                FC*642   E 02302                PLOT       03405                REVCARD    06411
+    OTCYTCTBYET  ENDPZD                  FC*002   E 02302                I*DI*I     03406                *ICHECK* C 06436
+    OTCYTCTBYET  DATEZB                  IOEND*   E 02307                I*ST*L   E 03416                *SPLOT*  C 06444
+    OTCYTCTBYET  SHIFTB                  FT*643   E 02307                I*MU*I   E 03417                *PLONAM* C 06446
+    OTCYTCTBYET  SYMBL4                  FT*723   E 02307                BCDBEG*    03432                *PNUMB*  C 06447
+    OTCYTCTBYET  PLTIN                   FT*003   E 02307                FT2*     E 03737                *MARGRF* C 06451
+         PROGRAM  E 01000                STOP*      03275                KONV1*   E 03752                F/START    06452
+         BCDWRIT*   01432                EXIT     E 03276                PRINT8     04046                F/FSTART E 06452
+         FT*621   E 01432                AND        03324                TTPRINT    04227                F/SNOSV  E 06454
+         BCDENC*  E 01436                SAME       03327                BCDPUN     04266                F/NOSVR  E 06456
+         FT*611   E 01436                AMOD       03335                EBCDPUN  E 04312                F/FNOSV  E 06461
+         FT*571   E 01440                MOD      E 03346                ISOTCOSY   04475                F/SSTART E 06463
+         FT*561   E 01443                FLOAT      03352                ISOTCOS1 E 04546                F/SAVER  E 06465
+         NEXTLET* E 01450                ABS      E 03355                FMRTAPE    04566                F/FRETNR E 06477
+         RK*      E 01512                IABS     E 03360                OCTTDEC    05515                F/FRET   E 06500
+         WSY*     E 01750                IFIX     E 03362                LUNMUN   C 05550                F/SRET   E 06501
+         I/O*ERR  E 02210                AINT     E 03364                JERRIO*  C 05551                F/SRETNR E 06505
+         IOCONT*    02235                INT      E 03366                R*TO*INT   05552                CTIME      06510
+         IOAC*    E 02266                SQRT     E 03370                R*TO*I   E 05553                PTIME    E 06525
+         FT*722   E 02301                SIN      E 03371                PLOTBF     05565                ITIME    E 06526
+         FT*642   E 02301                COS      E 03372           OTCYTCTBYET  IGETS                   LOCF     E 06531
+         FT*002   E 02301                ATAN     E 03373           OTCYTCTBYET  IPUTS                   XLOC     E 06531
+         FD*642   E 02302                ALOG     E 03374           OTCYTCTBYET  JEXTRI                  *ПEPФOPA   06535
+         FD*722   E 02302                EXP      E 03375                CARD2    C 06327                KOД*CDC  E 06536
+         FC*722   E 02302                ALOG10   E 03401                ISOICTTR   06354                CBOБOДHO   06576
+≠
+------------------------------------------------------------
+   Elapsed time: 0.076 seconds
+      Simulated: 3486800 instructions
+Simulation rate: 45942420 instructions/sec

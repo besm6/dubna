@@ -1,0 +1,40 @@
+Read job 'cernlib_j500.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+              ЖЖЖ ЖЖЖЖ   ЖЖЖ   ЖЖЖ
+                Ж Ж     Ж   Ж Ж   Ж
+                Ж ЖЖЖЖ  Ж   Ж Ж   Ж
+                Ж     Ж Ж   Ж Ж   Ж
+                Ж     Ж Ж   Ж Ж   Ж
+            Ж   Ж Ж   Ж Ж   Ж Ж   Ж
+             ЖЖЖ   ЖЖЖ   ЖЖЖ   ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME J500
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         J500       01000                PROGRAM  E 01000                EXIT     E 01247
+    OTCYTCTBYET  WHISTO                  STOP*      01246                CBOБOДHO   01275
+≠
+------------------------------------------------------------
+   Elapsed time: 0.034 seconds
+      Simulated: 1623043 instructions
+Simulation rate: 48110120 instructions/sec

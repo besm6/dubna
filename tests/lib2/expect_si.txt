@@ -1,0 +1,42 @@
+Read job 'cernlib_si.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+             ЖЖЖ   ЖЖЖ
+            Ж       Ж
+             ЖЖЖ    Ж
+                Ж   Ж
+                Ж   Ж
+            Ж   Ж   Ж
+             ЖЖЖ   ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME SI
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*STOP
+ ***  ПЛOXAЯ YПPABЛЯЮЩAЯ KAPTA
+*STOP
+ ***  ПЛOXAЯ YПPABЛЯЮЩAЯ KAPTA
+*
+*
+*END FILE
+------------------------------------------------------------
+   Elapsed time: 0.019 seconds
+      Simulated: 1074859 instructions
+Simulation rate: 57088326 instructions/sec

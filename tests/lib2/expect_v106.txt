@@ -1,0 +1,56 @@
+Read job 'cernlib_v106.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            Ж   Ж    Ж   ЖЖЖ   ЖЖЖ
+            Ж   Ж   ЖЖ  Ж   Ж Ж
+            Ж   Ж  Ж Ж  Ж   Ж ЖЖЖЖ
+            Ж   Ж    Ж  Ж   Ж Ж   Ж
+            Ж   Ж    Ж  Ж   Ж Ж   Ж
+             Ж Ж     Ж  Ж   Ж Ж   Ж
+              Ж     ЖЖЖ  ЖЖЖ   ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME V106
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         V106       01000                FT*642   E 07307                AINT     E 10403                BCDPUN     11377
+    OTCYTCTBYET  RN32IN                  FT*002   E 07307                INT      E 10405                EBCDPUN  E 11423
+    OTCYTCTBYET  RN32OT                  FD*642   E 07310                SQRT     E 10407                ISOTCOSY   11606
+    OTCYTCTBYET  RN32                    FD*722   E 07310                SIN      E 10410                ISOTCOS1 E 11657
+         PROGRAM  E 01000                FC*722   E 07310                COS      E 10411                FMRTAPE    11677
+         BCDWRIT*   06440                FC*642   E 07310                ATAN     E 10412                OCTTDEC    12626
+         FT*621   E 06440                FC*002   E 07310                ALOG     E 10413                LUNMUN   C 12661
+         BCDENC*  E 06444                IOEND*   E 07315                EXP      E 10414                JERRIO*  C 12662
+         FT*611   E 06444                FT*643   E 07315                ALOG10   E 10420                R*TO*INT   12663
+         FT*571   E 06446                FT*723   E 07315                PRT500     10424                R*TO*I   E 12664
+         FT*561   E 06451                FT*003   E 07315           OTCYTCTBYET  RN32                    CARD2    C 12676
+         NEXTLET* E 06456                STOP*      10303                I*MUI*     10525                ISOICTTR   12723
+         RK*      E 06520                EXIT     E 10304                R*ST*I     10533                REVCARD    12760
+         WSY*     E 06756                VZERO      10332                BCDBEG*    10543                *ICHECK* C 13005
+         I/O*ERR  E 07216                FLOAT      10371                FT2*     E 11050                *ПEPФOPA   13013
+         IOCONT*    07243                ABS      E 10374                KONV1*   E 11063                KOД*CDC  E 13014
+         IOAC*    E 07274                IABS     E 10377                PRINT8     11157                CBOБOДHO   13054
+         FT*722   E 07307                IFIX     E 10401                TTPRINT    11340
+≠
+------------------------------------------------------------
+   Elapsed time: 0.098 seconds
+      Simulated: 4494318 instructions
+Simulation rate: 45684177 instructions/sec

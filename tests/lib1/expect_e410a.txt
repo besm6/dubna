@@ -1,0 +1,65 @@
+Read job 'cernlib_e410a.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖЖ      Ж    Ж   ЖЖЖ   ЖЖЖ
+            Ж        ЖЖ   ЖЖ  Ж   Ж Ж   Ж
+            ЖЖЖ     Ж Ж  Ж Ж  Ж   Ж Ж   Ж
+            Ж      Ж  Ж    Ж  Ж   Ж Ж   Ж
+            Ж     Ж   Ж    Ж  Ж   Ж Ж   Ж
+            Ж     ЖЖЖЖЖ    Ж  Ж   Ж ЖЖЖЖЖ
+            ЖЖЖЖЖ     Ж   ЖЖЖ  ЖЖЖ  Ж   Ж
+
+
+
+
+
+
+
+
+*NAME E410A
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         E410A      01000                EXIT     E 03325                ISOTCOS1 E 07214                D*LO*R   E 10310
+         PROGRAM  E 01000                F          03353                FMRTAPE    07234                D*LN*R   E 10312
+         BCDWRIT*   01461                CABS       03401                OCTTDEC    10163                R*ST*D   E 10314
+         FT*621   E 01461                CSQRT    E 03412                LUNMUN   C 10216                DUBLPREC   10326
+         BCDENC*  E 01465                CEXP     E 03426                JERRIO*  C 10217                D*AD*D   E 10327
+         FT*611   E 01465                CLOG     E 03436                SIGN       10220                D*MU*D   E 10432
+         FT*571   E 01467                CPSC1      03477                ISIGN    E 10224                D*DI*D   E 10444
+         FT*561   E 01472           OTCYTCTBYET  DTOC                    IDIM     E 10226                D*SU*D   E 10462
+         NEXTLET* E 01477           OTCYTCTBYET  CTOD                    DIM      E 10227                D*COMP   E 10513
+         RK*      E 01541                CMPLX      05774                FLOAT      10233                D*LN*D   E 10515
+         WSY*     E 01777                I*MUI*     05777                ABS      E 10236                D*LO*D   E 10521
+         I/O*ERR  E 02237                C*AD*C     06005                IABS     E 10241                D*ST*D   E 10523
+         IOCONT*    02264                C*SU*C   E 06014                IFIX     E 10243                D*AD*R     10560
+         IOAC*    E 02315                C*MU*C   E 06021                AINT     E 10245                D*SU*R   E 10562
+         FT*722   E 02330                C*DI*C   E 06034                INT      E 10247                D*MU*R   E 10564
+         FT*642   E 02330                C*ST*C   E 06054                SQRT     E 10251                D*DI*R   E 10566
+         FT*002   E 02330                C*LO*C   E 06056                SIN      E 10252                CARD2    C 10575
+         FD*642   E 02331                C*LN*C   E 06060                COS      E 10253                ISOICTTR   10622
+         FD*722   E 02331                C*COMP   E 06066                ATAN     E 10254                REVCARD    10657
+         FC*722   E 02331                BCDBEG*    06100                ALOG     E 10255                *ICHECK* C 10704
+         FC*642   E 02331                FT2*     E 06405                EXP      E 10256                R*TO*INT   10712
+         FC*002   E 02331                KONV1*   E 06420                ALOG10   E 10262                R*TO*I   E 10713
+         IOEND*   E 02336                PRINT8     06514                REAL       10266                *ПEPФOPA   10725
+         FT*643   E 02336                TTPRINT    06675                AIMAG    E 10270                KOД*CDC  E 10726
+         FT*723   E 02336                BCDPUN     06734                D*ST*R     10272                CBOБOДHO   10766
+         FT*003   E 02336                EBCDPUN  E 06760                D*TO*I   E 10305
+         STOP*      03324                ISOTCOSY   07143                D*TO*R   E 10306
+≠
+------------------------------------------------------------
+   Elapsed time: 0.081 seconds
+      Simulated: 3597869 instructions
+Simulation rate: 44290186 instructions/sec

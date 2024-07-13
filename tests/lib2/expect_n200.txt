@@ -1,0 +1,54 @@
+Read job 'cernlib_n200.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            Ж   Ж  ЖЖЖ   ЖЖЖ   ЖЖЖ
+            ЖЖ  Ж Ж   Ж Ж   Ж Ж   Ж
+            Ж Ж Ж     Ж Ж   Ж Ж   Ж
+            Ж  ЖЖ    Ж  Ж   Ж Ж   Ж
+            Ж   Ж   Ж   Ж   Ж Ж   Ж
+            Ж   Ж  Ж    Ж   Ж Ж   Ж
+            Ж   Ж ЖЖЖЖЖ  ЖЖЖ   ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME N200
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         N200       01000                FC*002   E 01464                FT*611   E 03471                KONV1*   E 05144
+    OTCYTCTBYET  DUMPZD                  IOEND*   E 01471                FT*571   E 03473                BCDPUN     05240
+         PROGRAM  E 01000                FT*643   E 01471                FT*561   E 03476                EBCDPUN  E 05264
+         BINREAD*   01272                FT*723   E 01471                NEXTLET* E 03503                ISOTCOSY   05447
+         FT*641   E 01272                FT*003   E 01471                RK*      E 03545                ISOTCOS1 E 05520
+         BINWRIT* E 01323                *REWIN     02457                WSY*     E 04003                OCTTDEC    05540
+         FT*721   E 01323                *BACKS   E 02460                I/O*ERR  E 04243                DRUMTAP*   05573
+         IOCONT*    01417                *ENDFI   E 02461                TTPRINT    04270                COSYTISO   05624
+         IOAC*    E 01450                SCHEOF   E 02462                LUNMUN   C 04327                CARD2    C 05700
+         FT*722   E 01463                STOP*      02470                PRINT8     04330                ISOICTTR   05725
+         FT*642   E 01463                EXIT     E 02471                JERRIO*  C 04511                REVCARD    05762
+         FT*002   E 01463                BINARY     02517                MONREAD*   04512                CHKWORD* C 06007
+         FD*642   E 01464                FMRTAPE    02536                READ*ERR E 04572                *ПEPФOPA   06010
+         FD*722   E 01464                BCDWRIT*   03465                *ICHECK* C 04616                KOД*CDC  E 06011
+         FC*722   E 01464                FT*621   E 03465                BCDBEG*    04624                CBOБOДHO   06051
+         FC*642   E 01464                BCDENC*  E 03471                FT2*     E 05131
+≠
+------------------------------------------------------------
+   Elapsed time: 0.052 seconds
+      Simulated: 2511703 instructions
+Simulation rate: 48648131 instructions/sec

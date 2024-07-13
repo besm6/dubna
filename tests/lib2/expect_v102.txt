@@ -1,0 +1,52 @@
+Read job 'cernlib_v102.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            Ж   Ж    Ж   ЖЖЖ   ЖЖЖ
+            Ж   Ж   ЖЖ  Ж   Ж Ж   Ж
+            Ж   Ж  Ж Ж  Ж   Ж     Ж
+            Ж   Ж    Ж  Ж   Ж    Ж
+            Ж   Ж    Ж  Ж   Ж   Ж
+             Ж Ж     Ж  Ж   Ж  Ж
+              Ж     ЖЖЖ  ЖЖЖ  ЖЖЖЖЖ
+
+
+
+
+
+
+
+
+*NAME V102
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         V102       01000                RK*      E 03400                FT*643   E 04175                FMRTAPE    06332
+    OTCYTCTBYET  NORMCO                  WSY*     E 03636                FT*723   E 04175                OCTTDEC    07261
+         PROGRAM  E 01000                I/O*ERR  E 04076                FT*003   E 04175                LUNMUN   C 07314
+         **       C 01143                IOCONT*    04123                I*DI*R     05163                JERRIO*  C 07315
+         STOP*      03115                IOAC*    E 04154                R*DI*I   E 05170                CARD2    C 07316
+         EXIT     E 03116                FT*722   E 04167                BCDBEG*    05176                ISOICTTR   07343
+         TESTPR     03144                FT*642   E 04167                FT2*     E 05503                REVCARD    07400
+         BCDWRIT*   03320                FT*002   E 04167                KONV1*   E 05516                *ICHECK* C 07425
+         FT*621   E 03320                FD*642   E 04170                PRINT8     05612                *ПEPФOPA   07433
+         BCDENC*  E 03324                FD*722   E 04170                TTPRINT    05773                KOД*CDC  E 07434
+         FT*611   E 03324                FC*722   E 04170                BCDPUN     06032                CBOБOДHO   07474
+         FT*571   E 03326                FC*642   E 04170                EBCDPUN  E 06056
+         FT*561   E 03331                FC*002   E 04170                ISOTCOSY   06241
+         NEXTLET* E 03336                IOEND*   E 04175                ISOTCOS1 E 06312
+≠
+------------------------------------------------------------
+   Elapsed time: 0.072 seconds
+      Simulated: 3276677 instructions
+Simulation rate: 45525210 instructions/sec

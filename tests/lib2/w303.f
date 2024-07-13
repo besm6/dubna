@@ -1,5 +1,6 @@
       PROGRAM W303
 C        CARDS  OF  DATAS  10
+c     This routine loops forever
       CALL MISMAS
       STOP
       END

@@ -1,0 +1,40 @@
+Read job 'cernlib_h600.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            Ж   Ж  ЖЖЖ   ЖЖЖ   ЖЖЖ
+            Ж   Ж Ж     Ж   Ж Ж   Ж
+            ЖЖЖЖЖ ЖЖЖЖ  Ж   Ж Ж   Ж
+            Ж   Ж Ж   Ж Ж   Ж Ж   Ж
+            Ж   Ж Ж   Ж Ж   Ж Ж   Ж
+            Ж   Ж Ж   Ж Ж   Ж Ж   Ж
+            Ж   Ж  ЖЖЖ   ЖЖЖ   ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME H600
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         H600       01000                PROGRAM  E 01000                EXIT     E 01013
+    OTCYTCTBYET  NETB                    STOP*      01012                CBOБOДHO   01041
+≠
+------------------------------------------------------------
+   Elapsed time: 0.023 seconds
+      Simulated: 1021190 instructions
+Simulation rate: 45247463 instructions/sec

@@ -1,0 +1,66 @@
+Read job 'cernlib_d612a.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖ    ЖЖЖ     Ж   ЖЖЖ   ЖЖЖ
+            Ж  Ж  Ж       ЖЖ  Ж   Ж Ж   Ж
+            Ж   Ж ЖЖЖЖ   Ж Ж      Ж Ж   Ж
+            Ж   Ж Ж   Ж    Ж     Ж  Ж   Ж
+            Ж   Ж Ж   Ж    Ж    Ж   Ж   Ж
+            Ж   Ж Ж   Ж    Ж   Ж    ЖЖЖЖЖ
+            ЖЖЖЖ   ЖЖЖ    ЖЖЖ ЖЖЖЖЖ Ж   Ж
+
+
+
+
+
+
+
+
+*NAME D612A
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*CALL FICMEMORY
+*EXECUTE
+≠
+         D612A      01000                STOP*      33431                ANSWER     62355                SUBBER     65327
+    OTCYTCTBYET  GRAFIK                  EXIT     E 33432                ROBRG      62516                ROBPE4     65721
+         PROGRAM  E 01000                FY         33460                DEFIMA     63047                NABOR      66255
+         BCDWRIT*   31566                FA         33476                SENDER     63115                FHUBER     66414
+         FT*621   E 31566                ROBAST     33516                MATOGR     63150                SENDIN     66645
+         BCDENC*  E 31572                AQ         57427                MAKEA      63702                R*ST*I     66700
+         FT*611   E 31572                I*MUI*     57457                CARD2    C 64012                GRADER     66710
+         FT*571   E 31574                I*DI*R     57465                ISOICTTR   64037                LOCAL      67203
+         FT*561   E 31577                R*DI*I   E 57472                REVCARD    64074                PLUSER     67646
+         NEXTLET* E 31604                I*DI*I     57500                *ICHECK* C 64121                MATVEC     67706
+         RK*      E 31646                I*ST*L   E 57510                AMAX0      64127                SCALAR     70017
+         WSY*     E 32104                I*MU*I   E 57511                AMAX1    E 64127                FLOAT      70057
+         I/O*ERR  E 32344                BCDBEG*    57524                MAX0     E 64130                ABS      E 70062
+         IOCONT*    32371                FT2*     E 60031                MAX1     E 64130                IABS     E 70065
+         IOAC*    E 32422                KONV1*   E 60044                AMIN0    E 64144                IFIX     E 70067
+         FT*722   E 32435                PRINT8     60140                AMIN1    E 64144                AINT     E 70071
+         FT*642   E 32435                TTPRINT    60321                MIN0     E 64145                INT      E 70073
+         FT*002   E 32435                BCDPUN     60360                MIN1     E 64145                SQRT     E 70075
+         FD*642   E 32436                EBCDPUN  E 60404                MAINER     64147                SIN      E 70076
+         FD*722   E 32436                ISOTCOSY   60567                BOUD       64441                COS      E 70077
+         FC*722   E 32436                ISOTCOS1 E 60640                SEND       64616                ATAN     E 70100
+         FC*642   E 32436                FMRTAPE    60660                MATFA      64722                ALOG     E 70101
+         FC*002   E 32436                OCTTDEC    61607                *ПEPФOPA   65063                EXP      E 70102
+         IOEND*   E 32443                LUNMUN   C 61642                KOД*CDC  E 65064                ALOG10   E 70106
+         FT*643   E 32443                JERRIO*  C 61643                R*TO*INT   65124                CBOБOДHO   70112
+         FT*723   E 32443                *ROBUST* C 61644                R*TO*I   E 65125
+         FT*003   E 32443                CONVER     61650                LIMITR     65137
+≠
+------------------------------------------------------------
+   Elapsed time: 0.130 seconds
+      Simulated: 5984120 instructions
+Simulation rate: 46005505 instructions/sec

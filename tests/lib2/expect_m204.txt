@@ -1,0 +1,57 @@
+Read job 'cernlib_m204.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            Ж   Ж  ЖЖЖ   ЖЖЖ      Ж
+            ЖЖ ЖЖ Ж   Ж Ж   Ж    ЖЖ
+            Ж Ж Ж     Ж Ж   Ж   Ж Ж
+            Ж Ж Ж    Ж  Ж   Ж  Ж  Ж
+            Ж   Ж   Ж   Ж   Ж Ж   Ж
+            Ж   Ж  Ж    Ж   Ж ЖЖЖЖЖ
+            Ж   Ж ЖЖЖЖЖ  ЖЖЖ      Ж
+
+
+
+
+
+
+
+
+*NAME M204
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         M204       01000                FD*722   E 01755                SIN      E 03022                BCDPUN     03765
+    OTCYTCTBYET  CFIX                    FC*722   E 01755                COS      E 03023                EBCDPUN  E 04011
+         PROGRAM  E 01000                FC*642   E 01755                ATAN     E 03024                ISOTCOSY   04174
+         BCDWRIT*   01105                FC*002   E 01755                ALOG     E 03025                ISOTCOS1 E 04245
+         FT*621   E 01105                IOEND*   E 01762                EXP      E 03026                FMRTAPE    04265
+         BCDENC*  E 01111                FT*643   E 01762                ALOG10   E 03032                OCTTDEC    05214
+         FT*611   E 01111                FT*723   E 01762                C*AD*C     03036                LUNMUN   C 05247
+         FT*571   E 01113                FT*003   E 01762                C*SU*C   E 03045                JERRIO*  C 05250
+         FT*561   E 01116                STOP*      02750                C*MU*C   E 03052                R*TO*INT   05251
+         NEXTLET* E 01123                EXIT     E 02751                C*DI*C   E 03065                R*TO*I   E 05252
+         RK*      E 01165                REAL       02777                C*ST*C   E 03105                CARD2    C 05264
+         WSY*     E 01423                AIMAG    E 03001                C*LO*C   E 03107                ISOICTTR   05311
+         I/O*ERR  E 01663                FLOAT      03003                C*LN*C   E 03111                REVCARD    05346
+         IOCONT*    01710                ABS      E 03006                C*COMP   E 03117                *ICHECK* C 05373
+         IOAC*    E 01741                IABS     E 03011                BCDBEG*    03131                *ПEPФOPA   05401
+         FT*722   E 01754                IFIX     E 03013                FT2*     E 03436                KOД*CDC  E 05402
+         FT*642   E 01754                AINT     E 03015                KONV1*   E 03451                CBOБOДHO   05442
+         FT*002   E 01754                INT      E 03017                PRINT8     03545
+         FD*642   E 01755                SQRT     E 03021                TTPRINT    03726
+≠
+------------------------------------------------------------
+   Elapsed time: 0.036 seconds
+      Simulated: 1838571 instructions
+Simulation rate: 50742997 instructions/sec

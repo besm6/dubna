@@ -1,0 +1,37 @@
+Read job 'cernlib_e104c.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖЖ     Ж   ЖЖЖ      Ж  ЖЖЖЖ
+            Ж       ЖЖ  Ж   Ж    ЖЖ Ж
+            ЖЖЖ    Ж Ж  Ж   Ж   Ж Ж Ж
+            Ж        Ж  Ж   Ж  Ж  Ж Ж
+            Ж        Ж  Ж   Ж Ж   Ж Ж
+            Ж        Ж  Ж   Ж ЖЖЖЖЖ Ж
+            ЖЖЖЖЖ   ЖЖЖ  ЖЖЖ      Ж  ЖЖЖЖ
+
+
+
+
+
+
+
+
+*NAME E104C
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+          GINT=    1.23591681156+00
+------------------------------------------------------------
+   Elapsed time: 0.063 seconds
+      Simulated: 2923349 instructions
+Simulation rate: 46619181 instructions/sec

@@ -1,0 +1,51 @@
+Read job 'cernlib_m101.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            Ж   Ж    Ж   ЖЖЖ     Ж
+            ЖЖ ЖЖ   ЖЖ  Ж   Ж   ЖЖ
+            Ж Ж Ж  Ж Ж  Ж   Ж  Ж Ж
+            Ж Ж Ж    Ж  Ж   Ж    Ж
+            Ж   Ж    Ж  Ж   Ж    Ж
+            Ж   Ж    Ж  Ж   Ж    Ж
+            Ж   Ж   ЖЖЖ  ЖЖЖ    ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME M101
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         M101       01000                IOCONT*    02736                FT*003   E 03010                ISOTCOS1 E 05240
+    OTCYTCTBYET  SORTZV                  IOAC*    E 02767                STOP*      03776                FMRTAPE    05260
+         PROGRAM  E 01000                FT*722   E 03002                EXIT     E 03777                OCTTDEC    06207
+         BCDWRIT*   02133                FT*642   E 03002                RNDM       04025                LUNMUN   C 06242
+         FT*621   E 02133                FT*002   E 03002                RNDM1    E 04045                JERRIO*  C 06243
+         BCDENC*  E 02137                FD*642   E 03003                BCDBEG*    04124                CARD2    C 06244
+         FT*611   E 02137                FD*722   E 03003                FT2*     E 04431                ISOICTTR   06271
+         FT*571   E 02141                FC*722   E 03003                KONV1*   E 04444                REVCARD    06326
+         FT*561   E 02144                FC*642   E 03003                PRINT8     04540                *ICHECK* C 06353
+         NEXTLET* E 02151                FC*002   E 03003                TTPRINT    04721                *ПEPФOPA   06361
+         RK*      E 02213                IOEND*   E 03010                BCDPUN     04760                KOД*CDC  E 06362
+         WSY*     E 02451                FT*643   E 03010                EBCDPUN  E 05004                CBOБOДHO   06422
+         I/O*ERR  E 02711                FT*723   E 03010                ISOTCOSY   05167
+≠
+------------------------------------------------------------
+   Elapsed time: 0.061 seconds
+      Simulated: 2714215 instructions
+Simulation rate: 44245089 instructions/sec

@@ -1,0 +1,64 @@
+Read job 'cernlib_g111.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+             ЖЖЖ     Ж     Ж     Ж
+            Ж   Ж   ЖЖ    ЖЖ    ЖЖ
+            Ж      Ж Ж   Ж Ж   Ж Ж
+            Ж        Ж     Ж     Ж
+            Ж  ЖЖ    Ж     Ж     Ж
+            Ж   Ж    Ж     Ж     Ж
+             ЖЖЖ    ЖЖЖ   ЖЖЖ   ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME G111
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE                         TEST VALUES FOR THE VAVILOV DISTRIBUTION
+                             KAPPA = 0.01    BETA**2 =  0.0
+          ABSCISSA     INVERSE      DENSITY         DENSITY     DISTRIBUTION
+                     CONDITIONAL    FUNCTION        FUNCTION      FUNCTION
+                    DISTR. FUNCT.   (DISVAV)    (SELTZER-BERGER)
+           -3.000      -3.026       0.00068        0.00068        0.00002
+           -2.000      -1.977       0.04442        0.04440        0.01417
+           -1.000      -0.997       0.15291        0.15300        0.11469
+            0.000       0.020       0.18065        0.18100        0.28965
+            5.000       5.000       0.03956        0.03960        0.78073
+           10.000      10.006       0.01210        0.01210        0.89176
+           15.000      15.005       0.00546        0.00546        0.93252
+           20.000      20.000       0.00304        0.00000        0.95289
+           30.000      29.990       0.00131        0.00131        0.97288
+           34.000      34.008       0.00101        0.00101        0.97749                         TEST VALUES FOR THE VAVILOV DISTRIBUTION
+                             KAPPA = 4.00    BETA**2 =  0.5
+          ABSCISSA     INVERSE      DENSITY         DENSITY     DISTRIBUTION
+                     CONDITIONAL    FUNCTION        FUNCTION      FUNCTION
+                    DISTR. FUNCT.   (DISVAV)    (SELTZER-BERGER)
+           -3.500      -3.623       0.00950        0.00945        0.00088
+           -3.250      -3.265       0.06881        0.06880        0.00879
+           -3.000      -2.999       0.26406        0.26400        0.04682
+           -2.750      -2.749       0.59997        0.60000        0.15324
+           -2.500      -2.499       0.88127        0.88100        0.34233
+           -2.250      -2.250       0.89520        0.89500        0.57079
+           -2.000      -2.000       0.66268        0.66300        0.76888
+           -1.000      -1.031       0.01717        0.00000        0.99698
+           -1.500      -1.500       0.16442        0.16400        0.96237
+           -1.250      -1.251       0.05852        0.05850        0.98843
+------------------------------------------------------------
+   Elapsed time: 0.511 seconds
+      Simulated: 21958481 instructions
+Simulation rate: 42987571 instructions/sec

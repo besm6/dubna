@@ -1,0 +1,52 @@
+Read job 'cernlib_m103.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            Ж   Ж    Ж   ЖЖЖ  ЖЖЖЖЖ
+            ЖЖ ЖЖ   ЖЖ  Ж   Ж    Ж
+            Ж Ж Ж  Ж Ж  Ж   Ж   Ж
+            Ж Ж Ж    Ж  Ж   Ж    Ж
+            Ж   Ж    Ж  Ж   Ж     Ж
+            Ж   Ж    Ж  Ж   Ж Ж   Ж
+            Ж   Ж   ЖЖЖ  ЖЖЖ   ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME M103
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         M103       01000                IOCONT*    05655                STOP*      06715                FMRTAPE    10207
+    OTCYTCTBYET  INTSOR                  IOAC*    E 05706                EXIT     E 06716                OCTTDEC    11136
+    OTCYTCTBYET  FLPSOR                  FT*722   E 05721                RNDM       06744                LUNMUN   C 11171
+         PROGRAM  E 01000                FT*642   E 05721                RNDM1    E 06764                JERRIO*  C 11172
+         BCDWRIT*   05052                FT*002   E 05721                R*ST*I     07043                CARD2    C 11173
+         FT*621   E 05052                FD*642   E 05722                BCDBEG*    07053                ISOICTTR   11220
+         BCDENC*  E 05056                FD*722   E 05722                FT2*     E 07360                REVCARD    11255
+         FT*611   E 05056                FC*722   E 05722                KONV1*   E 07373                *ICHECK* C 11302
+         FT*571   E 05060                FC*642   E 05722                PRINT8     07467                *ПEPФOPA   11310
+         FT*561   E 05063                FC*002   E 05722                TTPRINT    07650                KOД*CDC  E 11311
+         NEXTLET* E 05070                IOEND*   E 05727                BCDPUN     07707                CBOБOДHO   11351
+         RK*      E 05132                FT*643   E 05727                EBCDPUN  E 07733
+         WSY*     E 05370                FT*723   E 05727                ISOTCOSY   10116
+         I/O*ERR  E 05630                FT*003   E 05727                ISOTCOS1 E 10167
+≠
+------------------------------------------------------------
+   Elapsed time: 0.049 seconds
+      Simulated: 2195369 instructions
+Simulation rate: 45255076 instructions/sec

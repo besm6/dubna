@@ -1,0 +1,40 @@
+Read job 'cernlib_w126.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            Ж   Ж    Ж   ЖЖЖ   ЖЖЖ
+            Ж   Ж   ЖЖ  Ж   Ж Ж
+            Ж   Ж  Ж Ж      Ж ЖЖЖЖ
+            Ж   Ж    Ж     Ж  Ж   Ж
+            Ж Ж Ж    Ж    Ж   Ж   Ж
+            Ж Ж Ж    Ж   Ж    Ж   Ж
+             Ж Ж    ЖЖЖ ЖЖЖЖЖ  ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME W126
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         W126       01000                PROGRAM  E 01000                EXIT     E 01013
+    OTCYTCTBYET  ELENS                   STOP*      01012                CBOБOДHO   01041
+≠
+------------------------------------------------------------
+   Elapsed time: 0.021 seconds
+      Simulated: 1020134 instructions
+Simulation rate: 49080298 instructions/sec

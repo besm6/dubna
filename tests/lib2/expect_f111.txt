@@ -1,0 +1,52 @@
+Read job 'cernlib_f111.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖЖЖ    Ж     Ж     Ж
+            Ж       ЖЖ    ЖЖ    ЖЖ
+            ЖЖЖЖ   Ж Ж   Ж Ж   Ж Ж
+            Ж        Ж     Ж     Ж
+            Ж        Ж     Ж     Ж
+            Ж        Ж     Ж     Ж
+            Ж       ЖЖЖ   ЖЖЖ   ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME F111
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         F111       01000                RK*      E 01426                FT*643   E 02223                FMRTAPE    04374
+    OTCYTCTBYET  MXNTR                   WSY*     E 01664                FT*723   E 02223                OCTTDEC    05323
+    OTCYTCTBYET  MXMTR                   I/O*ERR  E 02124                FT*003   E 02223                LUNMUN   C 05356
+    OTCYTCTBYET  MXTRA                   IOCONT*    02151                STOP*      03211                JERRIO*  C 05357
+    OTCYTCTBYET  MXSUB                   IOAC*    E 02202                EXIT     E 03212                CARD2    C 05360
+    OTCYTCTBYET  MXADD                   FT*722   E 02215                BCDBEG*    03240                ISOICTTR   05405
+         PROGRAM  E 01000                FT*642   E 02215                FT2*     E 03545                REVCARD    05442
+         BCDWRIT*   01346                FT*002   E 02215                KONV1*   E 03560                *ICHECK* C 05467
+         FT*621   E 01346                FD*642   E 02216                PRINT8     03654                *ПEPФOPA   05475
+         BCDENC*  E 01352                FD*722   E 02216                TTPRINT    04035                KOД*CDC  E 05476
+         FT*611   E 01352                FC*722   E 02216                BCDPUN     04074                CBOБOДHO   05536
+         FT*571   E 01354                FC*642   E 02216                EBCDPUN  E 04120
+         FT*561   E 01357                FC*002   E 02216                ISOTCOSY   04303
+         NEXTLET* E 01364                IOEND*   E 02223                ISOTCOS1 E 04354
+≠
+------------------------------------------------------------
+   Elapsed time: 0.057 seconds
+      Simulated: 2610391 instructions
+Simulation rate: 45785088 instructions/sec

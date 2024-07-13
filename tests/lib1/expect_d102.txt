@@ -1,0 +1,43 @@
+Read job 'cernlib_d102.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖ      Ж   ЖЖЖ   ЖЖЖ
+            Ж  Ж    ЖЖ  Ж   Ж Ж   Ж
+            Ж   Ж  Ж Ж  Ж   Ж     Ж
+            Ж   Ж    Ж  Ж   Ж    Ж
+            Ж   Ж    Ж  Ж   Ж   Ж
+            Ж   Ж    Ж  Ж   Ж  Ж
+            ЖЖЖЖ    ЖЖЖ  ЖЖЖ  ЖЖЖЖЖ
+
+
+
+
+
+
+
+
+*NAME D102
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+          GAUSSIAN INTEGRATION 1               TEST D102
+                    EXTERN=SIN(X)
+                    A=0.
+                    B=1.57079633
+                    LAMBDA=3
+                         RESULT=  1.000000003197
+                         EPSILN=  0.000000000001
+------------------------------------------------------------
+   Elapsed time: 0.048 seconds
+      Simulated: 2300265 instructions
+Simulation rate: 48348257 instructions/sec

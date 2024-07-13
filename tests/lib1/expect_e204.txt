@@ -1,0 +1,61 @@
+Read job 'cernlib_e204.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖЖ   ЖЖЖ   ЖЖЖ      Ж
+            Ж     Ж   Ж Ж   Ж    ЖЖ
+            ЖЖЖ       Ж Ж   Ж   Ж Ж
+            Ж        Ж  Ж   Ж  Ж  Ж
+            Ж       Ж   Ж   Ж Ж   Ж
+            Ж      Ж    Ж   Ж ЖЖЖЖЖ
+            ЖЖЖЖЖ ЖЖЖЖЖ  ЖЖЖ      Ж
+
+
+
+
+
+
+
+
+*NAME E204
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*CALL FICMEMOR
+*EXECUTE
+≠
+         E204       01000                FC*002   E 46271                SIN      E 50106                JERRIO*  C 52600
+         PROGRAM  E 01000                IOEND*   E 46276                COS      E 50107                TTPRINT    52601
+         STOP*      01012                FT*643   E 46276                ATAN     E 50110                BCDPUN     52640
+         EXIT     E 01013                FT*723   E 46276                ALOG     E 50111                EBCDPUN  E 52664
+         PSI1       01041                FT*003   E 46276                EXP      E 50112                ISOTCOSY   53047
+         *TS*     C 31206                BCDWRIT*   47264                ALOG10   E 50116                ISOTCOS1 E 53120
+         *TSH*    C 32123                FT*621   E 47264                PSI        50122                OCTTDEC    53140
+         *TH*     C 45703                BCDENC*  E 47270                COEFF      50321                R*TO*INT   53173
+         BCDREAD*   45727                FT*611   E 47270           OTCYTCTBYET  UZERO                   R*TO*I   E 53174
+         FT*521   E 45727                FT*571   E 47272                J1         50676                AL         53206
+         BCDDEC*  E 45733                FT*561   E 47275                I*MUI*     50735                MONREAD*   53544
+         FT*531   E 45733                NEXTLET* E 47302                I*DI*I     50743                READ*ERR E 53624
+         FT*541   E 45735                RK*      E 47344                I*ST*L   E 50753                *ICHECK* C 53650
+         IOCONT*    46224                WSY*     E 47602                I*MU*I   E 50754                CARD2    C 53656
+         IOAC*    E 46255                I/O*ERR  E 50042                READ*      50767                ISOICTTR   53703
+         FT*722   E 46270                FLOAT      50067                TTREAD     51015                REVCARD    53740
+         FT*642   E 46270                ABS      E 50072                BCDBEG*    51053                DRUMTAP*   53765
+         FT*002   E 46270                IABS     E 50075                FT2*     E 51360                COSYTISO   54016
+         FD*642   E 46271                IFIX     E 50077                KONV1*   E 51373                *ПEPФOPA   54072
+         FD*722   E 46271                AINT     E 50101                FMRTAPE    51467                KOД*CDC  E 54073
+         FC*722   E 46271                INT      E 50103                LUNMUN   C 52416                CHKWORD* C 54133
+         FC*642   E 46271                SQRT     E 50105                PRINT8     52417                CBOБOДHO   54134
+≠
+------------------------------------------------------------
+   Elapsed time: 0.048 seconds
+      Simulated: 2324792 instructions
+Simulation rate: 48624626 instructions/sec

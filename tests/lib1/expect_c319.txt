@@ -1,0 +1,44 @@
+Read job 'cernlib_c319.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+             ЖЖЖЖ ЖЖЖЖЖ    Ж   ЖЖЖ
+            Ж        Ж    ЖЖ  Ж   Ж
+            Ж       Ж    Ж Ж  Ж   Ж
+            Ж        Ж     Ж  Ж   Ж
+            Ж         Ж    Ж   ЖЖЖЖ
+            Ж     Ж   Ж    Ж      Ж
+             ЖЖЖЖ  ЖЖЖ    ЖЖЖ  ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME C319
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+     X= -0.8     AM=  0.0     Y=    -9.2729521770-01
+     X= -0.4     AM=  0.4     Y=    -4.1614379766-01
+     X=  0.0     AM=  0.2     Y=     0.0000000000+00
+     X=  0.5     AM=  0.6     Y=     5.3821280374-01
+     X=  0.8     AM=  0.8     Y=     1.0495105065+00
+
+ *****ILLEGAL ARGUMENT IN ELLIPTIC INTEGRAL ELIN1(X,M). X= 1.00,M= 1.00
+     X=  1.0     AM=  1.0     Y=     0.0000000000+00
+------------------------------------------------------------
+   Elapsed time: 0.039 seconds
+      Simulated: 1774629 instructions
+Simulation rate: 45733146 instructions/sec

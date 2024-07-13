@@ -1,0 +1,40 @@
+Read job 'cernlib_j300.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+              ЖЖЖ ЖЖЖЖЖ  ЖЖЖ   ЖЖЖ
+                Ж    Ж  Ж   Ж Ж   Ж
+                Ж   Ж   Ж   Ж Ж   Ж
+                Ж    Ж  Ж   Ж Ж   Ж
+                Ж     Ж Ж   Ж Ж   Ж
+            Ж   Ж Ж   Ж Ж   Ж Ж   Ж
+             ЖЖЖ   ЖЖЖ   ЖЖЖ   ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME J300
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         J300       01000                PROGRAM  E 01000                EXIT     E 01073
+    OTCYTCTBYET  MXPRNT                  STOP*      01072                CBOБOДHO   01121
+≠
+------------------------------------------------------------
+   Elapsed time: 0.025 seconds
+      Simulated: 1276309 instructions
+Simulation rate: 51842439 instructions/sec

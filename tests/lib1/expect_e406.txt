@@ -1,0 +1,43 @@
+Read job 'cernlib_e406.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖЖ      Ж  ЖЖЖ   ЖЖЖ
+            Ж        ЖЖ Ж   Ж Ж
+            ЖЖЖ     Ж Ж Ж   Ж ЖЖЖЖ
+            Ж      Ж  Ж Ж   Ж Ж   Ж
+            Ж     Ж   Ж Ж   Ж Ж   Ж
+            Ж     ЖЖЖЖЖ Ж   Ж Ж   Ж
+            ЖЖЖЖЖ     Ж  ЖЖЖ   ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME E406
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         E406       01000                EXIT     E 01674                D*DI*D   E 02071                D*ST*D   E 02150
+    OTCYTCTBYET  CHECAL                  FUNC       01722                D*SU*D   E 02107                PRINT8     02205
+         PROGRAM  E 01000                DUBLPREC   01753                D*COMP   E 02140                CBOБOДHO   02366
+         *CHEDAT* C 01013                D*AD*D   E 01754                D*LN*D   E 02142
+         STOP*      01673                D*MU*D   E 02057                D*LO*D   E 02146
+≠
+------------------------------------------------------------
+   Elapsed time: 0.037 seconds
+      Simulated: 1806681 instructions
+Simulation rate: 48581059 instructions/sec

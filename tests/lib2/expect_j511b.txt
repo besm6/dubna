@@ -1,0 +1,40 @@
+Read job 'cernlib_j511b.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+              ЖЖЖ ЖЖЖЖ     Ж     Ж  ЖЖЖЖ
+                Ж Ж       ЖЖ    ЖЖ  Ж  Ж
+                Ж ЖЖЖЖ   Ж Ж   Ж Ж  ЖЖЖ
+                Ж     Ж    Ж     Ж  Ж  Ж
+                Ж     Ж    Ж     Ж  Ж   Ж
+            Ж   Ж Ж   Ж    Ж     Ж  Ж   Ж
+             ЖЖЖ   ЖЖЖ    ЖЖЖ   ЖЖЖ ЖЖЖЖ
+
+
+
+
+
+
+
+
+*NAME J511B
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         J511B      01000                PROGRAM  E 01000                EXIT     E 01031                CBOБOДHO   01110
+    OTCYTCTBYET  MAP                     STOP*      01030                F          01057
+≠
+------------------------------------------------------------
+   Elapsed time: 0.033 seconds
+      Simulated: 1716646 instructions
+Simulation rate: 52389477 instructions/sec

@@ -1,0 +1,42 @@
+Read job 'cernlib_relkin.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖЖ  ЖЖЖЖ  Ж     Ж  Ж   ЖЖЖ  Ж   Ж
+            Ж   Ж Ж     Ж     Ж Ж     Ж   ЖЖ  Ж
+            Ж   Ж ЖЖЖ   Ж     ЖЖ      Ж   Ж Ж Ж
+            ЖЖЖЖ  Ж     Ж     Ж Ж     Ж   Ж  ЖЖ
+            Ж Ж   Ж     Ж     Ж  Ж    Ж   Ж   Ж
+            Ж  Ж  Ж     Ж     Ж   Ж   Ж   Ж   Ж
+            Ж   Ж ЖЖЖЖЖ ЖЖЖЖЖ Ж   Ж  ЖЖЖ  Ж   Ж
+
+
+
+
+
+
+
+
+*NAME RELKIN
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*STOP
+ ***  ПЛOXAЯ YПPABЛЯЮЩAЯ KAPTA
+*STOP
+ ***  ПЛOXAЯ YПPABЛЯЮЩAЯ KAPTA
+*
+*
+*END FILE
+------------------------------------------------------------
+   Elapsed time: 0.216 seconds
+      Simulated: 9782395 instructions
+Simulation rate: 45260368 instructions/sec

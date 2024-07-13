@@ -1,0 +1,259 @@
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖЖЖ Ж   Ж ЖЖЖЖЖ   ЖЖЖ Ж   Ж  ЖЖЖ  ЖЖЖЖЖ ЖЖЖЖ  Ж  Ж   ЖЖЖ        ЖЖЖЖ
+            Ж     Ж   Ж Ж      Ж  Ж Ж   Ж Ж   Ж   Ж   Ж     Ж Ж   Ж   Ж       Ж
+            ЖЖЖЖ  Ж   Ж ЖЖЖЖ   Ж  Ж Ж   Ж Ж   Ж   Ж   ЖЖЖ   ЖЖ    Ж   Ж       ЖЖЖЖ
+            Ж   Ж Ж  ЖЖ Ж   Ж  Ж  Ж Ж  ЖЖ Ж   Ж   Ж   Ж     Ж Ж   Ж   Ж           Ж
+            Ж   Ж Ж Ж Ж Ж   Ж  Ж  Ж Ж Ж Ж Ж   Ж   Ж   Ж     Ж  Ж  Ж   Ж           Ж
+            Ж   Ж ЖЖ  Ж Ж   Ж  Ж  Ж ЖЖ  Ж Ж   Ж   Ж   Ж     Ж   Ж ЖЖЖЖЖ       Ж   Ж
+            ЖЖЖЖ  Ж   Ж ЖЖЖЖ  Ж   Ж Ж   Ж  ЖЖЖ    Ж   ЖЖЖЖЖ Ж   Ж Ж   Ж        ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME БИБЛИOTEKA 5
+*TAPE:37/******,32
+*PERSO:320545
+*
+*CALL SETFTN:ONE,LONG
+*CALL TCATALOG                                             04 ИЮЛ 24 23.45
+                      TEMPORARY LIBRARY
+                     CBOБOДHO  23 00 27
+
+   *GFATRN*   21 14 15  00007    CMS      (MMS     )  00023
+   *GFTAB*    22 36 14  00026    CNCPP      22 26 24  00067
+   ADDLEV     22 00 34  00063    CNCTCC     22 30 02  00115
+   ANGLER     22 10 15  00070    CNCTCL     22 27 33  00127
+   ANGRID     22 35 22  00272    CNCTCP     22 27 37  00071
+   APPOLY     21 11 02  00332    CNCTLL     22 26 26  00117
+   ARC        21 15 27  00271    CNCTLP     22 27 03  00100
+   ARC1       22 34 31  00143    CNTLLL     22 26 31  00530
+   ARCANG     22 06 30  00301    CONDEK     21 26 23  00514
+   ARCC1      22 07 00  00211    COORD      21 20 12  00045
+   ARCELA     22 07 20  00114    COORDT     22 21 11  00556
+   ARCELB     22 07 34  00121    CORNL      21 13 16  01344
+   ARCIA      22 31 35  00201    COSIN1     21 33 25  00024
+   ARCIB      22 07 30  00041    COSIN2     21 33 26  00043
+   ARCIC      22 07 32  00053    CPPP       22 30 31  00117
+   ARCID      22 07 16  00054    CPR        22 31 01  00021
+   ARCOCC     22 04 14  00632    CROSS      22 20 23  00424
+   ARCOLC     22 04 31  00621    CROSSP     22 22 15  00036
+   ARCOLL     22 05 07  00230    CTCCP      22 30 05  00346
+   AREB1      22 07 05  00152    CTCPP      22 30 14  00327
+   ARRINL     22 23 26  00207    CTLLP      22 27 06  00660
+   ARROW      22 04 05  00262    CTLPP      22 27 23  00365
+   ASTEP      22 31 04  00316    CUBPOL     21 10 22  00143
+   ATDX       22 33 07  00017    CXYR       22 30 27  00023
+   ATDX1      22 33 11  00020    DANPPC     22 30 23  00101
+   ATDX2      22 33 12  00023    DASHP      21 20 23  00157
+   ATDX3      22 33 14  00017    DDIST      22 06 03  00016
+   ATDY       22 33 10  00017    DERIV5     21 11 36  00254
+   ATDY1      22 33 35  00020    DIMAN      22 34 35  00244
+   ATDY2      22 33 13  00023    DIMDRO     22 03 30  00571
+   ATDY3      22 33 15  00022    DIMEN      22 35 33  00173
+   ATRAN2     22 01 11  00114    DIMET      22 10 35  00031
+   ATRST    (RESET   )  00041    DIST       22 06 14  00562
+   AXES       22 17 25  01277    DRACON     21 27 07  00656
+   AXISC      22 00 36  00304    DRALIM     21 26 20  00143
+   AXONOM     22 10 30  00023    DRAWEL     22 23 02  00041
+   BAR        22 31 16  00412    DRAWTE     22 22 37  00101
+   BARS       22 01 06  00061    DRFRAM     21 24 03  00164
+   BCD        21 05 00  00212    DRWHL      22 23 32  00110
+   BEGLEV     22 01 14  00377    ELIPS      21 16 02  00216
+   BITA       21 37 30  00230    ELPS       22 07 14  00055
+   BLAN     (BLANCH  )  00272    ENDGR    (MOVEXY  )  00067
+   BLANC      22 34 01  00123    ENDLEV   (BEGLEV  )  00162
+   BLANCA     22 16 14  00072    ENDPG      22 37 00  00221
+   BLANCH     22 36 04  00334    EXCLIB   (INSLIB  )  00671
+   BOUND      22 32 37  00300    EXMIMA     22 33 25  00060
+   BOX        21 14 26  00051    EXTLN      22 22 16  00115
+   BRLINE     21 36 15  00265    EXTREM     21 37 03  00126
+   BROKEN     21 36 24  00026    EXUDE      22 33 20  00227
+   BROLIN     22 35 13  00341    FAN1       22 35 07  00143
+   BUFL       21 30 11  00065    FAN2       22 35 03  00170
+   CABIN      22 10 31  00040    FATARC     22 07 11  00121
+   CCNTL      22 30 30  00035    FATLIN     21 12 22  00132
+   CCNTRP     22 30 26  00032    FNROOT     21 24 14  00422
+   CELL       21 37 06  00174    FORFIT     21 11 16  00223
+   CHENSP     21 11 11  00241    FORIF      21 11 27  00201
+   CIRC       22 07 26  00043    FORIT      21 11 23  00173
+   CIRCLE     21 15 36  00175    FULL       21 36 23  00012
+   CIRTAC     22 05 26  00266    GFFALS     22 31 30  00171
+   CIRTAL     22 05 15  00176    GOBSEK     21 07 36  00276
+   CMGRID     22 13 33  00650    GRAFER     22 01 10  00020
+   CMLC       22 30 34  00017    GRID       21 15 17  00127
+   HALLNE     22 21 30  00046    LPARY      22 23 37  00020
+   HALOED     22 21 32  00324    LPAX       22 24 12  00053
+   HCIND      22 12 24  00046    LPERLP     22 24 04  00047
+   HCINIT     22 23 10  00041    LPL        21 06 04  04056
+   HCINV      22 11 20  00234    LPL1     (LPL     )  00001
+   HCLINE     22 12 21  00022    LPL2     (LPL     )  00002
+   HCMULT     22 11 16  00072    LPL3     (LPL     )  00003
+   HCNCOR     22 23 16  00050    LPP        22 24 06  00067
+   HCNCRD     22 12 22  00045    LSCALE     22 14 11  00102
+   HCPRSP     22 12 35  00023    LSFIT      21 12 12  00411
+   HCROT1     22 31 13  00122    MAP        21 30 30  00113
+   HCSURF     22 12 14  00225    MARKBE     22 36 00  00136
+   HCUNIT     22 11 14  00040    MARKER     21 20 14  00213
+   HISTGM     22 20 34  00425    MATEVL     21 31 27  00135
+   HLDLN      22 22 02  00542    MINMAX     21 15 22  00056
+   IADR       22 16 17  00003    MMS        21 14 24  00032
+   IBCD     (BCD     )  00001    MNMX       21 30 17  00410
+   IDENT      21 21 25  00013    MODGF      22 05 35  00064
+   ILIMTN     21 31 16  00050    MOVA       21 12 25  00045
+   INCHES   (MMS     )  00021    MOVB       21 12 27  00035
+   INCLIN     21 05 27  00375    MOVBL1     22 15 24  00251
+   INIT       22 10 24  00015    MOVBL3     22 15 35  00541
+   INSALL   (INSLIB  )  00001    MOVC       21 12 30  00060
+   INSDEK     21 26 36  00542    MOVE       21 15 00  00136
+   INSIDE     21 27 25  00552    MOVE1      22 34 05  00171
+   INSLIB     21 20 35  01213    MOVE2      22 15 03  00267
+   INTRSC     22 14 22  00204    MOVE3      22 34 12  00412
+   IRDB       21 14 20  00015    MOVED    (MOVEXY  )  00006
+   ISOLIN     22 00 17  00613    MOVEDS   (MOVEXY  )  00035
+   ISOMET     22 10 33  00031    MOVES    (MOVEXY  )  00013
+   ITALIC   (SET     )  00024    MOVEXY     22 36 32  00146
+   ITPLBV     21 25 15  02227    MTMPL      22 01 24  00075
+   IVEST      22 06 37  00033    MXMULT     22 23 12  00072
+   IWDB       21 14 22  00015    NARROW     22 34 24  00231
+   IZFLIN     22 32 05  00126    NEWLIB   (INSLIB  )  00667
+   IZLIN      22 32 10  00732    NEXTRG     21 32 00  00662
+   IZOLIN     22 32 02  00076    NORMAL   (MOVEXY  )  00064
+   KEYPO      21 37 24  00135    NOTCH      22 15 00  00114
+   LCROSS     21 31 34  00062    NOTCH1     22 15 12  00253
+   LESQ       21 10 27  00370    NUMBER     22 20 14  00237
+   LETIZO     22 33 33  00055    NUMLIN     21 37 14  00022
+   LETSPL     22 33 31  00035    OPER       21 24 10  00173
+   LEVFUN     21 37 16  00061    PAC        22 24 34  00030
+   LEVMAP     22 00 03  00066    PAGE       22 36 20  00176
+   LGLINE     21 17 14  00215    PATA       22 25 01  00056
+   LIBLIST    22 36 37  00001    PATC       22 25 03  00055
+   LICON      22 06 04  00360    PATCH      21 36 02  00435
+   LIMITS     21 15 25  00050    PATL       22 25 05  00056
+   LINEC      21 16 14  00130    PCDP       22 25 23  00062
+   LINEMC     21 16 25  00154    PCNAP      22 24 22  00047
+   LINEMO     21 16 20  00223    PCNITC     22 24 24  00253
+   LINEO      21 16 07  00175    PCNP       22 31 02  00060
+   LINFIL     21 11 33  00135    PCNTRC     22 24 33  00016
+   LININT     21 30 13  00154    PEN        22 36 36  00016
+   LINNUM     21 36 25  00436    PENDWN   (PEN     )  00005
+   LINT       21 37 00  00116    PENUP    (PEN     )  00003
+   LITAN      22 05 22  00125    PICC       22 25 33  00133
+   LMLL       22 24 00  00110    PICTUR     21 33 12  00465
+   LOCEXT     21 37 35  00230    PIEPP      22 25 36  00051
+   LOOK       22 00 05  00440    PILC       22 25 30  00123
+   LOWER      22 32 31  00047    PILL       22 24 37  00046
+   LPAL       22 24 14  00033    PISS       22 24 20  00037
+   LPARLD     22 24 10  00063    PLDP       22 25 25  00140
+   LPARLP     22 23 35  00047    PLNP       22 30 35  00065
+   LPARX      22 24 03  00020    PLOT       22 36 25  00213
+   PMIDPP     22 24 21  00022    SETRA      22 32 35  00012
+   PMLP       22 24 35  00044    SETTR      22 11 12  00026
+   PMP        22 24 15  00042    SFCFIT     21 24 25  01532
+   PMPP       22 24 17  00022    SHADE      22 14 26  01670
+   PNORDR     21 32 32  00217    SHDOWN     22 22 31  00036
+   POLG       22 07 37  00127    SHEAR      22 11 01  00036
+   POLINE     21 16 31  00245    SHIFT    (TRANSL  )  00015
+   POLREG     21 17 05  00314    SHUP       22 22 33  00032
+   POLYG      21 15 04  00145    SIGNA      21 16 37  00260
+   PRAP       22 24 32  00034    SINCL      21 12 04  00265
+   PREP       21 35 04  00212    SIZLIN     21 37 15  00022
+   PRITEX     22 16 20  00014    SIZNUM     21 14 06  00032
+   PRJHL      22 23 04  00140    SMINV      21 10 36  00212
+   PRJT       21 30 33  00350    SMTBVF     21 21 26  01673
+   PROJCT     21 31 32  00045    SMTONE     21 23 11  01624
+   PRSP       21 12 32  01164    SMTSIM     21 22 22  01432
+   PSCALE     22 01 26  00035    SORT3      22 26 07  00117
+   PT6        22 14 17  00001    SORTC      22 26 00  00075
+   PTLCC      22 25 07  00274    SORTCN     22 26 03  00155
+   PTLPC      22 25 15  00120    SORTL      22 26 12  00152
+   PVAL       21 05 25  00043    SORTP      22 26 21  00073
+   PVPL       22 25 20  00111    SORTPT     22 26 16  00067
+   PXY        22 24 31  00017    SORTY      22 21 26  00053
+   QUADRA     21 14 10  00215    SPIRAL     22 07 24  00033
+   RAISE      22 32 27  00065    SPLINE     21 10 05  00242
+   RAND       22 12 27  00040    SPLINT     21 10 17  00124
+   RAXES      21 35 30  00430    SPLITP   (COORDT  )  00500
+   RCCNTC     22 30 25  00037    SPNP       22 30 37  00045
+   RDACA      22 02 23  00070    STAR       22 10 03  00233
+   RDACB      22 02 30  00130    STEP     (MOVEXY  )  00120
+   RDACC      22 02 36  00112    STORIN     22 22 21  00264
+   RDACD      22 03 04  00076    STRMOD     22 14 14  00075
+   RDAEA      22 03 12  00132    STROT3     22 23 14  00063
+   RDAEB      22 03 20  00155    SUPLIN     21 37 20  00157
+   RDB        21 14 17  00015    SVLSEG     22 22 30  00020
+   RDCRC      22 02 16  00053    SYMBOL     21 14 32  00315
+   RDELP      22 03 26  00061    SYMTAB     21 05 05  00752
+   RDMVA      22 02 01  00073    TCALC      21 10 25  00077
+   RDMVB      22 02 05  00061    TDLIM      22 10 17  00205
+   RDMVC      22 02 11  00075    TDLIML     22 11 25  00151
+   RDMVE      22 01 35  00055    TDLINE     22 11 31  00104
+   RDSTAR     21 21 22  00073    TDMP       22 12 30  00223
+   RDSTR      22 01 34  00023    TDROT      22 11 05  00101
+   REBLAN     21 14 30  00037    TDSCAL     22 10 37  00045
+   RECT       21 15 14  00103    TDSECT     22 12 37  01642
+   RECUR      22 32 33  00054    TDTRAN     22 11 03  00032
+   REGION     21 15 10  00147    TESTVS     22 22 35  00031
+   RENOCH     22 15 21  00072    TFM        21 06 02  00077
+   RENTCH     22 14 20  00065    THAXES     21 35 15  00456
+   RENUM      22 00 33  00012    THREED     22 11 34  00757
+   RESET      22 01 22  00054    TMF        21 15 24  00033
+   ROTATE     22 01 31  00055    TMLGF      21 17 21  00135
+   ROTH       22 23 23  00131    TOKEN      22 33 16  00042
+   ROUND    (MOVEXY  )  00053    TPF        21 35 11  00155
+   SAVETR     22 11 10  00026    TRANH      22 23 20  00120
+   SCREN1     21 31 12  00070    TRANSF     22 33 05  00054
+   SCREN2     21 31 03  00343    TRANSL     22 01 30  00027
+   SCRMOD     21 32 16  00566    TRDRAW     21 34 35  00316
+   SDPG       21 20 27  00300    TRG        21 31 20  00324
+   SEARCH     21 27 36  00453    TRGRID     21 34 12  00235
+   SECANT     22 10 11  00155    TRIDIG     21 10 12  00247
+   SEE        21 31 14  00102    TRIG       21 34 17  00766
+   SEE1       21 33 04  00257    TRIGL      22 35 30  00105
+   SEGANG     21 31 36  00072    TRINGL     21 33 30  01053
+   SET        21 14 23  00032    TRSURF     21 32 37  00217
+   SETBE      22 32 36  00020    VIEW       22 10 25  00062
+   VPLIM      22 21 05  00165
+   WDB        21 14 21  00015
+   WHERE      21 15 35  00021
+   WHERP      22 06 02  00021
+   WRACA      22 02 20  00072
+   WRACB      22 02 26  00041
+   WRACC      22 02 34  00053
+   WRACD      22 03 01  00077
+   WRAEA      22 03 07  00117
+   WRAEB      22 03 15  00121
+   WRCRC      22 02 14  00044
+   WRELP      22 03 24  00052
+   WRMVA      22 01 37  00035
+   WRMVB      22 02 04  00025
+   WRMVC      22 02 07  00047
+   WRMVE      22 05 37  00115
+   WRSTR      22 01 33  00023
+   XAXIS      22 16 21  01045
+   XILIY      22 33 27  00054
+   XILIY1     22 33 36  00116
+   XLGAX      21 17 24  00462
+   XPOL       22 00 31  00017
+   XYSORT     21 05 37  00111
+   YAXIS      22 17 03  01044
+   YLGAX      21 17 37  00467
+   YPOL       22 00 32  00017
+   ZAPIT      21 37 12  00070
+   ZERKX    (MOVEXY  )  00056
+   ZERKY    (MOVEXY  )  00061
+   ZINT       22 12 26  00040
+
+*END FILE

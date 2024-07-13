@@ -1,0 +1,52 @@
+Read job 'cernlib_m410.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            Ж   Ж     Ж    Ж   ЖЖЖ
+            ЖЖ ЖЖ    ЖЖ   ЖЖ  Ж   Ж
+            Ж Ж Ж   Ж Ж  Ж Ж  Ж   Ж
+            Ж Ж Ж  Ж  Ж    Ж  Ж   Ж
+            Ж   Ж Ж   Ж    Ж  Ж   Ж
+            Ж   Ж ЖЖЖЖЖ    Ж  Ж   Ж
+            Ж   Ж     Ж   ЖЖЖ  ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME M410
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         M410       01000                FT*571   E 02500                FC*642   E 03342                EBCDPUN  E 05244
+    OTCYTCTBYET  IUBACK                  FT*561   E 02503                FC*002   E 03342                ISOTCOSY   05427
+    OTCYTCTBYET  IUFORW                  NEXTLET* E 02510                IOEND*   E 03347                ISOTCOS1 E 05500
+    OTCYTCTBYET  IULOOK                  RK*      E 02552                FT*643   E 03347                FMRTAPE    05520
+    OTCYTCTBYET  IUNEXT                  WSY*     E 03010                FT*723   E 03347                OCTTDEC    06447
+    OTCYTCTBYET  USET                    I/O*ERR  E 03250                FT*003   E 03347                LUNMUN   C 06502
+    OTCYTCTBYET  URIGHT                  IOCONT*    03275                STOP*      04335                JERRIO*  C 06503
+    OTCYTCTBYET  ULEFT                   IOAC*    E 03326                EXIT     E 04336                CARD2    C 06504
+         PROGRAM  E 01000                FT*722   E 03341                BCDBEG*    04364                ISOICTTR   06531
+         *SLATE*  C 02422                FT*642   E 03341                FT2*     E 04671                REVCARD    06566
+         BCDWRIT*   02472                FT*002   E 03341                KONV1*   E 04704                *ICHECK* C 06613
+         FT*621   E 02472                FD*642   E 03342                PRINT8     05000                *ПEPФOPA   06621
+         BCDENC*  E 02476                FD*722   E 03342                TTPRINT    05161                KOД*CDC  E 06622
+         FT*611   E 02476                FC*722   E 03342                BCDPUN     05220                CBOБOДHO   06662
+≠
+------------------------------------------------------------
+   Elapsed time: 0.102 seconds
+      Simulated: 6159022 instructions
+Simulation rate: 60479217 instructions/sec

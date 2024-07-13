@@ -1,0 +1,40 @@
+Read job 'cernlib_j503.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+              ЖЖЖ ЖЖЖЖ   ЖЖЖ  ЖЖЖЖЖ
+                Ж Ж     Ж   Ж    Ж
+                Ж ЖЖЖЖ  Ж   Ж   Ж
+                Ж     Ж Ж   Ж    Ж
+                Ж     Ж Ж   Ж     Ж
+            Ж   Ж Ж   Ж Ж   Ж Ж   Ж
+             ЖЖЖ   ЖЖЖ   ЖЖЖ   ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME J503
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         J503       01000                PROGRAM  E 01000                EXIT     E 01120
+    OTCYTCTBYET  STAP                    STOP*      01117                CBOБOДHO   01146
+≠
+------------------------------------------------------------
+   Elapsed time: 0.027 seconds
+      Simulated: 1308838 instructions
+Simulation rate: 49185945 instructions/sec

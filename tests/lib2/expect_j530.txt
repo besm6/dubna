@@ -1,0 +1,51 @@
+Read job 'cernlib_j530.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+              ЖЖЖ ЖЖЖЖ  ЖЖЖЖЖ  ЖЖЖ
+                Ж Ж        Ж  Ж   Ж
+                Ж ЖЖЖЖ    Ж   Ж   Ж
+                Ж     Ж    Ж  Ж   Ж
+                Ж     Ж     Ж Ж   Ж
+            Ж   Ж Ж   Ж Ж   Ж Ж   Ж
+             ЖЖЖ   ЖЖЖ   ЖЖЖ   ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME J530
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         J530       01000                IOCONT*    01742                FT*003   E 02014                OCTTDEC    05114
+    OTCYTCTBYET  BINSIZ                  IOAC*    E 01773                STOP*      03002                LUNMUN   C 05147
+         PROGRAM  E 01000                FT*722   E 02006                EXIT     E 03003                JERRIO*  C 05150
+         BCDWRIT*   01137                FT*642   E 02006                BCDBEG*    03031                CARD2    C 05151
+         FT*621   E 01137                FT*002   E 02006                FT2*     E 03336                ISOICTTR   05176
+         BCDENC*  E 01143                FD*642   E 02007                KONV1*   E 03351                REVCARD    05233
+         FT*611   E 01143                FD*722   E 02007                PRINT8     03445                *ICHECK* C 05260
+         FT*571   E 01145                FC*722   E 02007                TTPRINT    03626                *ПEPФOPA   05266
+         FT*561   E 01150                FC*642   E 02007                BCDPUN     03665                KOД*CDC  E 05267
+         NEXTLET* E 01155                FC*002   E 02007                EBCDPUN  E 03711                CBOБOДHO   05327
+         RK*      E 01217                IOEND*   E 02014                ISOTCOSY   04074
+         WSY*     E 01455                FT*643   E 02014                ISOTCOS1 E 04145
+         I/O*ERR  E 01715                FT*723   E 02014                FMRTAPE    04165
+≠
+------------------------------------------------------------
+   Elapsed time: 0.040 seconds
+      Simulated: 1888727 instructions
+Simulation rate: 47565402 instructions/sec

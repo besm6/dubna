@@ -1,0 +1,40 @@
+Read job 'cernlib_w300.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            Ж   Ж ЖЖЖЖЖ  ЖЖЖ   ЖЖЖ
+            Ж   Ж    Ж  Ж   Ж Ж   Ж
+            Ж   Ж   Ж   Ж   Ж Ж   Ж
+            Ж   Ж    Ж  Ж   Ж Ж   Ж
+            Ж Ж Ж     Ж Ж   Ж Ж   Ж
+            Ж Ж Ж Ж   Ж Ж   Ж Ж   Ж
+             Ж Ж   ЖЖЖ   ЖЖЖ   ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME W300
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         W300       01000                PROGRAM  E 01000                EXIT     E 01013
+    OTCYTCTBYET  RELKIN                  STOP*      01012                CBOБOДHO   01041
+≠
+------------------------------------------------------------
+   Elapsed time: 0.019 seconds
+      Simulated: 1023106 instructions
+Simulation rate: 53898746 instructions/sec

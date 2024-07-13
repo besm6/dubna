@@ -1,0 +1,54 @@
+Read job 'cernlib_f102.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖЖЖ    Ж   ЖЖЖ   ЖЖЖ
+            Ж       ЖЖ  Ж   Ж Ж   Ж
+            ЖЖЖЖ   Ж Ж  Ж   Ж     Ж
+            Ж        Ж  Ж   Ж    Ж
+            Ж        Ж  Ж   Ж   Ж
+            Ж        Ж  Ж   Ж  Ж
+            Ж       ЖЖЖ  ЖЖЖ  ЖЖЖЖЖ
+
+
+
+
+
+
+
+
+*NAME F102
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         F102       01000                FC*642   E 03606                WSY*     E 05146                ISOTCOSY   07551
+    OTCYTCTBYET  LINVER                  FC*002   E 03606                I/O*ERR  E 05406                ISOTCOS1 E 07622
+         PROGRAM  E 01000                IOEND*   E 03613                I*MUI*     05433                OCTTDEC    07642
+         BCDREAD*   03244                FT*643   E 03613                R*PO*I     05441                MONREAD*   07675
+         FT*521   E 03244                FT*723   E 03613                READ*      05471                READ*ERR E 07755
+         BCDDEC*  E 03250                FT*003   E 03613                TTREAD     05517                *ICHECK* C 10001
+         FT*531   E 03250                STOP*      04601                BCDBEG*    05555                CARD2    C 10007
+         FT*541   E 03252                EXIT     E 04602                FT2*     E 06062                ISOICTTR   10034
+         IOCONT*    03541                BCDWRIT*   04630                KONV1*   E 06075                REVCARD    10071
+         IOAC*    E 03572                FT*621   E 04630                FMRTAPE    06171                DRUMTAP*   10116
+         FT*722   E 03605                BCDENC*  E 04634                LUNMUN   C 07120                COSYTISO   10147
+         FT*642   E 03605                FT*611   E 04634                PRINT8     07121                *ПEPФOPA   10223
+         FT*002   E 03605                FT*571   E 04636                JERRIO*  C 07302                KOД*CDC  E 10224
+         FD*642   E 03606                FT*561   E 04641                TTPRINT    07303                CHKWORD* C 10264
+         FD*722   E 03606                NEXTLET* E 04646                BCDPUN     07342                CBOБOДHO   10265
+         FC*722   E 03606                RK*      E 04710                EBCDPUN  E 07366
+≠
+------------------------------------------------------------
+   Elapsed time: 0.140 seconds
+      Simulated: 6228364 instructions
+Simulation rate: 44424850 instructions/sec

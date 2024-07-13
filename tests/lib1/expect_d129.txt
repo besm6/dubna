@@ -1,0 +1,38 @@
+Read job 'cernlib_d129.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖ      Ж   ЖЖЖ   ЖЖЖ
+            Ж  Ж    ЖЖ  Ж   Ж Ж   Ж
+            Ж   Ж  Ж Ж      Ж Ж   Ж
+            Ж   Ж    Ж     Ж  Ж   Ж
+            Ж   Ж    Ж    Ж    ЖЖЖЖ
+            Ж   Ж    Ж   Ж        Ж
+            ЖЖЖЖ    ЖЖЖ ЖЖЖЖЖ  ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME D129
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+                                                  TEST D127,D128,D129
+            SUM                  (0.,-1.)*SUM            ERROR      (0.,-1.)*ERROR        /SUM/                (0.,-1.)*ERROR
+------------------------------------------------------------
+   Elapsed time: 0.098 seconds
+      Simulated: 4616641 instructions
+Simulation rate: 46882303 instructions/sec

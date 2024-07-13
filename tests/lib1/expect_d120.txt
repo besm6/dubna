@@ -1,0 +1,37 @@
+Read job 'cernlib_d120.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖ      Ж   ЖЖЖ   ЖЖЖ
+            Ж  Ж    ЖЖ  Ж   Ж Ж   Ж
+            Ж   Ж  Ж Ж      Ж Ж   Ж
+            Ж   Ж    Ж     Ж  Ж   Ж
+            Ж   Ж    Ж    Ж   Ж   Ж
+            Ж   Ж    Ж   Ж    Ж   Ж
+            ЖЖЖЖ    ЖЖЖ ЖЖЖЖЖ  ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME D120
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+     1.70     1.98282     1.98558     1.98558
+------------------------------------------------------------
+   Elapsed time: 0.049 seconds
+      Simulated: 2306629 instructions
+Simulation rate: 46884609 instructions/sec

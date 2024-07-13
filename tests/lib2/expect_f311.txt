@@ -1,0 +1,51 @@
+Read job 'cernlib_f311.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖЖЖ ЖЖЖЖЖ    Ж     Ж
+            Ж        Ж    ЖЖ    ЖЖ
+            ЖЖЖЖ    Ж    Ж Ж   Ж Ж
+            Ж        Ж     Ж     Ж
+            Ж         Ж    Ж     Ж
+            Ж     Ж   Ж    Ж     Ж
+            Ж      ЖЖЖ    ЖЖЖ   ЖЖЖ
+
+
+
+
+
+
+
+
+*NAME F311
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+≠
+         F311       01000                IOCONT*    02064                FT*003   E 02136                FMRTAPE    04315
+    OTCYTCTBYET  DETERM                  IOAC*    E 02115                STOP*      03124                OCTTDEC    05244
+         PROGRAM  E 01000                FT*722   E 02130                EXIT     E 03125                LUNMUN   C 05277
+         BCDWRIT*   01261                FT*642   E 02130                I*MUI*     03153                JERRIO*  C 05300
+         FT*621   E 01261                FT*002   E 02130                BCDBEG*    03161                CARD2    C 05301
+         BCDENC*  E 01265                FD*642   E 02131                FT2*     E 03466                ISOICTTR   05326
+         FT*611   E 01265                FD*722   E 02131                KONV1*   E 03501                REVCARD    05363
+         FT*571   E 01267                FC*722   E 02131                PRINT8     03575                *ICHECK* C 05410
+         FT*561   E 01272                FC*642   E 02131                TTPRINT    03756                *ПEPФOPA   05416
+         NEXTLET* E 01277                FC*002   E 02131                BCDPUN     04015                KOД*CDC  E 05417
+         RK*      E 01341                IOEND*   E 02136                EBCDPUN  E 04041                CBOБOДHO   05457
+         WSY*     E 01577                FT*643   E 02136                ISOTCOSY   04224
+         I/O*ERR  E 02037                FT*723   E 02136                ISOTCOS1 E 04275
+≠
+------------------------------------------------------------
+   Elapsed time: 0.050 seconds
+      Simulated: 2170733 instructions
+Simulation rate: 43474655 instructions/sec

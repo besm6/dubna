@@ -1,0 +1,70 @@
+Read job 'cernlib_d507.dub'
+------------------------------------------------------------
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖ   ЖЖЖЖ   ЖЖЖ  ЖЖЖЖЖ
+            Ж  Ж  Ж     Ж   Ж Ж   Ж
+            Ж   Ж ЖЖЖЖ  Ж   Ж     Ж
+            Ж   Ж     Ж Ж   Ж    Ж
+            Ж   Ж     Ж Ж   Ж   Ж
+            Ж   Ж Ж   Ж Ж   Ж  Ж
+            ЖЖЖЖ   ЖЖЖ   ЖЖЖ   Ж
+
+
+
+
+
+
+
+
+*NAME D507
+*LIBRARY:1
+*NO LIST
+*NO LOAD LIST
+*EXECUTE
+     ITERATION   0        3 CALLS OF FCN        F=     1.12719999999899+04
+     VARIABLES
+     1.00000000000000+00     5.00000000000000+00
+     FUNCTIONS
+     1.05999999999767+02     6.00000000000000+00
+     ITERATION   1       11 CALLS OF FCN        F=     1.98355759490004+02
+     VARIABLES
+     4.88298832198779-01     1.70033969154246+00
+     FUNCTIONS
+     1.38905016250646+01     2.32588135854166+00
+     ITERATION   2       18 CALLS OF FCN        F=     4.13421183020545+00
+     VARIABLES
+     8.11134892974223-02     3.54760509294283-01
+     FUNCTIONS
+     1.66724808823528+00     1.16382801241707+00
+     ITERATION   3       28 CALLS OF FCN        F=     2.11557228100718-01
+     VARIABLES
+    -4.78881575840932-01     4.02017705186881-01
+     FUNCTIONS
+     3.59247554215835-01    -2.87225386919453-01
+     ITERATION   4       30 CALLS OF FCN        F=     1.82896683193575-01
+     VARIABLES
+    -4.84168458734347-01     3.88802300826137-01
+     FUNCTIONS
+     2.95837001184918-01    -3.08831915325208-01
+           FINAL VALUES OF FUNCTIONS AND VARIABLES
+     ITERATION   4       30 CALLS OF FCN        F=     1.82896683193575-01
+     VARIABLES
+    -4.84168458734347-01     3.88802300826137-01
+     FUNCTIONS
+     2.95837001184918-01    -3.08831915325208-01
+                                        VARIANCE-COVARIANCE MATRIX
+                      0.041818
+                      0.016050            0.047586
+------------------------------------------------------------
+   Elapsed time: 0.057 seconds
+      Simulated: 2756266 instructions
+Simulation rate: 48175520 instructions/sec

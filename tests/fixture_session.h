@@ -97,10 +97,10 @@ protected:
         // Get output.
         std::cout.rdbuf(save_cout);
         std::string result = output.str();
-#if 1
+
         // Save result for debug.
-        create_file("expect_" + file_base + ".txt", result);
-#endif
+        // create_file("expect_" + file_base + ".txt", result);
+
         // Check result.
         auto expect = file_contents(expect_filename);
         check_output(result, expect);

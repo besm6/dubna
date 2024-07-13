@@ -24,8 +24,9 @@
 #include <cerrno>
 #include <cstring>
 #include <fstream>
-#include <iostream>
 #include <iomanip>
+#include <iostream>
+
 #include "machine.h"
 
 //
@@ -33,14 +34,15 @@
 // representing one punched card.
 // Reference: https://en.wikipedia.org/wiki/Braille_Patterns
 //
-void Puncher::punch_braille(unsigned char buf[144]) {
-   // All cards are output in Braille representation
+void Puncher::punch_braille(const unsigned char buf[144])
+{
+    // All cards are output in Braille representation
     if (braille.bad())
         return;
     if (!braille.is_open()) {
         braille.open("punch.out");
         if (!braille.is_open()) {
-            std::cerr << "punch.out:"  << std::strerror(errno) << std::endl;
+            std::cerr << "punch.out:" << std::strerror(errno) << std::endl;
             return;
         }
     }
@@ -49,20 +51,21 @@ void Puncher::punch_braille(unsigned char buf[144]) {
     memset(bytes, 0, 120);
     for (line = 0; line < 12; ++line) {
         for (col = 0; col < 80; ++col) {
-            int idx = 1 + 12*line + (col>=40) + col/8;
-            int bit = (buf[idx] >> (7-col%8)) & 1;
+            int idx = 1 + 12 * line + (col >= 40) + col / 8;
+            int bit = (buf[idx] >> (7 - col % 8)) & 1;
             if (bit)
-                bytes[line/4][col/2] |= "\x01\x08\x02\x10\x04\x20\x40\x80"[line%4*2+col%2];
+                bytes[line / 4][col / 2] |=
+                    "\x01\x08\x02\x10\x04\x20\x40\x80"[line % 4 * 2 + col % 2];
         }
     }
     for (line = 0; line < 3; ++line) {
         for (col = 0; col < 40; ++col) {
-            braille << '\342' << char(0240+(bytes[line][col] >> 6))
-                    <<  char(0200 + (bytes[line][col] & 077));
+            braille << '\342' << char(0240 + (bytes[line][col] >> 6))
+                    << char(0200 + (bytes[line][col] & 077));
         }
         braille << '\n';
     }
-    braille << '\n';            // separate cards by an empty line
+    braille << '\n'; // separate cards by an empty line
 }
 
 //
@@ -70,13 +73,14 @@ void Puncher::punch_braille(unsigned char buf[144]) {
 // if the image matches the "standard array" pattern,
 // and is not a title card, output its contents in an octal format
 // suitable for input.
-void Puncher::punch_stdarray(unsigned char buf[144]) {
+void Puncher::punch_stdarray(const unsigned char buf[144])
+{
     unsigned short columns[80];
     memset(columns, 0, 160);
     for (int col = 0; col < 80; ++col) {
         for (int line = 0; line < 12; ++line) {
-            int idx = 1 + 12*line + (col>=40) + col/8;
-            int bit = (buf[idx] >> (7-col%8)) & 1;
+            int idx = 1 + 12 * line + (col >= 40) + col / 8;
+            int bit = (buf[idx] >> (7 - col % 8)) & 1;
             if (bit)
                 columns[col] |= 1 << line;
         }
@@ -101,7 +105,7 @@ void Puncher::punch_stdarray(unsigned char buf[144]) {
     if (!stdarray.is_open()) {
         stdarray.open("stdarray.out");
         if (!stdarray.is_open()) {
-            std::cerr << "stdarray.out:"  << std::strerror(errno) << std::endl;
+            std::cerr << "stdarray.out:" << std::strerror(errno) << std::endl;
             return;
         }
     }
@@ -111,8 +115,7 @@ void Puncher::punch_stdarray(unsigned char buf[144]) {
         for (int i = 0; i < 8; ++i) {
             if (i % 4 == 0)
                 stdarray << '`';
-            stdarray << std::oct << std::setfill('0') << std::setw(4) <<
-                columns[col+i];
+            stdarray << std::oct << std::setfill('0') << std::setw(4) << columns[col + i];
             if (i % 4 == 3)
                 stdarray << '\n';
         }
@@ -123,7 +126,8 @@ void Puncher::punch_stdarray(unsigned char buf[144]) {
 // Punch a range of memory words. The range must represent
 // an integer number of cards. An image of one card takes 24 words.
 //
-void Puncher::punch(ushort start_addr, ushort end_addr) {
+void Puncher::punch(ushort start_addr, ushort end_addr)
+{
     auto a = start_addr;
     while (a < end_addr) {
         BytePointer bp(memory, ADDR(a));

@@ -24,25 +24,26 @@
 #ifndef DUBNA_PUNCHER_H
 #define DUBNA_PUNCHER_H
 
-#include <iostream>
 #include <fstream>
+#include <iostream>
+
 #include "memory.h"
 
 class Puncher {
 private:
-    Memory& memory;
+    Memory &memory;
     std::ofstream braille;
     std::ofstream stdarray;
 
 public:
-    Puncher(Memory& m) : memory(m) { }
+    explicit Puncher(Memory &m) : memory(m) {}
 
     // Send an array to punched cards.
     void punch(ushort start_addr, ushort end_addr);
 
 private:
-    void punch_braille(unsigned char buf[144]);
-    void punch_stdarray(unsigned char buf[144]);
+    void punch_braille(const unsigned char buf[144]);
+    void punch_stdarray(const unsigned char buf[144]);
 };
 
 #endif // DUBNA_PLOTTER_H

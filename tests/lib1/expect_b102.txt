@@ -1,5 +1,3 @@
-Read job 'cernlib_b102.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_b102.dub'
 
 
 *NAME B102
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -35,7 +34,3 @@ Read job 'cernlib_b102.dub'
                     PROXIM(6.388,4.346)     GAMMA =  6.38799999999
                     PROXIM(0.96 ,4.346)     GAMMA =  7.24318529999
                     PROXIM(4.346,0.96 )     GAMMA = -1.93718530000
-------------------------------------------------------------
-   Elapsed time: 0.033 seconds
-      Simulated: 1791868 instructions
-Simulation rate: 53885905 instructions/sec

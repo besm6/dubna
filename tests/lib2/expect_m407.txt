@@ -1,5 +1,3 @@
-Read job 'cernlib_m407.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,28 +24,13 @@ Read job 'cernlib_m407.dub'
 
 
 *NAME M407
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
-≠
-         M407       01000                FT*571   E 01176                FC*002   E 02040                ISOTCOS1 E 04176
-    OTCYTCTBYET  JTH10                   FT*561   E 01201                IOEND*   E 02045                FMRTAPE    04216
-    OTCYTCTBYET  JTHN                    NEXTLET* E 01206                FT*643   E 02045                OCTTDEC    05145
-    OTCYTCTBYET  STOREN                  RK*      E 01250                FT*723   E 02045                LUNMUN   C 05200
-    OTCYTCTBYET  JTH1                    WSY*     E 01506                FT*003   E 02045                JERRIO*  C 05201
-    OTCYTCTBYET  STORE1                  I/O*ERR  E 01746                STOP*      03033                CARD2    C 05202
-    OTCYTCTBYET  JTH                     IOCONT*    01773                EXIT     E 03034                ISOICTTR   05227
-    OTCYTCTBYET  STORE6                  IOAC*    E 02024                BCDBEG*    03062                REVCARD    05264
-    OTCYTCTBYET  JTHB                    FT*722   E 02037                FT2*     E 03367                *ICHECK* C 05311
-    OTCYTCTBYET  STOREB                  FT*642   E 02037                KONV1*   E 03402                *ПEPФOPA   05317
-         PROGRAM  E 01000                FT*002   E 02037                PRINT8     03476                KOД*CDC  E 05320
-         BCDWRIT*   01170                FD*642   E 02040                TTPRINT    03657                CBOБOДHO   05360
-         FT*621   E 01170                FD*722   E 02040                BCDPUN     03716
-         BCDENC*  E 01174                FC*722   E 02040                EBCDPUN  E 03742
-         FT*611   E 01174                FC*642   E 02040                ISOTCOSY   04125
-≠
-------------------------------------------------------------
-   Elapsed time: 0.046 seconds
-      Simulated: 2231957 instructions
-Simulation rate: 48709288 instructions/sec
+    6400000000000010            8
+    6400000000000017           15
+    6400000000000001            1
+    6400000000000004            4
+    6400000000000004            4

@@ -1,5 +1,3 @@
-Read job 'cernlib_k450.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,27 +24,8 @@ Read job 'cernlib_k450.dub'
 
 
 *NAME K450
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
-≠
-         K450       01000                FT*611   E 01533                FC*722   E 02377                BCDPUN     04255
-    OTCYTCTBYET  REWIND                  FT*571   E 01535                FC*642   E 02377                EBCDPUN  E 04301
-    OTCYTCTBYET  RDBUF                   FT*561   E 01540                FC*002   E 02377                ISOTCOSY   04464
-    OTCYTCTBYET  SCHMKF                  NEXTLET* E 01545                IOEND*   E 02404                ISOTCOS1 E 04535
-    OTCYTCTBYET  SCHMFB                  RK*      E 01607                FT*643   E 02404                FMRTAPE    04555
-    OTCYTCTBYET  MKFILE                  WSY*     E 02045                FT*723   E 02404                OCTTDEC    05504
-    OTCYTCTBYET  WRTBUF                  I/O*ERR  E 02305                FT*003   E 02404                LUNMUN   C 05537
-    OTCYTCTBYET  BUF608                  IOCONT*    02332                STOP*      03372                JERRIO*  C 05540
-    OTCYTCTBYET  DNS556                  IOAC*    E 02363                EXIT     E 03373                CARD2    C 05541
-         PROGRAM  E 01000                FT*722   E 02376                BCDBEG*    03421                ISOICTTR   05566
-         *ICHECK* C 01521                FT*642   E 02376                FT2*     E 03726                REVCARD    05623
-         BCDWRIT*   01527                FT*002   E 02376                KONV1*   E 03741                *ПEPФOPA   05650
-         FT*621   E 01527                FD*642   E 02377                PRINT8     04035                KOД*CDC  E 05651
-         BCDENC*  E 01533                FD*722   E 02377                TTPRINT    04216                CBOБOДHO   05711
-≠
-------------------------------------------------------------
-   Elapsed time: 0.050 seconds
-      Simulated: 2208862 instructions
-Simulation rate: 44409948 instructions/sec

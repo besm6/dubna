@@ -1,5 +1,3 @@
-Read job 'cernlib_e240.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_e240.dub'
 
 
 *NAME E240
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -91,7 +90,3 @@ Read job 'cernlib_e240.dub'
  ARGUMENT IS OUT OF THE INTERVAL ULIM=   24.000000000
  ARGUMENT IS OUT OF THE INTERVAL ULIM=  105.000000000
                                          NEXP IS MORE THAN POSSIBLE
-------------------------------------------------------------
-   Elapsed time: 0.079 seconds
-      Simulated: 3735070 instructions
-Simulation rate: 47241096 instructions/sec

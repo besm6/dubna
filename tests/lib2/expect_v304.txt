@@ -1,5 +1,3 @@
-Read job 'cernlib_v304.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,26 +24,27 @@ Read job 'cernlib_v304.dub'
 
 
 *NAME V304
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
-≠
-         V304       01000                I/O*ERR  E 01746                FT*723   E 02045                FMRTAPE    04216
-    OTCYTCTBYET  IUFIND                  IOCONT*    01773                FT*003   E 02045                OCTTDEC    05145
-    OTCYTCTBYET  IUCOMP                  IOAC*    E 02024                STOP*      03033                LUNMUN   C 05200
-         PROGRAM  E 01000                FT*722   E 02037                EXIT     E 03034                JERRIO*  C 05201
-         BCDWRIT*   01170                FT*642   E 02037                BCDBEG*    03062                CARD2    C 05202
-         FT*621   E 01170                FT*002   E 02037                FT2*     E 03367                ISOICTTR   05227
-         BCDENC*  E 01174                FD*642   E 02040                KONV1*   E 03402                REVCARD    05264
-         FT*611   E 01174                FD*722   E 02040                PRINT8     03476                *ICHECK* C 05311
-         FT*571   E 01176                FC*722   E 02040                TTPRINT    03657                *ПEPФOPA   05317
-         FT*561   E 01201                FC*642   E 02040                BCDPUN     03716                KOД*CDC  E 05320
-         NEXTLET* E 01206                FC*002   E 02040                EBCDPUN  E 03742                CBOБOДHO   05360
-         RK*      E 01250                IOEND*   E 02045                ISOTCOSY   04125
-         WSY*     E 01506                FT*643   E 02045                ISOTCOS1 E 04176
-≠
-------------------------------------------------------------
-   Elapsed time: 0.041 seconds
-      Simulated: 1966235 instructions
-Simulation rate: 47705624 instructions/sec
+      IVEC( 1)=  4
+      IVEC( 2)=  5
+      IVEC( 3)=  6
+      IVEC( 4)=  7
+      IVEC( 5)=  8
+      IVEC( 6)=  9
+      IVEC( 7)= 10
+      IVEC( 8)= 11
+      IVEC( 9)= 12
+      IVEC(10)= 13
+      IVEC(11)= 14
+      IVEC(12)= 15
+      IVEC(13)= 16
+      IVEC(14)= 17
+      IVEC(15)= 18
+   IUCOMP              3
+   IUCOMP              0
+   IUFIND              3
+   IUFIND              8

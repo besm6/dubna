@@ -1,5 +1,3 @@
-Read job 'cernlib_c303b.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_c303b.dub'
 
 
 *NAME C303B
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -59,7 +58,3 @@ Read job 'cernlib_c303b.dub'
                                                     1.82982368-03    6.39315613-03   -1.16192101+00    1.18609203+01
                                                    -3.37257680-04    9.36328353-04    3.06404575+01    5.56595624+01
                                                    -1.04763445-04    6.75127327-05    3.83519108+02    1.78017415+02
-------------------------------------------------------------
-   Elapsed time: 0.094 seconds
-      Simulated: 4306252 instructions
-Simulation rate: 45662545 instructions/sec

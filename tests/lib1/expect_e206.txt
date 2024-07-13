@@ -1,5 +1,3 @@
-Read job 'cernlib_e206.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_e206.dub'
 
 
 *NAME E206
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -60,7 +59,3 @@ Read job 'cernlib_e206.dub'
      SUBROUTINE TRICOF ERROR NO.  3
   NO= 1     IOP=1
      SUBROUTINE TRICOF ERROR NO.  4
-------------------------------------------------------------
-   Elapsed time: 0.085 seconds
-      Simulated: 3802902 instructions
-Simulation rate: 44876236 instructions/sec

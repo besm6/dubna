@@ -1,5 +1,3 @@
-Read job 'cernlib_c323.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_c323.dub'
 
 
 *NAME C323
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -60,7 +59,3 @@ Read job 'cernlib_c323.dub'
    X= -1.000           N=   3           P=   3           Y=    0.00000000000
  GPLOG ... ILLEGAL VALUES N =     3 P =     3
    X=  1.000           N=   3           P=   3           Y=    0.00000000000
-------------------------------------------------------------
-   Elapsed time: 0.060 seconds
-      Simulated: 2721447 instructions
-Simulation rate: 45648842 instructions/sec

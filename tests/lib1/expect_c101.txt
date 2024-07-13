@@ -1,5 +1,3 @@
-Read job 'cernlib_c101.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_c101.dub'
 
 
 *NAME C101
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE                                      PROGRAM TO COMPUTE STURM CHAIN AND STURM INDEX                           TEST C101
@@ -169,7 +168,3 @@ Read job 'cernlib_c101.dub'
   0.44  0.00  0.00  0.00  0.00  0.00
   0.00  0.00  0.00  0.00  0.00  0.00
  END EXECUTION OF PROGRAM STURM
-------------------------------------------------------------
-   Elapsed time: 0.098 seconds
-      Simulated: 4476140 instructions
-Simulation rate: 45697747 instructions/sec

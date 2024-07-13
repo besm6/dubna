@@ -1,5 +1,3 @@
-Read job 'cernlib_f111.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,27 +24,67 @@ Read job 'cernlib_f111.dub'
 
 
 *NAME F111
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
-*EXECUTE
-≠
-         F111       01000                RK*      E 01426                FT*643   E 02223                FMRTAPE    04374
-    OTCYTCTBYET  MXNTR                   WSY*     E 01664                FT*723   E 02223                OCTTDEC    05323
-    OTCYTCTBYET  MXMTR                   I/O*ERR  E 02124                FT*003   E 02223                LUNMUN   C 05356
-    OTCYTCTBYET  MXTRA                   IOCONT*    02151                STOP*      03211                JERRIO*  C 05357
-    OTCYTCTBYET  MXSUB                   IOAC*    E 02202                EXIT     E 03212                CARD2    C 05360
-    OTCYTCTBYET  MXADD                   FT*722   E 02215                BCDBEG*    03240                ISOICTTR   05405
-         PROGRAM  E 01000                FT*642   E 02215                FT2*     E 03545                REVCARD    05442
-         BCDWRIT*   01346                FT*002   E 02215                KONV1*   E 03560                *ICHECK* C 05467
-         FT*621   E 01346                FD*642   E 02216                PRINT8     03654                *ПEPФOPA   05475
-         BCDENC*  E 01352                FD*722   E 02216                TTPRINT    04035                KOД*CDC  E 05476
-         FT*611   E 01352                FC*722   E 02216                BCDPUN     04074                CBOБOДHO   05536
-         FT*571   E 01354                FC*642   E 02216                EBCDPUN  E 04120
-         FT*561   E 01357                FC*002   E 02216                ISOTCOSY   04303
-         NEXTLET* E 01364                IOEND*   E 02223                ISOTCOS1 E 04354
-≠
-------------------------------------------------------------
-   Elapsed time: 0.057 seconds
-      Simulated: 2610391 instructions
-Simulation rate: 45785088 instructions/sec
+*EXECUTE     MXADD
+   A
+        1.00        2.00        3.00        4.00
+        5.00        6.00        7.00        8.00
+        9.00       10.00       11.00       12.00
+       13.00       14.00       15.00       16.00
+   B
+       11.00
+       12.00
+       13.00
+       14.00
+       15.00
+       16.00
+       17.00
+       18.00
+       19.00
+       20.00
+       21.00
+       22.00
+       23.00
+       24.00
+       25.00
+       26.00
+   C
+       12.00
+       14.00
+       16.00
+       18.00
+       20.00
+       22.00
+       24.00
+       26.00
+       28.00
+       30.00
+       32.00
+       34.00
+       36.00
+       38.00
+       40.00
+       42.00
+MXSUB
+       10.00       10.00       10.00       10.00
+       10.00       10.00       10.00       10.00
+       10.00       10.00       10.00       10.00
+       10.00       10.00       10.00       10.00
+MXTRA
+        1.00        2.00        3.00        4.00
+        5.00        6.00        7.00        8.00
+        9.00       10.00       11.00       12.00
+       13.00       14.00       15.00       16.00
+MXMTR
+       10.00       20.00       30.00       40.00
+       50.00       60.00       70.00       80.00
+       90.00      100.00      110.00      120.00
+      130.00      140.00      150.00      160.00
+MXNTR
+       -1.00       -2.00       -3.00       -4.00
+       -5.00       -6.00       -7.00       -8.00
+       -9.00      -10.00      -11.00      -12.00
+      -13.00      -14.00      -15.00      -16.00

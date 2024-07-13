@@ -1,5 +1,3 @@
-Read job 'cernlib_w101.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,15 +24,30 @@ Read job 'cernlib_w101.dub'
 
 
 *NAME W101
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
-*EXECUTE
-≠
-         W101       01000                PROGRAM  E 01000                EXIT     E 01013
-    OTCYTCTBYET  IPSOFA                  STOP*      01012                CBOБOДHO   01041
-≠
-------------------------------------------------------------
-   Elapsed time: 0.021 seconds
-      Simulated: 1020575 instructions
-Simulation rate: 48126709 instructions/sec
+*EXECUTE    14 ELEMENTS
+ FIRST KEY ELEMENT NO. 12
+ SECOND KEY ELEMENT NO.  0
+  0 INITIAL H-VERTICES
+  0 INITIAL V-VERTICES
+ 11 MOMENTA
+ CENTRAL MOMENTUM =   1.20000 GEV/C
+ MAX MOMENTUM BITE = +AND-   2.50000 PERCENT
+
+ H-GAUSSIAN PARAMETERS  10.00000 CM(-2)   0.00000 CM
+ V-GAUSSIAN PARAMETERS  10.00000 CM(-2)   0.00000 CM
+
+ APPARENT SOURCE CHANGES FOR ONE PERCENT MOMENTUM BITE
+                                          H-PLANE             V-PLANE
+ SHIFT OF SOURCE CENTRE                0.00000 CM          0.00000 CM
+ INCREASE IN SOURCE WIDTH              0.00000 CM          0.00000 CM
+ DRIFT LENGTH BEFORE ENTRANCE          0.00000  M          0.00000  M
+
+ SYSTEM SPECIFICATION
+ ELNO TYPE   LENGTH(M)                     H-APERTURE (CM)         V-APERTURE (CM)                  PRINTL      SECTOR
+    1   DL     0.00000     0.00000     0.50000    -0.50000     0.25000    -0.25000     0.00000     0.00000     0.00000
+
+ ELEMENT NR.  1 GIVEN ZERO HORIZONTAL APERTURE

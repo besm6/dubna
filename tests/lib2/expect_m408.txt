@@ -1,5 +1,3 @@
-Read job 'cernlib_m408.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,26 +24,13 @@ Read job 'cernlib_m408.dub'
 
 
 *NAME M408
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
-*EXECUTE
-≠
-         M408       01000                I/O*ERR  E 01701                FT*723   E 02000                FMRTAPE    04151
-    OTCYTCTBYET  JTH                     IOCONT*    01726                FT*003   E 02000                OCTTDEC    05100
-    OTCYTCTBYET  IPACK                   IOAC*    E 01757                STOP*      02766                LUNMUN   C 05133
-         PROGRAM  E 01000                FT*722   E 01772                EXIT     E 02767                JERRIO*  C 05134
-         BCDWRIT*   01123                FT*642   E 01772                BCDBEG*    03015                CARD2    C 05135
-         FT*621   E 01123                FT*002   E 01772                FT2*     E 03322                ISOICTTR   05162
-         BCDENC*  E 01127                FD*642   E 01773                KONV1*   E 03335                REVCARD    05217
-         FT*611   E 01127                FD*722   E 01773                PRINT8     03431                *ICHECK* C 05244
-         FT*571   E 01131                FC*722   E 01773                TTPRINT    03612                *ПEPФOPA   05252
-         FT*561   E 01134                FC*642   E 01773                BCDPUN     03651                KOД*CDC  E 05253
-         NEXTLET* E 01141                FC*002   E 01773                EBCDPUN  E 03675                CBOБOДHO   05313
-         RK*      E 01203                IOEND*   E 02000                ISOTCOSY   04060
-         WSY*     E 01441                FT*643   E 02000                ISOTCOS1 E 04131
-≠
-------------------------------------------------------------
-   Elapsed time: 0.036 seconds
-      Simulated: 1823195 instructions
-Simulation rate: 50599328 instructions/sec
+*EXECUTE     PACK WORD         6400000607101112 102531658
+   UNPACK NUMBERS         6400000000000012           10
+   UNPACK NUMBERS         6400000000000011            9
+   UNPACK NUMBERS         6400000000000010            8
+   UNPACK NUMBERS         6400000000000007            7
+   UNPACK NUMBERS         6400000000000006            6

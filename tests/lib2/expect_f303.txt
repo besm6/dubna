@@ -1,5 +1,3 @@
-Read job 'cernlib_f303.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,26 +24,24 @@ Read job 'cernlib_f303.dub'
 
 
 *NAME F303
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
-≠
-         F303       01000                IOCONT*    02043                FT*003   E 02115                FMRTAPE    04274
-    OTCYTCTBYET  CINV1                   IOAC*    E 02074                STOP*      03103                OCTTDEC    05223
-         PROGRAM  E 01000                FT*722   E 02107                EXIT     E 03104                LUNMUN   C 05256
-         BCDWRIT*   01240                FT*642   E 02107                I*MUI*     03132                JERRIO*  C 05257
-         FT*621   E 01240                FT*002   E 02107                BCDBEG*    03140                CARD2    C 05260
-         BCDENC*  E 01244                FD*642   E 02110                FT2*     E 03445                ISOICTTR   05305
-         FT*611   E 01244                FD*722   E 02110                KONV1*   E 03460                REVCARD    05342
-         FT*571   E 01246                FC*722   E 02110                PRINT8     03554                *ICHECK* C 05367
-         FT*561   E 01251                FC*642   E 02110                TTPRINT    03735                *ПEPФOPA   05375
-         NEXTLET* E 01256                FC*002   E 02110                BCDPUN     03774                KOД*CDC  E 05376
-         RK*      E 01320                IOEND*   E 02115                EBCDPUN  E 04020                CBOБOДHO   05436
-         WSY*     E 01556                FT*643   E 02115                ISOTCOSY   04203
-         I/O*ERR  E 02016                FT*723   E 02115                ISOTCOS1 E 04254
-≠
-------------------------------------------------------------
-   Elapsed time: 0.053 seconds
-      Simulated: 2157854 instructions
-Simulation rate: 40471398 instructions/sec
+                                                  TEST F303
+                              A
+                 1.0       2.0       3.0       2.0
+                -1.0      -1.0       1.0      -1.0
+                              B
+                -1.0       0.0       5.0       0.0
+                -0.5       0.0       2.5       0.0
+                    0.0     0.0     0.0     0.0     0.0     0.0     0.0     0.0
+               A(-1)
+             -3.84615384613-02   -1.92307692308-01   -4.61538461538-01    1.92307692307-01
+              1.92307692307-01   -3.84615384616-02    3.07692307692-01    3.84615384615-02
+               Z=A(-1)*B
+              9.99999999997-01    0.00000000000+00    2.00000000000+00    0.00000000000+00
+              4.99999999998-01    0.00000000000+00    1.00000000000+00    0.00000000000+00
+                    1.0     0.0     2.0     0.0     0.5     0.0     1.0     0.0
+          NERROR= 0

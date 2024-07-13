@@ -1,5 +1,3 @@
-Read job 'cernlib_e110.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_e110.dub'
 
 
 *NAME E110
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -45,7 +44,3 @@ Read job 'cernlib_e110.dub'
                        1.000             0.841471
                        0.135             0.134539
                        1.900             0.946300
-------------------------------------------------------------
-   Elapsed time: 0.045 seconds
-      Simulated: 2102482 instructions
-Simulation rate: 46838398 instructions/sec

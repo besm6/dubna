@@ -1,5 +1,3 @@
-Read job 'cernlib_f201.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,26 +24,43 @@ Read job 'cernlib_f201.dub'
 
 
 *NAME F201
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
-≠
-         F201       01000                IOCONT*    01764                FT*003   E 02036                OCTTDEC    05136
-    OTCYTCTBYET  EIG5                    IOAC*    E 02015                STOP*      03024                LUNMUN   C 05171
-         PROGRAM  E 01000                FT*722   E 02030                EXIT     E 03025                JERRIO*  C 05172
-         BCDWRIT*   01161                FT*642   E 02030                BCDBEG*    03053                CARD2    C 05173
-         FT*621   E 01161                FT*002   E 02030                FT2*     E 03360                ISOICTTR   05220
-         BCDENC*  E 01165                FD*642   E 02031                KONV1*   E 03373                REVCARD    05255
-         FT*611   E 01165                FD*722   E 02031                PRINT8     03467                *ICHECK* C 05302
-         FT*571   E 01167                FC*722   E 02031                TTPRINT    03650                *ПEPФOPA   05310
-         FT*561   E 01172                FC*642   E 02031                BCDPUN     03707                KOД*CDC  E 05311
-         NEXTLET* E 01177                FC*002   E 02031                EBCDPUN  E 03733                CBOБOДHO   05351
-         RK*      E 01241                IOEND*   E 02036                ISOTCOSY   04116
-         WSY*     E 01477                FT*643   E 02036                ISOTCOS1 E 04167
-         I/O*ERR  E 01737                FT*723   E 02036                FMRTAPE    04207
-≠
-------------------------------------------------------------
-   Elapsed time: 0.044 seconds
-      Simulated: 2024118 instructions
-Simulation rate: 46103271 instructions/sec
+
+                                                 TRACE =   4.00000000+00
+
+                                                 ALMOST TRIANGULAR FORM
+
+                                                 TRACE =   4.00000000+00
+
+                                                   LAGUERRE ITERATIONS
+                               REAL PART          IMAG. PART                   P**2          P-**2          P--**2   OVF
+
+ ITERATE                      1.00000000+00       0.00000000+00              7.8306+01      5.3262+03      8.9806+04   0
+
+ ITERATE                      8.22948517-01       0.00000000+00              2.5676-01      5.1022+02      6.4777+04   0
+
+ ITERATE                      7.96884468-01       0.00000000+00              8.2077-06      2.6038+02      5.7714+04   0
+
+ EIGENVALUE                   7.96706689-01       0.00000000+00              3 ITERATIONS,TEST 2
+
+ ITERATE                      2.34340696+00       0.00000000+00              1.8890+02      4.7445+05      5.2924+06   0
+
+ ITERATE                      2.32274883+00       0.00000000+00              3.0561-10      4.1229+05      4.9336+06   0
+
+ EIGENVALUE                   2.32274883+00       0.00000000+00              2 ITERATIONS,TEST 1
+
+ ITERATE                      6.38283660-01       0.00000000+00              3.2986-12      1.6100+02      1.2359+04   0
+
+ EIGENVALUE                   6.38283803-01       0.00000000+00              1 ITERATIONS,TEST 2
+
+ ITERATE                      2.42260681-01       0.00000000+00              2.2410-12      3.0082+03      2.7832+05   0
+
+ EIGENVALUE                   2.42260708-01       0.00000000+00              1 ITERATIONS,TEST 2
+                                    SUM OF EIGENVALUES =   4.00000003+00
+          EIGEN
+                            0.79671             2.32275             0.63828             0.24226
+                            0.00000             0.00000             0.00000             0.00000

@@ -1,5 +1,3 @@
-Read job 'cernlib_test2.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_test2.dub'
 
 
 *NAME TEST2
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -53,7 +52,3 @@ Read job 'cernlib_test2.dub'
   -1.5550726-02   1.8150691-02  -2.1467474-02   2.5226342-02  -2.9935488-02   3.5399825-02  -4.2165916-02
                                                    E N D     TEST2
 *END FILE
-------------------------------------------------------------
-   Elapsed time: 0.089 seconds
-      Simulated: 3637117 instructions
-Simulation rate: 40719618 instructions/sec

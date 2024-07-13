@@ -1,5 +1,3 @@
-Read job 'cernlib_f146.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,26 +24,24 @@ Read job 'cernlib_f146.dub'
 
 
 *NAME F146
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
-≠
-         F146       01000                IOCONT*    01761                FT*003   E 02033                OCTTDEC    05133
-    OTCYTCTBYET  ERNORM                  IOAC*    E 02012                STOP*      03021                LUNMUN   C 05166
-         PROGRAM  E 01000                FT*722   E 02025                EXIT     E 03022                JERRIO*  C 05167
-         BCDWRIT*   01156                FT*642   E 02025                BCDBEG*    03050                CARD2    C 05170
-         FT*621   E 01156                FT*002   E 02025                FT2*     E 03355                ISOICTTR   05215
-         BCDENC*  E 01162                FD*642   E 02026                KONV1*   E 03370                REVCARD    05252
-         FT*611   E 01162                FD*722   E 02026                PRINT8     03464                *ICHECK* C 05277
-         FT*571   E 01164                FC*722   E 02026                TTPRINT    03645                *ПEPФOPA   05305
-         FT*561   E 01167                FC*642   E 02026                BCDPUN     03704                KOД*CDC  E 05306
-         NEXTLET* E 01174                FC*002   E 02026                EBCDPUN  E 03730                CBOБOДHO   05346
-         RK*      E 01236                IOEND*   E 02033                ISOTCOSY   04113
-         WSY*     E 01474                FT*643   E 02033                ISOTCOS1 E 04164
-         I/O*ERR  E 01734                FT*723   E 02033                FMRTAPE    04204
-≠
-------------------------------------------------------------
-   Elapsed time: 0.042 seconds
-      Simulated: 1954156 instructions
-Simulation rate: 46716615 instructions/sec
+               X1(I)
+     1.000     2.000     3.000
+               XN(I)
+     0.267     0.535     0.802
+               G1(I)
+     1.000     5.000     6.000
+               G1(I)
+     5.000     2.000     7.000
+               G1(I)
+     6.000     7.000     3.000
+               GN(I)
+    -0.160     0.036     0.029
+               GN(I)
+     0.036    -0.213     0.130
+               GN(I)
+     0.029     0.130    -0.096

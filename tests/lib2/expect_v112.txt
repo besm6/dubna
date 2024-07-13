@@ -1,5 +1,3 @@
-Read job 'cernlib_v112.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,27 +24,13 @@ Read job 'cernlib_v112.dub'
 
 
 *NAME V112
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
-≠
-         V112       01000                IOAC*    E 02011                EXIT     E 03021                ISOTCOS1 E 04210
-    OTCYTCTBYET  MUNOMI                  FT*722   E 02024                CTIME      03047                FMRTAPE    04230
-         PROGRAM  E 01000                FT*642   E 02024                PTIME    E 03064                OCTTDEC    05157
-         BCDWRIT*   01155                FT*002   E 02024                ITIME    E 03065                LUNMUN   C 05212
-         FT*621   E 01155                FD*642   E 02025                LOCF     E 03070                JERRIO*  C 05213
-         BCDENC*  E 01161                FD*722   E 02025                XLOC     E 03070                CARD2    C 05214
-         FT*611   E 01161                FC*722   E 02025                BCDBEG*    03074                ISOICTTR   05241
-         FT*571   E 01163                FC*642   E 02025                FT2*     E 03401                REVCARD    05276
-         FT*561   E 01166                FC*002   E 02025                KONV1*   E 03414                *ICHECK* C 05323
-         NEXTLET* E 01173                IOEND*   E 02032                PRINT8     03510                *ПEPФOPA   05331
-         RK*      E 01235                FT*643   E 02032                TTPRINT    03671                KOД*CDC  E 05332
-         WSY*     E 01473                FT*723   E 02032                BCDPUN     03730                CBOБOДHO   05372
-         I/O*ERR  E 01733                FT*003   E 02032                EBCDPUN  E 03754
-         IOCONT*    01760                STOP*      03020                ISOTCOSY   04137
-≠
-------------------------------------------------------------
-   Elapsed time: 0.041 seconds
-      Simulated: 1970582 instructions
-Simulation rate: 48449389 instructions/sec
+                                                  TEST V112
+     P=     0.001     0.002     0.003     0.004     0.005     0.006     0.007     0.008     0.009     1.000
+     N=   0   0   0   0   0   0   0   0   0  50
+     IERROR= 0
+                                                  RT=   0.00SEC

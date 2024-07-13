@@ -1,5 +1,3 @@
-Read job 'cernlib_w521.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,29 +24,50 @@ Read job 'cernlib_w521.dub'
 
 
 *NAME W521
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
-*EXECUTE
-≠
-         W521       01000                FT*642   E 01761                IFIX     E 03014                EBCDPUN  E 03717
-    OTCYTCTBYET  ROSEN                   FT*002   E 01761                AINT     E 03016                ISOTCOSY   04102
-         PROGRAM  E 01000                FD*642   E 01762                INT      E 03020                ISOTCOS1 E 04153
-         BCDWRIT*   01112                FD*722   E 01762                SQRT     E 03022                FMRTAPE    04173
-         FT*621   E 01112                FC*722   E 01762                SIN      E 03023                OCTTDEC    05122
-         BCDENC*  E 01116                FC*642   E 01762                COS      E 03024                LUNMUN   C 05155
-         FT*611   E 01116                FC*002   E 01762                ATAN     E 03025                JERRIO*  C 05156
-         FT*571   E 01120                IOEND*   E 01767                ALOG     E 03026                R*TO*INT   05157
-         FT*561   E 01123                FT*643   E 01767                EXP      E 03027                R*TO*I   E 05160
-         NEXTLET* E 01130                FT*723   E 01767                ALOG10   E 03033                CARD2    C 05172
-         RK*      E 01172                FT*003   E 01767                BCDBEG*    03037                ISOICTTR   05217
-         WSY*     E 01430                STOP*      02755                FT2*     E 03344                REVCARD    05254
-         I/O*ERR  E 01670                EXIT     E 02756                KONV1*   E 03357                *ICHECK* C 05301
-         IOCONT*    01715                FLOAT      03004                PRINT8     03453                *ПEPФOPA   05307
-         IOAC*    E 01746                ABS      E 03007                TTPRINT    03634                KOД*CDC  E 05310
-         FT*722   E 01761                IABS     E 03012                BCDPUN     03673                CBOБOДHO   05350
-≠
-------------------------------------------------------------
-   Elapsed time: 0.041 seconds
-      Simulated: 1863787 instructions
-Simulation rate: 45288113 instructions/sec
+*EXECUTE                                          TOTAL CMS ENERGY              P33 PHASE SHIFT
+
+                                              1.100                           1.8
+
+                                              1.120                           5.6
+
+                                              1.140                          11.6
+
+                                              1.160                          20.8
+
+                                              1.180                          34.7
+
+                                              1.200                          54.4
+
+                                              1.220                          77.6
+
+                                              1.240                          98.3
+
+                                              1.260                         113.6
+
+                                              1.280                         124.2
+
+                                              1.300                         131.8
+
+                                              1.320                         137.5
+
+                                              1.340                         141.9
+
+                                              1.360                         145.5
+
+                                              1.380                         148.4
+
+                                              1.400                         151.0
+
+                                              1.420                         153.2
+
+                                              1.440                         155.1
+
+                                              1.460                         156.8
+
+                                              1.480                         158.4
+
+                                              1.500                         159.7

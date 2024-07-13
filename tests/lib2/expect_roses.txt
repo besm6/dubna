@@ -1,5 +1,3 @@
-Read job 'cernlib_roses.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,20 +24,8 @@ Read job 'cernlib_roses.dub'
 
 
 *NAME ROSES
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
-≠
-         ROSES      01000           OTCYTCTBYET  MMS                     IABS     E 01310                ATAN     E 01323
-    OTCYTCTBYET  ENDPG                   PROGRAM  E 01000                IFIX     E 01312                ALOG     E 01324
-    OTCYTCTBYET  ENDLEV                  STOP*      01176                AINT     E 01314                EXP      E 01325
-    OTCYTCTBYET  ELIPS                   EXIT     E 01177                INT      E 01316                ALOG10   E 01331
-    OTCYTCTBYET  PSCALE                  ROTATE     01225                SQRT     E 01320                R*TO*INT   01335
-    OTCYTCTBYET  BEGLEV                  FLOAT      01302                SIN      E 01321                R*TO*I   E 01336
-    OTCYTCTBYET  PAGE                    ABS      E 01305                COS      E 01322                CBOБOДHO   01350
-≠
-------------------------------------------------------------
-   Elapsed time: 0.038 seconds
-      Simulated: 1924795 instructions
-Simulation rate: 50308285 instructions/sec

@@ -1,5 +1,3 @@
-Read job 'cernlib_d100.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,14 +24,11 @@ Read job 'cernlib_d100.dub'
 
 
 *NAME D100
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
            A=   0.25000   0.51840   0.96040   1.63840   2.62440
            R=   0.89483
            H=  0.2
-------------------------------------------------------------
-   Elapsed time: 0.037 seconds
-      Simulated: 1737211 instructions
-Simulation rate: 47545323 instructions/sec

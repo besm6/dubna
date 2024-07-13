@@ -40,6 +40,65 @@ C
       AQ=1./(1.+100./(X-Y)**2)
       RETURN
       END
+
+      SUBROUTINE GRAFIK(N,Y1,Y2)
+C     IMPLICIT REAL*8 (A-H,O-Z)
+      DIMENSION Y1(N),Y2(N),IB(19,60)
+      DATA ISTAR/1H*/,IEQ/1H=/,IBLAN/1H  /,IPLU/1H+/,IUND/1H_/
+     *,IPOI/1H./
+      YMIN=Y1(1)
+      YMAX=Y2(1)
+      DO 1 I=1,N
+      YMIN=AMIN1(YMIN,Y1(I))
+      YMIN=AMIN1(YMIN,Y2(I))
+      YMAX=AMAX1(YMAX,Y1(I))
+      YMAX=AMAX1(YMAX,Y2(I))
+1     CONTINUE
+      DELY=YMAX-YMIN
+      IF(DELY.LE.(1.E-15)) DELY=0.0001
+      NH=19
+      NG=60
+      NH1=NH+1
+      NH0=NH-1
+      ND=NG/N
+      NUP=ND*N
+      DO 11 I=1,NH0
+      DO 11 J=1,NG
+11    IB(I,J)=IBLAN
+      DO 111 J=1,NG
+111   IB(NH,J)=IUND
+      DO 112 I=5,NH0,5
+      DO 112 J=1,NUP
+112   IB(NH1-I,J)=IPOI
+      DO 113 J=5,NUP,5
+      DO 113 I=2,NH
+113   IB(NH1-I,J)=IPOI
+      DY=DELY/NH
+      PRINT 901,NH,NG,DY
+901   FORMAT(/13X,'      ГPAФИK : ',I2,'*',I2,'  ЦEHA _ OPДИHATЫ=',
+     * E12.5/12X,62('_'))
+      IGO=0
+      DO 12 I=ND,NUP,ND
+      IGO=IGO+1
+      NY1=        (Y1(IGO)-YMIN)/DY
+      NY1=MAX0(NY1,1)
+      NY2=(Y2(IGO)-YMIN)/DY
+      NY2=MAX0(NY2,1)
+      IF(NY1-NY2) 3,5,3
+3     IB(NH1-NY1,I  )=ISTAR
+      IB(NH1-NY2,I  )=IEQ
+      GO TO 4
+5     IB(NH1-NY1,I  )=IPLU
+4     CONTINUE
+12    CONTINUE
+      DO 7 I=1,NH
+      NHEI=NH1-I
+      YCUR=YMIN+    NHEI*DY
+      PRINT 10,YCUR,(IB(I,J),J=1,NG)
+10    FORMAT(E12.4,1HI,60A1,1HI)
+7     CONTINUE
+       RETURN
+      END
 *CALL FICMEMORY
 *EXECUTE
 *

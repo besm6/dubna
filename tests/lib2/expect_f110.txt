@@ -1,5 +1,3 @@
-Read job 'cernlib_f110.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,28 +24,51 @@ Read job 'cernlib_f110.dub'
 
 
 *NAME F110
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
-≠
-         F110       01000                FT*561   E 01713                IOEND*   E 02557                ISOTCOSY   05024
-    OTCYTCTBYET  MXDMR                   NEXTLET* E 01720                FT*643   E 02557                ISOTCOS1 E 05075
-    OTCYTCTBYET  MXDML                   RK*      E 01762                FT*723   E 02557                FMRTAPE    05115
-    OTCYTCTBYET  MXDMAR                  WSY*     E 02220                FT*003   E 02557                OCTTDEC    06044
-    OTCYTCTBYET  MXDMAL                  I/O*ERR  E 02460                STOP*      03545                LUNMUN   C 06077
-    OTCYTCTBYET  MXNTR                   IOCONT*    02505                EXIT     E 03546                JERRIO*  C 06100
-    OTCYTCTBYET  MXMTR                   IOAC*    E 02536                MXUTY      03574                CARD2    C 06101
-    OTCYTCTBYET  MXSUB                   FT*722   E 02551                MXTRP      03670                ISOICTTR   06126
-    OTCYTCTBYET  MXADD                   FT*642   E 02551                BCDBEG*    03761                REVCARD    06163
-         PROGRAM  E 01000                FT*002   E 02551                FT2*     E 04266                *ICHECK* C 06210
-         BCDWRIT*   01702                FD*642   E 02552                KONV1*   E 04301                *ПEPФOPA   06216
-         FT*621   E 01702                FD*722   E 02552                PRINT8     04375                KOД*CDC  E 06217
-         BCDENC*  E 01706                FC*722   E 02552                TTPRINT    04556                CBOБOДHO   06257
-         FT*611   E 01706                FC*642   E 02552                BCDPUN     04615
-         FT*571   E 01710                FC*002   E 02552                EBCDPUN  E 04641
-≠
-------------------------------------------------------------
-   Elapsed time: 0.095 seconds
-      Simulated: 4237779 instructions
-Simulation rate: 44668385 instructions/sec
+               =TEST LI SANG HO= 5,5,1972
+     MXADD
+          4.000     6.000
+          9.000     6.000
+     MXSUB
+          2.000    -2.000
+          3.000     2.000
+     MXMTR
+          6.000     4.000
+         12.000     8.000
+     MXNTR
+         -3.000    -2.000
+         -6.000    -4.000
+     MXTRP
+          3.000     6.000
+          2.000     4.000
+     MXUTY
+          1.000     0.000
+          0.000     1.000
+***************
+            AR(I)                      BR(I)                      CI(I)
+          3.000     2.000          1.000     4.000              1         0
+          6.000     4.000          3.000     2.000              0         1
+     MXDMAL
+          4.000    24.000
+          9.000    13.000
+***************
+            AR(I)                      BR(I)                      CI(I)
+          3.000     2.000          1.000     4.000              4        24
+          6.000     4.000          3.000     2.000              9        13
+     MXDMAR
+          7.000    26.000
+         27.000    25.000
+***************
+            AR(I)                      BR(I)                      CI(I)
+     MXDML
+          3.000     2.000          1.000     4.000              3        24
+          6.000     4.000          3.000     2.000              9        12
+***************
+            AR(I)                      BR(I)                      CI(I)
+     MXDMR
+          3.000     2.000          1.000     4.000              3         2
+          6.000     4.000          3.000     2.000             18        12

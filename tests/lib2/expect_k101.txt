@@ -1,5 +1,3 @@
-Read job 'cernlib_k101.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,26 +24,18 @@ Read job 'cernlib_k101.dub'
 
 
 *NAME K101
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
-≠
-         K101       01000                RK*      E 21516                IOEND*   E 22313                ISOTCOSY   24373
-    OTCYTCTBYET  FCATAL                  WSY*     E 21754                FT*643   E 22313                ISOTCOS1 E 24444
-    OTCYTCTBYET  FREADI                  I/O*ERR  E 22214                FT*723   E 22313                FMRTAPE    24464
-    OTCYTCTBYET  FWRITE                  IOCONT*    22241                FT*003   E 22313                OCTTDEC    25413
-    OTCYTCTBYET  FCNEW                   IOAC*    E 22272                STOP*      23301                LUNMUN   C 25446
-         PROGRAM  E 01000                FT*722   E 22305                EXIT     E 23302                JERRIO*  C 25447
-         BCDWRIT*   21436                FT*642   E 22305                BCDBEG*    23330                CARD2    C 25450
-         FT*621   E 21436                FT*002   E 22305                FT2*     E 23635                ISOICTTR   25475
-         BCDENC*  E 21442                FD*642   E 22306                KONV1*   E 23650                REVCARD    25532
-         FT*611   E 21442                FD*722   E 22306                PRINT8     23744                *ICHECK* C 25557
-         FT*571   E 21444                FC*722   E 22306                TTPRINT    24125                *ПEPФOPA   25565
-         FT*561   E 21447                FC*642   E 22306                BCDPUN     24164                KOД*CDC  E 25566
-         NEXTLET* E 21454                FC*002   E 22306                EBCDPUN  E 24210                CBOБOДHO   25626
-≠
-------------------------------------------------------------
-   Elapsed time: 0.067 seconds
-      Simulated: 3017083 instructions
-Simulation rate: 44757866 instructions/sec
+     FWRITE
+A=     4.444     4.444     4.444     4.444     4.444     4.444     4.444     4.444     4.444     4.444
+          KATAЛOГ KAHAЛA 16
+          ДATA - 04.07.24. , BEPCИЯ -   5 , KOЛ-BO MACCИBOB -  5 , CBOБOДHO - 006
+          MACCИB-FILE 1 , HAЧAЛO-001 , MAX. ДЛИHA-  100 , TEK. ДЛИHA-  100 , ДATA- 04.07.24. , BEPCИЯ-   0
+          MACCИB-FILE 2 , HAЧAЛO-002 , MAX. ДЛИHA-  100 , TEK. ДЛИHA-  100 , ДATA- 04.07.24. , BEPCИЯ-   0
+          MACCИB-FILE 3 , HAЧAЛO-003 , MAX. ДЛИHA-  100 , TEK. ДЛИHA-  100 , ДATA- 04.07.24. , BEPCИЯ-   0
+          MACCИB-FILE 4 , HAЧAЛO-004 , MAX. ДЛИHA-  100 , TEK. ДЛИHA-  100 , ДATA- 04.07.24. , BEPCИЯ-   0
+          MACCИB-FILE 5 , HAЧAЛO-005 , MAX. ДЛИHA- 1000 , TEK. ДЛИHA- 1000 , ДATA- 04.07.24. , BEPCИЯ-   0
+B=     5.555     5.555     5.555     5.555     5.555     5.555     5.555     5.555     5.555     5.555

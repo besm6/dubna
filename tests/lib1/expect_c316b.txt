@@ -1,5 +1,3 @@
-Read job 'cernlib_c316b.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_c316b.dub'
 
 
 *NAME C316B
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -180,7 +179,3 @@ Read job 'cernlib_c316b.dub'
                ETA= -30.0         RO=55.0000         N=12         F(1)=-6.99624898745914-001
                ETA= -40.0         RO=55.0000         N=12         F(1)= 7.68674819757270-001
                ETA= -50.0         RO=55.0000         N=12         F(1)= 2.32407084712946-002
-------------------------------------------------------------
-   Elapsed time: 1.72 seconds
-      Simulated: 54199932 instructions
-Simulation rate: 31497945 instructions/sec

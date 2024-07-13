@@ -1,5 +1,3 @@
-Read job 'cernlib_k452.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,15 +24,17 @@ Read job 'cernlib_k452.dub'
 
 
 *NAME K452
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
-≠
-         K452       01000                PROGRAM  E 01000                EXIT     E 01013
-    OTCYTCTBYET  REWRMT                  STOP*      01012                CBOБOДHO   01041
-≠
-------------------------------------------------------------
-   Elapsed time: 0.021 seconds
-      Simulated: 1019169 instructions
-Simulation rate: 48297270 instructions/sec
+ *****ПAPAMETPЫ:
+     RGM 7
+     DNS 7 800
+      RCRD 30
+     END
+ ===============================================
+ *****ЧTEHИE 7-ДOP. MЛ CDC
+ ===============================================
+ *****ПЛOTHOCTЬ ЗAПИCИ HA 7-ДOP. MЛ CDC- 800 БИT/ДЮЙM

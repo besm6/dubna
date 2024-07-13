@@ -1,5 +1,3 @@
-Read job 'cernlib_c310.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_c310.dub'
 
 
 *NAME C310
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -50,7 +49,3 @@ Read job 'cernlib_c310.dub'
  CRAGAM ... IS NOT DEFINED OR INFINITE FOR Z =   -1.0000+00   2.0000+00 A =    1.0000+00  -2.0000+00 B =   -3.0000+00  -2.0000+0
  CRAGAM ... IS NOT DEFINED OR INFINITE FOR Z =   -1.0000+00   2.0000+00 A =    1.0000+00  -2.0000+00 B =   -3.0000+00  -2.0000+0
     (-1.0, 2.0)    ( 1.0,-2.0)    (-3.0,-2.0)       ( 0.000000000, 0.000000000)       ( 0.000000000, 0.000000000)
-------------------------------------------------------------
-   Elapsed time: 0.078 seconds
-      Simulated: 3440100 instructions
-Simulation rate: 44064866 instructions/sec

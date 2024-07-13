@@ -1,5 +1,3 @@
-Read job 'cernlib_f123.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_f123.dub'
 
 
 *NAME F123
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -46,7 +45,3 @@ Read job 'cernlib_f123.dub'
    CALL CCMPY3(ARTAI,BR,BI,CR,CI,2,2,2)
           5.000    49.000        2.000    40.000
           9.000    27.000        6.000    23.000
-------------------------------------------------------------
-   Elapsed time: 0.075 seconds
-      Simulated: 3362697 instructions
-Simulation rate: 44764337 instructions/sec

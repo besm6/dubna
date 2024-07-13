@@ -1,5 +1,3 @@
-Read job 'cernlib_f200.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,26 +24,11 @@ Read job 'cernlib_f200.dub'
 
 
 *NAME F200
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
-≠
-         F200       01000                IOCONT*    01750                FT*003   E 02022                OCTTDEC    05122
-    OTCYTCTBYET  QREIG                   IOAC*    E 02001                STOP*      03010                LUNMUN   C 05155
-         PROGRAM  E 01000                FT*722   E 02014                EXIT     E 03011                JERRIO*  C 05156
-         BCDWRIT*   01145                FT*642   E 02014                BCDBEG*    03037                CARD2    C 05157
-         FT*621   E 01145                FT*002   E 02014                FT2*     E 03344                ISOICTTR   05204
-         BCDENC*  E 01151                FD*642   E 02015                KONV1*   E 03357                REVCARD    05241
-         FT*611   E 01151                FD*722   E 02015                PRINT8     03453                *ICHECK* C 05266
-         FT*571   E 01153                FC*722   E 02015                TTPRINT    03634                *ПEPФOPA   05274
-         FT*561   E 01156                FC*642   E 02015                BCDPUN     03673                KOД*CDC  E 05275
-         NEXTLET* E 01163                FC*002   E 02015                EBCDPUN  E 03717                CBOБOДHO   05335
-         RK*      E 01225                IOEND*   E 02022                ISOTCOSY   04102
-         WSY*     E 01463                FT*643   E 02022                ISOTCOS1 E 04153
-         I/O*ERR  E 01723                FT*723   E 02022                FMRTAPE    04173
-≠
-------------------------------------------------------------
-   Elapsed time: 0.041 seconds
-      Simulated: 1984505 instructions
-Simulation rate: 48868601 instructions/sec
+          EIGEN
+                            2.32275             0.63828             0.79671             0.24226
+                            0.00000             0.00000             0.00000             0.00000

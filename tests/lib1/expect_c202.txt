@@ -1,5 +1,3 @@
-Read job 'cernlib_c202.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,29 +24,42 @@ Read job 'cernlib_c202.dub'
 
 
 *NAME C202
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
-*EXECUTE
-≠
-         C202       01000                FT*642   E 02256                C*LN*R   E 03312                EBCDPUN  E 04272
-    OTCYTCTBYET  CPOLY                   FT*002   E 02256                R*ST*C   E 03314                ISOTCOSY   04455
-         PROGRAM  E 01000                FD*642   E 02257                C*AD*C     03317                ISOTCOS1 E 04526
-         BCDWRIT*   01407                FD*722   E 02257                C*SU*C   E 03326                FMRTAPE    04546
-         FT*621   E 01407                FC*722   E 02257                C*MU*C   E 03333                OCTTDEC    05475
-         BCDENC*  E 01413                FC*642   E 02257                C*DI*C   E 03346                LUNMUN   C 05530
-         FT*611   E 01413                FC*002   E 02257                C*ST*C   E 03366                JERRIO*  C 05531
-         FT*571   E 01415                IOEND*   E 02264                C*LO*C   E 03370                CARD2    C 05532
-         FT*561   E 01420                FT*643   E 02264                C*LN*C   E 03372                ISOICTTR   05557
-         NEXTLET* E 01425                FT*723   E 02264                C*COMP   E 03400                REVCARD    05614
-         RK*      E 01467                FT*003   E 02264                BCDBEG*    03412                *ICHECK* C 05641
-         WSY*     E 01725                STOP*      03252                FT2*     E 03717                *ПEPФOPA   05647
-         I/O*ERR  E 02165                EXIT     E 03253                KONV1*   E 03732                KOД*CDC  E 05650
-         IOCONT*    02212                I*MUI*     03301                PRINT8     04026                CBOБOДHO   05710
-         IOAC*    E 02243                C*ST*R     03307                TTPRINT    04207
-         FT*722   E 02256                C*LO*R   E 03310                BCDPUN     04246
-≠
-------------------------------------------------------------
-   Elapsed time: 0.056 seconds
-      Simulated: 2587142 instructions
-Simulation rate: 46036193 instructions/sec
+*EXECUTE                               COMPLEX POLYNOMIAL ROOTS                    TEST C 202
+                              ************************                    *********
+          POLYNOM A
+                      1.000+00  0.000+00
+                     -4.000+00  0.000+00
+                      6.000+00  0.000+00
+                     -3.000+00  0.000+00
+                      2.000+00  0.000+00
+                      1.000+00  0.000+00
+     THE DEGREE OF THE POLYNOMIAL IS TOO HIGH OR THE
+     POLYNOMIAL IS TOO ILL-CONDITIONED
+          ROOT
+          MULT
+          ERROR
+          NS=  0                               COMPLEX POLYNOMIAL ROOTS                    TEST C 202
+                              ************************                    *********
+          POLYNOM A
+                      1.000+00  0.000+00
+                     -4.000+00  0.000+00
+                      6.000+00  0.000+00
+                     -3.000+00  0.000+00
+                      2.000+00  0.000+00
+                      1.000+00  0.000+00
+     THE DEGREE OF THE POLYNOMIAL IS TOO HIGH OR THE
+     POLYNOMIAL IS TOO ILL-CONDITIONED                               COMPLEX POLYNOMIAL ROOTS                    TEST C 202
+                              ************************                    *********
+          POLYNOM A
+                      0.000+00  0.000+00
+                     -4.000+00  0.000+00
+                      6.000+00  0.000+00
+                     -3.000+00  0.000+00
+                      2.000+00  0.000+00
+                      1.000+00  0.000+00
+     SUBROUTINE CPOLY
+     THE FIRST COEFFICIENT IS ZERO

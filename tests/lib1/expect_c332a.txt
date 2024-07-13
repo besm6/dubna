@@ -1,5 +1,3 @@
-Read job 'cernlib_c332a.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_c332a.dub'
 
 
 *NAME C332A
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -210,7 +209,3 @@ Read job 'cernlib_c332a.dub'
    6-001 -8.23447160045985477014+019 -4.22244316600261377395+004 -2.31274204706357111288+020  1.96595715851020355830+005
   DBESCJ .... UNREASONABLE ARGUMENT OR ORDER
    8-001 -8.23447160045985477014+019 -4.22244316600261377395+004 -2.31274204706357111288+020  1.96595715851020355830+005
-------------------------------------------------------------
-   Elapsed time: 7.60 seconds
-      Simulated: 358584344 instructions
-Simulation rate: 47197173 instructions/sec

@@ -1,5 +1,3 @@
-Read job 'cernlib_g102.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_g102.dub'
 
 
 *NAME G102
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -220,7 +219,3 @@ Read job 'cernlib_g102.dub'
                       1.00004000   2.699567962-01  -5.359163-06
                       1.00004500   2.699514371-01  -5.359087-06
                       1.00005000   2.699460781-01  -5.359010-06
-------------------------------------------------------------
-   Elapsed time: 0.071 seconds
-      Simulated: 3151200 instructions
-Simulation rate: 44227989 instructions/sec

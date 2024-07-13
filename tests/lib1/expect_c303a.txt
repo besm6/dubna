@@ -1,5 +1,3 @@
-Read job 'cernlib_c303a.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_c303a.dub'
 
 
 *NAME C303A
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -236,7 +235,3 @@ Read job 'cernlib_c303a.dub'
       1.000       2.3463634600-01       0.0000000000+00         -1.5806045759-01       0.0000000000+00
 
       2.000      -1.1299172002-01       0.0000000000+00         -2.6303660804-01       0.0000000000+00
-------------------------------------------------------------
-   Elapsed time: 0.181 seconds
-      Simulated: 7547549 instructions
-Simulation rate: 41730752 instructions/sec

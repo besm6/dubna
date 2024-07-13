@@ -1,5 +1,3 @@
-Read job 'cernlib_c231.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,9 +24,10 @@ Read job 'cernlib_c231.dub'
 
 
 *NAME C231
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
-*NO LOAD LIST                                             04 ИЮЛ 24 23.45
+*NO LOAD LIST
  ABTOKOД  MADLEN
    (1.10.72)
  ПOДПPOГPAMMA  C231
@@ -36,7 +35,3 @@ Read job 'cernlib_c231.dub'
  0023                        14, VTM ,  /105
 *EXECUTE
  БЫЛИ OШИБKИ ПPИ BBOДE ИЛИ TPAHCЛЯЦИИ !!!
-------------------------------------------------------------
-   Elapsed time: 0.044 seconds
-      Simulated: 1913469 instructions
-Simulation rate: 43776458 instructions/sec

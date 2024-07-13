@@ -1,5 +1,3 @@
-Read job 'cernlib_e230a.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_e230a.dub'
 
 
 *NAME E230A
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -42,7 +41,3 @@ Read job 'cernlib_e230a.dub'
      -2.285714-01
       3.142857-01
      -1.428571-01
-------------------------------------------------------------
-   Elapsed time: 0.058 seconds
-      Simulated: 2603912 instructions
-Simulation rate: 44953164 instructions/sec

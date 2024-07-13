@@ -1,5 +1,3 @@
-Read job 'cernlib_w100.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,12 +24,9 @@ Read job 'cernlib_w100.dub'
 
 
 *NAME W100
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *
 *END FILE
-------------------------------------------------------------
-   Elapsed time: 0.025 seconds
-      Simulated: 1183427 instructions
-Simulation rate: 48295258 instructions/sec

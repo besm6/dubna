@@ -1,5 +1,3 @@
-Read job 'cernlib_q900a.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,15 +24,8 @@ Read job 'cernlib_q900a.dub'
 
 
 *NAME Q900A
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
-≠
-         Q900A      01000                PROGRAM  E 01000                EXIT     E 01013
-    OTCYTCTBYET  TIDY                    STOP*      01012                CBOБOДHO   01041
-≠
-------------------------------------------------------------
-   Elapsed time: 0.022 seconds
-      Simulated: 1020596 instructions
-Simulation rate: 46534561 instructions/sec

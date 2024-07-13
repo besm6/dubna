@@ -1,3 +1,4 @@
+*       This test fails when loading: OTCYTCTBYET  DFUN
       PROGRAM D150
       COMMON/NFUN/NFUN
       IND=10
@@ -24,6 +25,7 @@
   40  FORMAT(1X,6HVALUES,5X,2E15.8)
       STOP
       END
+
       FUNCTION FUN(KR,V)
       DIMENSION V(KR),FUNCT(10),R(10,2)
       DIMENSION FAC(10)

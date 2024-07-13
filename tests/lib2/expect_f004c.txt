@@ -1,5 +1,3 @@
-Read job 'cernlib_f004c.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_f004c.dub'
 
 
 *NAME F004C
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE   1)                    A
@@ -65,7 +64,3 @@ Read job 'cernlib_f004c.dub'
  9)                    C
      2.861550+00 -5.377300-01  4.141950+00 -1.595300-01  2.270800+00 -7.626000-01  1.741550+00 -4.073000-02
      3.916950+00 -1.063761+00  8.368390+00 -7.772810-01  3.296630+00 -1.441450+00  2.739575+00 -2.234060-01
-------------------------------------------------------------
-   Elapsed time: 0.115 seconds
-      Simulated: 5068328 instructions
-Simulation rate: 44150737 instructions/sec

@@ -1,5 +1,3 @@
-Read job 'cernlib_v200.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,26 +24,28 @@ Read job 'cernlib_v200.dub'
 
 
 *NAME V200
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
-≠
-         V200       01000                IOCONT*    01654                FT*003   E 01726                FMRTAPE    04107
-    OTCYTCTBYET  KBINOM                  IOAC*    E 01705                STOP*      02714                OCTTDEC    05036
-         PROGRAM  E 01000                FT*722   E 01720                EXIT     E 02715                LUNMUN   C 05071
-         BCDWRIT*   01051                FT*642   E 01720                R*ST*I     02743                JERRIO*  C 05072
-         FT*621   E 01051                FT*002   E 01720                BCDBEG*    02753                CARD2    C 05073
-         BCDENC*  E 01055                FD*642   E 01721                FT2*     E 03260                ISOICTTR   05120
-         FT*611   E 01055                FD*722   E 01721                KONV1*   E 03273                REVCARD    05155
-         FT*571   E 01057                FC*722   E 01721                PRINT8     03367                *ICHECK* C 05202
-         FT*561   E 01062                FC*642   E 01721                TTPRINT    03550                *ПEPФOPA   05210
-         NEXTLET* E 01067                FC*002   E 01721                BCDPUN     03607                KOД*CDC  E 05211
-         RK*      E 01131                IOEND*   E 01726                EBCDPUN  E 03633                CBOБOДHO   05251
-         WSY*     E 01367                FT*643   E 01726                ISOTCOSY   04016
-         I/O*ERR  E 01627                FT*723   E 01726                ISOTCOS1 E 04067
-≠
-------------------------------------------------------------
-   Elapsed time: 0.034 seconds
-      Simulated: 1623485 instructions
-Simulation rate: 48220417 instructions/sec
+     10.00      1.00
+     10.00
+     10.00      2.00
+     45.00
+     10.00      3.00
+    120.00
+     10.00      4.00
+    210.00
+     10.00      5.00
+    252.00
+     10.00      6.00
+    210.00
+     10.00      7.00
+    120.00
+     10.00      8.00
+     45.00
+     10.00      9.00
+     10.00
+     10.00     10.00
+      1.00

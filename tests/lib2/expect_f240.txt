@@ -1,5 +1,3 @@
-Read job 'cernlib_f240.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_f240.dub'
 
 
 *NAME F240
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -60,7 +59,3 @@ Read job 'cernlib_f240.dub'
        -0.718845953       -0.095698981        0.387435463        0.569206433
               2.322748800        0.638283803        0.796706689        0.242260708      NR=   13      M=    5
               2.322748800        0.796706690        0.638283800        0.242260710EXACT EVALUE
-------------------------------------------------------------
-   Elapsed time: 0.073 seconds
-      Simulated: 3142803 instructions
-Simulation rate: 43232131 instructions/sec

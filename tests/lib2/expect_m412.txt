@@ -1,5 +1,3 @@
-Read job 'cernlib_m412.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,26 +24,22 @@ Read job 'cernlib_m412.dub'
 
 
 *NAME M412
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
-≠
-         M412       01000                I/O*ERR  E 02274                FT*723   E 02373                ISOTCOS1 E 04534
-    OTCYTCTBYET  AFROMI                  IOCONT*    02321                FT*003   E 02373                FMRTAPE    04554
-    OTCYTCTBYET  IFROMA                  IOAC*    E 02352                STOP*      03361                OCTTDEC    05503
-         PROGRAM  E 01000                FT*722   E 02365                EXIT     E 03362                LUNMUN   C 05536
-         BCDWRIT*   01516                FT*642   E 02365                R*ST*I     03410                JERRIO*  C 05537
-         FT*621   E 01516                FT*002   E 02365                BCDBEG*    03420                CARD2    C 05540
-         BCDENC*  E 01522                FD*642   E 02366                FT2*     E 03725                ISOICTTR   05565
-         FT*611   E 01522                FD*722   E 02366                KONV1*   E 03740                REVCARD    05622
-         FT*571   E 01524                FC*722   E 02366                PRINT8     04034                *ICHECK* C 05647
-         FT*561   E 01527                FC*642   E 02366                TTPRINT    04215                *ПEPФOPA   05655
-         NEXTLET* E 01534                FC*002   E 02366                BCDPUN     04254                KOД*CDC  E 05656
-         RK*      E 01576                IOEND*   E 02373                EBCDPUN  E 04300                CBOБOДHO   05716
-         WSY*     E 02034                FT*643   E 02373                ISOTCOSY   04463
-≠
-------------------------------------------------------------
-   Elapsed time: 0.042 seconds
-      Simulated: 2437266 instructions
-Simulation rate: 58213098 instructions/sec
+      101     102     103     104     105     106     107     110     111     112
+      113     114     115     116     117     120     121     122     123     124
+      125     126     127     130     131     132      60      61      62      63
+       64      65      66      67      70      71      57      53      55      40
+       56      51      44      52      54      50      75     144      72     142
+      147     144     166     172     151     152     154     160     146     143
+       40      53     175     171     170     174     140     161
+   A       B       C       D       E       F       G       H       I       J
+   K       L       M       N       O       P       Q       R       S       T
+   U       V       W       X       Y       Z       0       1       2       3
+   4       5       6       7       8       9       /       +       -
+   .       )       ◇       *       ,       (       =       ′       :       Б
+   Г       Д       Ж       З       И       Й       Л       П       Ф       Ц
+   Ч       Ш       Щ       Ы       Ь       Э       Ю       Я

@@ -1,5 +1,3 @@
-Read job 'cernlib_m203.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,32 +24,11 @@ Read job 'cernlib_m203.dub'
 
 
 *NAME M203
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
-≠
-         M203       01000                FD*722   E 01747                ATAN     E 03012                EBCDPUN  E 04002
-    OTCYTCTBYET  CFLOAT                  FC*722   E 01747                ALOG     E 03013                ISOTCOSY   04165
-         PROGRAM  E 01000                FC*642   E 01747                EXP      E 03014                ISOTCOS1 E 04236
-         BCDWRIT*   01077                FC*002   E 01747                ALOG10   E 03020                FMRTAPE    04256
-         FT*621   E 01077                IOEND*   E 01754                CMPLX      03024                OCTTDEC    05205
-         BCDENC*  E 01103                FT*643   E 01754                C*AD*C     03027                LUNMUN   C 05240
-         FT*611   E 01103                FT*723   E 01754                C*SU*C   E 03036                JERRIO*  C 05241
-         FT*571   E 01105                FT*003   E 01754                C*MU*C   E 03043                R*TO*INT   05242
-         FT*561   E 01110                STOP*      02742                C*DI*C   E 03056                R*TO*I   E 05243
-         NEXTLET* E 01115                EXIT     E 02743                C*ST*C   E 03076                CARD2    C 05255
-         RK*      E 01157                FLOAT      02771                C*LO*C   E 03100                ISOICTTR   05302
-         WSY*     E 01415                ABS      E 02774                C*LN*C   E 03102                REVCARD    05337
-         I/O*ERR  E 01655                IABS     E 02777                C*COMP   E 03110                *ICHECK* C 05364
-         IOCONT*    01702                IFIX     E 03001                BCDBEG*    03122                *ПEPФOPA   05372
-         IOAC*    E 01733                AINT     E 03003                FT2*     E 03427                KOД*CDC  E 05373
-         FT*722   E 01746                INT      E 03005                KONV1*   E 03442                CBOБOДHO   05433
-         FT*642   E 01746                SQRT     E 03007                PRINT8     03536
-         FT*002   E 01746                SIN      E 03010                TTPRINT    03717
-         FD*642   E 01747                COS      E 03011                BCDPUN     03756
-≠
-------------------------------------------------------------
-   Elapsed time: 0.038 seconds
-      Simulated: 1782914 instructions
-Simulation rate: 47183264 instructions/sec
+                                                  TEST M203
+                    A=(  6.03912602999+00,  9.36009299999+00)
+                    B=(  6.03912602999+00,  9.36009299999+00)

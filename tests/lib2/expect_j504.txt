@@ -1,5 +1,3 @@
-Read job 'cernlib_j504.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,16 +24,8 @@ Read job 'cernlib_j504.dub'
 
 
 *NAME J504
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
-≠
-         J504       01000                STOP*      01127                ASIN     E 01163                RNDM1    E 01213
-    OTCYTCTBYET  HIST                    EXIT     E 01130                ACOS     E 01166                CBOБOДHO   01272
-         PROGRAM  E 01000                TAN        01156                RNDM       01173
-≠
-------------------------------------------------------------
-   Elapsed time: 0.032 seconds
-      Simulated: 1521103 instructions
-Simulation rate: 47590983 instructions/sec

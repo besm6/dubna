@@ -1,5 +1,3 @@
-Read job 'cernlib_d205.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_d205.dub'
 
 
 *NAME D205
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -92,7 +91,3 @@ Read job 'cernlib_d205.dub'
                                6.2                -0.08308894158       0.99654131739
                                6.3                 0.01681429415       0.99985779885
                                6.4                 0.11654952387       0.99318402918
-------------------------------------------------------------
-   Elapsed time: 0.069 seconds
-      Simulated: 3163224 instructions
-Simulation rate: 46042677 instructions/sec

@@ -1,5 +1,3 @@
-Read job 'cernlib_c339.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_c339.dub'
 
 
 *NAME C339
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -71,7 +70,3 @@ Read job 'cernlib_c339.dub'
           X=         1.900000000+01          DAWSON=         2.635239044-02
           X=         1.950000000+01          DAWSON=         2.567487554-02
           X=         2.000000000+01          DAWSON=         2.503136793-02
-------------------------------------------------------------
-   Elapsed time: 0.045 seconds
-      Simulated: 2077549 instructions
-Simulation rate: 46206775 instructions/sec

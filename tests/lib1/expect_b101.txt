@@ -1,5 +1,3 @@
-Read job 'cernlib_b101.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_b101.dub'
 
 
 *NAME B101
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -37,7 +36,3 @@ Read job 'cernlib_b101.dub'
    X=  4.14159265389          ATAN=  1.00000000031          ATG=  4.14159265391
    X=  5.71238898084          ATAN= -0.57079632634          ATG=  5.71238898085
           ATG(-1.0,0.0)= 4.7123890+00
-------------------------------------------------------------
-   Elapsed time: 0.034 seconds
-      Simulated: 1979562 instructions
-Simulation rate: 58698909 instructions/sec

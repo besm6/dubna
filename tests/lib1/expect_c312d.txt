@@ -1,5 +1,3 @@
-Read job 'cernlib_c312d.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_c312d.dub'
 
 
 *NAME C312D
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -335,7 +334,3 @@ Read job 'cernlib_c312d.dub'
      1.0+002   -7.72443133650842042055-002   -2.03723120027629676333-002
        DBESY0 ... NON-POSITIVE ARGUMENT X =     -2.000000+00
        DBESY1 ... NON-POSITIVE ARGUMENT X =     -2.000000+00
-------------------------------------------------------------
-   Elapsed time: 0.926 seconds
-      Simulated: 30904028 instructions
-Simulation rate: 33374617 instructions/sec

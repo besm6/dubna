@@ -1,5 +1,3 @@
-Read job 'cernlib_c330b.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_c330b.dub'
 
 
 *NAME C330B
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -153,7 +152,3 @@ Read job 'cernlib_c330b.dub'
     1.00+000    0.00+000    85           3.52834028615637719150630-001   3.93300206056153366896809-001      1.147-001
   DBESJN .... UNREASONABLE ARGUMENT OR ORDER
     1.00+000    0.00+000    90           3.52834028615637719150630-001   3.93300203902501489568662-001      1.147-001
-------------------------------------------------------------
-   Elapsed time: 2.16 seconds
-      Simulated: 69997805 instructions
-Simulation rate: 32473759 instructions/sec

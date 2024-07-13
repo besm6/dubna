@@ -25,7 +25,7 @@
 
 #include "fixture_session.h"
 
-#if 0
+#if 1
 TEST_F(dubna_session, cernlib_a200)
 {
     test_cernlib(1, "a200");
@@ -450,10 +450,10 @@ TEST_F(dubna_session, cernlib_d131a)
 {
     test_cernlib(1, "d131a");
 }
-TEST_F(dubna_session, cernlib_d150)
-{
-    test_cernlib(1, "d150");
-}
+//TEST_F(dubna_session, cernlib_d150)
+//{
+//    test_cernlib(1, "d150"); // This test fails when loading: OTCYTCTBYET  DFUN
+//}
 TEST_F(dubna_session, cernlib_d151)
 {
     test_cernlib(1, "d151");
@@ -750,10 +750,10 @@ TEST_F(dubna_session, cernlib_e410)
 {
     test_cernlib(1, "e410");
 }
-TEST_F(dubna_session, cernlib_e410a)
-{
-    test_cernlib(1, "e410a");
-}
+//TEST_F(dubna_session, cernlib_e410a)
+//{
+//    test_cernlib(1, "e410a"); // This test fails when loading: OTCYTCTBYET  DTOC CTOD
+//}
 TEST_F(dubna_session, cernlib_f002a)
 {
     test_cernlib(2, "f002a");
@@ -1338,10 +1338,10 @@ TEST_F(dubna_session, cernlib_m250t)
 {
     test_cernlib(2, "m250t");
 }
-TEST_F(dubna_session, cernlib_m251)
-{
-    test_cernlib(2, "m251");
-}
+//TEST_F(dubna_session, cernlib_m251)
+//{
+//    test_cernlib(2, "m251"); // This test fails when loading: OTCYTCTBYET  MINSTA MINISO MINEND
+//}
 TEST_F(dubna_session, cernlib_m254)
 {
     test_cernlib(2, "m254");

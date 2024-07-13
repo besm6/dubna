@@ -1,5 +1,3 @@
-Read job 'cernlib_e101.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,26 +24,14 @@ Read job 'cernlib_e101.dub'
 
 
 *NAME E101
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
-≠
-         E101       01000                IOCONT*    01771                FT*003   E 02043                OCTTDEC    05143
-    OTCYTCTBYET  LOOKUP                  IOAC*    E 02022                STOP*      03031                LUNMUN   C 05176
-         PROGRAM  E 01000                FT*722   E 02035                EXIT     E 03032                JERRIO*  C 05177
-         BCDWRIT*   01166                FT*642   E 02035                BCDBEG*    03060                CARD2    C 05200
-         FT*621   E 01166                FT*002   E 02035                FT2*     E 03365                ISOICTTR   05225
-         BCDENC*  E 01172                FD*642   E 02036                KONV1*   E 03400                REVCARD    05262
-         FT*611   E 01172                FD*722   E 02036                PRINT8     03474                *ICHECK* C 05307
-         FT*571   E 01174                FC*722   E 02036                TTPRINT    03655                *ПEPФOPA   05315
-         FT*561   E 01177                FC*642   E 02036                BCDPUN     03714                KOД*CDC  E 05316
-         NEXTLET* E 01204                FC*002   E 02036                EBCDPUN  E 03740                CBOБOДHO   05356
-         RK*      E 01246                IOEND*   E 02043                ISOTCOSY   04123
-         WSY*     E 01504                FT*643   E 02043                ISOTCOS1 E 04174
-         I/O*ERR  E 01744                FT*723   E 02043                FMRTAPE    04214
-≠
-------------------------------------------------------------
-   Elapsed time: 0.043 seconds
-      Simulated: 1993752 instructions
-Simulation rate: 46795099 instructions/sec
+                                                  TEST E101
+                                        IA= 0, 1,-1, 4,-2, 0, 4, 5, 7, 8,
+                                        IND= 5, 3, 1, 6, 2, 4, 7, 8, 9,10,
+                                        N=10
+                                        ITEM=-2          NR= 5
+                                        ITEM=-4          NR= 0

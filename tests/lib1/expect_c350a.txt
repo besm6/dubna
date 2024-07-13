@@ -1,5 +1,3 @@
-Read job 'cernlib_c350a.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_c350a.dub'
 
 
 *NAME C350A
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -52,7 +51,3 @@ Read job 'cernlib_c350a.dub'
    4  3 2.00 6.00     9.2738409629-01   1.1665638608-01
    4  4 4.00 6.00     9.1852739720-01   8.5459642708-02
    4  5 8.00 6.00     9.2648097492-01   4.5241817753-02
-------------------------------------------------------------
-   Elapsed time: 0.079 seconds
-      Simulated: 3331092 instructions
-Simulation rate: 41910017 instructions/sec

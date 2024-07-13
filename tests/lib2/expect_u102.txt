@@ -1,5 +1,3 @@
-Read job 'cernlib_u102.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,30 +24,12 @@ Read job 'cernlib_u102.dub'
 
 
 *NAME U102
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
-≠
-         U102       01000                FT*642   E 02017                AINT     E 03054                ISOTCOS1 E 04211
-    OTCYTCTBYET  LORENB                  FT*002   E 02017                INT      E 03056                FMRTAPE    04231
-    OTCYTCTBYET  LORENF                  FD*642   E 02020                SQRT     E 03060                OCTTDEC    05160
-         PROGRAM  E 01000                FD*722   E 02020                SIN      E 03061                LUNMUN   C 05213
-         BCDWRIT*   01150                FC*722   E 02020                COS      E 03062                JERRIO*  C 05214
-         FT*621   E 01150                FC*642   E 02020                ATAN     E 03063                R*TO*INT   05215
-         BCDENC*  E 01154                FC*002   E 02020                ALOG     E 03064                R*TO*I   E 05216
-         FT*611   E 01154                IOEND*   E 02025                EXP      E 03065                CARD2    C 05230
-         FT*571   E 01156                FT*643   E 02025                ALOG10   E 03071                ISOICTTR   05255
-         FT*561   E 01161                FT*723   E 02025                BCDBEG*    03075                REVCARD    05312
-         NEXTLET* E 01166                FT*003   E 02025                FT2*     E 03402                *ICHECK* C 05337
-         RK*      E 01230                STOP*      03013                KONV1*   E 03415                *ПEPФOPA   05345
-         WSY*     E 01466                EXIT     E 03014                PRINT8     03511                KOД*CDC  E 05346
-         I/O*ERR  E 01726                FLOAT      03042                TTPRINT    03672                CBOБOДHO   05406
-         IOCONT*    01753                ABS      E 03045                BCDPUN     03731
-         IOAC*    E 02004                IABS     E 03050                EBCDPUN  E 03755
-         FT*722   E 02017                IFIX     E 03052                ISOTCOSY   04140
-≠
-------------------------------------------------------------
-   Elapsed time: 0.046 seconds
-      Simulated: 2087721 instructions
-Simulation rate: 45830593 instructions/sec
+                                                  TECT U102
+          A(4)=    3.85748872195+00     B(4)=    8.77606523448+00
+          X=    1.75804167705+00    5.16083354108-01   -7.25874968840-01    1.97566900995+00
+          B=    3.99999999998+00    4.99999999996+00    5.99999999994+00    8.77606523440+00

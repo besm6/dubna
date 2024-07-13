@@ -1,5 +1,3 @@
-Read job 'cernlib_c313.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_c313.dub'
 
 
 *NAME C313
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -72,7 +71,3 @@ Read job 'cernlib_c313.dub'
    APГYMEHT X=    -7.0000000000+01
    MOДИФИЦИPOBAHHЫE ФYHKЦИИ             БECCEЛЯ I0,I1,K0,K1 HE BЫЧИCЛЯЮTCЯ ДЛЯ ABS(X)>43.7
   XX=     -70.0        Y=      -1.00+17
-------------------------------------------------------------
-   Elapsed time: 0.068 seconds
-      Simulated: 3031986 instructions
-Simulation rate: 44748598 instructions/sec

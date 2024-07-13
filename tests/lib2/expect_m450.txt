@@ -1,5 +1,3 @@
-Read job 'cernlib_m450.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,28 +24,17 @@ Read job 'cernlib_m450.dub'
 
 
 *NAME M450
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
-≠
-         M450       01000                FT*571   E 02701                FC*002   E 03543                BCDPUN     05445
-    OTCYTCTBYET  RCIF                    FT*561   E 02704                IOEND*   E 03550                EBCDPUN  E 05471
-    OTCYTCTBYET  COPYBI                  NEXTLET* E 02711                FT*643   E 03550                ISOTCOSY   05654
-    OTCYTCTBYET  RASPS                   RK*      E 02753                FT*723   E 03550                ISOTCOS1 E 05725
-    OTCYTCTBYET  RASPI                   WSY*     E 03211                FT*003   E 03550                FMRTAPE    05745
-    OTCYTCTBYET  WRNGR                   I/O*ERR  E 03451                STOP*      04536                OCTTDEC    06674
-    OTCYTCTBYET  RINT                    IOCONT*    03476                EXIT     E 04537                LUNMUN   C 06727
-    OTCYTCTBYET  WRINT                   IOAC*    E 03527                I*DI*I     04565                JERRIO*  C 06730
-    OTCYTCTBYET  RNSYMB                  FT*722   E 03542                I*ST*L   E 04575                CARD2    C 06731
-    OTCYTCTBYET  RSYMB                   FT*642   E 03542                I*MU*I   E 04576                ISOICTTR   06756
-         PROGRAM  E 01000                FT*002   E 03542                BCDBEG*    04611                REVCARD    07013
-         BCDWRIT*   02673                FD*642   E 03543                FT2*     E 05116                *ICHECK* C 07040
-         FT*621   E 02673                FD*722   E 03543                KONV1*   E 05131                *ПEPФOPA   07046
-         BCDENC*  E 02677                FC*722   E 03543                PRINT8     05225                KOД*CDC  E 07047
-         FT*611   E 02677                FC*642   E 03543                TTPRINT    05406                CBOБOДHO   07107
-≠
-------------------------------------------------------------
-   Elapsed time: 0.172 seconds
-      Simulated: 8046560 instructions
-Simulation rate: 46870071 instructions/sec
+                                        1-ST  TEST  SUBP  RSYMB
+                                        2-ND  TEST  SUBP RNSYMB
+                                        3-RD  TEST  SUBP  WRINT
+                                        4-TH TEST  FOR  SUBP RINT
+                                        5-FTN  TEST  SUBP WRNGR
+                                        6-TH  TEST  SUBP  RASPI
+                                        7-TH  TEST  SUBP RASPS
+                                        8-TH TEST FOR SUBP COPYBI
+                                        9-TH TEST FOR SUBP  RCIF,

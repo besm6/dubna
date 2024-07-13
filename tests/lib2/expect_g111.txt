@@ -1,5 +1,3 @@
-Read job 'cernlib_g111.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_g111.dub'
 
 
 *NAME G111
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE                         TEST VALUES FOR THE VAVILOV DISTRIBUTION
@@ -58,7 +57,3 @@ Read job 'cernlib_g111.dub'
            -1.000      -1.031       0.01717        0.00000        0.99698
            -1.500      -1.500       0.16442        0.16400        0.96237
            -1.250      -1.251       0.05852        0.05850        0.98843
-------------------------------------------------------------
-   Elapsed time: 0.511 seconds
-      Simulated: 21958481 instructions
-Simulation rate: 42987571 instructions/sec

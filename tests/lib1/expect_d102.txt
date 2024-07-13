@@ -1,5 +1,3 @@
-Read job 'cernlib_d102.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_d102.dub'
 
 
 *NAME D102
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -37,7 +36,3 @@ Read job 'cernlib_d102.dub'
                     LAMBDA=3
                          RESULT=  1.000000003197
                          EPSILN=  0.000000000001
-------------------------------------------------------------
-   Elapsed time: 0.048 seconds
-      Simulated: 2300265 instructions
-Simulation rate: 48348257 instructions/sec

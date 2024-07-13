@@ -1,5 +1,3 @@
-Read job 'cernlib_c302.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_c302.dub'
 
 
 *NAME C302
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
           OШИБKA HOMEP 05003   B   00000-M    OПEPATOPE, CЛEДYЮЩEM ЗA METKOЙ 00005    C302
@@ -1262,7 +1261,3 @@ Read job 'cernlib_c302.dub'
          41.0              3.08687482529-19              3.08687482530-19       0
          42.0              1.12175871912-19              1.12175871912-19       0
          43.0              0.00000000000+00              1.00000000000-1:       0
-------------------------------------------------------------
-   Elapsed time: 1.53 seconds
-      Simulated: 57193313 instructions
-Simulation rate: 37271555 instructions/sec

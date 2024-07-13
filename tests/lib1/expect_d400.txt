@@ -1,5 +1,3 @@
-Read job 'cernlib_d400.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_d400.dub'
 
 
 *NAME D400
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -39,7 +38,3 @@ Read job 'cernlib_d400.dub'
                          0.04          24.986665        -625.333440      0
                          2.50          -1.338648          -2.791979      0
                          3.00          -7.015253         -50.213768      0
-------------------------------------------------------------
-   Elapsed time: 0.055 seconds
-      Simulated: 2627636 instructions
-Simulation rate: 48152541 instructions/sec

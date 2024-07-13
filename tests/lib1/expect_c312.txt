@@ -1,5 +1,3 @@
-Read job 'cernlib_c312.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_c312.dub'
 
 
 *NAME C312
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
           OШИБKA HOMEP 05003   B   00001-M    OПEPATOPE, CЛEДYЮЩEM ЗA METKOЙ 00052    DBES
@@ -1966,7 +1965,3 @@ Read job 'cernlib_c312.dub'
  BESIK ... NON-POSITIVE ARGUMENT X =       0.0000+00
  BESIK ... NON-POSITIVE ARGUMENT X =       0.0000+00
  BESIK ... NON-POSITIVE ARGUMENT X =       0.0000+00
-------------------------------------------------------------
-   Elapsed time: 1.70 seconds
-      Simulated: 63713948 instructions
-Simulation rate: 37443750 instructions/sec

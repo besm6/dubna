@@ -1,5 +1,3 @@
-Read job 'cernlib_f401.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_f401.dub'
 
 
 *NAME F401
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -56,7 +55,3 @@ Read job 'cernlib_f401.dub'
  LINEQ1 ..... THE          3. COLUMN OF THE MATRIX CONTAINS ONLY ZEROS AT THE          3. ELIMINATIONSTEP.
  LINEQ2 ..... THE          3. COLUMN OF THE MATRIX CONTAINS ONLY ZEROS AT THE          3. ELIMINATIONSTEP.
      NEROR1= -1     NEROR2= -1
-------------------------------------------------------------
-   Elapsed time: 0.091 seconds
-      Simulated: 3953827 instructions
-Simulation rate: 43468711 instructions/sec

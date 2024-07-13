@@ -1,5 +1,3 @@
-Read job 'cernlib_test5.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_test5.dub'
 
 
 *NAME TEST5
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -44,7 +43,3 @@ Read job 'cernlib_test5.dub'
    5.3305165+01   5.3279109+01   5.1520278+01   4.7986979+01   4.2637519+01
                                                    E N D     TEST5
 *END FILE
-------------------------------------------------------------
-   Elapsed time: 0.363 seconds
-      Simulated: 14649321 instructions
-Simulation rate: 40336810 instructions/sec

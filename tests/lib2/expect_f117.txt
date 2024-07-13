@@ -1,5 +1,3 @@
-Read job 'cernlib_f117.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_f117.dub'
 
 
 *NAME F117
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -35,7 +34,3 @@ Read job 'cernlib_f117.dub'
           B=   5.00   6.00   3.00
           C= -15.00  17.00  -9.00
           Z1= -15.00          Z2=  17.00
-------------------------------------------------------------
-   Elapsed time: 0.042 seconds
-      Simulated: 1870537 instructions
-Simulation rate: 44172696 instructions/sec

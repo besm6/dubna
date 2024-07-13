@@ -1,5 +1,3 @@
-Read job 'cernlib_u100.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,26 +24,19 @@ Read job 'cernlib_u100.dub'
 
 
 *NAME U100
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
-≠
-         U100       01000                IOCONT*    02015                FT*003   E 02067                OCTTDEC    05167
-    OTCYTCTBYET  CLEBS                   IOAC*    E 02046                STOP*      03055                LUNMUN   C 05222
-         PROGRAM  E 01000                FT*722   E 02061                EXIT     E 03056                JERRIO*  C 05223
-         BCDWRIT*   01212                FT*642   E 02061                BCDBEG*    03104                CARD2    C 05224
-         FT*621   E 01212                FT*002   E 02061                FT2*     E 03411                ISOICTTR   05251
-         BCDENC*  E 01216                FD*642   E 02062                KONV1*   E 03424                REVCARD    05306
-         FT*611   E 01216                FD*722   E 02062                PRINT8     03520                *ICHECK* C 05333
-         FT*571   E 01220                FC*722   E 02062                TTPRINT    03701                *ПEPФOPA   05341
-         FT*561   E 01223                FC*642   E 02062                BCDPUN     03740                KOД*CDC  E 05342
-         NEXTLET* E 01230                FC*002   E 02062                EBCDPUN  E 03764                CBOБOДHO   05402
-         RK*      E 01272                IOEND*   E 02067                ISOTCOSY   04147
-         WSY*     E 01530                FT*643   E 02067                ISOTCOS1 E 04220
-         I/O*ERR  E 01770                FT*723   E 02067                FMRTAPE    04240
-≠
-------------------------------------------------------------
-   Elapsed time: 0.043 seconds
-      Simulated: 1904864 instructions
-Simulation rate: 44697280 instructions/sec
+
+  FELD K ZAEHLER MIT VORZEICHEN UND NENNER VON C*C
+                    3375.00000           112.00000
+
+  FELD M-M(1) BIS M(41)
+  -4.00000     3.00000     3.00000    -1.00000     0.00000     0.00000     0.00000     0.00000
+   0.00000     0.00000     0.00000     0.00000     0.00000     0.00000     0.00000     0.00000
+   0.00000     0.00000     0.00000     0.00000     0.00000     0.00000     0.00000     0.00000
+   0.00000     0.00000     0.00000     0.00000     0.00000     0.00000     0.00000     0.00000
+   0.00000     0.00000     0.00000     0.00000     0.00000     0.00000     0.00000     0.00000
+   1.00000

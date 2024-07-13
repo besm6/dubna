@@ -1,5 +1,3 @@
-Read job 'cernlib_f115.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,26 +24,14 @@ Read job 'cernlib_f115.dub'
 
 
 *NAME F115
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
-≠
-         F115       01000                IOCONT*    02014                FT*003   E 02066                FMRTAPE    04245
-    OTCYTCTBYET  MXDMA                   IOAC*    E 02045                STOP*      03054                OCTTDEC    05174
-         PROGRAM  E 01000                FT*722   E 02060                EXIT     E 03055                LUNMUN   C 05227
-         BCDWRIT*   01211                FT*642   E 02060                I*MUI*     03103                JERRIO*  C 05230
-         FT*621   E 01211                FT*002   E 02060                BCDBEG*    03111                CARD2    C 05231
-         BCDENC*  E 01215                FD*642   E 02061                FT2*     E 03416                ISOICTTR   05256
-         FT*611   E 01215                FD*722   E 02061                KONV1*   E 03431                REVCARD    05313
-         FT*571   E 01217                FC*722   E 02061                PRINT8     03525                *ICHECK* C 05340
-         FT*561   E 01222                FC*642   E 02061                TTPRINT    03706                *ПEPФOPA   05346
-         NEXTLET* E 01227                FC*002   E 02061                BCDPUN     03745                KOД*CDC  E 05347
-         RK*      E 01271                IOEND*   E 02066                EBCDPUN  E 03771                CBOБOДHO   05407
-         WSY*     E 01527                FT*643   E 02066                ISOTCOSY   04154
-         I/O*ERR  E 01767                FT*723   E 02066                ISOTCOS1 E 04225
-≠
-------------------------------------------------------------
-   Elapsed time: 0.043 seconds
-      Simulated: 2025406 instructions
-Simulation rate: 47004084 instructions/sec
+                    MATRIX A
+                         0.500     0.100     0.400     0.100     1.000     0.300     2.000     3.000     1.000
+                    VECTOR D
+                         1.000     1.500     0.500
+                    MATRIX B
+                         2.500     0.100     0.400     0.100     4.000     0.300     2.000     3.000     2.000

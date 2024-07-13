@@ -1,5 +1,3 @@
-Read job 'cernlib_d103.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,30 +24,13 @@ Read job 'cernlib_d103.dub'
 
 
 *NAME D103
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
-≠
-         D103       01000                FT*002   E 01772                PRINT8     03466                SIN      E 05211
-    OTCYTCTBYET  GAUSS2                  FD*642   E 01773                TTPRINT    03647                COS      E 05212
-         PROGRAM  E 01000                FD*722   E 01773                BCDPUN     03706                ATAN     E 05213
-         BCDWRIT*   01123                FC*722   E 01773                EBCDPUN  E 03732                ALOG     E 05214
-         FT*621   E 01123                FC*642   E 01773                ISOTCOSY   04115                EXP      E 05215
-         BCDENC*  E 01127                FC*002   E 01773                ISOTCOS1 E 04166                ALOG10   E 05221
-         FT*611   E 01127                IOEND*   E 02000                FMRTAPE    04206                CARD2    C 05225
-         FT*571   E 01131                FT*643   E 02000                OCTTDEC    05135                ISOICTTR   05252
-         FT*561   E 01134                FT*723   E 02000                LUNMUN   C 05170                REVCARD    05307
-         NEXTLET* E 01141                FT*003   E 02000                JERRIO*  C 05171                *ICHECK* C 05334
-         RK*      E 01203                STOP*      02766                FLOAT      05172                R*TO*INT   05342
-         WSY*     E 01441                EXIT     E 02767                ABS      E 05175                R*TO*I   E 05343
-         I/O*ERR  E 01701                EXTER      03015                IABS     E 05200                *ПEPФOPA   05355
-         IOCONT*    01726                EXTERN     03034                IFIX     E 05202                KOД*CDC  E 05356
-         IOAC*    E 01757                BCDBEG*    03052                AINT     E 05204                CBOБOДHO   05416
-         FT*722   E 01772                FT2*     E 03357                INT      E 05206
-         FT*642   E 01772                KONV1*   E 03372                SQRT     E 05210
-≠
-------------------------------------------------------------
-   Elapsed time: 0.067 seconds
-      Simulated: 3057622 instructions
-Simulation rate: 45839348 instructions/sec
+                                                  TEST D103
+                    Y(1)=GAUSS2(EXTERN,0.,1.57079633,0.0001,0.001)               EXTERN=SIN(X)
+                    Y(1)=  1.000000003199
+                    Y(2)=GAUSS2(EXTER,1.,2.,0.0001,0.001)                        EXTER=X**3
+                    Y(2)=  3.749999999970

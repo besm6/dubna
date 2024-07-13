@@ -1,5 +1,3 @@
-Read job 'cernlib_m506.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,26 +24,11 @@ Read job 'cernlib_m506.dub'
 
 
 *NAME M506
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
-≠
-         M506       01000                IOCONT*    01665                FT*003   E 01737                OCTTDEC    05037
-    OTCYTCTBYET  IUMODE                  IOAC*    E 01716                STOP*      02725                LUNMUN   C 05072
-         PROGRAM  E 01000                FT*722   E 01731                EXIT     E 02726                JERRIO*  C 05073
-         BCDWRIT*   01062                FT*642   E 01731                BCDBEG*    02754                CARD2    C 05074
-         FT*621   E 01062                FT*002   E 01731                FT2*     E 03261                ISOICTTR   05121
-         BCDENC*  E 01066                FD*642   E 01732                KONV1*   E 03274                REVCARD    05156
-         FT*611   E 01066                FD*722   E 01732                PRINT8     03370                *ICHECK* C 05203
-         FT*571   E 01070                FC*722   E 01732                TTPRINT    03551                *ПEPФOPA   05211
-         FT*561   E 01073                FC*642   E 01732                BCDPUN     03610                KOД*CDC  E 05212
-         NEXTLET* E 01100                FC*002   E 01732                EBCDPUN  E 03634                CBOБOДHO   05252
-         RK*      E 01142                IOEND*   E 01737                ISOTCOSY   04017
-         WSY*     E 01400                FT*643   E 01737                ISOTCOS1 E 04070
-         I/O*ERR  E 01640                FT*723   E 01737                FMRTAPE    04110
-≠
-------------------------------------------------------------
-   Elapsed time: 0.035 seconds
-      Simulated: 1688446 instructions
-Simulation rate: 48023152 instructions/sec
+                                                  TECT M506
+          A=     25.00     IUMODE(A)=  1
+          K= 12            IUMODE(K)=  0

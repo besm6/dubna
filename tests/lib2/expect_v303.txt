@@ -1,5 +1,3 @@
-Read job 'cernlib_v303.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,26 +24,12 @@ Read job 'cernlib_v303.dub'
 
 
 *NAME V303
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
-≠
-         V303       01000                IOCONT*    01730                FT*003   E 02002                OCTTDEC    05102
-    OTCYTCTBYET  USWOP                   IOAC*    E 01761                STOP*      02770                LUNMUN   C 05135
-         PROGRAM  E 01000                FT*722   E 01774                EXIT     E 02771                JERRIO*  C 05136
-         BCDWRIT*   01125                FT*642   E 01774                BCDBEG*    03017                CARD2    C 05137
-         FT*621   E 01125                FT*002   E 01774                FT2*     E 03324                ISOICTTR   05164
-         BCDENC*  E 01131                FD*642   E 01775                KONV1*   E 03337                REVCARD    05221
-         FT*611   E 01131                FD*722   E 01775                PRINT8     03433                *ICHECK* C 05246
-         FT*571   E 01133                FC*722   E 01775                TTPRINT    03614                *ПEPФOPA   05254
-         FT*561   E 01136                FC*642   E 01775                BCDPUN     03653                KOД*CDC  E 05255
-         NEXTLET* E 01143                FC*002   E 01775                EBCDPUN  E 03677                CBOБOДHO   05315
-         RK*      E 01205                IOEND*   E 02002                ISOTCOSY   04062
-         WSY*     E 01443                FT*643   E 02002                ISOTCOS1 E 04133
-         I/O*ERR  E 01703                FT*723   E 02002                FMRTAPE    04153
-≠
-------------------------------------------------------------
-   Elapsed time: 0.041 seconds
-      Simulated: 1854351 instructions
-Simulation rate: 44982316 instructions/sec
+          A=  1.0     2.0     3.0     4.0     5.0     6.0     7.0     8.0     9.0    10.0
+          B= 21.0    22.0    23.0    24.0    25.0    26.0    27.0    28.0    29.0    30.0
+          A= 21.0    22.0    23.0    24.0    25.0    26.0    27.0    28.0    29.0    30.0
+          B=  1.0     2.0     3.0     4.0     5.0     6.0     7.0     8.0     9.0    10.0

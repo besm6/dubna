@@ -1,5 +1,3 @@
-Read job 'cernlib_c314.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_c314.dub'
 
 
 *NAME C314
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -131,7 +130,3 @@ Read job 'cernlib_c314.dub'
           148.9384            1.0000           -2.5619           -0.0000            0.0419            1.7149
           150.5092            1.0000           -0.0000            2.5619            1.7150            0.0419
           152.0800            1.0000            2.5620            0.0000            0.0419            1.7151
-------------------------------------------------------------
-   Elapsed time: 0.078 seconds
-      Simulated: 3249290 instructions
-Simulation rate: 41879310 instructions/sec

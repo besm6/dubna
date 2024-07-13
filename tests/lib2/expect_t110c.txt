@@ -1,5 +1,3 @@
-Read job 'cernlib_t110c.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,16 +24,9 @@ Read job 'cernlib_t110c.dub'
 
 
 *NAME T110C
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *CALL FICMEMOR
 *EXECUTE
-≠
-         T110C      01000                PROGRAM  E 01000                EXIT     E 01013
-    OTCYTCTBYET  TRACY                   STOP*      01012                CBOБOДHO   01041
-≠
-------------------------------------------------------------
-   Elapsed time: 0.033 seconds
-      Simulated: 1697929 instructions
-Simulation rate: 51461751 instructions/sec

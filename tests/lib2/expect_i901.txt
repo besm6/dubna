@@ -1,5 +1,3 @@
-Read job 'cernlib_i901.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,26 +24,31 @@ Read job 'cernlib_i901.dub'
 
 
 *NAME I901
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
-≠
-         I901       01000                IOCONT*    02062                FT*003   E 02134                OCTTDEC    05234
-    OTCYTCTBYET  UNPAK                   IOAC*    E 02113                STOP*      03122                LUNMUN   C 05267
-         PROGRAM  E 01000                FT*722   E 02126                EXIT     E 03123                JERRIO*  C 05270
-         BCDWRIT*   01257                FT*642   E 02126                BCDBEG*    03151                CARD2    C 05271
-         FT*621   E 01257                FT*002   E 02126                FT2*     E 03456                ISOICTTR   05316
-         BCDENC*  E 01263                FD*642   E 02127                KONV1*   E 03471                REVCARD    05353
-         FT*611   E 01263                FD*722   E 02127                PRINT8     03565                *ICHECK* C 05400
-         FT*571   E 01265                FC*722   E 02127                TTPRINT    03746                *ПEPФOPA   05406
-         FT*561   E 01270                FC*642   E 02127                BCDPUN     04005                KOД*CDC  E 05407
-         NEXTLET* E 01275                FC*002   E 02127                EBCDPUN  E 04031                CBOБOДHO   05447
-         RK*      E 01337                IOEND*   E 02134                ISOTCOSY   04214
-         WSY*     E 01575                FT*643   E 02134                ISOTCOS1 E 04265
-         I/O*ERR  E 02035                FT*723   E 02134                FMRTAPE    04305
-≠
-------------------------------------------------------------
-   Elapsed time: 0.043 seconds
-      Simulated: 2048826 instructions
-Simulation rate: 47650441 instructions/sec
+                                                  TEST I901
+                                                 I       NTYPE     VALUE
+                                                 1         8         PSSIMU
+                                                 2         5         /
+                                                 3         8         EMPIRI
+                                                 4         5         /
+                                                 5         6           1+00
+                                                 6         1         =
+                                                 7         7       3.296+00
+                                                 8         2         ,
+                                                 9         7       4.000+00
+                                                10         3         (
+                                                11         7       2.000-02
+                                                12         4         )
+                                                13         7       4.100+00
+                                                14         2         ,
+                                                15         6           3+00
+                                                16         1         =
+                                                17         7       4.200+10
+                                                18         2         ,
+                                                19         6           2+00
+                                                20         1         =
+                                                21         7       1.300-17

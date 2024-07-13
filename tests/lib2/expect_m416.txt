@@ -1,5 +1,3 @@
-Read job 'cernlib_m416.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,26 +24,12 @@ Read job 'cernlib_m416.dub'
 
 
 *NAME M416
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
-≠
-         M416       01000                I/O*ERR  E 01667                FT*723   E 01766                FMRTAPE    04137
-    OTCYTCTBYET  UBLOW1                  IOCONT*    01714                FT*003   E 01766                OCTTDEC    05066
-    OTCYTCTBYET  UBNCH1                  IOAC*    E 01745                STOP*      02754                LUNMUN   C 05121
-         PROGRAM  E 01000                FT*722   E 01760                EXIT     E 02755                JERRIO*  C 05122
-         BCDWRIT*   01111                FT*642   E 01760                BCDBEG*    03003                CARD2    C 05123
-         FT*621   E 01111                FT*002   E 01760                FT2*     E 03310                ISOICTTR   05150
-         BCDENC*  E 01115                FD*642   E 01761                KONV1*   E 03323                REVCARD    05205
-         FT*611   E 01115                FD*722   E 01761                PRINT8     03417                *ICHECK* C 05232
-         FT*571   E 01117                FC*722   E 01761                TTPRINT    03600                *ПEPФOPA   05240
-         FT*561   E 01122                FC*642   E 01761                BCDPUN     03637                KOД*CDC  E 05241
-         NEXTLET* E 01127                FC*002   E 01761                EBCDPUN  E 03663                CBOБOДHO   05301
-         RK*      E 01171                IOEND*   E 01766                ISOTCOSY   04046
-         WSY*     E 01427                FT*643   E 01766                ISOTCOS1 E 04117
-≠
-------------------------------------------------------------
-   Elapsed time: 0.033 seconds
-      Simulated: 1813374 instructions
-Simulation rate: 54616409 instructions/sec
+                              TEST UBNCH1
+          K=  0  1  1          A=0000000000000006
+                              TEST UBLOW1
+          K=  1  1  1          B=1000000000000007

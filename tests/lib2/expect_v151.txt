@@ -1,5 +1,3 @@
-Read job 'cernlib_v151.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,14 @@ Read job 'cernlib_v151.dub'
 
 
 *NAME V151
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *CALL PTIME
+*EXECUTE
+
+ FUNPRE FINDS NEGATIVE FUNCTION VALUE OR RANGE OF X
+     X=    0.000000+00,   F=    0.000000+00                    XLOW=   -2.000000+00    XHIGH=    2.000000+00
+ XRAN=      0.000      0.000      0.000      0.000      0.000      0.000      0.000      0.000      0.000      0.000
+ TFTOT=      0.943      0.976      0.069      0.428      0.557      0.324      0.223      0.854      0.786      0.850

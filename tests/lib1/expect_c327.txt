@@ -1,5 +1,3 @@
-Read job 'cernlib_c327.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_c327.dub'
 
 
 *NAME C327
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -156,7 +155,3 @@ Read job 'cernlib_c327.dub'
     2 10.0 10.50   2.014060-03   2.071067-03   2.538833+02  -2.354533+02
     3 10.0 10.50   1.499355-03   1.582894-03   3.316768+02  -3.168142+02
     4 10.0 10.50   1.016376-03   1.109006-03   4.725424+02  -4.683050+02
-------------------------------------------------------------
-   Elapsed time: 0.173 seconds
-      Simulated: 6125842 instructions
-Simulation rate: 35433865 instructions/sec

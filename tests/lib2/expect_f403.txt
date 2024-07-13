@@ -1,5 +1,3 @@
-Read job 'cernlib_f403.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,26 +24,17 @@ Read job 'cernlib_f403.dub'
 
 
 *NAME F403
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
-≠
-         F403       01000                IOCONT*    01777                FT*003   E 02051                FMRTAPE    04230
-    OTCYTCTBYET  BLEQ                    IOAC*    E 02030                STOP*      03037                OCTTDEC    05157
-         PROGRAM  E 01000                FT*722   E 02043                EXIT     E 03040                LUNMUN   C 05212
-         BCDWRIT*   01174                FT*642   E 02043                I*MUI*     03066                JERRIO*  C 05213
-         FT*621   E 01174                FT*002   E 02043                BCDBEG*    03074                CARD2    C 05214
-         BCDENC*  E 01200                FD*642   E 02044                FT2*     E 03401                ISOICTTR   05241
-         FT*611   E 01200                FD*722   E 02044                KONV1*   E 03414                REVCARD    05276
-         FT*571   E 01202                FC*722   E 02044                PRINT8     03510                *ICHECK* C 05323
-         FT*561   E 01205                FC*642   E 02044                TTPRINT    03671                *ПEPФOPA   05331
-         NEXTLET* E 01212                FC*002   E 02044                BCDPUN     03730                KOД*CDC  E 05332
-         RK*      E 01254                IOEND*   E 02051                EBCDPUN  E 03754                CBOБOДHO   05372
-         WSY*     E 01512                FT*643   E 02051                ISOTCOSY   04137
-         I/O*ERR  E 01752                FT*723   E 02051                ISOTCOS1 E 04210
-≠
-------------------------------------------------------------
-   Elapsed time: 0.044 seconds
-      Simulated: 2050861 instructions
-Simulation rate: 46310511 instructions/sec
+                                                  TEST F403
+                              A
+                 1.0       2.0       0.0
+                 2.0       1.0       1.0
+                 1.0       3.0       1.0
+                 1.0       5.0       1.0
+                 1.0       2.0       0.0
+     R=    8.80952380951-01    5.95238095237-02    1.78571428571-01    4.04761904761-01    7.97619047618-01
+     PIV=    7.50000000000-01

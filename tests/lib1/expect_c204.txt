@@ -1,5 +1,3 @@
-Read job 'cernlib_c204.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_c204.dub'
 
 
 *NAME C204
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -43,7 +42,3 @@ Read job 'cernlib_c204.dub'
                   -5.00000002257508515493-001             -8.66025402032692934306-001
                   -4.99999998550116418476-001              8.66025401319204994120-001
                    1.99999999999790873119+000             -2.96229651572644119396-021
-------------------------------------------------------------
-   Elapsed time: 0.109 seconds
-      Simulated: 4727557 instructions
-Simulation rate: 43261745 instructions/sec

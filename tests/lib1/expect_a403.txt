@@ -1,5 +1,3 @@
-Read job 'cernlib_a403.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,26 +24,14 @@ Read job 'cernlib_a403.dub'
 
 
 *NAME A403
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
-≠
-         A403       01000                WSY*     E 01425                FT*643   E 01764                ISOTCOS1 E 04115
-    OTCYTCTBYET  EX66ZF                  I/O*ERR  E 01665                FT*723   E 01764                FMRTAPE    04135
-    OTCYTCTBYET  OR66ZF                  IOCONT*    01712                FT*003   E 01764                OCTTDEC    05064
-    OTCYTCTBYET  AN66ZF                  IOAC*    E 01743                STOP*      02752                LUNMUN   C 05117
-         PROGRAM  E 01000                FT*722   E 01756                EXIT     E 02753                JERRIO*  C 05120
-         BCDWRIT*   01107                FT*642   E 01756                BCDBEG*    03001                CARD2    C 05121
-         FT*621   E 01107                FT*002   E 01756                FT2*     E 03306                ISOICTTR   05146
-         BCDENC*  E 01113                FD*642   E 01757                KONV1*   E 03321                REVCARD    05203
-         FT*611   E 01113                FD*722   E 01757                PRINT8     03415                *ICHECK* C 05230
-         FT*571   E 01115                FC*722   E 01757                TTPRINT    03576                *ПEPФOPA   05236
-         FT*561   E 01120                FC*642   E 01757                BCDPUN     03635                KOД*CDC  E 05237
-         NEXTLET* E 01125                FC*002   E 01757                EBCDPUN  E 03661                CBOБOДHO   05277
-         RK*      E 01167                IOEND*   E 01764                ISOTCOSY   04044
-≠
-------------------------------------------------------------
-   Elapsed time: 0.026 seconds
-      Simulated: 1836495 instructions
-Simulation rate: 70667039 instructions/sec
+                                                  BOOLEAN ARITHMETIC                                        TEST A403
+                                                  ******************                                        *********
+                              A=    0000000000070707     B=    0000000000707070
+     AN66ZF(A,B)=    0000000000000000
+                                   OR66ZF(A,B)=    0000000000777777
+                                                                 EX66ZF(A,B)=    0000000000777777

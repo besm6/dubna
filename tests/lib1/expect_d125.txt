@@ -1,5 +1,3 @@
-Read job 'cernlib_d125.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,34 +24,16 @@ Read job 'cernlib_d125.dub'
 
 
 *NAME D125
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
-*EXECUTE
-≠
-         D125       01000                FD*722   E 07642                COS      E 11527                ISOTCOS1 E 14125
-    OTCYTCTBYET  GAUSS2                  FC*722   E 07642                ATAN     E 11530                FMRTAPE    14145
-         PROGRAM  E 01000                FC*642   E 07642                ALOG     E 11531                OCTTDEC    15074
-         *C1*     C 06756                FC*002   E 07642                EXP      E 11532                LUNMUN   C 15127
-         *YN*     C 06760                IOEND*   E 07647                ALOG10   E 11536                JERRIO*  C 15130
-         BCDWRIT*   06772                FT*643   E 07647                ELON       11542                I*DI*I     15131
-         FT*621   E 06772                FT*723   E 07647                CTIME      12677                I*ST*L   E 15141
-         BCDENC*  E 06776                FT*003   E 07647                PTIME    E 12714                I*MU*I   E 15142
-         FT*611   E 06776                STOP*      10635                ITIME    E 12715                R*TO*INT   15155
-         FT*571   E 07000                EXIT     E 10636                LOCF     E 12720                R*TO*I   E 15156
-         FT*561   E 07003                PULSE      10664                XLOC     E 12720                I*MUI*     15170
-         NEXTLET* E 07010                ERSIMP     10732                ZSIN       12724                CARD2    C 15176
-         RK*      E 07052                KGAUSS     11153                R*ST*I     13001                ISOICTTR   15223
-         WSY*     E 07310                FLOAT      11507                BCDBEG*    13011                REVCARD    15260
-         I/O*ERR  E 07550                ABS      E 11512                FT2*     E 13316                *ICHECK* C 15305
-         IOCONT*    07575                IABS     E 11515                KONV1*   E 13331                *ПEPФOPA   15313
-         IOAC*    E 07626                IFIX     E 11517                PRINT8     13425                KOД*CDC  E 15314
-         FT*722   E 07641                AINT     E 11521                TTPRINT    13606                CBOБOДHO   15354
-         FT*642   E 07641                INT      E 11523                BCDPUN     13645
-         FT*002   E 07641                SQRT     E 11525                EBCDPUN  E 13671
-         FD*642   E 07642                SIN      E 11526                ISOTCOSY   14054
-≠
-------------------------------------------------------------
-   Elapsed time: 0.117 seconds
-      Simulated: 5426795 instructions
-Simulation rate: 46533600 instructions/sec
+*EXECUTE
+                                  A=  0.000+00    B=  1.000+01    F=200    P= 0.00000
+                                 -----------------------------------------------------
+         N=9    ZERO PN=  1.000+00  2.000+00  3.000+00  4.000+00  5.000+00  6.000+00  7.000+00  8.000+00  9.000+00
+ -----------------------------------------------------------------------------------------------------------------------
+ ************************************ TIME=  0.000000+00    ELON-KGAUSS= -1.12362967425+03   ERROR=  5.27-07   Z=-1.50
+ ************************************ TIME=  0.000000+00    ELON-ERSIMP= -1.12362970155+03   ERROR=  8.99-07   Z=-1.50
+ ************************************ TIME=  0.000000+00    ELON-KGAUSS= -1.12362959815+03   ERROR=  2.21-07   Z=-1.25
+ ************************************ TIME=  0.000000+00    ELON-ERSIMP= -1.12362962764+03   ERROR=  5.35-07   Z=-1.25

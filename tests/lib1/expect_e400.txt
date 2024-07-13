@@ -1,5 +1,3 @@
-Read job 'cernlib_e400.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_e400.dub'
 
 
 *NAME E400
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -52,7 +51,3 @@ Read job 'cernlib_e400.dub'
      ECTRAN COMMON BLOCK /COFS/ TOO SMALL
  ECONOMIZATION NOT POSSIBLE-ACCURACY REQUIRED TOO GREAT
      ECTRAN OPTION PARAMETER IOP OUTSIDE RANGE
-------------------------------------------------------------
-   Elapsed time: 0.062 seconds
-      Simulated: 3043440 instructions
-Simulation rate: 49269722 instructions/sec

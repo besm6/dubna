@@ -1,5 +1,3 @@
-Read job 'cernlib_f225.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_f225.dub'
 
 
 *NAME F225
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -47,7 +46,3 @@ Read job 'cernlib_f225.dub'
         4.47213596498-01    4.47213595719-01    4.47213595330-01    4.47213595070-01    4.47213594875-01
           M= 1
         -1.22989183941-17
-------------------------------------------------------------
-   Elapsed time: 0.087 seconds
-      Simulated: 3715046 instructions
-Simulation rate: 42612535 instructions/sec

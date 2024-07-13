@@ -1,5 +1,3 @@
-Read job 'cernlib_c318.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_c318.dub'
 
 
 *NAME C318
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -35,7 +34,3 @@ Read job 'cernlib_c318.dub'
      X=     0.753     SN=     6.5137351261-01     CN=     7.5875723856-01     DN=     8.3845022687-01
      X=   -15.000     SN=     5.4544919538-01     CN=     8.3814388696-01     DN=     9.0636146495-01
      X=    44.000     SN=    -3.0328334652-04     CN=     9.9999995401-01     DN=     9.9999996321-01
-------------------------------------------------------------
-   Elapsed time: 0.046 seconds
-      Simulated: 1999255 instructions
-Simulation rate: 43785699 instructions/sec

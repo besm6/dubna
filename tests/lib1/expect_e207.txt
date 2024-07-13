@@ -1,5 +1,3 @@
-Read job 'cernlib_e207.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_e207.dub'
 
 
 *NAME E207
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -158,7 +157,3 @@ Read job 'cernlib_e207.dub'
            1.5              4.52953566999+00
            2.0              2.62386724000+00
            2.5              1.34870579761-01
-------------------------------------------------------------
-   Elapsed time: 0.128 seconds
-      Simulated: 5529340 instructions
-Simulation rate: 43055348 instructions/sec

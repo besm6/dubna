@@ -1,5 +1,3 @@
-Read job 'cernlib_d300.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_d300.dub'
 
 
 *NAME D300
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -649,7 +648,3 @@ NT4(I)  HT4(I,1)  HT4(I,2)  HT4(I,3)  HT4(I,4)    KT4(I)
       1401      1402
 
   **************************************************************************************************************
-------------------------------------------------------------
-   Elapsed time: 0.759 seconds
-      Simulated: 31667764 instructions
-Simulation rate: 41738242 instructions/sec

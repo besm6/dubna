@@ -1,5 +1,3 @@
-Read job 'cernlib_e404.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_e404.dub'
 
 
 *NAME E404
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -38,7 +37,3 @@ Read job 'cernlib_e404.dub'
              -2.10260719029-04    3.60750345081-05   -6.18949520969-06    1.06195147964-06   -1.82204232146-07
               3.12629353516-08   -5.36573452336-09    9.20920228963-10   -1.58081547852-10
           MOUT=14          EPSOUT= 3.08659764414-11
-------------------------------------------------------------
-   Elapsed time: 0.055 seconds
-      Simulated: 2638754 instructions
-Simulation rate: 48217557 instructions/sec

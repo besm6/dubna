@@ -1,5 +1,3 @@
-Read job 'cernlib_e401.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_e401.dub'
 
 
 *NAME E401
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -58,7 +57,3 @@ Read job 'cernlib_e401.dub'
  ECONOMIZATION NOT POSSIBLE-ACCURACY REQUIRED TOO GREAT
      ECTRAD COMMON BLOCK /COFD/ TOO SMALL
      ECTRAD OPTION PARAMETER IOP OUTSIDE RANGE
-------------------------------------------------------------
-   Elapsed time: 0.085 seconds
-      Simulated: 3809904 instructions
-Simulation rate: 45044975 instructions/sec

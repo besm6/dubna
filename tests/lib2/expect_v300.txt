@@ -1,5 +1,3 @@
-Read job 'cernlib_v300.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,26 +24,15 @@ Read job 'cernlib_v300.dub'
 
 
 *NAME V300
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
-*EXECUTE
-≠
-         V300       01000                WSY*     E 01501                FT*643   E 02040                ISOTCOS1 E 04171
-    OTCYTCTBYET  UFILL                   I/O*ERR  E 01741                FT*723   E 02040                FMRTAPE    04211
-    OTCYTCTBYET  UZERO                   IOCONT*    01766                FT*003   E 02040                OCTTDEC    05140
-    OTCYTCTBYET  UBLANK                  IOAC*    E 02017                STOP*      03026                LUNMUN   C 05173
-         PROGRAM  E 01000                FT*722   E 02032                EXIT     E 03027                JERRIO*  C 05174
-         BCDWRIT*   01163                FT*642   E 02032                BCDBEG*    03055                CARD2    C 05175
-         FT*621   E 01163                FT*002   E 02032                FT2*     E 03362                ISOICTTR   05222
-         BCDENC*  E 01167                FD*642   E 02033                KONV1*   E 03375                REVCARD    05257
-         FT*611   E 01167                FD*722   E 02033                PRINT8     03471                *ICHECK* C 05304
-         FT*571   E 01171                FC*722   E 02033                TTPRINT    03652                *ПEPФOPA   05312
-         FT*561   E 01174                FC*642   E 02033                BCDPUN     03711                KOД*CDC  E 05313
-         NEXTLET* E 01201                FC*002   E 02033                EBCDPUN  E 03735                CBOБOДHO   05353
-         RK*      E 01243                IOEND*   E 02040                ISOTCOSY   04120
-≠
-------------------------------------------------------------
-   Elapsed time: 0.047 seconds
-      Simulated: 2074822 instructions
-Simulation rate: 44395464 instructions/sec
+*EXECUTE                      ARRAY  X
+              1    1    1    1    1    1    1
+                    RESULT  UBLANK
+              1    1                   1    1
+                    RESULT  UZERO
+              1    1    0    0    0    0    1
+                    RESULT  UFILL
+              1    2    2    2    2    0    1

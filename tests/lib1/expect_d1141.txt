@@ -1,5 +1,3 @@
-Read job 'cernlib_d1141.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_d1141.dub'
 
 
 *NAME D1141
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE  ............ RIEMANN INTEGRATION WITH INTERVAL ADJUSTMENT ....................................
@@ -88,7 +87,3 @@ FINAL VALUE...   1.64958-01
 FINAL ERROR...   2.74853-03
 
  ............................................................
-------------------------------------------------------------
-   Elapsed time: 0.075 seconds
-      Simulated: 3378816 instructions
-Simulation rate: 44990892 instructions/sec

@@ -1,5 +1,3 @@
-Read job 'cernlib_v106a.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,26 +24,13 @@ Read job 'cernlib_v106a.dub'
 
 
 *NAME V106A
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
-≠
-         V106A      01000                WSY*     E 01517                FT*643   E 02056                ISOTCOS1 E 04207
-    OTCYTCTBYET  RN32OT                  I/O*ERR  E 01757                FT*723   E 02056                FMRTAPE    04227
-    OTCYTCTBYET  RN32IN                  IOCONT*    02004                FT*003   E 02056                OCTTDEC    05156
-    OTCYTCTBYET  RN32                    IOAC*    E 02035                STOP*      03044                LUNMUN   C 05211
-         PROGRAM  E 01000                FT*722   E 02050                EXIT     E 03045                JERRIO*  C 05212
-         BCDWRIT*   01201                FT*642   E 02050                BCDBEG*    03073                CARD2    C 05213
-         FT*621   E 01201                FT*002   E 02050                FT2*     E 03400                ISOICTTR   05240
-         BCDENC*  E 01205                FD*642   E 02051                KONV1*   E 03413                REVCARD    05275
-         FT*611   E 01205                FD*722   E 02051                PRINT8     03507                *ICHECK* C 05322
-         FT*571   E 01207                FC*722   E 02051                TTPRINT    03670                *ПEPФOPA   05330
-         FT*561   E 01212                FC*642   E 02051                BCDPUN     03727                KOД*CDC  E 05331
-         NEXTLET* E 01217                FC*002   E 02051                EBCDPUN  E 03753                CBOБOДHO   05371
-         RK*      E 01261                IOEND*   E 02056                ISOTCOSY   04136
-≠
-------------------------------------------------------------
-   Elapsed time: 0.048 seconds
-      Simulated: 2222770 instructions
-Simulation rate: 46617521 instructions/sec
+  0.107915044 0.587475061 0.318972945 0.146437526 0.299223065 0.040700555 0.152122498 0.956470728 0.479890823 0.581562400
+           0.107915044 0.587475061 0.318972945 0.146437526 0.299223065
+     IX=   642576727
+           0.040700555 0.152122498 0.956470728 0.479890823 0.581562400
+           0.040700555 0.152122498 0.956470728 0.479890823 0.581562400

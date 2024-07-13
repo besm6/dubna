@@ -1,5 +1,3 @@
-Read job 'cernlib_d111.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_d111.dub'
 
 
 *NAME D111
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -655,7 +654,3 @@ Read job 'cernlib_d111.dub'
    INTERGRAL DSQRT(X)
              6.66664574390779307578-001
 *******************************************************
-------------------------------------------------------------
-   Elapsed time: 2.28 seconds
-      Simulated: 78008772 instructions
-Simulation rate: 34242263 instructions/sec

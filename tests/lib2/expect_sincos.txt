@@ -1,5 +1,3 @@
-Read job 'cernlib_sincos.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,20 +24,8 @@ Read job 'cernlib_sincos.dub'
 
 
 *NAME SINCOS
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
-≠
-         SINCOS     01000           OTCYTCTBYET  LIMITS                  IABS     E 01701                ATAN     E 01714
-    OTCYTCTBYET  ENDPG              OTCYTCTBYET  PAGE                    IFIX     E 01703                ALOG     E 01715
-    OTCYTCTBYET  BRLINE                  PROGRAM  E 01000                AINT     E 01705                EXP      E 01716
-    OTCYTCTBYET  BROKEN                  STOP*      01644                INT      E 01707                ALOG10   E 01722
-    OTCYTCTBYET  LINEMO                  EXIT     E 01645                SQRT     E 01711                R*TO*INT   01726
-    OTCYTCTBYET  AXES                    FLOAT      01673                SIN      E 01712                R*TO*I   E 01727
-    OTCYTCTBYET  REGION                  ABS      E 01676                COS      E 01713                CBOБOДHO   01741
-≠
-------------------------------------------------------------
-   Elapsed time: 0.038 seconds
-      Simulated: 1794149 instructions
-Simulation rate: 47835044 instructions/sec

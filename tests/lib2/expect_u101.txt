@@ -1,5 +1,3 @@
-Read job 'cernlib_u101.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,29 +24,14 @@ Read job 'cernlib_u101.dub'
 
 
 *NAME U101
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
-≠
-         U101       01000                FT*642   E 01773                IFIX     E 03026                EBCDPUN  E 03731
-    OTCYTCTBYET  LOREN4                  FT*002   E 01773                AINT     E 03030                ISOTCOSY   04114
-         PROGRAM  E 01000                FD*642   E 01774                INT      E 03032                ISOTCOS1 E 04165
-         BCDWRIT*   01124                FD*722   E 01774                SQRT     E 03034                FMRTAPE    04205
-         FT*621   E 01124                FC*722   E 01774                SIN      E 03035                OCTTDEC    05134
-         BCDENC*  E 01130                FC*642   E 01774                COS      E 03036                LUNMUN   C 05167
-         FT*611   E 01130                FC*002   E 01774                ATAN     E 03037                JERRIO*  C 05170
-         FT*571   E 01132                IOEND*   E 02001                ALOG     E 03040                R*TO*INT   05171
-         FT*561   E 01135                FT*643   E 02001                EXP      E 03041                R*TO*I   E 05172
-         NEXTLET* E 01142                FT*723   E 02001                ALOG10   E 03045                CARD2    C 05204
-         RK*      E 01204                FT*003   E 02001                BCDBEG*    03051                ISOICTTR   05231
-         WSY*     E 01442                STOP*      02767                FT2*     E 03356                REVCARD    05266
-         I/O*ERR  E 01702                EXIT     E 02770                KONV1*   E 03371                *ICHECK* C 05313
-         IOCONT*    01727                FLOAT      03016                PRINT8     03465                *ПEPФOPA   05321
-         IOAC*    E 01760                ABS      E 03021                TTPRINT    03646                KOД*CDC  E 05322
-         FT*722   E 01773                IABS     E 03024                BCDPUN     03705                CBOБOДHO   05362
-≠
-------------------------------------------------------------
-   Elapsed time: 0.043 seconds
-      Simulated: 1945465 instructions
-Simulation rate: 45577252 instructions/sec
+                                                  TECT U101
+          A(4)=    3.85748872195+00     B(4)=    8.77606523448+00
+          X=    1.75804167704+00    5.16083354079-01   -7.25874968884-01    1.97566900997+00
+*
+*
+*END FILE

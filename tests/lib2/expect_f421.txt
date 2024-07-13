@@ -1,5 +1,3 @@
-Read job 'cernlib_f421.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_f421.dub'
 
 
 *NAME F421
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -148,7 +147,3 @@ Read job 'cernlib_f421.dub'
  X( 1)=  9.9999999888-01 X( 2)=  1.0000000001+00 X( 3)=  1.0000000003+00 X( 4)=  1.0000000005+00
  X( 5)=  1.0000000007+00 X( 6)=  1.0000000010+00 X( 7)=  1.0000000012+00 X( 8)=  9.9999999875-01
  X( 9)=  9.9999999907-01 X(10)=  9.9999999959-01
-------------------------------------------------------------
-   Elapsed time: 0.183 seconds
-      Simulated: 8228519 instructions
-Simulation rate: 44964830 instructions/sec

@@ -1,5 +1,3 @@
-Read job 'cernlib_f002c.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_f002c.dub'
 
 
 *NAME F002C
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -46,7 +45,3 @@ Read job 'cernlib_f002c.dub'
    CVSUM           F=  7.0000000+00  9.0000000+00
    CVMPY           F= -1.0000000+01  1.0000000+00
    CVMPA           F=  0.0000000+00  1.0000000+00
-------------------------------------------------------------
-   Elapsed time: 0.112 seconds
-      Simulated: 4880158 instructions
-Simulation rate: 43651178 instructions/sec

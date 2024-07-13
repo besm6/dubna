@@ -1,5 +1,3 @@
-Read job 'cernlib_f405a.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_f405a.dub'
 
 
 *NAME F405A
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -480,7 +479,3 @@ Read job 'cernlib_f405a.dub'
      SOLUTION VECTOR COMPUTED BY LINSYS
          6.18096448580-01    7.34803204457-01    8.99963096676-01    4.37441307476-01    6.42383321815-02
          9.50114423858-01    8.22183833243-01    2.88931442372-01    1.47669833971-01    1.17747474407-01
-------------------------------------------------------------
-   Elapsed time: 0.301 seconds
-      Simulated: 12678184 instructions
-Simulation rate: 42080090 instructions/sec

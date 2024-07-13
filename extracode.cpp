@@ -345,6 +345,10 @@ void Processor::e63()
         // Get name of organization in ISO.
         core.ACC = 0'3244'7513'2064'2554; // йоксел
         return;
+    case 0766:
+        // Get time? For ptime.
+        core.ACC = 0;
+        return;
     case 02000:
         // Get word #0 of process descriptor: task ID (шифр).
         core.ACC = 01234567;

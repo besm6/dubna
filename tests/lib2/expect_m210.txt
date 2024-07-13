@@ -1,5 +1,3 @@
-Read job 'cernlib_m210.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,26 +24,18 @@ Read job 'cernlib_m210.dub'
 
 
 *NAME M210
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
-≠
-         M210       01000                IOCONT*    01751                FT*003   E 02023                OCTTDEC    05123
-    OTCYTCTBYET  DEZBEL                  IOAC*    E 02002                STOP*      03011                LUNMUN   C 05156
-         PROGRAM  E 01000                FT*722   E 02015                EXIT     E 03012                JERRIO*  C 05157
-         BCDWRIT*   01146                FT*642   E 02015                BCDBEG*    03040                CARD2    C 05160
-         FT*621   E 01146                FT*002   E 02015                FT2*     E 03345                ISOICTTR   05205
-         BCDENC*  E 01152                FD*642   E 02016                KONV1*   E 03360                REVCARD    05242
-         FT*611   E 01152                FD*722   E 02016                PRINT8     03454                *ICHECK* C 05267
-         FT*571   E 01154                FC*722   E 02016                TTPRINT    03635                *ПEPФOPA   05275
-         FT*561   E 01157                FC*642   E 02016                BCDPUN     03674                KOД*CDC  E 05276
-         NEXTLET* E 01164                FC*002   E 02016                EBCDPUN  E 03720                CBOБOДHO   05336
-         RK*      E 01226                IOEND*   E 02023                ISOTCOSY   04103
-         WSY*     E 01464                FT*643   E 02023                ISOTCOS1 E 04154
-         I/O*ERR  E 01724                FT*723   E 02023                FMRTAPE    04174
-≠
-------------------------------------------------------------
-   Elapsed time: 0.036 seconds
-      Simulated: 1913132 instructions
-Simulation rate: 52420320 instructions/sec
+                                                  TEST M210
+          A=   3.00  10.00   3.50   6.00 100.00   4.60   5.70  64.00   0.50   1.00
+     M= 1
+     ADB=
+      15.22878745277   10.00000000000   14.55931955648   12.21848749613    0.00000000000
+      13.37242168316   12.44125144328    1.93820026016   23.01029995662   20.00000000000
+     M= 2
+     ADB=
+      30.45757490555   20.00000000000   29.11863911296   24.43697499227    0.00000000000
+      26.74484336632   24.88250288657    3.87640052032   46.02059991324   40.00000000000

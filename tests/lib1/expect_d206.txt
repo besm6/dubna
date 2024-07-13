@@ -1,5 +1,3 @@
-Read job 'cernlib_d206.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_d206.dub'
 
 
 *NAME D206
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -39,7 +38,3 @@ Read job 'cernlib_d206.dub'
     X1(0)=1  X2(0)=0  X3(0)=0  X4(0)=1  M(0)=1
    Z= 2.000 X1=-0.273 X2=-0.933 X3= 0.979 X4=  -0.302  M=   0.981  R= 1.024
                                                   ALL RIGHT
-------------------------------------------------------------
-   Elapsed time: 0.081 seconds
-      Simulated: 3604860 instructions
-Simulation rate: 44304799 instructions/sec

@@ -1,5 +1,3 @@
-Read job 'cernlib_d600.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_d600.dub'
 
 
 *NAME D600
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -54,7 +53,3 @@ Read job 'cernlib_d600.dub'
                       1.7         4.790436489         4.790436376         9.430093197
                       1.8         4.829046111         4.829046002         9.430093197
                       1.9         4.785276033         4.785275930         9.430093197
-------------------------------------------------------------
-   Elapsed time: 0.126 seconds
-      Simulated: 5982148 instructions
-Simulation rate: 47357843 instructions/sec

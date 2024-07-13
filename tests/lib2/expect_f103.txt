@@ -1,5 +1,3 @@
-Read job 'cernlib_f103.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_f103.dub'
 
 
 *NAME F103
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE            MATRIX A
@@ -64,7 +63,3 @@ Read job 'cernlib_f103.dub'
           0.000     0.000     0.000     0.000     0.000     0.000     0.000     0.000     0.000     0.000
           0.000     0.000     0.000     0.000     0.000     0.000     0.000     0.000     0.000     0.000
           0.000     0.000     0.000     0.000     0.000     0.000     0.000     0.000     0.000     0.000
-------------------------------------------------------------
-   Elapsed time: 0.103 seconds
-      Simulated: 4505631 instructions
-Simulation rate: 43832506 instructions/sec

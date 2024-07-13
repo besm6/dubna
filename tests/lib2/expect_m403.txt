@@ -1,5 +1,3 @@
-Read job 'cernlib_m403.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,26 +24,15 @@ Read job 'cernlib_m403.dub'
 
 
 *NAME M403
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
-≠
-         M403       01000                I/O*ERR  E 01717                FT*723   E 02016                FMRTAPE    04167
-    OTCYTCTBYET  SHFTZ1                  IOCONT*    01744                FT*003   E 02016                OCTTDEC    05116
-    OTCYTCTBYET  SHFTZF                  IOAC*    E 01775                STOP*      03004                LUNMUN   C 05151
-         PROGRAM  E 01000                FT*722   E 02010                EXIT     E 03005                JERRIO*  C 05152
-         BCDWRIT*   01141                FT*642   E 02010                BCDBEG*    03033                CARD2    C 05153
-         FT*621   E 01141                FT*002   E 02010                FT2*     E 03340                ISOICTTR   05200
-         BCDENC*  E 01145                FD*642   E 02011                KONV1*   E 03353                REVCARD    05235
-         FT*611   E 01145                FD*722   E 02011                PRINT8     03447                *ICHECK* C 05262
-         FT*571   E 01147                FC*722   E 02011                TTPRINT    03630                *ПEPФOPA   05270
-         FT*561   E 01152                FC*642   E 02011                BCDPUN     03667                KOД*CDC  E 05271
-         NEXTLET* E 01157                FC*002   E 02011                EBCDPUN  E 03713                CBOБOДHO   05331
-         RK*      E 01221                IOEND*   E 02016                ISOTCOSY   04076
-         WSY*     E 01457                FT*643   E 02016                ISOTCOS1 E 04147
-≠
-------------------------------------------------------------
-   Elapsed time: 0.041 seconds
-      Simulated: 1940200 instructions
-Simulation rate: 47041994 instructions/sec
+                                                  TEST M403
+                    P=5424643344116622          A=ABCDEF
+                    SHFTZF(P,N)          SHFTZ1(P,N)          SHFTZF(A,N)
+          N= -4     0671023544530515     6622542464334411       CDEFAB
+          N= -2     4731126123215620     2254246433441166       EFABCD
+          N=  2     0671023544530515     2464334411662254       CDEFAB
+          N=  4     4731126123215620     6433441166225424       EFABCD

@@ -1,5 +1,3 @@
-Read job 'cernlib_f500.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_f500.dub'
 
 
 *NAME F500
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -99,7 +98,3 @@ Read job 'cernlib_f500.dub'
           5   -1.273293-11   -1.188027-11    6.174838-02    6.435578-01    5.408955-01
           6   -2.444267-12   -2.699174-12   -2.600586-12    1.350031-12    9.094947-13
           7   -1.818989-12   -1.531220-12   -1.364242-12   -9.663381-13   -1.136868-12
-------------------------------------------------------------
-   Elapsed time: 0.096 seconds
-      Simulated: 4109049 instructions
-Simulation rate: 42667480 instructions/sec

@@ -1,5 +1,3 @@
-Read job 'cernlib_f141.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,26 +24,59 @@ Read job 'cernlib_f141.dub'
 
 
 *NAME F141
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
-≠
-         F141       01000                IOCONT*    02310                FT*003   E 02362                OCTTDEC    05462
-    OTCYTCTBYET  TRIVEC                  IOAC*    E 02341                STOP*      03350                LUNMUN   C 05515
-         PROGRAM  E 01000                FT*722   E 02354                EXIT     E 03351                JERRIO*  C 05516
-         BCDWRIT*   01505                FT*642   E 02354                BCDBEG*    03377                CARD2    C 05517
-         FT*621   E 01505                FT*002   E 02354                FT2*     E 03704                ISOICTTR   05544
-         BCDENC*  E 01511                FD*642   E 02355                KONV1*   E 03717                REVCARD    05601
-         FT*611   E 01511                FD*722   E 02355                PRINT8     04013                *ICHECK* C 05626
-         FT*571   E 01513                FC*722   E 02355                TTPRINT    04174                *ПEPФOPA   05634
-         FT*561   E 01516                FC*642   E 02355                BCDPUN     04233                KOД*CDC  E 05635
-         NEXTLET* E 01523                FC*002   E 02355                EBCDPUN  E 04257                CBOБOДHO   05675
-         RK*      E 01565                IOEND*   E 02362                ISOTCOSY   04442
-         WSY*     E 02023                FT*643   E 02362                ISOTCOS1 E 04513
-         I/O*ERR  E 02263                FT*723   E 02362                FMRTAPE    04533
-≠
-------------------------------------------------------------
-   Elapsed time: 0.072 seconds
-      Simulated: 3110867 instructions
-Simulation rate: 43159131 instructions/sec
+     TRIVEC(X1,X2,X3,G1,G2,G3,G12,G13,G23,G)
+               X1(I)
+     1.000     2.000     3.000
+               X2(I)
+     4.000     5.000     6.000
+               X3(I)
+     7.000     8.000     9.000
+               X (I)
+   -24.000    -6.000    12.000
+               G1(I)
+     1.000     5.000     6.000
+               G1(I)
+     5.000     2.000     7.000
+               G1(I)
+     6.000     7.000     3.000
+               G2(I)
+     3.000     8.000     9.000
+               G2(I)
+     8.000     2.000     6.000
+               G2(I)
+     9.000     6.000     1.000
+               G3(I)
+     5.000     1.000     3.000
+               G3(I)
+     1.000     6.000     2.000
+               G3(I)
+     3.000     2.000     7.000
+               G12(I)
+     0.100     0.400     0.500
+               G12(I)
+     0.400     0.200     0.700
+               G12(I)
+     0.500     0.700     0.300
+               G13(I)
+     0.200     0.500     0.600
+               G13(I)
+     0.500     0.300     0.800
+               G13(I)
+     0.600     0.800     0.400
+               G23(I)
+     0.300     0.100     0.200
+               G23(I)
+     0.100     0.400     0.600
+               G23(I)
+     0.200     0.600     0.500
+               G (I)
+-13230.200   160.900  3901.400
+               G (I)
+   160.900 -3954.800  2386.700
+               G (I)
+  3901.400  2386.700 -2843.000

@@ -1,5 +1,3 @@
-Read job 'cernlib_a500.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,34 +24,24 @@ Read job 'cernlib_a500.dub'
 
 
 *NAME A500
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
-≠
-         A500       01000                RK*      E 01440                DIR        03622                PRINT8     04715
-    OTCYTCTBYET  NEG                     WSY*     E 01676                C*AD*C     03754                TTPRINT    05076
-    OTCYTCTBYET  POW                     I/O*ERR  E 02136                C*SU*C   E 03763                BCDPUN     05135
-    OTCYTCTBYET  QUOT                    IOCONT*    02163                C*MU*C   E 03770                EBCDPUN  E 05161
-    OTCYTCTBYET  DIFF                    IOAC*    E 02214                C*DI*C   E 04003                ISOTCOSY   05344
-    OTCYTCTBYET  PROD                    FT*722   E 02227                C*ST*C   E 04023                ISOTCOS1 E 05415
-    OTCYTCTBYET  SUMM                    FT*642   E 02227                C*LO*C   E 04025                FMRTAPE    05435
-    OTCYTCTBYET  INV                     FT*002   E 02227                C*LN*C   E 04027                OCTTDEC    06364
-    OTCYTCTBYET  REC                     FD*642   E 02230                C*COMP   E 04035                LUNMUN   C 06417
-    OTCYTCTBYET  RATIO                   FD*722   E 02230                DUBLPREC   04047                JERRIO*  C 06420
-    OTCYTCTBYET  VALUE                   FC*722   E 02230                D*AD*D   E 04050                **       C 10000
-    OTCYTCTBYET  IDEN                    FC*642   E 02230                D*MU*D   E 04153                *J*      C 12000
-    OTCYTCTBYET  INUM                    FC*002   E 02230                D*DI*D   E 04165                CARD2    C 12001
-         PROGRAM  E 01000                IOEND*   E 02235                D*SU*D   E 04203                ISOICTTR   12026
-         BCDWRIT*   01360                FT*643   E 02235                D*COMP   E 04234                REVCARD    12063
-         FT*621   E 01360                FT*723   E 02235                D*LN*D   E 04236                *ICHECK* C 12110
-         BCDENC*  E 01364                FT*003   E 02235                D*LO*D   E 04242                *ПEPФOPA   12116
-         FT*611   E 01364                IOCONTD*   03223                D*ST*D   E 04244                KOД*CDC  E 12117
-         FT*571   E 01366                FD*002   E 03272                BCDBEG*    04301                CBOБOДHO   12157
-         FT*561   E 01371                STOP*      03573                FT2*     E 04606
-         NEXTLET* E 01376                EXIT     E 03574                KONV1*   E 04621
-≠
-------------------------------------------------------------
-   Elapsed time: 0.058 seconds
-      Simulated: 2972087 instructions
-Simulation rate: 50924164 instructions/sec
+                                             RATIONAL ALGEBRA                                             TEST A500
+                                             ****************                                             *********
+          RATIO(5,6)=( 6400000000000005, 6400000000000006)
+                    RATIO(2,3)=( 6400000000000002, 6400000000000003)
+                              RATIO(3,4)=( 6400000000000003, 6400000000000004)
+          INUM(R)= 6400000000000005     IDEN(R)= 6400000000000006
+          DIR(K)=( 0000000000000000, 6400000000000004)
+          REC(L)=( 6400000000000001, 6400000000000006)
+          INV(S)=( 6400000000000003, 6400000000000002)
+          SUMM(S,T)=( 6400000000000021, 6400000000000014)
+          PROD(S,T)=( 6400000000000006, 6400000000000014)
+          DIFF(S,T)=( 6437777777777777, 6400000000000014)
+          QUOT(S,T)=( 6400000000000010, 6400000000000011)
+          NEG(S)=( 6437777777777776, 6400000000000003)
+          POW(S,3)=( 6400000000000010, 6400000000000033)
+          VALUE(T)= 7.50000000000000000000000-001

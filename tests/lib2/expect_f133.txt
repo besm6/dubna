@@ -1,5 +1,3 @@
-Read job 'cernlib_f133.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_f133.dub'
 
 
 *NAME F133
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -37,7 +36,3 @@ Read job 'cernlib_f133.dub'
            1.0, 3.0             -2.00000000000+00,    6.00000000000+00
            2.0, 5.0             -1.00000000000+00,    8.00000000000+00
            3.0,-1.0              0.00000000000+00,    2.00000000000+00
-------------------------------------------------------------
-   Elapsed time: 0.045 seconds
-      Simulated: 1996845 instructions
-Simulation rate: 44804456 instructions/sec

@@ -1,5 +1,3 @@
-Read job 'cernlib_d130.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_d130.dub'
 
 
 *NAME D130
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -44,7 +43,3 @@ Read job 'cernlib_d130.dub'
                     -----------------------
  S(Z)=(1+Z+Z**2+Z**3+...)= 1/(1-Z) , SUM=S(2)
  NZ= 30     SUM= -9.99999999956-01     ERROR=  5.82-11     N=  5     K=  1     EPS=  1.00-09
-------------------------------------------------------------
-   Elapsed time: 0.132 seconds
-      Simulated: 6189865 instructions
-Simulation rate: 46826579 instructions/sec

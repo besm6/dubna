@@ -1,5 +1,3 @@
-Read job 'cernlib_j551.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,19 +24,186 @@ Read job 'cernlib_j551.dub'
 
 
 *NAME J551
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
-≠
-         J551       01000                EXIT     E 01242                INT      E 01304                EXP      E 01313
-    OTCYTCTBYET  FIGREL                  FLOAT      01270                SQRT     E 01306                ALOG10   E 01317
-    OTCYTCTBYET  FIGABS                  ABS      E 01273                SIN      E 01307                R*TO*INT   01323
-    OTCYTCTBYET  FIGURE                  IABS     E 01276                COS      E 01310                R*TO*I   E 01324
-         PROGRAM  E 01000                IFIX     E 01300                ATAN     E 01311                CBOБOДHO   01336
-         STOP*      01241                AINT     E 01302                ALOG     E 01312
-≠
-------------------------------------------------------------
-   Elapsed time: 0.030 seconds
-      Simulated: 1397570 instructions
-Simulation rate: 46165560 instructions/sec
+                      HOMEP   ПEЧATAЮЩИЙ       MИH.ЗHAЧEHИE        MAKC.ЗHAЧEHИE     ЦEHA ДEЛEHИЯ
+                      KPИBOЙ    CИMBOЛ           ФYHKЦИИ              ФYHKЦИИ       ПO OCИ OPДИHAT
+                        1         S         -9.98026728427-01     9.98026728427-01     1.9961-02
+                        2         C         -1.00000000000+00     1.00000000000+00     2.0000-02
+         0         10        20        30        40        50        60        70        80        90       100
+         I    I    I    I    I    I    I    I    I    I    I    I    I    I    I    I    I    I    I    I    I
+         IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+      0----------------------------------------------------S-------------------------------------------------C--  0
+        -I         I         I         I         I         I     S   I         I         I         I         C-
+        -I         I         I         I         I         I         I S       I         I         I       C I-
+        -I         I         I         I         I         I         I       S I         I         I     C   I-
+        -I         I         I         I         I         I         I         I   S     I         I   C     I-
+       --I         I         I         I         I         I         I         I        SI         C         I--
+        -I         I         I         I         I         I         I         I         I   S C   I         I-
+        -I         I         I         I         I         I         I         I         I C      SI         I-
+        -I         I         I         I         I         I         I         I      C  I         I S       I-
+        -I         I         I         I         I         I         I         IC        I         I    S    I-
+     10-------------------------------------------------------------------C--------------------------------S----  10
+        -I         I         I         I         I         I        CI         I         I         I        SI-
+        -I         I         I         I         I         I  C      I         I         I         I         S-
+        -I         I         I         I         I      C  I         I         I         I         I         S-
+        -I         I         I         I         IC        I         I         I         I         I        SI-
+       --I         I         I         I    C    I         I         I         I         I         I       S I--
+        -I         I         I        CI         I         I         I         I         I         I    S    I-
+        -I         I         I  C      I         I         I         I         I         I         I S       I-
+        -I         I       C I         I         I         I         I         I         I        SI         I-
+        -I         I   C     I         I         I         I         I         I         I   S     I         I-
+     20------------C--------------------------------------------------------------------S-----------------------  20
+        -I     C   I         I         I         I         I         I         I   S     I         I         I-
+        -I   C     I         I         I         I         I         I       S I         I         I         I-
+        -I C       I         I         I         I         I         I S       I         I         I         I-
+        -C         I         I         I         I         I     S   I         I         I         I         I-
+       --C         I         I         I         I         S         I         I         I         I         I--
+        -C         I         I         I         I   S     I         I         I         I         I         I-
+        -I C       I         I         I       S I         I         I         I         I         I         I-
+        -I   C     I         I         I S       I         I         I         I         I         I         I-
+        -I     C   I         I     S   I         I         I         I         I         I         I         I-
+     30------------C----------S---------------------------------------------------------------------------------  30
+        -I         I   C S   I         I         I         I         I         I         I         I         I-
+        -I         IS      C I         I         I         I         I         I         I         I         I-
+        -I       S I         I  C      I         I         I         I         I         I         I         I-
+        -I    S    I         I        CI         I         I         I         I         I         I         I-
+       --I S       I         I         I    C    I         I         I         I         I         I         I--
+        -IS        I         I         I         IC        I         I         I         I         I         I-
+        -S         I         I         I         I      C  I         I         I         I         I         I-
+        -S         I         I         I         I         I  C      I         I         I         I         I-
+        -IS        I         I         I         I         I        CI         I         I         I         I-
+     40----S--------------------------------------------------------------C-------------------------------------  40
+        -I    S    I         I         I         I         I         I         IC        I         I         I-
+        -I       S I         I         I         I         I         I         I      C  I         I         I-
+        -I         IS        I         I         I         I         I         I         I C       I         I-
+        -I         I     S   I         I         I         I         I         I         I     C   I         I-
+       --I         I         IS        I         I         I         I         I         I         C         I--
+        -I         I         I     S   I         I         I         I         I         I         I   C     I-
+        -I         I         I         I S       I         I         I         I         I         I     C   I-
+        -I         I         I         I       S I         I         I         I         I         I       C I-
+        -I         I         I         I         I   S     I         I         I         I         I         C-
+         IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+         I    I    I    I    I    I    I    I    I    I    I    I    I    I    I    I    I    I    I    I    I
+         0         10        20        30        40        50        60        70        80        90       100
+                              MИHИMAЛЬHOE И MAKCИMAЛЬHOE ЗHAЧEHИЯ ИЗ MACCИBA OPДИHAT KPИBЫX
+                            PABHЫ COOTBETCTBEHHO   -1.00000000000+00  И    1.00000000000+00.
+                                     ЦEHA ДEЛEHИЯ ПO OCИ OPДИHAT PABHA   2.0000-02.
+        -50                 -30                            0         10        20        30        40        50
+         I    I         I    I    I         I              I    I    I    I    I    I    I    I    I    I    I
+         IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+      0--                                                  S                                                 C--  0
+        -                                                        S                                           C-
+        -                                                              S                                   C  -
+        -                                                                    S                           C    -
+        -                                                                          S                   C      -
+       --                                                                               S          C          --
+        -                                                                                    S C              -
+        -                                                                                  C      S           -
+        -                                                                             C              S        -
+        -                                                                       C                       S     -
+     10--                                                                 C                                S  --  10
+        -                                                           C                                       S -
+        -                                                     C                                              S-
+        -                                               C                                                    S-
+        -                                         C                                                         S -
+       --                                   C                                                              S  --
+        -                             C                                                                 S     -
+        -                       C                                                                    S        -
+        -                  C                                                                      S           -
+        -              C                                                                     S                -
+     20--          C                                                                    S                     --  20
+        -      C                                                                   S                          -
+        -    C                                                               S                                -
+        -  C                                                           S                                      -
+        -C                                                       S                                            -
+       --C                                                 S                                                  --
+        -C                                           S                                                        -
+        -  C                                   S                                                              -
+        -    C                           S                                                                    -
+        -      C                   S                                                                          -
+     30--          C          S                                                                               --  30
+        -              C S                                                                                    -
+        -           S      C                                                                                  -
+        -        S              C                                                                             -
+        -     S                       C                                                                       -
+       --  S                                C                                                                 --
+        - S                                       C                                                           -
+        -S                                              C                                                     -
+        -S                                                    C                                               -
+        - S                                                         C                                         -
+     40--  S                                                              C                                   --  40
+        -     S                                                                 C                             -
+        -        S                                                                    C                       -
+        -           S                                                                      C                  -
+        -                S                                                                     C              -
+       --                     S                                                                    C          --
+        -                          S                                                                   C      -
+        -                                S                                                               C    -
+        -                                      S                                                           C  -
+        -                                            S                                                       C-
+         IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+         I    I         I    I    I         I              I    I    I    I    I    I    I    I    I    I    I
+        -50                 -30                            0         10        20        30        40        50
+                              MИHИMAЛЬHOE И MAKCИMAЛЬHOE ЗHAЧEHИЯ ИЗ MACCИBA OPДИHAT KPИBЫX
+                            PABHЫ COOTBETCTBEHHO   -1.00000000000+00  И    1.00000000000+00.
+                                     ЦEHA ДEЛEHИЯ ПO OCИ OPДИHAT PABHA   2.0000-02.
+         0         10        20        30        40        50        60        70        80        90       100
+         I    I    I    I    I    I    I    I    I    I    I    I    I    I    I    I    I    I    I    I    I
+         IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+      0--                                                  S                                                 C--  0
+        -                                                        S                                           C-
+        -                                                              S                                   C  -
+        -                                                                    S                           C    -
+        -                                                                          S                   C      -
+       --                                                                               S          C          --
+        -                                                                                    S C              -
+        -                                                                                  C      S           -
+        -                                                                             C              S        -
+        -                                                                       C                       S     -
+     10--                                                                 C                                S  --  10
+        -                                                           C                                       S -
+        -                                                     C                                              S-
+        -                                               C                                                    S-
+        -                                         C                                                         S -
+       --                                   C                                                              S  --
+        -                             C                                                                 S     -
+        -                       C                                                                    S        -
+        -                  C                                                                      S           -
+        -              C                                                                     S                -
+     20--          C                                                                    S                     --  20
+        -      C                                                                   S                          -
+        -    C                                                               S                                -
+        -  C                                                           S                                      -
+        -C                                                       S                                            -
+       --C                                                 S                                                  --
+        -C                                           S                                                        -
+        -  C                                   S                                                              -
+        -    C                           S                                                                    -
+        -      C                   S                                                                          -
+     30--          C          S                                                                               --  30
+        -              C S                                                                                    -
+        -           S      C                                                                                  -
+        -        S              C                                                                             -
+        -     S                       C                                                                       -
+       --  S                                C                                                                 --
+        - S                                       C                                                           -
+        -S                                              C                                                     -
+        -S                                                    C                                               -
+        - S                                                         C                                         -
+     40--  S                                                              C                                   --  40
+        -     S                                                                 C                             -
+        -        S                                                                    C                       -
+        -           S                                                                      C                  -
+        -                S                                                                     C              -
+       --                     S                                                                    C          --
+        -                          S                                                                   C      -
+        -                                S                                                               C    -
+        -                                      S                                                           C  -
+        -                                            S                                                       C-
+         IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+         I    I    I    I    I    I    I    I    I    I    I    I    I    I    I    I    I    I    I    I    I
+         0         10        20        30        40        50        60        70        80        90       100

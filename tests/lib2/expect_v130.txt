@@ -1,5 +1,3 @@
-Read job 'cernlib_v130.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,43 +24,30 @@ Read job 'cernlib_v130.dub'
 
 
 *NAME V130
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
-*EXECUTE
-≠
-         V130       01000                PROB       03425                ISOTCOS1 E 05231                I*ST*L   E 07230
-    OTCYTCTBYET  RAN3D                   FLOAT      03715                FMRTAPE    05251                I*MU*I   E 07231
-         PROGRAM  E 01000                ABS      E 03720                OCTTDEC    06200                I*PO*I     07244
-         *HSTBLK* C 01437                IABS     E 03723                LUNMUN   C 06233                I*PO*R   E 07255
-         BCDWRIT*   01533                IFIX     E 03725                JERRIO*  C 06234                R*PO*R   E 07255
-         FT*621   E 01533                AINT     E 03727                ERFXX      06235                R*TO*INT   07260
-         BCDENC*  E 01537                INT      E 03731                ERF      E 06236                R*TO*I   E 07261
-         FT*611   E 01537                SQRT     E 03733                ERFC     E 06237                RNDM       07273
-         FT*571   E 01541                SIN      E 03734                FREQ     E 06240                RNDM1    E 07313
-         FT*561   E 01544                COS      E 03735                DEXP       06576                CARD2    C 07372
-         NEXTLET* E 01551                ATAN     E 03736                DUBLPREC   06715                ISOICTTR   07417
-         RK*      E 01613                ALOG     E 03737                D*AD*D   E 06716                REVCARD    07454
-         WSY*     E 02051                EXP      E 03740                D*MU*D   E 07021                *ICHECK* C 07501
-         I/O*ERR  E 02311                ALOG10   E 03744                D*DI*D   E 07033                SIGN       07507
-         IOCONT*    02336                VZERO      03750                D*SU*D   E 07051                ISIGN    E 07513
-         IOAC*    E 02367                RNDDIR     04007                D*COMP   E 07102                IDIM     E 07515
-         FT*722   E 02402                CTIME      04060                D*LN*D   E 07104                DIM      E 07516
-         FT*642   E 02402                PTIME    E 04075                D*LO*D   E 07110                D*ST*I     07522
-         FT*002   E 02402                ITIME    E 04076                D*ST*D   E 07112                D*LO*I   E 07526
-         FD*642   E 02403                LOCF     E 04101                D*AD*R     07147                D*LN*I   E 07530
-         FD*722   E 02403                XLOC     E 04101                D*SU*R   E 07151                I*ST*D   E 07532
-         FC*722   E 02403                R*ST*I     04105                D*MU*R   E 07153                D*PO*I     07547
-         FC*642   E 02403                BCDBEG*    04115                D*DI*R   E 07155                R*PO*I     07614
-         FC*002   E 02403                FT2*     E 04422                D*ST*R     07164                POWER      07644
-         IOEND*   E 02410                KONV1*   E 04435                D*TO*I   E 07177                *ПEPФOPA   07713
-         FT*643   E 02410                PRINT8     04531                D*TO*R   E 07200                KOД*CDC  E 07714
-         FT*723   E 02410                TTPRINT    04712                D*LO*R   E 07202                CBOБOДHO   07754
-         FT*003   E 02410                BCDPUN     04751                D*LN*R   E 07204
-         STOP*      03376                EBCDPUN  E 04775                R*ST*D   E 07206
-         EXIT     E 03377                ISOTCOSY   05160                I*DI*I     07220
-≠
-------------------------------------------------------------
-   Elapsed time: 0.093 seconds
-      Simulated: 4248236 instructions
-Simulation rate: 45917444 instructions/sec
+*EXECUTE    TIMING FOR 20000 RANDOM 3-D VECTORS
+   CLASSICAL METHOD    0.0000         REJECTION METHOD    0.0000  SECONDS
+
+ THE FOLLOWING NUMBERS SHOULD BE AROUND 1000.     THE CHISQUARE SHOULD BE ABOUT 57.
+  989 1030  958  989 1032  985  975 1004 1053  993 1055  967  986 1007  992 1008  966 1003 1005 1003
+ 1025  960  940  994 1013 1000  960  966  994 1012  957 1038 1013 1007 1015 1003 1038  961 1048 1056
+ 1008 1000  956  986  946 1047  996  981  987 1000 1006 1069 1038  977 1008  957 1026 1039  970 1003
+
+ CHISQUARE=   54.1120         PROB.=  0.584117
+
+ THE FOLLOWING NUMBERS SHOULD BE AROUND 1000.     THE CHISQUARE SHOULD BE ABOUT 57.
+ 1030  954  985  991 1035  985 1011  973 1017 1002  971  973  990  974  981 1068  995 1004 1013 1048
+ 1017 1037  998 1007  987  985 1002 1007  976 1018 1012  999 1009  998 1017  990  955 1049  986  951
+  940 1037  957  956  975  961 1011  986 1052 1007 1024 1027  964 1009 1045 1025  988  985 1023 1028
+
+ CHISQUARE=   47.4440         PROB.=  0.812502
+
+ THE FOLLOWING NUMBERS SHOULD BE AROUND 1000.     THE CHISQUARE SHOULD BE ABOUT 57.
+  989 1016 1013 1054  969  994  969  955 1018  963 1032 1027  985  974 1029  993 1012  990 1001 1017
+  963  942 1000 1013 1034  995  992 1009 1063 1041 1055  941 1039 1052  974  954  968 1005  972  988
+ 1019 1030  986 1002  998  950  936  977 1005 1021  985 1019  991  948 1056  984 1030 1051  984 1028
+
+ CHISQUARE=   60.9540         PROB.=  0.335698

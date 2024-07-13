@@ -1,5 +1,3 @@
-Read job 'cernlib_d701.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,7 +24,8 @@ Read job 'cernlib_d701.dub'
 
 
 *NAME D701
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
@@ -85,7 +84,3 @@ Read job 'cernlib_d701.dub'
      S128  - S128        6.82-11
      S256  - S256        1.14-10
      S512  - S512        3.06-10
-------------------------------------------------------------
-   Elapsed time: 0.181 seconds
-      Simulated: 8083433 instructions
-Simulation rate: 44572430 instructions/sec

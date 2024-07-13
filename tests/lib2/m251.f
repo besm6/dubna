@@ -1,3 +1,4 @@
+*       This test fails when loading: OTCYTCTBYET  MINSTA MINISO MINEND
       PROGRAM M251
       COMMON/MINIFL/IFLAG
       DIMENSION MCAR(14,1000),MERR(1000)

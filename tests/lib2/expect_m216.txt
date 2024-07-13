@@ -1,5 +1,3 @@
-Read job 'cernlib_m216.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,29 +24,10 @@ Read job 'cernlib_m216.dub'
 
 
 *NAME M216
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
-≠
-         M216       01000                FT*642   E 01762                D*MU*D   E 03414                FMRTAPE    04676
-    OTCYTCTBYET  FDCONV                  FT*002   E 01762                D*DI*D   E 03426                OCTTDEC    05625
-         PROGRAM  E 01000                FD*642   E 01763                D*SU*D   E 03444                LUNMUN   C 05660
-         BCDWRIT*   01113                FD*722   E 01763                D*COMP   E 03475                JERRIO*  C 05661
-         FT*621   E 01113                FC*722   E 01763                D*LN*D   E 03477                DABS       05662
-         BCDENC*  E 01117                FC*642   E 01763                D*LO*D   E 03503                DSIGN      05666
-         FT*611   E 01117                FC*002   E 01763                D*ST*D   E 03505                CARD2    C 05735
-         FT*571   E 01121                IOEND*   E 01770                BCDBEG*    03542                ISOICTTR   05762
-         FT*561   E 01124                FT*643   E 01770                FT2*     E 04047                REVCARD    06017
-         NEXTLET* E 01131                FT*723   E 01770                KONV1*   E 04062                *ICHECK* C 06044
-         RK*      E 01173                FT*003   E 01770                PRINT8     04156                *ПEPФOPA   06052
-         WSY*     E 01431                STOP*      02756                TTPRINT    04337                KOД*CDC  E 06053
-         I/O*ERR  E 01671                EXIT     E 02757                BCDPUN     04376                CBOБOДHO   06113
-         IOCONT*    01716                DATAN      03005                EBCDPUN  E 04422
-         IOAC*    E 01747                DUBLPREC   03310                ISOTCOSY   04605
-         FT*722   E 01762                D*AD*D   E 03311                ISOTCOS1 E 04656
-≠
-------------------------------------------------------------
-   Elapsed time: 0.037 seconds
-      Simulated: 1750644 instructions
-Simulation rate: 47341572 instructions/sec
+ PI=  3. 1415 9265 3589 7932
+3846

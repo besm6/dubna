@@ -1,5 +1,3 @@
-Read job 'cernlib_w104.dub'
-------------------------------------------------------------
                                              04 ИЮЛ 24 23.45
  ЙOKCEЛ      БЭCM-6/5     ШИФP-12
  MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
@@ -26,15 +24,64 @@ Read job 'cernlib_w104.dub'
 
 
 *NAME W104
-*LIBRARY:1
+*LIBRARY:1,2,3,5,12,23
+*CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
 *EXECUTE
 ≠
-         W104       01000                PROGRAM  E 01000                EXIT     E 01013
-    OTCYTCTBYET  TRAJ                    STOP*      01012                CBOБOДHO   01041
+         W104       01000                JERRIO*  C 21720
+         PROGRAM  E 01000                BINARY     21721
+         STOP*      01012                TTPRINT    21740
+         EXIT     E 01013                ENDX       21777
+         TRAJ       01041                MICHL      22267
+         **       C 01336                RESULT     24115
+         BCDREAD*   06643                SET        25475
+         FT*521   E 06643         ИCПOPЧEHA ПOДПPOГPAMMA
+         BCDDEC*  E 06647                PRELIM     26502
+         FT*531   E 06647                START2     27234
+         FT*541   E 06651                MARSET     27551
+         IOCONT*    07140                UPDATE     27736
+         IOAC*    E 07171                OUTPT      30070
+         FT*722   E 07204                LAYBL      30465
+         FT*642   E 07204                FLOAT      30504
+         FT*002   E 07204                ABS      E 30507
+         FD*642   E 07205                IABS     E 30512
+         FD*722   E 07205                IFIX     E 30514
+         FC*722   E 07205                AINT     E 30516
+         FC*642   E 07205                INT      E 30520
+         FC*002   E 07205                SQRT     E 30522
+         IOEND*   E 07212                SIN      E 30523
+         FT*643   E 07212                COS      E 30524
+         FT*723   E 07212                ATAN     E 30525
+         FT*003   E 07212                ALOG     E 30526
+         *REWIN     10200                EXP      E 30527
+         *BACKS   E 10201                ALOG10   E 30533
+         *ENDFI   E 10202                SINGLE     30537
+         SCHEOF   E 10203                NPAND      30624
+         BINREAD*   10211                EXPAND     30677
+         FT*641   E 10211                FAILR      31053
+         BINWRIT* E 10242                TAPE       32176
+         FT*721   E 10242                AUGI       32601
+         MASTER     10336                R*ST*I     33114
+         CONVRT     16767                I*DI*I     33124
+         I*MUI*     17276                I*ST*L   E 33134
+         READ*      17304                I*MU*I   E 33135
+         TTREAD     17332                MONREAD*   33150
+         BCDBEG*    17370                READ*ERR E 33230
+         FT2*     E 17675                *ICHECK* C 33254
+         KONV1*   E 17710                BCDPUN     33262
+         FMRTAPE    20004                EBCDPUN  E 33306
+         LUNMUN   C 20733                ISOTCOSY   33471
+         PRINT8     20734                ISOTCOS1 E 33542
+         BCDWRIT*   21115                OCTTDEC    33562
+         FT*621   E 21115                MATMP2     33615
+         BCDENC*  E 21121                MATMP1     34004
+         FT*611   E 21121                AMOD       34200
+         FT*571   E 21123                MOD      E 34211
+         FT*561   E 21126                THETAC     34215
+         NEXTLET* E 21133                RES        34270
+         RK*      E 21175                THETAP     34560
+         WSY*     E 21433                CBOБOДHO   34642
+         I/O*ERR  E 21673
 ≠
-------------------------------------------------------------
-   Elapsed time: 0.021 seconds
-      Simulated: 1022543 instructions
-Simulation rate: 47573416 instructions/sec

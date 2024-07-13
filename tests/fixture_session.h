@@ -76,7 +76,7 @@ protected:
         std::string input_filename  = input_dir + file_base + ".f";
         std::string expect_filename = input_dir + "/expect_" + file_base + ".txt";
         std::string prolog          = "*name " + file_base + "\n" +
-                                      "*library:1,2,3,12\n" +
+                                      "*library:1,2,3,5,12,23\n" +
                                       "*call setftn:one,long\n" +
                                       "*no list\n" +
                                       "*no load list\n";

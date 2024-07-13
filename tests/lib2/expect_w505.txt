@@ -189,7 +189,7 @@
                                                   TOTAL NUMBER OF EVENTS IN PLOT=      8     SUM OF WEIGHTS=   4.1671-01
           INTERVAL        EVENTS     ERROR          EQUIVALENT UNWEIGHTED EVENTS=      7      NORMALIZATION=   4.1671-01
    --------------------   -------   -------
- 
+
     2.800-01   3.000-01  0.168334  0.168334   IXXXXXXXXX0XXXXXXXXX0XXXXXXXXX0XXXXXXXXX0XXXXXXXXX0XXXXXXXXX0XXXXXXXXX0XX
     3.000-01   3.200-01  0.000000  0.000000   I
     3.200-01   3.400-01  0.000000  0.000000   I
@@ -216,7 +216,7 @@
                                                   TOTAL NUMBER OF EVENTS IN PLOT=     26     SUM OF WEIGHTS=   1.4636+00
           INTERVAL        EVENTS     ERROR          EQUIVALENT UNWEIGHTED EVENTS=     22      NORMALIZATION=   1.4636+00
    --------------------   -------   -------
- 
+
     3.000-01   3.200-01  0.054525  0.054525   IXXXXXXXXX0XXXXXXXXX0XXXXXXXXX0
     3.200-01   3.400-01  0.000000  0.000000   I
     3.400-01   3.600-01  0.000000  0.000000   I
@@ -251,7 +251,7 @@
                                                   TOTAL NUMBER OF EVENTS IN PLOT=     30     SUM OF WEIGHTS=   2.0189+00
           INTERVAL        EVENTS     ERROR          EQUIVALENT UNWEIGHTED EVENTS=     28      NORMALIZATION=   2.0189+00
    --------------------   -------   -------
- 
+
     3.600-01   3.800-01  0.030234  0.030234   IXXXXXXXXX0XXXXXXXXX0XXX
     3.800-01   4.000-01  0.000000  0.000000   I
     4.000-01   4.200-01  0.000000  0.000000   I
@@ -288,7 +288,7 @@
                                                   TOTAL NUMBER OF EVENTS IN PLOT=     41     SUM OF WEIGHTS=   2.4912+00
           INTERVAL        EVENTS     ERROR          EQUIVALENT UNWEIGHTED EVENTS=     36      NORMALIZATION=   2.4912+00
    --------------------   -------   -------
- 
+
     3.000-01   3.200-01  0.027667  0.027667   IXXXXXXXXX0XXXXXXXXX0XXXXXXXXX0
     3.200-01   3.400-01  0.029872  0.029872   IXXXXXXXXX0XXXXXXXXX0XXXXXXXXX0XX
     3.400-01   3.600-01  0.034375  0.034375   IXXXXXXXXX0XXXXXXXXX0XXXXXXXXX0XXXXXXX
@@ -333,7 +333,7 @@
                                                   TOTAL NUMBER OF EVENTS IN PLOT=   1299     SUM OF WEIGHTS=   8.0470+01
           INTERVAL        EVENTS     ERROR          EQUIVALENT UNWEIGHTED EVENTS=   1146      NORMALIZATION=   8.0470+01
    --------------------   -------   -------
- 
+
     2.800-01   3.000-01  0.000980  0.000980   IXX
     3.000-01   3.200-01  0.008418  0.002840   IXXXXXXXXX0XXXXXXXX
     3.200-01   3.400-01  0.014696  0.003714   IXXXXXXXXX0XXXXXXXXX0XXXXXXXXX0XX
@@ -388,7 +388,7 @@
                                                   TOTAL NUMBER OF EVENTS IN PLOT=   1404     SUM OF WEIGHTS=   8.6860+01
           INTERVAL        EVENTS     ERROR          EQUIVALENT UNWEIGHTED EVENTS=   1238      NORMALIZATION=   8.6860+01
    --------------------   -------   -------
- 
+
     2.800-01   3.000-01  0.001716  0.001215   IXXX
     3.000-01   3.200-01  0.009511  0.002898   IXXXXXXXXX0XXXXXXXXX0
     3.200-01   3.400-01  0.014471  0.003546   IXXXXXXXXX0XXXXXXXXX0XXXXXXXXX0X
@@ -445,139 +445,139 @@
                                                                                      SUM OF WEIGHTS IS   4.1671-01
                                                                                   HIGHEST BIN CONTAINS   7.7699-02
             I         I         I         I         I         I         I         I         I         I         I         I
- 
+
     1.5000-
- 
+
     1.4800-
- 
+
     1.4600-
- 
+
     1.4400-
- 
+
     1.4200-
- 
+
     1.4000-
- 
+
     1.3800-
- 
+
     1.3600-
- 
+
     1.3400-
- 
+
     1.3200-
- 
+
     1.3000-
- 
+
     1.2800-
- 
+
     1.2600-
- 
+
     1.2400-
- 
+
     1.2200-
- 
+
     1.2000-
- 
+
     1.1800-
- 
+
     1.1600-
- 
+
     1.1400-
- 
+
     1.1200-
- 
+
     1.1000-
- 
+
     1.0800-
- 
+
     1.0600-
- 
+
     1.0400-
- 
+
     1.0200-
- 
+
     1.0000-
- 
+
     0.9800-
- 
+
     0.9600-
- 
+
     0.9400-
- 
+
     0.9200-
- 
+
     0.9000-
- 
+
     0.8800-
- 
+
     0.8600-
- 
+
     0.8400-
- 
+
     0.8200-
- 
+
     0.8000-
- 
+
     0.7800-
- 
+
     0.7600-
- 
+
     0.7400-
- 
+
     0.7200-
- 
+
     0.7000-
                                                            4
     0.6800-
- 
+
     0.6600-
- 
+
     0.6400-
                                                      7
     0.6200-
- 
+
     0.6000-
- 
+
     0.5800-
- 
+
     0.5600-
                                              3
     0.5400-
- 
+
     0.5200-
- 
+
     0.5000-
                                        9
     0.4800-
- 
+
     0.4600-
- 
+
     0.4400-
                                  6
     0.4200-
                                3
     0.4000-
- 
+
     0.3800-
- 
+
     0.3600-
                          9
     0.3400-
- 
+
     0.3200-
- 
+
     0.3000-
                    9
     0.2800-
- 
+
     0.2600-
- 
+
     0.2400-
- 
+
     0.2200-
- 
+
     0.2000-
- 
+
             I         I         I         I         I         I         I         I         I         I         I         I
            0.2000    0.3000    0.4000    0.5000    0.6000    0.7000    0.8000    0.9000    1.0000    1.1000    1.2000    1.3000
 
@@ -590,7 +590,7 @@
                                                   TOTAL NUMBER OF EVENTS IN PLOT=     15     SUM OF WEIGHTS=   9.1132-01
           INTERVAL        EVENTS     ERROR          EQUIVALENT UNWEIGHTED EVENTS=     13      NORMALIZATION=   9.1132-01
    --------------------   -------   -------
- 
+
     2.800-01   3.000-01  0.076973  0.076973   IXXXXXXXXX0XXXXXXXXX0XXXXXXXXX0XXXXX
     3.000-01   3.200-01  0.000000  0.000000   I
     3.200-01   3.400-01  0.000000  0.000000   I
@@ -617,7 +617,7 @@
                                                   TOTAL NUMBER OF EVENTS IN PLOT=     46     SUM OF WEIGHTS=   2.6134+00
           INTERVAL        EVENTS     ERROR          EQUIVALENT UNWEIGHTED EVENTS=     38      NORMALIZATION=   2.6134+00
    --------------------   -------   -------
- 
+
     3.000-01   3.200-01  0.030536  0.030536   IXXXXXXXXX0XXXXXX
     3.200-01   3.400-01  0.000000  0.000000   I
     3.400-01   3.600-01  0.000000  0.000000   I
@@ -654,7 +654,7 @@
                                                   TOTAL NUMBER OF EVENTS IN PLOT=     62     SUM OF WEIGHTS=   3.8208+00
           INTERVAL        EVENTS     ERROR          EQUIVALENT UNWEIGHTED EVENTS=     55      NORMALIZATION=   3.8208+00
    --------------------   -------   -------
- 
+
     2.800-01   3.000-01  0.021769  0.021769   IXXXXXXXXX0XXXXXXXXX0XX
     3.000-01   3.200-01  0.000000  0.000000   I
     3.200-01   3.400-01  0.000000  0.000000   I
@@ -695,7 +695,7 @@
                                                   TOTAL NUMBER OF EVENTS IN PLOT=     89     SUM OF WEIGHTS=   5.2003+00
           INTERVAL        EVENTS     ERROR          EQUIVALENT UNWEIGHTED EVENTS=     76      NORMALIZATION=   5.2003+00
    --------------------   -------   -------
- 
+
     3.000-01   3.200-01  0.013254  0.013254   IXXXXXXXXX0XXXXXXX
     3.200-01   3.400-01  0.032780  0.023365   IXXXXXXXXX0XXXXXXXXX0XXXXXXXXX0XXXXXXXXX0XXX
     3.400-01   3.600-01  0.047020  0.027171   IXXXXXXXXX0XXXXXXXXX0XXXXXXXXX0XXXXXXXXX0XXXXXXXXX0XXXXXXXXX0XX
@@ -740,7 +740,7 @@
                                                   TOTAL NUMBER OF EVENTS IN PLOT=   2593     SUM OF WEIGHTS=   1.5993+02
           INTERVAL        EVENTS     ERROR          EQUIVALENT UNWEIGHTED EVENTS=   2286      NORMALIZATION=   1.5993+02
    --------------------   -------   -------
- 
+
     2.800-01   3.000-01  0.002939  0.001203   IXXXXXX
     3.000-01   3.200-01  0.009443  0.002097   IXXXXXXXXX0XXXXXXXXX0XX
     3.200-01   3.400-01  0.012587  0.002433   IXXXXXXXXX0XXXXXXXXX0XXXXXXXXX
@@ -795,7 +795,7 @@
                                                   TOTAL NUMBER OF EVENTS IN PLOT=   2805     SUM OF WEIGHTS=   1.7247+02
           INTERVAL        EVENTS     ERROR          EQUIVALENT UNWEIGHTED EVENTS=   2469      NORMALIZATION=   1.7247+02
    --------------------   -------   -------
- 
+
     2.800-01   3.000-01  0.003614  0.001281   IXXXXXXXX
     3.000-01   3.200-01  0.009618  0.002038   IXXXXXXXXX0XXXXXXXXX0XX
     3.200-01   3.400-01  0.012660  0.002363   IXXXXXXXXX0XXXXXXXXX0XXXXXXXXX
@@ -852,93 +852,93 @@
                                                                                      SUM OF WEIGHTS IS   9.1132-01
                                                                                   HIGHEST BIN CONTAINS   1.5906-01
             I         I         I         I         I         I         I         I         I         I         I         I
- 
+
     1.5000-
- 
+
     1.4800-
- 
+
     1.4600-
- 
+
     1.4400-
- 
+
     1.4200-
- 
+
     1.4000-
- 
+
     1.3800-
- 
+
     1.3600-
- 
+
     1.3400-
- 
+
     1.3200-
- 
+
     1.3000-
- 
+
     1.2800-
- 
+
     1.2600-
- 
+
     1.2400-
- 
+
     1.2200-
- 
+
     1.2000-
- 
+
     1.1800-
- 
+
     1.1600-
- 
+
     1.1400-
- 
+
     1.1200-
- 
+
     1.1000-
- 
+
     1.0800-
- 
+
     1.0600-
- 
+
     1.0400-
- 
+
     1.0200-
- 
+
     1.0000-
- 
+
     0.9800-
- 
+
     0.9600-
- 
+
     0.9400-
- 
+
     0.9200-
- 
+
     0.9000-
- 
+
     0.8800-
- 
+
     0.8600-
- 
+
     0.8400-
- 
+
     0.8200-
- 
+
     0.8000-
- 
+
     0.7800-
- 
+
     0.7600-
- 
+
     0.7400-
- 
+
     0.7200-
- 
+
     0.7000-
                                                            2
     0.6800-
- 
+
     0.6600-
- 
+
     0.6400-
                                                      3
     0.6200-
@@ -956,34 +956,34 @@
     0.5000-
                                        4
     0.4800-
- 
+
     0.4600-
- 
+
     0.4400-
                                  8
     0.4200-
                                1
     0.4000-
- 
+
     0.3800-
- 
+
     0.3600-
                          9
     0.3400-
- 
+
     0.3200-
- 
+
     0.3000-
                    4
     0.2800-
- 
+
     0.2600-
- 
+
     0.2400-
- 
+
     0.2200-
- 
+
     0.2000-
- 
+
             I         I         I         I         I         I         I         I         I         I         I         I
            0.2000    0.3000    0.4000    0.5000    0.6000    0.7000    0.8000    0.9000    1.0000    1.1000    1.2000    1.3000

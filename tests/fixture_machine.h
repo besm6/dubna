@@ -52,6 +52,51 @@ protected:
     //
     // Run test from Cern library.
     //
+    void run_job_and_check_output(const std::string &expect_filename, const std::string &input)
+    {
+        std::string job_filename     = get_test_name() + ".dub";
+        std::string expect_file_path = TEST_DIR "/" + expect_filename;
+
+        // Create job file.
+        create_file(job_filename, input);
+
+        // Redirect stdout.
+        std::streambuf *save_cout = std::cout.rdbuf();
+        std::ostringstream output;
+        std::cout.rdbuf(output.rdbuf());
+
+        // Run the job.
+        try {
+            machine->load(job_filename);
+            machine->boot_ms_dubna();
+            machine->run();
+            machine->plotter.finish();
+        } catch (const std::exception &ex) {
+            FAIL() << ex.what();
+            return;
+        } catch (...) {
+            FAIL() << "Exception";
+            return;
+        }
+
+        // Get output.
+        std::cout.rdbuf(save_cout);
+        std::string result = output.str();
+
+        // Check result.
+        auto expect = file_contents(expect_file_path);
+        //check_output(result, expect);
+        EXPECT_EQ(result, expect);
+
+        if (::testing::Test::HasFailure()) {
+            // Save result for debug.
+            create_file(expect_filename, result);
+        }
+    }
+
+    //
+    // Run test from Cern library.
+    //
     void test_cernlib(unsigned lib_num, const std::string &file_base)
     {
         std::string job_filename    = get_test_name() + ".dub";

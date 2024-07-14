@@ -28,10 +28,8 @@
 *CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
- ABTOKOД  MADLEN
-   (1.10.72)
- ПOДПPOГPAMMA  C231
- ******HEOПИCAHHЫЙ ИДEHTИФИKATOP           /105
- 0023                        14, VTM ,  /105
 *EXECUTE
- БЫЛИ OШИБKИ ПPИ BBOДE ИЛИ TPAHCЛЯЦИИ !!!
+ EPS=    1.375-12     XBAD=    3.087+00
+ BPEMЯ CЧETA PABHO   0.00+00     MKCEK.
+ BPEMЯ CЧETA PABHO   0.00+00     MKCEK.
+ BPEMЯ CЧETA PABHO   0.00+00     MKCEK.

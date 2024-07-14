@@ -98,12 +98,14 @@ protected:
         std::cout.rdbuf(save_cout);
         std::string result = output.str();
 
-        // Save result for debug.
-        // create_file("expect_" + file_base + ".txt", result);
-
         // Check result.
         auto expect = file_contents(expect_filename);
         check_output(result, expect);
+
+        if (::testing::Test::HasFailure()) {
+            // Save result for debug.
+            create_file("expect_" + file_base + ".txt", result);
+        }
     }
 
     //

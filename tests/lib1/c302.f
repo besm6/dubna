@@ -27,7 +27,7 @@
       BI0M=BESI0(-X)
       BI1M=BESI1(-X)
     5 PRINT 15, X,BJ0P,BJ0M,BJ1P,BJ1M,BI0P,BI0M,BI1P,BI1M
-
+c
       PRINT 16
       DO 6 I = 1,175
       IF(MOD(I,5) .EQ. 0) PRINT 8
@@ -37,7 +37,7 @@
       BY0=BESY0(X)
       BY1=BESY1(X)
     6 PRINT 17, X,BJ0,BJ1,BY0,BY1
-
+c
    49 DO 50 J = 1,8
       PRINT 70, FNAME(J)
       DO 51 I = 1,17
@@ -250,7 +250,7 @@
       DATA (DFACT( 78) =             1.1324281178206297831457521152D115)
       DATA (DFACT( 79) =             8.9461821307829752868514417100D116)
       DATA (DFACT( 80) =             7.1569457046263802294811533680D118)
-
+c
       DATA (DPSI (  1) =            -0.5772156649015328606065120901D-00)
       DATA (DPSI (  2) =             4.2278433509846713939348790991D-01)
       DATA (DPSI (  3) =             9.2278433509846713939348790991D-01)
@@ -267,7 +267,7 @@
       DATA (DPSI ( 14) =             2.6029180902322222731486216648D+00)
       DATA (DPSI ( 15) =             2.6743466616607937017200502362D+00)
       DATA (DPSI ( 16) =             2.7410133283274603683867169028D+00)
-
+c
       DATA (DPSI ( 17) =             2.8035133283274603683867169028D+00)
       DATA (DPSI ( 18) =             2.8623368577392250742690698439D+00)
       DATA (DPSI ( 19) =             2.9178924132947806298246253994D+00)
@@ -379,7 +379,7 @@
       RETURN
    52 DBES=DSQRT(D2DPI/X)*(Q*DCOS(XI)+P*DSIN(XI))
       RETURN
-
+c
       ENTRY DYN
       IF(XX .LE. 0.D0) GO TO 100
       X=XX
@@ -418,7 +418,7 @@
       RETURN
    31 DBES=(S1/F**N-S*(-F)**N/DFACT(NF))/2.0D0
       RETURN
-
+c
       ENTRY DIN
       X=DABS(XX)
       SIGN=+1.0D0
@@ -441,7 +441,7 @@
       RETURN
    30 DBES=S*DSQRT(DPID2/X)*DEXP(-X)
       RETURN
-
+c
       ENTRY DKN
       IF(XX .LE. 0.D0) GO TO 100
       X=XX
@@ -454,14 +454,14 @@
       XKN=X
       DBES=GAUSS (FKN,0.,3.5,10.0**(-INT(XKN)/2-12))
       RETURN
-
+c
   100 DBES=0.0D0
       RETURN
       END
       FUNCTION FKN(T)
-
+c
       COMMON /FORKN/ NKN,XKN
-
+c
       ET=EXP(T)
       COSHT=0.5*(ET+1.0/ET)
       FKN=EXP(-XKN*COSHT)
@@ -470,5 +470,3 @@
       RETURN
       END
 *EXECUTE
-*
-*

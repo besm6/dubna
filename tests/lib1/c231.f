@@ -8,8 +8,8 @@
       Y=CBRT(X)
       Z=Y**3
       D=ABS((X-Z)/(X+Z))/3.
-      PRINT 105,LL,E,R,F,FP,G,GP,S
- 100  FORMAT(1X,4E25.12)
+c     PRINT 105,LL,E,R,F,FP,G,GP,S
+c100  FORMAT(1X,4E25.12)
       IF(D.LE.EPS)  GO TO 10
       EPS=D
       XB=X

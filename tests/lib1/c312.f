@@ -362,7 +362,7 @@
       RETURN
    52 DBES=DSQRT(D2DPI/X)*(Q*DCOS(XI)+P*DSIN(XI))
       RETURN
-
+c
       ENTRY DYN
       IF(XX .LE. 0.D0) GO TO 100
       X=XX
@@ -401,7 +401,7 @@
       RETURN
    31 DBES=(S1/F**N-S*(-F)**N/DFACT(NF))/2.0D0
       RETURN
-
+c
       ENTRY DIN
       IF(XX.GE.43.7) GO TO 100
       X=DABS(XX)
@@ -438,7 +438,7 @@
       XKN=X
       DBES=GAUSS (FKN,0.,3.5,10.0**(-INT(XKN)/2-12))
       RETURN
-
+c
   100 DBES=0.0D0
       RETURN
       END
@@ -452,5 +452,3 @@
       RETURN
       END
 *EXECUTE
-*
-*

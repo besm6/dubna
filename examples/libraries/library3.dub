@@ -1,7 +1,5 @@
 *name библиотека 3
 *tape:37/librar,32
-*perso:320340
-*
 *call setftn:one,long
-*call tcatalog
+*call librefer:tape=320340
 *end file

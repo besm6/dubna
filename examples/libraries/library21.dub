@@ -1,6 +1,5 @@
 *name библиотека 21
-*perso:300240
-*
+*tape:9/monsys,32
 *call setftn:one,long
-*call tcatalog
+*call librefer:tape=320240
 *end file

@@ -24,174 +24,1506 @@
 
 
 *NAME БИБЛИOTEKA 22
-*PERSO:300172
- 310888
-*  !        Ъ!  Ъ!  Ъ!!
+*TAPE:9/******,32
 *CALL SETFTN:ONE,LONG
-*CALL TCATALOG                                             04 ИЮЛ 24 23.45
-                      TEMPORARY LIBRARY
-                     CBOБOДHO  22 07 05
+*CALL LIBREFER:TAPE=320172                                             04 ИЮЛ 24 23.45
+                     CCЫЛKИ HA ПOДПPOГPAMMЫ
 
-   *ASPID   (ASPID*  )  00000    INTTOCHA (ANTRA   )  00261
-   *PUNCHER (MADLENI*)  01000    IRA      (IWA     )  00016
-   /MACPAR/ (MADLENI*)  06405    IRB      (IWB     )  00016
-   ANTRA      21 02 13  01566    ITC        21 13 15  00403
-   ASCARD   (ASPID*W )  00015    IWA        21 13 13  00034
-   ASPID      21 13 30  00100    IWB        21 01 00  00034
-   ASPID*     21 12 24  00003    KETVIRTA   21 04 01  02215
-   ASPID*D  (ASPID*W )  00002    KLAIDA   (PIRMA   )  00017
-   ASPID*W    21 17 01  00177    LADR     (IWA     )  00031
-   ASWRIT     21 16 34  00042    LIBSUB     21 26 17  00054
-   BCD        21 12 34  00212    LINE       21 14 36  00542
-   BEGPAGE  (ANTRA   )  01154    LSPACE     21 15 35  00023
-   BEGPR      21 16 01  00115    MACRO      21 14 12  00217
-   BEGSTRIN (ANTRA   )  00675    MADLEN*3   21 35 15  12606
-   BUFCH      21 16 21  00130    MADLENI*   21 31 24  06704
-   BUFPER   (MADLENI*)  01000    MDL*6T8S (MDL*REF )  00377
-   CENTER     21 11 37  00074    MDL*6T8W (MDL*REF )  00353
-   CHARTOIN (PIRMA   )  00533    MDL*REF    22 03 15  00737
-   CHTYPE     21 12 30  00064    MDLCARD*   21 31 00  00743
-   CLEARSTR (ANTRA   )  00230    MIDDLE   (PENKTA  )  00232
-   CNVRTN     21 11 35  00050    NEWPAGE  (PIRMA   )  01106
-   CONSUM     21 10 22  02263    NEWSTRIN (TRECIA  )  00017
-   COPAGE     21 12 01  00051    OBPROG     21 26 16  00014
-   DEBUGING (PIRMA   )  00140    OCTDEC   (FORIN   )  00033
-   DISCRIPT (MADLENI*)  00000    OUTBEG     21 12 14  00246
-   DOUBLE   (TRECIA  )  00352    OUTEND   (OUTBEG  )  00002
-   ENDPAGE  (ANTRA   )  01315    OUTPAG   (OUTBEG  )  00001
-   ENDPR      21 16 05  00362    OUTPUT     21 11 21  01066
-   ENDSTRIN (ANTRA   )  01417    P/00       21 21 06  00016
-   ERROR      21 15 31  00100    P/01       21 20 26  00225
-   EXECINST (REDTXT  )  02005    P/02       21 20 33  00115
-   EXFILTOM (TRECIA  )  00725    P/03       21 20 36  00065
-   EXMASE   (KETVIRTA)  02000    P/04       21 21 00  00051
-   EXNEWTOL (TRECIA  )  00135    P/06       21 21 02  00035
-   EXTITC   (PENKTA  )  01470    P/07       21 21 07  00013
-   EXVERTOS (PIRMA   )  01450    P/08       21 21 04  00027
-   FINDINST (FINSIGN )  01021    P/0П       21 21 05  00021
-   FINSIGN    21 06 13  01233    P/1        21 24 22  00004
-   FMDEL    (FMOPEN  )  00023    P/2        21 17 23  00004
-   FMGET    (FMOPEN  )  00022    P/3        21 17 24  00004
-   FMISGO     21 26 26  00013    P/31       21 17 11  00002
-   FMMOD    (FMOPEN  )  00024    P/4        21 17 25  00004
-   FMOPEN     21 17 07  00025    P/41       21 17 12  00003
-   FMPUT    (FMOPEN  )  00021    P/42       21 17 13  00002
-   FOMA***    22 03 37  02242    P/5        21 17 26  00004
-   FORBEG   (FORIN   )  00026    P/51       21 17 14  00004
-   FORIN      21 12 25  00071    P/52       21 17 15  00003
-   FORNUM   (FORIN   )  00015    P/53       21 17 16  00002
-   FRINP    (PENKTA  )  00136    P/6        21 17 27  00004
-   FRSTRHEL (PENKTA  )  00160    P/61       21 17 17  00005
-   GETCH      21 16 36  00065    P/62       21 17 20  00004
-   GETINT     21 11 33  00070    P/63       21 17 21  00003
-   GETSTRIN (REDTXT  )  00161    P/64       21 17 22  00002
-   GSTEXT*  (MADLENI*)  06525    P/6A       21 17 32  00002
-   HIS        21 17 06  00023    P/7A       21 20 13  00015
-   HYPHEN     21 15 13  00325    P/7AD    (P/7A    )  00002
-   IBCD     (BCD     )  00001    P/A6       21 22 10  00007
-   IDENTIFY (REDTXT  )  01461    P/A7       21 20 11  00006
-   IDIC       21 13 01  00441    P/AB     (P/CP    )  00013
-   INIT       21 14 04  00053    P/B6     (P/PB    )  00007
-   INITLIB  (MADLENI*)  06207    P/B7     (P/PB    )  00003
-   INTSYM     21 12 07  00005    P/BEXF     21 24 10  00005
-   P/BP     (P/PB    )  00011    P/RR       21 22 31  00011
-   P/BX       21 24 23  00026    P/RSR      21 22 20  00016
-   P/CA       21 25 25  00013    P/SC       21 25 21  00010
-   P/CE     (P/CI    )  00025    P/SETEXF   21 21 24  00011
-   P/CI       21 23 02  00040    P/SP       21 21 23  00006
-   P/CK       21 20 20  00044    P/SS       21 20 10  00002
-   P/CO     (P/SYS   )  00034    P/STAR     21 20 23  00012
-   P/CP       21 21 30  00020    P/SYS      21 25 27  00761
-   P/CW       21 17 30  00002    P/TF     (P/SYS   )  00726
-   P/D1       21 21 34  00007    P/TR       21 22 35  00003
-   P/DA       21 20 15  00013    P/TRPAGE   21 20 04  00032
-   P/DD       21 26 13  00017    P/TXGOST   21 20 12  00032
-   P/DI       21 17 37  00004    P/UN       21 17 35  00005
-   P/DIV    (P/SYS   )  00020    P/WA       21 23 04  00010
-   P/DS       21 22 37  00071    P/WC       21 17 33  00005
-   P/E      (P/EF    )  00003    P/WI       21 22 01  00061
-   P/EA       21 22 24  00020    P/WL     (P/SYS   )  00571
-   P/EDIH   (P/HIDE  )  00003    P/WO       21 20 24  00031
-   P/EF       21 22 14  00006    P/WOLN   (P/SYS   )  00570
-   P/EL       21 21 27  00005    P/WR       21 25 04  00212
-   P/EN     (P/BX    )  00012    P/WX       21 25 02  00025
-   P/EO       21 20 03  00001    P/WXD    (P/WX    )  00007
-   P/EQ       21 24 30  00014    PACK       21 12 11  00016
-   P/ER       21 25 22  00007    PAGE       21 14 25  00322
-   P/FM     (P/MF    )  00012    PAGECHAN (ANTRA   )  00156
-   P/GD     (P/NW    )  00054    PAGESTAN (ANTRA   )  00051
-   P/GE     (P/EQ    )  00005    PAIB     (LIBSUB  )  00067
-   P/GF     (P/SYS   )  00312    PASACD     21 24 37  00016
-   P/HIDE     21 17 31  00006    PASADD   (PASBIND )  00025
-   P/HT       21 25 26  00012    PASBD    (PASBDI  )  00062
-   P/IN       21 20 01  00010    PASBDE     21 24 36  00001
-   P/IS       21 17 36  00003    PASBDI     21 24 31  00123
-   P/IT     (P/SYS   )  00032    PASBIND    21 22 11  00042
-   P/KC       21 20 22  00013    PASCODAD   21 21 35  00005
-   P/LDAR     21 20 16  00010    PASCONTR   21 22 36  00001
-   P/LDARIN   21 20 17  00010    PASCTRP  (P/SYS   )  00237
-   P/LNGPAR   21 20 14  00006    PASDIH   (PASHID  )  00003
-   P/LV       21 24 27  00003    PASDIV     21 22 13  00014
-   P/MD       21 20 06  00007    PASENDED   21 22 32  00021
-   P/MF       21 24 25  00024    PASEOF     21 24 11  00017
-   P/MI       21 20 07  00003    PASEVN     21 22 07  00021
-   P/MOD    (P/SYS   )  00014    PASGIVEP (P/SYS   )  00456
-   P/NN       21 26 11  00046    PASGOST    21 21 10  00015
-   P/NW       21 24 17  00062    PASGOST7   21 21 11  00425
-   P/PA       21 17 34  00007    PASGVNF    21 24 13  00113
-   P/PAGES    21 25 20  00001    PASHELP    21 23 06  01463
-   P/PAMPAM   21 21 26  00003    PASHID     21 22 06  00007
-   P/PB       21 22 21  00103    PASINBUF (P/SYS   )  00421
-   P/PF     (P/SYS   )  00537    PASINP   (PASBIND )  00031
-   P/PI       21 20 00  00007    PASISOCD   21 22 33  00001
-   P/PMDSET (PASPMD  )  00033    PASISOXT   21 24 12  00032
-   P/PRINT  (PASOUT  )  00001    PASLIST    21 21 25  00011
-   P/RA       21 23 05  00011    PASMON2    21 24 26  00004
-   P/RA7      21 22 16  00026    PASNB8     21 22 05  00010
-   P/RACPAK (P/SYS   )  00351    PASOUT     21 30 35  00104
-   P/RC       21 20 02  00024    PASPMD     21 22 25  00141
-   P/RDI      21 21 31  00043    PASRED     21 25 12  00246
-   P/RDR      21 25 23  00041    PASSETAR   21 25 00  00006
-   P/RE       21 26 14  00026    PASTENS  (P/WR    )  00166
-   P/RE1    (P/SYS   )  00042    PASTIME    21 21 36  00063
-   P/RE2    (P/SYS   )  00204    PASTN    (PASOUT  )  00037
-   P/RF     (P/SYS   )  00643    PASTPR     21 22 04  00004
-   P/RI       21 25 01  00002    PASWHT   (PASOUT  )  00053
-   P/RILN     21 21 33  00007    PENKTA     21 05 12  01625
-   P/RL     (P/RILN  )  00001    PIRMA      21 01 02  02140
-   POINT      21 12 13  00031
-   PRENT      21 14 07  00050
-   PRETTYPR   21 26 27  04143
-   PRIM       21 15 37  00035
-   PRINT      21 16 25  03141
-   PRINT8**   22 05 13  00354
-   PROOF    (SETCH   )  00022
-   PULT       21 26 15  00006
-   QRESET   (MADLENI*)  06511
-   QUESTION (KETVIRTA)  00362
-   READ       21 12 33  00005
-   REDTXT     21 07 04  02403
-   REWCHR   (SETCH   )  00024
-   RRR        21 10 21  00003
-   SERVCM     21 12 12  00025
-   SETCH      21 13 26  00047
-   SKIP       21 12 03  00065
-   SLASH    (SETCH   )  00023
-   STOLIB   (MADLENI*)  06234
-   STRINGTO (ANTRA   )  00017
-   SYMINT     21 12 06  00005
-   TAB        21 14 21  00116
-   TIME     (PASTIME )  00006
-   TOPULT     21 26 21  00142
-   TOSTRHEL (PENKTA  )  00210
-   TRECIA     21 03 13  01070
-   UNPACK     21 12 10  00015
-   WORD       21 15 23  00163
-   WORDTOST (FINSIGN )  00537
-   WRDOWREC (PIRMA   )  01314
-   WRICON   (PENKTA  )  01100
-   WRISTRPA (PIRMA   )  00070
-   WRTOPREC (PIRMA   )  01264
-   WTOLIB   (MADLENI*)  06214
+                                 BUFPER   (MADLENI*)
+   D - PACCЫЛKA ДAHHЫX           CENTER    E I*DI*I
+   E - BHEШHЯЯ П/П               CHARTOIN (PIRMA   )
+                                 CHTYPE
+   *ASPID   (ASPID*  )           CLEARSTR (ANTRA   )
+   *PUNCHER (MADLENI*)           CNVRTN      SYMINT
+   /MACPAR/ (MADLENI*)           CONSUM   D  CENTER
+   ANTRA       DEBUGING                      CNVRTN
+             E NEWLIS                        COPAGE
+               P/08                          GETINT
+               P/1                         E I*DI*I
+               P/2                         E I*MU*I
+               P/7A                          INTSYM
+               P/CK                          OUTPUT
+               P/CO                          SKIP
+               P/CW                          SYMINT
+               P/DI                          UNPACK
+               P/E               COPAGE      OUTPUT
+               P/EF                          SKIP
+               P/IT              DEBUGING (PIRMA   )
+               P/LDAR            DISCRIPT (MADLENI*)
+               P/MD              DOUBLE   (TRECIA  )
+               P/MI              ENDPAGE  (ANTRA   )
+               P/NN              ENDPR       ERROR
+               P/PF                        E F/SAVER
+               P/STAR                      E F/SRET
+               P/WL                          GETCH
+               P/WOLN                        MACRO
+               WRDOWREC                      TAB
+               WRTOPREC          ENDSTRIN (ANTRA   )
+   ASCARD   (ASPID*W )           ERROR     E F/NOSVR
+   ASPID     E F/LOOP                      E F/SRETNR
+             E F/SAVER           EXECINST (REDTXT  )
+             E F/SRET            EXFILTOM (TRECIA  )
+               INIT              EXMASE   (KETVIRTA)
+               PAGE              EXNEWTOL (TRECIA  )
+               PRINT             EXTITC   (PENKTA  )
+               REWCHR            EXVERTOS (PIRMA   )
+               SETCH             FINDINST (FINSIGN )
+               SLASH             FINSIGN     BEGSTRIN
+   ASPID*    E LOADCALL                      DEBUGING
+   ASPID*D  (ASPID*W )                       ENDSTRIN
+   ASPID*W   E KILNUMPG                      NEWSTRIN
+             E LOADANGO                      P/1
+             E OCTTDEC                       P/2
+             E PRINT8                        P/3
+             E READ*                         P/CO
+   ASWRIT    E F/SRET                        P/DI
+             E F/SSTART                      P/E
+             E MT9                           P/EF
+             E MT9A                          P/IN
+   BCD                                       P/IT
+   BEGPAGE  (ANTRA   )                       P/MI
+   BEGPR       ERROR                         P/NN
+             E F/NOSVR           FMDEL    (FMOPEN  )
+             E F/SRETNR          FMGET    (FMOPEN  )
+               FORBEG            FMISGO      P/08
+               FORIN                         P/E
+               FORNUM                        P/LDAR
+               GETCH                         PASISOCD
+   BEGSTRIN (ANTRA   )           FMMOD    (FMOPEN  )
+   BUFCH     E F/SAVER           FMOPEN      FMISGO
+             E F/SRET                        PASBD
+               PASBDI                        P/STAR
+   FMPUT    (FMOPEN  )                       P/TF
+   FOMA***     BUFPER                        WORDTOST
+               MADLEN*3          KLAIDA   (PIRMA   )
+               MDL*6T8W          LADR     (IWA     )
+               PRINT8**          LIBSUB    E MONREAD*
+   FORBEG   (FORIN   )                     E PRINT8
+   FORIN                         LINE        ERROR
+   FORNUM   (FORIN   )                     E F/LOOP
+   FRINP    (PENKTA  )                     E F/SAVER
+   FRSTRHEL (PENKTA  )                     E F/SRET
+   GETCH       ASCARD                        HYPHEN
+             E F/SAVER                     E R*TO*I
+             E F/SRET                        WORD
+             E IGETS             LSPACE    E F/LOOP
+               ITC                         E F/SAVER
+               PRENT                       E F/SRET
+   GETINT    E I*MU*I                        SETCH
+               SYMINT            MACRO       BEGPR
+   GETSTRIN (REDTXT  )                       ERROR
+   GSTEXT*  (MADLENI*)                     E F/SAVER
+   HIS       E DATE                        E F/SRET
+   HYPHEN      CHTYPE                        FORBEG
+             E F/SAVER                       FORIN
+             E F/SRET                        GETCH
+   IBCD     (BCD     )           MADLEN*3    *PUNCHER
+   IDENTIFY (REDTXT  )                       /MACPAR/
+   IDIC        PRENT                         BUFPER
+               READ                          DISCRIPT
+   INIT        ENDPR                         FOMA***
+             E F/SAVER                       GSTEXT*
+             E F/SRET                        INITLIB
+               GETCH                         MDL*6T8S
+               PRIM                          MDL*6T8W
+   INITLIB  (MADLENI*)                       MDL*REF
+   INTSYM                                    PRINT8**
+   INTTOCHA (ANTRA   )                     E PRINT8
+   IRA      (IWA     )                       QRESET
+   IRB      (IWB     )                     E READ*
+   ITC                                     E SAVE*
+   IWA                                       STOLIB
+   IWB                                       WTOLIB
+   KETVIRTA    BEGPAGE           MADLENI*  E COSYTISO
+               CHARTOIN                    E DRUMTAP*
+               DEBUGING                      FOMA***
+               ENDPAGE                       MADLEN*3
+               EXECINST                      MDL*REF
+               GETSTRIN                    E MONITOR*
+               IDENTIFY                    E MONREAD*
+               KLAIDA                        PRINT8**
+               NEWSTRIN                    E PRINT8
+               P/08                        E READ*
+               P/1                         E SAVE*
+               P/2                         E STOP*
+               P/CK              MDL*6T8S (MDL*REF )
+               P/CO              MDL*6T8W (MDL*REF )
+               P/E               MDL*REF     BUFPER
+               P/EF                          FOMA***
+               P/EO                          PRINT8**
+               P/GF              MDLCARD*  E MONREAD*
+               P/IT                        E PARAMT*
+               P/MI                        E PRINT8
+               P/NN                        E TEXISO
+               P/PF              MIDDLE   (PENKTA  )
+               P/RF              NEWPAGE  (PIRMA   )
+   NEWSTRIN (TRECIA  )                       P/WXD
+   OBPROG                        P/DA        P/7A
+   OCTDEC   (FORIN   )                       P/HT
+   OUTBEG   DE I*MUI*                        P/WI
+   OUTEND   (OUTBEG  )                       P/WL
+   OUTPAG   (OUTBEG  )           P/DD      E PASDD1
+   OUTPUT   D  CENTER            P/DI
+             E I*DI*I            P/DIV    (P/SYS   )
+             E I*MU*I            P/DS
+               INTSYM            P/E      (P/EF    )
+               PACK              P/EA        P/7A
+               SYMINT                        P/HT
+   P/00                                      P/WL
+   P/01                          P/EDIH   (P/HIDE  )
+   P/02                          P/EF
+   P/03                          P/EL
+   P/04                          P/EN     (P/BX    )
+   P/06                          P/EO
+   P/07                          P/EQ
+   P/08                          P/ER        P/7A
+   P/0П                                      P/HT
+   P/1         P/BX                          P/WI
+               P/EN              P/FM     (P/MF    )
+               P/TRPAGE          P/GD     (P/NW    )
+   P/2                           P/GE     (P/EQ    )
+   P/3                           P/GF     (P/SYS   )
+   P/31                          P/HIDE
+   P/4                           P/HT        P/E
+   P/41                                      P/EF
+   P/42                                      P/RC
+   P/5                                     E STOP*
+   P/51                          P/IN
+   P/52                          P/IS
+   P/53                          P/IT     (P/SYS   )
+   P/6                           P/KC
+   P/61                          P/LDAR
+   P/62                          P/LDARIN
+   P/63                          P/LNGPAR
+   P/64                          P/LV        P/BX
+   P/6A        P/7A                          P/EN
+   P/7A        P/EDIH            P/MD
+               P/HIDE            P/MF
+               P/PF              P/MI
+   P/7AD    (P/7A    )           P/MOD    (P/SYS   )
+   P/A6        P/6A              P/NN        P/BX
+               P/SP                          P/EN
+   P/A7        P/7AD             P/NW        P/HT
+               P/HIDE                        P/PRINT
+               P/SP              P/PA
+   P/AB     (P/CP    )           P/PAGES
+   P/B6     (P/PB    )           P/PAMPAM
+   P/B7     (P/PB    )           P/PB        P/7A
+   P/BEXF                                    P/HT
+   P/BP     (P/PB    )                       P/PRINT
+   P/BX                                      P/RSR
+   P/CA        P/ER                          P/WI
+   P/CE     (P/CI    )                       P/WO
+   P/CI        P/7A                          P/WOLN
+               P/WI              P/PF     (P/SYS   )
+               P/WL              P/PI
+               PASTPR            P/PMDSET (PASPMD  )
+   P/CK                          P/PRINT  (PASOUT  )
+   P/CO     (P/SYS   )           P/RA        P/GF
+   P/CP                                      PASDIH
+   P/CW        P/PF                          PASHID
+   P/D1        P/WL              P/RA7       P/GF
+               PASDIH            P/WXD    (P/WX    )
+               PASHID            PACK
+   P/RACPAK (P/SYS   )           PAGE      E F/LOOP
+   P/RC                                    E F/SAVER
+   P/RDI       P/EL                        E F/SRET
+               P/GF                          LINE
+   P/RDR       P/GF                          LSPACE
+               P/RDI                         OCTDEC
+               PASTENS                     E R*TO*I
+   P/RE        P/RE1                         SETCH
+               P/RE2                         SLASH
+   P/RE1    (P/SYS   )           PAGECHAN (ANTRA   )
+   P/RE2    (P/SYS   )           PAGESTAN (ANTRA   )
+   P/RF     (P/SYS   )           PAIB     (LIBSUB  )
+   P/RI        P/GD              PASACD      PASBD
+   P/RILN      P/EL                          PASBDI
+               P/GF              PASADD   (PASBIND )
+   P/RL     (P/RILN  )           PASBD    (PASBDI  )
+   P/RR                          PASBDE
+   P/RSR                         PASBDI      P/HT
+   P/SC        P/ER                          P/PRINT
+   P/SETEXF                                  PASBDE
+   P/SP        P/PF                          PASBDI
+   P/SS                          PASBIND     P/EO
+   P/STAR                                    P/PF
+   P/SYS       P/BEXF                        P/RF
+               P/DA                          P/TF
+               P/DI                          PASDIH
+               P/HT                          PASHID
+               P/MD                          PASNB8
+               P/PF                          PASTN
+               P/PRINT           PASCODAD
+               P/TF              PASCONTR
+               P/WL              PASCTRP  (P/SYS   )
+               P/WOLN            PASDIH   (PASHID  )
+               P/WXD             PASDIV
+               PASEOF            PASENDED    P/CW
+             E READ*                         P/MD
+             E STOP*                         PASDIH
+   P/TF     (P/SYS   )                       PASHID
+   P/TR                          PASEOF
+   P/TRPAGE    P/PAGES           PASEVN      PASDIH
+   P/TXGOST                                  PASHID
+   P/UN                          PASGIVEP (P/SYS   )
+   P/WA        P/PF              PASGOST
+               PASDIH            PASGOST7  E  T1ИБ0
+               PASHID                        P/1
+   P/WC        P/CW                          P/2
+               P/SP                          P/7A
+   P/WI        P/7A                          P/CO
+               P/CW                          P/DA
+               P/PF                          P/E
+               P/SP                          P/EF
+   P/WL     (P/SYS   )                       P/GF
+   P/WO        P/CW                          P/IT
+               P/EDIH                        P/PA
+               P/HIDE                        P/PF
+               P/SP                          P/TF
+   P/WOLN   (P/SYS   )                       P/WL
+   P/WR        P/A7              PASGVNF   E INBUF
+               P/CW                          P/7A
+               P/TR                          P/DIV
+               P/WI                          P/HT
+   P/WX        P/CW                          P/MOD
+               P/SP                          P/RACPAK
+               PASISOXT                      P/RF
+               P/WI                          P/SC
+               P/WOLN                        P/STAR
+               PASCTRP                       PASINP
+               PASGIVEP          PASSETAR    PASBDI
+   PASHELP   E *DQ)0E)           PASTENS  (P/WR    )
+             E *DY/(ДЯ(          PASTIME   E   ФЯБ0
+             E *DYФ5R Л                      P/1
+             E *DЯ(14ЯЙ                      P/2
+             E *E1 2T4З                      P/6A
+             E *EЯ/4R З                      P/CO
+               P/06                          P/DA
+               P/1                           P/E
+               P/2                           P/EF
+               P/3                           P/IT
+               P/31                          P/WL
+               P/6A                          P/WR
+               P/7A              PASTN    (PASOUT  )
+               P/CO              PASTPR      P/WXD
+               P/CW              PASWHT   (PASOUT  )
+               P/E               PENKTA      CLEARSTR
+               P/EF                          DOUBLE
+               P/EL                          GETSTRIN
+               P/EO                          INTTOCHA
+               P/GF                          NEWPAGE
+               P/IN                          NEWSTRIN
+               P/IT                          P/08
+               P/MI                          P/1
+               P/PF                          P/2
+               P/RC                          P/3
+               P/RF                          P/31
+               P/TF                          P/CO
+               P/WI                          P/E
+               P/WL                          P/EF
+               P/WO                          P/EO
+   PASHID                                    P/GF
+   PASINBUF (P/SYS   )                       P/IT
+   PASINP   (PASBIND )                       P/LDAR
+   PASISOCD                                  P/MI
+   PASISOXT                                  P/NN
+   PASLIST                                   P/PF
+   PASMON2   E MONITOR*                      P/RF
+   PASNB8                                    P/TF
+   PASOUT      PASEVN                        QUESTION
+               PASNB8            PIRMA       BEGPAGE
+             E PRINT8                        ENDPAGE
+   PASPMD      P/7A                          P/08
+               P/CW                          P/1
+               P/PRINT                       P/2
+               P/WI                          P/3
+               P/WL                          P/6A
+               P/WO                          P/7A
+               P/WOLN                        P/CK
+               P/WR                          P/CO
+               P/WXD                         P/CW
+             E STOP*                         P/E
+   PASRED      P/08                          P/EF
+               P/1                           P/HT
+               P/2                           P/IT
+               P/CO                          P/LDAR
+               P/DA                          P/LNGPAR
+               P/E                           P/MI
+               P/EF                          P/NN
+               P/IN                          P/STAR
+               P/IT                          P/WI
+               P/LDARIN                      P/WL
+               P/NN                          P/WOLN
+               P/WX                          EXMASE
+               PAGESTAN                      EXNEWTOL
+   POINT                                     EXTITC
+   PRENT     E F/SAVER                       EXVERTOS
+             E F/SRET                        FINDINST
+               IBCD                          KLAIDA
+             E PRINTA                        P/08
+   PRETTYPR    P/1                           P/1
+               P/2                           P/2
+               P/3                           P/CK
+               P/31                          P/CO
+               P/4                           P/E
+               P/41                          P/EF
+               P/42                          P/EO
+               P/5                           P/IT
+               P/51                          P/KC
+               P/52                          P/LDAR
+               P/6                           P/NN
+               P/61                          P/RA
+               P/62                          P/RL
+               P/64                          P/STAR
+               P/6A                          PAGECHAN
+               P/7A                          PAGESTAN
+               P/CO                          WRICON
+               P/CW              REWCHR   (SETCH   )
+               P/E               RRR
+               P/EF              SERVCM      CONSUM
+               P/EL                          OUTBEG
+               P/EO                          OUTEND
+               P/GF                          OUTPAG
+               P/HT              SETCH       IWA
+               P/IN                        E PRINT8
+               P/IT              SKIP        OUTPUT
+               P/MI              SLASH    (SETCH   )
+               P/PA              STOLIB   (MADLENI*)
+               P/RC              STRINGTO (ANTRA   )
+               P/SC              SYMINT
+               P/TF              TAB         ERROR
+               P/WI                        E F/LOOP
+               P/WL                        E F/SAVER
+               P/WOLN                      E F/SRET
+               PASENDED                      GETCH
+   PRIM        BEGPR             TIME     (PASTIME )
+               ENDPR             TOPULT    E   И Ц Ж
+             E F/SAVER                     E  (2*Б0
+             E F/SRET                        P/1
+   PRINT     E F/SAVER                       P/7A
+             E F/SRET                        P/CO
+             E IGETS                         P/CW
+             E IPUTS                         P/EF
+               ITC                           P/EO
+             E LOADGO                        P/IT
+             E ЖИPЛИC                        P/KC
+             E ЖИPПEЧ                        P/RL
+   PRINT8**    BUFPER                        P/TF
+             E PRINT8                        P/WI
+   PROOF    (SETCH   )                       P/WL
+   PULT                          TOSTRHEL (PENKTA  )
+   QRESET   (MADLENI*)           TRECIA      BEGSTRIN
+   QUESTION (KETVIRTA)                       CHARTOIN
+   READ      E READ*                         DEBUGING
+   REDTXT      BEGPAGE                       ENDSTRIN
+               CHARTOIN                      GETSTRIN
+               DEBUGING                      KLAIDA
+               ENDPAGE                       P/08
+               EXFILTOM                      P/1
+               P/2
+               P/7A
+               P/CK
+               P/CO
+               P/DI
+               P/E
+               P/EF
+               P/IT
+               P/MI
+               P/NN
+               P/STAR
+               P/WL
+   UNPACK
+   WORD        BUFCH
+               ENDPR
+               ERROR
+             E F/SAVER
+             E F/SRET
+               GETCH
+               PRIM
+   WORDTOST (FINSIGN )
+   WRDOWREC (PIRMA   )
+   WRICON   (PENKTA  )
+   WRISTRPA (PIRMA   )
+   WRTOPREC (PIRMA   )
+   WTOLIB   (MADLENI*)                                             04 ИЮЛ 24 23.45
+                     ИCПOЛЬЗOBAHИE ПOДПPOГPAMM
 
+                                 P/NW
+   E - BHEШHЯЯ П/П               P/PAMPAM
+   N - OПИCAHA, HE ИCПOЛЬЗYETCЯ  P/PB
+   C - ECTЬ OДHOИMEHHЫЙ COMMON   P/PI
+                                 P/PMDSET
+   HEИCПOЛЬЗYEMЫE BXOДЫ          P/RA7
+                                 P/RDR
+   *ASPID                        P/RE
+   ANTRA                         P/RI
+   ASPID                         P/RILN
+   ASPID*                        P/RR
+   ASPID*D                       P/SETEXF
+   ASPID*W                       P/SS
+   ASWRIT                        P/SYS
+   BCD                           P/TXGOST
+   FINSIGN                       P/UN
+   FMDEL                         P/WA
+   FMGET                         P/WC
+   FMMOD                         PAIB
+   FMOPEN                        PASACD
+   FMPUT                         PASADD
+   FRINP                         PASBIND
+   FRSTRHEL                      PASCODAD
+   HIS                           PASCONTR
+   IDIC                          PASDIV
+   IRA                           PASGOST
+   IRB                           PASGOST7
+   IWB                           PASGVNF
+   KETVIRTA                      PASHELP
+   LADR                          PASINBUF
+   LIBSUB                        PASLIST
+   MADLENI*                      PASMON2
+   MDLCARD*                      PASOUT
+   MIDDLE                        PASPMD
+   OBPROG                        PASRED
+   P/00                          PASSETAR
+   P/01                          PASTIME
+   P/02                          PASWHT
+   P/03                          PENKTA
+   P/04                          PIRMA
+   P/07                          POINT
+   P/0П                          PRETTYPR
+   P/53                          PROOF
+   P/63                          PULT
+   P/A6                          REDTXT
+   P/AB                          RRR
+   P/B6                          SERVCM
+   P/B7                          STRINGTO
+   P/BP                          TIME
+   P/CA                          TOPULT
+   P/CE                          TOSTRHEL
+   P/CI                          TRECIA
+   P/CP                          WRISTRPA
+   P/D1
+   P/DD
+   P/DS                          ИCПOЛЬЗYEMЫE BXOДЫ
+   P/EA
+   P/EQ                            И Ц Ж  E  TOPULT
+   P/FM                            ФЯБ0   E  PASTIME
+   P/GE                          *DQ)0E)  E  PASHELP
+   P/IS                          *DY/(ДЯ( E  PASHELP
+   P/LV                          *DYФ5R Л E  PASHELP
+   P/MF                          *DЯ(14ЯЙ E  PASHELP
+   *E1 2T4З E  PASHELP                       ERROR
+   *EЯ/4R З E  PASHELP           F/SAVER  E  ASPID
+   *PUNCHER  N MADLEN*3                      BUFCH
+    T1ИБ0   E  PASGOST7                      ENDPR
+    (2*Б0   E  TOPULT                        GETCH
+   /MACPAR/    MADLEN*3                      HYPHEN
+   ASCARD      GETCH                         INIT
+   BEGPAGE     KETVIRTA                      LINE
+               PIRMA                         LSPACE
+               REDTXT                        MACRO
+   BEGPR       MACRO                         PAGE
+               PRIM                          PRENT
+   BEGSTRIN    FINSIGN                       PRIM
+               TRECIA                        PRINT
+   BUFCH       WORD                          TAB
+   BUFPER      FOMA***                       WORD
+               MADLEN*3          F/SRET   E  ASPID
+               MDL*REF                       ASWRIT
+               PRINT8**                      BUFCH
+   CENTER      CONSUM                        ENDPR
+               OUTPUT                        GETCH
+   CHARTOIN    KETVIRTA                      HYPHEN
+               REDTXT                        INIT
+               TRECIA                        LINE
+   CHTYPE      HYPHEN                        LSPACE
+   CLEARSTR    PENKTA                        MACRO
+   CNVRTN      CONSUM                        PAGE
+   CONSUM      SERVCM                        PRENT
+   COPAGE      CONSUM                        PRIM
+   COSYTISO EN MADLENI*                      PRINT
+   DATE     E  HIS                           TAB
+   DEBUGING    ANTRA                         WORD
+               FINSIGN           F/SRETNR E  BEGPR
+               KETVIRTA                      ERROR
+               REDTXT            F/SSTART E  ASWRIT
+               TRECIA            FINDINST    REDTXT
+   DISCRIPT    MADLEN*3          FMISGO      FMOPEN
+   DOUBLE      PENKTA            FOMA***     MADLEN*3
+   DRUMTAP* EN MADLENI*                    N MADLENI*
+   ENDPAGE     KETVIRTA                      MDL*REF
+               PIRMA             FORBEG      BEGPR
+               REDTXT                        MACRO
+   ENDPR       INIT              FORIN       BEGPR
+               PRIM                          MACRO
+               WORD              FORNUM      BEGPR
+   ENDSTRIN    FINSIGN           GETCH       BEGPR
+               TRECIA                        ENDPR
+   ERROR       BEGPR                         INIT
+               ENDPR                         MACRO
+               LINE                          TAB
+               MACRO                         WORD
+               TAB               GETINT      CONSUM
+               WORD              GETSTRIN    KETVIRTA
+   EXECINST    KETVIRTA                      PENKTA
+   EXFILTOM    REDTXT                        TRECIA
+   EXMASE      REDTXT            GSTEXT*     MADLEN*3
+   EXNEWTOL    REDTXT            HYPHEN      LINE
+   EXTITC      REDTXT            I*DI*I   E  CENTER
+   EXVERTOS    REDTXT                        CONSUM
+   F/LOOP   E  ASPID                         OUTPUT
+               LINE              I*MU*I   E  CONSUM
+               LSPACE                        GETINT
+               PAGE                          OUTPUT
+               TAB               I*MUI*   E  OUTBEG
+   F/NOSVR  E  BEGPR             IBCD        PRENT
+   IDENTIFY    KETVIRTA                      PENKTA
+   IGETS    E  GETCH                         PIRMA
+               PRINT                         PRETTYPR
+   INBUF    E  PASGVNF                       REDTXT
+   INIT        ASPID                         TOPULT
+   INITLIB     MADLEN*3                      TRECIA
+   INTSYM      CONSUM            P/2         ANTRA
+               OUTPUT                        FINSIGN
+   INTTOCHA    PENKTA                        KETVIRTA
+   IPUTS    E  PRINT                         PASGOST7
+   ITC         GETCH                         PASHELP
+               PRINT                         PASRED
+   IWA         SETCH                         PASTIME
+   KILNUMPG E  ASPID*W                       PENKTA
+   KLAIDA      KETVIRTA                      PIRMA
+               REDTXT                        PRETTYPR
+               TRECIA                        REDTXT
+   LINE        PAGE                          TRECIA
+   LOADANGO E  ASPID*W           P/3         FINSIGN
+   LOADCALL E  ASPID*                        PASHELP
+   LOADGO   E  PRINT                         PENKTA
+   LSPACE      PAGE                          PIRMA
+   MACRO       ENDPR                         PRETTYPR
+   MADLEN*3    FOMA***           P/31        PASHELP
+               MADLENI*                      PENKTA
+   MDL*6T8S    MADLEN*3                      PRETTYPR
+   MDL*6T8W    FOMA***           P/4         PRETTYPR
+               MADLEN*3          P/41        PRETTYPR
+   MDL*REF     MADLEN*3          P/42        PRETTYPR
+             N MADLENI*          P/5         PRETTYPR
+   MONITOR* E  MADLENI*          P/51        PRETTYPR
+               PASMON2           P/52        PRETTYPR
+   MONREAD* E  LIBSUB            P/6         PRETTYPR
+               MADLENI*          P/61        PRETTYPR
+               MDLCARD*          P/62        PRETTYPR
+   MT9      E  ASWRIT            P/64        PRETTYPR
+   MT9A     E  ASWRIT            P/6A        P/A6
+   NEWLIS   E  ANTRA                         PASHELP
+   NEWPAGE     PENKTA                        PASTIME
+   NEWSTRIN    FINSIGN                       PIRMA
+               KETVIRTA                      PRETTYPR
+               PENKTA            P/7A        ANTRA
+   OCTDEC      PAGE                          P/6A
+   OCTTDEC  E  ASPID*W                       P/CI
+   OUTBEG      SERVCM                        P/DA
+   OUTEND      SERVCM                        P/EA
+   OUTPAG      SERVCM                        P/ER
+   OUTPUT      CONSUM                        P/PB
+               COPAGE                        P/WI
+               SKIP                          PASGOST7
+   P/06        PASHELP                       PASGVNF
+   P/08        ANTRA                         PASHELP
+               FMISGO                        PASPMD
+               KETVIRTA                      PIRMA
+               PASRED                        PRETTYPR
+               PENKTA                        TOPULT
+               PIRMA                         TRECIA
+               REDTXT            P/7AD       P/A7
+               TRECIA            P/A7        P/WR
+   P/1         ANTRA             P/BEXF      P/SYS
+               FINSIGN           P/BX        P/1
+               KETVIRTA                      P/LV
+               PASGOST7                      P/NN
+               PASHELP           P/CK        ANTRA
+               PASRED                        KETVIRTA
+               PASTIME                       PIRMA
+               REDTXT            P/EL        P/RDI
+               TRECIA                        P/RILN
+   P/CO        ANTRA                         PASHELP
+               FINSIGN                       PRETTYPR
+               KETVIRTA          P/EN        P/1
+               PASGOST7                      P/LV
+               PASHELP                       P/NN
+               PASRED            P/EO        KETVIRTA
+               PASTIME                       PASBIND
+               PENKTA                        PASHELP
+               PIRMA                         PENKTA
+               PRETTYPR                      PRETTYPR
+               REDTXT                        REDTXT
+               TOPULT                        TOPULT
+               TRECIA            P/ER        P/CA
+   P/CW        ANTRA                         P/SC
+               P/WC              P/GD        P/RI
+               P/WI              P/GF        KETVIRTA
+               P/WO                          P/RA
+               P/WR                          P/RA7
+               P/WX                          P/RDI
+               PASENDED                      P/RDR
+               PASHELP                       P/RILN
+               PASPMD                        PASGOST7
+               PIRMA                         PASHELP
+               PRETTYPR                      PENKTA
+               TOPULT                        PRETTYPR
+   P/DA      N P/SYS             P/HIDE      P/7A
+             N PASGOST7                      P/A7
+               PASRED                        P/WO
+             N PASTIME           P/HT        P/DA
+   P/DI        ANTRA                         P/EA
+               FINSIGN                       P/ER
+               P/SYS                         P/NW
+               TRECIA                        P/PB
+   P/DIV       PASGVNF                     N P/SYS
+   P/E         ANTRA                         PASBDI
+               FINSIGN                       PASGVNF
+             N FMISGO                        PIRMA
+               KETVIRTA                      PRETTYPR
+               P/HT              P/IN        FINSIGN
+               PASGOST7                      PASHELP
+               PASHELP                       PASRED
+               PASRED                        PRETTYPR
+               PASTIME           P/IT        ANTRA
+               PENKTA                        FINSIGN
+               PIRMA                         KETVIRTA
+               PRETTYPR                      PASGOST7
+               REDTXT                        PASHELP
+               TRECIA                        PASRED
+   P/EDIH      P/7A                          PASTIME
+               P/WO                          PENKTA
+   P/EF        ANTRA                         PIRMA
+               FINSIGN                       PRETTYPR
+               KETVIRTA                      REDTXT
+               P/HT                          TOPULT
+               PASGOST7                      TRECIA
+               PASHELP           P/KC        REDTXT
+               PASRED                        TOPULT
+               PASTIME           P/LDAR      ANTRA
+               PENKTA                        FMISGO
+               PIRMA                         PENKTA
+               PRETTYPR                      PIRMA
+               REDTXT                        REDTXT
+               TOPULT            P/LDARIN    PASRED
+               TRECIA            P/LNGPAR    PIRMA
+   P/MD        ANTRA                         PASRED
+               P/SYS                         PIRMA
+               PASENDED                      REDTXT
+   P/MI        ANTRA                         TRECIA
+               FINSIGN           P/TF        KETVIRTA
+               KETVIRTA                    N P/SYS
+               PASHELP                       PASBIND
+               PENKTA                        PASGOST7
+               PIRMA                         PASHELP
+               PRETTYPR                      PENKTA
+               TRECIA                        PRETTYPR
+   P/MOD       PASGVNF                       TOPULT
+   P/NN        ANTRA             P/TR        P/WR
+               FINSIGN           P/TRPAGE    P/1
+               KETVIRTA          P/WI        P/CI
+               PASRED                        P/DA
+               PENKTA                        P/ER
+               PIRMA                         P/PB
+               REDTXT                        P/WR
+               TRECIA                        PASGVNF
+   P/PA        PASGOST7                      PASHELP
+               PRETTYPR                      PASPMD
+   P/PAGES     P/TRPAGE                      PIRMA
+   P/PF        ANTRA                         PRETTYPR
+               KETVIRTA                      TOPULT
+               P/7A              P/WL        ANTRA
+               P/CW                          P/CI
+               P/SP                          P/D1
+               P/SYS                         P/DA
+               P/WA                          P/EA
+               P/WI                          P/SYS
+               PASBIND                       PASGOST7
+               PASGOST7                      PASHELP
+               PASHELP                       PASPMD
+               PENKTA                        PASTIME
+   P/PRINT     P/NW                          PIRMA
+               P/PB                          PRETTYPR
+               P/SYS                         TOPULT
+               PASBDI                        TRECIA
+               PASPMD            P/WO        P/PB
+   P/RA        REDTXT                        PASHELP
+   P/RACPAK    PASGVNF                       PASPMD
+   P/RC        P/HT              P/WOLN      ANTRA
+               PASHELP                       P/PB
+               PRETTYPR                      P/SYS
+   P/RDI       P/RDR                         PASGVNF
+   P/RE1       P/RE                          PASPMD
+   P/RE2       P/RE                          PIRMA
+   P/RF        KETVIRTA                      PRETTYPR
+               PASBIND           P/WR        PASPMD
+               PASGVNF                       PASTIME
+               PASHELP           P/WX        PIRMA
+               PENKTA            P/WXD       P/D1
+   P/RL        REDTXT                        P/SYS
+               TOPULT                        PASPMD
+   P/RSR       P/PB                          PASTPR
+   P/SC        PASRED            PACK        OUTPUT
+               PRETTYPR          PAGE        ASPID
+   P/SP        P/A6              PAGECHAN    REDTXT
+               P/A7              PAGESTAN    PIRMA
+               P/WC                          REDTXT
+               P/WI              PARAMT*  E  MDLCARD*
+               P/WO              PASBD       FMOPEN
+               P/WX                          PASACD
+   P/STAR      ANTRA             PASBDE      PASBDI
+               KETVIRTA          PASBDI      FMOPEN
+               PASACD                        PAGE
+               PASBDI            STOLIB      MADLEN*3
+               PASSETAR          STOP*    EN MADLENI*
+   PASCTRP     PASGVNF                       P/HT
+   PASDD1   E  P/DD                          P/SYS
+   PASDIH      P/RA                          PASPMD
+               P/RA7             SYMINT      CNVRTN
+               P/WA                          CONSUM
+               PASBIND                       GETINT
+               PASENDED                      OUTPUT
+               PASEVN            TAB         ENDPR
+   PASENDED    PRETTYPR          TEXISO   E  MDLCARD*
+   PASEOF      P/SYS             UNPACK      CONSUM
+   PASEVN      PASOUT            WORD        LINE
+   PASGIVEP    PASGVNF           WORDTOST    KETVIRTA
+   PASHID      P/RA              WRDOWREC    ANTRA
+               P/RA7             WRICON      REDTXT
+               P/WA              WRTOPREC    ANTRA
+               PASBIND           WTOLIB      MADLEN*3
+               PASENDED          ЖИPЛИC   E  PRINT
+               PASEVN            ЖИPПEЧ   E  PRINT
+   PASINP      PASRED
+   PASISOCD  N FMISGO
+   PASISOXT    P/WX
+   PASNB8      PASBIND
+               PASOUT
+   PASTENS     P/RDR
+   PASTN       PASBIND
+   PASTPR      P/CI
+   PRENT       GETCH
+               IDIC
+   PRIM        INIT
+               WORD
+   PRINT       ASPID
+   PRINT8**    FOMA***
+               MADLEN*3
+               MADLENI*
+               MDL*REF
+   PRINT8   E  ASPID*W
+               LIBSUB
+             N MADLEN*3
+               MADLENI*
+               MDLCARD*
+               PASOUT
+               PRINT8**
+               SETCH
+   PRINTA   E  PRENT
+   QRESET      MADLEN*3
+   QUESTION    PENKTA
+   R*TO*I   E  LINE
+               PAGE
+   READ        IDIC
+   READ*    E  ASPID*W
+               MADLEN*3
+             N MADLENI*
+               P/SYS
+               READ
+   REWCHR      ASPID
+   SAVE*    E  MADLEN*3
+             N MADLENI*
+   SETCH       ASPID
+               LSPACE
+               PAGE
+   SKIP        CONSUM
+               COPAGE
+   SLASH       ASPID                                             04 ИЮЛ 24 23.45
+                     CCЫЛKИ HA COMMON′Ы
+
+                                           L 00021 *ASP3*
+   D - PACCЫЛKA ДAHHЫX                    NL 01548 *ASP4*
+   N - OПИCAH, HE ИCПOЛЬЗYETCЯ            NL 00009 *ASP5*
+   P - CTPAHИЧHЫЙ COMMON                   L 00018 *ASP6*
+   S - CEKTOPHЫЙ COMMON                   NL 00694 *ASP7*
+   L - ПPOCTOЙ COMMON            BEGSTRIN (ANTRA   )
+   ***** - ДЛИHA OПИCAHA HEЯBHO  BUFCH    NL 00005 *ASP1*
+                                           L 00462 *ASP2*
+   *PUNCHER (MADLENI*)                     L 00020 *ASP3*
+   /MACPAR/ (MADLENI*)                    NL 01548 *ASP4*
+   ANTRA    NL 00001 *FINISH*              L 00009 *ASP5*
+            NL 00001 *INKIND*             NL 00013 *ASP6*
+             L 00080 *INP*       BUFPER   (MADLENI*)
+             L 00030 *INPUT*     CHARTOIN (PIRMA   )
+             L 00018 *KKK*       CHTYPE    L 00462 *ASP2*
+            NL 00493 *MACRO*     CLEARSTR (ANTRA   )
+             L 00002 *OLD*       CNVRTN    L 00558 *CONSUM*
+             L 00030 *OUTPUT*    CONSUM   DL 00558 *CONSUM*
+             L 00010 *PAGE*      COPAGE    L 00558 *CONSUM*
+             L 00001 *PAGNUM*    DEBUGING (PIRMA   )
+             L 00030 *REGIM*     DISCRIPT (MADLENI*)
+             L 00296 *SEGMA*     DOUBLE   (TRECIA  )
+             L 00001 *SIDE*      ENDPAGE  (ANTRA   )
+            NL 00001 *SIGN*      ENDPR     L 00005 *ASP1*
+             L 00014 *STPAGE*             DL 00463 *ASP2*
+             L 00001 *STRNUM*              L 00021 *ASP3*
+            NL 00044 *TOPDOW*             NL 01548 *ASP4*
+             L 00001 CURPAPER              L 00009 *ASP5*
+            NL 00001 CURRENT*              L 00018 *ASP6*
+             L 00001 CURTAPE*              L 00694 *ASP7*
+             L 00001 DIAGNOST              L 00006 *ASPPAG*
+            NL 00001 FIRSTINP    ENDSTRIN (ANTRA   )
+             L 00001 INITPAPE    ERROR    NL 00005 *ASP1*
+             L 00001 INITTAPE             NL 00463 *ASP2*
+             L 00001 LASTINP*             NL 00021 *ASP3*
+             L 00001 LASTPAPE              L 01548 *ASP4*
+             L 00001 LASTTAPE             NL 00009 *ASP5*
+             L 00030 NOPLACE*              L 00014 *ASP6*
+             L 00001 OUTKIND*    EXECINST (REDTXT  )
+            NL 01350 P/1D        EXFILTOM (TRECIA  )
+             L 01659 PAGEPAPE    EXMASE   (KETVIRTA)
+             L 01000 PAGETAPE    EXNEWTOL (TRECIA  )
+             L 00001 PWORDPAS    EXTITC   (PENKTA  )
+             L 00001 RESTPAPE    EXVERTOS (PIRMA   )
+             L 00126 STRPAPER    FINDINST (FINSIGN )
+             L 00100 STRTAPE*    FINSIGN  NL 00001 *FINISH*
+             L 00001 WORDSNUM             NL 00001 *INKIND*
+             L 00030 WORDSPOZ              L 00080 *INP*
+   ASCARD   (ASPID*W )                     L 00030 *INPUT*
+   ASPID    DL 00005 *ASP1*                L 00018 *KKK*
+            DL 00463 *ASP2*               NL 00493 *MACRO*
+            DL 00021 *ASP3*               NL 00002 *OLD*
+            DL 08048 *ASP4*                L 00030 *OUTPUT*
+            DL 00009 *ASP5*               NL 00010 *PAGE*
+            DL 00018 *ASP6*               NL 00001 *PAGNUM*
+            DL 00694 *ASP7*                L 00030 *REGIM*
+            DL 00006 *ASPPAG*             NL 00296 *SEGMA*
+   ASPID*D  (ASPID*W )                    NL 00001 *SIDE*
+   ASPID*W   L 00004 *REGIM*               L 00001 *SIGN*
+   ASWRIT    L 00003 *REGIM*              NL 00014 *STPAGE*
+   BEGPAGE  (ANTRA   )                    NL 00001 *STRNUM*
+   BEGPR    NL 00005 *ASP1*               NL 00044 *TOPDOW*
+            DL 00463 *ASP2*                L 00001 CURPAPER
+             L 00001 CURRENT*    IRB      (IWB     )
+            NL 00001 CURTAPE*    IWA       L 00001 A/I0
+             L 00001 DIAGNOST    IWB       L 00001 A/I0
+            NL 00001 FIRSTINP    KETVIRTA NL 00001 *FINISH*
+             L 00001 INITPAPE              L 00001 *INKIND*
+            NL 00001 INITTAPE              L 00080 *INP*
+             L 00001 LASTINP*              L 00030 *INPUT*
+             L 00001 LASTPAPE              L 00018 *KKK*
+            NL 00001 LASTTAPE              L 00493 *MACRO*
+             L 00030 NOPLACE*             NL 00002 *OLD*
+             L 00001 OUTKIND*              L 00030 *OUTPUT*
+            NL 01352 P/1D                  L 00010 *PAGE*
+            NL 01659 PAGEPAPE             NL 00001 *PAGNUM*
+            NL 01000 PAGETAPE              L 00030 *REGIM*
+             L 00001 PWORDPAS              L 00296 *SEGMA*
+             L 00001 RESTPAPE              L 00001 *SIDE*
+             L 00126 STRPAPER              L 00001 *SIGN*
+            NL 00100 STRTAPE*             NL 00014 *STPAGE*
+             L 00001 WORDSNUM              L 00001 *STRNUM*
+             L 00030 WORDSPOZ             NL 00044 *TOPDOW*
+   FMDEL    (FMOPEN  )                    NL 00001 CURPAPER
+   FMGET    (FMOPEN  )                     L 00001 CURRENT*
+   FMISGO    L 00022 ISOPGOST             NL 00001 CURTAPE*
+   FMMOD    (FMOPEN  )                     L 00001 DIAGNOST
+   FMOPEN    L 00021 *BDC*                 L 00001 FIRSTINP
+             L 00001 *ERSTOP*             NL 00001 INITPAPE
+            DL 00001 RGEXPORT             NL 00001 INITTAPE
+   FMPUT    (FMOPEN  )                     L 00001 LASTINP*
+   FOMA***   L 00000 ENTRY*               NL 00001 LASTPAPE
+             L 00013 ERRORBUF             NL 00001 LASTTAPE
+             P 05120 LISTS                 L 00030 NONOPLAC
+             L 00220 SPASAN*               L 00030 NOPLACE*
+   FORBEG   (FORIN   )                     L 00001 OUTKIND*
+   FORIN     L 00429 *ASP2*               NL 01350 P/1D
+             L 00005 *ASP6*                L 01659 PAGEPAPE
+   FORNUM   (FORIN   )                    NL 01000 PAGETAPE
+   FRINP    (PENKTA  )                    NL 00001 PWORDPAS
+   FRSTRHEL (PENKTA  )                    NL 00001 RESTPAPE
+   GETCH     L 00002 *ASP1*               NL 00126 STRPAPER
+             L 00003 *ASP2*               NL 00100 STRTAPE*
+             L 00009 *ASP3*               NL 00001 WORDSNUM
+             L 00016 *ASP4*               NL 00030 WORDSPOZ
+             L 00004 *ASPPAG*    KLAIDA   (PIRMA   )
+   GETSTRIN (REDTXT  )           LADR     (IWA     )
+   GSTEXT*  (MADLENI*)           LIBSUB    L 00002 MONCARD*
+   HYPHEN   NL 00005 *ASP1*                P 02048 PERS
+             L 00462 *ASP2*                P 02048 TEMP
+            NL 00020 *ASP3*      LINE      L 00005 *ASP1*
+            NL 01548 *ASP4*                L 00463 *ASP2*
+            NL 00009 *ASP5*                L 00021 *ASP3*
+            NL 00013 *ASP6*               NL 01548 *ASP4*
+   IDENTIFY (REDTXT  )                     L 00009 *ASP5*
+   IDIC      L 00005 *ASP1*                L 00016 *ASP6*
+             L 00429 *ASP2*                L 00001 ACC*
+             L 15048 *ASP4*      LSPACE   NL 00005 *ASP1*
+   INIT     NL 00005 *ASP1*                L 00462 *ASP2*
+             L 00462 *ASP2*                L 00020 *ASP3*
+             L 00020 *ASP3*               NL 01548 *ASP4*
+            NL 01548 *ASP4*                L 00009 *ASP5*
+             L 00009 *ASP5*               NL 00013 *ASP6*
+             L 00016 *ASP6*      MACRO    NL 00005 *ASP1*
+             L 00694 *ASP7*               DL 00463 *ASP2*
+   INITLIB  (MADLENI*)                     L 00020 *ASP3*
+   INTTOCHA (ANTRA   )                    NL 01548 *ASP4*
+   IRA      (IWA     )                    NL 00009 *ASP5*
+             L 00016 *ASP6*      P/FM     (P/MF    )
+            DL 00694 *ASP7*      P/GF     (P/SYS   )
+   MADLEN*3  L 00042 ENTRY*      P/HT      L 00001 PASPMDAD
+             L 00001 ERROFLG*    P/IT     (P/SYS   )
+             L 05120 LISTS       P/MF      L 00001 P/STACK
+            NL 00014 MONCARD*    P/MOD    (P/SYS   )
+             L 00220 SPASAN*     P/NN      L 00001 P/STACK
+   MADLENI*  L 00001 *REGIM//    P/PAGES   P 01024 P/FIRP
+             L 00002 /VERE/               DL 00001 PASDRN*
+            NL 00000 ARREAD*              DL 00001 PASDRUM*
+            NL 00001 CHKWORD*             DL 00001 PASPAGN*
+             L 00000 ENDPTR*     P/PF     (P/SYS   )
+             L 00017 ENTRY*      P/PMDSET (PASPMD  )
+            NL 00013 ERRORBUF    P/PRINT  (PASOUT  )
+             L 00001 FULISFL*    P/RA7     L 00001 SPACE*
+            NL 00000 KCOUNT*     P/RACPAK (P/SYS   )
+            DP 05120 LISTS       P/RDI     L 00001 PASMINS*
+             L 00014 MONCARD*             DL 00001 PASPLUS*
+             L 00001 NOLISFL*              L 00001 PASZERO*
+             L 00001 PUNCHFL*              L 00001 SPACE*
+            NL 00220 SPASAN*     P/RDR     L 00001 PASPERID
+   MDL*6T8S (MDL*REF )           P/RE1    (P/SYS   )
+   MDL*6T8W (MDL*REF )           P/RE2    (P/SYS   )
+   MDL*REF   L 00000 ENTRY*      P/RF     (P/SYS   )
+             L 05120 LISTS       P/RILN    L 00020 *INPUT*
+             L 00000 SPASAN*     P/RL     (P/RILN  )
+   MDLCARD*  L 00012 *MONCRD*    P/SC     DL 00001 PASCELUP
+             L 00000 ARREAD*     P/SETEXF  L 00015 PASEXFT*
+             L 00017 ENTRY*      P/SP      L 00001 SPACE*
+             L 00000 KCOUNT*     P/SYS     L 00030 *OUTPUT*
+             L 00025 MONCARD*              L 00001 PASENDS*
+             L 00014 MONCARD/              L 00001 PASEOFCD
+             L 00001 OUT*OUT               L 00001 PASEOLSY
+            DP 06144 STEXTBF*              L 00001 PASPMDAD
+             L 00000 TRNAME*               L 00001 PASZERO*
+   MIDDLE   (PENKTA  )                     L 00001 SPACE*
+   NEWPAGE  (PIRMA   )           P/TF     (P/SYS   )
+   NEWSTRIN (TRECIA  )           P/TRPAGE  L 00001 PASDRN*
+   OCTDEC   (FORIN   )                     L 00001 PASDRUM*
+   OUTBEG   DL 00558 *CONSUM*              L 00001 PASPAGN*
+   OUTEND   (OUTBEG  )           P/WI      L 00001 PASMINS*
+   OUTPAG   (OUTBEG  )                     L 00001 PASZERO*
+   OUTPUT    L 00558 *CONSUM*    P/WL     (P/SYS   )
+   P/BEXF   DL 00015 PASEXFT*    P/WO      L 00001 PASZERO*
+   P/BX     DL 00040 P/1D        P/WOLN   (P/SYS   )
+             L 00001 P/STACK     P/WR      L 00001 PASMINS*
+            DL 00001 RGEXPORT             DL 00001 PASPERID
+   P/CE     (P/CI    )                    DL 00001 PASPLUS*
+   P/CI      L 00030 *OUTPUT*              L 00001 PASZERO*
+             L 00001 *PASBUG*              L 00001 SPACE*
+   P/CO     (P/SYS   )           PAGE     NL 00005 *ASP1*
+   P/D1      L 00010 *OUTPUT*              L 00462 *ASP2*
+   P/DA      L 00001 *OUTPUT*              L 00020 *ASP3*
+   P/DD     DL 00001 *PASDDS*             NL 01548 *ASP4*
+   P/DIV    (P/SYS   )                     L 00009 *ASP5*
+   P/E      (P/EF    )                     L 00018 *ASP6*
+   P/EA      L 00030 *OUTPUT*    PAGECHAN (ANTRA   )
+   P/EF     DL 00001 PASENDS*    PAGESTAN (ANTRA   )
+            DL 00001 PASEOFCD    PAIB     (LIBSUB  )
+            DL 00001 PASEOLSY    PASACD    L 00001 *BDV*
+            DL 00001 PASMINS*    PASBD    (PASBDI  )
+            DL 00001 PASZERO*    PASBDI   DL 00007 *BDC*
+            DL 00001 SPACE*                L 00001 *BDERRN*
+   P/EL     DL 00001 PASEOLSY              L 00001 *BDV*
+   P/EN     (P/BX    )                     L 00168 *BDVECT*
+   P/ER      L 00030 *OUTPUT*              L 00001 *ERSTOP*
+             P 01024 P/BDBUF              NL 00001 DIAGNOST
+             P 01024 P/BDSYS               L 00001 FIRSTINP
+             P 01024 P/BDTAB               L 00001 INITPAPE
+   PASCTRP  (P/SYS   )                     L 00001 INITTAPE
+   PASEOF    L 00014 MONCARD*              L 00001 LASTINP*
+   PASGIVEP (P/SYS   )                     L 00001 LASTPAPE
+   PASGOST   L 00001 PASENDS*             NL 00001 LASTTAPE
+             L 00001 PASEOLSY              L 00030 NOPLACE*
+             L 00001 PASMINS*              L 00001 OUTKIND*
+             L 00001 PASZERO*             NL 01490 P/1D
+             L 00001 SPACE*               NL 01659 PAGEPAPE
+   PASGOST7  L 00030  Ц1ZW(Ф4             NL 01000 PAGETAPE
+             L 00030 NЗЖПЦ ЖT             NL 00001 PWORDPAS
+             L 00307 P/1D                 NL 00001 RESTPAPE
+             L 00030 W()ЬБ0                L 00126 STRPAPER
+   PASHELP  DL 00001 *D1/4R З              L 00100 STRTAPE*
+             L 00030 *D9)6Б Д             NL 00001 WORDSNUM
+             L 00030 *DU/5D4Z             NL 00030 WORDSPOZ
+             L 00030 *DU/5D4З    PIRMA     L 00001 *FINISH*
+             L 00030 *DЯ/4ФDZ              L 00001 *INKIND*
+            DL 00001 *E1 0DQФ              L 00080 *INP*
+             L 00011 *E)Ф040Z              L 00030 *INPUT*
+            DL 00488 P/1D                  L 00018 *KKK*
+   PASINBUF (P/SYS   )                    NL 00493 *MACRO*
+   PASISOCD DL 00022 ISOPGOST              L 00002 *OLD*
+            NL 00022 ISOPITM               L 00030 *OUTPUT*
+            NL 00022 ISOPRESV              L 00010 *PAGE*
+            DL 00011 ISOPTEXT              L 00001 *PAGNUM*
+   PASLIST   L 00001 FULISFL*              L 00030 *REGIM*
+             L 00001 NOLISFL*              L 00296 *SEGMA*
+   PASMON2   L 00001 FLGEX*                L 00001 *SIDE*
+             L 00001 P/STACK              NL 00001 *SIGN*
+   PASOUT    L 00025 *PASTEL*              L 00014 *STPAGE*
+             L 00001 PASZERO*              L 00001 *STRNUM*
+             L 00001 RGEXPORT              L 00044 *TOPDOW*
+   PASPMD    L 00001 PASPMDAD              L 00001 CURPAPER
+   PASRED    L 00030 *OUTPUT*              L 00001 CURRENT*
+            NL 00040 P/1D                  L 00001 CURTAPE*
+   PASSETAR  P 01024 P/BDSYS               L 00001 DIAGNOST
+   PASTENS  (P/WR    )                     L 00001 FIRSTINP
+   PASTIME   L 00030   И/ (ФЯ              L 00001 INITPAPE
+            NL 00040 P/1D                  L 00001 INITTAPE
+            DL 00001 БP04 (И/              L 00001 LASTINP*
+   PASTN    (PASOUT  )                     L 00001 LASTPAPE
+   PASWHT   (PASOUT  )                     L 00001 LASTTAPE
+   PENKTA   NL 00001 *FINISH*              L 00030 NOPLACE*
+            NL 00001 *INKIND*              L 00001 OUTKIND*
+             L 00080 *INP*                NL 01350 P/1D
+             L 00030 *INPUT*               L 01659 PAGEPAPE
+             L 00018 *KKK*                NL 01000 PAGETAPE
+            NL 00493 *MACRO*              NL 00001 PWORDPAS
+            NL 00002 *OLD*                NL 00001 RESTPAPE
+             L 00030 *OUTPUT*             NL 00126 STRPAPER
+             L 00010 *PAGE*               NL 00100 STRTAPE*
+             L 00001 *PAGNUM*             NL 00001 WORDSNUM
+             L 00030 *REGIM*              NL 00030 WORDSPOZ
+            NL 00296 *SEGMA*     PRENT    NL 00005 *ASP1*
+            NL 00001 *SIDE*               NL 00462 *ASP2*
+            NL 00001 *SIGN*               NL 00020 *ASP3*
+            NL 00014 *STPAGE*              L 01548 *ASP4*
+             L 00001 *STRNUM*             NL 00009 *ASP5*
+            NL 00044 *TOPDOW*              L 00013 *ASP6*
+             L 00030 CONFILE*    PRETTYPR  L 00030 *INPUT*
+             L 00001 CURPAPER              L 00030 *OUTPUT*
+             L 00001 CURRENT*              L 00030 *RESULT*
+             L 00001 CURTAPE*              L 00496 P/1D
+   PRIM     NL 00005 *ASP1*               NL 01548 *ASP4*
+             L 00463 *ASP2*               NL 00009 *ASP5*
+            NL 00021 *ASP3*                L 00017 *ASP6*
+            NL 01548 *ASP4*                L 00694 *ASP7*
+            NL 00009 *ASP5*      TIME     (PASTIME )
+            NL 00018 *ASP6*      TOPULT    L 00030  ( DЦ ЖJ
+             L 00694 *ASP7*                L 00022  (2*Ц ЖE
+   PRINT     L 01548 *ASP4*                L 00030  (2*Ц ЖЫ
+             L 00001 *ASP5*                L 00030  (2GЦ ЖЫ
+             L 00004 *REGIM*               L 00267 P/1D
+   PROOF    (SETCH   )           TOSTRHEL (PENKTA  )
+   QRESET   (MADLENI*)           TRECIA   NL 00001 *FINISH*
+   QUESTION (KETVIRTA)                    NL 00001 *INKIND*
+   REDTXT    L 00001 *FINISH*              L 00080 *INP*
+             L 00001 *INKIND*              L 00030 *INPUT*
+             L 00080 *INP*                 L 00018 *KKK*
+             L 00030 *INPUT*              NL 00493 *MACRO*
+             L 00018 *KKK*                NL 00002 *OLD*
+             L 00493 *MACRO*               L 00030 *OUTPUT*
+            NL 00002 *OLD*                 L 00010 *PAGE*
+             L 00030 *OUTPUT*             NL 00001 *PAGNUM*
+            NL 00010 *PAGE*                L 00030 *REGIM*
+             L 00001 *PAGNUM*             NL 00296 *SEGMA*
+             L 00030 *REGIM*               L 00001 *SIDE*
+            NL 00296 *SEGMA*              NL 00001 *SIGN*
+             L 00001 *SIDE*                L 00014 *STPAGE*
+             L 00001 *SIGN*               NL 00001 *STRNUM*
+             L 00014 *STPAGE*             NL 00044 *TOPDOW*
+            NL 00001 *STRNUM*              L 00001 CURPAPER
+            NL 00044 *TOPDOW*              L 00001 CURRENT*
+             L 00030 CONFILE*              L 00001 CURTAPE*
+            NL 00001 CURPAPER              L 00001 DIAGNOST
+             L 00001 CURRENT*              L 00001 FIRSTINP
+            NL 00001 CURTAPE*              L 00001 INITPAPE
+             L 00001 DIAGNOST              L 00001 INITTAPE
+             L 00001 FIRSTINP              L 00001 LASTINP*
+            NL 00001 INITPAPE              L 00001 LASTPAPE
+            NL 00001 INITTAPE              L 00001 LASTTAPE
+             L 00001 LASTINP*              L 00030 NOPLACE*
+            NL 00001 LASTPAPE              L 00001 OUTKIND*
+            NL 00001 LASTTAPE             NL 01353 P/1D
+             L 00030 NONOPLAC             NL 01659 PAGEPAPE
+             L 00030 NOPLACE*             NL 01000 PAGETAPE
+             L 00001 OUTKIND*             NL 00001 PWORDPAS
+             L 01501 P/1D                 NL 00001 RESTPAPE
+            NL 01659 PAGEPAPE              L 00126 STRPAPER
+            NL 01000 PAGETAPE             NL 00100 STRTAPE*
+            NL 00001 PWORDPAS              L 00001 WORDSNUM
+             L 00001 RESTPAPE              L 00030 WORDSPOZ
+            NL 00126 STRPAPER    WORD     NL 00005 *ASP1*
+            NL 00100 STRTAPE*              L 00462 *ASP2*
+             L 00001 WORDSNUM              L 00020 *ASP3*
+            NL 00030 WORDSPOZ             NL 01548 *ASP4*
+   REWCHR   (SETCH   )                     L 00009 *ASP5*
+   RRR       L 00001 *REGIM//              L 00017 *ASP6*
+   SETCH     L 00001 *ASP2*                L 00694 *ASP7*
+             L 08048 *ASP4*      WORDTOST (FINSIGN )
+             L 00006 *ASPPAG*    WRDOWREC (PIRMA   )
+             L 00000 MONCARD*    WRICON   (PENKTA  )
+   SKIP      L 00558 *CONSUM*    WRISTRPA (PIRMA   )
+   SLASH    (SETCH   )           WRTOPREC (PIRMA   )
+   STOLIB   (MADLENI*)           WTOLIB   (MADLENI*)
+   STRINGTO (ANTRA   )
+   TAB      NL 00005 *ASP1*
+             L 00463 *ASP2*
+            NL 00021 *ASP3*                                             04 ИЮЛ 24 23.45
+                     ИCПOЛЬЗOBAHИE COMMON′OB
+
+                                          NL 00020 PRENT
+   E - ECTЬ OДHOИMEHHAЯ П/П               NL 00021 PRIM
+   D - PACCЫЛKA ДAHHЫX                    NL 00021 TAB
+   N - OПИCAH, HE ИCПOЛЬЗYETCЯ             L 00020 WORD
+   P - CTPAHИЧHЫЙ COMMON         *ASP4*      15048
+   S - CEKTOPHЫЙ COMMON                   DL 08048 ASPID
+   L - ПPOCTOЙ COMMON                     NL 01548 BEGPR
+   ***** - ДЛИHA OПИCAHA HEЯBHO           NL 01548 BUFCH
+                                          NL 01548 ENDPR
+     И/ (ФЯ    00030                       L 01548 ERROR
+             L 00030 PASTIME               L 00016 GETCH
+   *ASP1*      00005                      NL 01548 HYPHEN
+            DL 00005 ASPID                 L 15048 IDIC
+            NL 00005 BEGPR                NL 01548 INIT
+            NL 00005 BUFCH                NL 01548 LINE
+             L 00005 ENDPR                NL 01548 LSPACE
+            NL 00005 ERROR                NL 01548 MACRO
+             L 00002 GETCH                NL 01548 PAGE
+            NL 00005 HYPHEN                L 01548 PRENT
+             L 00005 IDIC                 NL 01548 PRIM
+            NL 00005 INIT                  L 01548 PRINT
+             L 00005 LINE                  L 08048 SETCH
+            NL 00005 LSPACE               NL 01548 TAB
+            NL 00005 MACRO                NL 01548 WORD
+            NL 00005 PAGE        *ASP5*      00009
+            NL 00005 PRENT                DL 00009 ASPID
+            NL 00005 PRIM                 NL 00009 BEGPR
+            NL 00005 TAB                   L 00009 BUFCH
+            NL 00005 WORD                  L 00009 ENDPR
+   *ASP2*      00463                      NL 00009 ERROR
+            DL 00463 ASPID                NL 00009 HYPHEN
+            DL 00463 BEGPR                 L 00009 INIT
+             L 00462 BUFCH                 L 00009 LINE
+             L 00462 CHTYPE                L 00009 LSPACE
+            DL 00463 ENDPR                NL 00009 MACRO
+            NL 00463 ERROR                 L 00009 PAGE
+             L 00429 FORIN                NL 00009 PRENT
+             L 00003 GETCH                NL 00009 PRIM
+             L 00462 HYPHEN                L 00001 PRINT
+             L 00429 IDIC                 NL 00009 TAB
+             L 00462 INIT                  L 00009 WORD
+             L 00463 LINE        *ASP6*      00018
+             L 00462 LSPACE               DL 00018 ASPID
+            DL 00463 MACRO                 L 00018 BEGPR
+             L 00462 PAGE                 NL 00013 BUFCH
+            NL 00462 PRENT                 L 00018 ENDPR
+             L 00463 PRIM                  L 00014 ERROR
+             L 00001 SETCH                 L 00005 FORIN
+             L 00463 TAB                  NL 00013 HYPHEN
+             L 00462 WORD                  L 00016 INIT
+   *ASP3*      00021                       L 00016 LINE
+            DL 00021 ASPID                NL 00013 LSPACE
+             L 00021 BEGPR                 L 00016 MACRO
+             L 00020 BUFCH                 L 00018 PAGE
+             L 00021 ENDPR                 L 00013 PRENT
+            NL 00021 ERROR                NL 00018 PRIM
+             L 00009 GETCH                 L 00017 TAB
+            NL 00020 HYPHEN                L 00017 WORD
+             L 00020 INIT        *ASP7*      00694
+             L 00021 LINE                 DL 00694 ASPID
+             L 00020 LSPACE               NL 00694 BEGPR
+             L 00020 MACRO                 L 00694 ENDPR
+             L 00020 PAGE                  L 00694 INIT
+            DL 00694 MACRO                 L 00080 REDTXT
+             L 00694 PRIM                  L 00080 TRECIA
+             L 00694 TAB         *INPUT*     00030
+             L 00694 WORD                  L 00030 ANTRA
+   *ASPPAG*    00006                       L 00030 FINSIGN
+            DL 00006 ASPID                 L 00030 KETVIRTA
+             L 00006 ENDPR                 L 00020 P/RILN
+             L 00004 GETCH                 L 00030 PENKTA
+             L 00006 SETCH                 L 00030 PIRMA
+   *BDC*       00021                       L 00030 PRETTYPR
+             L 00021 FMOPEN                L 00030 REDTXT
+            DL 00007 PASBDI                L 00030 TRECIA
+   *BDERRN*    00001             *KKK*       00018
+             L 00001 PASBDI                L 00018 ANTRA
+   *BDV*       00001                       L 00018 FINSIGN
+             L 00001 PASACD                L 00018 KETVIRTA
+             L 00001 PASBDI                L 00018 PENKTA
+   *BDVECT*    00168                       L 00018 PIRMA
+             L 00168 PASBDI                L 00018 REDTXT
+   *CONSUM*    00558                       L 00018 TRECIA
+             L 00558 CNVRTN      *MACRO*     00493
+            DL 00558 CONSUM               NL 00493 ANTRA
+             L 00558 COPAGE               NL 00493 FINSIGN
+            DL 00558 OUTBEG                L 00493 KETVIRTA
+             L 00558 OUTPUT               NL 00493 PENKTA
+             L 00558 SKIP                 NL 00493 PIRMA
+   *D1/4R З    00001                       L 00493 REDTXT
+            DL 00001 PASHELP              NL 00493 TRECIA
+   *D9)6Б Д    00030             *MONCRD*    00012
+             L 00030 PASHELP               L 00012 MDLCARD*
+   *DU/5D4Z    00030             *OLD*       00002
+             L 00030 PASHELP               L 00002 ANTRA
+   *DU/5D4З    00030                      NL 00002 FINSIGN
+             L 00030 PASHELP              NL 00002 KETVIRTA
+   *DЯ/4ФDZ    00030                      NL 00002 PENKTA
+             L 00030 PASHELP               L 00002 PIRMA
+   *E1 0DQФ    00001                      NL 00002 REDTXT
+            DL 00001 PASHELP              NL 00002 TRECIA
+   *ERSTOP*    00001             *OUTPUT*    00030
+             L 00001 FMOPEN                L 00030 ANTRA
+             L 00001 PASBDI                L 00030 FINSIGN
+   *E)Ф040Z    00011                       L 00030 KETVIRTA
+             L 00011 PASHELP               L 00030 P/CI
+   *FINISH*    00001                       L 00010 P/D1
+            NL 00001 ANTRA                 L 00001 P/DA
+            NL 00001 FINSIGN               L 00030 P/EA
+            NL 00001 KETVIRTA              L 00030 P/ER
+            NL 00001 PENKTA                L 00030 P/SYS
+             L 00001 PIRMA                 L 00030 PASRED
+             L 00001 REDTXT                L 00030 PENKTA
+            NL 00001 TRECIA                L 00030 PIRMA
+   *INKIND*    00001                       L 00030 PRETTYPR
+            NL 00001 ANTRA                 L 00030 REDTXT
+            NL 00001 FINSIGN               L 00030 TRECIA
+             L 00001 KETVIRTA    *PAGE*      00010
+            NL 00001 PENKTA                L 00010 ANTRA
+             L 00001 PIRMA                NL 00010 FINSIGN
+             L 00001 REDTXT                L 00010 KETVIRTA
+            NL 00001 TRECIA                L 00010 PENKTA
+   *INP*       00080                       L 00010 PIRMA
+             L 00080 ANTRA                NL 00010 REDTXT
+             L 00080 FINSIGN               L 00010 TRECIA
+             L 00080 KETVIRTA    *PAGNUM*    00001
+             L 00080 PENKTA                L 00001 ANTRA
+             L 00080 PIRMA                NL 00001 FINSIGN
+            NL 00001 KETVIRTA             NL 00001 TRECIA
+             L 00001 PENKTA      *TOPDOW*    00044
+             L 00001 PIRMA                NL 00044 ANTRA
+             L 00001 REDTXT               NL 00044 FINSIGN
+            NL 00001 TRECIA               NL 00044 KETVIRTA
+   *PASBUG*    00001                      NL 00044 PENKTA
+             L 00001 P/CI                  L 00044 PIRMA
+   *PASDDS*    00001                      NL 00044 REDTXT
+            DL 00001 P/DD                 NL 00044 TRECIA
+   *PASTEL*    00025              Ц1ZW(Ф4    00030
+             L 00025 PASOUT                L 00030 PASGOST7
+   *REGIM*     00030              ( DЦ ЖJ    00030
+             L 00030 ANTRA                 L 00030 TOPULT
+             L 00004 ASPID*W      (2*Ц ЖE    00022
+             L 00003 ASWRIT                L 00022 TOPULT
+             L 00030 FINSIGN      (2*Ц ЖЫ    00030
+             L 00030 KETVIRTA              L 00030 TOPULT
+             L 00030 PENKTA       (2GЦ ЖЫ    00030
+             L 00030 PIRMA                 L 00030 TOPULT
+             L 00004 PRINT       /VERE/      00002
+             L 00030 REDTXT                L 00002 MADLENI*
+             L 00030 TRECIA      A/I0        00001
+   *REGIM//    00001                       L 00001 IWA
+             L 00001 MADLENI*              L 00001 IWB
+             L 00001 RRR         ACC*        00001
+   *RESULT*    00030                       L 00001 LINE
+             L 00030 PRETTYPR    ARREAD*     00000
+   *SEGMA*     00296                      NL 00000 MADLENI*
+             L 00296 ANTRA                 L 00000 MDLCARD*
+            NL 00296 FINSIGN     CHKWORD*    00001
+             L 00296 KETVIRTA             NL 00001 MADLENI*
+            NL 00296 PENKTA      CONFILE*    00030
+             L 00296 PIRMA                 L 00030 PENKTA
+            NL 00296 REDTXT                L 00030 REDTXT
+            NL 00296 TRECIA      CURPAPER    00001
+   *SIDE*      00001                       L 00001 ANTRA
+             L 00001 ANTRA                 L 00001 FINSIGN
+            NL 00001 FINSIGN              NL 00001 KETVIRTA
+             L 00001 KETVIRTA              L 00001 PENKTA
+            NL 00001 PENKTA                L 00001 PIRMA
+             L 00001 PIRMA                NL 00001 REDTXT
+             L 00001 REDTXT                L 00001 TRECIA
+             L 00001 TRECIA      CURRENT*    00001
+   *SIGN*      00001                      NL 00001 ANTRA
+            NL 00001 ANTRA                 L 00001 FINSIGN
+             L 00001 FINSIGN               L 00001 KETVIRTA
+             L 00001 KETVIRTA              L 00001 PENKTA
+            NL 00001 PENKTA                L 00001 PIRMA
+            NL 00001 PIRMA                 L 00001 REDTXT
+             L 00001 REDTXT                L 00001 TRECIA
+            NL 00001 TRECIA      CURTAPE*    00001
+   *STPAGE*    00014                       L 00001 ANTRA
+             L 00014 ANTRA                NL 00001 FINSIGN
+            NL 00014 FINSIGN              NL 00001 KETVIRTA
+            NL 00014 KETVIRTA              L 00001 PENKTA
+            NL 00014 PENKTA                L 00001 PIRMA
+             L 00014 PIRMA                NL 00001 REDTXT
+             L 00014 REDTXT                L 00001 TRECIA
+             L 00014 TRECIA      DIAGNOST    00001
+   *STRNUM*    00001                       L 00001 ANTRA
+             L 00001 ANTRA                 L 00001 FINSIGN
+            NL 00001 FINSIGN               L 00001 KETVIRTA
+             L 00001 KETVIRTA             NL 00001 PENKTA
+             L 00001 PENKTA                L 00001 PIRMA
+             L 00001 PIRMA                 L 00001 REDTXT
+            NL 00001 REDTXT                L 00001 TRECIA
+   ENDPTR*     00000                       L 00001 PENKTA
+             L 00000 MADLENI*              L 00001 PIRMA
+   ENTRY*      00042                      NL 00001 REDTXT
+             L 00000 FOMA***               L 00001 TRECIA
+             L 00042 MADLEN*3    LASTTAPE    00001
+             L 00017 MADLENI*              L 00001 ANTRA
+             L 00000 MDL*REF              NL 00001 FINSIGN
+             L 00017 MDLCARD*             NL 00001 KETVIRTA
+   ERROFLG*    00001                      NL 00001 PENKTA
+             L 00001 MADLEN*3              L 00001 PIRMA
+   ERRORBUF    00013                      NL 00001 REDTXT
+             L 00013 FOMA***               L 00001 TRECIA
+            NL 00013 MADLENI*    LISTS       05120
+   FIRSTINP    00001                       P 05120 FOMA***
+            NL 00001 ANTRA                 L 05120 MADLEN*3
+            NL 00001 FINSIGN              DP 05120 MADLENI*
+             L 00001 KETVIRTA              L 05120 MDL*REF
+             L 00001 PENKTA      MONCARD*    00025
+             L 00001 PIRMA                 L 00002 LIBSUB
+             L 00001 REDTXT               NL 00014 MADLEN*3
+             L 00001 TRECIA                L 00014 MADLENI*
+   FLGEX*      00001                       L 00025 MDLCARD*
+             L 00001 PASMON2               L 00014 PASEOF
+   FULISFL*    00001                       L 00000 SETCH
+             L 00001 MADLENI*    MONCARD/    00014
+             L 00001 PASLIST               L 00014 MDLCARD*
+   INITPAPE    00001             NOLISFL*    00001
+             L 00001 ANTRA                 L 00001 MADLENI*
+             L 00001 FINSIGN               L 00001 PASLIST
+            NL 00001 KETVIRTA    NONOPLAC    00030
+             L 00001 PENKTA                L 00030 KETVIRTA
+             L 00001 PIRMA                 L 00030 REDTXT
+            NL 00001 REDTXT      NOPLACE*    00030
+             L 00001 TRECIA                L 00030 ANTRA
+   INITTAPE    00001                       L 00030 FINSIGN
+             L 00001 ANTRA                 L 00030 KETVIRTA
+            NL 00001 FINSIGN               L 00030 PENKTA
+            NL 00001 KETVIRTA              L 00030 PIRMA
+             L 00001 PENKTA                L 00030 REDTXT
+             L 00001 PIRMA                 L 00030 TRECIA
+            NL 00001 REDTXT      NЗЖПЦ ЖT    00030
+             L 00001 TRECIA                L 00030 PASGOST7
+   ISOPGOST    00022             OUT*OUT     00001
+             L 00022 FMISGO                L 00001 MDLCARD*
+            DL 00022 PASISOCD    OUTKIND*    00001
+   ISOPITM     00022                       L 00001 ANTRA
+            NL 00022 PASISOCD              L 00001 FINSIGN
+   ISOPRESV    00022                       L 00001 KETVIRTA
+            NL 00022 PASISOCD              L 00001 PENKTA
+   ISOPTEXT    00011                       L 00001 PIRMA
+            DL 00011 PASISOCD              L 00001 REDTXT
+   KCOUNT*     00000                       L 00001 TRECIA
+            NL 00000 MADLENI*    P/1D        01501
+             L 00000 MDLCARD*             NL 01350 ANTRA
+   LASTINP*    00001                      NL 01352 FINSIGN
+             L 00001 ANTRA                NL 01350 KETVIRTA
+             L 00001 FINSIGN              DL 00040 P/BX
+             L 00001 KETVIRTA              L 00307 PASGOST7
+             L 00001 PENKTA               DL 00488 PASHELP
+             L 00001 PIRMA                NL 00040 PASRED
+             L 00001 REDTXT               NL 00040 PASTIME
+             L 00001 TRECIA               NL 01490 PENKTA
+   LASTPAPE    00001                      NL 01350 PIRMA
+             L 00001 ANTRA                 L 00496 PRETTYPR
+             L 00001 FINSIGN               L 01501 REDTXT
+            NL 00001 KETVIRTA              L 00267 TOPULT
+            NL 01353 TRECIA      PASPLUS*    00001
+   P/BDBUF     01024                      DL 00001 P/RDI
+             P 01024 PASBDI               DL 00001 P/WR
+   P/BDSYS     01024             PASPMDAD    00001
+             P 01024 PASBDI                L 00001 P/HT
+             P 01024 PASSETAR              L 00001 P/SYS
+   P/BDTAB     01024                       L 00001 PASPMD
+             P 01024 PASBDI      PASZERO*    00001
+   P/FIRP      01024                      DL 00001 P/EF
+             P 01024 P/PAGES               L 00001 P/RDI
+   P/STACK     00001                       L 00001 P/SYS
+             L 00001 P/BX                  L 00001 P/WI
+             L 00001 P/MF                  L 00001 P/WO
+             L 00001 P/NN                  L 00001 P/WR
+             L 00001 PASMON2               L 00001 PASGOST
+   PAGEPAPE    01659                       L 00001 PASOUT
+             L 01659 ANTRA       PERS        02048
+            NL 01659 FINSIGN               P 02048 LIBSUB
+             L 01659 KETVIRTA    PUNCHFL*    00001
+            NL 01659 PENKTA                L 00001 MADLENI*
+             L 01659 PIRMA       PWORDPAS    00001
+            NL 01659 REDTXT                L 00001 ANTRA
+            NL 01659 TRECIA                L 00001 FINSIGN
+   PAGETAPE    01000                      NL 00001 KETVIRTA
+             L 01000 ANTRA                NL 00001 PENKTA
+            NL 01000 FINSIGN              NL 00001 PIRMA
+            NL 01000 KETVIRTA             NL 00001 REDTXT
+            NL 01000 PENKTA               NL 00001 TRECIA
+            NL 01000 PIRMA       RESTPAPE    00001
+            NL 01000 REDTXT                L 00001 ANTRA
+            NL 01000 TRECIA                L 00001 FINSIGN
+   PASCELUP    00001                      NL 00001 KETVIRTA
+            DL 00001 P/SC                 NL 00001 PENKTA
+   PASDRN*     00001                      NL 00001 PIRMA
+            DL 00001 P/PAGES               L 00001 REDTXT
+             L 00001 P/TRPAGE             NL 00001 TRECIA
+   PASDRUM*    00001             RGEXPORT    00001
+            DL 00001 P/PAGES              DL 00001 FMOPEN
+             L 00001 P/TRPAGE             DL 00001 P/BX
+   PASENDS*    00001                       L 00001 PASOUT
+            DL 00001 P/EF        SPACE*      00001
+             L 00001 P/SYS                DL 00001 P/EF
+             L 00001 PASGOST               L 00001 P/RA7
+   PASEOFCD    00001                       L 00001 P/RDI
+            DL 00001 P/EF                  L 00001 P/SP
+             L 00001 P/SYS                 L 00001 P/SYS
+   PASEOLSY    00001                       L 00001 P/WR
+            DL 00001 P/EF                  L 00001 PASGOST
+            DL 00001 P/EL        SPASAN*     00220
+             L 00001 P/SYS                 L 00220 FOMA***
+             L 00001 PASGOST               L 00220 MADLEN*3
+   PASEXFT*    00015                      NL 00220 MADLENI*
+            DL 00015 P/BEXF                L 00000 MDL*REF
+             L 00015 P/SETEXF    STEXTBF*    06144
+   PASMINS*    00001                      DP 06144 MDLCARD*
+            DL 00001 P/EF        STRPAPER    00126
+             L 00001 P/RDI                 L 00126 ANTRA
+             L 00001 P/WI                  L 00126 FINSIGN
+             L 00001 P/WR                 NL 00126 KETVIRTA
+             L 00001 PASGOST               L 00126 PENKTA
+   PASPAGN*    00001                      NL 00126 PIRMA
+            DL 00001 P/PAGES              NL 00126 REDTXT
+             L 00001 P/TRPAGE              L 00126 TRECIA
+   PASPERID    00001             STRTAPE*    00100
+             L 00001 P/RDR                 L 00100 ANTRA
+            DL 00001 P/WR                 NL 00100 FINSIGN
+            NL 00100 KETVIRTA
+             L 00100 PENKTA
+            NL 00100 PIRMA
+            NL 00100 REDTXT
+            NL 00100 TRECIA
+   TEMP        02048
+             P 02048 LIBSUB
+   TRNAME*     00000
+             L 00000 MDLCARD*
+   WORDSNUM    00001
+             L 00001 ANTRA
+             L 00001 FINSIGN
+            NL 00001 KETVIRTA
+            NL 00001 PENKTA
+            NL 00001 PIRMA
+             L 00001 REDTXT
+             L 00001 TRECIA
+   WORDSPOZ    00030
+             L 00030 ANTRA
+             L 00030 FINSIGN
+            NL 00030 KETVIRTA
+            NL 00030 PENKTA
+            NL 00030 PIRMA
+            NL 00030 REDTXT
+             L 00030 TRECIA
+   W()ЬБ0      00030
+             L 00030 PASGOST7
+   БP04 (И/    00001
+            DL 00001 PASTIME
 *END FILE

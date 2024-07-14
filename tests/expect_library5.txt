@@ -25,235 +25,1457 @@
 
 *NAME БИБЛИOTEKA 5
 *TAPE:37/******,32
-*PERSO:320545
-*
 *CALL SETFTN:ONE,LONG
-*CALL TCATALOG                                             04 ИЮЛ 24 23.45
-                      TEMPORARY LIBRARY
-                     CBOБOДHO  23 00 27
+*CALL LIBREFER:TAPE=320545                                             04 ИЮЛ 24 23.45
+                     CCЫЛKИ HA ПOДПPOГPAMMЫ
 
-   *GFATRN*   21 14 15  00007    CMS      (MMS     )  00023
-   *GFTAB*    22 36 14  00026    CNCPP      22 26 24  00067
-   ADDLEV     22 00 34  00063    CNCTCC     22 30 02  00115
-   ANGLER     22 10 15  00070    CNCTCL     22 27 33  00127
-   ANGRID     22 35 22  00272    CNCTCP     22 27 37  00071
-   APPOLY     21 11 02  00332    CNCTLL     22 26 26  00117
-   ARC        21 15 27  00271    CNCTLP     22 27 03  00100
-   ARC1       22 34 31  00143    CNTLLL     22 26 31  00530
-   ARCANG     22 06 30  00301    CONDEK     21 26 23  00514
-   ARCC1      22 07 00  00211    COORD      21 20 12  00045
-   ARCELA     22 07 20  00114    COORDT     22 21 11  00556
-   ARCELB     22 07 34  00121    CORNL      21 13 16  01344
-   ARCIA      22 31 35  00201    COSIN1     21 33 25  00024
-   ARCIB      22 07 30  00041    COSIN2     21 33 26  00043
-   ARCIC      22 07 32  00053    CPPP       22 30 31  00117
-   ARCID      22 07 16  00054    CPR        22 31 01  00021
-   ARCOCC     22 04 14  00632    CROSS      22 20 23  00424
-   ARCOLC     22 04 31  00621    CROSSP     22 22 15  00036
-   ARCOLL     22 05 07  00230    CTCCP      22 30 05  00346
-   AREB1      22 07 05  00152    CTCPP      22 30 14  00327
-   ARRINL     22 23 26  00207    CTLLP      22 27 06  00660
-   ARROW      22 04 05  00262    CTLPP      22 27 23  00365
-   ASTEP      22 31 04  00316    CUBPOL     21 10 22  00143
-   ATDX       22 33 07  00017    CXYR       22 30 27  00023
-   ATDX1      22 33 11  00020    DANPPC     22 30 23  00101
-   ATDX2      22 33 12  00023    DASHP      21 20 23  00157
-   ATDX3      22 33 14  00017    DDIST      22 06 03  00016
-   ATDY       22 33 10  00017    DERIV5     21 11 36  00254
-   ATDY1      22 33 35  00020    DIMAN      22 34 35  00244
-   ATDY2      22 33 13  00023    DIMDRO     22 03 30  00571
-   ATDY3      22 33 15  00022    DIMEN      22 35 33  00173
-   ATRAN2     22 01 11  00114    DIMET      22 10 35  00031
-   ATRST    (RESET   )  00041    DIST       22 06 14  00562
-   AXES       22 17 25  01277    DRACON     21 27 07  00656
-   AXISC      22 00 36  00304    DRALIM     21 26 20  00143
-   AXONOM     22 10 30  00023    DRAWEL     22 23 02  00041
-   BAR        22 31 16  00412    DRAWTE     22 22 37  00101
-   BARS       22 01 06  00061    DRFRAM     21 24 03  00164
-   BCD        21 05 00  00212    DRWHL      22 23 32  00110
-   BEGLEV     22 01 14  00377    ELIPS      21 16 02  00216
-   BITA       21 37 30  00230    ELPS       22 07 14  00055
-   BLAN     (BLANCH  )  00272    ENDGR    (MOVEXY  )  00067
-   BLANC      22 34 01  00123    ENDLEV   (BEGLEV  )  00162
-   BLANCA     22 16 14  00072    ENDPG      22 37 00  00221
-   BLANCH     22 36 04  00334    EXCLIB   (INSLIB  )  00671
-   BOUND      22 32 37  00300    EXMIMA     22 33 25  00060
-   BOX        21 14 26  00051    EXTLN      22 22 16  00115
-   BRLINE     21 36 15  00265    EXTREM     21 37 03  00126
-   BROKEN     21 36 24  00026    EXUDE      22 33 20  00227
-   BROLIN     22 35 13  00341    FAN1       22 35 07  00143
-   BUFL       21 30 11  00065    FAN2       22 35 03  00170
-   CABIN      22 10 31  00040    FATARC     22 07 11  00121
-   CCNTL      22 30 30  00035    FATLIN     21 12 22  00132
-   CCNTRP     22 30 26  00032    FNROOT     21 24 14  00422
-   CELL       21 37 06  00174    FORFIT     21 11 16  00223
-   CHENSP     21 11 11  00241    FORIF      21 11 27  00201
-   CIRC       22 07 26  00043    FORIT      21 11 23  00173
-   CIRCLE     21 15 36  00175    FULL       21 36 23  00012
-   CIRTAC     22 05 26  00266    GFFALS     22 31 30  00171
-   CIRTAL     22 05 15  00176    GOBSEK     21 07 36  00276
-   CMGRID     22 13 33  00650    GRAFER     22 01 10  00020
-   CMLC       22 30 34  00017    GRID       21 15 17  00127
-   HALLNE     22 21 30  00046    LPARY      22 23 37  00020
-   HALOED     22 21 32  00324    LPAX       22 24 12  00053
-   HCIND      22 12 24  00046    LPERLP     22 24 04  00047
-   HCINIT     22 23 10  00041    LPL        21 06 04  04056
-   HCINV      22 11 20  00234    LPL1     (LPL     )  00001
-   HCLINE     22 12 21  00022    LPL2     (LPL     )  00002
-   HCMULT     22 11 16  00072    LPL3     (LPL     )  00003
-   HCNCOR     22 23 16  00050    LPP        22 24 06  00067
-   HCNCRD     22 12 22  00045    LSCALE     22 14 11  00102
-   HCPRSP     22 12 35  00023    LSFIT      21 12 12  00411
-   HCROT1     22 31 13  00122    MAP        21 30 30  00113
-   HCSURF     22 12 14  00225    MARKBE     22 36 00  00136
-   HCUNIT     22 11 14  00040    MARKER     21 20 14  00213
-   HISTGM     22 20 34  00425    MATEVL     21 31 27  00135
-   HLDLN      22 22 02  00542    MINMAX     21 15 22  00056
-   IADR       22 16 17  00003    MMS        21 14 24  00032
-   IBCD     (BCD     )  00001    MNMX       21 30 17  00410
-   IDENT      21 21 25  00013    MODGF      22 05 35  00064
-   ILIMTN     21 31 16  00050    MOVA       21 12 25  00045
-   INCHES   (MMS     )  00021    MOVB       21 12 27  00035
-   INCLIN     21 05 27  00375    MOVBL1     22 15 24  00251
-   INIT       22 10 24  00015    MOVBL3     22 15 35  00541
-   INSALL   (INSLIB  )  00001    MOVC       21 12 30  00060
-   INSDEK     21 26 36  00542    MOVE       21 15 00  00136
-   INSIDE     21 27 25  00552    MOVE1      22 34 05  00171
-   INSLIB     21 20 35  01213    MOVE2      22 15 03  00267
-   INTRSC     22 14 22  00204    MOVE3      22 34 12  00412
-   IRDB       21 14 20  00015    MOVED    (MOVEXY  )  00006
-   ISOLIN     22 00 17  00613    MOVEDS   (MOVEXY  )  00035
-   ISOMET     22 10 33  00031    MOVES    (MOVEXY  )  00013
-   ITALIC   (SET     )  00024    MOVEXY     22 36 32  00146
-   ITPLBV     21 25 15  02227    MTMPL      22 01 24  00075
-   IVEST      22 06 37  00033    MXMULT     22 23 12  00072
-   IWDB       21 14 22  00015    NARROW     22 34 24  00231
-   IZFLIN     22 32 05  00126    NEWLIB   (INSLIB  )  00667
-   IZLIN      22 32 10  00732    NEXTRG     21 32 00  00662
-   IZOLIN     22 32 02  00076    NORMAL   (MOVEXY  )  00064
-   KEYPO      21 37 24  00135    NOTCH      22 15 00  00114
-   LCROSS     21 31 34  00062    NOTCH1     22 15 12  00253
-   LESQ       21 10 27  00370    NUMBER     22 20 14  00237
-   LETIZO     22 33 33  00055    NUMLIN     21 37 14  00022
-   LETSPL     22 33 31  00035    OPER       21 24 10  00173
-   LEVFUN     21 37 16  00061    PAC        22 24 34  00030
-   LEVMAP     22 00 03  00066    PAGE       22 36 20  00176
-   LGLINE     21 17 14  00215    PATA       22 25 01  00056
-   LIBLIST    22 36 37  00001    PATC       22 25 03  00055
-   LICON      22 06 04  00360    PATCH      21 36 02  00435
-   LIMITS     21 15 25  00050    PATL       22 25 05  00056
-   LINEC      21 16 14  00130    PCDP       22 25 23  00062
-   LINEMC     21 16 25  00154    PCNAP      22 24 22  00047
-   LINEMO     21 16 20  00223    PCNITC     22 24 24  00253
-   LINEO      21 16 07  00175    PCNP       22 31 02  00060
-   LINFIL     21 11 33  00135    PCNTRC     22 24 33  00016
-   LININT     21 30 13  00154    PEN        22 36 36  00016
-   LINNUM     21 36 25  00436    PENDWN   (PEN     )  00005
-   LINT       21 37 00  00116    PENUP    (PEN     )  00003
-   LITAN      22 05 22  00125    PICC       22 25 33  00133
-   LMLL       22 24 00  00110    PICTUR     21 33 12  00465
-   LOCEXT     21 37 35  00230    PIEPP      22 25 36  00051
-   LOOK       22 00 05  00440    PILC       22 25 30  00123
-   LOWER      22 32 31  00047    PILL       22 24 37  00046
-   LPAL       22 24 14  00033    PISS       22 24 20  00037
-   LPARLD     22 24 10  00063    PLDP       22 25 25  00140
-   LPARLP     22 23 35  00047    PLNP       22 30 35  00065
-   LPARX      22 24 03  00020    PLOT       22 36 25  00213
-   PMIDPP     22 24 21  00022    SETRA      22 32 35  00012
-   PMLP       22 24 35  00044    SETTR      22 11 12  00026
-   PMP        22 24 15  00042    SFCFIT     21 24 25  01532
-   PMPP       22 24 17  00022    SHADE      22 14 26  01670
-   PNORDR     21 32 32  00217    SHDOWN     22 22 31  00036
-   POLG       22 07 37  00127    SHEAR      22 11 01  00036
-   POLINE     21 16 31  00245    SHIFT    (TRANSL  )  00015
-   POLREG     21 17 05  00314    SHUP       22 22 33  00032
-   POLYG      21 15 04  00145    SIGNA      21 16 37  00260
-   PRAP       22 24 32  00034    SINCL      21 12 04  00265
-   PREP       21 35 04  00212    SIZLIN     21 37 15  00022
-   PRITEX     22 16 20  00014    SIZNUM     21 14 06  00032
-   PRJHL      22 23 04  00140    SMINV      21 10 36  00212
-   PRJT       21 30 33  00350    SMTBVF     21 21 26  01673
-   PROJCT     21 31 32  00045    SMTONE     21 23 11  01624
-   PRSP       21 12 32  01164    SMTSIM     21 22 22  01432
-   PSCALE     22 01 26  00035    SORT3      22 26 07  00117
-   PT6        22 14 17  00001    SORTC      22 26 00  00075
-   PTLCC      22 25 07  00274    SORTCN     22 26 03  00155
-   PTLPC      22 25 15  00120    SORTL      22 26 12  00152
-   PVAL       21 05 25  00043    SORTP      22 26 21  00073
-   PVPL       22 25 20  00111    SORTPT     22 26 16  00067
-   PXY        22 24 31  00017    SORTY      22 21 26  00053
-   QUADRA     21 14 10  00215    SPIRAL     22 07 24  00033
-   RAISE      22 32 27  00065    SPLINE     21 10 05  00242
-   RAND       22 12 27  00040    SPLINT     21 10 17  00124
-   RAXES      21 35 30  00430    SPLITP   (COORDT  )  00500
-   RCCNTC     22 30 25  00037    SPNP       22 30 37  00045
-   RDACA      22 02 23  00070    STAR       22 10 03  00233
-   RDACB      22 02 30  00130    STEP     (MOVEXY  )  00120
-   RDACC      22 02 36  00112    STORIN     22 22 21  00264
-   RDACD      22 03 04  00076    STRMOD     22 14 14  00075
-   RDAEA      22 03 12  00132    STROT3     22 23 14  00063
-   RDAEB      22 03 20  00155    SUPLIN     21 37 20  00157
-   RDB        21 14 17  00015    SVLSEG     22 22 30  00020
-   RDCRC      22 02 16  00053    SYMBOL     21 14 32  00315
-   RDELP      22 03 26  00061    SYMTAB     21 05 05  00752
-   RDMVA      22 02 01  00073    TCALC      21 10 25  00077
-   RDMVB      22 02 05  00061    TDLIM      22 10 17  00205
-   RDMVC      22 02 11  00075    TDLIML     22 11 25  00151
-   RDMVE      22 01 35  00055    TDLINE     22 11 31  00104
-   RDSTAR     21 21 22  00073    TDMP       22 12 30  00223
-   RDSTR      22 01 34  00023    TDROT      22 11 05  00101
-   REBLAN     21 14 30  00037    TDSCAL     22 10 37  00045
-   RECT       21 15 14  00103    TDSECT     22 12 37  01642
-   RECUR      22 32 33  00054    TDTRAN     22 11 03  00032
-   REGION     21 15 10  00147    TESTVS     22 22 35  00031
-   RENOCH     22 15 21  00072    TFM        21 06 02  00077
-   RENTCH     22 14 20  00065    THAXES     21 35 15  00456
-   RENUM      22 00 33  00012    THREED     22 11 34  00757
-   RESET      22 01 22  00054    TMF        21 15 24  00033
-   ROTATE     22 01 31  00055    TMLGF      21 17 21  00135
-   ROTH       22 23 23  00131    TOKEN      22 33 16  00042
-   ROUND    (MOVEXY  )  00053    TPF        21 35 11  00155
-   SAVETR     22 11 10  00026    TRANH      22 23 20  00120
-   SCREN1     21 31 12  00070    TRANSF     22 33 05  00054
-   SCREN2     21 31 03  00343    TRANSL     22 01 30  00027
-   SCRMOD     21 32 16  00566    TRDRAW     21 34 35  00316
-   SDPG       21 20 27  00300    TRG        21 31 20  00324
-   SEARCH     21 27 36  00453    TRGRID     21 34 12  00235
-   SECANT     22 10 11  00155    TRIDIG     21 10 12  00247
-   SEE        21 31 14  00102    TRIG       21 34 17  00766
-   SEE1       21 33 04  00257    TRIGL      22 35 30  00105
-   SEGANG     21 31 36  00072    TRINGL     21 33 30  01053
-   SET        21 14 23  00032    TRSURF     21 32 37  00217
-   SETBE      22 32 36  00020    VIEW       22 10 25  00062
-   VPLIM      22 21 05  00165
-   WDB        21 14 21  00015
-   WHERE      21 15 35  00021
-   WHERP      22 06 02  00021
-   WRACA      22 02 20  00072
-   WRACB      22 02 26  00041
-   WRACC      22 02 34  00053
-   WRACD      22 03 01  00077
-   WRAEA      22 03 07  00117
-   WRAEB      22 03 15  00121
-   WRCRC      22 02 14  00044
-   WRELP      22 03 24  00052
-   WRMVA      22 01 37  00035
-   WRMVB      22 02 04  00025
-   WRMVC      22 02 07  00047
-   WRMVE      22 05 37  00115
-   WRSTR      22 01 33  00023
-   XAXIS      22 16 21  01045
-   XILIY      22 33 27  00054
-   XILIY1     22 33 36  00116
-   XLGAX      21 17 24  00462
-   XPOL       22 00 31  00017
-   XYSORT     21 05 37  00111
-   YAXIS      22 17 03  01044
-   YLGAX      21 17 37  00467
-   YPOL       22 00 32  00017
-   ZAPIT      21 37 12  00070
-   ZERKX    (MOVEXY  )  00056
-   ZERKY    (MOVEXY  )  00061
-   ZINT       22 12 26  00040
+                                 ATDX3
+   D - PACCЫЛKA ДAHHЫX           ATDY
+   E - BHEШHЯЯ П/П               ATDY1
+                                 ATDY2
+   *GFATRN* D                    ATDY3
+   *GFTAB*  D                    ATRAN2      MTMPL
+   ADDLEV                        ATRST    (RESET   )
+   ANGLER                        AXES      E A/RHOCHI
+   ANGRID      MOVE                          ASTEP
+   APPOLY    E FT*002                        BCD
+             E FT*003                        IBCD
+             E FT*571                        MOVE
+             E I*MU*I                        SYMBOL
+             E IABS              AXISC    D  MOVE
+               PVAL                          SYMBOL
+             E SQRT              AXONOM      HCROT1
+   ARC         CIRCLE            BAR         MOVE
+               MOVE                          TMF
+   ARC1        ARCIB             BARS        BAR
+               MOVE              BCD
+   ARCANG      IVEST             BEGLEV   D  GRAFER
+   ARCC1       IVEST                         MTMPL
+   ARCELA      ELIPS             BITA
+               GFFALS            BLAN     (BLANCH  )
+               IVEST             BLANC       GFFALS
+   ARCELB      ARCANG                        IADR
+               ARCELA            BLANCA      BLANCH
+               AREB1                         IADR
+   ARCIA       GFFALS            BLANCH    E ATAN2
+               IVEST             BOUND       ATDX
+               MOVE                          ATDY
+   ARCIB       ARCANG            BOX         MOVE
+               ARCIA             BRLINE      MOVE
+   ARCIC       ARCANG                        TMF
+               ARCC1                         WHERE
+               ARCIA             BROKEN
+   ARCID       ANGLER            BROLIN      MOVE
+               ARCIA             BUFL        LININT
+   ARCOCC      ANGLER            CABIN       SHEAR
+               GFFALS            CCNTL
+               IVEST             CCNTRP
+   ARCOLC      ANGLER            CELL
+               CIRTAC            CHENSP    E COS
+               GFFALS                      E R*DI*I
+               IVEST             CIRC        ARCIA
+               MOVE                          MOVE
+               STRMOD            CIRCLE      MOVE
+   ARCOLL      ANGLER            CIRTAC      ANGLER
+               GFFALS                        GFFALS
+               IVEST                         IVEST
+   AREB1                                     STRMOD
+   ARRINL                        CIRTAL      ANGLER
+   ARROW       ANGLER                        GFFALS
+               ARCIA                         IVEST
+               GFFALS                        STRMOD
+               IVEST             CMGRID    E ATAN2
+               MOVA                          MOVE
+               MOVE                          NUMBER
+               STRMOD                        TMF
+   ASTEP     E A/RHOCHI                      XPOL
+   ATDX                                      YPOL
+   ATDX1                         CMLC        PMLP
+   ATDX2                         CMS      (MMS     )
+   CNCPP     E A/AND                         GFFALS
+             E A/NOT                         MOVA
+               LPERLP                        MOVE
+               LPP                           RDACA
+               PILC                          RDACB
+   CNCTCC      PICC                          RDMVA
+   CNCTCL      LPARLD                        RDSTR
+               PILC                          STRMOD
+   CNCTCP      PICC                          WRACA
+   CNCTLL      LPARLD                        WRMVA
+               PILL                          WRSTR
+   CNCTLP      LPARLD            DIMEN     E A/RHOCHI
+               LPERLP                        NARROW
+               PILC                          NUMBER
+               PILL              DIMET       TDROT
+   CNTLLL    E A/NOT             DIST        ANGLER
+               LPARLD                        AREB1
+               LPARLP                        IVEST
+               PILL                          SECANT
+   CONDEK    E A/NOT                         STRMOD
+               FNROOT            DRACON      FNROOT
+               INSDEK                        INSIDE
+               TFM                           TMF
+               WHERE                         WHERE
+   COORD                         DRALIM
+   COORDT      HCINIT            DRAWEL      MOVE
+               HCNCOR                        TMF
+               MXMULT            DRAWTE      DRAWEL
+               SORTY             DRFRAM   D  MOVE
+               STROT3                        TMF
+   CORNL     E I*MUI*            DRWHL       HCNCOR
+               MAP                           MOVE
+               MOVE                          TMF
+               PATCH             ELIPS       MOVE
+             E R*ST*I            ELPS        ELIPS
+               RDB                           MOVE
+               TMF               ENDGR    (MOVEXY  )
+   COSIN1                        ENDLEV   (BEGLEV  )
+   COSIN2                        ENDPG       ATRST
+   CPPP                                    E F/SRET
+   CPR                                     E F/SSTART
+   CROSS       ANGLER                        MOVE
+               GFFALS                        NUMBER
+   CROSSP                                    PLOT
+   CTCCP     E A/AND                         REBLAN
+   CTCPP     E A/AND                         RENTCH
+   CTLLP     E A/AND                         SYMBOL
+             E A/NOT             EXCLIB   (INSLIB  )
+               LPERLP            EXMIMA
+               PILC              EXTLN
+               PILL              EXTREM      XPOL
+   CTLPP     E A/AND                         YPOL
+               LPERLP            EXUDE     E A/AND
+               LPP                           ATDX
+   CUBPOL                                    ATDY
+   CXYR                                      TOKEN
+   DANPPC                        FAN1        ARC1
+   DASHP       MOVE                          MOVE
+   DDIST                         FAN2        ARC1
+   DERIV5                                    MOVE
+   DIMAN       ARCIA             FATARC      ARCANG
+               MOVE                          ARCIA
+               NUMBER                        MOVA
+   DIMDRO      ARCIA                         MOVE
+               ARROW             FATLIN      ANGLER
+               MOVA                          IRDB
+               MOVE                          MARKER
+             E R*DI*I                        MOVE
+               RDB                         E R*ST*I
+             E SQRT                          RDB
+   FNROOT   D  ITPLBV                        TMF
+   FORFIT    E ABS                           WHERE
+             E COS               INIT        HCUNIT
+             E I*MU*I            INSALL   (INSLIB  )
+             E IABS              INSDEK    E A/AND
+               IRDB                        E A/NOT
+               MOVE                          ITPLBV
+             E R*DI*I                        MOVE
+             E SIN                           NUMBER
+               TMF                           TMF
+   FORIF     E COS               INSIDE    E A/AND
+             E I*MU*I                        ITPLBV
+             E SIN                           MOVE
+   FORIT     E COS                           NUMBER
+             E I*MU*I                        TMF
+             E SIN               INSLIB    E DATAPR*
+   FULL                                      LIBLIST
+   GFFALS      ENDPG                       E MONREAD*
+             E FT*002                      E OCTTDEC
+             E FT*003                      E PRINT8
+             E FT*571                        PT6
+   GOBSEK    E ABS                           RDSTAR
+             E FLOAT             INTRSC
+               GFFALS            IRDB
+             E I*DI*I            ISOLIN      LINEO
+             E I*MU*I                        LOOK
+             E SQRT                          XPOL
+   GRAFER                                    YPOL
+   GRID        MOVE              ISOMET      TDROT
+   HALLNE      COORDT            ITALIC   (SET     )
+               HALOED            ITPLBV    E A/AND
+   HALOED      DRAWTE                      E A/NOT
+               HLDLN                       E FT*002
+   HCIND                                   E FT*003
+   HCINIT                                  E FT*571
+   HCINV     E A/RHOCHI          IVEST
+   HCLINE      LINEO             IWDB
+   HCMULT                        IZFLIN      IZLIN
+   HCNCOR                                    LOWER
+   HCNCRD                                    RAISE
+   HCPRSP      HCMULT            IZLIN     E A/AND
+               HCUNIT                      E A/NOT
+   HCROT1    E ATAN2                         LETIZO
+               TDROT                         RECUR
+   HCSURF      TDSECT                        XILIY
+   HCUNIT                        IZOLIN      IZLIN
+   HISTGM      MOVE                          LOWER
+               TMF                           RAISE
+   HLDLN     E A/NOT             KEYPO       MARKER
+               CROSSP                        MOVE
+               EXTLN                         NUMBER
+               STORIN                        TMF
+   IADR                                      XPOL
+   IBCD     (BCD     )                       YPOL
+   IDENT                         LCROSS
+   ILIMTN                        LESQ      E I*MU*I
+   INCHES   (MMS     )                     E IABS
+   INCLIN    E ABS                           SMINV
+             E AMAX1             LETIZO      LINNUM
+             E AMIN1                         MARKBE
+             E IABS                          TRANSF
+   LETSPL      TDLINE                      E A/NOT
+   LEVFUN      MINMAX            LPL       E ABS
+   LEVMAP                                  E AMAX1
+   LGLINE      MARKER                      E AMIN1
+               MOVE                        E ATAN
+               TMLGF                         ENDPG
+               WHERE                       E FT*002
+   LIBLIST                                 E FT*003
+   LICON       ANGLER                      E FT*611
+               GFFALS                      E I*DI*I
+               IVEST                       E I*MU*I
+   LIMITS                                  E I*MUI*
+   LINEC       MOVE                        E I*ST*L
+               TMF                           LIMITS
+   LINEMC      MARKER                      E MIN0
+               MOVE                          MOVE
+               TMF                           NUMBER
+   LINEMO      MARKER                        PAGE
+               MOVE                          REGION
+               TMF                         E SIGN
+               WHERE                       E SQRT
+   LINEO       MOVE                          SYMBOL
+               TMF                           TMF
+               WHERE             LPL1     (LPL     )
+   LINFIL                        LPL2     (LPL     )
+   LININT                        LPL3     (LPL     )
+   LINNUM    E ATAN2             LPP
+               BRLINE            LSCALE    E ATAN2
+               NUMBER                        ATRAN2
+               TMF                           ROTATE
+   LINT        XPOL              LSFIT     E ABS
+               YPOL                        E ALOG10
+   LITAN       ANGLER                      E FT*002
+               GFFALS                      E FT*003
+               IVEST                       E FT*571
+               RDCRC                       E I*MU*I
+   LMLL     DE A/AND                       E IABS
+             E A/NOT                         IRDB
+               LPARLP                      E ISIGN
+               LPP                           LESQ
+               PILC                          MINMAX
+               PILL                          MOVE
+               PMLP                          PVAL
+   LOCEXT      MARKER                        TMF
+               MOVE              MAP
+               NUMBER            MARKBE      MOVE
+               TMF                           TMF
+               XPOL              MARKER   D  MOVE
+               YPOL              MATEVL
+   LOOK      E A/NOT             MINMAX
+               CELL              MMS
+               LINNUM            MNMX        LIMITS
+               LINT                          MAP
+               ZAPIT             MODGF       STRMOD
+   LOWER                         MOVA      E COS
+   LPAL      E ATAN2                         MOVE
+               LPAX                        E SIN
+   LPARLD    E A/AND             MOVB        MOVE
+             E A/NOT             MOVBL1    E AMAX1
+   LPARLP    E A/AND                       E AMIN1
+             E A/NOT                         BLANCA
+   LPARX                                     GFFALS
+   LPARY                                   E INT
+   LPAX     DE A/NOT                         PLOT
+               LPERLP                        RDB
+   LPERLP    E A/AND             MOVBL3    E AMAX1
+             E AMIN1                         LPP
+               BLANCA                        PILL
+               GFFALS            PCNP        LPP
+             E I*DI*I                        PILC
+             E I*MU*I                        SPNP
+             E INT               PCNTRC
+               NOTCH1            PEN
+               PLOT              PENDWN   (PEN     )
+               RDB               PENUP    (PEN     )
+   MOVC        MOVE              PICC
+             E SQRT              PICTUR      LCROSS
+   MOVE        PLOT                          MOVE
+   MOVE1       BLAN                          SCREN1
+               BLANCH                        SCREN2
+               PLOT                          SEGANG
+   MOVE2       NOTCH1                        TMF
+               PLOT              PIEPP
+   MOVE3       BLAN              PILC
+               BLANCH            PILL
+               NOTCH1            PISS        LPP
+               PLOT                          PILL
+   MOVED    (MOVEXY  )           PLDP
+   MOVEDS   (MOVEXY  )           PLNP        LPERLP
+   MOVES    (MOVEXY  )           PLOT        ENDGR
+   MOVEXY      PEN                         E FLOAT
+               PENUP                         MOVEXY
+               STEP                          PENDWN
+   MTMPL                                     PENUP
+   MXMULT                                  E R*DI*I
+   NARROW      MOVE                        E R*ST*I
+   NEWLIB   (INSLIB  )                       RDB
+   NEXTRG    E A/NOT                       E SQRT
+               COSIN1            PMIDPP
+               ILIMTN            PMLP
+               TRG               PMP
+   NORMAL   (MOVEXY  )           PMPP
+   NOTCH       GFFALS            PNORDR      COSIN2
+               IADR              POLG        MOVA
+   NOTCH1      GFFALS                        MOVE
+   NUMBER   DE A/RHOCHI          POLINE      MARKER
+               SYMBOL                        MOVE
+   NUMLIN                                    TPF
+   OPER      E A/AND                         WHERE
+             E FT*003            POLREG      CIRCLE
+             E FT*571                        MOVE
+   PAC                                       SYMBOL
+   PAGE      E AMAX1             POLYG       MOVE
+             E AMIN1             PRAP
+               BOX               PREP        LIMITS
+               ENDPG                         MATEVL
+               IRDB                          PROJCT
+               IWDB              PRITEX
+               MOVE              PRJHL       HCINIT
+               RDB                           MXMULT
+               SET                           STROT3
+               WDB               PRJT        MAP
+   PATA        PAC                           MOVE
+   PATC        PAC                           TMF
+   PATCH       BUFL              PROJCT
+               LININT            PRSP        CORNL
+               MOVE                          RDB
+               SEARCH            PSCALE      ATRAN2
+   PATL                          PT6       E PT6/G
+   PCDP                          PTLCC     E ATAN2
+   PCNAP                         PTLPC     E A/NOT
+   PCNITC      LPERLP            PVAL
+   PVPL                          SECANT      GFFALS
+   PXY                                       IVEST
+   QUADRA    E I*MU*I                        RDMVA
+             E I*MUI*                        RDSTR
+   RAISE       EXMIMA                        WRMVA
+   RAND                                      WRSTR
+   RAXES       CIRCLE            SEE         SEE1
+               MOVE              SEE1        COSIN1
+               NUMBER                        LCROSS
+             E POWER             SEGANG
+               SIGNA             SET
+               TPF               SETBE
+   RCCNTC                        SETRA
+   RDACA       GFFALS            SETTR
+               STRMOD            SFCFIT    E FT*002
+   RDACB       GFFALS                      E FT*003
+               STRMOD                      E FT*571
+   RDACC       GFFALS            SHADE       MOVE
+               STRMOD                        TMF
+   RDACD       GFFALS            SHDOWN
+               STRMOD            SHEAR       HCMULT
+   RDAEA       GFFALS                        HCUNIT
+               STRMOD            SHIFT    (TRANSL  )
+   RDAEB       GFFALS            SHUP
+               STRMOD            SIGNA       ASTEP
+   RDB                                       NUMBER
+   RDCRC       GFFALS                      E POWER
+               STRMOD                        SYMBOL
+   RDELP       GFFALS            SINCL       CUBPOL
+               STRMOD                        DERIV5
+   RDMVA       ANGLER                        IRDB
+               GFFALS                        MOVE
+               STRMOD                        PVAL
+   RDMVB       GFFALS                      E R*ST*I
+               STRMOD                        RDB
+   RDMVC       GFFALS                      E SQRT
+               STRMOD                        TMF
+   RDMVE       GFFALS            SIZLIN
+               STRMOD            SIZNUM
+   RDSTAR                        SMINV     E I*MU*I
+   RDSTR                         SMTBVF    E FT*002
+   REBLAN      MOVE                        E FT*003
+   RECT        MOVE                        E FT*571
+   RECUR                                     OPER
+   REGION      BOX               SMTONE    E FT*003
+               SYMBOL                      E FT*571
+   RENOCH      IADR              SMTSIM    E FT*003
+               RENTCH                      E FT*571
+   RENTCH                        SORT3
+   RENUM                         SORTC
+   RESET    D                    SORTCN      SORT3
+   ROTATE      ATRAN2            SORTL       SORT3
+   ROTH        HCNCOR            SORTP
+               STROT3            SORTPT
+   ROUND    (MOVEXY  )           SORTY
+   SAVETR                        SPIRAL      CIRCLE
+   SCREN1                        SPLINE    E FT*002
+   SCREN2                                  E FT*003
+   SCRMOD    E FT*003                      E FT*571
+             E FT*571                        TDMP
+               SEGANG                        TRIDIG
+             E STOP*             SPLINT    E R*DI*I
+   SDPG        MOVE              SPLITP   (COORDT  )
+   SEARCH      BUFL              SPNP
+               INTRSC            STAR        IVEST
+               MOVE                          MOVA
+               MOVE                          SEE
+               POLG              TRGRID      PNORDR
+   STEP     (MOVEXY  )           TRIDIG
+   STORIN      SHDOWN            TRIG        COSIN1
+               SHUP                          COSIN2
+               SVLSEG                      E FT*003
+               TESTVS                      E FT*571
+   STRMOD                                  E STOP*
+   STROT3   D  HCINIT            TRIGL       MOVE
+   SUPLIN      BRLINE            TRINGL      COSIN1
+               LINEMC                        COSIN2
+               LINEMO                      E FT*003
+               XPOL                        E FT*571
+               YPOL                          MOVE
+   SVLSEG                                  E STOP*
+   SYMBOL      MOVE                          TMF
+               SYMTAB            TRSURF      COSIN1
+   SYMTAB                                    NEXTRG
+   TCALC     E SQRT                          TRDRAW
+   TDLIM       HCNCRD            VIEW        HCINV
+               LIMITS                        HCPRSP
+   TDLIML      HCNCRD                        HCROT1
+               LIMITS            VPLIM       HCNCOR
+   TDLINE      HCNCRD                        LIMITS
+               MOVE              WDB
+               TMF               WHERE
+   TDMP                          WHERP
+   TDROT    D  HCMULT            WRACA       GFFALS
+               HCUNIT                        STRMOD
+   TDSCAL      HCMULT            WRACB       ARCANG
+               HCUNIT                        WRACA
+   TDSECT      HCLINE            WRACC       ARCANG
+               HCNCRD                        ARCC1
+               ZINT                          WRACA
+   TDTRAN      HCMULT            WRACD       ANGLER
+               HCUNIT                        STRMOD
+   TESTVS    E A/AND             WRAEA       GFFALS
+   TFM       E ABS                           STRMOD
+             E FLOAT             WRAEB       ARCANG
+               RDB                           AREB1
+   THAXES      CIRCLE                        WRAEA
+               MOVE              WRCRC       STRMOD
+               NUMBER            WRELP       STRMOD
+             E POWER             WRMVA       WRMVE
+               SIGNA             WRMVB       WRMVE
+               TPF               WRMVC       WRMVE
+   THREED      HCIND             WRMVE       STRMOD
+               HCNCRD            WRSTR
+               HCSURF            XAXIS     E A/RHOCHI
+   TMF                                       ASTEP
+   TMLGF     E A/RHOCHI                      BCD
+   TOKEN       MARKER                        IBCD
+               MOVE                          MOVE
+               NUMBER                        SYMBOL
+               TMF                           TMF
+   TPF                           XILIY
+   TRANH       HCINIT            XILIY1
+               HCNCOR            XLGAX     E A/RHOCHI
+   TRANSF      ATDX                          MOVE
+               ATDY                          NUMBER
+   TRANSL      ATRAN2                      E POWER
+   TRDRAW      PICTUR                        SYMBOL
+               PROJCT                        TMLGF
+               SCRMOD            XPOL
+   TRG       E A/NOT             XYSORT    E ABS
+               COSIN1                      E R*ST*I
+   YAXIS     E A/RHOCHI
+               ASTEP
+               BCD
+               IBCD
+               MOVE
+               SYMBOL
+               TMF
+   YLGAX     E A/RHOCHI
+               MOVE
+               NUMBER
+             E POWER
+               SYMBOL
+               TMLGF
+   YPOL
+   ZAPIT
+   ZERKX    (MOVEXY  )
+   ZERKY    (MOVEXY  )
+   ZINT                                             04 ИЮЛ 24 23.45
+                     ИCПOЛЬЗOBAHИE ПOДПPOГPAMM
 
+                                 DASHP
+   E - BHEШHЯЯ П/П               DDIST
+   N - OПИCAHA, HE ИCПOЛЬЗYETCЯ  DIMAN
+   C - ECTЬ OДHOИMEHHЫЙ COMMON   DIMDRO
+                                 DIMEN
+   HEИCПOЛЬЗYEMЫE BXOДЫ          DIMET
+                                 DIST
+   *GFATRN* C                    DRACON
+   *GFTAB*  C                    DRALIM
+   ADDLEV                        DRFRAM
+   ANGRID                        DRWHL
+   APPOLY                        ELPS
+   ARC                           ENDLEV
+   ARCELB                        EXCLIB
+   ARCIC                         EXTREM
+   ARCID                         EXUDE
+   ARCOCC                        FAN1
+   ARCOLC                        FAN2
+   ARCOLL                        FATARC
+   ARRINL                        FATLIN
+   ATDX1                         FORFIT
+   ATDX2                         FORIF
+   ATDX3                         FORIT
+   ATDY1                         FULL
+   ATDY2                         GOBSEK
+   ATDY3                         GRID
+   AXES                          HALLNE
+   AXISC                         HISTGM
+   AXONOM                        IDENT
+   BARS                          INCHES
+   BEGLEV                        INCLIN
+   BITA                          INIT
+   BLANC                         INSALL
+   BOUND                         INSLIB
+   BROKEN                        ISOLIN
+   BROLIN                        ISOMET
+   CABIN                         ITALIC
+   CCNTL                         IZFLIN
+   CCNTRP                        IZOLIN
+   CHENSP                        KEYPO
+   CIRC                          LETSPL
+   CIRTAL                        LEVFUN
+   CMGRID                        LEVMAP
+   CMLC                          LGLINE
+   CMS                           LICON
+   CNCPP                         LINEC
+   CNCTCC                        LINFIL
+   CNCTCL                        LITAN
+   CNCTCP                        LMLL
+   CNCTLL                        LOCEXT
+   CNCTLP                        LPAL
+   CNTLLL                        LPARX
+   CONDEK                        LPARY
+   COORD                         LPL
+   CPPP                          LPL1
+   CPR                           LPL2
+   CROSS                         LPL3
+   CTCCP                         LSCALE
+   CTCPP                         LSFIT
+   CTLLP                         MMS
+   CTLPP                         MNMX
+   CXYR                          MODGF
+   DANPPC                        MOVB
+   MOVBL1                        SFCFIT
+   MOVBL3                        SHADE
+   MOVC                          SHIFT
+   MOVE1                         SINCL
+   MOVE2                         SIZLIN
+   MOVE3                         SIZNUM
+   MOVED                         SMTBVF
+   MOVEDS                        SMTONE
+   MOVES                         SMTSIM
+   NEWLIB                        SORTC
+   NORMAL                        SORTCN
+   NOTCH                         SORTL
+   NUMLIN                        SORTP
+   PATA                          SORTPT
+   PATC                          SPIRAL
+   PATL                          SPLINE
+   PCDP                          SPLINT
+   PCNAP                         SPLITP
+   PCNITC                        STAR
+   PCNP                          SUPLIN
+   PCNTRC                        TCALC
+   PIEPP                         TDLIM
+   PISS                          TDLIML
+   PLDP                          TDSCAL
+   PLNP                          TDTRAN
+   PMIDPP                        THAXES
+   PMP                           THREED
+   PMPP                          TRANH
+   POLINE                        TRANSL
+   POLREG                        TRGRID
+   POLYG                         TRIG
+   PRAP                          TRIGL
+   PREP                          TRINGL
+   PRITEX                        TRSURF
+   PRJHL                         VIEW
+   PRJT                          VPLIM
+   PRSP                          WHERP
+   PSCALE                        WRACB
+   PTLCC                         WRACC
+   PTLPC                         WRACD
+   PVPL                          WRAEB
+   PXY                           WRCRC
+   QUADRA                        WRELP
+   RAND                          WRMVB
+   RAXES                         WRMVC
+   RCCNTC                        XAXIS
+   RDACC                         XILIY1
+   RDACD                         XLGAX
+   RDAEA                         XYSORT
+   RDAEB                         YAXIS
+   RDELP                         YLGAX
+   RDMVB                         ZERKX
+   RDMVC                         ZERKY
+   RDMVE
+   RECT
+   RENOCH                        ИCПOЛЬЗYEMЫE BXOДЫ
+   RENUM
+   RESET                         A/AND    E  CNCPP
+   ROTH                                      CTCCP
+   ROUND                                     CTCPP
+   SAVETR                                    CTLLP
+   SDPG                                      CTLPP
+   SETBE                                     EXUDE
+   SETRA                                     INSDEK
+   SETTR                                     INSIDE
+               ITPLBV                        WRACD
+               IZLIN             ARC1        FAN1
+               LMLL                          FAN2
+               LPARLD            ARCANG      ARCELB
+               LPARLP                        ARCIB
+               LPERLP                        ARCIC
+               OPER                          FATARC
+               TESTVS                        WRACB
+   A/NOT    E  CNCPP                         WRACC
+               CNTLLL                        WRAEB
+               CONDEK            ARCC1       ARCIC
+               CTLLP                         WRACC
+               HLDLN             ARCELA      ARCELB
+               INSDEK            ARCIA       ARCIB
+               ITPLBV                        ARCIC
+               IZLIN                         ARCID
+               LMLL                          ARROW
+               LOOK                          CIRC
+               LPARLD                        DIMAN
+               LPARLP                        DIMDRO
+               LPAX                          FATARC
+               LPERLP            ARCIB       ARC1
+               NEXTRG            AREB1       ARCELB
+               PTLPC                         DIST
+               TRG                           WRAEB
+   A/RHOCHI E  ASTEP             ARROW       DIMDRO
+               AXES              ASTEP       AXES
+               DIMEN                         SIGNA
+               HCINV                         XAXIS
+               NUMBER                        YAXIS
+               TMLGF             ATAN     E  LPL
+               XAXIS             ATAN2    E  BLANCH
+               XLGAX                         CMGRID
+               YAXIS                         HCROT1
+               YLGAX                         LINNUM
+   ABS      E  FORFIT                        LPAL
+               GOBSEK                        LSCALE
+               INCLIN                        PTLCC
+               LPL               ATDX        BOUND
+               LSFIT                         EXUDE
+               TFM                           TRANSF
+               XYSORT            ATDY        BOUND
+   ALOG10   E  LSFIT                         EXUDE
+   AMAX1    E  INCLIN                        TRANSF
+               LPL               ATRAN2      LSCALE
+               MOVBL1                        PSCALE
+               MOVBL3                        ROTATE
+               PAGE                          TRANSL
+   AMIN1    E  INCLIN            ATRST       ENDPG
+               LPL               BAR         BARS
+               MOVBL1            BCD         AXES
+               MOVBL3                        XAXIS
+               PAGE                          YAXIS
+   ANGLER      ARCID             BLAN        MOVE1
+               ARCOCC                        MOVE3
+               ARCOLC            BLANCA      MOVBL1
+               ARCOLL                        MOVBL3
+               ARROW             BLANCH      BLANCA
+               CIRTAC                        MOVE1
+               CIRTAL                        MOVE3
+               CROSS             BOX         PAGE
+               DIST                          REGION
+               FATLIN            BRLINE      LINNUM
+               LICON                         SUPLIN
+               LITAN             BUFL        PATCH
+               RDMVA                         SEARCH
+   CELL        LOOK              FT*571   E  APPOLY
+   CIRCLE      ARC                           GFFALS
+               POLREG                        ITPLBV
+               RAXES                         LSFIT
+               SPIRAL                        OPER
+               THAXES                        SCRMOD
+   CIRTAC      ARCOLC                        SFCFIT
+   COORDT      HALLNE                        SMTBVF
+   CORNL       PRSP                          SMTONE
+   COS      E  CHENSP                        SMTSIM
+               FORFIT                        SPLINE
+               FORIF                         TRIG
+               FORIT                         TRINGL
+               MOVA              FT*611   E  LPL
+   COSIN1      NEXTRG            GFFALS      ARCELA
+               SEE1                          ARCIA
+               TRG                           ARCOCC
+               TRIG                          ARCOLC
+               TRINGL                        ARCOLL
+               TRSURF                        ARROW
+   COSIN2      PNORDR                        BLANC
+               TRIG                          CIRTAC
+               TRINGL                        CIRTAL
+   CROSSP      HLDLN                         CROSS
+   CUBPOL      SINCL                         DIMDRO
+   DATAPR*  E  INSLIB                        GOBSEK
+   DERIV5      SINCL                         LICON
+   DRAWEL      DRAWTE                        LITAN
+   DRAWTE      HALOED                        MOVBL1
+   ELIPS       ARCELA                        MOVBL3
+               ELPS                          NOTCH
+   ENDGR       PLOT                          NOTCH1
+   ENDPG       GFFALS                        RDACA
+               LPL                           RDACB
+               PAGE                          RDACC
+   EXMIMA      RAISE                         RDACD
+   EXTLN       HLDLN                         RDAEA
+   F/SRET   E  ENDPG                         RDAEB
+   F/SSTART E  ENDPG                         RDCRC
+   FLOAT    E  GOBSEK                        RDELP
+               PLOT                          RDMVA
+               TFM                           RDMVB
+   FNROOT      CONDEK                        RDMVC
+               DRACON                        RDMVE
+   FT*002   E  APPOLY                        SECANT
+               GFFALS                        WRACA
+               ITPLBV                        WRAEA
+               LPL               GRAFER      BEGLEV
+               LSFIT             HALOED      HALLNE
+               SFCFIT            HCIND       THREED
+               SMTBVF            HCINIT      COORDT
+               SPLINE                        PRJHL
+   FT*003   E  APPOLY                        STROT3
+               GFFALS                        TRANH
+               ITPLBV            HCINV       VIEW
+               LPL               HCLINE      TDSECT
+               LSFIT             HCMULT      HCPRSP
+               OPER                          SHEAR
+               SCRMOD                        TDROT
+               SFCFIT                        TDSCAL
+               SMTBVF                        TDTRAN
+               SMTONE            HCNCOR      COORDT
+               SMTSIM                        DRWHL
+               SPLINE                        ROTH
+               TRIG                          TRANH
+               TRINGL                        VPLIM
+   HCNCRD      TDLIM                         ARCOLC
+               TDLIML                        ARCOLL
+               TDLINE                        ARROW
+               TDSECT                        CIRTAC
+               THREED                        CIRTAL
+   HCPRSP      VIEW                          DIST
+   HCROT1      AXONOM                        LICON
+               VIEW                          LITAN
+   HCSURF      THREED                        SECANT
+   HCUNIT      HCPRSP                        STAR
+               INIT              IWDB        PAGE
+               SHEAR             IZLIN       IZFLIN
+               TDROT                         IZOLIN
+               TDSCAL            LCROSS      PICTUR
+               TDTRAN                        SEE1
+   HLDLN       HALOED            LESQ        LSFIT
+   I*DI*I   E  GOBSEK            LETIZO      IZLIN
+               LPL               LIBLIST     INSLIB
+               MOVBL3            LIMITS      LPL
+   I*MU*I   E  APPOLY                        MNMX
+               FORFIT                        PREP
+               FORIF                         TDLIM
+               FORIT                         TDLIML
+               GOBSEK                        VPLIM
+               LESQ              LINEMC      SUPLIN
+               LPL               LINEMO      SUPLIN
+               LSFIT             LINEO       HCLINE
+               MOVBL3                        ISOLIN
+               QUADRA            LININT      BUFL
+               SMINV                         PATCH
+   I*MUI*   E  CORNL             LINNUM      LETIZO
+               LPL                           LOOK
+               QUADRA            LINT        LOOK
+   I*ST*L   E  LPL               LOOK        ISOLIN
+   IABS     E  APPOLY            LOWER       IZFLIN
+               FORFIT                        IZOLIN
+               INCLIN            LPARLD      CNCTCL
+               LESQ                          CNCTLL
+               LSFIT                         CNCTLP
+   IADR        BLANC                         CNTLLL
+               BLANCA            LPARLP      CNTLLL
+               NOTCH                         LMLL
+               RENOCH            LPAX        LPAL
+   IBCD        AXES              LPERLP      CNCPP
+               XAXIS                         CNCTLP
+               YAXIS                         CTLLP
+   ILIMTN      NEXTRG                        CTLPP
+   INSDEK      CONDEK                        LPAX
+   INSIDE      DRACON                        PCNITC
+   INT      E  MOVBL1                        PLNP
+               MOVBL3            LPP         CNCPP
+   INTRSC      SEARCH                        CTLPP
+   IRDB        FORFIT                        LMLL
+               INCLIN                        PCNITC
+               LSFIT                         PCNP
+               PAGE                          PISS
+               SINCL             MAP         CORNL
+   ISIGN    E  LSFIT                         MNMX
+   ITPLBV      FNROOT                        PRJT
+               INSDEK            MARKBE      LETIZO
+               INSIDE            MARKER      INCLIN
+   IVEST       ARCANG                        KEYPO
+               ARCC1                         LGLINE
+               ARCELA                        LINEMC
+               ARCIA                         LINEMO
+               ARCOCC                        LOCEXT
+               POLINE                        POLG
+               TOKEN                         POLINE
+   MATEVL      PREP                          POLREG
+   MIN0     E  LPL                           POLYG
+   MINMAX      LEVFUN                        PRJT
+               LSFIT                         RAXES
+   MONREAD* E  INSLIB                        REBLAN
+   MOVA        ARROW                         RECT
+               DIMDRO                        SDPG
+               FATARC                        SEARCH
+               FATLIN                        SHADE
+               POLG                          SINCL
+               STAR                          STAR
+   MOVE        ANGRID                        SYMBOL
+               ARC                           TDLINE
+               ARC1                          THAXES
+               ARCIA                         TOKEN
+               ARCOLC                        TRIGL
+               ARROW                         TRINGL
+               AXES                          XAXIS
+               AXISC                         XLGAX
+               BAR                           YAXIS
+               BOX                           YLGAX
+               BRLINE            MOVEXY      PLOT
+               BROLIN            MTMPL       ATRAN2
+               CIRC                          BEGLEV
+               CIRCLE            MXMULT      COORDT
+               CMGRID                        PRJHL
+               CORNL             NARROW      DIMEN
+               DASHP             NEXTRG      TRSURF
+               DIMAN             NOTCH1      MOVBL3
+               DIMDRO                        MOVE2
+               DRAWEL                        MOVE3
+               DRFRAM            NUMBER      CMGRID
+               DRWHL                         DIMAN
+               ELIPS                         DIMEN
+               ELPS                          ENDPG
+               ENDPG                         INSDEK
+               FAN1                          INSIDE
+               FAN2                          KEYPO
+               FATARC                        LINNUM
+               FATLIN                        LOCEXT
+               FORFIT                        LPL
+               GRID                          RAXES
+               HISTGM                        SIGNA
+               INCLIN                        THAXES
+               INSDEK                        TOKEN
+               INSIDE                        XLGAX
+               KEYPO                         YLGAX
+               LGLINE            OCTTDEC  E  INSLIB
+               LINEC             OPER        SMTBVF
+               LINEMC            PAC         PATA
+               LINEMO                        PATC
+               LINEO             PAGE        LPL
+               LOCEXT            PATCH       CORNL
+               LPL               PEN         MOVEXY
+               LSFIT             PENDWN      PLOT
+               MARKBE            PENUP       MOVEXY
+               MARKER                        PLOT
+               MOVA              PICC        CNCTCC
+               MOVB                          CNCTCP
+               MOVC              PICTUR      TRDRAW
+               NARROW            PILC        CNCPP
+               PAGE                          CNCTCL
+               PATCH                         CNCTLP
+               PICTUR                        CTLLP
+               LMLL              RENTCH      ENDPG
+               PCNP                          RENOCH
+   PILL        CNCTLL            ROTATE      LSCALE
+               CNCTLP            SCREN1      PICTUR
+               CNTLLL            SCREN2      PICTUR
+               CTLLP             SCRMOD      TRDRAW
+               LMLL              SEARCH      PATCH
+               PCNITC            SECANT      DIST
+               PISS              SEE         TRG
+   PLOT        ENDPG             SEE1        SEE
+               MOVBL1            SEGANG      PICTUR
+               MOVBL3                        SCRMOD
+               MOVE              SET         PAGE
+               MOVE1             SHDOWN      STORIN
+               MOVE2             SHEAR       CABIN
+               MOVE3             SHUP        STORIN
+   PMLP        CMLC              SIGN     E  LPL
+               LMLL              SIGNA       RAXES
+   PNORDR      TRGRID                        THAXES
+   POLG        STAR              SIN      E  FORFIT
+   POWER    E  RAXES                         FORIF
+               SIGNA                         FORIT
+               THAXES                        MOVA
+               XLGAX             SMINV       LESQ
+               YLGAX             SORT3       SORTCN
+   PRINT8   E  INSLIB                        SORTL
+   PROJCT      PREP              SORTY       COORDT
+               TRDRAW            SPNP        PCNP
+   PT6         INSLIB            SQRT     E  APPOLY
+   PT6/G    E  PT6                           FATLIN
+   PVAL        APPOLY                        GOBSEK
+               LSFIT                         LPL
+               SINCL                         MOVC
+   R*DI*I   E  CHENSP                        PLOT
+               FATLIN                        SINCL
+               FORFIT                        TCALC
+               PLOT              STEP        MOVEXY
+               SPLINT            STOP*    E  SCRMOD
+   R*ST*I   E  CORNL                         TRIG
+               INCLIN                        TRINGL
+               PLOT              STORIN      HLDLN
+               SINCL             STRMOD      ARCOLC
+               XYSORT                        ARROW
+   RAISE       IZFLIN                        CIRTAC
+               IZOLIN                        CIRTAL
+   RDACA       DIMDRO                        DIMDRO
+   RDACB       DIMDRO                        DIST
+   RDB         CORNL                         MODGF
+               FATLIN                        RDACA
+               INCLIN                        RDACB
+               MOVBL1                        RDACC
+               MOVBL3                        RDACD
+               PAGE                          RDAEA
+               PLOT                          RDAEB
+               PRSP                          RDCRC
+               SINCL                         RDELP
+               TFM                           RDMVA
+   RDCRC       LITAN                         RDMVB
+   RDMVA       DIMDRO                        RDMVC
+               SECANT                        RDMVE
+   RDSTAR      INSLIB                        WRACA
+   RDSTR       DIMDRO                        WRACD
+               SECANT                        WRAEA
+   REBLAN      ENDPG                         WRCRC
+   RECUR       IZLIN                         WRELP
+   REGION      LPL                           WRMVE
+   STROT3      COORDT            TRG         NEXTRG
+               PRJHL             TRIDIG      SPLINE
+               ROTH              WDB         PAGE
+   SVLSEG      STORIN            WHERE       BRLINE
+   SYMBOL      AXES                          CONDEK
+               AXISC                         DRACON
+               ENDPG                         INCLIN
+               LPL                           LGLINE
+               NUMBER                        LINEMO
+               POLREG                        LINEO
+               REGION                        POLINE
+               SIGNA             WRACA       DIMDRO
+               XAXIS                         WRACB
+               XLGAX                         WRACC
+               YAXIS             WRAEA       WRAEB
+               YLGAX             WRMVA       DIMDRO
+   SYMTAB      SYMBOL                        SECANT
+   TDLINE      LETSPL            WRMVE       WRMVA
+   TDMP        SPLINE                        WRMVB
+   TDROT       DIMET                         WRMVC
+               HCROT1            WRSTR       DIMDRO
+               ISOMET                        SECANT
+   TDSECT      HCSURF            XILIY       IZLIN
+   TESTVS      STORIN            XPOL        CMGRID
+   TFM         CONDEK                        EXTREM
+   TMF         BAR                           ISOLIN
+               BRLINE                        KEYPO
+               CMGRID                        LINT
+               CORNL                         LOCEXT
+               DRACON                        SUPLIN
+               DRAWEL            YPOL        CMGRID
+               DRFRAM                        EXTREM
+               DRWHL                         ISOLIN
+               FORFIT                        KEYPO
+               HISTGM                        LINT
+               INCLIN                        LOCEXT
+               INSDEK                        SUPLIN
+               INSIDE            ZAPIT       LOOK
+               KEYPO             ZINT        TDSECT
+               LINEC
+               LINEMC
+               LINEMO
+               LINEO
+               LINNUM
+               LOCEXT
+               LPL
+               LSFIT
+               MARKBE
+               PICTUR
+               PRJT
+               SHADE
+               SINCL
+               TDLINE
+               TOKEN
+               TRINGL
+               XAXIS
+               YAXIS
+   TMLGF       LGLINE
+               XLGAX
+               YLGAX
+   TOKEN       EXUDE
+   TPF         POLINE
+               RAXES
+               THAXES
+   TRANSF      LETIZO
+   TRDRAW      TRSURF                                             04 ИЮЛ 24 23.45
+                     CCЫЛKИ HA COMMON′Ы
+
+                                 CIRCLE    L 00022 *GFTAB*
+   D - PACCЫЛKA ДAHHЫX           CIRTAC    L 00002 *GFBFTR*
+   N - OПИCAH, HE ИCПOЛЬЗYETCЯ             L 00028 *GFGEL*
+   P - CTPAHИЧHЫЙ COMMON         CIRTAL    L 00002 *GFBFTR*
+   S - CEKTOPHЫЙ COMMON                    L 00028 *GFGEL*
+   L - ПPOCTOЙ COMMON            CMS      (MMS     )
+   ***** - ДЛИHA OПИCAHA HEЯBHO  CNCPP    NL 00004 *GFGMP*
+                                 CNCTCC    L 00016 *GFGMC*
+   *GFATRN* DL 00020 *GFGOBS*              L 00004 *GFGMP*
+            DL 00022 *GFTAB*     CNCTCL    L 00016 *GFGMC*
+   *GFTAB*  DL 00013 *GFATRM*              L 00004 *GFGMP*
+            DL 00007 *GFATRN*    CNCTCP    L 00016 *GFGMC*
+            DL 00003 *GFBET*               L 00004 *GFGMP*
+            DL 00011 *GFBLAN*    CNCTLL    L 00016 *GFGMC*
+            DL 00005 *GFERR*     CNCTLP   NL 00004 *GFGMP*
+            DL 00028 *GFGEL*     CNTLLL    L 00016 *GFGMC*
+            DL 00020 *GFGOBS*    CONDEK    L 00027 *DRIN*
+            DL 00051 *GFNTCH*              L 00004 *DRINFN*
+   ARCC1     L 00002 *GFBFTR*    COORD     L 00022 *GFTAB*
+   ARCELA    L 00002 *GFBFTR*    COORDT    L 00003 *GFCRDN*
+   ARCELB    L 00002 *GFBFTR*              L 00002 *GFEPS*
+   ARCIA     L 00002 *GFBFTR*              L 00052 *GFMT*
+             L 00022 *GFTAB*     CORNL     L 00007 *GFB*
+   ARCIB     L 00002 *GFBFTR*              L 00002 *GFKJ*
+   ARCIC     L 00002 *GFBFTR*              L 00008 *GFL*
+   ARCID     L 00002 *GFBFTR*              L 00006 *GFVP*
+   ARCOCC    L 00028 *GFGEL*               L 00005 *GFXY*
+   ARCOLC    L 00002 *GFBFTR*    CROSS     L 00028 *GFGEL*
+             L 00028 *GFGEL*     CROSSP    L 00002 *GFEPS*
+   ARCOLL    L 00028 *GFGEL*     CTCCP     L 00016 *GFGMC*
+   ARROW    NL 00002 *GFBFTR*    CTCPP     L 00016 *GFGMC*
+             L 00028 *GFGEL*     CTLLP     L 00016 *GFGMC*
+             L 00022 *GFTAB*               L 00004 *GFGMP*
+   ASTEP    NL 00022 *GFTAB*     CTLPP     L 00016 *GFGMC*
+   ATRAN2    L 00013 *GFATRM*    DASHP     L 00002 *GFBFTR*
+             L 00007 *GFATRN*              L 00022 *GFTAB*
+   ATRST    (RESET   )           DDIST     L 00028 *GFGEL*
+   AXES      L 00022 *GFTAB*     DIMAN     L 00022 *GFTAB*
+   AXISC     L 00022 *GFTAB*     DIMDRO    L 00002 *GFBFTR*
+   AXONOM    L 00034 *GFMATR*              L 00028 *GFGEL*
+   BAR       L 00022 *GFTAB*               L 00022 *GFTAB*
+   BEGLEV    L 00013 *GFATRM*    DIMEN     L 00022 *GFTAB*
+             L 00007 *GFATRN*    DIMET     L 00034 *GFMATR*
+   BLAN     (BLANCH  )           DIST      L 00002 *GFBFTR*
+   BLANC     L 00007 *GFATRN*              L 00028 *GFGEL*
+             L 00011 *GFBLAN*    DRACON    L 00027 *DRIN*
+             L 00166 *GFBLU*               L 00004 *DRINFN*
+   BLANCA    L 00006 *GFATBL*    DRALIM    L 00004 *DRLM*
+             L 00011 *GFBLAN*    DRAWEL    L 00006 *GFLNI*
+             L 00160 *GFBLU*     DRAWTE    L 00002 *GFEPS*
+   BLANCH    L 00006 *GFATBL*              L 00032 *GFSV*
+            NL 00007 *GFATRN*    DRWHL     L 00003 *GFCRDN*
+             L 00011 *GFBLAN*              L 00052 *GFMT*
+             L 00004 *GFBLAW*    ELIPS     L 00022 *GFTAB*
+             L 00166 *GFBLU*     ELPS      L 00002 *GFBFTR*
+   BOUND     L 00003 *GFBET*     ENDLEV   (BEGLEV  )
+   BRLINE    L 00005 *GFBRO*     ENDPG     L 00005 *GFERR*
+             L 00022 *GFTAB*               L 00022 *GFTAB*
+   BROKEN    L 00005 *GFBRO*               L 00001 *PLONAM*
+   BUFL      L 00008 *GFL*       EXCLIB   (INSLIB  )
+   CABIN     L 00034 *GFMATR*    EXTLN     L 00002 *GFEPS*
+   CELL      L 00009 *GFCELL*    FATARC    L 00002 *GFBFTR*
+   CIRC      L 00002 *GFBFTR*              L 00022 *GFTAB*
+   FATLIN    L 00002 *GFBFTR*    MNMX      L 00006 *GFVP*
+   FNROOT    L 00004 *DRINFN*    MODGF     L 00028 *GFGEL*
+   FULL      L 00005 *GFBRO*     MOVA      L 00002 *GFBFTR*
+   GFFALS    L 00020 *GFGOBS*    MOVB      L 00002 *GFBFTR*
+   GOBSEK    L 00020 *GFGOBS*    MOVBL1    L 00002 *GFAFTR*
+             L 00051 *GFNTCH*             DL 00007 *GFATRN*
+   GRAFER    L 00005 *GFERR*               L 00002 *GFBFTR*
+   HALOED   NL 00002 *GFEPS*              DL 00011 *GFBLAN*
+             L 00004 *GFGTOL*             DL 00020 *GFGOBS*
+             L 00032 *GFSV*               DL 00010 *GFPRNT*
+   HCINV     L 00034 *GFMATR*    MOVBL3    L 00002 *GFAFTR*
+   HCNCOR    L 00003 *GFCRDN*             DL 00007 *GFATRN*
+   HCNCRD    L 00003 *GFCRD*               L 00002 *GFBFTR*
+             L 00034 *GFMATR*             DL 00011 *GFBLAN*
+   HCPRSP    L 00034 *GFMATR*             DL 00020 *GFGOBS*
+   HCSURF    L 00004 *GFSUR*              DL 00051 *GFNTCH*
+   HISTGM    L 00022 *GFTAB*              DL 00010 *GFPRNT*
+   HLDLN     L 00002 *GFEPS*     MOVC      L 00002 *GFBFTR*
+             L 00004 *GFGTOL*    MOVE      L 00002 *GFAFTR*
+             L 00006 *GFLNI*               L 00007 *GFATRN*
+             L 00032 *GFSV*                L 00002 *GFBFTR*
+   INCHES   (MMS     )                     L 00011 *GFBLAN*
+   INIT      L 00034 *GFMATR*              L 00022 *GFTAB*
+   INSALL   (INSLIB  )           MOVE1     L 00002 *GFAFTR*
+   INSDEK    L 00027 *DRIN*                L 00007 *GFATRN*
+             L 00004 *DRINFN*              L 00002 *GFBFTR*
+   INSIDE    L 00027 *DRIN*                L 00011 *GFBLAN*
+             L 00004 *DRINFN*             NL 00020 *GFGOBS*
+   INSLIB    L 00001 DRTAPE                L 00022 *GFTAB*
+             L 00001 MONCARD*    MOVE2     L 00002 *GFAFTR*
+             L 00002 WBEGFLAG              L 00007 *GFATRN*
+   IRDB      L 00022 *GFTAB*               L 00002 *GFBFTR*
+   ISOLIN    L 00009 *GFCELL*              L 00011 *GFBLAN*
+             L 00002 *GFISOL*              L 00020 *GFGOBS*
+   ISOMET    L 00034 *GFMATR*              L 00051 *GFNTCH*
+   ITALIC   (SET     )                     L 00022 *GFTAB*
+   IWDB      L 00022 *GFTAB*     MOVE3     L 00002 *GFAFTR*
+   LETIZO    L 00003 *GFBET*               L 00007 *GFATRN*
+             L 00002 *GFISOL*              L 00002 *GFBFTR*
+   LETSPL    L 00002 *GFNAM2*              L 00011 *GFBLAN*
+   LGLINE    L 00022 *GFTAB*               L 00020 *GFGOBS*
+   LICON     L 00028 *GFGEL*               L 00051 *GFNTCH*
+   LIMITS    L 00022 *GFTAB*               L 00022 *GFTAB*
+   LINEC     L 00022 *GFTAB*     NEWLIB   (INSLIB  )
+   LINEMC    L 00022 *GFTAB*     NEXTRG    L 00008 *GFTRG1*
+   LINEMO    L 00022 *GFTAB*     NOTCH     L 00020 *GFGOBS*
+   LINEO     L 00022 *GFTAB*               L 00080 *GFNU*
+   LINNUM    L 00002 *GFISOL*    NOTCH1    L 00020 *GFGOBS*
+             L 00004 *GFLMN*               L 00051 *GFNTCH*
+             L 00001 *GFLOOK*              L 00080 *GFNU*
+             L 00001 *GFLSZ*     NUMBER    L 00022 *GFTAB*
+   LINT      L 00009 *GFCELL*    NUMLIN    L 00004 *GFLMN*
+             L 00001 *GFINT*     PATCH     L 00007 *GFB*
+   LITAN     L 00002 *GFBFTR*              L 00008 *GFL*
+   LMLL      L 00004 *GFGMP*               L 00022 *GFTAB*
+   LOCEXT    L 00004 *GFLMN*               L 00005 *GFXY*
+   LOOK      L 00009 *GFCELL*    PCDP      L 00004 *GFGMP*
+             L 00001 *GFINT*     PCNP     NL 00004 *GFGMP*
+             L 00001 *GFLOOK*    PICC      L 00004 *GFGMP*
+   MAP       L 00006 *GFVP*      PICTUR    L 00008 *GFTRG1*
+   MARKBE    L 00003 *GFBET*     PILC      L 00004 *GFGMP*
+   MARKER    L 00002 *GFBFTR*    PLDP      L 00004 *GFGMP*
+             L 00022 *GFTAB*     POLG      L 00002 *GFBFTR*
+   MATEVL    L 00018 *GFTRG2*    POLINE    L 00022 *GFTAB*
+   MMS       L 00022 *GFTAB*     POLREG    L 00022 *GFTAB*
+   PREP      L 00008 *GFTRG1*    SPNP      L 00004 *GFGMP*
+             L 00018 *GFTRG2*    STAR      L 00002 *GFBFTR*
+   PRJHL     L 00052 *GFMT*      STORIN    L 00002 *GFEPS*
+   PRJT      L 00006 *GFVP*                L 00032 *GFSV*
+   PROJCT    L 00018 *GFTRG2*    STRMOD    L 00028 *GFGEL*
+   PRSP      L 00002 *GFKJ*      SVLSEG    L 00032 *GFSV*
+             L 00006 *GFVP*      SYMBOL    L 00007 *GFATRN*
+             L 00005 *GFXY*                L 00022 *GFTAB*
+   PTLCC     L 00016 *GFGMC*     TDLIM     L 00003 *GFCRD*
+   PTLPC     L 00004 *GFGMP*               L 00004 *GFLIM*
+   PVPL      L 00004 *GFGMP*     TDLIML    L 00003 *GFCRD*
+   RAXES     L 00022 *GFTAB*               L 00004 *GFLIML*
+   RDACA     L 00028 *GFGEL*     TDLINE    L 00003 *GFCRD*
+   RDACB     L 00028 *GFGEL*     TDROT     L 00034 *GFMATR*
+   RDACC     L 00028 *GFGEL*     TDSCAL    L 00034 *GFMATR*
+   RDACD     L 00028 *GFGEL*     TDSECT    L 00003 *GFCRD*
+   RDAEA     L 00028 *GFGEL*               L 00004 *GFLIM*
+   RDAEB     L 00028 *GFGEL*              NL 00034 *GFMATR*
+   RDB       L 00022 *GFTAB*               L 00004 *GFSUR*
+   RDCRC     L 00028 *GFGEL*     TDTRAN    L 00034 *GFMATR*
+   RDELP     L 00028 *GFGEL*     TESTVS    L 00002 *GFEPS*
+   RDMVA     L 00028 *GFGEL*               L 00032 *GFSV*
+   RDMVB     L 00028 *GFGEL*     THAXES    L 00022 *GFTAB*
+   RDMVC     L 00028 *GFGEL*     THREED    L 00003 *GFCRD*
+   RDMVE     L 00028 *GFGEL*               L 00004 *GFLIM*
+   RDSTAR    L 00001 DRTAPE                L 00034 *GFMATR*
+             L 00002 WBEGFLAG              L 00004 *GFSUR*
+   RDSTR     L 00028 *GFGEL*               L 00023 *GFVIEW*
+   REBLAN    L 00007 *GFATRN*    TMF       L 00022 *GFTAB*
+             L 00011 *GFBLAN*    TMLGF     L 00022 *GFTAB*
+   REGION    L 00022 *GFTAB*     TPF       L 00022 *GFTAB*
+   RENOCH    L 00020 *GFGOBS*    TRANH     L 00003 *GFCRDN*
+             L 00080 *GFNU*      TRDRAW    L 00008 *GFTRG1*
+   RENTCH    L 00020 *GFGOBS*    TRG       L 00008 *GFTRG1*
+   RENUM     L 00004 *GFLMN*     TRSURF    L 00008 *GFTRG1*
+   RESET     L 00013 *GFATRM*    VIEW      L 00034 *GFMATR*
+             L 00007 *GFATRN*              L 00023 *GFVIEW*
+   ROTH      L 00003 *GFCRDN*    VPLIM     L 00003 *GFCRDN*
+   SAVETR    L 00034 *GFMATR*              L 00052 *GFMT*
+             L 00002 *GFTR*      WDB       L 00022 *GFTAB*
+   SCRMOD    L 00008 *GFTRG1*    WHERE     L 00002 *GFAFTR*
+   SDPG      L 00022 *GFTAB*               L 00022 *GFTAB*
+   SEARCH    L 00008 *GFL*       WHERP     L 00002 *GFBFTR*
+             L 00022 *GFTAB*               L 00022 *GFTAB*
+             L 00005 *GFXY*      WRACA     L 00002 *GFBFTR*
+   SECANT    L 00002 *GFBFTR*              L 00028 *GFGEL*
+             L 00028 *GFGEL*     WRACB     L 00002 *GFBFTR*
+   SET       L 00022 *GFTAB*     WRACC     L 00002 *GFBFTR*
+   SETBE     L 00003 *GFBET*     WRACD     L 00002 *GFBFTR*
+   SETRA     L 00003 *GFBET*               L 00028 *GFGEL*
+   SETTR     L 00034 *GFMATR*    WRAEA     L 00002 *GFBFTR*
+             L 00002 *GFTR*                L 00028 *GFGEL*
+   SHDOWN    L 00032 *GFSV*      WRAEB     L 00002 *GFBFTR*
+   SHEAR     L 00034 *GFMATR*    WRCRC     L 00002 *GFBFTR*
+   SHUP      L 00032 *GFSV*                L 00028 *GFGEL*
+   SIGNA     L 00022 *GFTAB*     WRELP     L 00002 *GFBFTR*
+   SIZLIN    L 00004 *GFLMN*               L 00028 *GFGEL*
+   SIZNUM    L 00004 *GFLMN*     WRMVA     L 00002 *GFBFTR*
+             L 00001 *GFLSZ*               L 00028 *GFGEL*
+   SORTC     L 00016 *GFGMC*     WRMVB     L 00002 *GFBFTR*
+   SORTCN    L 00016 *GFGMC*     WRMVC     L 00002 *GFBFTR*
+   SORTL     L 00016 *GFGMC*     WRMVE     L 00002 *GFBFTR*
+   SORTP     L 00004 *GFGMP*               L 00028 *GFGEL*
+   SORTPT    L 00016 *GFGMC*     WRSTR     L 00028 *GFGEL*
+   SPIRAL    L 00002 *GFBFTR*    XAXIS     L 00022 *GFTAB*
+   SPLITP   (COORDT  )           XILIY1    L 00002 *GFNAM1*
+             L 00002 *GFNAM2*
+   XLGAX     L 00022 *GFTAB*
+   YAXIS     L 00022 *GFTAB*
+   YLGAX     L 00022 *GFTAB*
+   ZAPIT     L 00009 *GFCELL*                                             04 ИЮЛ 24 23.45
+                     ИCПOЛЬЗOBAHИE COMMON′OB
+
+                                 *GFBFTR*    00002
+   E - ECTЬ OДHOИMEHHAЯ П/П                L 00002 ARCC1
+   D - PACCЫЛKA ДAHHЫX                     L 00002 ARCELA
+   N - OПИCAH, HE ИCПOЛЬЗYETCЯ             L 00002 ARCELB
+   P - CTPAHИЧHЫЙ COMMON                   L 00002 ARCIA
+   S - CEKTOPHЫЙ COMMON                    L 00002 ARCIB
+   L - ПPOCTOЙ COMMON                      L 00002 ARCIC
+   ***** - ДЛИHA OПИCAHA HEЯBHO            L 00002 ARCID
+                                           L 00002 ARCOLC
+   *DRIN*      00027                      NL 00002 ARROW
+             L 00027 CONDEK                L 00002 CIRC
+             L 00027 DRACON                L 00002 CIRTAC
+             L 00027 INSDEK                L 00002 CIRTAL
+             L 00027 INSIDE                L 00002 DASHP
+   *DRINFN*    00004                       L 00002 DIMDRO
+             L 00004 CONDEK                L 00002 DIST
+             L 00004 DRACON                L 00002 ELPS
+             L 00004 FNROOT                L 00002 FATARC
+             L 00004 INSDEK                L 00002 FATLIN
+             L 00004 INSIDE                L 00002 LITAN
+   *DRLM*      00004                       L 00002 MARKER
+             L 00004 DRALIM                L 00002 MOVA
+   *GFAFTR*    00002                       L 00002 MOVB
+             L 00002 MOVBL1                L 00002 MOVBL1
+             L 00002 MOVBL3                L 00002 MOVBL3
+             L 00002 MOVE                  L 00002 MOVC
+             L 00002 MOVE1                 L 00002 MOVE
+             L 00002 MOVE2                 L 00002 MOVE1
+             L 00002 MOVE3                 L 00002 MOVE2
+             L 00002 WHERE                 L 00002 MOVE3
+   *GFATBL*    00006                       L 00002 POLG
+             L 00006 BLANCA                L 00002 SECANT
+             L 00006 BLANCH                L 00002 SPIRAL
+   *GFATRM*    00013                       L 00002 STAR
+            DL 00013 *GFTAB*               L 00002 WHERP
+             L 00013 ATRAN2                L 00002 WRACA
+             L 00013 BEGLEV                L 00002 WRACB
+             L 00013 RESET                 L 00002 WRACC
+   *GFATRN*  E 00007                       L 00002 WRACD
+            DL 00007 *GFTAB*               L 00002 WRAEA
+             L 00007 ATRAN2                L 00002 WRAEB
+             L 00007 BEGLEV                L 00002 WRCRC
+             L 00007 BLANC                 L 00002 WRELP
+            NL 00007 BLANCH                L 00002 WRMVA
+            DL 00007 MOVBL1                L 00002 WRMVB
+            DL 00007 MOVBL3                L 00002 WRMVC
+             L 00007 MOVE                  L 00002 WRMVE
+             L 00007 MOVE1       *GFBLAN*    00011
+             L 00007 MOVE2                DL 00011 *GFTAB*
+             L 00007 MOVE3                 L 00011 BLANC
+             L 00007 REBLAN                L 00011 BLANCA
+             L 00007 RESET                 L 00011 BLANCH
+             L 00007 SYMBOL               DL 00011 MOVBL1
+   *GFB*       00007                      DL 00011 MOVBL3
+             L 00007 CORNL                 L 00011 MOVE
+             L 00007 PATCH                 L 00011 MOVE1
+   *GFBET*     00003                       L 00011 MOVE2
+            DL 00003 *GFTAB*               L 00011 MOVE3
+             L 00003 BOUND                 L 00011 REBLAN
+             L 00003 LETIZO      *GFBLAW*    00004
+             L 00003 MARKBE                L 00004 BLANCH
+             L 00003 SETBE       *GFBLU*     00166
+             L 00003 SETRA                 L 00166 BLANC
+             L 00160 BLANCA                L 00028 RDSTR
+             L 00166 BLANCH                L 00028 SECANT
+   *GFBRO*     00005                       L 00028 STRMOD
+             L 00005 BRLINE                L 00028 WRACA
+             L 00005 BROKEN                L 00028 WRACD
+             L 00005 FULL                  L 00028 WRAEA
+   *GFCELL*    00009                       L 00028 WRCRC
+             L 00009 CELL                  L 00028 WRELP
+             L 00009 ISOLIN                L 00028 WRMVA
+             L 00009 LINT                  L 00028 WRMVE
+             L 00009 LOOK                  L 00028 WRSTR
+             L 00009 ZAPIT       *GFGMC*     00016
+   *GFCRD*     00003                       L 00016 CNCTCC
+             L 00003 HCNCRD                L 00016 CNCTCL
+             L 00003 TDLIM                 L 00016 CNCTCP
+             L 00003 TDLIML                L 00016 CNCTLL
+             L 00003 TDLINE                L 00016 CNTLLL
+             L 00003 TDSECT                L 00016 CTCCP
+             L 00003 THREED                L 00016 CTCPP
+   *GFCRDN*    00003                       L 00016 CTLLP
+             L 00003 COORDT                L 00016 CTLPP
+             L 00003 DRWHL                 L 00016 PTLCC
+             L 00003 HCNCOR                L 00016 SORTC
+             L 00003 ROTH                  L 00016 SORTCN
+             L 00003 TRANH                 L 00016 SORTL
+             L 00003 VPLIM                 L 00016 SORTPT
+   *GFEPS*     00002             *GFGMP*     00004
+             L 00002 COORDT               NL 00004 CNCPP
+             L 00002 CROSSP                L 00004 CNCTCC
+             L 00002 DRAWTE                L 00004 CNCTCL
+             L 00002 EXTLN                 L 00004 CNCTCP
+            NL 00002 HALOED               NL 00004 CNCTLP
+             L 00002 HLDLN                 L 00004 CTLLP
+             L 00002 STORIN                L 00004 LMLL
+             L 00002 TESTVS                L 00004 PCDP
+   *GFERR*     00005                      NL 00004 PCNP
+            DL 00005 *GFTAB*               L 00004 PICC
+             L 00005 ENDPG                 L 00004 PILC
+             L 00005 GRAFER                L 00004 PLDP
+   *GFGEL*     00028                       L 00004 PTLPC
+            DL 00028 *GFTAB*               L 00004 PVPL
+             L 00028 ARCOCC                L 00004 SORTP
+             L 00028 ARCOLC                L 00004 SPNP
+             L 00028 ARCOLL      *GFGOBS*    00020
+             L 00028 ARROW                DL 00020 *GFATRN*
+             L 00028 CIRTAC               DL 00020 *GFTAB*
+             L 00028 CIRTAL                L 00020 GFFALS
+             L 00028 CROSS                 L 00020 GOBSEK
+             L 00028 DDIST                DL 00020 MOVBL1
+             L 00028 DIMDRO               DL 00020 MOVBL3
+             L 00028 DIST                 NL 00020 MOVE1
+             L 00028 LICON                 L 00020 MOVE2
+             L 00028 MODGF                 L 00020 MOVE3
+             L 00028 RDACA                 L 00020 NOTCH
+             L 00028 RDACB                 L 00020 NOTCH1
+             L 00028 RDACC                 L 00020 RENOCH
+             L 00028 RDACD                 L 00020 RENTCH
+             L 00028 RDAEA       *GFGTOL*    00004
+             L 00028 RDAEB                 L 00004 HALOED
+             L 00028 RDCRC                 L 00004 HLDLN
+             L 00028 RDELP       *GFINT*     00001
+             L 00028 RDMVA                 L 00001 LINT
+             L 00028 RDMVB                 L 00001 LOOK
+             L 00028 RDMVC       *GFISOL*    00002
+             L 00028 RDMVE                 L 00002 ISOLIN
+             L 00002 LETIZO                L 00051 NOTCH1
+             L 00002 LINNUM      *GFNU*      00080
+   *GFKJ*      00002                       L 00080 NOTCH
+             L 00002 CORNL                 L 00080 NOTCH1
+             L 00002 PRSP                  L 00080 RENOCH
+   *GFL*       00008             *GFPRNT*    00010
+             L 00008 BUFL                 DL 00010 MOVBL1
+             L 00008 CORNL                DL 00010 MOVBL3
+             L 00008 PATCH       *GFSUR*     00004
+             L 00008 SEARCH                L 00004 HCSURF
+   *GFLIM*     00004                       L 00004 TDSECT
+             L 00004 TDLIM                 L 00004 THREED
+             L 00004 TDSECT      *GFSV*      00032
+             L 00004 THREED                L 00032 DRAWTE
+   *GFLIML*    00004                       L 00032 HALOED
+             L 00004 TDLIML                L 00032 HLDLN
+   *GFLMN*     00004                       L 00032 SHDOWN
+             L 00004 LINNUM                L 00032 SHUP
+             L 00004 LOCEXT                L 00032 STORIN
+             L 00004 NUMLIN                L 00032 SVLSEG
+             L 00004 RENUM                 L 00032 TESTVS
+             L 00004 SIZLIN      *GFTAB*   E 00022
+             L 00004 SIZNUM               DL 00022 *GFATRN*
+   *GFLNI*     00006                       L 00022 ARCIA
+             L 00006 DRAWEL                L 00022 ARROW
+             L 00006 HLDLN                NL 00022 ASTEP
+   *GFLOOK*    00001                       L 00022 AXES
+             L 00001 LINNUM                L 00022 AXISC
+             L 00001 LOOK                  L 00022 BAR
+   *GFLSZ*     00001                       L 00022 BRLINE
+             L 00001 LINNUM                L 00022 CIRCLE
+             L 00001 SIZNUM                L 00022 COORD
+   *GFMATR*    00034                       L 00022 DASHP
+             L 00034 AXONOM                L 00022 DIMAN
+             L 00034 CABIN                 L 00022 DIMDRO
+             L 00034 DIMET                 L 00022 DIMEN
+             L 00034 HCINV                 L 00022 ELIPS
+             L 00034 HCNCRD                L 00022 ENDPG
+             L 00034 HCPRSP                L 00022 FATARC
+             L 00034 INIT                  L 00022 HISTGM
+             L 00034 ISOMET                L 00022 IRDB
+             L 00034 SAVETR                L 00022 IWDB
+             L 00034 SETTR                 L 00022 LGLINE
+             L 00034 SHEAR                 L 00022 LIMITS
+             L 00034 TDROT                 L 00022 LINEC
+             L 00034 TDSCAL                L 00022 LINEMC
+            NL 00034 TDSECT                L 00022 LINEMO
+             L 00034 TDTRAN                L 00022 LINEO
+             L 00034 THREED                L 00022 MARKER
+             L 00034 VIEW                  L 00022 MMS
+   *GFMT*      00052                       L 00022 MOVE
+             L 00052 COORDT                L 00022 MOVE1
+             L 00052 DRWHL                 L 00022 MOVE2
+             L 00052 PRJHL                 L 00022 MOVE3
+             L 00052 VPLIM                 L 00022 NUMBER
+   *GFNAM1*    00002                       L 00022 PATCH
+             L 00002 XILIY1                L 00022 POLINE
+   *GFNAM2*    00002                       L 00022 POLREG
+             L 00002 LETSPL                L 00022 RAXES
+             L 00002 XILIY1                L 00022 RDB
+   *GFNTCH*    00051                       L 00022 REGION
+            DL 00051 *GFTAB*               L 00022 SDPG
+             L 00051 GOBSEK                L 00022 SEARCH
+            DL 00051 MOVBL3                L 00022 SET
+             L 00051 MOVE2                 L 00022 SIGNA
+             L 00051 MOVE3                 L 00022 SYMBOL
+             L 00022 THAXES
+             L 00022 TMF
+             L 00022 TMLGF
+             L 00022 TPF
+             L 00022 WDB
+             L 00022 WHERE
+             L 00022 WHERP
+             L 00022 XAXIS
+             L 00022 XLGAX
+             L 00022 YAXIS
+             L 00022 YLGAX
+   *GFTR*      00002
+             L 00002 SAVETR
+             L 00002 SETTR
+   *GFTRG1*    00008
+             L 00008 NEXTRG
+             L 00008 PICTUR
+             L 00008 PREP
+             L 00008 SCRMOD
+             L 00008 TRDRAW
+             L 00008 TRG
+             L 00008 TRSURF
+   *GFTRG2*    00018
+             L 00018 MATEVL
+             L 00018 PREP
+             L 00018 PROJCT
+   *GFVIEW*    00023
+             L 00023 THREED
+             L 00023 VIEW
+   *GFVP*      00006
+             L 00006 CORNL
+             L 00006 MAP
+             L 00006 MNMX
+             L 00006 PRJT
+             L 00006 PRSP
+   *GFXY*      00005
+             L 00005 CORNL
+             L 00005 PATCH
+             L 00005 PRSP
+             L 00005 SEARCH
+   *PLONAM*    00001
+             L 00001 ENDPG
+   DRTAPE      00001
+             L 00001 INSLIB
+             L 00001 RDSTAR
+   MONCARD*    00001
+             L 00001 INSLIB
+   WBEGFLAG    00002
+             L 00002 INSLIB
+             L 00002 RDSTAR
 *END FILE

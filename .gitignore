@@ -9,5 +9,6 @@ calcomp*.svg
 *.h-
 *.c-
 *.dub-
+*.sh-
 *.o
 *.out

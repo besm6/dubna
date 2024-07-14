@@ -25,139 +25,1477 @@
 
 *NAME БИБЛИOTEKA 12
 *TAPE:12/******,32
-*PERSO:320375
-*
 *CALL SETFTN:ONE,LONG
-*CALL TCATALOG                                             04 ИЮЛ 24 23.45
-                      TEMPORARY LIBRARY
-                     CBOБOДHO  22 35 36
+*CALL LIBREFER:TAPE=320375                                             04 ИЮЛ 24 23.45
+                     CCЫЛKИ HA ПOДПPOГPAMMЫ
 
-   ACOMP      21 10 33  00244    FACTOR     22 11 22  00106
-   AL         21 33 26  00336    FFT        21 30 11  00317
-   AN66ZF   (EX66ZF  )  00003    FIGI       22 31 31  00143
-   ANGL       21 07 17  00071    FIGI2      22 32 17  00252
-   BAKVEC     22 31 25  00176    FIN      (DEC     )  00001
-   BLEQ       22 06 36  01205    FINT       21 30 24  00274
-   BOUNDS     22 23 15  00234    FIXPAR     21 21 04  00146
-   BUCMVE     22 24 11  00151    FLOW       22 25 22  00605
-   BUKDMP   (TREDMP  )  00001    FLTSOR     22 10 01  00165
-   CDOTC      22 34 12  00116    FNC        21 14 20  00370
-   CFIX       22 10 06  00022    FRATIO     21 05 00  00131
-   CFLOAT     22 10 05  00026    GAUSS2     22 14 31  00031
-   CHECAL     21 34 06  01120    GENPNT     22 20 07  00346
-   CINV1      22 34 00  00457    GS10       22 12 01  00132
-   CINVIT     22 26 36  01335    GS12       22 11 37  00074
-   COEFF      21 33 36  00355    HESS       22 04 01  00713
-   COMBAK     22 31 17  00270    HESSEN     22 01 27  00540
-   COMBES     22 10 15  00234    HHPIV      21 27 36  00065
-   COVAR      21 32 12  00300    HHSMSQ     21 30 00  00044
-   CPOLY      21 05 07  12722    HHSTEP     21 30 02  00121
-   CRONOR   (ERCROS  )  00001    HHSWOP     21 30 05  00045
-   CROUT      22 13 35  00542    HHUK       21 30 07  00075
-   CSIGN      22 14 32  00051    HLS        21 27 01  01017
-   CUR1FT     22 16 11  01403    HLSE       21 27 25  00443
-   CUR2FT     22 14 34  02635    HLSR       21 27 21  00173
-   CXSQRT     22 03 36  00106    IDEN     (RATIO   )  00011
-   DEC        21 13 14  04027    INSALL   (INSLIB  )  00001
-   DET        22 15 31  00357    INSAUT     21 11 34  00433
-   DETERM     22 16 01  00406    INSINT   (INSAUT  )  00001
-   DEXDIN     21 20 36  00123    INSLIB     22 32 36  01214
-   DEZBEL     22 25 37  00117    INTGRL     22 17 31  00633
-   DIFEQ1     21 11 20  00156    INTOEX     21 21 11  00045
-   DIFEQ2     21 11 24  00222    INTSOR     22 07 35  00166
-   DIFF     (FRATIO  )  00003    INTSTP     21 11 30  00262
-   DIR      (RATIO   )  00004    INUM     (RATIO   )  00010
-   DIST       22 16 22  00035    INV      (RATIO   )  00013
-   DIVID      21 06 37  00201    INVIT      22 30 16  02041
-   DOT        22 15 17  00061    IPACK      22 26 17  00041
-   DOT4     (DOT     )  00002    J1         21 33 21  00037
-   DOTI     (DOT     )  00001    JNORM      22 11 01  00145
-   DOTNOR     22 15 21  00052    JRECUR     22 10 32  00132
-   DUMMY      22 26 22  00024    JSUM       22 10 35  00176
-   DVNBKD     22 16 24  00023    LAG        22 02 35  03102
-   DVNOPT     22 16 31  00025    LIBLIST    22 26 21  00001
-   EDICO      22 13 10  00244    LINVER     22 13 16  00746
-   EIG5       22 02 21  00603    LOGGAM     22 11 25  00341
-   EIMA       22 04 17  03741    LOOKUP     21 30 20  00163
-   ELMBAK     22 32 12  00235    LORENC     22 15 23  00103
-   ENDING     21 11 13  00224    LOTRAN     22 15 26  00115
-   EQUILI     22 14 13  00166    LSQFIT     21 30 31  35057
-   ERCROS     22 12 03  00270    MALIK      21 12 04  02437
-   ERDOT      22 12 23  00244    MATIN      21 21 13  01004
-   ERDOTN   (ERDOT   )  00001    MATIN4     21 14 32  00756
-   ERMIV    (ERMOD   )  00001    METHOD     21 10 17  00305
-   ERMOD      22 13 01  00107    MIDATA     21 21 27  00725
-   ERNORM     22 13 04  00133    MINCOD     22 26 02  00312
-   ERSCAL     22 12 31  00117    MINCON     21 16 23  22775
-   ESTEY      21 31 24  00577    MINOS      21 22 10  03247
-   EX66ZF     22 14 30  00011    MINPRI     22 26 10  00301
-   EXCLIB   (INSLIB  )  00672    MINPUN   (MINPRI  )  00001
-   EXMBUC     22 20 27  00664    MINROS     21 13 13  00012
-   EXTOIN     21 21 02  00046    MINUIT     21 20 25  00311
-   MPRINT     21 23 22  00403    SPLIT      22 21 06  06544
-   MPUNCH     21 23 34  00131    START1     22 10 30  00066
-   MULLRC     21 07 21  00755    STAT       21 11 01  00525
-   MXADD      22 33 34  00172    STDDEV     21 32 00  00477
-   MXDMA      22 33 24  00106    STREAM     22 24 37  01134
-   MXDMAL     22 33 27  00230    SUMM     (FRATIO  )  00001
-   MXDMAR   (MXDMAL  )  00001    TASUM2     21 35 36  00121
-   MXDML    (MXDMAL  )  00002    TAUROS     21 26 11  05024
-   MXDMR    (MXDMAL  )  00003    TEST       21 06 10  00711
-   MXEQU      21 13 01  00461    TRACE      22 03 33  00103
-   MXEQU1   (MXEQU   )  00001    TREAUD     22 23 23  00761
-   MXMTR    (MXADD   )  00003    TREDMP     22 20 17  00364
-   MXNTR    (MXADD   )  00004    TRISCA     22 12 34  00215
-   MXSUB    (MXADD   )  00001    TRIVEC     22 12 12  00376
-   MXTRA    (MXADD   )  00002    TSTURM     22 27 25  01454
-   NCOEF      21 06 27  00077    USRINT     22 16 33  00042
-   NEAR       21 07 15  00040    USRTRM     22 16 32  00022
-   NEG        21 05 04  00026    VALUE      21 05 05  00030
-   NEGN       22 10 24  00201    VALUE2     21 06 31  00264
-   NEWLIB   (INSLIB  )  00670    VMODUL     22 16 23  00027
-   NODAUD     22 24 00  00571    VP         21 20 24  00040
-   OR66ZF   (EX66ZF  )  00006    VRLTV      21 12 03  00005
-   ORTBAK     22 31 35  00245    VV         21 11 10  00131
-   ORTHES     22 32 02  00410    WIEL       22 05 37  02317
-   ORTRAN     22 32 25  00314    WRONSK     22 10 22  00114
-   OVER       21 05 24  00070    WTS        22 11 34  00100
-   OVER1      21 05 26  00300    XPLSDX     21 26 03  00047
-   OVER2      21 06 03  00222    YGNU       22 11 11  00217
-   OVER3      21 05 34  00335    YRECUR     22 11 15  00137
-   PAER       21 15 07  03753    YSUM       22 11 04  00267
-   PAER6      21 24 01  02603    YZERO      22 11 20  00047
-   PARTN      22 16 35  01471    ZEROS      21 07 04  00426
-   PEXTF      21 25 10  00065    ZZR        21 10 26  00207
-   PINTF      21 25 13  00176
-   POLFIT     21 31 12  00533
-   POLY2      21 10 01  01124
-   POLYNL     21 31 03  00351
-   POW      (FRATIO  )  00005
-   PRINTF     22 10 07  00263
-   PRINTX     21 34 32  02167
-   PROD     (FRATIO  )  00002
-   PRODUC     22 14 10  00127
-   PROGRAM  (DUMMY   )  00000
-   PROGRAM  (MINCON  )  00000
-   PSI        21 33 22  00177
-   PSI1       21 32 20  30160
-   PUNCHX     21 36 01  06455
-   QREIG      22 01 14  00562
-   QRT        22 02 02  00757
-   QUAD       22 24 15  05045
-   QUASI      22 22 12  00627
-   QUOT     (FRATIO  )  00004
-   RATIO      21 05 06  00017
-   RATQR      22 26 23  00555
-   RDSTAR     22 32 33  00073
-   REC      (RATIO   )  00006
-   RECPAR     22 22 27  01726
-   RESIDU     22 14 17  00163
-   RESTOR     21 25 20  00133
-   SEEK       21 25 24  01702
-   SETSW      21 20 22  00051
-   SETSW4     21 14 30  00054
-   SOLVE      22 14 23  00225
-   SORTZV     22 07 21  01230
-   SPEED      21 26 05  00123
+                                           E C*LO*C
+   D - PACCЫЛKA ДAHHЫX                     E C*ST*C
+   E - BHEШHЯЯ П/П                         E CMPLX
+                                           E I*MU*I
+   ACOMP     E C*AD*C                      E I*MUI*
+             E C*LN*C                      E MATIN1
+             E C*LO*C                      E REAL
+             E C*LO*R            CINVIT    E ABS
+             E C*MU*C                      E C*DI*C
+             E C*MU*R                      E C*LO*C
+             E C*ST*C                      E C*ST*C
+             E CABS                        E CABS
+             E I*MUI*                      E CMPLX
+               VV                          E FLOAT
+   AL        E ABS                         E I*MU*I
+             E FT*003                      E I*MUI*
+             E FT*571                      E R*PO*I
+             E I*MUI*                      E SQRT
+               PSI               COEFF       AL
+   AN66ZF   (EX66ZF  )                     E I*MUI*
+   ANGL      E ABS                           J1
+             E AIMAG                       E UZERO
+             E ATAN2             COMBAK    E I*MUI*
+             E REAL              COMBES      FACTOR
+   BAKVEC    E I*MU*I                        JNORM
+             E I*MUI*                        JRECUR
+   BLEQ      E ABS                           JSUM
+             E I*DI*I                        NEGN
+             E I*MU*I                        START1
+             E I*MUI*                        WRONSK
+             E MIN0                          YGNU
+   BOUNDS    E FT*002                        YRECUR
+             E FT*003                        YSUM
+             E FT*571            COVAR     E FT*002
+             E I*MUI*                      E FT*003
+             E IABS                        E FT*621
+             E STOP*                       E I*DI*I
+   BUCMVE    E I*MU*I                      E I*MU*I
+   BUKDMP   (TREDMP  )           CPOLY     E C*DI*C
+   CDOTC     E C*AD*C                      E C*LN*C
+             E C*LO*C                      E C*LO*C
+             E C*MU*C                      E C*LO*R
+             E C*ST*C                      E C*ST*C
+             E CONJG                       E C*SU*R
+             E I*MU*I                      E CABS
+             E I*MUI*                        DIVID
+   CFIX      E IFIX                        E FT*003
+             E REAL                        E FT*571
+   CFLOAT    E C*LO*C                      E I*DI*I
+             E C*ST*C                      E I*MU*I
+             E CMPLX                       E I*MUI*
+             E FLOAT                         OVER
+   CHECAL   DE CHECOF                      E R*PO*R
+             E ECTRAD                      E SQRT
+             E FD*002                        TEST
+             E FT*002                        ZEROS
+             E FT*003            CRONOR   (ERCROS  )
+             E FT*541            CROUT     E ABS
+             E FT*571                      E D*AD*D
+               PRINTX                      E D*COMP
+               PUNCHX                      E D*MU*D
+             E STOP*                       E D*ST*D
+   CINV1     E AIMAG                       E DBLE
+             E I*MUI*                      E C*LN*C
+             E SNGL                        E C*LO*C
+   CSIGN     E AIMAG                       E C*MU*R
+             E C*LO*C                      E C*ST*C
+             E C*ST*C                      E C*SU*R
+             E CMPLX                       E I*MU*I
+             E REAL                        E I*MUI*
+             E SIGN              DOT
+   CUR1FT    E ALOG              DOT4     (DOT     )
+             E FLOAT             DOTI     (DOT     )
+             E FT*002            DOTNOR    E ABS
+             E FT*003                        DOT
+             E FT*521                      E SIGN
+             E FT*621                      E SQRT
+             E SQRT              DUMMY     E FT*003
+             E STOP*                       E FT*571
+   CUR2FT    E ABS                         E STOP*
+             E ALOG              DVNBKD      DVNOPT
+             E EXP               DVNOPT    E FT*003
+             E FLOAT                       E FT*571
+             E FT*002            EDICO     E COS
+             E FT*003                      E MXMPY
+             E FT*521                      E MXMPY1
+             E FT*621                      E SIN
+             E I*MUI*                      E UCOPY
+             E SQRT                        E VZERO
+             E STOP*             EIG5      E ABS
+   CXSQRT    E ABS                         E FT*002
+             E AMAX1                       E FT*003
+             E SQRT                        E FT*571
+   DEC       E ABS                           HESS
+             E FCN                         E I*MUI*
+               FNC                           LAG
+             E FT*002                      E MIN0
+             E FT*003                      E SIGN
+             E FT*541                      E SQRT
+             E FT*561                        TRACE
+             E FT*571            EIMA      E AIMAG
+             E I*MUI*                      E ATAN2
+               PAER                        E C*AD*C
+               SETSW4                      E C*COMP
+             E SQRT                        E C*DI*C
+   DET       E ABS                         E C*DI*R
+             E I*MUI*                      E C*LN*C
+   DETERM    E ABS                         E C*LN*R
+             E I*MUI*                      E C*LO*C
+   DEXDIN    E D*AD*R                      E C*LO*R
+             E D*DI*D                      E C*MU*C
+             E D*LO*D                      E C*MU*R
+             E D*MU*D                      E C*ST*C
+             E D*MU*R                      E C*SU*C
+             E D*ST*D                      E CABS
+             E D*ST*R                      E CEXP
+             E EXP                         E CSQRT
+             E R*ST*D                      E FC*002
+   DEZBEL    E ABS                         E FT*003
+             E ALOG10                      E FT*571
+             E FLOAT                       E I*MUI*
+   DIFEQ1    E FLOAT                       E MOD
+   DIFEQ2    E FLOAT                       E R*PO*R
+   DIFF     (FRATIO  )                     E R*ST*C
+   DIR      (RATIO   )                     E REAL
+   DIST      E SQRT                          WIEL
+   DIVID     E C*AD*C            ELMBAK    E I*MUI*
+             E C*AD*R            ENDING    E C*AD*C
+             E C*DI*C                      E C*LO*C
+             E C*LN*R                      E C*MU*C
+             E C*LO*C                      E C*ST*C
+             E C*MU*C                      E CEXP
+             E C*ST*C                      E CLOG
+             E C*SU*C                        LOGGAM
+             E CABS              FFT       E C*AD*C
+             E FT*003                      E C*DI*R
+             E FT*571                      E C*LO*C
+             E I*MUI*                      E C*MU*C
+             E SQRT                        E C*ST*C
+               VV                          E C*SU*C
+   EQUILI    E ABS                         E CMPLX
+               AN66ZF                      E COS
+             E I*MUI*                      E I*DI*I
+   ERCROS    E CROSS                       E I*MUI*
+             E MXMAD1                      E I*PO*I
+             E MXMPY                       E R*DI*I
+             E MXMPY1                      E SIN
+             E MXTRP             FIGI      E I*MU*I
+             E UCOPY                       E I*MUI*
+             E VADD                        E SQRT
+             E VMOD              FIGI2     E I*MU*I
+             E VSCALE                      E I*MUI*
+             E VZERO                       E SQRT
+   ERDOT       DOT               FIN      (DEC     )
+             E MXMAD1            FINT      E I*MU*I
+             E MXMPY             FIXPAR
+             E MXMPY1            FLOW      E ABS
+               MXSUB                       E I*MUI*
+             E UCOPY             FLTSOR    E I*DI*I
+             E VMOD              FNC       E ABS
+             E VSCALE                      E FCN
+   ERDOTN   (ERDOT   )                       FIN
+   ERMIV    (ERMOD   )                     E FT*002
+   ERMOD     E MXMPY                       E FT*003
+             E VMOD                        E FT*571
+   ERNORM    E MXMPY             FRATIO    E C*LO*C
+             E MXMPY1                      E C*ST*C
+             E UCOPY                       E CMPLX
+             E VMOD                        E I*MU*I
+             E VSCALE                      E I*PO*I
+   ERSCAL    E MXMAD             GAUSS2    E GAUSS
+             E MXMPY             GENPNT    E ABS
+             E UCOPY                         BOUNDS
+             E VADD                        E FT*003
+             E VSCALE                      E FT*571
+   ESTEY     E ABS                         E FUN
+             E FT*002                      E I*DI*I
+             E FT*003                      E I*MU*I
+             E FT*621                      E NRAN
+               STDDEV                      E STOP*
+   EX66ZF                        GS10
+   EXCLIB   (INSLIB  )           GS12
+   EXMBUC    E ABS               HESS      E ABS
+             E FT*002                      E AMAX1
+             E FT*003                      E FT*003
+             E FT*571                      E FT*571
+             E I*MU*I                      E I*MUI*
+             E I*ST*L                      E MIN0
+             E MOD               HESSEN    E ABS
+             E SQRT                        E D*AD*D
+               USRTRM                      E D*LO*D
+   EXTOIN      PINTF                       E D*LO*R
+   FACTOR    E C*AD*C                      E D*MU*R
+             E C*LN*C                      E D*ST*D
+             E D*ST*R                      E I*MUI*
+             E I*MUI*                      E IABS
+   HHPIV                                   E R*PO*I
+   HHSMSQ                                  E SQRT
+   HHSTEP                        IPACK     E STORE6
+   HHSWOP                        J1
+   HHUK      E SQRT              JNORM     E ABS
+   HLS       E FLOAT             JRECUR
+               HHPIV             JSUM      E ABS
+               HHSMSQ            LAG       E ABS
+               HHSTEP                      E AMAX1
+               HHSWOP                        CXSQRT
+               HHUK                        E FLOAT
+             E I*MU*I                      E FT*002
+             E MAX0                        E FT*003
+   HLSE        HHSTEP                      E FT*571
+               HHUK                        E I*MU*I
+             E I*MU*I                      E I*MUI*
+             E IABS                        E ISIGN
+             E MAX0                        E MOD
+   HLSR        HHSTEP                      E SIGN
+             E I*MU*I                      E SQRT
+             E IABS              LIBLIST
+             E MAX0              LINVER    E ABS
+   IDEN     (RATIO   )                     E ALOG
+   INSALL   (INSLIB  )                       CROUT
+   INSAUT    E ABS                           EQUILI
+             E I*MU*I                      E I*MUI*
+               INTSTP                      E IFIX
+               VRLTV                       E MOD
+   INSINT   (INSAUT  )                       PRODUC
+   INSLIB    E DATAPR*                       RESIDU
+               LIBLIST                       SOLVE
+             E MONREAD*          LOGGAM    E ALOG
+             E OCTTDEC                     E ATAN
+             E PRINT8                      E FT*002
+             E PT6                         E FT*003
+               RDSTAR                      E FT*621
+   INTGRL    E ABS                         E MOD
+               BOUNDS                      E STOP*
+             E FT*002            LOOKUP    E I*DI*I
+             E FT*003                      E I*MU*I
+             E FT*571            LORENC    E SQRT
+             E FUN               LOTRAN    E SQRT
+             E I*MU*I            LSQFIT    E FT*002
+             E INT                         E FT*003
+             E NRAN                        E FT*521
+               QUAD                        E FT*621
+               QUASI                         POLYNL
+             E R*DI*I                      E STOP*
+             E SQRT              MALIK     E ABS
+             E STOP*                       E FT*002
+               USRINT                      E FT*003
+   INTOEX      PEXTF                       E FT*541
+   INTSOR    E I*DI*I                      E FT*571
+   INTSTP                                  E FUNCT
+   INUM     (RATIO   )                     E I*MU*I
+   INV      (RATIO   )                     E I*MUI*
+   INVIT     E ABS                         E INPUT
+             E C*DI*C                        MXEQU
+             E C*LO*C                      E STOP*
+             E C*ST*C            MATIN     E ABS
+             E CABS                        E ALOG10
+             E CMPLX                       E I*MUI*
+             E FLOAT             MATIN4    E ABS
+             E I*MU*I                      E ALOG10
+             E I*MUI*            MINROS      DEC
+   METHOD      ACOMP                       E STOP*
+             E C*AD*C            MINUIT    E FCN
+             E C*DI*C                      E FT*002
+             E C*LN*C                      E FT*003
+             E C*LO*C                      E FT*571
+             E C*ST*C                      E I*MU*I
+             E CABS                          INTOEX
+             E CMPLX                       E LOADGO
+             E FLOAT                         MIDATA
+               STAT                          MPRINT
+               ZZR                           MPUNCH
+   MIDATA   DE ABS                         E STOP*
+             E AMIN1                         TAUROS
+               EXTOIN            MPRINT    E FLOAT
+             E FLOAT                       E FT*002
+             E FT*002                      E FT*003
+             E FT*003                      E FT*571
+             E FT*541            MPUNCH    E FT*002
+             E FT*571                      E FT*003
+             E MAX0                        E FT*561
+               PINTF             MULLRC    E ABS
+             E STOP*                       E AIMAG
+   MINCOD   DE BINARY                      E C*AD*C
+             E FT*002                      E C*AD*R
+             E FT*003                      E C*DI*C
+             E FT*571                      E C*LN*C
+             E I*MUI*                      E C*LN*R
+             E MINEND                      E C*LO*C
+             E MINISO                      E C*LO*R
+               MINPRI                      E C*MU*C
+               MINPUN                      E C*MU*R
+             E MINSTA                      E C*ST*C
+   MINCON    E ABS                         E C*SU*C
+             E FCN                         E C*SU*R
+             E FT*002                      E CONJG
+             E FT*003                      E CSQRT
+             E FT*541                      E FLOAT
+             E FT*561                      E FT*002
+             E FT*571                      E FT*003
+             E I*MU*I                      E FT*571
+             E I*MUI*                      E I*MUI*
+               SETSW                       E R*PO*R
+             E SQRT                        E R*ST*C
+               VP                          E REAL
+   MINOS    DE ABS               MXADD     E I*MU*I
+               EXTOIN                      E UCOPY
+               FIXPAR            MXDMA
+             E FLOAT             MXDMAL
+             E FT*002            MXDMAR   (MXDMAL  )
+             E FT*003            MXDML    (MXDMAL  )
+             E FT*571            MXDMR    (MXDMAL  )
+             E I*MUI*            MXEQU     E I*MUI*
+               INTOEX            MXEQU1   (MXEQU   )
+               PEXTF             MXMTR    (MXADD   )
+             E R*ST*I            MXNTR    (MXADD   )
+               RESTOR            MXSUB    (MXADD   )
+             E SQRT              MXTRA    (MXADD   )
+               TAUROS            NCOEF     E CABS
+   MINPRI    E FT*002                      E I*MUI*
+             E FT*003            NEAR      E R*ST*I
+             E FT*561            NEG       E C*LO*C
+             E FT*571                      E C*ST*C
+             E I*MUI*                      E CMPLX
+             E R*ST*I            NEGN      E IABS
+   MINPUN   (MINPRI  )           NEWLIB   (INSLIB  )
+   NODAUD    E FT*002                      E FT*723
+             E FT*003                      E I*DI*I
+             E FT*571                      E I*MU*I
+             E I*MUI*                      E I*MUI*
+             E STOP*                       E MAX0
+   OR66ZF   (EX66ZF  )                       NODAUD
+   ORTBAK    E I*MUI*                        RECPAR
+   ORTHES    E ABS                         E STOP*
+             E I*MUI*                        TREAUD
+             E SIGN              PEXTF     E ATAN
+             E SQRT                        E EXP
+   ORTRAN    E I*MUI*            PINTF     E ALOG
+   OVER        OVER1                       E COS
+               OVER3                       E FT*002
+   OVER1     E C*LO*C                      E FT*003
+             E C*ST*C                      E FT*571
+             E I*MUI*                        PEXTF
+               OVER2                       E SIN
+   OVER2     E ABS               POLFIT    E ABS
+             E AIMAG                         ESTEY
+             E C*AD*R                      E FT*002
+             E C*LO*C                      E FT*003
+             E C*MU*R                      E FT*621
+             E C*ST*C                      E I*DI*I
+             E REAL                        E I*MU*I
+   OVER3     E C*LO*C            POLY2     E C*AD*C
+             E C*ST*C                      E C*DI*C
+             E C*ST*R                      E C*LN*C
+             E I*MUI*                      E C*LO*C
+               OVER2                       E C*LO*R
+             E R*ST*C                      E C*MU*C
+   PAER      E ABS                         E C*ST*C
+             E FCN                         E C*SU*C
+             E FT*002                      E CABS
+             E FT*003                      E CMPLX
+             E FT*571                        ENDING
+             E I*MUI*                      E FLOAT
+               MATIN4                      E FT*002
+             E SQRT                        E FT*003
+   PAER6     E ABS                         E FT*571
+               DEXDIN                      E I*MUI*
+             E FCN                           METHOD
+             E FLOAT                       E R*ST*C
+             E FT*002                      E RNDM
+             E FT*003                        VV
+             E FT*571            POLYNL    E FT*002
+             E I*MUI*                      E FT*003
+               INTOEX                      E FT*621
+               MATIN                         POLFIT
+               MPRINT            POW      (FRATIO  )
+               SPEED             PRINTF    E I*DI*I
+             E SQRT              PRINTX    E ALOG10
+   PARTN     E *ENDFI                      E CHSUM2
+             E *REWIN                      E D*AD*D
+               BOUNDS                      E D*DI*D
+               BUCMVE                      E D*LN*D
+               DVNBKD                      E D*LO*D
+               EXMBUC                      E D*MU*D
+             E FT*002                      E D*PO*I
+             E FT*003                      E D*ST*D
+             E FT*571                      E D*ST*R
+             E FT*641                      E D*SU*D
+             E FT*642                      E DABS
+             E FT*643                      E DCOS
+             E FT*721                      E FD*002
+             E FT*722                      E FDCONV
+             E FT*002                      E I*PO*I
+             E FT*003                      E MOD
+             E FT*571                      E R*DI*I
+             E I*MU*I                      E R*ST*D
+             E I*MUI*                      E SIN
+             E I*ST*D                      E SQRT
+             E R*ST*I                      E STOP*
+               TASUM2            QUASI    DE ABS
+   PROD     (FRATIO  )                     E AMOD
+   PRODUC    E ABS                         E FLOAT
+             E R*ST*I                      E I*MUI*
+   PROGRAM  (DUMMY   )                     E R*DI*I
+   PROGRAM  (MINCON  )           QUOT     (FRATIO  )
+   PSI       E I*MUI*            RATIO
+   PSI1      E ABS               RATQR     E ABS
+               COEFF                       E AMIN1
+             E FT*002                      E I*MU*I
+             E FT*003                      E R*PO*I
+             E FT*521            RDSTAR
+             E FT*571            REC      (RATIO   )
+             E FT*621            RECPAR    E FT*003
+             E I*MU*I                      E FT*571
+             E I*MUI*                      E I*MU*I
+               J1                          E I*MUI*
+               PSI                           SPLIT
+             E SQRT                        E STOP*
+             E STOP*             RESIDU    E D*AD*D
+   PUNCHX    E D*AD*D                      E D*COMP
+             E D*COMP                      E D*MU*D
+             E D*DI*D                      E D*ST*D
+             E D*LN*D                      E DBLE
+             E D*LO*D                      E I*MUI*
+             E D*ST*D                      E SNGL
+             E D*SU*D            RESTOR
+             E DBLE              SEEK        EXTOIN
+             E FD*002                      E FCN
+             E FT*002                      E FLOAT
+             E FT*003                      E FT*002
+             E FT*561                      E FT*003
+             E FT*571                      E FT*571
+             E I*DI*I                      E I*MU*I
+             E I*MU*I                      E I*MUI*
+             E I*MUI*                      E MIN0
+             E SNGL                          MPRINT
+   QREIG     E ABS                           XPLSDX
+               HESSEN            SETSW     E FT*002
+             E I*MUI*                      E FT*003
+               QRT                         E FT*541
+             E SQRT              SETSW4    E FT*002
+   QRT       E ABS                         E FT*003
+             E I*MUI*                      E FT*541
+             E SIGN              SOLVE     E I*MUI*
+             E SQRT              SORTZV   D  FLTSOR
+   QUAD      E COS                         E FT*002
+             E D*AD*D                      E FT*003
+             E D*LO*D                      E FT*531
+             E D*LO*R                      E FT*571
+             E D*MU*D                      E I*DI*I
+             E D*ST*D                        INTSOR
+             E D*ST*R                        IPACK
+             E FT*002                      E SAME
+             E FT*003            SPEED       EXTOIN
+             E FT*571                      E FT*002
+             E I*DI*I                      E FT*003
+             E I*MU*I                      E FT*571
+             E I*MUI*                        MPRINT
+   SPLIT     E ABS                         E FCN
+             E AMAX1                       E FT*002
+             E FUN                         E FT*003
+             E I*MU*I                      E FT*571
+             E I*MUI*                      E I*MUI*
+             E I*ST*L                        INTOEX
+             E IABS                          MPRINT
+             E MOD                         E R*ST*D
+               QUAD              TEST      E ABS
+               QUASI                       E C*AD*C
+             E R*DI*I                      E C*AD*R
+             E R*ST*I                      E C*COMP
+             E SIGN                        E C*DI*C
+             E SQRT                        E C*LO*C
+               STREAM                      E C*LO*R
+   START1    E I*DI*I                      E C*MU*C
+             E I*MU*I                      E C*ST*C
+             E IABS                        E CABS
+             E MAX0                        E CONJG
+             E R*ST*I                      E I*DI*I
+             E SQRT                        E I*MUI*
+   STAT        ACOMP                         NCOEF
+             E AIMAG                       E R*PO*I
+             E C*AD*C                      E R*ST*C
+             E C*DI*C                      E REAL
+             E C*LN*C                        VALUE2
+             E C*LO*C            TRACE     E FT*002
+             E C*MU*C                      E FT*003
+             E C*ST*C                      E FT*571
+             E C*SU*C                      E I*MUI*
+             E CEXP              TREAUD    E FT*002
+             E CMPLX                       E FT*003
+             E I*MU*I                      E FT*571
+             E I*MUI*                      E I*MUI*
+             E REAL                        E STOP*
+   STDDEV      COVAR             TREDMP      BOUNDS
+             E FLOAT                       E FT*002
+             E FT*002                      E FT*003
+             E FT*003                      E FT*571
+             E FT*621                      E I*MUI*
+             E SQRT              TRISCA    E CROSS
+   STREAM    E ABS                           DOT
+             E FLOAT                       E MXMAD
+               FLOW                        E MXMPY
+             E FT*002            TRIVEC      DOT
+             E FT*003                      E MXMAD
+             E FT*571                      E MXMAD1
+             E I*DI*I                      E MXMPY
+             E I*MUI*                      E MXMPY1
+             E SQRT                        E MXMUB
+   SUMM     (FRATIO  )                     E MXTRP
+   TASUM2    E D*AD*D                      E MXUTY
+             E D*LO*D                      E UCOPY
+             E D*MU*D                      E VADD
+             E D*ST*D                      E VSCALE
+             E I*MUI*            TSTURM    E ABS
+   TAUROS    E D*AD*D                      E AMAX1
+             E D*DI*D                      E AMIN1
+             E D*LO*D                      E FLOAT
+             E D*LO*R                      E I*MU*I
+             E D*MU*D                      E I*MUI*
+             E D*MU*R                      E R*PO*I
+             E D*ST*D                      E SQRT
+             E D*ST*R            USRINT    E FT*003
+             E D*SU*D                      E FT*571
+             E DSQRT                       E STOP*
+   USRTRM
+   VALUE     E D*LO*D
+             E FLOAT
+             E R*ST*D
+   VALUE2    E C*AD*C
+             E C*LO*C
+             E C*MU*C
+             E C*ST*C
+             E I*DI*I
+             E I*MU*I
+             E I*MUI*
+   VMODUL    E SQRT
+   VP
+   VRLTV
+   VV        E C*AD*C
+             E C*LO*C
+             E C*MU*C
+             E C*ST*C
+             E I*MUI*
+   WIEL      E ABS
+             E AIMAG
+             E C*ST*C
+             E CMPLX
+             E FT*002
+             E FT*003
+             E FT*571
+             E I*MUI*
+             E REAL
+   WRONSK
+   WTS
+   XPLSDX    E RNDM
+   YGNU      E COS
+             E EXP
+             E SIN
+               YZERO
+   YRECUR
+   YSUM      E ABS
+   YZERO     E C*ST*C
+             E CLOG
+   ZEROS     E ABS
+             E AIMAG
+               ANGL
+             E ATAN2
+             E C*AD*R
+             E C*LO*C
+             E C*ST*C
+             E CMPLX
+             E I*MUI*
+               NEAR
+             E REAL
+               VALUE2
+   ZZR       E C*AD*C
+             E C*DI*C
+             E C*LO*C
+             E C*LO*R
+             E C*MU*C
+             E C*ST*C
+             E CABS
+             E I*MUI*
+             E R*ST*C
+               VV                                             04 ИЮЛ 24 23.45
+                     ИCПOЛЬЗOBAHИE ПOДПPOГPAMM
 
+                                 INSINT
+   E - BHEШHЯЯ П/П               INSLIB
+   N - OПИCAHA, HE ИCПOЛЬЗYETCЯ  INTGRL
+   C - ECTЬ OДHOИMEHHЫЙ COMMON   INUM
+                                 INV
+   HEИCПOЛЬЗYEMЫE BXOДЫ          INVIT
+                                 LINVER
+   BAKVEC                        LOOKUP
+   BLEQ                          LORENC
+   BUKDMP                        LOTRAN
+   CDOTC                         LSQFIT
+   CFIX                          MALIK
+   CFLOAT                        MINCOD
+   CHECAL                        MINCON
+   CINV1                         MINOS
+   CINVIT                        MINROS
+   COMBAK                        MINUIT
+   COMBES                        MULLRC
+   CPOLY                         MXADD
+   CRONOR                        MXDMA
+   CSIGN                         MXDMAL
+   CUR1FT                        MXDMAR
+   CUR2FT                        MXDML
+   DET                           MXDMR
+   DETERM                        MXEQU1
+   DEZBEL                        MXMTR
+   DIFEQ1                        MXNTR
+   DIFEQ2                        MXTRA
+   DIFF                          NEG
+   DIR                           NEWLIB
+   DIST                          OR66ZF
+   DOT4                          ORTBAK
+   DOTI                          ORTHES
+   DOTNOR                        ORTRAN
+   DUMMY                         PAER6
+   EDICO                         PARTN
+   EIG5                          POLY2
+   EIMA                          POW
+   ELMBAK                        PRINTF
+   ERCROS                        PROD
+   ERDOT                         PROGRAM
+   ERDOTN                        PROGRAM
+   ERMIV                         PSI1
+   ERMOD                         QREIG
+   ERNORM                        QUOT
+   ERSCAL                        RATIO
+   EX66ZF                        RATQR
+   EXCLIB                        REC
+   FFT                           SEEK
+   FIGI                          SORTZV
+   FIGI2                         SUMM
+   FINT                          TREDMP
+   FRATIO                        TRISCA
+   GAUSS2                        TRIVEC
+   GENPNT                        TSTURM
+   GS10                          VALUE
+   GS12                          VMODUL
+   HLS                           WTS
+   HLSE
+   HLSR
+   IDEN                          ИCПOЛЬЗYEMЫE BXOДЫ
+   INSALL
+   INSAUT                        *ENDFI   E  PARTN
+   *REWIN   E  PARTN             AL          COEFF
+   ABS      E  AL                ALOG     E  CUR1FT
+               ANGL                          CUR2FT
+               BLEQ                          LINVER
+               CINVIT                        LOGGAM
+               CROUT                         PINTF
+               CUR2FT            ALOG10   E  DEZBEL
+               CXSQRT                        MATIN
+               DEC                           MATIN4
+               DET                           PRINTX
+               DETERM            AMAX1    E  CXSQRT
+               DEZBEL                        HESS
+               DOTNOR                        LAG
+               EIG5                          SPLIT
+               EQUILI                        TSTURM
+               ESTEY             AMIN1    E  MIDATA
+               EXMBUC                        RATQR
+               FLOW                          TSTURM
+               FNC               AMOD     E  QUASI
+               GENPNT            AN66ZF      EQUILI
+               HESS              ANGL        ZEROS
+               HESSEN            ATAN     E  LOGGAM
+               INSAUT                        PEXTF
+               INTGRL            ATAN2    E  ANGL
+               INVIT                         EIMA
+               JNORM                         ZEROS
+               JSUM              BINARY   E  MINCOD
+               LAG               BOUNDS      GENPNT
+               LINVER                        INTGRL
+               MALIK                         PARTN
+               MATIN                         TREDMP
+               MATIN4            BUCMVE      PARTN
+               MIDATA            C*AD*C   E  ACOMP
+               MINCON                        CDOTC
+               MINOS                         DIVID
+               MULLRC                        EIMA
+               ORTHES                        ENDING
+               OVER2                         FACTOR
+               PAER                          FFT
+               PAER6                         METHOD
+               POLFIT                        MULLRC
+               PRODUC                        POLY2
+               PSI1                          STAT
+               QREIG                         TEST
+               QRT                           VALUE2
+               QUASI                         VV
+               RATQR                         ZZR
+               SPLIT             C*AD*R   E  DIVID
+               STREAM                        MULLRC
+               TEST                          OVER2
+               TSTURM                        TEST
+               WIEL                          ZEROS
+               YSUM              C*COMP   E  EIMA
+               ZEROS                         TEST
+   ACOMP       METHOD            C*DI*C   E  CINVIT
+               STAT                          CPOLY
+   AIMAG    E  ANGL                          EIMA
+               CINV1                         ENDING
+               CSIGN                         INVIT
+               EIMA                          METHOD
+               MULLRC                        MULLRC
+               OVER2                         POLY2
+               STAT                          STAT
+               WIEL                          TEST
+               ZEROS                         ZZR
+   C*DI*R   E  EIMA              C*ST*C   E  ACOMP
+               FFT                           CDOTC
+   C*LN*C   E  ACOMP                         CFLOAT
+               CPOLY                         CINV1
+               DIVID                         CINVIT
+               EIMA                          CPOLY
+               FACTOR                        CSIGN
+               METHOD                        DIVID
+               MULLRC                        EIMA
+               POLY2                         ENDING
+               STAT                          FACTOR
+   C*LN*R   E  EIMA                          FFT
+               ENDING                        FRATIO
+               MULLRC                        INVIT
+   C*LO*C   E  ACOMP                         METHOD
+               CDOTC                         MULLRC
+               CFLOAT                        NEG
+               CINV1                         OVER1
+               CINVIT                        OVER2
+               CPOLY                         OVER3
+               CSIGN                         POLY2
+               DIVID                         STAT
+               EIMA                          TEST
+               ENDING                        VALUE2
+               FACTOR                        VV
+               FFT                           WIEL
+               FRATIO                        YZERO
+               INVIT                         ZEROS
+               METHOD                        ZZR
+               MULLRC            C*ST*R   E  OVER3
+               NEG               C*SU*C   E  EIMA
+               OVER1                         ENDING
+               OVER2                         FFT
+               OVER3                         MULLRC
+               POLY2                         POLY2
+               STAT                          STAT
+               TEST              C*SU*R   E  CPOLY
+               VALUE2                        DIVID
+               VV                            MULLRC
+               ZEROS             CABS     E  ACOMP
+               ZZR                           CINVIT
+   C*LO*R   E  ACOMP                         CPOLY
+               CPOLY                         EIMA
+               EIMA                          ENDING
+               MULLRC                        INVIT
+               POLY2                         METHOD
+               TEST                          NCOEF
+               ZZR                           POLY2
+   C*MU*C   E  ACOMP                         TEST
+               CDOTC                         ZZR
+               EIMA              CEXP     E  EIMA
+               ENDING                        FACTOR
+               FACTOR                        STAT
+               FFT               CHECOF   E  CHECAL
+               MULLRC            CHSUM2   E  PRINTX
+               POLY2             CLOG     E  FACTOR
+               STAT                          YZERO
+               TEST              CMPLX    E  CFLOAT
+               VALUE2                        CINV1
+               VV                            CINVIT
+               ZZR                           CSIGN
+   C*MU*R   E  ACOMP                         FFT
+               DIVID                         FRATIO
+               EIMA                          INVIT
+               MULLRC                        METHOD
+               OVER2                         NEG
+               POLY2                         RESIDU
+               STAT                          TASUM2
+               WIEL                          TAUROS
+               ZEROS             D*ST*R   E  DEXDIN
+   COEFF       PSI1                          HESSEN
+   CONJG    E  CDOTC                         PRINTX
+               MULLRC                        QUAD
+               TEST                          TAUROS
+   COS      E  EDICO             D*SU*D   E  PRINTX
+               FFT                           PUNCHX
+               PINTF                         TAUROS
+               QUAD              DABS     E  PRINTX
+               YGNU              DATAPR*  E  INSLIB
+   COVAR       STDDEV            DBLE     E  CROUT
+   CROSS    E  ERCROS                        PUNCHX
+               TRISCA                        RESIDU
+   CROUT       LINVER            DCOS     E  PRINTX
+   CSQRT    E  EIMA              DEC         MINROS
+               MULLRC            DEXDIN      PAER6
+   CXSQRT      LAG               DIVID       CPOLY
+   D*AD*D   E  CROUT             DOT         DOTNOR
+               HESSEN                        ERDOT
+               PRINTX                        TRISCA
+               PUNCHX                        TRIVEC
+               QUAD              DSQRT    E  TAUROS
+               RESIDU            DVNBKD      PARTN
+               TASUM2            DVNOPT      DVNBKD
+               TAUROS            ECTRAD   E  CHECAL
+   D*AD*R   E  DEXDIN            ENDING      POLY2
+   D*COMP   E  CROUT             EQUILI      LINVER
+               PUNCHX            ESTEY       POLFIT
+               RESIDU            EXMBUC      PARTN
+   D*DI*D   E  DEXDIN            EXP      E  CUR2FT
+               PRINTX                        DEXDIN
+               PUNCHX                        PEXTF
+               TAUROS                        YGNU
+   D*LN*D   E  PRINTX            EXTOIN      MIDATA
+               PUNCHX                        MINOS
+   D*LO*D   E  DEXDIN                        SEEK
+               HESSEN                        SPEED
+               PRINTX            FACTOR      COMBES
+               PUNCHX            FC*002   E  EIMA
+               QUAD              FCN      E  DEC
+               TASUM2                        FNC
+               TAUROS                        MINCON
+               VALUE                         MINUIT
+   D*LO*R   E  HESSEN                        PAER
+               QUAD                          PAER6
+               TAUROS                        SEEK
+   D*MU*D   E  CROUT                         TAUROS
+               DEXDIN            FD*002   E  CHECAL
+               PRINTX                        PRINTX
+               QUAD                          PUNCHX
+               RESIDU            FDCONV   E  PRINTX
+               TASUM2            FIN         FNC
+               TAUROS            FIXPAR      MINOS
+   D*MU*R   E  DEXDIN            FLOAT    E  CFLOAT
+               HESSEN                        CINVIT
+               TAUROS                        CUR1FT
+   D*PO*I   E  PRINTX                        CUR2FT
+   D*ST*D   E  CROUT                         DEZBEL
+               DEXDIN                        DIFEQ1
+               HESSEN                        DIFEQ2
+               PRINTX                        HLS
+               PUNCHX                        INVIT
+               QUAD                          LAG
+               METHOD                        CHECAL
+               MIDATA                        COVAR
+               MINOS                         CPOLY
+               MPRINT                        CUR1FT
+               MULLRC                        CUR2FT
+               PAER6                         DEC
+               POLY2                         DUMMY
+               QUASI                         DVNOPT
+               SEEK                          EIG5
+               STDDEV                        EIMA
+               STREAM                        ENDING
+               TSTURM                        ESTEY
+               VALUE                         EXMBUC
+   FLOW        STREAM                        FNC
+   FLTSOR      SORTZV                        GENPNT
+   FNC         DEC                           HESS
+   FT*002   E  BOUNDS                        INTGRL
+               CHECAL                        LAG
+               COVAR                         LOGGAM
+               CUR1FT                        LSQFIT
+               CUR2FT                        MALIK
+               DEC                           MIDATA
+               EIG5                          MINCOD
+               ESTEY                         MINCON
+               EXMBUC                        MINOS
+               FNC                           MINPRI
+               INTGRL                        MINUIT
+               LAG                           MPRINT
+               LOGGAM                        MPUNCH
+               LSQFIT                        MULLRC
+               MALIK                         NODAUD
+               MIDATA                        PAER
+               MINCOD                        PAER6
+               MINCON                        PARTN
+               MINOS                         PINTF
+               MINPRI                        POLFIT
+               MINUIT                        POLY2
+               MPRINT                        POLYNL
+               MPUNCH                        PRINTX
+               MULLRC                        PSI1
+               NODAUD                        PUNCHX
+               PAER                          QUAD
+               PAER6                         RECPAR
+               PARTN                         SEEK
+               PINTF                         SETSW
+               POLFIT                        SETSW4
+               POLY2                         SORTZV
+               POLYNL                        SPEED
+               PRINTX                        STDDEV
+               PSI1                          STREAM
+               PUNCHX                        TAUROS
+               QUAD                          TRACE
+               SEEK                          TREAUD
+               SETSW                         TREDMP
+               SETSW4                        USRINT
+               SORTZV                        WIEL
+               SPEED             FT*521   E  CUR1FT
+               STDDEV                        CUR2FT
+               STREAM                        LSQFIT
+               TAUROS                        PSI1
+               TRACE             FT*531   E  SORTZV
+               TREAUD            FT*541   E  CHECAL
+               TREDMP                        DEC
+               WIEL                          MALIK
+   FT*003   E  AL                            MIDATA
+               BOUNDS                        MINCON
+               SETSW             FT*721   E  PARTN
+               SETSW4            FT*722   E  PARTN
+   FT*561   E  DEC               FT*723   E  PARTN
+               MINCON            FUN      E  GENPNT
+               MINPRI                        INTGRL
+               MPUNCH                        SPLIT
+               PUNCHX            FUNCT    E  MALIK
+   FT*571   E  AL                GAUSS    E  GAUSS2
+               BOUNDS            HESS        EIG5
+               CHECAL            HESSEN      QREIG
+               CPOLY             HHPIV       HLS
+               DEC               HHSMSQ      HLS
+               DUMMY             HHSTEP      HLS
+               DVNOPT                        HLSE
+               EIG5                          HLSR
+               EIMA              HHSWOP      HLS
+               ENDING            HHUK        HLS
+               EXMBUC                        HLSE
+               FNC               I*DI*I   E  BLEQ
+               GENPNT                        COVAR
+               HESS                          CPOLY
+               INTGRL                        FFT
+               LAG                           FLTSOR
+               MALIK                         GENPNT
+               MIDATA                        INTSOR
+               MINCOD                        LOOKUP
+               MINCON                        PARTN
+               MINOS                         POLFIT
+               MINPRI                        PRINTF
+               MINUIT                        PUNCHX
+               MPRINT                        QUAD
+               MULLRC                        SORTZV
+               NODAUD                        START1
+               PAER                          STREAM
+               PAER6                         TEST
+               PARTN                         VALUE2
+               PINTF             I*MU*I   E  BAKVEC
+               POLY2                         BLEQ
+               PRINTX                        BUCMVE
+               PSI1                          CDOTC
+               PUNCHX                        CINV1
+               QUAD                          CINVIT
+               RECPAR                        COVAR
+               SEEK                          CPOLY
+               SORTZV                        DIVID
+               SPEED                         EXMBUC
+               STREAM                        FIGI
+               TAUROS                        FIGI2
+               TRACE                         FINT
+               TREAUD                        FRATIO
+               TREDMP                        GENPNT
+               USRINT                        HLS
+               WIEL                          HLSE
+   FT*621   E  COVAR                         HLSR
+               CUR1FT                        INSAUT
+               CUR2FT                        INTGRL
+               ESTEY                         INVIT
+               LOGGAM                        LAG
+               LSQFIT                        LOOKUP
+               POLFIT                        MALIK
+               POLYNL                        MINCON
+               PSI1                          MINUIT
+               STDDEV                        MXADD
+   FT*641   E  PARTN                         PARTN
+   FT*642   E  PARTN                         POLFIT
+   FT*643   E  PARTN                         PRINTX
+               PSI1                          QREIG
+               PUNCHX                        QRT
+               QUAD                          QUAD
+               RATQR                         QUASI
+               RECPAR                        RECPAR
+               SEEK                          RESIDU
+               SPLIT                         SEEK
+               START1                        SOLVE
+               STAT                          SPLIT
+               TSTURM                        STAT
+               VALUE2                        STREAM
+   I*MUI*   E  ACOMP                         TASUM2
+               AL                            TAUROS
+               BAKVEC                        TEST
+               BLEQ                          TRACE
+               BOUNDS                        TREAUD
+               CDOTC                         TREDMP
+               CINV1                         TSTURM
+               CINVIT                        VALUE2
+               COEFF                         VV
+               COMBAK                        WIEL
+               CPOLY                         ZEROS
+               CROUT                         ZZR
+               CUR2FT            I*PO*I   E  FFT
+               DEC                           FRATIO
+               DET                           QUAD
+               DETERM            I*ST*D   E  PRINTX
+               DIVID             I*ST*L   E  EXMBUC
+               EIG5                          SPLIT
+               EIMA              IABS     E  BOUNDS
+               ELMBAK                        HLSE
+               ENDING                        HLSR
+               EQUILI                        INVIT
+               FFT                           NEGN
+               FIGI                          SPLIT
+               FIGI2                         START1
+               FLOW              IFIX     E  CFIX
+               HESS                          LINVER
+               HESSEN            INPUT    E  MALIK
+               INVIT             INT      E  INTGRL
+               LAG               INTOEX      MINOS
+               LINVER                        MINUIT
+               MALIK                         PAER6
+               MATIN                         TAUROS
+               MATIN4            INTSOR      SORTZV
+               MINCOD            INTSTP      INSAUT
+               MINCON            IPACK       SORTZV
+               MINOS             ISIGN    E  LAG
+               MINPRI            J1          COEFF
+               MULLRC                        PSI1
+               MXEQU             JNORM       COMBES
+               NCOEF             JRECUR      COMBES
+               NODAUD            JSUM        COMBES
+               ORTBAK            LAG         EIG5
+               ORTHES            LIBLIST     INSLIB
+               ORTRAN            LOADGO   E  MINUIT
+               OVER1             LOGGAM      FACTOR
+               OVER3             MATIN       PAER6
+               PAER              MATIN1   E  CINV1
+               PAER6             MATIN4      PAER
+               PARTN             MAX0     E  HLS
+               POLY2                         HLSE
+               PRINTX                        HLSR
+               PSI                           MIDATA
+               PSI1                          PARTN
+               PUNCHX                        START1
+   METHOD      POLY2             PINTF       EXTOIN
+   MIDATA      MINUIT                        MIDATA
+   MIN0     E  BLEQ              POLFIT      POLYNL
+               EIG5              POLYNL      LSQFIT
+               HESS              PRINT8   E  INSLIB
+               SEEK              PRINTX      CHECAL
+   MINEND   E  MINCOD            PRODUC      LINVER
+   MINISO   E  MINCOD            PSI         AL
+   MINPRI      MINCOD                        PSI1
+   MINPUN      MINCOD            PT6      E  INSLIB
+   MINSTA   E  MINCOD            PUNCHX      CHECAL
+   MOD      E  EIMA              QRT         QREIG
+               EXMBUC            QUAD        INTGRL
+               LAG                           SPLIT
+               LINVER            QUASI       INTGRL
+               LOGGAM                        SPLIT
+               QUAD              R*DI*I   E  FFT
+               SPLIT                         INTGRL
+   MONREAD* E  INSLIB                        QUAD
+   MPRINT      MINUIT                        QUASI
+               PAER6                         SPLIT
+               SEEK              R*PO*I   E  CINVIT
+               SPEED                         INVIT
+               TAUROS                        RATQR
+   MPUNCH      MINUIT                        TEST
+   MXEQU       MALIK                         TSTURM
+   MXMAD    E  ERSCAL            R*PO*R   E  CPOLY
+               TRISCA                        EIMA
+               TRIVEC                        MULLRC
+   MXMAD1   E  ERCROS            R*ST*C   E  EIMA
+               ERDOT                         MULLRC
+               TRIVEC                        OVER3
+   MXMPY    E  EDICO                         POLY2
+               ERCROS                        TEST
+               ERDOT                         ZZR
+               ERMOD             R*ST*D   E  DEXDIN
+               ERNORM                        QUAD
+               ERSCAL                        TAUROS
+               TRISCA                        VALUE
+               TRIVEC            R*ST*I   E  MINOS
+   MXMPY1   E  EDICO                         MINPRI
+               ERCROS                        NEAR
+               ERDOT                         PRINTX
+               ERNORM                        PRODUC
+               TRIVEC                        SPLIT
+   MXMUB    E  TRIVEC                        START1
+   MXSUB       ERDOT             RDSTAR      INSLIB
+   MXTRP    E  ERCROS            REAL     E  ANGL
+               TRIVEC                        CFIX
+   MXUTY    E  TRIVEC                        CINV1
+   NCOEF       TEST                          CSIGN
+   NEAR        ZEROS                         EIMA
+   NEGN        COMBES                        MULLRC
+   NODAUD      PARTN                         OVER2
+   NRAN     E  GENPNT                        STAT
+               INTGRL                        TEST
+   OCTTDEC  E  INSLIB                        WIEL
+   OVER        CPOLY                         ZEROS
+   OVER1       OVER              RECPAR      PARTN
+   OVER2       OVER1             RESIDU      LINVER
+               OVER3             RESTOR      MINOS
+   OVER3       OVER              RNDM     E  POLY2
+   PAER        DEC                           XPLSDX
+   PEXTF       INTOEX            SAME     E  SORTZV
+               MINOS             SETSW       MINCON
+               PINTF             SETSW4      DEC
+   SIGN     E  CSIGN                         MINROS
+               DOTNOR                        MINUIT
+               EIG5                          NODAUD
+               LAG                           PARTN
+               ORTHES                        PSI1
+               QRT                           QUAD
+               SPLIT                         RECPAR
+   SIN      E  EDICO                         TREAUD
+               FFT                           USRINT
+               PINTF             STORE6   E  IPACK
+               QUAD              STREAM      SPLIT
+               YGNU              TASUM2      PRINTX
+   SNGL     E  CROUT             TAUROS      MINOS
+               PUNCHX                        MINUIT
+               RESIDU            TEST        CPOLY
+   SOLVE       LINVER            TRACE       EIG5
+   SPEED       PAER6             TREAUD      PARTN
+   SPLIT       RECPAR            UCOPY    E  EDICO
+   SQRT     E  CINVIT                        ERCROS
+               CPOLY                         ERDOT
+               CUR1FT                        ERNORM
+               CUR2FT                        ERSCAL
+               CXSQRT                        MXADD
+               DEC                           TRIVEC
+               DIST              USRINT      INTGRL
+               DOTNOR            USRTRM      EXMBUC
+               EIG5              UZERO    E  COEFF
+               ENDING            VADD     E  ERCROS
+               EXMBUC                        ERSCAL
+               FIGI                          TRIVEC
+               FIGI2             VALUE2      TEST
+               HHUK                          ZEROS
+               INTGRL            VMOD     E  ERCROS
+               INVIT                         ERDOT
+               LAG                           ERMOD
+               LORENC                        ERNORM
+               LOTRAN            VP          MINCON
+               MINCON            VRLTV       INSAUT
+               MINOS             VSCALE   E  ERCROS
+               ORTHES                        ERDOT
+               PAER                          ERNORM
+               PAER6                         ERSCAL
+               PSI1                          TRIVEC
+               QREIG             VV          ACOMP
+               QRT                           ENDING
+               QUAD                          POLY2
+               SPLIT                         ZZR
+               START1            VZERO    E  EDICO
+               STDDEV                        ERCROS
+               STREAM            WIEL        EIMA
+               TSTURM            WRONSK      COMBES
+               VMODUL            XPLSDX      SEEK
+   START1      COMBES            YGNU        COMBES
+   STAT        METHOD            YRECUR      COMBES
+   STDDEV      ESTEY             YSUM        COMBES
+   STOP*    E  BOUNDS            YZERO       YGNU
+               CHECAL            ZEROS       CPOLY
+               CUR1FT            ZZR         METHOD
+               CUR2FT
+               DUMMY
+               GENPNT
+               INTGRL
+               LOGGAM
+               LSQFIT
+               MALIK
+               MIDATA                                             04 ИЮЛ 24 23.45
+                     CCЫЛKИ HA COMMON′Ы
+
+                                          NL 00120 *NAMES*
+   D - PACCЫЛKA ДAHHЫX                    NL 00180 *PAREXT*
+   N - OПИCAH, HE ИCПOЛЬЗYETCЯ             L 00180 *PARINT*
+   P - CTPAHИЧHЫЙ COMMON         FLOW      L 00001 *WITCH*
+   S - CEKTOPHЫЙ COMMON          FNC       L 00001 *IP*
+   L - ПPOCTOЙ COMMON            GENPNT    L 00001 *BUKSZE*
+   ***** - ДЛИHA OПИCAHA HEЯBHO            L 00003 *EXMCTL*
+                                           L 00001 *FUNN*
+   AL        L 00461 *TS*                  L 00001 *GENINL*
+             L 06000 *TSH*                 L 00002 *ISTRGE*
+   BUCMVE    L 00001 *BUKSZE*              L 00020 *LIMITS*
+   BUKDMP   (TREDMP  )                     L 00002 *RSTRGE*
+   CHECAL    L 00432 *CHEDAT*              L 00002 *TRESZE*
+   COEFF     L 00020 *TH*        GS10      L 00022 *BLOK*
+             L 00461 *TS*        GS12      L 00022 *BLOK*
+            NL 06000 *TSH*       IDEN     (RATIO   )
+   CRONOR   (ERCROS  )           INSALL   (INSLIB  )
+   DEC       L 00022 *WTS*       INSLIB    L 00001 DRTAPE
+   DEXDIN    L 00062 *CORRES*              L 00001 MONCARD*
+             L 00181 *LIMITS*              L 00002 WBEGFLAG
+            NL 00180 *PAREXT*    INTGRL    L 00001 *BUKSZE*
+   DIR      (RATIO   )                     L 00003 *EXMCTL*
+   DVNBKD   DL 00002 *DATE*                L 00001 *FUNN*
+            DL 00002 *DEPTHS*              L 00001 *INSMPL*
+            DL 00001 *DISPOS*              L 04001 *ISTRGE*
+            DL 00001 *EXFILE*              L 00020 *LIMITS*
+            DL 00001 *INSMPL*              L 00001 *PRINT*
+            DL 00002 *ISTRGE*              L 06002 *RSTRGE*
+            DL 00020 *LIMITS*              L 00002 *TRESZE*
+            DL 00005 *MXMZER*    INTOEX    L 00062 *CORRES*
+            DL 00001 *PRINT*              NL 00181 *LIMITS*
+            DL 00001 *QUADRE*             NL 00120 *NAMES*
+            DL 00002 *RSTRGE*              L 00180 *PAREXT*
+            DL 00001 *SAMPLE*    INUM     (RATIO   )
+            DL 00003 *SPCNTL*    INV      (RATIO   )
+            DL 00001 *START*     MALIK     L 00310 **
+   EDICO     L 00035 *SLATE*     METHOD    L 00007 **
+   ENDING    L 00001 *ACCA*                L 00003 *OCA*
+   ERCROS    L 00063 *SLATE*     MIDATA    L 00004 *CONVER*
+   ERDOT     L 00027 *SLATE*               L 00062 *CORRES*
+   ERDOTN   (ERDOT   )                     L 00181 *LIMITS*
+   ERMIV    (ERMOD   )                     L 00120 *NAMES*
+   ERMOD     L 00015 *SLATE*               L 00991 *PAERBK*
+   ERNORM    L 00030 *SLATE*               L 00180 *PAREXT*
+   ERSCAL    L 00027 *SLATE*               L 00180 *PARINT*
+   EXCLIB   (INSLIB  )                     L 00062 *SEEKBK*
+   EXMBUC    L 00008 *ANSWER*             DL 00022 *TITLE*
+             L 00001 *BUKSZE*    MINCOD    L 00001 *MINERR*
+             L 00002 *DEPTHS*             DL 00001 *MINIFL*
+             L 00003 *EXMCTL*    MINOS     L 00004 *CONVER*
+             L 00001 *FUNN*                L 00062 *CORRES*
+             L 00002 *MAXERR*              L 00181 *LIMITS*
+             L 00001 *PRINT*               L 00003 *MINIM*
+             L 00001 *QUADRE*              L 00120 *NAMES*
+             L 00004 *SIGSPL*              L 00991 *PAERBK*
+   EXTOIN    L 00062 *CORRES*              L 00180 *PAREXT*
+             L 00181 *LIMITS*              L 00180 *PARINT*
+            NL 00120 *NAMES*               L 00022 *TITLE*
+             L 00180 *PAREXT*    MINUIT    L 00004 *CONVER*
+   FIN      (DEC     )                     L 00062 *CORRES*
+   FIXPAR    L 00062 *CORRES*             NL 00241 *FIX*
+             L 00241 *FIX*                 L 00060 *GG*
+            NL 00181 *LIMITS*             NL 00181 *LIMITS*
+             L 00003 *MINIM*     PUNCHX    L 00432 *CHEDAT*
+             L 00180 *PAREXT*    RATIO     L 00001 ACC*
+             L 00180 *PARINT*    RDSTAR    L 00001 DRTAPE
+             L 00062 *SEEKBK*              L 00002 WBEGFLAG
+            NL 00064 *SPEDBK*    REC      (RATIO   )
+             L 00022 *TITLE*     RECPAR    L 00001 *BUKSZE*
+   MPRINT    L 00004 *CONVER*              L 00001 *ISTRGE*
+             L 00062 *CORRES*              L 00001 *MLIMIT*
+             L 00181 *LIMITS*    RESTOR    L 00062 *CORRES*
+             L 00120 *NAMES*               L 00241 *FIX*
+             L 00180 *PAREXT*             NL 00181 *LIMITS*
+             L 00180 *PARINT*             NL 00120 *NAMES*
+             L 00022 *TITLE*              NL 00180 *PAREXT*
+   MPUNCH   NL 00004 *CONVER*              L 00180 *PARINT*
+             L 00062 *CORRES*    SEEK      L 00004 *CONVER*
+             L 00181 *LIMITS*              L 00062 *CORRES*
+            NL 00003 *MINIM*               L 00181 *LIMITS*
+             L 00120 *NAMES*               L 00003 *MINIM*
+             L 00180 *PAREXT*              L 00180 *PAREXT*
+            NL 00180 *PARINT*              L 00180 *PARINT*
+             L 00022 *TITLE*               L 00062 *SEEKBK*
+   NEWLIB   (INSLIB  )           SETSW4    L 00001 *IP*
+   PAER      L 00022 *WTS*       SPEED     L 00004 *CONVER*
+   PAER6     L 00004 *CONVER*             NL 00062 *CORRES*
+             L 00062 *CORRES*              L 00003 *MINIM*
+             L 00060 *GG*                  L 00064 *SPEDBK*
+            NL 00181 *LIMITS*    SPLIT     L 00001 *BUKSZE*
+             L 00003 *MINIM*               L 00001 *FUNN*
+             L 00120 *NAMES*               L 00002 *ISTRGE*
+             L 00991 *PAERBK*              L 00002 *MAXERR*
+             L 00180 *PAREXT*              L 00005 *MXMZER*
+             L 00180 *PARINT*              L 00001 *QUADRE*
+             L 00064 *SPEDBK*              L 00002 *RSTRGE*
+             L 00022 *TITLE*               L 00001 *SAMPLE*
+   PARTN     L 00001 *BUKSZE*              L 00004 *SIGSPL*
+             L 00002 *DATE*                L 00003 *SPCNTL*
+             L 00001 *DISPOS*    STREAM    L 00001 *FUNN*
+             L 00001 *EXFILE*              L 00001 *WITCH*
+             L 00003 *EXMCTL*    TAUROS    L 00004 *CONVER*
+             L 00001 *GENINL*              L 00062 *CORRES*
+             L 04001 *ISTRGE*              L 00060 *GG*
+             L 00020 *LIMITS*             NL 00181 *LIMITS*
+             L 00001 *MLIMIT*              L 00003 *MINIM*
+             L 00001 *PRINT*              NL 00120 *NAMES*
+             L 00001 *QUADRE*              L 00180 *PAREXT*
+             L 06002 *RSTRGE*              L 00180 *PARINT*
+             L 00001 *SAMPLE*              L 00022 *TITLE*
+             L 00001 *START*     TREDMP    L 00001 *BUKSZE*
+             L 00002 *TRESZE*              L 00003 *EXMCTL*
+   PEXTF    NL 00062 *CORRES*              L 00005 *ISTRGE*
+             L 00181 *LIMITS*              L 00020 *LIMITS*
+            NL 00120 *NAMES*               L 00002 *RSTRGE*
+            NL 00180 *PAREXT*              L 00002 *TRESZE*
+   PINTF    NL 00062 *CORRES*    TRISCA    L 00040 *SLATE*
+             L 00181 *LIMITS*    TRIVEC    L 00077 *SLATE*
+            NL 00120 *NAMES*     WTS       L 00022 *BLOK*
+            NL 00180 *PAREXT*
+   POLY2     L 00007 **
+             L 00001 *ACCA*
+             L 00003 *OCA*
+   PRINTX    L 00432 *CHEDAT*
+   PSI       L 00461 *TS*
+   PSI1      L 00020 *TH*
+             L 00461 *TS*
+             L 06000 *TSH*                                             04 ИЮЛ 24 23.45
+                     ИCПOЛЬЗOBAHИE COMMON′OB
+
+                                          DL 00002 DVNBKD
+   E - ECTЬ OДHOИMEHHAЯ П/П                L 00002 PARTN
+   D - PACCЫЛKA ДAHHЫX           *DEPTHS*    00002
+   N - OПИCAH, HE ИCПOЛЬЗYETCЯ            DL 00002 DVNBKD
+   P - CTPAHИЧHЫЙ COMMON                   L 00002 EXMBUC
+   S - CEKTOPHЫЙ COMMON          *DISPOS*    00001
+   L - ПPOCTOЙ COMMON                     DL 00001 DVNBKD
+   ***** - ДЛИHA OПИCAHA HEЯBHO            L 00001 PARTN
+                                 *EXFILE*    00001
+   **          00310                      DL 00001 DVNBKD
+             L 00310 MALIK                 L 00001 PARTN
+             L 00007 METHOD      *EXMCTL*    00003
+             L 00007 POLY2                 L 00003 EXMBUC
+   *ACCA*      00001                       L 00003 GENPNT
+             L 00001 ENDING                L 00003 INTGRL
+             L 00001 POLY2                 L 00003 PARTN
+   *ANSWER*    00008                       L 00003 TREDMP
+             L 00008 EXMBUC      *FIX*       00241
+   *BLOK*      00022                       L 00241 FIXPAR
+             L 00022 GS10                 NL 00241 MINUIT
+             L 00022 GS12                  L 00241 RESTOR
+             L 00022 WTS         *FUNN*      00001
+   *BUKSZE*    00001                       L 00001 EXMBUC
+             L 00001 BUCMVE                L 00001 GENPNT
+             L 00001 EXMBUC                L 00001 INTGRL
+             L 00001 GENPNT                L 00001 SPLIT
+             L 00001 INTGRL                L 00001 STREAM
+             L 00001 PARTN       *GENINL*    00001
+             L 00001 RECPAR                L 00001 GENPNT
+             L 00001 SPLIT                 L 00001 PARTN
+             L 00001 TREDMP      *GG*        00060
+   *CHEDAT*    00432                       L 00060 MINUIT
+             L 00432 CHECAL                L 00060 PAER6
+             L 00432 PRINTX                L 00060 TAUROS
+             L 00432 PUNCHX      *INSMPL*    00001
+   *CONVER*    00004                      DL 00001 DVNBKD
+             L 00004 MIDATA                L 00001 INTGRL
+             L 00004 MINOS       *IP*        00001
+             L 00004 MINUIT                L 00001 FNC
+             L 00004 MPRINT                L 00001 SETSW4
+            NL 00004 MPUNCH      *ISTRGE*    04001
+             L 00004 PAER6                DL 00002 DVNBKD
+             L 00004 SEEK                  L 00002 GENPNT
+             L 00004 SPEED                 L 04001 INTGRL
+             L 00004 TAUROS                L 04001 PARTN
+   *CORRES*    00062                       L 00001 RECPAR
+             L 00062 DEXDIN                L 00002 SPLIT
+             L 00062 EXTOIN                L 00005 TREDMP
+             L 00062 FIXPAR      *LIMITS*    00181
+             L 00062 INTOEX                L 00181 DEXDIN
+             L 00062 MIDATA               DL 00020 DVNBKD
+             L 00062 MINOS                 L 00181 EXTOIN
+             L 00062 MINUIT               NL 00181 FIXPAR
+             L 00062 MPRINT                L 00020 GENPNT
+             L 00062 MPUNCH                L 00020 INTGRL
+             L 00062 PAER6                NL 00181 INTOEX
+            NL 00062 PEXTF                 L 00181 MIDATA
+            NL 00062 PINTF                 L 00181 MINOS
+             L 00062 RESTOR               NL 00181 MINUIT
+             L 00062 SEEK                  L 00181 MPRINT
+            NL 00062 SPEED                 L 00181 MPUNCH
+             L 00062 TAUROS               NL 00181 PAER6
+   *DATE*      00002                       L 00020 PARTN
+             L 00181 PEXTF                 L 00180 MIDATA
+             L 00181 PINTF                 L 00180 MINOS
+            NL 00181 RESTOR                L 00180 MINUIT
+             L 00181 SEEK                  L 00180 MPRINT
+            NL 00181 TAUROS               NL 00180 MPUNCH
+             L 00020 TREDMP                L 00180 PAER6
+   *MAXERR*    00002                       L 00180 RESTOR
+             L 00002 EXMBUC                L 00180 SEEK
+             L 00002 SPLIT                 L 00180 TAUROS
+   *MINERR*    00001             *PRINT*     00001
+             L 00001 MINCOD               DL 00001 DVNBKD
+   *MINIFL*    00001                       L 00001 EXMBUC
+            DL 00001 MINCOD                L 00001 INTGRL
+   *MINIM*     00003                       L 00001 PARTN
+             L 00003 MINOS       *QUADRE*    00001
+             L 00003 MINUIT               DL 00001 DVNBKD
+            NL 00003 MPUNCH                L 00001 EXMBUC
+             L 00003 PAER6                 L 00001 PARTN
+             L 00003 SEEK                  L 00001 SPLIT
+             L 00003 SPEED       *RSTRGE*    06002
+             L 00003 TAUROS               DL 00002 DVNBKD
+   *MLIMIT*    00001                       L 00002 GENPNT
+             L 00001 PARTN                 L 06002 INTGRL
+             L 00001 RECPAR                L 06002 PARTN
+   *MXMZER*    00005                       L 00002 SPLIT
+            DL 00005 DVNBKD                L 00002 TREDMP
+             L 00005 SPLIT       *SAMPLE*    00001
+   *NAMES*     00120                      DL 00001 DVNBKD
+            NL 00120 EXTOIN                L 00001 PARTN
+            NL 00120 FIXPAR                L 00001 SPLIT
+            NL 00120 INTOEX      *SEEKBK*    00062
+             L 00120 MIDATA                L 00062 MIDATA
+             L 00120 MINOS                 L 00062 MINUIT
+             L 00120 MPRINT                L 00062 SEEK
+             L 00120 MPUNCH      *SIGSPL*    00004
+             L 00120 PAER6                 L 00004 EXMBUC
+            NL 00120 PEXTF                 L 00004 SPLIT
+            NL 00120 PINTF       *SLATE*     00077
+            NL 00120 RESTOR                L 00035 EDICO
+            NL 00120 TAUROS                L 00063 ERCROS
+   *OCA*       00003                       L 00027 ERDOT
+             L 00003 METHOD                L 00015 ERMOD
+             L 00003 POLY2                 L 00030 ERNORM
+   *PAERBK*    00991                       L 00027 ERSCAL
+             L 00991 MIDATA                L 00040 TRISCA
+             L 00991 MINOS                 L 00077 TRIVEC
+             L 00991 PAER6       *SPCNTL*    00003
+   *PAREXT*    00180                      DL 00003 DVNBKD
+            NL 00180 DEXDIN                L 00003 SPLIT
+             L 00180 EXTOIN      *SPEDBK*    00064
+            NL 00180 FIXPAR               NL 00064 MINUIT
+             L 00180 INTOEX                L 00064 PAER6
+             L 00180 MIDATA                L 00064 SPEED
+             L 00180 MINOS       *START*     00001
+             L 00180 MINUIT               DL 00001 DVNBKD
+             L 00180 MPRINT                L 00001 PARTN
+             L 00180 MPUNCH      *TH*        00020
+             L 00180 PAER6                 L 00020 COEFF
+            NL 00180 PEXTF                 L 00020 PSI1
+            NL 00180 PINTF       *TITLE*     00022
+            NL 00180 RESTOR               DL 00022 MIDATA
+             L 00180 SEEK                  L 00022 MINOS
+             L 00180 TAUROS                L 00022 MINUIT
+   *PARINT*    00180                       L 00022 MPRINT
+             L 00180 FIXPAR                L 00022 MPUNCH
+             L 00022 PAER6
+             L 00022 TAUROS
+   *TRESZE*    00002
+             L 00002 GENPNT
+             L 00002 INTGRL
+             L 00002 PARTN
+             L 00002 TREDMP
+   *TS*        00461
+             L 00461 AL
+             L 00461 COEFF
+             L 00461 PSI
+             L 00461 PSI1
+   *TSH*       06000
+             L 06000 AL
+            NL 06000 COEFF
+             L 06000 PSI1
+   *WITCH*     00001
+             L 00001 FLOW
+             L 00001 STREAM
+   *WTS*       00022
+             L 00022 DEC
+             L 00022 PAER
+   ACC*        00001
+             L 00001 RATIO
+   DRTAPE      00001
+             L 00001 INSLIB
+             L 00001 RDSTAR
+   MONCARD*    00001
+             L 00001 INSLIB
+   WBEGFLAG    00002
+             L 00002 INSLIB
+             L 00002 RDSTAR
 *END FILE

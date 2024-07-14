@@ -1,7 +1,5 @@
 *name библиотека 1
 *tape:12/librar,32
-*perso:320000
-*
 *call setftn:one,long
-*call tcatalog
+*call librefer:tape=320000
 *end file

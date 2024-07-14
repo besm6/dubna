@@ -25,270 +25,3168 @@
 
 *NAME БИБЛИOTEKA 3
 *TAPE:37/******,32
-*PERSO:320340
-                  ИCПOPЧEHЫ ПOДПPOГPAMMЫ:
-                          FFT32K
-*
 *CALL SETFTN:ONE,LONG
-*CALL TCATALOG                                             04 ИЮЛ 24 23.45
-                      TEMPORARY LIBRARY
-                     CBOБOДHO  25 04 23
+*CALL LIBREFER:TAPE=320340                                             04 ИЮЛ 24 23.45
+                     CCЫЛKИ HA ПOДПPOГPAMMЫ
 
-   *ALFAVI*   24 32 26  00102    CRPATH     22 14 36  00215
-   *BUKVA*    24 36 06  00063    CUBL       23 26 17  00631
-   *GOST*     21 27 07  00421    CYCLOD     24 17 17  00522
-   *GOST*P  (*GOST*  )  00003    DATIMA   (DATTIM  )  00004
-   ABSMAX     21 25 24  00040    DATTIM     23 37 02  00027
-   ABSMIN     21 25 26  00040    DAWSON     21 33 34  00404
-   AIT0       21 23 21  00077    DBINT5     22 25 20  00354
-   ALGLIB     23 36 27  00054    DECO       23 34 12  00021
-   ALPHA      24 21 11  04331    DET        21 32 14  00461
-   ALPHW      24 00 15  00477    DETER      21 22 37  00237
-   AOV1       24 31 32  00421    DETERM     21 23 05  00255
-   AOVB       23 31 20  01004    DFL        22 14 00  00563
-   AOVPAC     23 32 02  00404    DIAGM1     21 21 25  00051
-   AOVPRI     23 32 13  00752    DIAGM2     21 25 13  00050
-   AOVPRM     24 13 17  01216    DIAGVE     21 22 01  00030
-   AOVSYN     24 00 30  00530    DILOG      21 33 27  00215
-   ARG        21 26 00  00052    DINT77     21 17 31  00340
-   ASSTAP     23 37 07  00057    DIRECT     21 11 07  00262
-   B4BITS     22 00 17  00133    DIV        21 24 33  00065
-   B4DEC      21 27 23  00550    EDITM      24 34 35  00001
-   B4OCT      21 27 34  00133    EDITMA   (EDITMM  )  00001
-   BAIRS      22 03 15  00337    EDITMM     24 34 36  00651
-   BANDSO     21 16 02  00377    EGR978     23 37 06  00004
-   BCHKOR     22 27 02  00702    EIGENJ     22 07 23  00551
-   BEGACH     24 01 24  00063    EILER1     21 13 05  00142
-   BEGCHEC* (CHECCOD*)  00046    EKZ        22 02 33  00150
-   BEGRND   (RND     )  00013    ELUR       24 36 12  06757
-   BEGRUC   (RUCOAH  )  00005    ENDACH   (BEGACH  )  00000
-   BEGTIN     22 16 04  00110    ENDCHN     24 02 06  00050
-   BESSET     21 06 07  00250    EQVMEA     22 13 02  00111
-   BEUSER     23 36 31  03127    ERFC       23 34 13  00177
-   BIB        21 26 15  00023    ESTCOM     23 30 30  00250
-   BICOD      24 16 02  00770    ESTFAC     23 30 15  00342
-   BISEC      21 25 17  00102    EUKLID     24 15 20  00452
-   BISECT     22 07 14  00276    EULER      21 33 00  00117
-   BOZP       23 27 01  00055    EXCLIB   (INSLIB  )  00672
-   BQR        21 31 07  00767    EXPINT     22 02 31  00065
-   BROOTS     24 04 00  00067    EXPO       21 30 33  00035
-   BSL        24 32 31  01175    EXTR       22 27 36  00274
-   C          21 11 05  00052    EXTREM     22 23 36  01120
-   CARCTG     21 25 36  00034    FACT       21 22 25  00135
-   CHEBFI     21 20 16  00376    FACT1      22 03 25  00031
-   CHECCOD*   21 26 16  00053    FACTOR     21 22 16  00310
-   CHI2CO     23 30 10  00162    FAKTCO     23 37 11  00316
-   CHI2FA     22 12 34  00201    FAKTRE     24 00 01  00125
-   CHOBAN     22 16 07  00204    FCHI2      21 34 34  00030
-   CHOIC8     21 05 00  00044    FERF       21 22 35  00060
-   CHOICE     21 05 02  00030    FF         22 13 30  00346
-   CHOICO     22 00 22  00035    FFISHE     23 30 02  00247
-   CHOSOL     22 16 14  00173    FFT2       21 30 20  00470
-   CLOD       24 16 23  01526    FFT32K     22 01 33  01615
-   CLS2D      24 17 33  01672    FGAMMA     21 34 27  00170
-   COMEIG     21 05 04  01327    FILON      21 12 10  00343
-   COMPLE     22 15 07  00103    FILOTH     21 11 37  00356
-   CONFCO     23 30 25  00072    FILSMO     23 32 34  01004
-   CONFR1     22 05 03  00047    FORMTA     24 35 14  00046
-   CONFR2     22 05 05  00254    FRCOS      21 12 23  00062
-   CONFRE     23 30 36  00222    FRESNE     21 12 20  00117
-   CONGRA     21 15 27  00237    FRSIN      21 12 25  00063
-   CONSUM     24 01 26  00046    FSTUDE     22 07 37  00203
-   CORRFU     22 16 21  00175    G          23 33 30  00065
-   COSI       21 31 30  00040    GAMMA      24 20 32  00350
-   GAUSS      21 23 13  00226    KVIT       24 01 21  00106
-   GAUSSM     23 37 32  00321    LAG        22 02 37  00056
-   GIVETIME   21 27 01  00001    LAG1       22 03 01  00055
-   GIVSTE   (TAKSTE  )  00003    LAGR2      23 33 36  00406
-   GLIN       21 34 14  00272    LAGRAN     23 26 15  00062
-   GRAD1      22 25 37  00450    LEG        22 03 03  00053
-   GRAF       23 34 20  00426    LEGEND     22 03 05  00226
-   GRAF1      23 34 33  00467    LETI       21 23 24  00251
-   GRAF2      23 35 07  00645    LIBLIST    22 15 12  00001
-   GRAF3      23 35 26  00573    LININT     21 20 32  00055
-   GRAF4      23 36 04  00755    LINP       21 23 36  00053
-   HEAD       24 25 36  01720    LINT       21 24 00  00063
-   HERMIT     21 20 27  00102    LIST46   (LIST64  )  00006
-   I0         21 26 10  00106    LIST64     22 01 32  00013
-   I1         21 24 02  00110    LOO3       22 02 12  00106
-   I4IBM    (R4IBM   )  00037    LRCH       21 06 24  01150
-   IASORT     24 25 17  00217    LTEQGT     23 36 37  00014
-   II         22 05 20  01032    MAKC       21 22 11  00043
-   II1        22 06 02  00500    MAKC1      21 22 07  00057
-   INGAUS     23 33 32  00134    MATR       21 07 15  00123
-   INPUT      24 23 22  00046    MAXIM      21 25 32  00036
-   INSALL   (INSLIB  )  00001    MAXIMU     21 07 35  02170
-   INSLIB     22 15 13  01214    MBVSIM     21 35 25  01575
-   INT655     21 17 15  00267    MCOMP      22 11 24  00632
-   INTERM     22 06 26  00121    MDIAG1     21 21 23  00051
-   INTP       22 05 13  00215    MDIAG2     21 25 11  00050
-   INV1       21 14 00  00271    MF         22 25 31  00113
-   INV58      21 13 31  00321    MHK        25 02 23  00621
-   INV66      21 15 04  00157    MIH        23 26 35  00043
-   INVER      21 14 07  00320    MIH1       23 26 37  00057
-   INVER1     21 14 31  00316    MINCOG     24 07 10  00220
-   INVER2     21 14 16  00507    MINIM      21 25 30  00036
-   INVERG     23 37 20  00434    MINMAX     21 25 22  00055
-   INVERT     21 15 00  00131    MINMFL     22 04 11  01432
-   IPARTW     23 37 00  00012    MINONR     21 36 23  01221
-   ISAME7     24 36 10  00074    MISTER     24 34 34  00013
-   ISIMV      21 34 23  00043    MLFACT     23 31 04  00521
-   ISORT1     24 25 00  00201    MMULT1     21 21 17  00135
-   ISORT2     24 25 04  00627    MSIMPL     21 33 04  01070
-   ISOUPP     24 35 20  00052    MSQ1       21 21 13  00131
-   ISSYMB     24 34 32  00034    MSQ2       21 25 06  00117
-   ISTURM     24 03 30  00110    MULLER     21 35 04  00762
-   IZOL       24 32 04  01003    MVEC1      21 22 02  00047
-   J0         21 26 05  00112    MVEC2      21 21 37  00050
-   J1         21 26 02  00117    MXORD      22 26 12  00110
-   JACOBI     21 13 11  00366    N8T10      21 27 21  00054
-   JAVN3      22 30 05  05247    NAME4      22 01 31  00005
-   JAVN4      23 03 21  05354    NEWINT     21 17 24  00170
-   JAVNA      23 00 33  05210    NEWLIB   (INSLIB  )  00670
-   JAVNMA     23 06 13  05177    NEWLIS     21 27 02  00012
-   JAVNY      24 07 16  05610    NEWT       22 26 15  00237
-   K0         21 24 25  00115    NEWTEX     24 04 26  01124
-   K1         21 24 22  00120    NNR        23 33 16  00103
-   KFL        22 14 15  01002    NOLEQ      21 11 16  01005
-   KIF        23 26 04  00067    NORM       21 24 07  00074
-   KO         22 02 07  00106    NOTLIS   (NEWLIS  )  00006
-   KOCHN      22 26 23  00671    NQUANT     22 10 04  00144
-   KODIR      24 25 31  00176    NR         23 33 25  00114
-   KOPPBC     22 16 26  00145    NROOT      21 24 35  00075
-   KOPPCO     22 10 16  00411    NROOTS     24 04 02  00143
-   KOPPHE     22 10 35  00163    NTYPVT   (MISTER  )  00004
-   KPP        24 14 05  00206    NUMBER     24 02 11  00142
-   KTOS       24 24 27  00217    OBLAST     24 26 32  03561
-   KUTTAM     22 27 23  00407    ODCF       22 16 35  00367
-   KVINT      21 25 03  00112    ODCH       22 17 06  01017
-   OPTERM     22 01 30  00027    RFSTAP   (ASSTAP  )  00033
-   ORTX       24 00 05  00346    RGAFTI   (BEGTIN  )  00057
-   OTKAZ      21 34 26  00006    RGAM       21 34 05  00112
-   OTKCHN     24 02 10  00002    RGBETI   (BEGTIN  )  00051
-   OZENKA     22 12 02  01020    RK1STE     21 12 27  00145
-   P0460      22 00 25  00031    RND        22 01 21  00025
-   P0507      22 00 26  00036    RNDRND     23 36 25  00052
-   P0512      22 00 24  00030    ROMBIN     22 24 22  00136
-   P0513    (P0513N  )  00015    ROOT       21 22 31  00141
-   P0513A     22 00 30  00054    ROOTNP     24 03 23  00210
-   P0513C   (P0513N  )  00001    ROOTSP     24 04 06  00665
-   P0513N     24 14 36  00025    ROTF       22 11 14  00310
-   P137       21 15 17  00344    RPFL       25 01 34  00035
-   PAR3       24 05 13  03551    RR         23 33 23  00040
-   PATT       22 13 06  01042    RROOT3     24 02 20  00666
-   PERE2      24 25 27  00012    RROOT4     24 02 37  01122
-   PERFO      24 34 24  00073    RRR        23 33 21  00062
-   PMATR      21 07 11  00136    RTRANS     21 30 01  00153
-   POISKN     21 34 25  00014    RUCOAH     22 01 22  00012
-   POLIGR     24 14 12  00657    RUKUT      21 12 33  00455
-   POLYFI     21 20 01  00570    SARR       24 25 30  00012
-   POLYX      22 02 25  00127    SCALAR     21 25 34  00032
-   POWC       21 24 30  00076    SCALPR     24 13 03  00014
-   PRANAL     21 37 11  00512    SERDIV     22 02 23  00060
-   PRBYTE     23 37 03  00065    SFBESJ     21 34 10  00140
-   PRIBYT   (PRBYTE  )  00022    SHIFT      24 14 35  00013
-   PRINT8*    21 27 03  00161    SIM        21 16 16  00052
-   PRINT8   (PRINT8* )  00000    SIM1       21 16 20  00240
-   PRINTR     22 00 04  00476    SIMP       21 17 04  00243
-   PRITRA     22 20 36  00122    SIMP1      21 16 26  00342
-   PROBNE     22 12 24  00332    SIMPF      21 16 36  00232
-   PROGRAM  (ALGLIB  )  00000    SIMPS1     21 07 21  00114
-   PROPRI     22 01 23  00161    SIMPSA     21 17 12  00107
-   PRPO3      23 11 01  06300    SIMUL      21 13 22  00317
-   PRPO4      22 32 34  06334    SINE       21 27 37  00040
-   PRPOP      23 14 11  06154    SISTEM     21 15 35  00170
-   PRREGR     22 01 05  00476    SLOJI      24 23 24  00443
-   PUTALG*    21 26 36  00070    SLOJJ      24 23 37  00500
-   QUAD       21 16 13  00104    SLOJK      24 24 13  00503
-   QUICKE     21 07 24  00230    SLOR       22 36 05  05147
-   R4IBM      24 34 30  00060    SLSCHN     24 01 30  00050
-   RAD1       22 25 34  00124    SMOT13     23 26 12  00074
-   RANDOM     21 07 32  00047    SMOT35     23 26 06  00153
-   RANG       22 23 20  00633    SOR        23 17 17  05074
-   RASTR      24 35 27  00234    SOR3       23 23 15  05244
-   RATQR      22 25 12  00250    SORT       22 15 03  00127
-   RAUSS      21 22 13  00122    SPFACT     22 11 07  00215
-   RDSTAR     22 16 01  00073    SPHBEN     22 27 21  00046
-   RE46CH     24 01 14  00206    SRED       22 10 27  00106
-   READMG   (WRITMG  )  00004    SSTURM     24 15 32  00324
-   READPL     24 34 23  00007    STAND      22 10 32  00113
-   REALTR     21 30 14  00143    STATAN     24 30 30  01775
-   REBAKA     22 07 06  00077    STEEP1     21 32 27  00367
-   REBAKB     22 07 11  00104    STOK       24 24 35  00101
-   RECHN      24 01 04  00314    STURMI     24 03 33  00201
-   REDUC1     22 06 31  00270    SUBSRE     21 37 24  00717
-   REDUC2     22 07 00  00246    SUM        21 25 15  00033
-   REFUSE     24 14 34  00011    SUPLIS     21 07 34  00004
-   RELAX      24 33 17  02050    SYMIN      21 15 11  00234
-   REMEZ      22 00 32  00474    SYMLEF     21 32 04  00300
-   REML       24 21 03  00117    SYMRIG     21 31 32  00421
-   REORDE     21 30 06  00225    SYSTEM     21 23 32  00133
-   RESLIS   (SUPLIS  )  00002    TABLE2*    21 26 23  00174
-   RESTIM     23 37 01  00002    TABLE3*    21 26 33  00174
-   RETAPE     24 14 32  00045    TAKSTE     22 27 35  00005
-   REVFFT     21 05 34  00507    TCHEBY     22 03 13  00052
-   TEBETI   (BEGTIN  )  00047
-   TELE1      22 06 15  00147
-   TELE2      22 06 21  00175
-   TESTER     24 14 37  00735
-   TEXT1      23 34 10  00013
-   TEXT2      23 34 07  00013
-   TEXT3      23 34 11  00013
-   TGL1       23 27 05  00305
-   TGL2       23 27 14  00375
-   TP5        23 22 03  02401
-   TPAH       21 21 07  00046
-   TPAK       21 21 11  00053
-   TQUANT     22 10 10  00222
-   TRANS1     21 21 05  00056
-   TRANSB     22 20 10  01172
-   TRANSF     22 03 26  01066
-   TRANSL     22 21 02  04611
-   TRANSM     21 24 05  00060
-   TRED1      21 06 15  00314
-   TRED2      21 30 35  00436
-   TREQ       24 13 04  00555
-   TREQL      22 16 32  00105
-   TRIANG     24 12 14  01230
-   TRIDAG     21 11 03  00063
-   TRIDG      21 20 34  00364
-   TRIREG     23 27 25  00576
-   TRIS       21 25 00  00073
-   TRISMO     22 11 02  00214
-   TRISTU     22 24 26  01130
-   TRNSM20*   21 26 26  00172
-   TRNSUPP*   21 26 20  00071
-   TSIMPL     22 17 30  00733
-   UNR        22 01 20  00025
-   UPPISO     24 35 16  00043
-   UR         21 26 13  00044
-   VECTMU     21 22 04  00073
-   W          21 34 36  00236
-   WAITNS     23 37 05  00006
-   WCROSS     25 02 06  00546
-   WPFL       24 34 27  00010
-   WR64CH     24 02 02  00123
-   WRCHN      24 01 32  00337
-   WRIML      24 21 06  00117
-   WRITMG     24 02 15  00144
-   WRTAPE   (RETAPE  )  00033
-   Y0         21 24 16  00141
-   Y1         21 24 12  00146
-   YBYB       23 27 03  00055
-   YDM        21 21 33  00052
-   YESLIS   (NEWLIS  )  00010
-   YMABEK     25 01 36  00033
-   YMACTP     25 02 22  00033
-   YMB        21 21 35  00051
-   YMB3       25 02 00  00011
-   YMD        21 21 31  00052
-   YMKBM2     25 02 01  00322
-   YMM        21 21 27  00063
-   YMMATP     25 02 03  00342
-   ZAMALF     24 25 22  00223
-   ZAMENA     24 35 25  00626
-   ZAMSI      24 35 34  00475
-   ZEROS1     22 02 15  00260
-   ZONA       24 35 22  00111
+                                           E A/PAREXP
+   D - PACCЫЛKA ДAHHЫX                     E A/PARPAR
+   E - BHEШHЯЯ П/П                         E A/PARVAR
+                                           E A/PROCRT
+   *ALFAVI* D                              E A/VLM1
+   *BUKVA*                                 E A/VLMX
+   *GOST*      BIB                           FFISHE
+               N8T10             AOVB      E A/ARRD/V
+               PRINT8                      E A/CALLP
+             E READ*                       E A/I0
+   *GOST*P  (*GOST*  )                     E A/MINUS
+   ABSMAX    E A/PROCRT                    E A/OPTLIN
+             E A/VLM1                      E A/PAREXP
+   ABSMIN    E A/PROCRT                    E A/PARPAR
+             E A/VLM1                      E A/PARVAL
+   AIT0      E A/ARRD/V                    E A/PARVAR
+             E A/PROCRT                    E A/PROCRT
+             E A/VLM1                      E A/RHOCHI
+   ALGLIB    E A/START                     E A/RTOI
+             E A/STOP                      E A/VLM1
+             E BCDWRIT*                    E A/VLMX
+             E IOEND*                      E ENTIER*
+   ALPHA     E A/AND                         FFISHE
+             E A/ARRD/K          AOVPAC    E A/AND
+             E A/ARRD/V                    E A/CALLP
+             E A/CALLP                     E A/I0
+             E A/I0                        E A/MINUS
+             E A/IPRI                      E A/PARVAR
+             E A/MINUS                     E A/PROCRT
+             E A/NLINE                     E A/SEQS
+             E A/NOT                       E A/SLICE
+             E A/OPTLIN                    E LENGTH
+             E A/PARCON          AOVPRI    E A/ARGSTR
+             E A/PAREXP                    E A/CALLP
+             E A/PARPAR                    E A/I0
+             E A/PARVAL                    E A/NLINE
+             E A/PARVAR                    E A/PARPAR
+             E A/PROCRT                    E A/PARVAL
+             E A/RTOI                      E A/PARVAR
+             E A/SPRI                      E A/PROCRT
+             E A/VLM1                      E A/SPLUSS
+             E ENTIER*                     E A/SPRI
+               READMG                      E BCDWRIT*
+               REML                        E ENTIER*
+               WRIML                       E IOAC*
+               WRITMG                      E IOEND*
+   ALPHW     E A/ARRD/V          AOVPRM    E A/ARGSTR
+             E A/CALLP                     E A/ARRD/V
+             E A/OPTLIN                    E A/CALLP
+             E A/PARCON                    E A/I0
+             E A/PAREXP                    E A/IPRI
+             E A/PARPAR                    E A/NLINE
+             E A/PARVAR                    E A/OPTLIN
+             E A/PROCRT                    E A/PARPAR
+             E A/VLM1                      E A/PARVAL
+             E A/VLMX                      E A/PARVAR
+               INVERG                      E A/PROCRT
+   AOV1      E A/AND                       E A/SPLUSS
+             E A/ARRD/V                    E A/SPRI
+             E A/CALLP                     E A/VLM1
+             E A/I0                        E BCDWRIT*
+             E A/MINUS                     E ENTIER*
+             E A/NOT                       E IOAC*
+             E IOEND*                      E A/VLM1
+   AOVSYN    E A/ARRD/V                    E A/VLMX
+             E A/CALLP                     E ENTIER*
+             E A/I0                        E POWER
+             E A/OPTLIN          BEUSER   DE FT*002
+             E A/PARPAR                    E FT*003
+             E A/PARVAR                    E FT*571
+             E A/PROCRT                    E I*MU*I
+             E A/VLM1                      E I*MUI*
+               ALPHW             BIB       E WRITE1
+               GAUSSM            BICOD     E A/ARRD/K
+               ORTX                        E A/ARRD/V
+               WCROSS                      E A/I0
+   ARG       E A/MINUS                     E A/PARVAR
+             E A/NOT                       E A/PROCRT
+             E A/PROCRT                    E A/RTOI
+             E A/SIGN                      E A/VLM1
+             E ARCTAN*                     E SQRT*
+   ASSTAP                        BISEC     E A/CALLP
+   B4BITS    E BINARY                      E A/PARPAR
+               CHOICO                      E A/PARVAR
+   B4DEC     E BINARY                      E A/PROCRT
+               CHOICE                      E A/SIGN
+             E FLOAT             BISECT    E A/ARRD/V
+             E I*MU*I                      E A/MINUS
+             E I*PO*I                      E A/PROCRT
+   B4OCT     E BINARY                      E A/VLM1
+               CHOIC8                      E A/VLMX
+   BAIRS     E A/AND             BOZP      E A/PROCRT
+             E A/ARRD/V          BQR       E A/ARRD/V
+             E A/I0                        E A/I0
+             E A/MINUS                     E A/MINUS
+             E A/PROCRT                    E A/OPTLIN
+             E A/SIGN                      E A/PROCRT
+             E A/VLM1                      E A/VLM1
+             E ENTIER*                     E SQRT*
+             E SQRT*             BROOTS    E A/MINUS
+   BANDSO    E A/I0                        E A/PROCRT
+             E A/OPTLIN          BSL       E A/AND
+             E A/PROCRT                    E A/ARRD/K
+             E A/SIGN                      E A/CALLP
+             E A/VLM1                      E A/I0
+             E ENTIER*                     E A/MINUS
+   BCHKOR    E A/AND                       E A/NLINE
+             E A/ARRD/V                    E A/NOT
+             E A/CALLS                     E A/PARVAL
+             E A/MINUS                     E A/PROCRT
+             E A/NLINE                     E A/SIGN
+             E A/PROCRT                    E A/SPRI
+             E A/RAPRI                     E A/VLMX
+             E A/SPRI                      E ARCTAN*
+             E BCDWRIT*                    E COS*
+             E IOEND*                      E ENTIER*
+             E POWER                       E EXP*
+   BEGACH      KVIT                        E LN*
+               SLSCHN                      E POWER
+   BEGCHEC* (CHECCOD*)                     E SIN*
+   BEGRND   (RND     )                     E SQRT*
+   BEGRUC   (RUCOAH  )           C         E A/I0
+   BEGTIN                                  E A/PROCRT
+   BESSET    E A/ARRD/V                    E A/RTOI
+             E A/I0              CARCTG    E A/PROCRT
+             E A/NOT                       E ARCTAN*
+             E A/PROCRT          CHEBFI    E A/ARRD/V
+             E A/SIGN                      E A/I0
+             E A/MINUS                     E A/PROCRT
+             E A/PROCRT                    E A/RTOI
+             E A/RTOI                      E A/VLM1
+             E A/SIGN            COMEIG    E A/AND
+             E A/VLM1                      E A/ARRD/V
+             E A/VLMX                      E A/MINUS
+             E ENTIER*                     E A/OPTLIN
+   CHECCOD*    PUTALG*                     E A/PROCRT
+             E PUTCDC*                     E A/VLM1
+             E PUTICT*                     E SQRT*
+             E REVCARD*          COMPLE    E A/CALLP
+             E TRNSCDC*                    E A/MINUS
+               TRNSUPP*                    E A/PARCON
+   CHI2CO    E A/AND                       E A/PARPAR
+             E A/CALLP                     E A/PARVAR
+             E A/I0                        E A/PROCRT
+             E A/MINUS                     E A/RHOCHI
+             E A/NLINE                     E A/RTOI
+             E A/PARCON                    E A/VLMX
+             E A/PARLAB                      FFT2
+             E A/PARVAR                      REORDE
+             E A/PROCRT                    E SQRT*
+             E A/RTOI            CONFCO    E A/CALLP
+             E A/SPRI                      E A/MINUS
+             E A/VLM1                      E A/PAREXP
+               FCHI2                       E A/PARPAR
+             E LN*                         E A/PROCRT
+   CHI2FA    E A/CALLP                     E EXP*
+             E A/I0                        E LN*
+             E A/IPRI                        NQUANT
+             E A/OPTLIN                    E SQRT*
+             E A/PARCON          CONFR1    E A/PROCRT
+             E A/PAREXP                    E A/VLM1
+             E A/PARLAB          CONFR2    E A/ARRD/V
+             E A/PARVAR                    E A/I0
+             E A/PROCRT                    E A/PROCRT
+             E A/RPRI                      E A/SIGN
+             E A/RTOI                      E A/VLM1
+             E A/SPRI                      E ENTIER*
+             E A/VLM1            CONFRE    E A/ARRD/V
+               FCHI2                       E A/CALLP
+   CHOBAN    E A/NOT                       E A/IPRI
+             E A/OPTLIN                    E A/NLINE
+             E A/PROCRT                    E A/NOT
+             E A/VLM1                      E A/PAREXP
+             E SQRT*                       E A/PARLAB
+   CHOIC8                                  E A/PROCRT
+   CHOICE                                  E A/RPRI
+   CHOICO                                  E A/SPRI
+   CHOSOL    E A/OPTLIN                    E A/VLM1
+             E A/PROCRT                    E SQRT*
+             E A/VLMX                        TQUANT
+   CLOD      E A/AND             CONGRA    E A/ARRD/V
+             E A/ARRD/K                    E A/CALLP
+             E A/I0                        E A/MINUS
+             E A/MINUS                     E A/NOT
+             E A/PAREXP                    E A/OPTLIN
+             E A/PARVAR                    E A/PARPAR
+             E A/PROCRT                    E A/PARVAL
+             E A/RTOI                      E A/PROCRT
+   CLS2D     E A/ARRD/K                    E A/VLM1
+             E A/ARRD/V          CONSUM
+             E A/I0              CORRFU    E A/AND
+             E A/OPTLIN                    E A/MINUS
+             E A/PARPAR                    E A/PROCRT
+             E A/PARVAR                    E A/VLM1
+             E SQRT*                       E A/PROCRT
+   COSI      E A/MINUS                     E A/VLM1
+             E A/PROCRT          DETERM    E A/ARRD/V
+             E COS*                        E A/MINUS
+             E EXP*                        E A/NOT
+             E SIN*                        E A/OPTLIN
+   CRPATH    E A/ARRD/V                    E A/PROCRT
+             E A/PROCRT                    E A/VLM1
+             E A/VLM1            DFL       E A/ARRD/V
+             E A/VLMX                      E A/MINUS
+   CUBL      E A/ARRD/V                    E A/NOT
+             E A/CALLP                     E A/PROCRT
+             E A/I0                        E A/VLM1
+             E A/MINUS           DIAGM1    E A/I0
+             E A/NOT                       E A/PROCRT
+             E A/OPTLIN                    E A/VLM1
+             E A/PAREXP          DIAGM2    E A/OPTLIN
+             E A/PARVAL                    E A/PROCRT
+             E A/PARVAR                    E A/VLM1
+             E A/PROCRT          DIAGVE    E A/PROCRT
+             E A/SIGN                      E A/VLM1
+             E A/VLM1            DILOG     E A/MINUS
+             E SQRT*                       E A/NOT
+   CYCLOD    E A/ARRD/K                    E A/PROCRT
+             E A/ARRD/V                    E LN*
+             E A/I0              DINT77    E A/MINUS
+             E A/MINUS                     E A/PROCRT
+             E A/PAREXP          DIRECT    E A/ARRD/V
+             E A/PARVAR                    E A/CALLS
+             E A/PROCRT                    E A/EQUIV
+             E A/RTOI                      E A/MINUS
+             E A/VLM1                      E A/PARPAR
+   DATIMA   (DATTIM  )                     E A/PROCRT
+   DATTIM    E DATE*                       E A/VLM1
+   DAWSON    E A/ARRD/K          DIV       E A/AND
+             E A/MINUS                     E A/NOT
+             E A/PROCRT                    E A/PROCRT
+             E A/VLMX            EDITM       EDITMM
+   DBINT5    E A/AND             EDITMA   (EDITMM  )
+             E A/ARRD/K          EDITMM   DE I*MU*I
+             E A/MINUS                     E IGETS
+             E A/NLINE                     E IPUTS
+             E A/NOT                         ISSYMB
+             E A/PAREXP                    E MIN0
+             E A/PARVAR                      MISTER
+             E A/PROCRT                      NTYPVT
+             E A/SPRI                      E QOUT
+             E SQRT*             EGR978
+   DECO                          EIGENJ    E A/AND
+   DET       E A/AND                       E A/MINUS
+             E A/CALLP                     E A/OPTLIN
+             E A/MINUS                     E A/PROCRT
+             E A/NLINE                     E A/VLM1
+             E A/NOT                       E SQRT*
+             E A/OPTLIN          EILER1    E A/ARRD/V
+             E A/PARVAL                    E A/PARPAR
+             E A/PARVAR                    E A/PROCRT
+             E A/PROCRT          EKZ       E A/I0
+             E A/VLM1                      E A/PROCRT
+             E BCDWRIT*                    E A/SIGN
+             E IOAC*                       E ENTIER*
+             E IOEND*            ELUR      E A/AND
+   DETER     E A/ARRD/V                    E A/ARRD/K
+             E A/MINUS                     E A/ARRD/V
+             E A/NOT                       E A/CALLP
+             E A/OPTLIN                    E A/CALLS
+             E A/I0              EULER     E A/AND
+             E A/IPRI                      E A/ARRD/K
+             E A/MINUS                     E A/MINUS
+             E A/NLINE                     E A/PARCON
+             E A/NOT                       E A/PARVAR
+             E A/OPTLIN                    E A/PROCRT
+             E A/PARCON                    E A/VLM1
+             E A/PAREXP          EXCLIB   (INSLIB  )
+             E A/PARLAB          EXPINT    E A/MINUS
+             E A/PARPAR                    E A/PROCRT
+             E A/PARVAL                    E EXP*
+             E A/PARVAR                    E LN*
+             E A/PROCRT          EXPO      E A/PROCRT
+             E A/RAPRI                     E COS*
+             E A/SIGN                      E EXP*
+             E A/SPRI                      E SIN*
+             E A/VLM1            EXTR      E A/CALLS
+             E A/VLMX                      E A/MINUS
+             E ASIN                        E A/NOT
+             E ENTIER*                     E A/PAREXP
+               INVER2                      E A/PARVAR
+               READMG                      E A/PROCRT
+             E SQRT*             EXTREM    E A/AND
+               WRITMG                      E A/ARRD/K
+   ENDACH   (BEGACH  )                     E A/I0
+   ENDCHN   D  ENDACH                      E A/IPRI
+             E FT*003                      E A/MINUS
+             E FT*571                      E A/NLINE
+               OPTERM                      E A/NOT
+               OTKCHN                      E A/PAREXP
+               PROPRI                      E A/PARVAR
+   EQVMEA    E A/CALLP                     E A/PROCRT
+             E A/IPRI                      E A/RAPRI
+             E A/NLINE                     E A/RHOCHI
+             E A/PAREXP                    E A/RPRI
+             E A/PARLAB                    E A/SPRI
+             E A/PARPAR                    E A/VLM1
+             E A/PROCRT                    E ENTIER*
+             E A/SPRI                      E LN*
+               FSTUDE                      E SQRT*
+             E SQRT*             FACT      E A/I0
+   ERFC      E A/ARRD/K                    E A/IPRI
+             E A/MINUS                     E A/MINUS
+             E A/PROCRT                    E A/NLINE
+             E A/VLMX                      E A/PROCRT
+             E EXP*                        E A/RTOI
+   ESTCOM    E A/ARRD/V                    E A/SIGN
+             E A/NOT                       E A/VLM1
+             E A/OPTLIN                    E ENTIER*
+             E A/PROCRT          FACT1     E A/PROCRT
+             E A/VLM1            FACTOR    E A/I0
+   ESTFAC    E A/ARRD/V                    E A/MINUS
+             E A/CALLP                     E A/PROCRT
+             E A/NOT                       E A/RTOI
+             E A/OPTLIN                    E A/SIGN
+             E A/PAREXP                    E A/VLM1
+             E A/PARPAR                    E ENTIER*
+             E A/PARVAR          FAKTCO    E A/ARRD/V
+             E A/PROCRT                    E A/MINUS
+             E A/VLM1                      E A/PROCRT
+             E SQRT*                       E A/VLMX
+               TRIREG            FAKTRE    E A/ARRD/V
+   EUKLID    E A/AND                       E A/MINUS
+             E A/MINUS                     E A/PROCRT
+             E A/NOT                       E A/VLM1
+             E A/PROCRT                    E A/VLMX
+   FCHI2     E A/CALLP                     E COS*
+             E A/PAREXP                    E ENTIER*
+             E A/PARPAR                    E SIN*
+             E A/PROCRT                    E SQRT*
+               FGAMMA            FILSMO    E A/AND
+   FERF      E A/PROCRT                    E A/ARRD/V
+   FF        E A/ARRD/V                    E A/CALLP
+             E A/MINUS                     E A/I0
+             E A/PROCRT                    E A/MINUS
+             E A/VLM1                      E A/NOT
+   FFISHE    E A/I0                        E A/PAREXP
+             E A/MINUS                     E A/PARVAR
+             E A/PROCRT                    E A/PROCRT
+             E A/RHOCHI                    E A/SEQS
+             E A/SIGN                      E A/SLICE
+             E ARCTAN*                     E A/SNES
+             E ENTIER*                     E A/VLM1
+             E SQRT*                       E ENTIER*
+   FFT2      E A/ARRD/V          FORMTA
+             E A/I0              FRCOS     E A/I0
+             E A/NOT                       E A/MINUS
+             E A/PROCRT                    E A/PROCRT
+             E A/SIGN            FRESNE    E A/I0
+             E A/VLMX                      E A/MINUS
+             E COS*                        E A/PROCRT
+             E ENTIER*                     E COS*
+             E SIN*                        E SIN*
+   FFT32K    E C*AD*C            FRSIN     E A/I0
+             E C*LO*C                      E A/MINUS
+             E C*MU*C                      E A/PROCRT
+             E C*MU*R            FSTUDE    E A/AND
+             E C*ST*C                      E A/CALLP
+             E C*SU*C                      E A/MINUS
+             E CMPLX                       E A/NOT
+             E COS                         E A/PAREXP
+             E FFT                         E A/PROCRT
+             E I*DI*I                      E ARCTAN*
+             E I*MU*I                      E ENTIER*
+             E I*MUI*                        FERF
+             E R*DI*I                      E LN*
+               RETAPE                      E SQRT*
+             E SIN               G         E A/NOT
+               WRTAPE                      E A/PROCRT
+   FGAMMA    E A/AND             GAMMA     E A/ARRD/K
+             E A/CALLP                     E A/CALLP
+             E A/MINUS                     E A/I0
+             E A/PARPAR                    E A/PARCON
+             E A/PARVAR                    E A/PARVAR
+             E A/PROCRT                    E A/PROCRT
+             E EXP*                        E A/RTOI
+               G                           E A/VLM1
+             E LN*                         E ENTIER*
+   FILON     E A/AND                         READMG
+             E A/MINUS                       REML
+             E A/PARVAR                      WRIML
+             E A/PROCRT                      WRITMG
+             E A/SIGN            GAUSS     E A/OPTLIN
+             E COS*                        E A/PROCRT
+             E ENTIER*                     E A/VLM1
+             E SIN*                        E A/VLMX
+             E SQRT*             GAUSSM    E A/ARRD/V
+   FILOTH    E A/AND                       E A/OPTLIN
+             E A/MINUS                     E A/PROCRT
+             E A/PARVAR                    E A/VLM1
+             E A/PROCRT          GIVETIME
+             E A/SIGN            GIVSTE   (TAKSTE  )
+   GLIN      E A/AND                       E A/PARVAR
+             E A/MINUS                     E A/PROCRT
+             E A/NLINE                     E A/RTOI
+             E A/NOT                       E A/SLICE
+             E A/PROCRT                    E A/SPLUSS
+             E A/SPRI                      E A/SPRI
+   GRAD1     E A/ARRD/V                    E A/VLM1
+             E A/CALLP                     E ATOS
+             E A/I0                        E BCDENC*
+             E A/PAREXP                    E BCDWRIT*
+             E A/PARVAR                    E IOAC*
+             E A/PROCRT                    E IOEND*
+             E A/SIGN                        RESLIS
+             E BCDWRIT*                      SUPLIS
+             E ENTIER*           GRAF3     E A/AND
+             E IOAC*                       E A/ARRD/K
+             E IOEND*                      E A/CALLP
+             E STOA                        E A/I0
+   GRAF      E A/AND                       E A/MINUS
+             E A/ARRD/K                    E A/NLINE
+             E A/CALLP                     E A/NOT
+             E A/MINUS                     E A/PAREXP
+             E A/NLINE                     E A/PARVAR
+             E A/NOT                       E A/PROCRT
+             E A/PAREXP                    E A/PUTARR
+             E A/PARVAR                    E A/RTOI
+             E A/PROCRT                    E A/SLICE
+             E A/RTOI                      E A/SPLUSS
+             E A/SLICE                     E A/SPRI
+             E A/SPLUSS                    E ATOS
+             E A/SPRI                      E BCDENC*
+             E ATOS                        E BCDWRIT*
+             E BCDENC*                     E ENTIER*
+             E BCDWRIT*                    E IOAC*
+             E IOAC*                       E IOEND*
+             E IOEND*                        RESLIS
+               RESLIS                        SUPLIS
+               SUPLIS            GRAF4     E A/AND
+   GRAF1     E A/AND                       E A/ARRD/K
+             E A/ARRD/K                    E A/CALLP
+             E A/CALLP                     E A/I0
+             E A/MINUS                     E A/MINUS
+             E A/NLINE                     E A/NLINE
+             E A/NOT                       E A/NOT
+             E A/PAREXP                    E A/PAREXP
+             E A/PARVAR                    E A/PARVAR
+             E A/PROCRT                    E A/PROCRT
+             E A/RTOI                      E A/PUTARR
+             E A/SLICE                     E A/RTOI
+             E A/SPLUSS                    E A/SLICE
+             E A/SPRI                      E A/SPLUSS
+             E ATOS                        E A/SPRI
+             E BCDENC*                     E A/VLM1
+             E BCDWRIT*                    E ATOS
+             E ENTIER*                     E BCDENC*
+             E IOAC*                       E BCDWRIT*
+             E IOEND*                      E IOAC*
+               RESLIS                      E IOEND*
+               SUPLIS                        RESLIS
+   GRAF2     E A/AND                         SUPLIS
+             E A/ARRD/K          HEAD     D  DECO
+             E A/CALLP                     E FT*002
+             E A/MINUS                     E FT*003
+             E A/NLINE                     E FT*571
+             E A/NOT                       E I*MUI*
+             E A/PAREXP          HERMIT    E A/PROCRT
+   I0        E A/PROCRT                    E A/MINUS
+             E EXP*                        E A/OPTLIN
+             E SQRT*                       E A/PROCRT
+   I1        E A/MINUS                     E A/VLM1
+             E A/PROCRT          INV66     E A/ARRD/V
+             E A/SIGN                      E A/MINUS
+             E EXP*                        E A/NOT
+             E SQRT*                       E A/OPTLIN
+   I4IBM    (R4IBM   )                     E A/PROCRT
+   IASORT    E I*MU*I                      E A/VLM1
+               ISORT2            INVER     E A/ARRD/V
+               KODIR                       E A/MINUS
+   II        E A/AND                       E A/OPTLIN
+             E A/ARRD/V                    E A/PROCRT
+             E A/I0                        E A/VLM1
+             E A/MINUS           INVER1    E A/ARRD/V
+             E A/NOT                       E A/MINUS
+             E A/OPTLIN                    E A/OPTLIN
+             E A/PROCRT                    E A/PROCRT
+             E A/VLM1                      E A/VLM1
+             E SQRT*             INVER2    E A/AND
+   II1       E A/AND                       E A/ARRD/V
+             E A/ARRD/V                    E A/CALLP
+             E A/MINUS                     E A/MINUS
+             E A/NOT                       E A/OPTLIN
+             E A/OPTLIN                    E A/PAREXP
+             E A/PROCRT                    E A/PARPAR
+             E A/VLM1                      E A/PROCRT
+             E SQRT*             INVERG    E A/AND
+   INGAUS    E A/ARRD/K                    E A/ARRD/V
+             E A/PAREXP                    E A/MINUS
+             E A/PROCRT                    E A/NOT
+   INPUT     E A/COMMON                    E A/OPTLIN
+             E A/IREAD                     E A/PROCRT
+             E A/PROCRT                    E A/VLM1
+             E A/RREAD           INVERT    E A/OPTLIN
+   INSALL   (INSLIB  )                     E A/PROCRT
+   INSLIB    E DATAPR*                     E A/VLM1
+               LIBLIST           IPARTW
+             E MONREAD*          ISAME7      P0513C
+             E OCTTDEC           ISIMV
+               PRINT8            ISORT1    E I*DI*I
+             E PT6               ISORT2    E I*DI*I
+               RDSTAR                      E I*MUI*
+   INT655    E A/ARRD/K                      ISORT1
+             E A/MINUS                       PERE2
+             E A/PAREXP                      SARR
+             E A/PARVAR          ISOUPP
+             E A/PROCRT          ISSYMB
+             E A/VLM1            ISTURM    E A/ARRD/V
+             E A/VLMX                      E A/I0
+   INTERM    E A/PROCRT                    E A/PROCRT
+             E ENTIER*                     E A/SIGN
+   INTP      E A/ARRD/V          IZOL      E A/ARRD/K
+             E A/MINUS                     E A/CALLP
+             E A/PROCRT                    E A/I0
+             E A/VLM1                      E A/MINUS
+             E A/VLMX                      E A/NLINE
+   INV1      E A/ARRD/V                    E A/OPTLIN
+             E A/I0                        E A/PARVAL
+             E A/NOT                       E A/PROCRT
+             E A/OPTLIN                    E A/RPRI
+             E A/PROCRT                    E A/RTOI
+             E A/VLM1                      E A/SLICE
+             E A/VLMX                      E A/SPLUSS
+   INV58     E A/ARRD/V                    E A/SPRI
+             E A/VLM1                      E SQRT*
+             E BCDWRIT*                      WRITMG
+             E ENTIER*           JAVNA     E A/AND
+             E IOEND*                      E A/ARRD/K
+   J0        E A/MINUS                     E A/ARRD/V
+             E A/PROCRT                    E A/CALLP
+             E COS*                        E A/CALLS
+             E SIN*                        E A/I0
+             E SQRT*                       E A/MINUS
+   J1        E A/MINUS                     E A/NOT
+             E A/PROCRT                    E A/OPTLIN
+             E A/SIGN                      E A/PAREXP
+             E COS*                        E A/PARPAR
+             E SIN*                        E A/PARVAL
+             E SQRT*                       E A/PARVAR
+   JACOBI    E A/AND                       E A/PROCRT
+             E A/I0                        E A/RTOI
+             E A/MINUS                     E A/SIGN
+             E A/NOT                       E A/VLM1
+             E A/OPTLIN                    E ASIN
+             E A/PROCRT                    E ENTIER*
+             E A/SIGN                        READMG
+             E A/VLM1                      E SQRT*
+             E SQRT*                         WRITMG
+   JAVN3     E A/AND             JAVNMA    E A/AND
+             E A/ARRD/K                    E A/ARRD/K
+             E A/ARRD/V                    E A/ARRD/V
+             E A/CALLP                     E A/CALLP
+             E A/CALLS                     E A/CALLS
+             E A/I0                        E A/I0
+             E A/MINUS                     E A/MINUS
+             E A/NOT                       E A/NOT
+             E A/OPTLIN                    E A/OPTLIN
+             E A/PAREXP                    E A/PAREXP
+             E A/PARPAR                    E A/PARPAR
+             E A/PARVAL                    E A/PARVAL
+             E A/PARVAR                    E A/PARVAR
+             E A/PROCRT                    E A/PROCRT
+             E A/RTOI                      E A/RTOI
+             E A/SIGN                      E A/SIGN
+             E A/VLM1                      E A/VLM1
+             E ASIN                        E ASIN
+             E ENTIER*                     E ENTIER*
+               READMG                        READMG
+             E SQRT*                       E SQRT*
+               WRITMG                        WRITMG
+   JAVN4     E A/AND             JAVNY     E A/AND
+             E A/ARRD/K                    E A/ARRD/K
+             E A/ARRD/V                    E A/ARRD/V
+             E A/CALLP                     E A/CALLP
+             E A/CALLS                     E A/CALLS
+             E A/I0                        E A/I0
+             E A/MINUS                     E A/MINUS
+             E A/NOT                       E A/NOT
+             E A/OPTLIN                    E A/OPTLIN
+             E A/PAREXP                    E A/PAREXP
+             E A/PARPAR                    E A/PARPAR
+             E A/PARVAL                    E A/PARVAL
+             E A/PARVAR                    E A/PARVAR
+             E A/PROCRT                    E A/PROCRT
+             E A/RTOI                      E A/RTOI
+             E A/SIGN                      E A/SIGN
+             E A/VLM1                      E A/VLM1
+             E ASIN                        E ASIN
+             E ENTIER*                     E ENTIER*
+               READMG                        READMG
+             E SQRT*                       E A/NLINE
+               WRITMG                      E A/NOT
+   K0        E A/MINUS                     E A/PROCRT
+             E A/PROCRT                    E A/SPRI
+             E EXP*                        E A/VLM1
+             E LN*               KTOS      E A/CALLP
+             E SQRT*                       E A/I0
+   K1        E A/MINUS                     E A/MINUS
+             E A/PROCRT                    E A/NOT
+             E EXP*                        E A/PARVAR
+             E LN*                         E A/PROCRT
+             E SQRT*                       E A/SPLUSS
+   KFL       E A/ARRD/V                    E ENTIER*
+             E A/I0              KUTTAM    E A/AND
+             E A/MINUS                     E A/ARRD/V
+             E A/NOT                       E A/I0
+             E A/PROCRT                    E A/NLINE
+             E A/VLM1                      E A/NOT
+   KIF       E A/PROCRT                    E A/PAREXP
+             E A/RTOI                      E A/PARPAR
+   KO        E A/MINUS                     E A/PROCRT
+             E A/NOT                       E A/RPRI
+             E A/PROCRT                    E A/RTOI
+             E A/SIGN                      E A/SPRI
+             E SQRT*                       E A/VLM1
+   KOCHN     E A/ARRD/V                    E ENTIER*
+             E A/CALLP                       GIVSTE
+             E A/CALLS                       TAKSTE
+             E A/I0              KVINT     E A/PROCRT
+             E A/MINUS                     E A/RTOI
+             E A/NOT             KVIT        CONSUM
+             E A/PARLAB                      LIST46
+             E A/PROCRT          LAG       E A/I0
+             E A/RHOCHI                    E A/PROCRT
+             E A/RTOI            LAG1      E A/I0
+             E COS*                        E A/PROCRT
+             E EXP*              LAGR2     E A/ARRD/V
+             E LN*                         E A/I0
+             E POWER                       E A/PROCRT
+             E SIN*                        E A/SIGN
+   KODIR    D  P0507                       E BCDWRIT*
+               P0513N                      E IOAC*
+   KOPPBC    E A/AND                       E IOEND*
+             E A/I0              LAGRAN    E A/PROCRT
+             E A/MINUS           LEG       E A/PROCRT
+             E A/PROCRT          LEGEND    E A/ARRD/K
+             E A/SIGN                      E A/I0
+             E A/VLM1                      E A/MINUS
+             E SQRT*                       E A/NOT
+   KOPPCO    E A/ARRD/V                    E A/PROCRT
+             E A/MINUS                     E A/RHOCHI
+             E A/NLINE                     E A/SIGN
+             E A/OPTLIN                    E ENTIER*
+             E A/PROCRT                    E SQRT*
+             E A/RTOI            LETI      E A/ARRD/V
+             E A/SPRI                      E A/NOT
+             E A/VLM1                      E A/OPTLIN
+             E SQRT*                       E A/PROCRT
+   KOPPHE    E A/AND                       E A/RHOCHI
+             E A/I0                        E A/VLM1
+             E A/MINUS           LIBLIST
+             E A/PROCRT          LININT    E A/MINUS
+             E A/VLM1                      E A/PROCRT
+             E SQRT*             LINP      E A/PROCRT
+   KPP       E A/IPRI                      E ENTIER*
+             E A/MINUS           LINT      E A/PROCRT
+             E A/RTOI                      E A/PROCRT
+   LIST46   (LIST64  )                     E A/PUTARR
+   LIST64                                  E A/SPRI
+   LOO3      E A/PROCRT                    E A/VLM1
+             E A/RHOCHI                    E BCDWRIT*
+             E A/VLM1                      E IOAC*
+   LRCH      E A/AND                       E IOEND*
+             E A/ARRD/V          MCOMP     E A/AND
+             E A/CALLP                     E A/ARRD/V
+             E A/CALLS                     E A/I0
+             E A/MINUS                     E A/MINUS
+             E A/NOT                       E A/NOT
+             E A/PARCON                    E A/OPTLIN
+             E A/PAREXP                    E A/PROCRT
+             E A/PARLAB                    E A/SIGN
+             E A/PARPAR                    E A/VLM1
+             E A/PARVAR                    E A/VLMX
+             E A/PROCRT                    E SQRT*
+             E ENTIER*           MDIAG1    E A/I0
+             E SQRT*                       E A/PROCRT
+   LTEQGT                                  E A/VLM1
+   MAKC      E A/MINUS           MDIAG2    E A/OPTLIN
+             E A/PROCRT                    E A/PROCRT
+   MAKC1     E A/MINUS                     E A/VLM1
+             E A/PROCRT          MF        E A/AND
+   MATR      E A/ARGSTR                    E A/MINUS
+             E A/PROCRT                    E A/NOT
+             E BCDWRIT*                    E A/PROCRT
+             E IOAC*                       E ASIN
+             E IOEND*                      E SQRT*
+               RESLIS            MHK       E A/ARRD/V
+               SUPLIS                      E A/CALLP
+   MAXIM     E A/PROCRT                    E A/I0
+             E A/VLM1                      E A/MINUS
+   MAXIMU    E A/AND                       E A/NLINE
+             E A/ARRD/K                    E A/NOT
+             E A/ARRD/V                    E A/OPTLIN
+             E A/CALLP                     E A/PAREXP
+             E A/CALLS                     E A/PARLAB
+             E A/I0                        E A/PARPAR
+             E A/MINUS                     E A/PARVAL
+             E A/NOT                       E A/PARVAR
+             E A/OPTLIN                    E A/PROCRT
+             E A/PAREXP                    E A/RAPRI
+             E A/PARLAB                    E A/RHOCHI
+             E A/PARPAR                    E A/RPRI
+             E A/PARVAL                    E A/RTOI
+             E A/PROCRT                    E A/SPRI
+             E A/RTOI                      E A/VLM1
+             E A/SIGN                      E A/VLMX
+             E A/VLM1                        GAUSS
+             E A/VLMX                      E SQRT*
+             E ENTIER*           MIH       E A/PROCRT
+             E SQRT*             MIH1      E A/PROCRT
+               SYSTEM            MINCOG    E A/AND
+   MBVSIM    E A/AND                       E A/ARRD/V
+             E A/ARRD/V                    E A/MINUS
+             E A/CALLP                     E A/NOT
+             E A/CALLS                     E A/PARPAR
+             E A/MINUS                     E A/PARVAR
+             E A/NLINE                     E A/PROCRT
+             E A/NOT                       E SQRT*
+             E A/OPTLIN          MINIM     E A/PROCRT
+             E A/PARPAR                    E A/VLM1
+             E A/PARVAL          MINMAX    E A/MINUS
+             E A/PARVAR                    E A/PROCRT
+   MINMFL    E A/AND                       E A/PARVAL
+             E A/ARRD/V                    E A/PARVAR
+             E A/CALLS                     E A/PROCRT
+             E A/I0                        E A/SIGN
+             E A/MINUS                     E A/VLM1
+             E A/NOT                       E BCDWRIT*
+             E A/OPTLIN                    E IOAC*
+             E A/PARPAR                    E IOEND*
+             E A/PROCRT                    E SQRT*
+             E A/SIGN            MVEC1     E A/I0
+             E A/VLM1                      E A/PROCRT
+             E SQRT*                       E A/VLM1
+   MINONR    E A/ARRD/V          MVEC2     E A/OPTLIN
+             E A/CALLS                     E A/PROCRT
+             E A/MINUS                     E A/VLM1
+             E A/NOT             MXORD     E A/PARPAR
+             E A/PARPAR                    E A/PARVAR
+             E A/PARVAR                    E A/PROCRT
+             E A/PROCRT          N8T10
+             E A/SIGN            NAME4
+             E A/VLM1            NEWINT    E A/ARRD/V
+             E SQRT*                       E A/MINUS
+   MISTER                                  E A/PROCRT
+   MLFACT    E A/ARRD/V                    E A/VLM1
+             E A/CALLP           NEWLIB   (INSLIB  )
+             E A/IPRI            NEWLIS
+             E A/MINUS           NEWT      E A/ARRD/V
+             E A/NLINE                     E A/CALLP
+             E A/OPTLIN                    E A/NOT
+             E A/PARLAB                    E A/PARPAR
+             E A/PARPAR                    E A/PARVAL
+             E A/PARVAR                    E A/PARVAR
+             E A/PROCRT                    E A/PROCRT
+             E A/RAPRI                     E A/SIGN
+             E A/RPRI                      E A/VLM1
+             E A/SPRI                      E EXP*
+             E A/VLM1                      E LN*
+             E SQRT*             NEWTEX    E A/AND
+               TREQL                       E A/ARRD/V
+   MMULT1    E A/I0                        E A/CALLP
+             E A/PROCRT                    E A/I0
+             E A/VLMX                      E A/IPRI
+   MSIMPL    E A/ARRD/V                    E A/MINUS
+             E A/CALLP                     E A/NLINE
+             E A/CALLS                     E A/NOT
+             E A/MINUS                     E A/PARCON
+             E A/OPTLIN                    E A/PAREXP
+             E A/PARPAR                    E A/PARLAB
+             E A/PARVAL                    E A/PARPAR
+             E A/PROCRT                    E A/PARVAR
+             E A/PUTARR                    E A/PROCRT
+             E A/VLM1                      E A/RAPRI
+             E BCDWRIT*                    E A/RPRI
+             E IOAC*                       E A/SPRI
+             E IOEND*                      E A/VLM1
+   MSQ1      E A/I0                          INVER2
+             E A/PROCRT                      RANDOM
+             E A/VLMX                      E SQRT*
+   MSQ2      E A/OPTLIN                      YMB
+             E A/PROCRT          NNR       E A/I0
+             E A/VLMX                      E A/PROCRT
+   MULLER    E A/AND                       E A/SIGN
+             E A/CALLP                     E ENTIER*
+             E A/MINUS                     E SQRT*
+             E A/NOT             NOLEQ     E A/ARRD/V
+             E A/PARCON                    E A/CALLP
+             E A/I0                        E A/SPRI
+             E A/NOT                       E A/VLM1
+             E A/PARPAR                    E ASIN
+             E A/PROCRT                    E ENTIER*
+             E ENTIER*                     E SQRT*
+             E LN*                           WRIML
+             E SQRT*                         WRITMG
+   NORM      E A/PROCRT          ODCF      E A/AND
+             E A/VLM1                      E A/MINUS
+             E SQRT*                       E A/NLINE
+   NOTLIS   (NEWLIS  )                     E A/NOT
+   NQUANT    E A/CALLP                     E A/PROCRT
+             E A/MINUS                     E A/RTOI
+             E A/PARVAR                    E A/SPRI
+             E A/PROCRT          ODCH      E A/AND
+             E EXP*                        E A/I0
+               FERF                        E A/MINUS
+             E LN*                         E A/NLINE
+             E SQRT*                       E A/NOT
+   NR        E A/I0                        E A/PROCRT
+             E A/PROCRT                    E A/RAPRI
+             E A/SIGN                      E A/RTOI
+             E ENTIER*                     E A/SPRI
+             E SQRT*                       E A/VLM1
+   NROOT     E A/NOT             OPTERM
+             E A/PROCRT          ORTX      E A/OPTLIN
+             E A/SIGN                      E A/PROCRT
+             E ARCTAN*                     E A/VLM1
+             E COS*                        E A/VLMX
+             E POWER                       E SQRT*
+             E SIN*              OTKAZ
+   NROOTS    E A/ARRD/K          OTKCHN
+             E A/ARRD/V          OZENKA    E A/ARRD/V
+             E A/CALLP                     E A/MINUS
+             E A/OPTLIN                    E A/NLINE
+             E A/PARPAR                    E A/OPTLIN
+             E A/PARVAR                    E A/PARPAR
+             E A/PROCRT                    E A/PARVAR
+             E A/RHOCHI                    E A/PROCRT
+             E A/SIGN                      E A/RAPRI
+             E A/VLM1                      E A/RPRI
+               SSTURM                      E A/SPRI
+   NTYPVT   (MISTER  )                     E A/VLM1
+   NUMBER    E FT*002            P0460
+             E FT*003            P0507
+             E FT*611            P0512
+               P0507             P0513    (P0513N  )
+               P0513C            P0513A
+   OBLAST    E A/AND             P0513C   (P0513N  )
+             E A/ARRD/K          P0513N
+             E A/ARRD/V          P137      E A/ARRD/V
+             E A/CALLP                     E A/CALLP
+             E A/CALLS                     E A/I0
+             E A/I0                        E A/PARVAL
+             E A/IPRI                      E A/PROCRT
+             E A/MINUS                     E A/RTOI
+             E A/NLINE                     E SQRT*
+             E A/NOT             PAR3      E A/ARRD/V
+             E A/OPTLIN                    E A/CALLP
+             E A/PARCON                    E A/I0
+             E A/PAREXP                    E A/PARCON
+             E A/PARPAR                    E A/PAREXP
+             E A/PARVAL                    E A/PARPAR
+             E A/PARVAR                    E A/PARSTR
+             E A/PROCRT                    E A/PARVAR
+             E A/SIGN                      E A/PROCRT
+             E A/RTOI                      E A/NLINE
+             E A/VLM1                      E A/PARPAR
+             E BCDWRIT*                    E A/PROCRT
+             E FREAD                       E A/SPRI
+             E FREADI                      E A/VLM1
+             E FWRITE                      E SQRT*
+             E IOAC*             POLYX     E A/ARRD/V
+             E IOEND*                      E A/PROCRT
+             E MAKNAM                      E A/VLM1
+               MATR              POWC      E A/AND
+   PATT      E A/ARRD/V                    E A/MINUS
+             E A/CALLP                     E A/NOT
+             E A/PARPAR                    E A/PROCRT
+             E A/PARVAL                    E A/SIGN
+             E A/PARVAR                    E ARCTAN*
+             E A/PROCRT                    E COS*
+             E A/VLM1                      E POWER
+               GAUSS                       E SIN*
+             E SQRT*             PRANAL    E A/PROCRT
+   PERE2                                   E BCDWRIT*
+   PERFO     E I*DI*I                      E IOAC*
+             E I*MU*I                      E IOEND*
+               P0513C            PRBYTE   D  PRINT8
+               WPFL              PRIBYT   (PRBYTE  )
+   PMATR     E A/ARGSTR          PRINT8*
+             E A/I0              PRINT8   (PRINT8* )
+             E A/PROCRT          PRINTR    E A/ARRD/V
+             E BCDWRIT*                    E A/NOT
+             E ENTIER*                     E A/PROCRT
+             E IOAC*                       E A/PUTARR
+             E IOEND*                      E BCDWRIT*
+               RESLIS                      E IOAC*
+               SUPLIS                      E IOEND*
+   POISKN                        PRITRA    E A/NLINE
+   POLIGR    E A/AND                       E A/PROCRT
+             E A/ARRD/K                    E A/RPRI
+             E A/ARRD/V                    E A/SPRI
+             E A/CALLP                     E BCDWRIT*
+             E A/I0                        E IOAC*
+             E A/LHOCHI                    E IOEND*
+             E A/MINUS           PROBNE    E A/ARRD/V
+             E A/NLINE                     E A/OPTLIN
+             E A/NOT                       E A/PROCRT
+             E A/NOTL                      E A/VLM1
+             E A/PAREXP          PROGRAM  (ALGLIB  )
+             E A/PARVAR          PROPRI   DE FT*002
+             E A/PROCRT                    E FT*003
+             E A/PUTARR                    E FT*611
+             E A/RTOI                        OPTERM
+             E A/SEQS            PRPO3     E A/AND
+             E A/SLICE                     E A/ARRD/K
+             E A/SPLUSS                    E A/ARRD/V
+             E A/SPRI                      E A/CALLP
+             E A/VLM1                      E A/CALLS
+             E ATOS                        E A/I0
+             E BCDENC*                     E A/IPRI
+             E BCDWRIT*                    E A/MINUS
+             E ENTIER*                     E A/NLINE
+             E IOAC*                       E A/NOT
+             E IOEND*                      E A/OPTLIN
+               SUPLIS                      E A/PAREXP
+   POLYFI    E A/ARRD/K                    E A/PARPAR
+             E A/ARRD/V                    E A/PARVAL
+             E A/CALLP                     E A/PARVAR
+             E A/EQUIV                     E A/PROCRT
+             E A/MINUS                     E A/RPRI
+             E A/RTOI                      E A/PROCRT
+             E A/SIGN                      E A/PUTARR
+             E A/SPRI                      E BCDWRIT*
+             E A/VLM1                      E IOAC*
+             E A/VLMX                      E IOEND*
+             E ASIN              PUTALG*     TABLE2*
+             E ENTIER*                       TABLE3*
+               READMG                        TRNSM20*
+             E SQRT*                         TRNSUPP*
+               WRITMG            QUAD      E A/PARVAR
+   PRPO4     E A/AND                       E A/PROCRT
+             E A/ARRD/K          QUICKE    E A/ARRD/V
+             E A/ARRD/V                    E A/I0
+             E A/CALLP                     E A/PROCRT
+             E A/CALLS                     E A/RTOI
+             E A/I0                        E A/SIGN
+             E A/IPRI                      E ENTIER*
+             E A/MINUS                     E LN*
+             E A/NLINE           R4IBM
+             E A/NOT             RAD1      E A/PROCRT
+             E A/OPTLIN                    E A/RTOI
+             E A/PAREXP                    E A/SIGN
+             E A/PARPAR          RANDOM    E A/I0
+             E A/PARVAL                    E A/PROCRT
+             E A/PARVAR                    E A/SIGN
+             E A/PROCRT                    E ENTIER*
+             E A/RPRI            RANG      E A/AND
+             E A/RTOI                      E A/ARRD/V
+             E A/SIGN                      E A/CALLP
+             E A/SPRI                      E A/CALLS
+             E A/VLM1                      E A/MINUS
+             E A/VLMX                      E A/NLINE
+             E ASIN                        E A/NOT
+             E ENTIER*                     E A/OPTLIN
+               READMG                      E A/PARLAB
+             E SQRT*                       E A/PARPAR
+               WRITMG                      E A/PARVAR
+   PRPOP     E A/AND                       E A/PROCRT
+             E A/ARRD/K                    E A/RPRI
+             E A/ARRD/V                    E A/SPRI
+             E A/CALLP                     E A/VLM1
+             E A/CALLS                       INVER2
+             E A/I0              RASTR     E I*MU*I
+             E A/IPRI                        P0513A
+             E A/MINUS                       P0513C
+             E A/NLINE           RATQR     E A/AND
+             E A/NOT                       E A/MINUS
+             E A/OPTLIN                    E A/PROCRT
+             E A/PAREXP                    E A/VLM1
+             E A/PARPAR                    E A/VLMX
+             E A/PARVAL                    E SQRT*
+             E A/PARVAR          RAUSS     E A/ARRD/V
+             E A/PROCRT                    E A/PROCRT
+             E A/RPRI                      E A/SIGN
+             E A/RTOI                      E A/VLM1
+             E A/SIGN                      E A/VLMX
+             E A/SPRI            RDSTAR
+             E A/VLM1            RE46CH      CONSUM
+             E A/VLMX                        SLSCHN
+             E ASIN              READMG   (WRITMG  )
+             E ENTIER*           READPL
+               READMG            REALTR    E A/I0
+             E SQRT*                       E A/MINUS
+               WRITMG                      E A/PROCRT
+   PRREGR    E A/ARRD/V                    E A/SIGN
+             E A/NOT                       E ENTIER*
+             E SIN*                          WRITMG
+   REBAKA    E A/PROCRT          REORDE    E A/ARRD/V
+             E A/VLM1                      E A/I0
+   REBAKB    E A/OPTLIN                    E A/PROCRT
+             E A/PROCRT                    E A/SIGN
+             E A/VLMX                      E A/VLMX
+   RECHN    D  BEGACH                      E ENTIER*
+               ENDACH            RESLIS   (SUPLIS  )
+             E FT*002            RESTIM
+             E FT*003            RETAPE
+             E FT*571            REVFFT    E A/ARRD/V
+             E FT*611                      E A/I0
+             E I*DI*I                      E A/NOT
+             E IFPULT                      E A/PROCRT
+               OPTERM                      E A/SIGN
+               PROPRI                      E A/VLM1
+             E R*ST*I                      E COS*
+               RE46CH                      E ENTIER*
+             E STOP*                       E SIN*
+   REDUC1    E A/MINUS           RFSTAP   (ASSTAP  )
+             E A/OPTLIN          RGAFTI   (BEGTIN  )
+             E A/PROCRT          RGAM      E A/ARRD/K
+             E A/VLMX                      E A/MINUS
+             E SQRT*                       E A/PROCRT
+   REDUC2    E A/MINUS                     E A/VLMX
+             E A/OPTLIN          RGBETI   (BEGTIN  )
+             E A/PROCRT          RK1STE    E A/ARRD/K
+             E A/VLM1                      E A/ARRD/V
+             E A/VLMX                      E A/PARPAR
+             E SQRT*                       E A/PROCRT
+   REFUSE                        RND
+   RELAX     E A/AND             RNDRND    E A/MINUS
+             E A/ARRD/K                    E A/PROCRT
+             E A/ARRD/V                    E LN*
+             E A/CALLP                     E SQRT*
+             E A/I0              ROMBIN    E A/ARRD/V
+             E A/IPRI                      E A/I0
+             E A/MINUS                     E A/PAREXP
+             E A/NLINE                     E A/PARVAR
+             E A/NOT                       E A/PROCRT
+             E A/OPTLIN                    E A/VLMX
+             E A/PARCON          ROOT      E A/AND
+             E A/PAREXP                    E A/MINUS
+             E A/PARPAR                    E A/NOT
+             E A/PARVAR                    E A/PARCON
+             E A/PROCRT                    E A/PARPAR
+             E A/RPRI                      E A/PARVAR
+             E A/RTOI                      E A/PROCRT
+             E A/SPRI            ROOTNP    E A/ARRD/V
+             E A/STOP                      E A/PROCRT
+             E A/VLM1                      E A/VLM1
+             E CTIME             ROOTSP    E A/AND
+             E ENTIER*                     E A/ARRD/K
+               READMG                      E A/ARRD/V
+               REML                        E A/CALLP
+               WRIML                       E A/MINUS
+               WRITMG                      E A/NOT
+   REMEZ     E A/ARRD/V                    E A/OPTLIN
+             E A/MINUS                     E A/PAREXP
+             E A/PROCRT                    E A/PARPAR
+             E A/RHOCHI                    E A/PARVAR
+             E A/SIGN                      E A/PROCRT
+             E A/VLM1                      E A/RHOCHI
+   REML      E A/ARRD/V                    E A/SIGN
+             E A/PROCRT                    E A/VLM1
+               READMG                      E A/VLMX
+               BROOTS            RUCOAH
+               ROOTNP            RUKUT     E A/AND
+               RROOT4                      E A/ARRD/K
+               SSTURM                      E A/I0
+               STURMI                      E A/MINUS
+   ROTF      E A/ARRD/V                    E A/PARVAR
+             E A/MINUS                     E A/PROCRT
+             E A/NLINE                     E A/VLM1
+             E A/OPTLIN          SARR
+             E A/PROCRT          SCALAR    E A/PROCRT
+             E A/RPRI                      E A/VLM1
+             E A/SPRI            SCALPR
+             E A/VLM1            SERDIV    E A/PROCRT
+             E ARCTAN*                     E A/VLM1
+             E COS*              SFBESJ    E A/MINUS
+             E SIN*                        E A/PROCRT
+             E SQRT*                       E COS*
+   RPFL                                    E ENTIER*
+   RR        E A/I0                        E SIN*
+             E A/PROCRT          SHIFT
+             E A/SIGN            SIM       E A/I0
+             E ENTIER*                     E A/PROCRT
+   RROOT3    E A/ARRD/K                    E A/VLMX
+             E A/CALLP           SIM1      E A/ARRD/K
+             E A/MINUS                     E A/I0
+             E A/PAREXP                    E A/PAREXP
+             E A/PARPAR                    E A/PARVAR
+             E A/PARVAR                    E A/PROCRT
+             E A/PROCRT                    E A/RHOCHI
+             E A/SIGN                      E A/SIGN
+             E A/VLM1                      E ENTIER*
+             E ARCTAN*           SIMP      E A/AND
+             E COS*                        E A/ARRD/K
+             E POWER                       E A/I0
+               ROOTNP                      E A/MINUS
+             E SQRT*                       E A/PAREXP
+               SSTURM                      E A/PARVAR
+   RROOT4    E A/ARRD/K                    E A/PROCRT
+             E A/CALLP                     E A/SIGN
+             E A/MINUS                     E ENTIER*
+             E A/PAREXP          SIMP1     E A/AND
+             E A/PARPAR                    E A/ARRD/K
+             E A/PARVAR                    E A/MINUS
+             E A/PROCRT                    E A/PAREXP
+             E A/VLM1                      E A/PARVAR
+               ROOTNP                      E A/PROCRT
+               RROOT3            SIMPF     E A/AND
+             E SQRT*                       E A/ARRD/K
+               SSTURM                      E A/I0
+   RRR       E A/I0                        E A/MINUS
+             E A/PROCRT                    E A/PROCRT
+             E A/SIGN                      E A/SIGN
+             E ENTIER*                     E ENTIER*
+   RTRANS    E A/CALLP           SIMPS1    E A/PROCRT
+             E A/MINUS           SIMPSA    E A/PARPAR
+             E A/PARCON                    E A/PARVAR
+             E A/PARPAR                    E A/PROCRT
+             E A/PARVAR          SIMUL     E A/OPTLIN
+             E A/PROCRT                    E A/PROCRT
+             E A/RHOCHI                    E A/VLM1
+             E A/RTOI            SINE      E A/MINUS
+             E A/VLMX                      E A/PROCRT
+               FFT2                        E COS*
+               REALTR                      E EXP*
+               REORDE                      E SIN*
+               REVFFT            SISTEM    E A/ARRD/V
+             E A/I0                        E ENTIER*
+             E A/PARPAR                    E IOAC*
+             E A/PARVAR                    E IOEND*
+             E A/PROCRT                      KTOS
+             E A/RTOI                        READMG
+             E A/VLM1                        RESLIS
+   SLOJI     E A/ARGSTR                      STOK
+             E A/ARRD/V                      SUPLIS
+             E A/CALLP           SLOR      E A/AND
+             E A/I0                        E A/ARRD/K
+             E A/IPRI                      E A/ARRD/V
+             E A/NLINE                     E A/CALLP
+             E A/PAREXP                    E A/CALLS
+             E A/PARVAR                    E A/I0
+             E A/PROCRT                    E A/IPRI
+             E A/SEQS                      E A/MINUS
+             E A/SLICE                     E A/NLINE
+             E A/SPLUSS                    E A/NOT
+             E A/SPRI                      E A/OPTLIN
+             E BCDWRIT*                    E A/PAREXP
+             E ENTIER*                     E A/PARPAR
+             E IOAC*                       E A/PARVAL
+             E IOEND*                      E A/PARVAR
+               KTOS                        E A/PROCRT
+               READMG                      E A/RTOI
+               RESLIS                      E A/SIGN
+               STOK                        E A/VLM1
+               SUPLIS                      E A/VLMX
+   SLOJJ     E A/ARGSTR                    E ASIN
+             E A/ARRD/V                    E ENTIER*
+             E A/CALLP                       READMG
+             E A/I0                        E SQRT*
+             E A/IPRI                        WRITMG
+             E A/NLINE           SLSCHN      CONSUM
+             E A/OPTLIN                      LIST64
+             E A/PAREXP          SMOT13    E A/MINUS
+             E A/PARVAR                    E A/NLINE
+             E A/PROCRT                    E A/PROCRT
+             E A/SEQS                      E A/SPRI
+             E A/SLICE                     E A/VLM1
+             E A/SPLUSS          SMOT35    E A/MINUS
+             E A/SPRI                      E A/NLINE
+             E BCDWRIT*                    E A/PROCRT
+             E ENTIER*                     E A/SPRI
+             E IOAC*                       E A/VLM1
+             E IOEND*            SOR       E A/AND
+               KTOS                        E A/ARRD/K
+               READMG                      E A/ARRD/V
+               RESLIS                      E A/CALLP
+               STOK                        E A/CALLS
+               SUPLIS                      E A/I0
+   SLOJK     E A/ARGSTR                    E A/MINUS
+             E A/ARRD/V                    E A/NOT
+             E A/CALLP                     E A/OPTLIN
+             E A/I0                        E A/PAREXP
+             E A/IPRI                      E A/PARPAR
+             E A/NLINE                     E A/PARVAL
+             E A/OPTLIN                    E A/PARVAR
+             E A/PAREXP                    E A/PROCRT
+             E A/PARVAR                    E A/RTOI
+             E A/PROCRT                    E A/SIGN
+             E A/SEQS                      E A/VLM1
+             E A/SLICE                     E ASIN
+             E A/SPLUSS                    E ENTIER*
+             E A/SPRI                        READMG
+             E BCDWRIT*                    E SQRT*
+               WRITMG                      E A/PARPAR
+   SOR3      E A/AND                       E A/PARVAR
+             E A/ARRD/K                    E A/PROCRT
+             E A/ARRD/V                    E A/VLM1
+             E A/CALLP                     E A/VLMX
+             E A/CALLS                     E BCDWRIT*
+             E A/I0                          INPUT
+             E A/MINUS                     E IOAC*
+             E A/NOT                       E IOEND*
+             E A/OPTLIN                    E SQRT*
+             E A/PAREXP          STEEP1    E A/AND
+             E A/PARPAR                    E A/ARRD/V
+             E A/PARVAL                    E A/MINUS
+             E A/PARVAR                    E A/NOT
+             E A/PROCRT                    E A/PARPAR
+             E A/RTOI                      E A/PROCRT
+             E A/SIGN                      E A/VLM1
+             E A/VLM1                      E SQRT*
+             E ASIN              STOK      E A/CALLP
+             E ENTIER*                     E A/I0
+               READMG                      E A/PARVAR
+             E SQRT*                       E A/PROCRT
+               WRITMG                      E A/RHOCHI
+   SORT      E A/CALLP                     E A/RTOI
+             E A/PARVAL                    E A/SEQS
+             E A/PROCRT                    E A/SLICE
+   SPFACT    E A/AND                         KTOS
+             E A/NOT                       E LENGTH
+             E A/OPTLIN          STURMI    E A/AND
+             E A/PROCRT                    E A/ARRD/V
+             E A/VLM1                      E A/I0
+             E SQRT*                       E A/MINUS
+   SPHBEN    E A/I0                        E A/NOT
+             E A/MINUS                     E A/PROCRT
+             E A/NOT                       E A/RHOCHI
+             E A/PROCRT                    E A/RTOI
+             E COS*                        E A/SIGN
+             E SIN*              SUBSRE    E A/ARRD/V
+   SRED      E A/I0                        E A/CALLP
+             E A/PROCRT                    E A/CALLS
+             E A/VLM1                      E A/MINUS
+   SSTURM    E A/ARRD/V                    E A/OPTLIN
+             E A/CALLP                     E A/PARLAB
+             E A/PARPAR                    E A/PROCRT
+             E A/PARVAR                    E A/VLM1
+             E A/PROCRT                    E BCDWRIT*
+             E A/SIGN                      E IOAC*
+             E A/VLMX                      E IOEND*
+               EUKLID                      E SQRT*
+   STAND     E A/ARRD/V          SUM       E A/PROCRT
+             E A/CALLP           SUPLIS
+             E A/I0              SYMIN     E A/AND
+             E A/PARPAR                    E A/ARRD/V
+             E A/PARVAR                    E A/MINUS
+             E A/PROCRT                    E A/NOT
+             E A/VLM1                      E A/OPTLIN
+             E SQRT*                       E A/PROCRT
+               SRED                        E A/VLM1
+   STATAN    E A/AND             SYMLEF    E A/ARGSTR
+             E A/ARRD/V                    E A/CALLP
+             E A/CALLP                     E A/I0
+             E A/CALLS                     E A/PARVAR
+             E A/COMMON                    E A/PROCRT
+             E A/MINUS                     E A/RTOI
+             E A/NOT                       E A/SPLUSS
+             E A/OPTLIN                    E ATOS
+             E BCDENC*           TEXT2     E A/PROCRT
+             E BCDWRIT*          TEXT3     E A/PROCRT
+             E ENTIER*           TGL1      E A/PROCRT
+             E IOAC*                       E A/VLM1
+             E IOEND*                      E SQRT*
+             E SQRT*             TGL2      E A/PROCRT
+   SYMRIG    E A/ARGSTR                    E A/VLM1
+             E A/CALLP                     E SQRT*
+             E A/I0              TP5       E A/AND
+             E A/NOT                       E A/ARRD/K
+             E A/PARVAR                    E A/ARRD/V
+             E A/PROCRT                    E A/CALLP
+             E A/RTOI                      E A/CALLS
+             E A/SPLUSS                    E A/I0
+             E ATOS                        E A/MINUS
+             E BCDENC*                     E A/NLINE
+             E BCDWRIT*                    E A/NOT
+             E ENTIER*                     E A/OPTLIN
+             E IOAC*                       E A/PARCON
+             E IOEND*                      E A/PAREXP
+             E SQRT*                       E A/PARLAB
+   SYSTEM    E A/NOT                       E A/PARPAR
+             E A/OPTLIN                    E A/PARVAL
+             E A/PROCRT                    E A/PARVAR
+             E A/VLM1                      E A/PROCRT
+   TABLE2*                                 E A/RAPRI
+   TABLE3*                                 E A/RTOI
+   TAKSTE                                  E A/VLM1
+   TCHEBY    E A/PROCRT                    E ENTIER*
+             E A/VLM1                        INVER2
+   TEBETI   (BEGTIN  )                       READMG
+   TELE1     E A/ARRD/V                      WRITMG
+             E A/I0              TPAH      E A/OPTLIN
+             E A/MINUS                     E A/PROCRT
+             E A/PROCRT                    E A/VLM1
+   TELE2     E A/ARRD/V          TPAK      E A/OPTLIN
+             E A/I0                        E A/PROCRT
+             E A/MINUS                     E A/VLM1
+             E A/PROCRT          TQUANT    E A/CALLP
+             E A/SIGN                      E A/MINUS
+             E ENTIER*                     E A/NOT
+   TESTER    E A/ARGSTR                    E A/PAREXP
+             E A/ARRD/K                    E A/PARPAR
+             E A/ARRD/V                    E A/PROCRT
+             E A/CALLP                     E COS*
+             E A/I0                        E EXP*
+             E A/IPRI                        NQUANT
+             E A/MINUS                     E POWER
+             E A/NLINE                     E SIN*
+             E A/PARCON                    E SQRT*
+             E A/PAREXP          TRANS1    E A/I0
+             E A/PARLAB                    E A/OPTLIN
+             E A/PARVAR                    E A/PROCRT
+             E A/PROCRT                    E A/VLM1
+             E A/RPRI            TRANSB    E A/AND
+             E A/SPLUSS                    E A/ARRD/V
+             E A/SPRI                      E A/CALLP
+             E A/VLM1                      E A/IPRI
+             E BCDWRIT*                    E A/MINUS
+             E ENTIER*                     E A/NLINE
+               FCHI2                       E A/NOT
+               FSTUDE                      E A/OPTLIN
+             E IOAC*                       E A/PAREXP
+             E IOEND*                      E A/PARPAR
+             E SQRT*                       E A/PARVAR
+   TEXT1     E A/PROCRT                    E A/PROCRT
+             E A/RPRI                      E SQRT*
+             E A/RTOI            TRIDAG    E A/PROCRT
+             E A/SPRI                      E A/VLM1
+             E A/VLM1            TRIDG     E A/MINUS
+             E A/VLMX                      E A/NOT
+   TRANSF    E A/ARRD/K                    E A/OPTLIN
+             E A/ARRD/V                    E A/PROCRT
+             E A/I0                        E A/VLM1
+             E A/MINUS                     E SQRT*
+             E A/OPTLIN          TRIREG    E A/ARRD/V
+             E A/PARPAR                    E A/MINUS
+             E A/PARVAR                    E A/NLINE
+             E A/PROCRT                    E A/NOT
+             E A/VLM1                      E A/OPTLIN
+   TRANSL    E A/AND                       E A/PROCRT
+             E A/ARRD/V                    E A/SPRI
+             E A/CALLP                     E A/VLM1
+             E A/I0                        E A/VLMX
+             E A/MINUS                     E SQRT*
+             E A/NOT             TRIS      E A/ARRD/V
+             E A/OPTLIN                    E A/MINUS
+             E A/PARPAR                    E A/PROCRT
+             E A/PARVAL                    E A/VLMX
+             E A/PARVAR          TRISMO    E A/I0
+             E A/PROCRT                    E A/PROCRT
+             E A/SIGN            TRISTU    E A/AND
+             E A/VLM1                      E A/ARRD/V
+             E A/VLMX                      E A/CALLP
+             E ENTIER*                     E A/MINUS
+   TRANSM    E A/PROCRT                    E A/PARPAR
+             E A/VLM1                      E A/PARVAL
+   TRED1     E A/MINUS                     E A/PROCRT
+             E A/OPTLIN                    E A/VLM1
+             E A/PROCRT                    E A/VLMX
+             E A/VLM1                      E SQRT*
+             E SQRT*             TRNSM20*  E PRINTER*
+   TRED2     E A/MINUS                     E PRUNTER*
+             E A/OPTLIN                      TABLE3*
+             E A/PROCRT                    E TRNSCDC*
+             E A/VLM1                        TRNSUPP*
+             E SQRT*             TRNSUPP*  E PRINTER*
+   TREQ      E PRINTA                        TABLE2*
+   TREQL     E A/CALLP           TSIMPL    E A/AND
+             E A/PARPAR                    E A/ARRD/V
+             E A/PARVAR                    E A/CALLP
+             E A/PROCRT                    E A/CALLS
+               TGL2                        E A/IPRI
+               TRED2                       E A/MINUS
+   TRIANG    E A/AND                       E A/NLINE
+             E A/ARRD/K                    E A/OPTLIN
+             E A/CALLP                     E A/PARVAR
+             E A/MINUS                     E A/PROCRT
+             E A/NOT                       E A/RPRI
+             E A/OPTLIN                    E A/RTOI
+             E A/PARCON                    E A/SPRI
+             E A/PARPAR                    E A/VLM1
+             E A/PARSTR                    E A/VLMX
+             E A/PARVAL          UNR
+             E A/PARVAR          UPPISO
+             E A/PROCRT          UR        E A/I0
+             E A/PUTARR                    E A/PROCRT
+             E A/VLM1                      E ENTIER*
+             E BCDWRIT*          VECTMU    E A/PROCRT
+             E IOAC*                       E SQRT*
+             E IOEND*            W         E A/CALLP
+               MATR                        E A/MINUS
+             E A/PARVAR          YMKBM2    E I*MUI*
+             E A/PROCRT                      YMABEK
+             E COS*              YMM       E A/OPTLIN
+               DAWSON                      E A/PROCRT
+             E EXP*                        E A/VLM1
+             E SIN*              YMMATP    E I*MUI*
+   WAITNS                                    YMABEK
+   WCROSS    E A/ARRD/V          ZAMALF      P0507
+             E A/I0                          P0513A
+             E A/MINUS                       P0513N
+             E A/OPTLIN          ZAMENA      RASTR
+             E A/PARPAR                      ZAMSI
+             E A/PARVAR          ZAMSI     E I*MU*I
+             E A/PROCRT                    E I*MUI*
+             E A/RTOI                        ISAME7
+             E A/VLM1                        P0513A
+             E A/VLMX                        P0513C
+   WPFL                          ZEROS1    E A/MINUS
+   WR64CH      CONSUM                      E A/NOT
+               KVIT                        E A/PARVAR
+               LIST64                      E A/PROCRT
+   WRCHN    D  BEGACH                      E SQRT*
+               ENDACH            ZONA
+             E FT*002
+             E FT*003
+             E FT*571
+             E FT*611
+             E I*DI*I
+             E IFPULT
+               OPTERM
+               PROPRI
+             E R*ST*I
+             E STOP*
+               WR64CH
+   WRIML     E A/ARRD/V
+             E A/PROCRT
+               READMG
+               WRITMG
+   WRITMG
+   WRTAPE   (RETAPE  )
+   Y0        E A/MINUS
+             E A/PROCRT
+             E COS*
+             E LN*
+             E SIN*
+             E SQRT*
+   Y1        E A/MINUS
+             E A/PROCRT
+             E COS*
+             E LN*
+             E SIN*
+             E SQRT*
+   YBYB      E A/PROCRT
+   YDM       E A/OPTLIN
+             E A/PROCRT
+             E A/VLM1
+   YESLIS   (NEWLIS  )
+   YMABEK
+   YMACTP
+   YMB       E A/OPTLIN
+             E A/PROCRT
+             E A/VLM1
+   YMB3
+   YMD       E A/OPTLIN
+             E A/PROCRT
+             E A/VLM1                                             04 ИЮЛ 24 23.45
+                     ИCПOЛЬЗOBAHИE ПOДПPOГPAMM
 
+                                 CYCLOD
+   E - BHEШHЯЯ П/П               DATIMA
+   N - OПИCAHA, HE ИCПOЛЬЗYETCЯ  DATTIM
+   C - ECTЬ OДHOИMEHHЫЙ COMMON   DBINT5
+                                 DET
+   HEИCПOЛЬЗYEMЫE BXOДЫ          DETER
+                                 DETERM
+   *ALFAVI* C                    DFL
+   *BUKVA*  C                    DIAGM1
+   *GOST*                        DIAGM2
+   *GOST*P                       DIAGVE
+   ABSMAX                        DILOG
+   ABSMIN                        DINT77
+   AIT0                          DIRECT
+   ALGLIB                        DIV
+   ALPHA                         EDITM
+   AOV1                          EDITMA
+   AOVB                          EGR978
+   AOVPAC                        EIGENJ
+   AOVPRI                        EILER1
+   AOVPRM                        EKZ
+   AOVSYN                        ELUR
+   ARG                           ENDCHN
+   ASSTAP                        EQVMEA
+   B4BITS                        ERFC
+   B4DEC                         ESTCOM
+   B4OCT                         ESTFAC
+   BAIRS                         EULER
+   BANDSO                        EXCLIB
+   BCHKOR                        EXPINT
+   BEGCHEC*                      EXPO
+   BEGRND                        EXTR
+   BEGRUC                        EXTREM
+   BEGTIN                        FACT
+   BESSET                        FACT1
+   BEUSER                        FACTOR
+   BICOD                         FAKTCO
+   BISEC                         FAKTRE
+   BISECT                        FF
+   BOZP                          FFT32K
+   BQR                           FILON
+   BSL                           FILOTH
+   C                             FILSMO
+   CARCTG                        FORMTA
+   CHEBFI                        FRCOS
+   CHECCOD*                      FRESNE
+   CHI2CO                        FRSIN
+   CHI2FA                        GAMMA
+   CHOBAN                        GIVETIME
+   CHOSOL                        GLIN
+   CLOD                          GRAD1
+   CLS2D                         GRAF
+   COMEIG                        GRAF1
+   COMPLE                        GRAF2
+   CONFCO                        GRAF3
+   CONFR1                        GRAF4
+   CONFR2                        HEAD
+   CONFRE                        HERMIT
+   CONGRA                        I0
+   CORRFU                        I1
+   COSI                          I4IBM
+   CRPATH                        IASORT
+   CUBL                          II
+   II1                           MINMAX
+   INGAUS                        MINMFL
+   INSALL                        MINONR
+   INSLIB                        MLFACT
+   INT655                        MMULT1
+   INTERM                        MSIMPL
+   INTP                          MSQ1
+   INV1                          MSQ2
+   INV58                         MULLER
+   INV66                         MVEC1
+   INVER                         MVEC2
+   INVER1                        MXORD
+   INVERT                        NAME4
+   IPARTW                        NEWINT
+   ISIMV                         NEWLIB
+   ISOUPP                        NEWLIS
+   ISTURM                        NEWT
+   IZOL                          NEWTEX
+   J0                            NNR
+   J1                            NOLEQ
+   JACOBI                        NORM
+   JAVN3                         NOTLIS
+   JAVN4                         NR
+   JAVNA                         NROOT
+   JAVNMA                        NROOTS
+   JAVNY                         NUMBER
+   K0                            OBLAST
+   K1                            ODCF
+   KFL                           ODCH
+   KIF                           OTKAZ
+   KO                            OZENKA
+   KOCHN                         P0460
+   KOPPBC                        P0512
+   KOPPCO                        P0513
+   KOPPHE                        P137
+   KPP                           PAR3
+   KUTTAM                        PATT
+   KVINT                         PERFO
+   LAG                           PMATR
+   LAG1                          POISKN
+   LAGR2                         POLIGR
+   LAGRAN                        POLYFI
+   LEG                           POLYX
+   LEGEND                        POWC
+   LETI                          PRANAL
+   LININT                        PRBYTE
+   LINP                          PRIBYT
+   LINT                          PRINT8*
+   LOO3                          PRINTR
+   LRCH                          PRITRA
+   LTEQGT                        PROBNE
+   MAKC                          PROGRAM
+   MAKC1                         PRPO3
+   MAXIM                         PRPO4
+   MAXIMU                        PRPOP
+   MBVSIM                        PRREGR
+   MCOMP                         QUAD
+   MDIAG1                        QUICKE
+   MDIAG2                        R4IBM
+   MF                            RAD1
+   MHK                           RANG
+   MIH                           RATQR
+   MIH1                          RAUSS
+   MINCOG                        READPL
+   MINIM                         REBAKA
+   REBAKB                        TEXT3
+   RECHN                         TGL1
+   REDUC1                        TP5
+   REDUC2                        TPAH
+   REFUSE                        TPAK
+   RELAX                         TRANS1
+   REMEZ                         TRANSB
+   RESTIM                        TRANSF
+   RFSTAP                        TRANSL
+   RGAFTI                        TRANSM
+   RGAM                          TRED1
+   RGBETI                        TREQ
+   RK1STE                        TRIANG
+   RND                           TRIDAG
+   RNDRND                        TRIDG
+   ROMBIN                        TRIS
+   ROOT                          TRISMO
+   ROOTSP                        TRISTU
+   ROTF                          TSIMPL
+   RPFL                          UNR
+   RR                            UPPISO
+   RRR                           UR
+   RTRANS                        VECTMU
+   RUCOAH                        W
+   RUKUT                         WAITNS
+   SCALAR                        WRCHN
+   SCALPR                        Y0
+   SERDIV                        Y1
+   SFBESJ                        YBYB
+   SHIFT                         YDM
+   SIM                           YESLIS
+   SIM1                          YMACTP
+   SIMP                          YMB3
+   SIMP1                         YMD
+   SIMPF                         YMKBM2
+   SIMPS1                        YMM
+   SIMPSA                        YMMATP
+   SIMUL                         ZAMALF
+   SINE                          ZAMENA
+   SISTEM                        ZEROS1
+   SLOJI                         ZONA
+   SLOJJ
+   SLOJK
+   SLOR                          ИCПOЛЬЗYEMЫE BXOДЫ
+   SMOT13
+   SMOT35                        A/AND    E  ALPHA
+   SOR                                       AOV1
+   SOR3                                      AOVPAC
+   SORT                                      BAIRS
+   SPFACT                                    BCHKOR
+   SPHBEN                                    BSL
+   STAND                                     CHI2CO
+   STATAN                                    CLOD
+   STEEP1                                    COMEIG
+   SUBSRE                                    CORRFU
+   SUM                                       DBINT5
+   SYMIN                                     DET
+   SYMLEF                                    DIV
+   SYMRIG                                    EIGENJ
+   TCHEBY                                    ELUR
+   TEBETI                                    EUKLID
+   TELE1                                     EULER
+   TELE2                                     EXTREM
+   TESTER                                    FGAMMA
+   TEXT1                                     FILON
+   TEXT2                                     FILOTH
+               FILSMO                        SLOJJ
+               FSTUDE                        SLOJK
+               GLIN                          SYMLEF
+               GRAF                          SYMRIG
+               GRAF1                         TESTER
+               GRAF2             A/ARRD/K E  ALPHA
+               GRAF3                         BICOD
+               GRAF4                         BSL
+               II                            CLOD
+               II1                           CLS2D
+               INVER2                        CYCLOD
+               INVERG                        DAWSON
+               JACOBI                        DBINT5
+               JAVN3                         ELUR
+               JAVN4                         ERFC
+               JAVNA                         EULER
+               JAVNMA                        EXTREM
+               JAVNY                         GAMMA
+               KOPPBC                        GRAF
+               KOPPHE                        GRAF1
+               KUTTAM                        GRAF2
+               LRCH                          GRAF3
+               MAXIMU                        GRAF4
+               MBVSIM                        INGAUS
+               MCOMP                         INT655
+               MF                            IZOL
+               MINCOG                        JAVN3
+               MINMFL                        JAVN4
+               MULLER                        JAVNA
+               NEWTEX                        JAVNMA
+               OBLAST                        JAVNY
+               ODCF                          LEGEND
+               ODCH                          MAXIMU
+               POLIGR                        NROOTS
+               POWC                          OBLAST
+               PRPO3                         POLIGR
+               PRPO4                         POLYFI
+               PRPOP                         PRPO3
+               RANG                          PRPO4
+               RATQR                         PRPOP
+               RELAX                         RELAX
+               ROOT                          RGAM
+               ROOTSP                        RK1STE
+               RUKUT                         ROOTSP
+               SIMP                          RROOT3
+               SIMP1                         RROOT4
+               SIMPF                         RUKUT
+               SLOR                          SIM1
+               SOR                           SIMP
+               SOR3                          SIMP1
+               SPFACT                        SIMPF
+               STATAN                        SLOR
+               STEEP1                        SOR
+               STURMI                        SOR3
+               SYMIN                         TESTER
+               TP5                           TP5
+               TRANSB                        TRANSF
+               TRANSL                        TRIANG
+               TRIANG            A/ARRD/V E  AIT0
+               TRISTU                        ALPHA
+               TSIMPL                        ALPHW
+   A/ARGSTR E  AOVPRI                        AOV1
+               AOVPRM                        AOVB
+               MATR                          AOVPRM
+               PMATR                         AOVSYN
+               SLOJI                         BAIRS
+               BCHKOR                        OBLAST
+               BESSET                        OZENKA
+               BICOD                         P137
+               BISECT                        PAR3
+               BQR                           PATT
+               CHEBFI                        POLIGR
+               CLS2D                         POLYFI
+               COMEIG                        POLYX
+               CONFR2                        PRINTR
+               CONFRE                        PROBNE
+               CONGRA                        PRPO3
+               CRPATH                        PRPO4
+               CUBL                          PRPOP
+               CYCLOD                        PRREGR
+               DETER                         QUICKE
+               DETERM                        RANG
+               DFL                           RAUSS
+               DIRECT                        RELAX
+               EILER1                        REMEZ
+               ELUR                          REML
+               ESTCOM                        REORDE
+               ESTFAC                        REVFFT
+               FAKTCO                        RK1STE
+               FAKTRE                        ROMBIN
+               FF                            ROOTNP
+               FFT2                          ROOTSP
+               FILSMO                        ROTF
+               GAUSSM                        SISTEM
+               GRAD1                         SLOJI
+               II                            SLOJJ
+               II1                           SLOJK
+               INTP                          SLOR
+               INV1                          SOR
+               INV58                         SOR3
+               INV66                         SSTURM
+               INVER                         STAND
+               INVER1                        STATAN
+               INVER2                        STEEP1
+               INVERG                        STURMI
+               ISTURM                        SUBSRE
+               JAVN3                         SYMIN
+               JAVN4                         TELE1
+               JAVNA                         TELE2
+               JAVNMA                        TESTER
+               JAVNY                         TP5
+               KFL                           TRANSB
+               KOCHN                         TRANSF
+               KOPPCO                        TRANSL
+               KUTTAM                        TRIREG
+               LAGR2                         TRIS
+               LETI                          TRISTU
+               LRCH                          TSIMPL
+               MAXIMU                        WCROSS
+               MBVSIM                        WRIML
+               MCOMP             A/CALLP  E  ALPHA
+               MHK                           ALPHW
+               MINCOG                        AOV1
+               MINMFL                        AOVB
+               MINONR                        AOVPAC
+               MLFACT                        AOVPRI
+               MSIMPL                        AOVPRM
+               NEWINT                        AOVSYN
+               NEWT                          BISEC
+               NEWTEX                        BSL
+               NOLEQ                         CHI2CO
+               NROOTS                        CHI2FA
+               COMPLE                        STOK
+               CONFCO                        SUBSRE
+               CONFRE                        SYMLEF
+               CONGRA                        SYMRIG
+               CUBL                          TESTER
+               DET                           TP5
+               ELUR                          TQUANT
+               EQVMEA                        TRANSB
+               ESTFAC                        TRANSL
+               FCHI2                         TREQL
+               FGAMMA                        TRIANG
+               FILSMO                        TRISTU
+               FSTUDE                        TSIMPL
+               GAMMA                         W
+               GRAD1             A/CALLS  E  BCHKOR
+               GRAF                          DIRECT
+               GRAF1                         ELUR
+               GRAF2                         EXTR
+               GRAF3                         JAVN3
+               GRAF4                         JAVN4
+               INVER2                        JAVNA
+               IZOL                          JAVNMA
+               JAVN3                         JAVNY
+               JAVN4                         KOCHN
+               JAVNA                         LRCH
+               JAVNMA                        MAXIMU
+               JAVNY                         MBVSIM
+               KOCHN                         MINMFL
+               KTOS                          MINONR
+               LRCH                          MSIMPL
+               MAXIMU                        OBLAST
+               MBVSIM                        PRPO3
+               MHK                           PRPO4
+               MLFACT                        PRPOP
+               MSIMPL                        RANG
+               MULLER                        SLOR
+               NEWT                          SOR
+               NEWTEX                        SOR3
+               NOLEQ                         STATAN
+               NQUANT                        SUBSRE
+               NROOTS                        TP5
+               OBLAST                        TSIMPL
+               P137              A/COMMON E  INPUT
+               PAR3                          STATAN
+               PATT              A/EQUIV  E  DIRECT
+               POLIGR                        POLYFI
+               POLYFI            A/I0     E  ALPHA
+               PRPO3                         AOV1
+               PRPO4                         AOVB
+               PRPOP                         AOVPAC
+               RANG                          AOVPRI
+               RELAX                         AOVPRM
+               ROOTSP                        AOVSYN
+               RROOT3                        BAIRS
+               RROOT4                        BANDSO
+               RTRANS                        BESSET
+               SLOJI                         BICOD
+               SLOJJ                         BQR
+               SLOJK                         BSL
+               SLOR                          C
+               SOR                           CHEBFI
+               SOR3                          CHI2CO
+               SORT                          CHI2FA
+               SSTURM                        CLOD
+               STAND                         CLS2D
+               STATAN                        CONFR2
+               CUBL                          RR
+               CYCLOD                        RRR
+               DIAGM1                        RUKUT
+               EKZ                           SIM
+               ELUR                          SIM1
+               EXTREM                        SIMP
+               FACT                          SIMPF
+               FACTOR                        SISTEM
+               FFISHE                        SLOJI
+               FFT2                          SLOJJ
+               FILSMO                        SLOJK
+               FRCOS                         SLOR
+               FRESNE                        SOR
+               FRSIN                         SOR3
+               GAMMA                         SPHBEN
+               GRAD1                         SRED
+               GRAF3                         STAND
+               GRAF4                         STOK
+               II                            STURMI
+               INV1                          SYMLEF
+               ISTURM                        SYMRIG
+               IZOL                          TELE1
+               JACOBI                        TELE2
+               JAVN3                         TESTER
+               JAVN4                         TP5
+               JAVNA                         TRANS1
+               JAVNMA                        TRANSF
+               JAVNY                         TRANSL
+               KFL                           TRISMO
+               KOCHN                         UR
+               KOPPBC                        WCROSS
+               KOPPHE            A/IPRI   E  ALPHA
+               KTOS                          AOVPRM
+               KUTTAM                        CHI2FA
+               LAG                           CONFRE
+               LAG1                          ELUR
+               LAGR2                         EQVMEA
+               LEGEND                        EXTREM
+               MAXIMU                        FACT
+               MCOMP                         KPP
+               MDIAG1                        MLFACT
+               MHK                           NEWTEX
+               MINMFL                        OBLAST
+               MMULT1                        PRPO3
+               MSQ1                          PRPO4
+               MVEC1                         PRPOP
+               NEWTEX                        RELAX
+               NNR                           SLOJI
+               NOLEQ                         SLOJJ
+               NR                            SLOJK
+               OBLAST                        SLOR
+               ODCH                          TESTER
+               P137                          TRANSB
+               PAR3                          TSIMPL
+               PMATR             A/IREAD  E  INPUT
+               POLIGR            A/LHOCHI E  POLIGR
+               PRPO3             A/MINUS  E  ALPHA
+               PRPO4                         AOV1
+               PRPOP                         AOVB
+               QUICKE                        AOVPAC
+               RANDOM                        ARG
+               REALTR                        BAIRS
+               RELAX                         BCHKOR
+               REORDE                        BISECT
+               REVFFT                        BQR
+               ROMBIN                        BROOTS
+               BSL                           JAVNA
+               CHEBFI                        JAVNMA
+               CHI2CO                        JAVNY
+               CLOD                          K0
+               COMEIG                        K1
+               COMPLE                        KFL
+               CONFCO                        KO
+               CONGRA                        KOCHN
+               CORRFU                        KOPPBC
+               COSI                          KOPPCO
+               CUBL                          KOPPHE
+               CYCLOD                        KPP
+               DAWSON                        KTOS
+               DBINT5                        LEGEND
+               DET                           LININT
+               DETER                         LRCH
+               DETERM                        MAKC
+               DFL                           MAKC1
+               DILOG                         MAXIMU
+               DINT77                        MBVSIM
+               DIRECT                        MCOMP
+               EIGENJ                        MF
+               ELUR                          MHK
+               ERFC                          MINCOG
+               EUKLID                        MINMAX
+               EULER                         MINMFL
+               EXPINT                        MINONR
+               EXTR                          MLFACT
+               EXTREM                        MSIMPL
+               FACT                          MULLER
+               FACTOR                        NEWINT
+               FAKTCO                        NEWTEX
+               FAKTRE                        NQUANT
+               FF                            OBLAST
+               FFISHE                        ODCF
+               FGAMMA                        ODCH
+               FILON                         OZENKA
+               FILOTH                        POLIGR
+               FILSMO                        POLYFI
+               FRCOS                         POWC
+               FRESNE                        PRPO3
+               FRSIN                         PRPO4
+               FSTUDE                        PRPOP
+               GLIN                          RANG
+               GRAF                          RATQR
+               GRAF1                         REALTR
+               GRAF2                         REDUC1
+               GRAF3                         REDUC2
+               GRAF4                         RELAX
+               I1                            REMEZ
+               II                            RGAM
+               II1                           RNDRND
+               INT655                        ROOT
+               INTP                          ROOTSP
+               INV58                         ROTF
+               INV66                         RROOT3
+               INVER                         RROOT4
+               INVER1                        RTRANS
+               INVER2                        RUKUT
+               INVERG                        SFBESJ
+               IZOL                          SIMP
+               J0                            SIMP1
+               J1                            SIMPF
+               JACOBI                        SINE
+               JAVN3                         SLOR
+               JAVN4                         SMOT13
+               SMOT35                        PRPOP
+               SOR                           RANG
+               SOR3                          RELAX
+               SPHBEN                        ROTF
+               STATAN                        SLOJI
+               STEEP1                        SLOJJ
+               STURMI                        SLOJK
+               SUBSRE                        SLOR
+               SYMIN                         SMOT13
+               TELE1                         SMOT35
+               TELE2                         TESTER
+               TESTER                        TP5
+               TP5                           TRANSB
+               TQUANT                        TRIREG
+               TRANSB                        TSIMPL
+               TRANSF            A/NOT    E  ALPHA
+               TRANSL                        AOV1
+               TRED1                         ARG
+               TRED2                         BESSET
+               TRIANG                        BSL
+               TRIDG                         CHOBAN
+               TRIREG                        CONFRE
+               TRIS                          CONGRA
+               TRISTU                        CUBL
+               TSIMPL                        DBINT5
+               W                             DET
+               WCROSS                        DETER
+               Y0                            DETERM
+               Y1                            DFL
+               ZEROS1                        DILOG
+   A/NLINE  E  ALPHA                         DIV
+               AOVPRI                        ELUR
+               AOVPRM                        ESTCOM
+               BCHKOR                        ESTFAC
+               BSL                           EUKLID
+               CHI2CO                        EXTR
+               CONFRE                        EXTREM
+               DBINT5                        FFT2
+               DET                           FILSMO
+               ELUR                          FSTUDE
+               EQVMEA                        G
+               EXTREM                        GLIN
+               FACT                          GRAF
+               GLIN                          GRAF1
+               GRAF                          GRAF2
+               GRAF1                         GRAF3
+               GRAF2                         GRAF4
+               GRAF3                         II
+               GRAF4                         II1
+               IZOL                          INV1
+               KOPPCO                        INV66
+               KPP                           INVERG
+               KUTTAM                        JACOBI
+               MBVSIM                        JAVN3
+               MHK                           JAVN4
+               MLFACT                        JAVNA
+               NEWTEX                        JAVNMA
+               OBLAST                        JAVNY
+               ODCF                          KFL
+               ODCH                          KO
+               OZENKA                        KOCHN
+               POLIGR                        KPP
+               POLYFI                        KTOS
+               PRITRA                        KUTTAM
+               PRPO3                         LEGEND
+               PRPO4                         LETI
+               LRCH                          DIAGM2
+               MAXIMU                        EIGENJ
+               MBVSIM                        ELUR
+               MCOMP                         ESTCOM
+               MF                            ESTFAC
+               MHK                           GAUSS
+               MINCOG                        GAUSSM
+               MINMFL                        II
+               MINONR                        II1
+               MULLER                        INV1
+               NEWT                          INV58
+               NEWTEX                        INV66
+               NOLEQ                         INVER
+               NROOT                         INVER1
+               OBLAST                        INVER2
+               ODCF                          INVERG
+               ODCH                          INVERT
+               POLIGR                        IZOL
+               POWC                          JACOBI
+               PRINTR                        JAVN3
+               PRPO3                         JAVN4
+               PRPO4                         JAVNA
+               PRPOP                         JAVNMA
+               PRREGR                        JAVNY
+               RANG                          KOPPCO
+               RELAX                         LETI
+               REVFFT                        MAXIMU
+               ROOT                          MBVSIM
+               ROOTSP                        MCOMP
+               SLOR                          MDIAG2
+               SOR                           MHK
+               SOR3                          MINMFL
+               SPFACT                        MLFACT
+               SPHBEN                        MSIMPL
+               STATAN                        MSQ2
+               STEEP1                        MVEC2
+               STURMI                        NROOTS
+               SYMIN                         OBLAST
+               SYMRIG                        ORTX
+               SYSTEM                        OZENKA
+               TP5                           PROBNE
+               TQUANT                        PRPO3
+               TRANSB                        PRPO4
+               TRANSL                        PRPOP
+               TRIANG                        RANG
+               TRIDG                         REBAKB
+               TRIREG                        REDUC1
+               ZEROS1                        REDUC2
+   A/NOTL   E  POLIGR                        RELAX
+   A/OPTLIN E  ALPHA                         ROOTSP
+               ALPHW                         ROTF
+               AOVB                          SIMUL
+               AOVPRM                        SLOJJ
+               AOVSYN                        SLOJK
+               BANDSO                        SLOR
+               BQR                           SOR
+               CHI2FA                        SOR3
+               CHOBAN                        SPFACT
+               CHOSOL                        STATAN
+               CLS2D                         SUBSRE
+               COMEIG                        SYMIN
+               CONGRA                        SYSTEM
+               CUBL                          TP5
+               DET                           TPAH
+               DETER                         TPAK
+               DETERM                        TRANS1
+               TRANSB                        KUTTAM
+               TRANSF                        LRCH
+               TRANSL                        MAXIMU
+               TRED1                         MHK
+               TRED2                         NEWTEX
+               TRIANG                        OBLAST
+               TRIDG                         PAR3
+               TRIREG                        POLIGR
+               TSIMPL                        PRPO3
+               WCROSS                        PRPO4
+               YDM                           PRPOP
+               YMB                           RELAX
+               YMD                           ROMBIN
+               YMM                           ROOTSP
+   A/PARCON E  ALPHA                         RROOT3
+               ALPHW                         RROOT4
+               CHI2CO                        SIM1
+               CHI2FA                        SIMP
+               COMPLE                        SIMP1
+               ELUR                          SLOJI
+               EULER                         SLOJJ
+               GAMMA                         SLOJK
+               LRCH                          SLOR
+               MULLER                        SOR
+               NEWTEX                        SOR3
+               OBLAST                        TESTER
+               PAR3                          TP5
+               RELAX                         TQUANT
+               ROOT                          TRANSB
+               RTRANS            A/PARLAB E  CHI2CO
+               TESTER                        CHI2FA
+               TP5                           CONFRE
+               TRIANG                        ELUR
+   A/PAREXP E  ALPHA                         EQVMEA
+               ALPHW                         KOCHN
+               AOV1                          LRCH
+               AOVB                          MAXIMU
+               CHI2FA                        MHK
+               CLOD                          MLFACT
+               CONFCO                        NEWTEX
+               CONFRE                        RANG
+               CUBL                          SUBSRE
+               CYCLOD                        TESTER
+               DBINT5                        TP5
+               ELUR              A/PARPAR E  ALPHA
+               EQVMEA                        ALPHW
+               ESTFAC                        AOV1
+               EXTR                          AOVB
+               EXTREM                        AOVPRI
+               FCHI2                         AOVPRM
+               FILSMO                        AOVSYN
+               FSTUDE                        BISEC
+               GRAD1                         CLS2D
+               GRAF                          COMPLE
+               GRAF1                         CONFCO
+               GRAF2                         CONGRA
+               GRAF3                         DIRECT
+               GRAF4                         EILER1
+               INGAUS                        ELUR
+               INT655                        EQVMEA
+               INVER2                        ESTFAC
+               JAVN3                         FCHI2
+               JAVN4                         FGAMMA
+               JAVNA                         INVER2
+               JAVNMA                        JAVN3
+               JAVNY                         JAVN4
+               JAVNA                         JAVNA
+               JAVNMA                        JAVNMA
+               JAVNY                         JAVNY
+               KUTTAM                        MAXIMU
+               LRCH                          MBVSIM
+               MAXIMU                        MHK
+               MBVSIM                        MSIMPL
+               MHK                           MULLER
+               MINCOG                        NEWT
+               MINMFL                        OBLAST
+               MINONR                        P137
+               MLFACT                        PATT
+               MSIMPL                        PRPO3
+               MXORD                         PRPO4
+               NEWT                          PRPOP
+               NEWTEX                        SLOR
+               NOLEQ                         SOR
+               NROOTS                        SOR3
+               OBLAST                        SORT
+               OZENKA                        TP5
+               PAR3                          TRANSL
+               PATT                          TRIANG
+               POLYFI                        TRISTU
+               PRPO3             A/PARVAR E  ALPHA
+               PRPO4                         ALPHW
+               PRPOP                         AOV1
+               RANG                          AOVB
+               RELAX                         AOVPAC
+               RK1STE                        AOVPRI
+               ROOT                          AOVPRM
+               ROOTSP                        AOVSYN
+               RROOT3                        BICOD
+               RROOT4                        BISEC
+               RTRANS                        CHI2CO
+               SIMPSA                        CHI2FA
+               SISTEM                        CLOD
+               SLOR                          CLS2D
+               SOR                           COMPLE
+               SOR3                          CUBL
+               SSTURM                        CYCLOD
+               STAND                         DBINT5
+               STATAN                        DET
+               STEEP1                        ELUR
+               TP5                           ESTFAC
+               TQUANT                        EULER
+               TRANSB                        EXTR
+               TRANSF                        EXTREM
+               TRANSL                        FGAMMA
+               TREQL                         FILON
+               TRIANG                        FILOTH
+               TRISTU                        FILSMO
+               WCROSS                        GAMMA
+   A/PARSTR E  PAR3                          GRAD1
+               TRIANG                        GRAF
+   A/PARVAL E  ALPHA                         GRAF1
+               AOVB                          GRAF2
+               AOVPRI                        GRAF3
+               AOVPRM                        GRAF4
+               BSL                           INT655
+               CONGRA                        JAVN3
+               CUBL                          JAVN4
+               DET                           JAVNA
+               ELUR                          JAVNMA
+               IZOL                          JAVNY
+               JAVN3                         KTOS
+               JAVN4                         LRCH
+               MBVSIM                        AOVPRM
+               MHK                           AOVSYN
+               MINCOG                        ARG
+               MINONR                        BAIRS
+               MLFACT                        BANDSO
+               MULLER                        BCHKOR
+               MXORD                         BESSET
+               NEWT                          BICOD
+               NEWTEX                        BISEC
+               NQUANT                        BISECT
+               NROOTS                        BOZP
+               OBLAST                        BQR
+               OZENKA                        BROOTS
+               PAR3                          BSL
+               PATT                          C
+               POLIGR                        CARCTG
+               PRPO3                         CHEBFI
+               PRPO4                         CHI2CO
+               PRPOP                         CHI2FA
+               QUAD                          CHOBAN
+               RANG                          CHOSOL
+               RELAX                         CLOD
+               ROMBIN                        CLS2D
+               ROOT                          COMEIG
+               ROOTSP                        COMPLE
+               RROOT3                        CONFCO
+               RROOT4                        CONFR1
+               RTRANS                        CONFR2
+               RUKUT                         CONFRE
+               SIM1                          CONGRA
+               SIMP                          CORRFU
+               SIMP1                         COSI
+               SIMPSA                        CRPATH
+               SISTEM                        CUBL
+               SLOJI                         CYCLOD
+               SLOJJ                         DAWSON
+               SLOJK                         DBINT5
+               SLOR                          DET
+               SOR                           DETER
+               SOR3                          DETERM
+               SSTURM                        DFL
+               STAND                         DIAGM1
+               STATAN                        DIAGM2
+               STOK                          DIAGVE
+               SYMLEF                        DILOG
+               SYMRIG                        DINT77
+               TESTER                        DIRECT
+               TP5                           DIV
+               TRANSB                        EIGENJ
+               TRANSF                        EILER1
+               TRANSL                        EKZ
+               TREQL                         ELUR
+               TRIANG                        EQVMEA
+               TSIMPL                        ERFC
+               W                             ESTCOM
+               WCROSS                        ESTFAC
+               ZEROS1                        EUKLID
+   A/PROCRT E  ABSMAX                        EULER
+               ABSMIN                        EXPINT
+               AIT0                          EXPO
+               ALPHA                         EXTR
+               ALPHW                         EXTREM
+               AOV1                          FACT
+               AOVB                          FACT1
+               AOVPAC                        FACTOR
+               AOVPRI                        FAKTCO
+               FAKTRE                        LAG
+               FCHI2                         LAG1
+               FERF                          LAGR2
+               FF                            LAGRAN
+               FFISHE                        LEG
+               FFT2                          LEGEND
+               FGAMMA                        LETI
+               FILON                         LININT
+               FILOTH                        LINP
+               FILSMO                        LINT
+               FRCOS                         LOO3
+               FRESNE                        LRCH
+               FRSIN                         MAKC
+               FSTUDE                        MAKC1
+               G                             MATR
+               GAMMA                         MAXIM
+               GAUSS                         MAXIMU
+               GAUSSM                        MBVSIM
+               GLIN                          MCOMP
+               GRAD1                         MDIAG1
+               GRAF                          MDIAG2
+               GRAF1                         MF
+               GRAF2                         MHK
+               GRAF3                         MIH
+               GRAF4                         MIH1
+               HERMIT                        MINCOG
+               I0                            MINIM
+               I1                            MINMAX
+               II                            MINMFL
+               II1                           MINONR
+               INGAUS                        MLFACT
+               INPUT                         MMULT1
+               INT655                        MSIMPL
+               INTERM                        MSQ1
+               INTP                          MSQ2
+               INV1                          MULLER
+               INV58                         MVEC1
+               INV66                         MVEC2
+               INVER                         MXORD
+               INVER1                        NEWINT
+               INVER2                        NEWT
+               INVERG                        NEWTEX
+               INVERT                        NNR
+               ISTURM                        NOLEQ
+               IZOL                          NORM
+               J0                            NQUANT
+               J1                            NR
+               JACOBI                        NROOT
+               JAVN3                         NROOTS
+               JAVN4                         OBLAST
+               JAVNA                         ODCF
+               JAVNMA                        ODCH
+               JAVNY                         ORTX
+               K0                            OZENKA
+               K1                            P137
+               KFL                           PAR3
+               KIF                           PATT
+               KO                            PMATR
+               KOCHN                         POLIGR
+               KOPPBC                        POLYFI
+               KOPPCO                        POLYX
+               KOPPHE                        POWC
+               KPP                           PRANAL
+               KTOS                          PRINTR
+               KUTTAM                        PRITRA
+               KVINT                         PROBNE
+               PRPO3                         SUBSRE
+               PRPO4                         SUM
+               PRPOP                         SYMIN
+               PRREGR                        SYMLEF
+               QUAD                          SYMRIG
+               QUICKE                        SYSTEM
+               RAD1                          TCHEBY
+               RANDOM                        TELE1
+               RANG                          TELE2
+               RATQR                         TESTER
+               RAUSS                         TEXT1
+               REALTR                        TEXT2
+               REBAKA                        TEXT3
+               REBAKB                        TGL1
+               REDUC1                        TGL2
+               REDUC2                        TP5
+               RELAX                         TPAH
+               REMEZ                         TPAK
+               REML                          TQUANT
+               REORDE                        TRANS1
+               REVFFT                        TRANSB
+               RGAM                          TRANSF
+               RK1STE                        TRANSL
+               RNDRND                        TRANSM
+               ROMBIN                        TRED1
+               ROOT                          TRED2
+               ROOTNP                        TREQL
+               ROOTSP                        TRIANG
+               ROTF                          TRIDAG
+               RR                            TRIDG
+               RROOT3                        TRIREG
+               RROOT4                        TRIS
+               RRR                           TRISMO
+               RTRANS                        TRISTU
+               RUKUT                         TSIMPL
+               SCALAR                        UR
+               SERDIV                        VECTMU
+               SFBESJ                        W
+               SIM                           WCROSS
+               SIM1                          WRIML
+               SIMP                          Y0
+               SIMP1                         Y1
+               SIMPF                         YBYB
+               SIMPS1                        YDM
+               SIMPSA                        YMB
+               SIMUL                         YMD
+               SINE                          YMM
+               SISTEM                        ZEROS1
+               SLOJI             A/PUTARR E  GRAF3
+               SLOJJ                         GRAF4
+               SLOJK                         MBVSIM
+               SLOR                          MSIMPL
+               SMOT13                        POLIGR
+               SMOT35                        PRINTR
+               SOR                           PRREGR
+               SOR3                          TRIANG
+               SORT              A/RAPRI  E  BCHKOR
+               SPFACT                        ELUR
+               SPHBEN                        EXTREM
+               SRED                          MHK
+               SSTURM                        MLFACT
+               STAND                         NEWTEX
+               STATAN                        ODCH
+               STEEP1                        OZENKA
+               STOK                          TP5
+               STURMI            A/RHOCHI E  AOVB
+               COMPLE                        MAXIMU
+               EXTREM                        MHK
+               FFISHE                        ODCF
+               KOCHN                         ODCH
+               LEGEND                        P137
+               LETI                          PAR3
+               LOO3                          POLIGR
+               MHK                           PRPO3
+               NROOTS                        PRPO4
+               REMEZ                         PRPOP
+               ROOTSP                        QUICKE
+               RTRANS                        RAD1
+               SIM1                          RELAX
+               STOK                          RTRANS
+               STURMI                        SISTEM
+   A/RPRI   E  CHI2FA                        SLOR
+               CONFRE                        SOR
+               EXTREM                        SOR3
+               IZOL                          STOK
+               KUTTAM                        STURMI
+               MHK                           SYMLEF
+               MLFACT                        SYMRIG
+               NEWTEX                        TP5
+               OZENKA                        TRANSB
+               PRITRA                        TSIMPL
+               PRPO3                         WCROSS
+               PRPO4             A/SEQS   E  AOVPAC
+               PRPOP                         FILSMO
+               RANG                          POLIGR
+               RELAX                         SLOJI
+               ROTF                          SLOJJ
+               TESTER                        SLOJK
+               TRANSB                        STOK
+               TSIMPL            A/SIGN   E  ARG
+   A/RREAD  E  INPUT                         BAIRS
+   A/RTOI   E  ALPHA                         BANDSO
+               AOVB                          BESSET
+               BICOD                         BISEC
+               C                             BSL
+               CHEBFI                        CHEBFI
+               CHI2CO                        CONFR2
+               CHI2FA                        CUBL
+               CLOD                          EKZ
+               CLS2D                         ELUR
+               COMPLE                        FACT
+               CYCLOD                        FACTOR
+               FACT                          FFISHE
+               FACTOR                        FFT2
+               GAMMA                         FILON
+               GRAF                          FILOTH
+               GRAF1                         GRAD1
+               GRAF2                         I1
+               GRAF3                         ISTURM
+               GRAF4                         J1
+               IZOL                          JACOBI
+               JAVN3                         JAVN3
+               JAVN4                         JAVN4
+               JAVNA                         JAVNA
+               JAVNMA                        JAVNMA
+               JAVNY                         JAVNY
+               KIF                           KO
+               KOCHN                         KOPPBC
+               KOPPCO                        LAGR2
+               KUTTAM                        LEGEND
+               KVINT                         MAXIMU
+               LINT                          MCOMP
+               MINMFL                        AOVPRI
+               MINONR                        AOVPRM
+               MULLER                        BCHKOR
+               NEWT                          BSL
+               NNR                           CHI2CO
+               NR                            CHI2FA
+               NROOT                         CONFRE
+               NROOTS                        DBINT5
+               OBLAST                        ELUR
+               POWC                          EQVMEA
+               PRPO3                         EXTREM
+               PRPO4                         GLIN
+               PRPOP                         GRAF
+               QUICKE                        GRAF1
+               RAD1                          GRAF2
+               RANDOM                        GRAF3
+               RAUSS                         GRAF4
+               REALTR                        IZOL
+               REMEZ                         KOPPCO
+               REORDE                        KPP
+               REVFFT                        KUTTAM
+               ROOTSP                        MBVSIM
+               RR                            MHK
+               RROOT3                        MLFACT
+               RRR                           NEWTEX
+               SIM1                          OBLAST
+               SIMP                          ODCF
+               SIMPF                         ODCH
+               SLOR                          OZENKA
+               SOR                           POLIGR
+               SOR3                          POLYFI
+               SSTURM                        PRITRA
+               STURMI                        PRPO3
+               TELE2                         PRPO4
+               TRANSL                        PRPOP
+   A/SLICE  E  AOVPAC                        RANG
+               FILSMO                        RELAX
+               GRAF                          ROTF
+               GRAF1                         SLOJI
+               GRAF2                         SLOJJ
+               GRAF3                         SLOJK
+               GRAF4                         SMOT13
+               IZOL                          SMOT35
+               POLIGR                        TESTER
+               SLOJI                         TRANSB
+               SLOJJ                         TRIREG
+               SLOJK                         TSIMPL
+               STOK              A/START  E  ALGLIB
+   A/SNES   E  FILSMO            A/STOP   E  ALGLIB
+   A/SPLUSS E  AOVPRI                        RELAX
+               AOVPRM            A/VLM1   E  ABSMAX
+               GRAF                          ABSMIN
+               GRAF1                         AIT0
+               GRAF2                         ALPHA
+               GRAF3                         ALPHW
+               GRAF4                         AOV1
+               IZOL                          AOVB
+               KTOS                          AOVPRM
+               POLIGR                        AOVSYN
+               SLOJI                         BAIRS
+               SLOJJ                         BANDSO
+               SLOJK                         BESSET
+               SYMLEF                        BICOD
+               SYMRIG                        BISECT
+               TESTER                        BQR
+   A/SPRI   E  ALPHA                         CHEBFI
+               CHI2CO                        MCOMP
+               CHI2FA                        MDIAG1
+               CHOBAN                        MDIAG2
+               CLS2D                         MHK
+               COMEIG                        MINIM
+               CONFR1                        MINMFL
+               CONFR2                        MINONR
+               CONFRE                        MLFACT
+               CONGRA                        MSIMPL
+               CORRFU                        MULLER
+               CRPATH                        MVEC1
+               CUBL                          MVEC2
+               CYCLOD                        NEWINT
+               DET                           NEWT
+               DETER                         NEWTEX
+               DETERM                        NORM
+               DFL                           NROOTS
+               DIAGM1                        OBLAST
+               DIAGM2                        ODCH
+               DIAGVE                        ORTX
+               DIRECT                        OZENKA
+               EIGENJ                        PAR3
+               ELUR                          PATT
+               ESTCOM                        POLIGR
+               ESTFAC                        POLYFI
+               EULER                         POLYX
+               EXTREM                        PROBNE
+               FACT                          PRPO3
+               FACTOR                        PRPO4
+               FAKTRE                        PRPOP
+               FF                            RANG
+               FILSMO                        RATQR
+               GAMMA                         RAUSS
+               GAUSS                         REBAKA
+               GAUSSM                        REDUC2
+               GRAF2                         RELAX
+               GRAF4                         REMEZ
+               II                            REVFFT
+               II1                           ROOTNP
+               INT655                        ROOTSP
+               INTP                          ROTF
+               INV1                          RROOT3
+               INV58                         RROOT4
+               INV66                         RUKUT
+               INVER                         SCALAR
+               INVER1                        SERDIV
+               INVERG                        SIMUL
+               INVERT                        SISTEM
+               IZOL                          SLOR
+               JACOBI                        SMOT13
+               JAVN3                         SMOT35
+               JAVN4                         SOR
+               JAVNA                         SOR3
+               JAVNMA                        SPFACT
+               JAVNY                         SRED
+               KFL                           STAND
+               KOPPBC                        STATAN
+               KOPPCO                        STEEP1
+               KOPPHE                        SUBSRE
+               KPP                           SYMIN
+               KUTTAM                        SYSTEM
+               LETI                          TCHEBY
+               LOO3                          TESTER
+               MAXIM                         TGL1
+               MAXIMU                        TGL2
+               MBVSIM                        TP5
+               TPAH                          TRIREG
+               TPAK                          TRIS
+               TRANS1                        TRISTU
+               TRANSB                        TSIMPL
+               TRANSF                        WCROSS
+               TRANSL            ALPHW       AOVSYN
+               TRANSM            ARCTAN*  E  ARG
+               TRED1                         BSL
+               TRED2                         CARCTG
+               TRIANG                        FFISHE
+               TRIDAG                        FSTUDE
+               TRIDG                         NROOT
+               TRIREG                        POWC
+               TRISTU                        ROTF
+               TSIMPL                        RROOT3
+               WCROSS            ASIN     E  ELUR
+               YDM                           JAVN3
+               YMB                           JAVN4
+               YMD                           JAVNA
+               YMM                           JAVNMA
+   A/VLMX   E  ALPHW                         JAVNY
+               AOV1                          MF
+               AOVB                          OBLAST
+               BESSET                        PRPO3
+               BISECT                        PRPO4
+               BSL                           PRPOP
+               CHEBFI                        SLOR
+               CHOSOL                        SOR
+               COMPLE                        SOR3
+               CRPATH            ATOS     E  GRAF
+               DAWSON                        GRAF1
+               ELUR                          GRAF2
+               ERFC                          GRAF3
+               FAKTCO                        GRAF4
+               FAKTRE                        POLIGR
+               FFT2                          SYMLEF
+               GAUSS                         SYMRIG
+               INT655            BCDENC*  E  GRAF
+               INTP                          GRAF1
+               INV1                          GRAF2
+               MAXIMU                        GRAF3
+               MCOMP                         GRAF4
+               MHK                           POLIGR
+               MMULT1                        SYMLEF
+               MSQ1                          SYMRIG
+               MSQ2              BCDWRIT* E  ALGLIB
+               ORTX                          AOVPRI
+               PRPO3                         AOVPRM
+               PRPO4                         BCHKOR
+               PRPOP                         DET
+               RATQR                         GRAD1
+               RAUSS                         GRAF
+               REBAKB                        GRAF1
+               REDUC1                        GRAF2
+               REDUC2                        GRAF3
+               REORDE                        GRAF4
+               RGAM                          IZOL
+               ROMBIN                        LAGR2
+               ROOTSP                        MATR
+               RTRANS                        MBVSIM
+               SIM                           MSIMPL
+               SLOR                          MULLER
+               SSTURM                        PAR3
+               STATAN                        PMATR
+               TRANSB                        POLIGR
+               TRANSL                        PRANAL
+               PRINTR                        AOVB
+               PRITRA                        AOVPRI
+               PRREGR                        AOVPRM
+               SLOJI                         BAIRS
+               SLOJJ                         BANDSO
+               SLOJK                         BESSET
+               STATAN                        BSL
+               SUBSRE                        CHEBFI
+               SYMLEF                        CONFR2
+               SYMRIG                        EKZ
+               TESTER                        ELUR
+               TRIANG                        EXTREM
+   BEGACH      RECHN                         FACT
+               WRCHN                         FACTOR
+   BIB         *GOST*                        FFISHE
+   BINARY   E  B4BITS                        FFT2
+               B4DEC                         FILON
+               B4OCT                         FILOTH
+   BROOTS      ROOTSP                        FILSMO
+   C*AD*C   E  FFT32K                        FSTUDE
+   C*LO*C   E  FFT32K                        GAMMA
+   C*MU*C   E  FFT32K                        GRAD1
+   C*MU*R   E  FFT32K                        GRAF1
+   C*ST*C   E  FFT32K                        GRAF3
+   C*SU*C   E  FFT32K                        INTERM
+   CHOIC8      B4OCT                         IZOL
+   CHOICE      B4DEC                         JAVN3
+   CHOICO      B4BITS                        JAVN4
+   CMPLX    E  FFT32K                        JAVNA
+   CONSUM      KVIT                          JAVNMA
+               RE46CH                        JAVNY
+               SLSCHN                        KTOS
+               WR64CH                        KUTTAM
+   COS      E  FFT32K                        LEGEND
+   COS*     E  BSL                           LINP
+               COSI                          LRCH
+               EXPO                          MAXIMU
+               FFT2                          NNR
+               FILON                         NOLEQ
+               FILOTH                        NR
+               FRESNE                        OBLAST
+               J0                            PMATR
+               J1                            POLIGR
+               KOCHN                         PRPO3
+               NROOT                         PRPO4
+               POWC                          PRPOP
+               REVFFT                        QUICKE
+               ROTF                          RANDOM
+               RROOT3                        REALTR
+               SFBESJ                        RELAX
+               SINE                          REORDE
+               SPHBEN                        REVFFT
+               TQUANT                        RR
+               W                             RRR
+               Y0                            SFBESJ
+               Y1                            SIM1
+   CTIME    E  RELAX                         SIMP
+   DATAPR*  E  INSLIB                        SIMPF
+   DATE*    E  DATTIM                        SLOJI
+   DAWSON      W                             SLOJJ
+   DECO        HEAD                          SLOJK
+   EDITMM      EDITM                         SLOR
+   ENDACH      ENDCHN                        SOR
+               RECHN                         SOR3
+               WRCHN                         SYMLEF
+   ENTIER*  E  ALPHA                         SYMRIG
+               TELE2             GIVSTE      KUTTAM
+               TESTER            I*DI*I   E  FFT32K
+               TP5                           ISORT1
+               TRANSL                        ISORT2
+               UR                            PERFO
+   EUKLID      SSTURM                        RECHN
+   EXP*     E  BSL                           WRCHN
+               CONFCO            I*MU*I   E  B4DEC
+               COSI                          BEUSER
+               ERFC                          EDITMM
+               EXPINT                        FFT32K
+               EXPO                          IASORT
+               FGAMMA                        PERFO
+               I0                            RASTR
+               I1                            ZAMSI
+               K0                I*MUI*   E  BEUSER
+               K1                            FFT32K
+               KOCHN                         HEAD
+               NEWT                          ISORT2
+               NQUANT                        YMKBM2
+               SINE                          YMMATP
+               TQUANT                        ZAMSI
+               W                 I*PO*I   E  B4DEC
+   FCHI2       CHI2CO            IFPULT   E  RECHN
+               CHI2FA                        WRCHN
+               TESTER            IGETS    E  EDITMM
+   FERF        FSTUDE            INPUT       STATAN
+               NQUANT            INVER2      ELUR
+   FFISHE      AOV1                          NEWTEX
+               AOVB                          RANG
+   FFT      E  FFT32K                        TP5
+   FFT2        COMPLE            INVERG      ALPHW
+               RTRANS            IOAC*    E  AOVPRI
+   FGAMMA      FCHI2                         AOVPRM
+   FLOAT    E  B4DEC                         DET
+   FREAD    E  PAR3                          GRAD1
+   FREADI   E  PAR3                          GRAF
+   FSTUDE      EQVMEA                        GRAF1
+               TESTER                        GRAF2
+   FT*002   E  BEUSER                        GRAF3
+               HEAD                          GRAF4
+               NUMBER                        LAGR2
+               PROPRI                        MATR
+               RECHN                         MBVSIM
+               WRCHN                         MSIMPL
+   FT*003   E  BEUSER                        MULLER
+               ENDCHN                        PAR3
+               HEAD                          PMATR
+               NUMBER                        POLIGR
+               PROPRI                        PRANAL
+               RECHN                         PRINTR
+               WRCHN                         PRITRA
+   FT*571   E  BEUSER                        PRREGR
+               ENDCHN                        SLOJI
+               HEAD                          SLOJJ
+               RECHN                         SLOJK
+               WRCHN                         STATAN
+   FT*611   E  NUMBER                        SUBSRE
+               PROPRI                        SYMLEF
+               RECHN                         SYMRIG
+               WRCHN                         TESTER
+   FWRITE   E  PAR3                          TRIANG
+   G           FGAMMA            IOEND*   E  ALGLIB
+   GAUSS       MHK                           AOVPRI
+               PATT                          AOVPRM
+   GAUSSM      AOVSYN                        BCHKOR
+               DET               MATR        PAR3
+               GRAD1                         TRIANG
+               GRAF              MIN0     E  EDITMM
+               GRAF1             MISTER      EDITMM
+               GRAF2             MONREAD* E  INSLIB
+               GRAF3             N8T10       *GOST*
+               GRAF4             NQUANT      CONFCO
+               IZOL                          TQUANT
+               LAGR2             NTYPVT      EDITMM
+               MATR              OCTTDEC  E  INSLIB
+               MBVSIM            OPTERM      ENDCHN
+               MSIMPL                        PROPRI
+               MULLER                        RECHN
+               PAR3                          WRCHN
+               PMATR             ORTX        AOVSYN
+               POLIGR            OTKCHN      ENDCHN
+               PRANAL            P0507       KODIR
+               PRINTR                        NUMBER
+               PRITRA                        ZAMALF
+               PRREGR            P0513A      RASTR
+               SLOJI                         ZAMALF
+               SLOJJ                         ZAMSI
+               SLOJK             P0513C      ISAME7
+               STATAN                        NUMBER
+               SUBSRE                        PERFO
+               SYMLEF                        RASTR
+               SYMRIG                        ZAMSI
+               TESTER            P0513N      KODIR
+               TRIANG                        ZAMALF
+   IPUTS    E  EDITMM            PERE2       ISORT2
+   ISAME7      ZAMSI             POWER    E  BCHKOR
+   ISORT1      ISORT2                        BESSET
+   ISORT2      IASORT                        BSL
+   ISSYMB      EDITMM                        KOCHN
+   KODIR       IASORT                        NROOT
+   KTOS        SLOJI                         POWC
+               SLOJJ                         RROOT3
+               SLOJK                         TQUANT
+               STOK              PRINT8      *GOST*
+   KVIT        BEGACH                        INSLIB
+               WR64CH                        PRBYTE
+   LENGTH   E  AOVPAC            PRINTA   E  TREQ
+               STOK              PRINTER* E  TRNSM20*
+   LIBLIST     INSLIB                      N TRNSUPP*
+   LIST46      KVIT              PROPRI      ENDCHN
+   LIST64      SLSCHN                        RECHN
+               WR64CH                        WRCHN
+   LN*      E  BSL               PRUNTER* E  TRNSM20*
+               CHI2CO            PT6      E  INSLIB
+               CONFCO            PUTALG*     CHECCOD*
+               DILOG             PUTCDC*  E  CHECCOD*
+               EXPINT            PUTICT*  E  CHECCOD*
+               EXTREM            QOUT     E  EDITMM
+               FGAMMA            R*DI*I   E  FFT32K
+               FSTUDE            R*ST*I   E  RECHN
+               K0                            WRCHN
+               K1                RANDOM      NEWTEX
+               KOCHN             RASTR       ZAMENA
+               NEWT              RDSTAR      INSLIB
+               NOLEQ             RE46CH      RECHN
+               NQUANT            READ*    E  *GOST*
+               QUICKE            READMG      ALPHA
+               RNDRND                        ELUR
+               Y0                            GAMMA
+               Y1                            JAVN3
+   MAKNAM   E  PAR3                          JAVN4
+               JAVNA             SQRT*    E  BAIRS
+               JAVNMA                        BICOD
+               JAVNY                         BQR
+               PRPO3                         BSL
+               PRPO4                         CHOBAN
+               PRPOP                         COMEIG
+               RELAX                         COMPLE
+               REML                          CONFCO
+               SLOJI                         CONFRE
+               SLOJJ                         CORRFU
+               SLOJK                         CUBL
+               SLOR                          DBINT5
+               SOR                           EIGENJ
+               SOR3                          ELUR
+               TP5                           EQVMEA
+               WRIML                         ESTFAC
+   REALTR      RTRANS                        EXTREM
+   REML        ALPHA                         FFISHE
+               GAMMA                         FILON
+               RELAX                         FILOTH
+   REORDE      COMPLE                        FSTUDE
+               RTRANS                        I0
+   RESLIS      GRAF                          I1
+               GRAF1                         II
+               GRAF2                         II1
+               GRAF3                         J0
+               GRAF4                         J1
+               MATR                          JACOBI
+               PMATR                         JAVN3
+               SLOJI                         JAVN4
+               SLOJJ                         JAVNA
+               SLOJK                         JAVNMA
+   RETAPE      FFT32K                        JAVNY
+   REVCARD* E  CHECCOD*                      K0
+   REVFFT      RTRANS                        K1
+   ROOTNP      ROOTSP                        KO
+               RROOT3                        KOPPBC
+               RROOT4                        KOPPCO
+   RROOT3      RROOT4                        KOPPHE
+   RROOT4      ROOTSP                        LEGEND
+   SARR        ISORT2                        LRCH
+   SIN      E  FFT32K                        MAXIMU
+   SIN*     E  BSL                           MCOMP
+               COSI                          MF
+               EXPO                          MHK
+               FFT2                          MINCOG
+               FILON                         MINMFL
+               FILOTH                        MINONR
+               FRESNE                        MLFACT
+               J0                            MULLER
+               J1                            NEWTEX
+               KOCHN                         NNR
+               NROOT                         NOLEQ
+               POWC                          NORM
+               REALTR                        NQUANT
+               REVFFT                        NR
+               ROTF                          OBLAST
+               SFBESJ                        ORTX
+               SINE                          P137
+               SPHBEN                        PATT
+               TQUANT                        POLYFI
+               W                             PRPO3
+               Y0                            PRPO4
+               Y1                            PRPOP
+   SLSCHN      BEGACH                        RATQR
+               RE46CH                        REDUC1
+               REDUC2            TRNSUPP*    CHECCOD*
+               RNDRND                        PUTALG*
+               ROTF                          TRNSM20*
+               RROOT3            WCROSS      AOVSYN
+               RROOT4            WPFL        PERFO
+               SLOR              WR64CH      WRCHN
+               SOR               WRIML       ALPHA
+               SOR3                          GAMMA
+               SPFACT                        OBLAST
+               STAND                         RELAX
+               STATAN            WRITE1   E  BIB
+               STEEP1            WRITMG      ALPHA
+               SUBSRE                        ELUR
+               SYMLEF                        GAMMA
+               SYMRIG                        JAVN3
+               TESTER                        JAVN4
+               TGL1                          JAVNA
+               TGL2                          JAVNMA
+               TQUANT                        JAVNY
+               TRED1                         OBLAST
+               TRED2                         PRPO3
+               TRIANG                        PRPO4
+               TRIDG                         PRPOP
+               TRIREG                        RELAX
+               TRISTU                        REML
+               VECTMU                        SLOR
+               Y0                            SOR
+               Y1                            SOR3
+               ZEROS1                        TP5
+   SRED        STAND                         WRIML
+   SSTURM      NROOTS            WRTAPE      FFT32K
+               ROOTSP            YMABEK      YMKBM2
+               RROOT3                        YMMATP
+               RROOT4            YMB         NEWTEX
+   STOA     E  GRAD1             ZAMSI       ZAMENA
+   STOK        SLOJI
+               SLOJJ
+               SLOJK
+   STOP*    E  RECHN
+               WRCHN
+   STURMI      ROOTSP
+   SUPLIS      GRAF
+               GRAF1
+               GRAF2
+               GRAF3
+               GRAF4
+               MATR
+               PMATR
+               POLIGR
+               SLOJI
+               SLOJJ
+               SLOJK
+   SYSTEM      MAXIMU
+   TABLE2*     PUTALG*
+               TRNSUPP*
+   TABLE3*     PUTALG*
+               TRNSM20*
+   TAKSTE      KUTTAM
+   TGL2        TREQL
+   TQUANT      CONFRE
+   TRED2       TREQL
+   TREQL       MLFACT
+   TRIREG      ESTFAC
+   TRNSCDC* E  CHECCOD*
+               TRNSM20*
+   TRNSM20*    PUTALG*                                             04 ИЮЛ 24 23.45
+                     CCЫЛKИ HA COMMON′Ы
+
+                                 STATAN    L 00001 *STAINP*
+   D - PACCЫЛKA ДAHHЫX           TAKSTE    L 00001 *KUMERH*
+   N - OПИCAH, HE ИCПOЛЬЗYETCЯ   TEBETI   (BEGTIN  )
+   P - CTPAHИЧHЫЙ COMMON         TRNSM20*  L 00110 INPUTAR*
+   S - CEKTOPHЫЙ COMMON                    L 00014 WORK
+   L - ПPOCTOЙ COMMON            TRNSUPP*  L 00110 INPUTAR*
+   ***** - ДЛИHA OПИCAHA HEЯBHO  WR64CH    L 00008 *PROTKL*
+                                           P 00205 BUF64
+   *GOST*    L 00015 *A*                   L 00001 KYC64
+   *GOST*P  (*GOST*  )           WRCHN     L 00008 *PROTKL*
+   B4BITS    L 00004 *A1*        WRITMG    P 01024 *ПPOГ*
+   B4DEC     L 00096 *A0*        WRTAPE   (RETAPE  )
+             L 00002 *A1*        ZAMALF    L 00066 *ALFAVI*
+   B4OCT     L 00004 *A1*        ZAMSI     L 00051 *BUKVA*
+   BEGACH    L 00008 *PROTKL*
+            NP 00205 BUF64
+            NL 00001 KYC64
+   BEGTIN    L 00049 *TERBUF*
+   BIB       L 00015 *A*
+   CHOIC8    L 00004 *A1*
+   CHOICE    L 00096 *A0*
+             L 00002 *A1*
+   CHOICO    L 00004 *A1*
+   EDITM    NS 00256 *SCREEN*
+   EDITMA   (EDITMM  )
+   EDITMM    L 00002 *INFRET*
+             L 00256 *SCREEN*
+   ENDACH   (BEGACH  )
+   EXCLIB   (INSLIB  )
+   GIVSTE   (TAKSTE  )
+   HEAD      L 00432 *B*
+            DL 00001 *JDEC*
+             L 00001 *JPR*
+             L 00001 *KM*
+   INPUT     L 00001 *STAINP*
+   INSALL   (INSLIB  )
+   INSLIB    L 00001 DRTAPE
+             L 00001 MONCARD*
+             L 00002 WBEGFLAG
+   KODIR     L 00066 *ALFAVI*
+   KVIT      L 00008 *PROTKL*
+             P 00205 BUF46
+             L 00001 KYC46
+   LIST46   (LIST64  )
+   LIST64    P 00205 BUF46
+             P 00205 BUF64
+             L 00001 KYC46
+             L 00001 KYC64
+   NEWLIB   (INSLIB  )
+   PROPRI    L 00008 *PROTKL*
+   RDSTAR    L 00001 DRTAPE
+             L 00002 WBEGFLAG
+   RE46CH    L 00008 *PROTKL*
+             P 00205 BUF46
+             L 00001 KYC46
+   READMG   (WRITMG  )
+   RECHN     L 00008 *PROTKL*
+   RETAPE    P 01024 *BFREWR*
+   RGAFTI   (BEGTIN  )
+   RGBETI   (BEGTIN  )
+   SLSCHN    L 00008 *PROTKL*
+             P 00205 BUF64
+             L 00001 KYC64                                             04 ИЮЛ 24 23.45
+                     ИCПOЛЬЗOBAHИE COMMON′OB
+
+                                           P 00205 RE46CH
+   E - ECTЬ OДHOИMEHHAЯ П/П      BUF64       00205
+   D - PACCЫЛKA ДAHHЫX                    NP 00205 BEGACH
+   N - OПИCAH, HE ИCПOЛЬЗYETCЯ             P 00205 LIST64
+   P - CTPAHИЧHЫЙ COMMON                   P 00205 SLSCHN
+   S - CEKTOPHЫЙ COMMON                    P 00205 WR64CH
+   L - ПPOCTOЙ COMMON            DRTAPE      00001
+   ***** - ДЛИHA OПИCAHA HEЯBHO            L 00001 INSLIB
+                                           L 00001 RDSTAR
+   *A*         00015             INPUTAR*    00110
+             L 00015 *GOST*                L 00110 TRNSM20*
+             L 00015 BIB                   L 00110 TRNSUPP*
+   *A0*        00096             KYC46       00001
+             L 00096 B4DEC                 L 00001 KVIT
+             L 00096 CHOICE                L 00001 LIST64
+   *A1*        00004                       L 00001 RE46CH
+             L 00004 B4BITS      KYC64       00001
+             L 00002 B4DEC                NL 00001 BEGACH
+             L 00004 B4OCT                 L 00001 LIST64
+             L 00004 CHOIC8                L 00001 SLSCHN
+             L 00002 CHOICE                L 00001 WR64CH
+             L 00004 CHOICO      MONCARD*    00001
+   *ALFAVI*  E 00066                       L 00001 INSLIB
+             L 00066 KODIR       WBEGFLAG    00002
+             L 00066 ZAMALF                L 00002 INSLIB
+   *B*         00432                       L 00002 RDSTAR
+             L 00432 HEAD        WORK        00014
+   *BFREWR*    01024                       L 00014 TRNSM20*
+             P 01024 RETAPE
+   *BUKVA*   E 00051
+             L 00051 ZAMSI
+   *INFRET*    00002
+             L 00002 EDITMM
+   *JDEC*      00001
+            DL 00001 HEAD
+   *JPR*       00001
+             L 00001 HEAD
+   *KM*        00001
+             L 00001 HEAD
+   *KUMERH*    00001
+             L 00001 TAKSTE
+   *PROTKL*    00008
+             L 00008 BEGACH
+             L 00008 KVIT
+             L 00008 PROPRI
+             L 00008 RE46CH
+             L 00008 RECHN
+             L 00008 SLSCHN
+             L 00008 WR64CH
+             L 00008 WRCHN
+   *SCREEN*    00256
+            NS 00256 EDITM
+             L 00256 EDITMM
+   *STAINP*    00001
+             L 00001 INPUT
+             L 00001 STATAN
+   *TERBUF*    00049
+             L 00049 BEGTIN
+   *ПPOГ*      01024
+             P 01024 WRITMG
+   BUF46       00205
+             P 00205 KVIT
+             P 00205 LIST64
 *END FILE

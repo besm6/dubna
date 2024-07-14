@@ -433,16 +433,44 @@ TEST_F(dubna_session, sovcatal)
 }
 
 //
+// Print contents of library 1.
+//
+TEST_F(dubna_session, library1)
+{
+    auto output = run_job_and_capture_output(R"(*name библиотека 1
+*tape:12/librar,32
+*call setftn:one,long
+*call librefer:tape=320000
+*end file
+)");
+    auto expect = file_contents(TEST_DIR "/expect_library1.txt");
+    check_output(output, expect);
+}
+
+//
+// Print contents of library 2.
+//
+TEST_F(dubna_session, library2)
+{
+    auto output = run_job_and_capture_output(R"(*name библиотека 2
+*tape:37/librar,32
+*call setftn:one,long
+*call librefer:tape=320000
+*end file
+)");
+    auto expect = file_contents(TEST_DIR "/expect_library2.txt");
+    check_output(output, expect);
+}
+
+//
 // Print contents of library 3.
 //
 TEST_F(dubna_session, library3)
 {
     auto output = run_job_and_capture_output(R"(*name библиотека 3
 *tape:37/librar,32
-*perso:320340
-*
 *call setftn:one,long
-*call tcatalog
+*call librefer:tape=320340
 *end file
 )");
     auto expect = file_contents(TEST_DIR "/expect_library3.txt");
@@ -456,10 +484,8 @@ TEST_F(dubna_session, library5)
 {
     auto output = run_job_and_capture_output(R"(*name библиотека 5
 *tape:37/librar,32
-*perso:320545
-*
 *call setftn:one,long
-*call tcatalog
+*call librefer:tape=320545
 *end file
 )");
     auto expect = file_contents(TEST_DIR "/expect_library5.txt");
@@ -473,10 +499,8 @@ TEST_F(dubna_session, library12)
 {
     auto output = run_job_and_capture_output(R"(*name библиотека 12
 *tape:12/librar,32
-*perso:320375
-*
 *call setftn:one,long
-*call tcatalog
+*call librefer:tape=320375
 *end file
 )");
     auto expect = file_contents(TEST_DIR "/expect_library12.txt");
@@ -489,10 +513,9 @@ TEST_F(dubna_session, library12)
 TEST_F(dubna_session, library21)
 {
     auto output = run_job_and_capture_output(R"(*name библиотека 21
-*perso:300240
-*
+*tape:9/monsys,32
 *call setftn:one,long
-*call tcatalog
+*call librefer:tape=320240
 *end file
 )");
     auto expect = file_contents(TEST_DIR "/expect_library21.txt");
@@ -505,10 +528,9 @@ TEST_F(dubna_session, library21)
 TEST_F(dubna_session, library22)
 {
     auto output = run_job_and_capture_output(R"(*name библиотека 22
-*perso:300172
-*
+*tape:9/monsys,32
 *call setftn:one,long
-*call tcatalog
+*call librefer:tape=320172
 *end file
 )");
     auto expect = file_contents(TEST_DIR "/expect_library22.txt");
@@ -521,10 +543,9 @@ TEST_F(dubna_session, library22)
 TEST_F(dubna_session, library23)
 {
     auto output = run_job_and_capture_output(R"(*name библиотека 23
-*perso:300320
-*
+*tape:9/monsys,32
 *call setftn:one,long
-*call tcatalog
+*call librefer:tape=320320
 *end file
 )");
     auto expect = file_contents(TEST_DIR "/expect_library23.txt");

@@ -24,237 +24,1515 @@
 
 
 *NAME БИБЛИOTEKA 23
-*PERSO:300320
-*100489×!                             ! ! ! ! ! ! !
+*TAPE:9/******,32
 *CALL SETFTN:ONE,LONG
-*CALL TCATALOG                                             04 ИЮЛ 24 23.45
-                      TEMPORARY LIBRARY
-                     CBOБOДHO  22 17 21
+*CALL LIBREFER:TAPE=320320                                             04 ИЮЛ 24 23.45
+                     CCЫЛKИ HA ПOДПPOГPAMMЫ
 
-   *ISOTAB*   21 30 17  00400    ECSHIF   (ECREAD  )  00004
-   *ORDERS*   21 27 37  00035    ECWRIT   (ECREAD  )  00001
-   ADDCS    (TASK41  )  00124    EDPRI      21 30 04  00100
-   APXAP      22 05 10  21266    EDPRI1   (EDPRI   )  00041
-   ARCHI    (TASK41  )  00033    ELCATALO (LIBINIT )  00002
-   ARCHIV   (TASK41  )  00010    ELCL     (EXLIB   )  00026
-   ASCOPC   (ASCOPY  )  00005    ELCLOS   (EXLIB   )  00027
-   ASCOPY     21 12 15  02220    ELDEL    (EXLIB   )  00025
-   B6*EC      21 12 26  02027    ELEQU    (EXLIB   )  00023
-   B6/EC    (B6*EC   )  00066    ELMOVE   (EXLIB   )  00024
-   BILISN   (CONBIL  )  00055    ELNAME   (EXLIB   )  00022
-   BILIST   (CONBIL  )  00050    ELPRES     22 04 25  00303
-   BLN      (LLФ     )  00001    ELPRESS  (LIBINIT )  00003
-   BRAND      22 12 25  00031    ELPRIN     22 04 34  00327
-   BREEDING   21 37 17  00106    ELREAD   (EXLIB   )  00020
-   BTL1     (BTLOOK  )  00026    ELWRIT   (EXLIB   )  00021
-   BTLOOK     21 37 35  01630    ENCOD      21 30 32  00310
-   BYTE/L16 (BYTE/R16)  00001    ENCODB   (ENCOD   )  00065
-   BYTE/R16   21 14 10  00014    ENCODE   (ENCOD   )  00113
-   CHANGE     21 03 01  00026    ENCODF   (ENCOD   )  00111
-   CHBADSYM   21 15 36  00142    ENCODI   (ENCOD   )  00110
-   CHEKPOIN   21 37 03  00440    ENCODL   (ENCOD   )  00005
-   CHKPNT     21 37 16  00016    ENCODT   (ENCOD   )  00037
-   CLOSE    (LISTING )  00026    ENTRY8/M (PRINT8/M)  00002
-   COCARD     21 34 25  00044    EQUCC    (EQUFS   )  00003
-   CODEI      21 03 02  00174    EQUFS      21 30 11  00032
-   CONBIL     22 01 21  00121    EQUNUM   (ЗAПAKN  )  00015
-   CONSTAN    21 03 07  00306    ERASE      22 01 25  00004
-   CONTAP     21 14 11  00044    ERREXMEM (EXMEM   )  00130
-   CONV60     21 03 16  00044    ERRPRINT   21 03 35  00204
-   COSYPR     21 36 20  00300    ETLOOK     21 26 10  06300
-   CP*TEXT  (B6*EC   )  00224    EXCLOS   (EXMEM   )  00006
-   CP/TEXT  (B6*EC   )  00276    EXLIB      22 12 05  00350
-   CPABH      21 30 01  00076    EXMEM      22 12 16  00266
-   CPRBEG   (COSYPR  )  00210    EXMOVE   (EXMEM   )  00004
-   CTLOOK     21 01 13  16447    EXREAD   (EXMEM   )  00003
-   DATE       21 03 20  00027    EXSAVE   (EXMEM   )  00005
-   DATE/    (DATE    )  00014    EXWRIT   (EXMEM   )  00002
-   DECOD      21 03 21  00144    F1PLOT     21 35 10  00314
-   DECODA     21 16 02  00026    FCREST     21 04 03  00121
-   DECODB   (DECOD   )  00002    FORS     (IGRA    )  02671
-   DECODI   (DECOD   )  00001    GIVADREM (EXMEM   )  00177
-   DEFBYT   (GIVBYT  )  00024    GIVBYT     22 03 00  00104
-   DEFECTAP   21 37 24  02045    GIVEME   (NEWSTR  )  00014
-   DEFINP     21 03 25  00117    GIVEMT     21 15 16  00062
-   DIALOG     22 04 15  00361    GIVPAG     21 04 06  00017
-   DIALOP     21 03 31  00023    GSTISO   (WRAUTOR )  00023
-   DIALOQ   (DIALOG  )  00001    GUSEV    (MT9A    )  00002
-   DIATEX     21 11 01  00034    GWCDC      21 12 01  00076
-   DTOI       21 03 33  00052    HDEL     (HOPEN   )  00003
-   DTON       22 00 34  00156    HDIAGN   (HOPEN   )  00277
-   DTRAN      21 31 01  05732    HEADLP   (HEADLT  )  00142
-   EBCISO     21 26 07  00024    HEADLT     21 15 01  00251
-   EC*B6    (B6*EC   )  00113    HGET     (HOPEN   )  00002
-   EC*REW   (ECREAD  )  00003    HKEY     (HOPEN   )  00005
-   EC/B6    (B6*EC   )  00205    HOPEN      21 04 07  00401
-   ECB6       21 23 23  00713    HPUT     (HOPEN   )  00001
-   ECBEG      21 14 17  00017    HSAVE    (HOPEN   )  00004
-   ECBEGN   (ECBEG   )  00001    I10T8    (NEWSTR  )  00050
-   ECEOF    (ECREAD  )  00002    IANALS     21 24 12  00311
-   ECEXTR   (TASK41  )  00117    IBMIO    (IBMPC   )  00024
-   ECREAD     21 14 13  00145    IBMPC      22 13 33  00144
-   ICOS     (TASK41  )  00075    LBPUT    (LSHIFT  )  00027
-   IDCHECK  (NUSTOID )  00022    LCADD    (LSHIFT  )  00006
-   IDEC       21 04 17  00025    LCHANG   (LDEFIN  )  00473
-   IDTONUS  (NUSTOID )  00013    LCNT     (LSHIFT  )  00011
-   IELADR   (EXLIB   )  00042    LCONC    (LDEFIN  )  00164
-   IEXADR   (EXMEM   )  00007    LCONEC     21 36 27  00070
-   IFEREQ     21 04 20  00056    LCORRECT (LIBINIT )  00001
-   IFRAG    (IGRA    )  02533    LCREAT   (LDEFIN  )  00126
-   IGETPAR  (IBMPC   )  00100    LCROSS     21 37 30  00242
-   IGETS      21 04 22  00037    LDEATH   (LDEFIN  )  00130
-   IGETSL   (IGETS   )  00024    LDEFIN     21 34 32  00664
-   IGRA       21 16 03  03044    LDELA    (LDEFIN  )  00370
-   IGRAS    (IGRA    )  02347    LDELB    (LDEFIN  )  00371
-   INFOPT   (IGRA    )  02520    LETBI    (TASK41  )  00060
-   INFTYP     22 11 34  00155    LEXOR    (LSHIFT  )  00005
-   INPSPT     21 04 24  00003    LFDEL    (READER  )  00036
-   INTCOD     21 30 15  00047    LFIR     (LSHIFT  )  00013
-   INTER      21 37 27  00017    LIBINIT    22 05 03  00113
-   INTRA    (BRAND   )  00007    LIBLOOK    21 21 15  00333
-   IOCTAL     21 15 15  00013    LIMAGE     21 34 22  00063
-   IOPT     (IGRA    )  00676    LINCA    (LDEFIN  )  00466
-   IP       (IGRA    )  02306    LINCB    (LDEFIN  )  00437
-   IPARTW     21 04 25  00012    LISPRI     21 36 32  00157
-   IPR      (IGRA    )  02304    LISTING    22 15 01  00074
-   IPT10      21 12 04  02451    LLC        21 11 10  21073
-   IPUTS    (IGETS   )  00001    LLCHEK     21 11 05  00115
-   IPUTSL   (IGETS   )  00025    LLФ        21 20 10  10464
-   IRND       21 04 26  00027    LLФANL     21 17 32  01040
-   ISCANG   (IGRA    )  02115    LLФDAT   (LLФPRI  )  00003
-   ISO        21 37 23  00006    LLФEOP   (LLФPRI  )  00017
-   ISO*EC     21 13 15  00037    LLФIFC   (LLФPRI  )  00007
-   ISO*FIN    21 13 17  00021    LLФMIN     21 20 22  00010
-   ISOTEX     21 04 27  00032    LLФPAG   (LLФPRI  )  00002
-   ISOTIM   (INTCOD  )  00001    LLФPRI     21 20 23  00037
-   ISPACK     21 11 37  00061    LLФPRN     21 20 25  00227
-   ISUNP      21 11 35  00056    LLФZON   (LLФPRI  )  00020
-   ITERG    (IGRA    )  02077    LOAD       21 05 02  00036
-   ITOD     (DTOI    )  00001    LOR      (LSHIFT  )  00004
-   IUP      (IGRA    )  02406    LORVM    (VMEMOR  )  00043
-   JCOUNS   (JSEART  )  00001    LPACK    (LSHIFT  )  00001
-   JCTR     (LISTING )  00042    LREAD    (LDEFIN  )  00254
-   JDATE      21 04 30  00036    LREGIM     21 15 00  00016
-   JERR       21 04 32  00055    LREWIN   (LDEFIN  )  00127
-   JEXTRA   (MEMORR  )  00005    LSHIFT     21 34 16  00040
-   JEXTRI   (MEMORR  )  00006    LSTRIN   (COCARD  )  00031
-   JFEX1    (JFOCC   )  00562    LSWOP    (LDEFIN  )  00065
-   JFEXCH   (JFOCC   )  00563    LUNP     (LSHIFT  )  00002
-   JFOCC      22 03 03  01322    LWRITE   (LDEFIN  )  00255
-   JMPINP   (DEFINP  )  00002    MAK*TRT    22 15 05  00001
-   JOPER      21 04 34  00076    MAKESC   (PACПAK  )  00050
-   JSEART     21 04 36  00030    MAKRIW   (TASK41  )  00041
-   JTIME    (JDATE   )  00025    MAKTIT     21 11 27  00224
-   JWORD    (LDEFIN  )  00074    MAKWIW   (TASK41  )  00042
-   KEY        21 04 37  00100    MATRCH   (PTPUNS  )  00110
-   KEYGET   (KEY     )  00035    MBWAND   (MBWDEF  )  00047
-   KEYPUT   (KEY     )  00051    MBWCHK   (MBWDEF  )  00065
-   KLETKA   (TASK41  )  00047    MBWCLE   (MBWDEF  )  00067
-   KLIN     (DIALOP  )  00021    MBWCNT   (MBWDEF  )  00124
-   LAFTER   (LDEFIN  )  00357    MBWDEF     22 02 10  00202
-   LAND     (LSHIFT  )  00003    MBWEXO   (MBWDEF  )  00054
-   LANDVM   (VMEMOR  )  00040    MBWFIR   (MBWDEF  )  00131
-   LASCII     22 15 15  00067    MBWLDA   (MBWDEF  )  00030
-   LBCLE    (LSHIFT  )  00026    MBWNOT   (MBWDEF  )  00061
-   LBEFOR   (LDEFIN  )  00356    MBWOR    (MBWDEF  )  00041
-   LBGET    (LSHIFT  )  00030    MBWPUT   (MBWDEF  )  00066
-   MBWSFT     22 02 15  00155    PUTPAR   (IBMPC   )  00120
-   MBWSTA   (MBWDEF  )  00034    PUTPLO     21 34 31  00007
-   MEMORR     21 16 01  00015    QCIA     (QTER    )  00046
-   MEMORW   (MEMORR  )  00002    QHSORT     22 01 04  00230
-   MEMVRD   (VMEMOR  )  00046    QIN        21 07 06  00023
-   MGAUSS     21 25 16  00774    QINP       21 20 34  01105
-   MISTER     21 34 20  00006    QKOORD     22 05 07  00035
-   MIXER    (BRAND   )  00006    QLINE      21 07 07  00036
-   MONCRD   (NZEDIT  )  00004    QMOVE      21 07 11  00033
-   MT9      (MT9A    )  00001    QN         21 34 13  00121
-   MT9A       22 03 34  00175    QOUT       21 07 13  00026
-   MTRLNK     21 02 24  00157    QOUTLT     21 34 21  00017
-   NCDTB6   (GWCDC   )  00022    QSTR       21 07 14  00031
-   NEWLIB     21 05 04  01341    QTER       21 07 15  00056
-   NEWSTR     21 05 34  00074    R160       21 35 20  00235
-   NNN        22 12 00  00150    R160S    (R160    )  00013
-   NR       (IGRA    )  02007    RCINIT   (READER  )  00050
-   NSCANF   (IGRA    )  02656    RCO      (LISTING )  00031
-   NSCANG   (IGRA    )  02625    RDEMEM   (EXMEM   )  00166
-   NTOD     (DTON    )  00001    RDEXMEM  (EXMEM   )  00166
-   NTRANC     21 12 23  00124    RDSTAR     21 07 17  00073
-   NTREE    (IGRA    )  02563    RDVMEM   (VMEMOR  )  00046
-   NUMBS    (COCARD  )  00017    READCG     21 07 22  00103
-   NUMFOR     21 11 26  00031    READER     21 07 25  00107
-   NUSTOID    22 01 00  00036    READPL     21 36 36  00007
-   NV       (IGRA    )  02052    RENUMB     22 12 26  00150
-   NZEDIT     22 14 00  00006    REPLAC     21 27 06  01262
-   NZTX     (LISTING )  00047    REQDEL   (REQTP   )  00075
-   OFFPLO   (PUTPLO  )  00001    REQFL    (REQTP   )  00014
-   OPCOUT   (LISTING )  00040    REQSFL   (REQTP   )  00024
-   OPENG    (IGRA    )  02272    REQSTP   (REQTP   )  00007
-   OPT10    (IPT10   )  00140    REQTP      21 07 30  00164
-   ORD        22 01 11  00323    REQUEST    21 07 34  00173
-   OVTREE     22 01 33  06512    RESRCF   (READER  )  00070
-   PACПAK     21 30 06  00074    RESTART  (CHEKPOIN)  00031
-   PARAMT     21 30 30  00026    RESTOR   (SWOP    )  00001
-   PARM*      21 05 37  00144    RETURN   (REQUEST )  00130
-   PARMON   (PARAMT  )  00001    RN01     (BRAND   )  00010
-   PARSER     21 06 03  00300    RUNSUB     21 34 27  00025
-   PAЗHИЦA2   21 06 12  00735    RUSORT     21 17 25  00222
-   PAЗБOP     21 24 01  00701    RZO      (LISTING )  00035
-   PC       (IGRA    )  01755    S/TEMPO  (PAЗHИЦA2)  00326
-   PEC        21 21 26  02673    S160     (R160    )  00122
-   PERFPL     21 26 02  00157    SAVEMON/   21 13 14  00027
-   PERFPL1  (PERFPL  )  00001    SAVRCF   (READER  )  00064
-   PERFPL2  (PERFPL  )  00002    SCANER     22 01 02  00064
-   PERSOT     21 34 24  00010    SEARCH*    21 10 01  00313
-   PREASP     21 23 06  00617    SERVER     22 15 06  00300
-   PRIBYT     21 10 36  00075    SHSORT     21 10 10  00133
-   PRIM     (CODEI   )  00170    SISORT   (QHSORT  )  00127
-   PRINT//M   21 06 34  00002    SORT48     21 10 13  00032
-   PRINT8/M   21 06 35  00032    SQROOT     21 36 01  00737
-   PRINTER    21 15 10  00173    STACK*   (SEARCH* )  00227
-   PRINTSP*   21 06 37  00172    STARTG   (IGRA    )  02301
-   PT6        21 07 03  00111    STRINP   (DEFINP  )  00001
-   PTPBEG   (PTPUNS  )  00052    STROUT     21 10 14  01447
-   PTPEND   (PTPUNS  )  00041    STRPRN     21 10 20  00035
-   PTPUNM   (PTPUNS  )  00031    SWOP       21 10 22  00227
-   PTPUNS     22 02 21  00305    TABLE*EC   21 13 31  00456
-   PULLMOD    22 04 01  00352    TABLE*SS   21 14 02  01041
-   PUTADR   (CONTAP  )  00032    TABSIMEC   21 13 20  00400
-   PUTBL    (ENCOD   )  00010    TAKELIBR   21 10 30  00152
-   PUTG     (SCANER  )  00003    TASK41     22 01 26  00146
-   PUTH     (SCANER  )  00001    TASK54   (LISTING )  00012
-   PUTO     (SCANER  )  00002    TBPRIN   (TPRIN   )  00063
-   PUTOUT     22 14 01  01776    TEPRIN     22 12 33  01106
-   TESTLIB    22 04 12  00073
-   TEXCDC     21 35 26  02742
-   TEXOUT     21 24 22  01647
-   TINGR1     21 10 34  00036
-   TPRIM    (TPRIN   )  00005
-   TPRIN      22 13 11  05127
-   TRACER     21 25 37  00073
-   UNPTIR   (EQUFS   )  00014
-   VMCLOS   (VMEMOR  )  00161
-   VMCOPY   (VMEMOR  )  00012
-   VMEMOR     22 02 30  01416
-   VMREAD   (VMEMOR  )  00060
-   VMSAVE   (VMEMOR  )  00162
-   VMSET    (VMEMOR  )  00056
-   VMWRIT   (VMEMOR  )  00057
-   W160     (R160    )  00005
-   W160S    (R160    )  00017
-   W1LOOK     22 15 20  00677
-   WCO      (LISTING )  00033
-   WHATIS     21 02 30  00314
-   WRAUTOR    21 11 03  00037
-   WRAUTR     21 15 20  00552
-   WRITPL     21 36 37  00131
-   WRVMEM   (VMEMOR  )  00033
-   YПAKN    (ЗAПAKN  )  00024
-   ZZZZZFDB (REQTP   )  00033
-   ЖИPЛИC   (ЖИPПEЧ  )  00106
-   ЖИPПEЧ     21 21 23  00203
-   ЗAПAK    (PACПAK  )  00036
-   ЗAПAKN     21 30 13  00037
-   ИCKATEЛЬ   21 15 07  00016
-   ЛИЗA       21 14 20  00661
+                                 ARCHI    (TASK41  )
+   D - PACCЫЛKA ДAHHЫX           ARCHIV   (TASK41  )
+   E - BHEШHЯЯ П/П               ASCOPC   (ASCOPY  )
+                                 ASCOPY    E F/SNOSV
+   *ISOTAB*                                E F/SRETNR
+   *ORDERS*                                  IGETS
+   ADDCS    (TASK41  )                       IPUTS
+   APXAP       ADDCS                         LAND
+               BRAND                         LCNT
+               CPRBEG                        LOR
+               DATE                          LSHIFT
+               DIALOG                        MT9
+               DIALOP                        MT9A
+               DIALOQ                      E PRIN
+               DIATEX                        PUTG
+               DTOI                          PUTH
+               ENCOD             B6*EC       B6*EC
+               ENCODB                        CP*TEXT
+               ENCODI                      E DATAPR*
+               ENCODL                        EC*B6
+               ENCODT                        ECEOF
+             E F/SAVER                       ECREAD
+             E F/SRET                        ECSHIF
+               ICOS                          ECWRIT
+               INFTYP                        ISO*EC
+               IOCTAL                      E OCTTDEC
+               ISOTEX                      E PARAMT*
+               ITOD                        E PRINT8//
+               JEXTRA                        PUTADR
+               JEXTRI                      E RBEGIN
+               JFEXCH                      E RECARD
+               JFOCC                         SAVEMON/
+               JSEART                      E WBEGIN
+               KLETKA                      E WRCARD
+               LAND                        E WRIEND
+               LETBI             B6/EC    (B6*EC   )
+               LEXOR             BILISN   (CONBIL  )
+               LISPRI            BILIST   (CONBIL  )
+               LOR               BLN      (LLФ     )
+               LSHIFT            BRAND
+               MAKRIW            BREEDING  E PARAMT*
+               MAKWIW                      E PRINT8
+               MBWAND                      E PT6/G
+               MBWCHK                      E READ*
+               MBWCLE            BTL1     (BTLOOK  )
+               MBWCNT            BTLOOK      DIALOG
+               MBWDEF                        DIALOQ
+               MBWEXO                      E F/SAVER
+               MBWFIR                      E F/SRET
+               MBWLDA                        HEADLP
+               MBWPUT                        INFTYP
+               MBWSTA                        IOCTAL
+               MIXER                         ISUNP
+             E NOTLIS                        ITOD
+               PUTBL                         JFEX1
+               PUTH                          JFOCC
+               PUTO                          JSEART
+             E R*TO*I                        LAND
+               SCANER                        LEXOR
+               SHSORT                        LOR
+             E TAKTAP                        LREGIM
+             E TEXISO                        LSHIFT
+               TEXOUT                        NUMFOR
+               PUTG                          SCANER
+               PUTH                        E STOP*
+               PUTO                        E TAKTAP
+               SCANER                      E WBEGIN
+             E TEXISO                      E WRCARD
+               W1LOOK                      E WRIEND
+   BYTE/L16 (BYTE/R16)           DATE
+   BYTE/R16                      DATE/    (DATE    )
+   CHANGE                        DECOD
+   CHBADSYM  E COSYTISO          DECODA
+               ISUNP             DECODB   (DECOD   )
+             E PRINT8//          DECODI   (DECOD   )
+   CHEKPOIN    JDATE             DEFBYT   (GIVBYT  )
+             E PARAMT*           DEFECTAP  E PARAMT*
+   CHKPNT                        DEFINP    E MONREAD*
+   CLOSE    (LISTING )                     E PRINT8
+   COCARD                                  E STOP*
+   CODEI     E PRINT8//          DIALOG    E PRINT8
+   CONBIL    E DATAPR*                     E READ*
+             E PRINT8//                    E TERIN
+   CONSTAN   E CHKBEG*                     E TEROUT
+             E CHKEND*           DIALOP    E DATAPR*
+             E ISO*TEX*                    E PRINT8
+             E PT6/G                       E PRINT8//
+   CONTAP                        DIALOQ   (DIALOG  )
+   CONV60                        DIATEX      DIALOG
+   COSYPR    E F/SNOSV                       DIALOP
+             E F/SRETNR          DTOI      E OCTTDEC
+               IGETS             DTON      E OCTTDEC
+               IPUTS             DTRAN     E BOKHO
+               JEXTRI                      E DRUMTAP*
+             E LOCF                        E MONREAD*
+             E NEWLIS                      E OKHO
+               PUTG                        E PARAMT*
+               PUTH                        E PRINT8
+   CP*TEXT  (B6*EC   )                     E SIMFAIL*
+   CP/TEXT  (B6*EC   )                     E TABSIMIS
+   CPABH                                   E ПEP6B81C
+   CPRBEG   (COSYPR  )           EBCISO      TABSIMEC
+   CTLOOK    E *ENDFI            EC*B6    (B6*EC   )
+             E *REWIN            EC*REW   (ECREAD  )
+             E BINWRIT*          EC/B6    (B6*EC   )
+               DIALOG            ECB6      E F/SRET
+               DIALOP                      E F/SSTART
+               DIALOQ                        IANALS
+             E F/SAVER                       IGETS
+               GWCDC                         MT9A
+             E IOCONT*                       PAЗБOP
+             E IOEND*                      E UBUNCH
+               IPUTS                       E VBLANK
+               JFOCC             ECBEG       EC*REW
+               JSEART                        ECSHIF
+               LAND                          PUTADR
+               LEXOR             ECBEGN   (ECBEG   )
+               LOR               ECEOF    (ECREAD  )
+               LSHIFT            ECEXTR   (TASK41  )
+               MT9               ECREAD      CONTAP
+               MT9A                          PUTADR
+               NCDTB6            ECSHIF   (ECREAD  )
+               PUTG              ECWRIT   (ECREAD  )
+               PUTH              EDPRI     E PRINT8//
+               PUTO              EDPRI1   (EDPRI   )
+               QN                ELCATALO (LIBINIT )
+               QOUT              ELCL     (EXLIB   )
+             E R*TO*I            ELCLOS   (EXLIB   )
+   ELDEL    (EXLIB   )           F1PLOT    E COS*
+   ELEQU    (EXLIB   )                     E COS
+   ELMOVE   (EXLIB   )                     E F/SRET
+   ELNAME   (EXLIB   )                     E F/SSTART
+   ELPRES      ERREXMEM                      IGETS
+               EXSAVE                      E SET
+               GIVADREM                    E SIN*
+   ELPRESS  (LIBINIT )                     E SIN
+   ELPRIN    E DATAPR*                     E SYMBOL
+               ERREXMEM          FCREST      GIVPAG
+               GIVADREM          FORS     (IGRA    )
+             E PRINT8            GIVADREM (EXMEM   )
+   ELREAD   (EXLIB   )           GIVBYT
+   ELWRIT   (EXLIB   )           GIVEME   (NEWSTR  )
+   ENCOD                         GIVEMT      ISOTEX
+   ENCODB   (ENCOD   )           GIVPAG
+   ENCODE   (ENCOD   )           GSTISO   (WRAUTOR )
+   ENCODF   (ENCOD   )           GUSEV    (MT9A    )
+   ENCODI   (ENCOD   )           GWCDC
+   ENCODL   (ENCOD   )           HDEL     (HOPEN   )
+   ENCODT   (ENCOD   )           HDIAGN   (HOPEN   )
+   ENTRY8/M (PRINT8/M)           HEADLP   (HEADLT  )
+   EQUCC    (EQUFS   )           HEADLT
+   EQUFS                         HGET     (HOPEN   )
+   EQUNUM   (ЗAПAKN  )           HKEY     (HOPEN   )
+   ERASE                         HOPEN
+   ERREXMEM (EXMEM   )           HPUT     (HOPEN   )
+   ERRPRINT    PRINT//M          HSAVE    (HOPEN   )
+               PRINT8/M          I10T8    (NEWSTR  )
+               STACK*            IANALS    E BCDWRIT*
+             E TABSIMIS                    E F/FRET
+   ETLOOK      DIALOG                      E F/FSTART
+               DIALOP                      E IOAC*
+               DIALOQ                      E IOCONT*
+               EBCISO                      E IOEND*
+             E F/SAVER                       MT9A
+             E F/SRET                      E R*TO*I
+               IGETS             IBMIO    (IBMPC   )
+               IGETSL            IBMPC       BRAND
+               IPUTS                       E F/START
+               JFOCC                       E ISO*TEX*
+               JSEART                        ISOTEX
+               MT9                           JFOCC
+               PREASP                      E OCTTDEC
+               PUTG                          SERVER
+               PUTH              ICOS     (TASK41  )
+             E R*TO*I            IDCHECK  (NUSTOID )
+               SCANER            IDEC
+             E WBEGIN            IDTONUS  (NUSTOID )
+             E WRCARD            IELADR   (EXLIB   )
+             E WRIEND            IEXADR   (EXMEM   )
+   EXCLOS   (EXMEM   )           IFEREQ      ZZZZZFDB
+   EXLIB       ERREXMEM          IFRAG    (IGRA    )
+               EXCLOS            IGETPAR  (IBMPC   )
+               EXMEM             IGETS
+               EXMOVE            IGETSL   (IGETS   )
+               EXREAD            IGRA
+               EXSAVE            IGRAS    (IGRA    )
+               EXWRIT            INFOPT   (IGRA    )
+               IEXADR            INFTYP
+   EXMEM     E PRINT8            INPSPT
+             E STOP*             INTCOD
+   EXMOVE   (EXMEM   )           INTER
+   EXREAD   (EXMEM   )           INTRA    (BRAND   )
+   EXSAVE   (EXMEM   )           IOCTAL    E OCTTDEC
+   EXWRIT   (EXMEM   )           IOPT     (IGRA    )
+   IP       (IGRA    )                       IGETS
+   IPARTW                        LBCLE    (LSHIFT  )
+   IPR      (IGRA    )           LBEFOR   (LDEFIN  )
+   IPT10     E F/SAVER           LBGET    (LSHIFT  )
+             E F/SRET            LBPUT    (LSHIFT  )
+               IGETS             LCADD    (LSHIFT  )
+               INPSPT            LCHANG   (LDEFIN  )
+               IPUTS             LCNT     (LSHIFT  )
+               JOPER             LCONC    (LDEFIN  )
+               LAND              LCONEC    E F/FRET
+               LCNT                        E F/FSTART
+               LOR                           MBWCNT
+               LSHIFT                        MBWDEF
+               PTPBEG                        MBWEXO
+               PTPEND                        MBWFIR
+               PTPUNM                        MBWLDA
+               PTPUNS                        MBWOR
+               PUTG                          MBWPUT
+               PUTH                          MBWSTA
+             E RBEGIN                      E R*TO*I
+             E RECARD            LCORRECT (LIBINIT )
+             E WBEGIN            LCREAT   (LDEFIN  )
+             E WRCARD            LCROSS    E F/FNOSV
+             E WRIEND                      E F/FRETNR
+   IPUTS    (IGETS   )           LDEATH   (LDEFIN  )
+   IPUTSL   (IGETS   )           LDEFIN
+   IRND                          LDELA    (LDEFIN  )
+   ISCANG   (IGRA    )           LDELB    (LDEFIN  )
+   ISO       E TABLE2*           LETBI    (TASK41  )
+   ISO*EC      ISO*FIN           LEXOR    (LSHIFT  )
+               TABSIMEC          LFDEL    (READER  )
+   ISO*FIN                       LFIR     (LSHIFT  )
+   ISOTEX    E ISO*TEX*          LIBINIT     ELPRES
+   ISOTIM   (INTCOD  )                       ELPRIN
+   ISPACK                                    EXLIB
+   ISUNP                                   E PARAMT*
+   ITERG    (IGRA    )           LIBLOOK   E ALLMEMOR
+   ITOD     (DTOI    )                     E OCTTDEC
+   IUP      (IGRA    )                     E PRINT8
+   JCOUNS   (JSEART  )                       SHSORT
+   JCTR     (LISTING )                     E TEXISO
+   JDATE                         LIMAGE
+   JERR                          LINCA    (LDEFIN  )
+   JEXTRA   (MEMORR  )           LINCB    (LDEFIN  )
+   JEXTRI   (MEMORR  )           LISPRI      COSYPR
+   JFEX1    (JFOCC   )                     E F/FRET
+   JFEXCH   (JFOCC   )                     E F/FSTART
+   JFOCC       BRAND             LISTING     *ISOTAB*
+               ISOTEX                        DIALOP
+               MIXER                         MAK*TRT
+             E OCTTDEC                       PUTOUT
+   JMPINP   (DEFINP  )           LLC         DIALOG
+   JOPER     E TEXISO                        DIALOP
+   JSEART                                  E F/SRET
+   JTIME    (JDATE   )                     E F/SSTART
+   JWORD    (LDEFIN  )                       JEXTRA
+   KEY                                       JEXTRI
+   KEYGET   (KEY     )                       KLIN
+   KEYPUT   (KEY     )                       LLCHEK
+   KLETKA   (TASK41  )                     E LOCF
+   KLIN     (DIALOP  )                       LSHIFT
+   LAFTER   (LDEFIN  )                       MEMORR
+   LAND     (LSHIFT  )                       PUTG
+   LANDVM   (VMEMOR  )                       PUTH
+   LASCII    E F/FNOSV           LLCHEK    E F/FRET
+             E F/FRETNR                    E F/FSTART
+               LEXOR                       E BINREAD*
+               LSHIFT                      E BINWRIT*
+               SCANER                      E F/FRET
+   LLФ      D  LLФANL                      E F/FSTART
+               LLФMIN                      E IOAC*
+               LLФPAG                      E IOCONT*
+               LLФPRN                      E IOEND*
+               LLФZON                      E R*TO*I
+             E PAS               MISTER
+   LLФANL   DE PAK               MIXER    (BRAND   )
+             E PAS               MONCRD   (NZEDIT  )
+             E UNP               MT9      (MT9A    )
+   LLФDAT   (LLФPRI  )           MT9A
+   LLФEOP   (LLФPRI  )           MTRLNK    E F/FRET
+   LLФIFC   (LLФPRI  )                     E F/FSTART
+   LLФMIN                                    LAND
+   LLФPAG   (LLФPRI  )                       LOR
+   LLФPRI    E PRINT8//                      LSHIFT
+   LLФPRN    E FT*002                        MBWDEF
+             E FT*003                        MBWLDA
+             E FT*611                        MBWPUT
+             E I*DI*I                        MBWSTA
+             E I*MU*I                      E R*TO*I
+               LLФDAT            NCDTB6   (GWCDC   )
+               LLФIFC            NEWLIB    E DATAPR*
+               LLФPAG                      E LIBLIST
+               LLФPRI                      E MONREAD*
+   LLФZON   (LLФPRI  )                     E OCTTDEC
+   LOAD        ISOTEX                      E PRINT8
+             E LOADANGO                    E PT6/G
+   LOR      (LSHIFT  )                       RDSTAR
+   LORVM    (VMEMOR  )           NEWSTR
+   LPACK    (LSHIFT  )           NNN       E F/SRET
+   LREAD    (LDEFIN  )                     E F/SSTART
+   LREGIM                                    IGETS
+   LREWIN   (LDEFIN  )                       IPUTS
+   LSHIFT                        NR       (IGRA    )
+   LSTRIN   (COCARD  )           NSCANF   (IGRA    )
+   LSWOP    (LDEFIN  )           NSCANG   (IGRA    )
+   LUNP     (LSHIFT  )           NTOD     (DTON    )
+   LWRITE   (LDEFIN  )           NTRANC      CONV60
+   MAK*TRT                                 E F/FRET
+   MAKESC   (PACПAK  )                     E F/FSTART
+   MAKRIW   (TASK41  )                       LAND
+   MAKTIT                                    LOR
+   MAKWIW   (TASK41  )                       LSHIFT
+   MATRCH   (PTPUNS  )           NTREE    (IGRA    )
+   MBWAND   (MBWDEF  )           NUMBS    (COCARD  )
+   MBWCHK   (MBWDEF  )           NUMFOR
+   MBWCLE   (MBWDEF  )           NUSTOID
+   MBWCNT   (MBWDEF  )           NV       (IGRA    )
+   MBWDEF    E STOP*             NZEDIT
+   MBWEXO   (MBWDEF  )           NZTX     (LISTING )
+   MBWFIR   (MBWDEF  )           OFFPLO   (PUTPLO  )
+   MBWLDA   (MBWDEF  )           OPCOUT   (LISTING )
+   MBWNOT   (MBWDEF  )           OPENG    (IGRA    )
+   MBWOR    (MBWDEF  )           OPT10    (IPT10   )
+   MBWPUT   (MBWDEF  )           ORD       E CHKBEG*
+   MBWSFT      MBWFIR                      E CHKEND*
+   MBWSTA   (MBWDEF  )                       DATE
+   MEMORR                                  E OCTTDEC
+   MEMORW   (MEMORR  )                     E PRINT8//
+   MEMVRD   (VMEMOR  )                       QN
+   MGAUSS    E *BACKS                      E RECARD
+             E *REWIN                        SHSORT
+             E BCDWRIT*          OVTREE    E BCDWRIT*
+             E F/FRET                        PRINT8/M
+             E F/FSTART                    E RBEGIN
+               IGETS                       E RECARD
+             E IOCONT*                       STACK*
+             E IOEND*            PRINTSP*  E DATAPR*
+               IPUTS                       E PARAMT*
+               JEXTRI                      E PRINT8//
+               MEMORR            PT6
+             E TEXISO            PTPBEG   (PTPUNS  )
+             E WBEGIN            PTPEND   (PTPUNS  )
+             E WRCARD            PTPUNM   (PTPUNS  )
+             E WRIEND            PTPUNS
+   PACПAK                        PULLMOD  DE COSYTISO
+   PARAMT    E PARAMT*                     E PARAMT*
+   PARM*       PRINT8/M                    E PRINT8
+             E TABSIMIS                    E STOP*
+   PARMON   (PARAMT  )                     E TABSIMIS
+   PARSER                                  E WBEGIN
+   PAЗHИЦA2  E OCTTDEC                     E WRCARD
+             E PARAMT*                     E WRIEND
+             E PT6/G             PUTADR   (CONTAP  )
+   PAЗБOP    E BCDWRIT*          PUTBL    (ENCOD   )
+             E F/FRET            PUTG     (SCANER  )
+             E F/FSTART          PUTH     (SCANER  )
+             E IOAC*             PUTO     (SCANER  )
+             E IOCONT*           PUTOUT      CHANGE
+             E IOEND*                        CLOSE
+             E IUCOMP                        DIALOG
+             E JBYT                          DIALOP
+             E R*TO*I                        DIALOQ
+               SCANER                      E F/SAVER
+             E STOP*                       E F/SRET
+             E UBLOW                         IGETS
+             E UBUNCH                        IPUTS
+             E ULEFT                         JCTR
+             E VBLANK                        JFOCC
+   PC       (IGRA    )                       MT9
+   PEC       E F/SRET                        MT9A
+             E F/SSTART                      NZTX
+               HEADLP                        OPCOUT
+               IGETS                         PUTG
+               IPUTS                         PUTH
+               JCOUNS                        PUTO
+               JSEART                        RCO
+               LEXOR                         RZO
+               LLФPRI                        SCANER
+   PERFPL    E PARAMT*                     E TAKTAP
+               PTPBEG                      E WBEGIN
+               PTPEND                        WCO
+               PTPUNM                      E WRCARD
+               PTPUNS                      E WRIEND
+             E RBEGIN            PUTPAR   (IBMPC   )
+             E RECARD            PUTPLO
+   PERFPL1  (PERFPL  )           QCIA     (QTER    )
+   PERFPL2  (PERFPL  )           QHSORT    E F/SRET
+   PERSOT    E LIBDRUM                     E F/SSTART
+   PREASP    E F/SRET                      E R*TO*INT
+             E F/SSTART                      RN01
+               IGETS             QIN
+               IPUTS             QINP      E BCDDEC*
+   PRIBYT    E PRINT8                      E BCDENC*
+   PRIM     (CODEI   )                     E BCDREAD*
+   PRINT//M    ENTRY8/M                    E BCDWRIT*
+             E PRINT8//                    E F/SRET
+   PRINT8/M  E PRINT8                      E F/SSTART
+   PRINTER   E PARAMT*                     E IOAC*
+             E IOCONT*           RESRCF   (READER  )
+             E IOEND*            RESTART  (CHEKPOIN)
+             E R*TO*I            RESTOR   (SWOP    )
+             E R*TO*INT          RETURN   (REQUEST )
+             E STOP*             RN01     (BRAND   )
+   QKOORD                        RUNSUB    E BEGTPR
+   QLINE                                   E LOADANGO
+   QMOVE                                   E LOADGO
+   QN        E CHKBEG*                     E RES100
+             E CHKEND*           RUSORT      SHSORT
+   QOUT                          RZO      (LISTING )
+   QOUTLT      LOAD              S/TEMPO  (PAЗHИЦA2)
+               QOUT              S160     (R160    )
+   QSTR                          SAVEMON/
+   QTER                          SAVRCF   (READER  )
+   R160      E F/SRET            SCANER
+             E F/SSTART          SEARCH*
+               GIVPAG            SERVER    E F/SAVER
+               GUSEV                         IBMIO
+               IGETS                         IGETPAR
+               IGETSL                        JFEX1
+               IPUTS                         JFOCC
+               IPUTSL                        PUTPAR
+             E R*TO*I            SHSORT
+   R160S    (R160    )           SISORT   (QHSORT  )
+   RCINIT   (READER  )           SORT48
+   RCO      (LISTING )           SQROOT    E *BACKS
+   RDEMEM   (EXMEM   )                     E *REWIN
+   RDEXMEM  (EXMEM   )                     E BINREAD*
+   RDSTAR                                  E BINWRIT*
+   RDVMEM   (VMEMOR  )                     E F/SRET
+   READCG      GIVEME                      E F/SSTART
+             E PRINT8                      E IOCONT*
+   READER    E RBEGIN                      E IOEND*
+             E READ*                       E R*TO*I
+             E RECARD                      E SQRT*
+             E TERIN                       E SQRT
+   READPL                        STACK*   (SEARCH* )
+   RENUMB    E F/SRET            STARTG   (IGRA    )
+             E F/SSTART          STRINP   (DEFINP  )
+               IGETS             STROUT      INTER
+               IPUTS                         KEY
+   REPLAC      CPABH                       E PRINT8
+             E CTIME                       E TEROUT
+               EDPRI             STRPRN    E FT*002
+               EDPRI1                      E FT*003
+               EQUCC                       E FT*571
+               EQUFS             SWOP      E READ*
+               EQUNUM            TABLE*EC    BYTE/R16
+             E F/SRET                      E PARAMT*
+             E F/SSTART                    E PRINT8//
+               INTCOD                        SAVEMON/
+               ISOTIM            TABLE*SS    ISO*EC
+               MAKESC                      E PARAMT*
+               PACПAK                      E PRINT8//
+               UNPTIR                        SAVEMON/
+               YПAKN                         TABSIMEC
+               ЗAПAK             TABSIMEC
+               ЗAПAKN            TAKELIBR  E CHKBEG*
+   REQDEL   (REQTP   )                     E CHKEND*
+   REQFL    (REQTP   )                       ISOTEX
+   REQSFL   (REQTP   )                     E PRINT8//
+   REQSTP   (REQTP   )                     E TEXISO
+   REQTP       ISOTEX            TASK41      APXAP
+               REQUEST                       DIATEX
+   REQUEST                                 E ISOTCOSY
+   TASK54   (LISTING )           VMWRIT   (VMEMOR  )
+   TBPRIN   (TPRIN   )           W160     (R160    )
+   TEPRIN    E BCDWRIT*          W160S    (R160    )
+               DIALOG            W1LOOK      DIALOG
+               DIALOQ                        DIALOQ
+               EBCISO                      E F/SRET
+             E F/SAVER                     E F/SSTART
+             E F/SRET                        IGETS
+               IGETS                         IPUTS
+               IGETSL                        ISO
+             E IOAC*                         JFEX1
+             E IOCONT*                       JSEART
+             E IOEND*                        LASCII
+               IPUTS                         LEXOR
+             E LOCF                          PUTH
+               MEMORW                        PUTO
+               MT9                           SCANER
+               PUTG              WCO      (LISTING )
+             E R*TO*I            WHATIS    E BCDREAD*
+             E STOP*                       E BCDWRIT*
+   TESTLIB                                 E F/SAVER
+   TEXCDC      CHANGE                      E F/SRET
+               CODEI                         HEADLT
+               ENCOD                         I10T8
+               ENCODI                      E IOAC*
+               ENCODT                      E IOCONT*
+             E F/SRET                      E IOEND*
+             E F/SSTART                      NEWSTR
+               JCOUNS                        READCG
+               MT9               WRAUTOR   E TABLE2*
+               MT9A                          WRAUTR
+               PARSER            WRAUTR      DIALOG
+               PRIM                          DIALOP
+   TEXOUT                                    DIALOQ
+   TINGR1                                  E F/SAVER
+   TPRIM    (TPRIN   )                     E F/SRET
+   TPRIN     E BCDREAD*                      GSTISO
+             E BCDWRIT*                      IOCTAL
+             E F/FRET                        ITOD
+             E F/FSTART                      JEXTRA
+               IGETSL                        JFEXCH
+             E IOAC*                         JFOCC
+             E IOCONT*                       LAND
+               IOCTAL                        LOR
+             E IOEND*                        LSHIFT
+               IPUTS                         PUTG
+               MT9                           PUTH
+             E NEWLIS                        PUTO
+             E NOTLIS                      E R*TO*I
+               NZEDIT                        SCANER
+               QOUT              WRITPL    E OCTTDEC
+               SCANER                      E PARAMT*
+             E STOP*                         PRIBYT
+             E WBEGIN                        PRINT8/M
+             E WRCARD            WRVMEM   (VMEMOR  )
+             E WRIEND            YПAKN    (ЗAПAKN  )
+             E YESLIS            ZZZZZFDB (REQTP   )
+   TRACER    E OCTTDEC           ЖИPЛИC   (ЖИPПEЧ  )
+   UNPTIR   (EQUFS   )           ЖИPПEЧ
+   VMCLOS   (VMEMOR  )           ЗAПAK    (PACПAK  )
+   VMCOPY   (VMEMOR  )           ЗAПAKN
+   VMEMOR    E LOADANGO          ИCKATEЛЬ    BTLOOK
+             E MONITOR*                      DIALOG
+   VMREAD   (VMEMOR  )                       DIALOP
+   VMSAVE   (VMEMOR  )           ЛИЗA        DIALOG
+   VMSET    (VMEMOR  )                       DIALOP
+               DIALOQ
+             E F/SAVER
+             E F/SRET
+               JEXTRA
+               LEXOR
+               LOR
+               LSHIFT
+             E STOP*                                             04 ИЮЛ 24 23.45
+                     ИCПOЛЬЗOBAHИE ПOДПPOГPAMM
 
+                                 HDIAGN
+   E - BHEШHЯЯ П/П               HGET
+   N - OПИCAHA, HE ИCПOЛЬЗYETCЯ  HKEY
+   C - ECTЬ OДHOИMEHHЫЙ COMMON   HOPEN
+                                 HPUT
+   HEИCПOЛЬЗYEMЫE BXOДЫ          HSAVE
+                                 IBMPC
+   *ORDERS* C                    IDCHECK
+   ARCHI                         IDEC
+   ARCHIV                        IDTONUS
+   ASCOPC                        IELADR
+   ASCOPY                        IFEREQ
+   B6/EC                         IFRAG
+   BILISN                        IGRA
+   BILIST                        IGRAS
+   BLN                           INFOPT
+   BREEDING                      INTRA
+   BTL1                          IOPT
+   BYTE/L16                      IP
+   CHBADSYM                      IPARTW
+   CHEKPOIN                      IPR
+   CHKPNT                        IPT10
+   COCARD                        IRND
+   CONBIL                        ISCANG
+   CONSTAN                       ISPACK
+   CP/TEXT                       ITERG
+   CTLOOK                        IUP
+   DATE/                         JERR
+   DECOD                         JMPINP
+   DECODA                        JTIME
+   DECODB                        JWORD
+   DECODI                        KEYGET
+   DEFBYT                        KEYPUT
+   DEFECTAP                      LAFTER
+   DEFINP                        LANDVM
+   DTON                          LBCLE
+   DTRAN                         LBEFOR
+   EC/B6                         LBGET
+   ECB6                          LBPUT
+   ECBEG                         LCADD
+   ECBEGN                        LCHANG
+   ECEXTR                        LCONC
+   ELCATALO                      LCONEC
+   ELCL                          LCORRECT
+   ELCLOS                        LCREAT
+   ELDEL                         LCROSS
+   ELEQU                         LDEATH
+   ELMOVE                        LDEFIN
+   ELNAME                        LDELA
+   ELPRESS                       LDELB
+   ELREAD                        LFDEL
+   ELWRIT                        LFIR
+   ENCODE                        LIBINIT
+   ENCODF                        LIBLOOK
+   ERASE                         LIMAGE
+   ERRPRINT                      LINCA
+   ETLOOK                        LINCB
+   F1PLOT                        LISTING
+   FCREST                        LLC
+   FORS                          LLФ
+   GIVBYT                        LLФEOP
+   GIVEMT                        LORVM
+   HDEL                          LPACK
+   LREAD                         REPLAC
+   LREWIN                        REQDEL
+   LSTRIN                        REQFL
+   LSWOP                         REQSFL
+   LUNP                          REQSTP
+   LWRITE                        REQTP
+   MAKTIT                        RESRCF
+   MATRCH                        RESTART
+   MBWNOT                        RESTOR
+   MBWSFT                        RETURN
+   MEMVRD                        RUNSUB
+   MGAUSS                        RUSORT
+   MISTER                        S/TEMPO
+   MONCRD                        S160
+   MTRLNK                        SAVRCF
+   NEWLIB                        SEARCH*
+   NNN                           SISORT
+   NR                            SORT48
+   NSCANF                        SQROOT
+   NSCANG                        STARTG
+   NTOD                          STRINP
+   NTRANC                        STROUT
+   NTREE                         STRPRN
+   NUMBS                         SWOP
+   NUSTOID                       TABLE*EC
+   NV                            TABLE*SS
+   OFFPLO                        TAKELIBR
+   OPENG                         TASK41
+   OPT10                         TASK54
+   ORD                           TBPRIN
+   OVTREE                        TEPRIN
+   PARAMT                        TESTLIB
+   PARM*                         TEXCDC
+   PARMON                        TINGR1
+   PAЗHИЦA2                      TPRIM
+   PC                            TPRIN
+   PEC                           TRACER
+   PERFPL                        VMCLOS
+   PERFPL1                       VMCOPY
+   PERFPL2                       VMEMOR
+   PERSOT                        VMREAD
+   PRINTER                       VMSAVE
+   PRINTSP*                      VMSET
+   PT6                           VMWRIT
+   PULLMOD                       W160
+   PUTPLO                        W160S
+   QCIA                          WHATIS
+   QHSORT                        WRAUTOR
+   QIN                           WRITPL
+   QINP                          WRVMEM
+   QKOORD                        ЖИPЛИC
+   QLINE                         ЖИPПEЧ
+   QMOVE                         ИCKATEЛЬ
+   QOUTLT                        ЛИЗA
+   QSTR
+   QTER
+   R160                          ИCПOЛЬЗYEMЫE BXOДЫ
+   R160S
+   RCINIT                        *BACKS   E  MGAUSS
+   RDEMEM                                    SQROOT
+   RDEXMEM                       *ENDFI   E  CTLOOK
+   RDVMEM                        *ISOTAB*    LISTING
+   READER                        *REWIN   E  CTLOOK
+   READPL                                    MGAUSS
+   RENUMB                                    SQROOT
+   ADDCS       APXAP                         PUTOUT
+   ALLMEMOR E  LIBLOOK                       TEPRIN
+   APXAP       TASK41                        W1LOOK
+   B6*EC       B6*EC                         WRAUTR
+   BCDDEC*  E  QINP                          ИCKATEЛЬ
+   BCDENC*  E  QINP                          ЛИЗA
+   BCDREAD* E  QINP              DIALOP      APXAP
+               TPRIN                         CTLOOK
+               WHATIS                        DIATEX
+   BCDWRIT* E  IANALS                        ETLOOK
+               MGAUSS                        LISTING
+               OVTREE                        LLC
+               PAЗБOP                        PUTOUT
+               QINP                          WRAUTR
+               TEPRIN                        ИCKATEЛЬ
+               TPRIN                         ЛИЗA
+               WHATIS            DIALOQ      APXAP
+   BEGTPR   E  RUNSUB                        BTLOOK
+   BINREAD* E  MGAUSS                        CTLOOK
+               SQROOT                        ETLOOK
+   BINWRIT* E  CTLOOK                        PUTOUT
+               MGAUSS                        TEPRIN
+               SQROOT                        W1LOOK
+   BOKHO    E  DTRAN                         WRAUTR
+   BRAND       APXAP                         ЛИЗA
+             N IBMPC             DIATEX      APXAP
+               JFOCC                         TASK41
+   BTLOOK      ИCKATEЛЬ          DRUMTAP* E  DTRAN
+   BYTE/R16    TABLE*EC          DTOI        APXAP
+   CHANGE      PUTOUT            EBCISO      ETLOOK
+               TEXCDC                        TEPRIN
+   CHKBEG*  E  CONSTAN           EC*B6       B6*EC
+               ORD               EC*REW      ECBEG
+               QN                ECEOF       B6*EC
+               TAKELIBR          ECREAD      B6*EC
+   CHKEND*  E  CONSTAN           ECSHIF      B6*EC
+               ORD                           ECBEG
+               QN                ECWRIT      B6*EC
+               TAKELIBR          EDPRI       REPLAC
+   CLOSE       PUTOUT            EDPRI1      REPLAC
+   CODEI       TEXCDC            ELPRES      LIBINIT
+   CONTAP      ECREAD            ELPRIN      LIBINIT
+   CONV60      NTRANC            ENCOD       APXAP
+   COS      EN F1PLOT                        TEXCDC
+   COS*     E  F1PLOT            ENCODB      APXAP
+   COSYPR      LISPRI            ENCODI      APXAP
+   COSYTISO E  CHBADSYM                      TEXCDC
+               PULLMOD           ENCODL      APXAP
+   CP*TEXT     B6*EC             ENCODT      APXAP
+   CPABH       REPLAC                        TEXCDC
+   CPRBEG      APXAP             ENTRY8/M    PRINT//M
+   CTIME    E  REPLAC            EQUCC       REPLAC
+   DATAPR*  E  B6*EC             EQUFS       REPLAC
+               CONBIL            EQUNUM      REPLAC
+               DIALOP            ERREXMEM    ELPRES
+               ELPRIN                        ELPRIN
+               NEWLIB                        EXLIB
+               PRINTSP*          EXCLOS      EXLIB
+   DATE        APXAP             EXLIB       LIBINIT
+               ORD               EXMEM       EXLIB
+   DIALOG      APXAP             EXMOVE      EXLIB
+               BTLOOK            EXREAD      EXLIB
+               CTLOOK            EXSAVE      ELPRES
+               DIATEX                        EXLIB
+               ETLOOK            EXWRIT      EXLIB
+               LLC               F/FNOSV  E  LASCII
+               LCROSS                        PREASP
+   F/FRET   E  IANALS                        QHSORT
+               LCONEC                        QINP
+               LISPRI                        R160
+               LLCHEK                        RENUMB
+               MGAUSS                        REPLAC
+               MTRLNK                        SQROOT
+               NTRANC                        TEXCDC
+               OVTREE                        W1LOOK
+               PAЗБOP            F/START  EN IBMPC
+               TPRIN             FT*002   E  LLФPRN
+   F/FRETNR E  LASCII                        STRPRN
+               LCROSS            FT*003   E  LLФPRN
+   F/FSTART E  IANALS                        STRPRN
+               LCONEC            FT*571   E  STRPRN
+               LISPRI            FT*611   E  LLФPRN
+               LLCHEK            GIVADREM    ELPRES
+               MGAUSS                        ELPRIN
+               MTRLNK            GIVEME      READCG
+               NTRANC            GIVPAG      FCREST
+               OVTREE                        R160
+               PAЗБOP            GSTISO      WRAUTR
+               TPRIN             GUSEV       R160
+   F/SAVER  E  APXAP             GWCDC       CTLOOK
+               BTLOOK            HEADLP      BTLOOK
+               CTLOOK                        PEC
+               ETLOOK            HEADLT      WHATIS
+               IPT10             I*DI*I   E  LLФPRN
+               PUTOUT            I*MU*I   E  LLФPRN
+               SERVER            I10T8       WHATIS
+               TEPRIN            IANALS      ECB6
+               WHATIS            IBMIO       SERVER
+               WRAUTR            ICOS        APXAP
+               ЛИЗA              IEXADR    N EXLIB
+   F/SNOSV  E  ASCOPY            IGETPAR     SERVER
+               COSYPR            IGETS       ASCOPY
+   F/SRET   E  APXAP                         COSYPR
+               BTLOOK                        ECB6
+               ECB6                          ETLOOK
+               ETLOOK                        F1PLOT
+               F1PLOT                        IPT10
+               IPT10                         LASCII
+               LLC                           NNN
+               NNN                           OVTREE
+               PEC                           PEC
+               PREASP                        PREASP
+               PUTOUT                        PUTOUT
+               QHSORT                        R160
+               QINP                          RENUMB
+               R160                          TEPRIN
+               RENUMB                        W1LOOK
+               REPLAC            IGETSL      ETLOOK
+               SQROOT                        R160
+               TEPRIN                        TEPRIN
+               TEXCDC                        TPRIN
+               W1LOOK            INFTYP      APXAP
+               WHATIS                        BTLOOK
+               WRAUTR            INPSPT      IPT10
+               ЛИЗA              INTCOD      REPLAC
+   F/SRETNR E  ASCOPY            INTER       STROUT
+               COSYPR            IOAC*    E  IANALS
+   F/SSTART E  ECB6                          MGAUSS
+               F1PLOT                        PAЗБOP
+               LLC                           QINP
+               NNN                           TEPRIN
+               PEC                           TPRIN
+               WHATIS            JCTR        PUTOUT
+   IOCONT*  E  CTLOOK            JDATE       CHEKPOIN
+               IANALS            JEXTRA      APXAP
+               MGAUSS                        LLC
+               OVTREE                        WRAUTR
+               PAЗБOP                        ЛИЗA
+               QINP              JEXTRI      APXAP
+               SQROOT                        COSYPR
+               TEPRIN                        LLC
+               TPRIN                         OVTREE
+               WHATIS            JFEX1       BTLOOK
+   IOCTAL      APXAP                         SERVER
+               BTLOOK                        W1LOOK
+               TPRIN             JFEXCH      APXAP
+               WRAUTR                        WRAUTR
+   IOEND*   E  CTLOOK            JFOCC       APXAP
+               IANALS                        BTLOOK
+               MGAUSS                        CTLOOK
+               OVTREE                        ETLOOK
+               PAЗБOP                      N IBMPC
+               QINP                          PUTOUT
+               SQROOT                        SERVER
+               TEPRIN                        WRAUTR
+               TPRIN             JOPER       IPT10
+               WHATIS            JSEART      APXAP
+   IPUTS       ASCOPY                        BTLOOK
+               COSYPR                        CTLOOK
+               CTLOOK                        ETLOOK
+               ETLOOK                        PEC
+               IPT10                         W1LOOK
+               NNN               KEY         STROUT
+               OVTREE            KLETKA      APXAP
+               PEC               KLIN        LLC
+               PREASP            LAND        APXAP
+               PUTOUT                        ASCOPY
+               R160                          BTLOOK
+               RENUMB                        CTLOOK
+               TEPRIN                        IPT10
+               TPRIN                         MTRLNK
+               W1LOOK                        NTRANC
+   IPUTSL      R160                          WRAUTR
+   ISO         W1LOOK            LASCII      W1LOOK
+   ISO*EC      B6*EC             LCNT        ASCOPY
+               TABLE*SS                      IPT10
+   ISO*FIN     ISO*EC            LETBI       APXAP
+   ISO*TEX* E  CONSTAN           LEXOR       APXAP
+             N IBMPC                         BTLOOK
+               ISOTEX                        CTLOOK
+   ISOTCOSY E  TASK41                        LLCHEK
+   ISOTEX      APXAP                         PEC
+               GIVEMT                        W1LOOK
+             N IBMPC                         ЛИЗA
+               JFOCC             LIBDRUM  E  PERSOT
+               LOAD              LIBLIST  E  NEWLIB
+               REQTP             LISPRI      APXAP
+               TAKELIBR          LLCHEK      LLC
+   ISOTIM      REPLAC            LLФANL      LLФ
+   ISUNP       BTLOOK            LLФDAT      LLФPRN
+               CHBADSYM          LLФIFC      LLФPRN
+   ITOD        APXAP             LLФMIN      LLФ
+               BTLOOK            LLФPAG      LLФ
+               WRAUTR                        LLФPRN
+   IUCOMP   E  PAЗБOP            LLФPRI      LLФPRN
+   JBYT     E  PAЗБOP                        PEC
+   JCOUNS      PEC               LLФPRN      LLФ
+               TEXCDC            LLФZON      LLФ
+   LOAD        QOUTLT                        CTLOOK
+   LOADANGO E  LOAD                          ETLOOK
+               RUNSUB                        PUTOUT
+               VMEMOR                        TEPRIN
+   LOADGO   E  RUNSUB                        TEXCDC
+   LOCF     E  COSYPR                        TPRIN
+               LLC               MT9A        ASCOPY
+               TEPRIN                        CTLOOK
+   LOR         APXAP                         ECB6
+               ASCOPY                        IANALS
+               BTLOOK                        PUTOUT
+               CTLOOK                        TEXCDC
+               IPT10             NCDTB6      CTLOOK
+               MTRLNK            NEWLIS   E  COSYPR
+               NTRANC                        TPRIN
+               WRAUTR            NEWSTR      WHATIS
+               ЛИЗA              NOTLIS   E  APXAP
+   LREGIM      BTLOOK                        TPRIN
+   LSHIFT      APXAP             NUMFOR      BTLOOK
+               ASCOPY            NZEDIT      TPRIN
+               BTLOOK            NZTX        PUTOUT
+               CTLOOK            OCTTDEC  E  B6*EC
+               IPT10                         DTOI
+               LLC                           DTON
+               LLCHEK                      N IBMPC
+               MTRLNK                        IOCTAL
+               NTRANC                        JFOCC
+               WRAUTR                        LIBLOOK
+               ЛИЗA                          NEWLIB
+   MAK*TRT     LISTING                       ORD
+   MAKESC      REPLAC                        PAЗHИЦA2
+   MAKRIW      APXAP                         TRACER
+   MAKWIW      APXAP                         WRITPL
+   MBWAND      APXAP             OKHO     E  DTRAN
+   MBWCHK      APXAP             OPCOUT      PUTOUT
+   MBWCLE      APXAP             PACПAK      REPLAC
+   MBWCNT      APXAP             PAK      E  LLФANL
+               LCONEC            PARAMT*  E  B6*EC
+   MBWDEF      APXAP                         BREEDING
+               LCONEC                        CHEKPOIN
+               MTRLNK                        DEFECTAP
+   MBWEXO      APXAP                         DTRAN
+               LCONEC                        LIBINIT
+   MBWFIR      APXAP                         PARAMT
+               LCONEC                        PAЗHИЦA2
+               MBWSFT                        PERFPL
+   MBWLDA      APXAP                         PRINTER
+               LCONEC                        PRINTSP*
+               MTRLNK                        PULLMOD
+   MBWOR       LCONEC                        TABLE*EC
+   MBWPUT      APXAP                         TABLE*SS
+               LCONEC                        WRITPL
+               MTRLNK            PARSER      TEXCDC
+   MBWSTA      APXAP             PAS      E  LLФ
+               LCONEC                        LLФANL
+               MTRLNK            PAЗБOP      ECB6
+   MEMORR      LLC               PREASP      ETLOOK
+               OVTREE            PRIBYT      WRITPL
+   MEMORW      TEPRIN            PRIM        TEXCDC
+   MIXER       APXAP             PRIN     E  ASCOPY
+               JFOCC             PRINT//M    ERRPRINT
+   MONITOR* E  VMEMOR            PRINT8   E  BREEDING
+   MONREAD* E  DEFINP                        DEFINP
+               DTRAN                         DIALOG
+               NEWLIB                        DIALOP
+   MT9         ASCOPY                        DTRAN
+               ELPRIN                        PUTOUT
+               EXMEM                         W1LOOK
+               LIBLOOK                       WRAUTR
+               NEWLIB            PUTOUT      LISTING
+               PRIBYT            PUTPAR      SERVER
+               PRINT8/M          QN          CTLOOK
+               PULLMOD                       ORD
+               READCG            QOUT        CTLOOK
+               STROUT                        QOUTLT
+   PRINT8// E  B6*EC                         TPRIN
+               CHBADSYM          R*TO*I   E  APXAP
+               CODEI                         CTLOOK
+               CONBIL                        ETLOOK
+               DIALOP                        IANALS
+               EDPRI                         LCONEC
+               LLФPRI                        MGAUSS
+               ORD                           MTRLNK
+               PRINT//M                      PAЗБOP
+               PRINTSP*                      QINP
+               TABLE*EC                      R160
+               TABLE*SS                      SQROOT
+               TAKELIBR                      TEPRIN
+   PRINT8/M    ERRPRINT                      WRAUTR
+               PARM*             R*TO*INT E  QHSORT
+               PRINTER                       QINP
+               WRITPL            RBEGIN   E  B6*EC
+   PT6/G    E  BREEDING                      IPT10
+               CONSTAN                       PERFPL
+               NEWLIB                        PRINTER
+               PAЗHИЦA2                      READER
+   PTPBEG      IPT10             RCO         PUTOUT
+               PERFPL            RDSTAR      NEWLIB
+   PTPEND      IPT10             READ*    E  BREEDING
+               PERFPL                        DIALOG
+   PTPUNM      IPT10                         READER
+               PERFPL                        SWOP
+   PTPUNS      IPT10             READCG      WHATIS
+               PERFPL            RECARD   E  B6*EC
+   PUTADR      B6*EC                         IPT10
+               ECBEG                         ORD
+               ECREAD                        PERFPL
+   PUTBL       APXAP                         PRINTER
+   PUTG        ASCOPY                        READER
+               BTLOOK            REQUEST     REQTP
+               COSYPR            RES100   E  RUNSUB
+               CTLOOK            RN01        QHSORT
+               ETLOOK            RZO         PUTOUT
+               IPT10             SAVEMON/    B6*EC
+               LLC                           TABLE*EC
+               PUTOUT                        TABLE*SS
+               TEPRIN            SCANER      APXAP
+               WRAUTR                        BTLOOK
+   PUTH        APXAP                         CTLOOK
+               ASCOPY                        ETLOOK
+               BTLOOK                        LLCHEK
+               COSYPR                        PAЗБOP
+               CTLOOK                        PUTOUT
+               ETLOOK                        TPRIN
+               IPT10                         W1LOOK
+               LLC                           WRAUTR
+               PUTOUT            SERVER      IBMPC
+               W1LOOK            SET      E  F1PLOT
+               WRAUTR            SHSORT      APXAP
+   PUTO        APXAP                         LIBLOOK
+               BTLOOK                        ORD
+               CTLOOK                        RUSORT
+   SIMFAIL* E  DTRAN                         PUTOUT
+   SIN      EN F1PLOT                        TPRIN
+   SIN*     E  F1PLOT            WRIEND   E  B6*EC
+   SQRT     EN SQROOT                        CTLOOK
+   SQRT*    E  SQROOT                        ETLOOK
+   STACK*      ERRPRINT                      IPT10
+               PRINTER                       OVTREE
+   STOP*    E  CTLOOK                        PULLMOD
+               DEFINP                        PUTOUT
+               EXMEM                         TPRIN
+               MBWDEF            YESLIS   E  TPRIN
+               PAЗБOP            YПAKN       REPLAC
+               PULLMOD           ZZZZZFDB    IFEREQ
+               QINP              ЗAПAK       REPLAC
+               TEPRIN            ЗAПAKN      REPLAC
+               TPRIN             ПEP6B81C E  DTRAN
+               ЛИЗA
+   SYMBOL   E  F1PLOT
+   TABLE2*  E  ISO
+               WRAUTOR
+   TABSIMEC    EBCISO
+               ISO*EC
+             N TABLE*SS
+   TABSIMIS EN DTRAN
+               ERRPRINT
+               PARM*
+             N PULLMOD
+   TAKTAP   E  APXAP
+               CTLOOK
+               PUTOUT
+   TERIN    E  DIALOG
+               READER
+   TEROUT   E  DIALOG
+               STROUT
+   TEXISO   E  APXAP
+               BTLOOK
+               JOPER
+               LIBLOOK
+               OVTREE
+               TAKELIBR
+   TEXOUT      APXAP
+   UBLOW    E  PAЗБOP
+   UBUNCH   E  ECB6
+               PAЗБOP
+   ULEFT    E  PAЗБOP
+   UNP      E  LLФANL
+   UNPTIR      REPLAC
+   VBLANK   E  ECB6
+               PAЗБOP
+   W1LOOK      BTLOOK
+   WBEGIN   E  B6*EC
+               CTLOOK
+               ETLOOK
+               IPT10
+               OVTREE
+               PULLMOD
+               PUTOUT
+               TPRIN
+   WCO         PUTOUT
+   WRAUTR      WRAUTOR
+   WRCARD   E  B6*EC
+               CTLOOK
+               ETLOOK
+               IPT10
+               OVTREE
+               PULLMOD                                             04 ИЮЛ 24 23.45
+                     CCЫЛKИ HA COMMON′Ы
+
+                                 DECODB   (DECOD   )
+   D - PACCЫЛKA ДAHHЫX           DECODI   (DECOD   )
+   N - OПИCAH, HE ИCПOЛЬЗYETCЯ   DEFBYT   (GIVBYT  )
+   P - CTPAHИЧHЫЙ COMMON         DEFECTAP  P 01024 L
+   S - CEKTOPHЫЙ COMMON          DEFINP    L 00004 KCOUNT*
+   L - ПPOCTOЙ COMMON                      L 00025 MONCARD*
+   ***** - ДЛИHA OПИCAHA HEЯBHO  DIALOG    L 00004 *PROTO*
+                                           L 00001 A/I0
+   ADDCS    (TASK41  )           DIALOP    L 00001 *PROTO*
+   APXAP    DL 00030 *ARCHIV*              L 00001 A/I0
+             L 01024 *BUFFER*    DIALOQ   (DIALOG  )
+             L 01024 *CATAR*     DIATEX    L 00028 *PROTO*
+             L 01024 *CATFIL*              L 00012 *TEXORG*
+             L 00001 *CHARM*     DTOI      L 00001 A/I0
+            DL 00096 *DIAGN*     DTON      L 00001 A/I0
+             L 01024 *HEADER*    DTRAN     L 00012 *MONCRD*
+             L 00037 *PROTO*               L 00001 CHECKFL*
+             L 00004 *SCAN*                L 00064 INF/OP
+             L 00012 *TEXORG*              L 00100 LIBPRINT
+   ARCHI    (TASK41  )                     L 00003 MIST10*
+   ARCHIV   (TASK41  )                     L 00014 MONCARD*
+   B6*EC     L 00004 *ECTAPE*              L 00014 MONCARD/
+             L 00012 *MONCRD*              L 00001 NOLISFL*
+             L 00001 *REGIM//             NL 00001 OUT*OUT
+            NL 00025 *TIKTAK*              P 08192 PAGE
+            NL 00014 MONCARD/             NL 00001 STARSTA
+             L 00001 OUT*OUT               L 02048 TAB
+             L 00007 SAV/47                P 01024 TO*DRUM
+             P 01024 XAXA*                 L 00004 XPARAMT*
+             L 00002 XREAD/               NL 00004 XPARAMT/
+   B6/EC    (B6*EC   )           EC*B6    (B6*EC   )
+   BILISN   (CONBIL  )           EC*REW   (ECREAD  )
+   BILIST   (CONBIL  )           EC/B6    (B6*EC   )
+   BLN      (LLФ     )           ECB6      L 01036 *ECCMD*
+   BRAND     L 00001 A/I0                  L 00006 *WRDKEY*
+   BREEDING  P 02048 CAT         ECBEG     L 00004 *ECTAPE*
+            NL 00014 MONCARD*    ECBEGN   (ECBEG   )
+             L 00014 MONCARD/    ECEOF    (ECREAD  )
+   BTL1     (BTLOOK  )           ECEXTR   (TASK41  )
+   BTLOOK    L 00001 *CHARM*     ECREAD    L 00002 *COCTEC*
+             L 00003 *NAME*                L 00004 *ECTAPE*
+             L 02048 *P*                   L 00001 A/I0
+            DL 00025 *PROTO*     ECSHIF   (ECREAD  )
+             L 00008 *UNIT*      ECWRIT   (ECREAD  )
+   CHEKPOIN NL 00001 RM*         ELCATALO (LIBINIT )
+   CLOSE    (LISTING )           ELCL     (EXLIB   )
+   COCARD    L 00001 A/I0        ELCLOS   (EXLIB   )
+   CONBIL    L 00001 *REGIM//    ELDEL    (EXLIB   )
+             L 00006 *TEP*       ELEQU    (EXLIB   )
+             L 00001 A/I0        ELMOVE   (EXLIB   )
+   CONSTAN   L 10000 CONLIST     ELNAME   (EXLIB   )
+             L 00001 MFOR*       ELPRES    P 01024 /ELPRES/
+             L 00001 NAME*                 P 02048 /EXPAGE/
+             L 00400 NAMLIST               L 00001 A/I0
+   CONTAP    L 00002 *COCTEC*    ELPRESS  (LIBINIT )
+             L 00001 A/I0        ELPRIN    P 02048 /EXPAGE/
+   CP*TEXT  (B6*EC   )                     L 00001 A/I0
+   CP/TEXT  (B6*EC   )           ELREAD   (EXLIB   )
+   CPABH     L 02718 *MINF*      ELWRIT   (EXLIB   )
+   CTLOOK   DL 00006 *ICHECK*    ENCOD     L 00001 A/I0
+            DL 00025 *PROTO*     ENCODB   (ENCOD   )
+   DECOD     L 00001 A/I0        ENCODE   (ENCOD   )
+             L 00001 A/MINUS     ENCODF   (ENCOD   )
+   ENCODI   (ENCOD   )           IUP      (IGRA    )
+   ENCODL   (ENCOD   )           JCOUNS   (JSEART  )
+   ENCODT   (ENCOD   )           JCTR     (LISTING )
+   EQUCC    (EQUFS   )           JERR      L 00001 JERRIO*
+   EQUFS     L 00003 *ORDERS*    JEXTRA   (MEMORR  )
+   EQUNUM   (ЗAПAKN  )           JEXTRI   (MEMORR  )
+   ERREXMEM (EXMEM   )           JFEX1    (JFOCC   )
+   ERRPRINT  L 00001 ERRPR/      JFEXCH   (JFOCC   )
+             L 00001 PARSAME     JFOCC     L 00001 A/I0
+   ETLOOK   DL 00045 *PROTO*     JMPINP   (DEFINP  )
+             L 00001 ACC*        JOPER     L 00001 A/I0
+   EXCLOS   (EXMEM   )           JSEART    L 00001 A/I0
+   EXLIB     L 00004 *ELERR*     JWORD    (LDEFIN  )
+             P 02048 /EXPAGE/    KLETKA   (TASK41  )
+   EXMEM     P 01024 /EXPAGE/    KLIN     (DIALOP  )
+   EXMOVE   (EXMEM   )           LAFTER   (LDEFIN  )
+   EXREAD   (EXMEM   )           LAND     (LSHIFT  )
+   EXSAVE   (EXMEM   )           LANDVM   (VMEMOR  )
+   EXWRIT   (EXMEM   )           LBCLE    (LSHIFT  )
+   FCREST    L 00002 DATA*       LBEFOR   (LDEFIN  )
+   FORS     (IGRA    )           LBGET    (LSHIFT  )
+   GIVADREM (EXMEM   )           LBPUT    (LSHIFT  )
+   GIVBYT    P 01024 PAGE        LCADD    (LSHIFT  )
+   GIVEME   (NEWSTR  )           LCHANG   (LDEFIN  )
+   GIVPAG    L 00001 RFMRTFLG    LCNT     (LSHIFT  )
+   GSTISO   (WRAUTOR )           LCONC    (LDEFIN  )
+   GUSEV    (MT9A    )           LCORRECT (LIBINIT )
+   HDEL     (HOPEN   )           LCREAT   (LDEFIN  )
+   HDIAGN   (HOPEN   )           LDEATH   (LDEFIN  )
+   HEADLP   (HEADLT  )           LDEFIN    L 00001 *RO*
+   HEADLT    L 00003 *NAME*                P 01024 LIST
+   HGET     (HOPEN   )           LDELA    (LDEFIN  )
+   HKEY     (HOPEN   )           LDELB    (LDEFIN  )
+   HOPEN     L 00001 A/I0        LETBI    (TASK41  )
+             L 00001 RFMRTFLG    LEXOR    (LSHIFT  )
+   HPUT     (HOPEN   )           LFDEL    (READER  )
+   HSAVE    (HOPEN   )           LFIR     (LSHIFT  )
+   I10T8    (NEWSTR  )           LIBINIT   L 00012 *MONCRD*
+   IANALS    L 01036 *ECCMD*              NP 01024 /ELPRES/
+             L 00006 *WRDKEY*              P 02048 /EXPAGE/
+   IBMIO    (IBMPC   )                     L 00001 A/I0
+   IBMPC     P 01024 *BUF*       LINCA    (LDEFIN  )
+             L 00001 EEE         LINCB    (LDEFIN  )
+             L ***** STACK       LISTING   L 00005 **
+   ICOS     (TASK41  )                     P 02048 *POUT*
+   IELADR   (EXLIB   )                     L 00002 XWRITE/
+   IEXADR   (EXMEM   )           LLC       L 00025 *PROTO*
+   IFRAG    (IGRA    )           LLФ       L 00015 *HEAD*
+   IGETPAR  (IBMPC   )           LLФDAT   (LLФPRI  )
+   IGRA      L 00010 *ERRG*      LLФEOP   (LLФPRI  )
+   IGRAS    (IGRA    )           LLФIFC   (LLФPRI  )
+   INFOPT   (IGRA    )           LLФPAG   (LLФPRI  )
+   INFTYP    L 00001 *CHARM*     LLФPRI    L 00001 DATA*
+             L 00001 A/I0                  L 00001 LIMWR*
+   INPSPT    L 00001 A/I0        LLФPRN   DL 00015 *HEAD*
+   INTER     L 00001 MATINFEX    LLФZON   (LLФPRI  )
+   INTRA    (BRAND   )           LOAD      L 00001 A/I0
+   IOPT     (IGRA    )           LOR      (LSHIFT  )
+   IP       (IGRA    )           LORVM    (VMEMOR  )
+   IPR      (IGRA    )           LPACK    (LSHIFT  )
+   ISCANG   (IGRA    )           LREAD    (LDEFIN  )
+   ISPACK    L 00001 A/I0        LREGIM    L 00001 A/I0
+   ISUNP     L 00001 A/I0                  L 00001 FLAGS
+   ITERG    (IGRA    )                     L 00001 FULISFL*
+   ITOD     (DTOI    )                     L 00001 NOLISFL*
+   LREWIN   (LDEFIN  )           PEC       L 00003 *NAME*
+   LSHIFT    L 00001 A/I0        PERFPL    L 00001 A/I0
+   LSTRIN   (COCARD  )                     L 00014 CARD
+   LSWOP    (LDEFIN  )                     P 01040 PAGE
+   LUNP     (LSHIFT  )           PERFPL1  (PERFPL  )
+   LWRITE   (LDEFIN  )           PERFPL2  (PERFPL  )
+   MAKESC   (PACПAK  )           PERSOT    L 00014 MONCARD/
+   MAKRIW   (TASK41  )           PRINTER  NL 00012 *MONCRD*
+   MAKWIW   (TASK41  )                    NL 00004 1970
+   MEMORR    L 00001 A/I0                  L 00001 A/I0
+   MEMORW   (MEMORR  )                     L 02904 BUFFER
+   MEMVRD   (VMEMOR  )                     L 00014 CARD
+   MGAUSS    L 00001 ACC*                  L 01848 FORM
+   MISTER    S 00225 *MISTER*    PRINTSP*  P 04096 LIST
+   MIXER    (BRAND   )                     L 00003 MIST10*
+   MONCRD   (NZEDIT  )                     L 00001 OUT*OUT
+   MT9      (MT9A    )           PULLMOD   L 00000 NOLISFL*
+   MT9A      L 00002 *DISPAC*              P 02048 PAGE
+             L 00001 A/I0        PUTADR   (CONTAP  )
+   NEWLIB    L 00002 DATA*       PUTBL    (ENCOD   )
+             L 00001 DRTAPE      PUTG     (SCANER  )
+             L 00001 MONCARD*    PUTH     (SCANER  )
+             L 00001 NOLISFL*    PUTO     (SCANER  )
+             L 00002 WBEGFLAG    PUTOUT    L 00005 **
+   NEWSTR    L 00090 *CLNEWS*              L 02048 *POUT*
+             L 00001 *NZ1*                 L 00020 *PROTO*
+             P 02048 *P*         PUTPAR   (IBMPC   )
+             L 00001 NOLISFL*    PUTPLO    L 00001 LOADLIS*
+   NNN       L 00025 *TIKTAK*    QINP      L 00024 *Q*
+   NR       (IGRA    )                     L 00003 *QCM*
+   NSCANF   (IGRA    )                     L 00015 *QP*
+   NSCANG   (IGRA    )                     L 00001 ACC*
+   NTOD     (DTON    )           QN        L 00002 NAME*
+   NTREE    (IGRA    )           QOUTLT    L 00001 A/I0
+   NUMBS    (COCARD  )           RCINIT   (READER  )
+   NV       (IGRA    )           RCO      (LISTING )
+   NZEDIT    L 00014 MONCARD*    RDEMEM   (EXMEM   )
+             L 00002 XREAD/      RDEXMEM  (EXMEM   )
+             L 00002 XWRITE/     RDSTAR    L 00001 DRTAPE
+   NZTX     (LISTING )                     L 00002 WBEGFLAG
+   OFFPLO   (PUTPLO  )           RDVMEM   (VMEMOR  )
+   OPCOUT   (LISTING )           READCG    L 00001 *FL*
+   OPENG    (IGRA    )                    NL 00001 *NZ1*
+   ORD       L 00001 MFOR*                 P 02048 *P*
+             L 10014 NAM*LIST    READER    L 00014 MONCARD/
+             L 00002 NAME*                 L 00002 XREAD/
+             L 00002 XREAD/      RENUMB    L 00025 *TIKTAK*
+            NL 00002 XWRITE/     REPLAC   DL 02750 *MINF*
+   PACПAK    L 00084 *MINF*               DL 00083 *NUMS*
+   PARAMT    L 00012 *MONCRD*              L 00004 *ORDERS*
+             L 00014 MONCARD/    REQUEST   L 00001 RFMRTFLG
+            NL 00003 MST10*      RESRCF   (READER  )
+             L 00001 OUT*OUT     RESTART  (CHEKPOIN)
+   PARM*     L 00012 *MONCRD*    RESTOR   (SWOP    )
+             L 00025 /MONCRD/    RETURN   (REQUEST )
+             L 00004 /PARAM      RN01     (BRAND   )
+             L 00001 PARSAME     RUNSUB    L 00001 *LISSUB*
+   PARMON   (PARAMT  )           RZO      (LISTING )
+   PARSER    L 00001 A/I0        S/TEMPO  (PAЗHИЦA2)
+   PAЗHИЦA2  L 00015 *MONCRD*    SAVEMON/  L 00025 *TIKTAK*
+             P 01024 CAT                   L 00014 MONCARD/
+             P 12288 LSM         SAVRCF   (READER  )
+   PAЗБOP    L 00042 *SLATE*     SCANER    L 00001 A/I0
+            DL 00006 *WRDKEY*    SEARCH*   L 00012 *MONCRD*
+             L 00001 ACC*                  L 00001 INKOGN
+   PC       (IGRA    )           SERVER    L 01024 *BUF*
+   SHSORT    L 00001 A/I0
+   STACK*   (SEARCH* )
+   STARTG   (IGRA    )
+   STRINP   (DEFINP  )
+   STROUT    L 00002 *TITLE*
+             L 00001 A/I0
+   SWOP      L 00001 RFMRTFLG
+   TABLE*EC NL 00025 *TIKTAK*
+            NL 00014 MONCARD/
+   TABLE*SS  L 00012 *MONCRD*
+   TAKELIBR  P 02048 LCAT
+             L 00002 NAME*
+             L 00001 NOLISFL*
+   TASK41   NP 01024 *BUFFER*
+            NP 01024 *CATAR*
+            NP 01024 *CATFIL*
+            NP 01024 *HEADER*
+            DL 00044 *PROTO*
+             L 00001 NOLISFL*
+   TASK54   (LISTING )
+   TEPRIN    L 00004 *LLL*
+            DL 00045 *PROTO*
+             L 00001 ACC*
+   TESTLIB   P 03072 LIST
+   TEXCDC    L 00011 *PARS*
+   TEXOUT    L 00012 *TEXORG*
+   TINGR1    S 00225 *BUFSEN*
+   UNPTIR   (EQUFS   )
+   VMCLOS   (VMEMOR  )
+   VMCOPY   (VMEMOR  )
+   VMEMOR    L 00001 A/I0
+   VMREAD   (VMEMOR  )
+   VMSAVE   (VMEMOR  )
+   VMSET    (VMEMOR  )
+   VMWRIT   (VMEMOR  )
+   W1LOOK    L 02048 *P*
+             L 00025 *PROTO*
+             L 00008 *UNIT*
+   WCO      (LISTING )
+   WHATIS    L 00090 *CLNEWS*
+             L 00001 *FL*
+            DL 00003 *NAME*
+             L 00001 *NZ1*
+   WRAUTOR   P 04096 *PASS*
+             L 00065 *PROTO*
+   WRAUTR    L 04096 *PASS*
+             L 00065 *PROTO*
+   WRITPL   NL 00012 *MONCRD*
+   WRVMEM   (VMEMOR  )
+   YПAKN    (ЗAПAKN  )
+   ЖИPЛИC   (ЖИPПEЧ  )
+   ЖИPПEЧ    L 00001 *ЖПPOT*
+   ЗAПAK    (PACПAK  )
+   ЗAПAKN    L 00083 *NUMS*
+   ИCKATEЛЬ NP 02048 *P*
+   ЛИЗA     DL 00035 *PROTO*                                             04 ИЮЛ 24 23.45
+                     ИCПOЛЬЗOBAHИE COMMON′OB
+
+                                          DL 00006 CTLOOK
+   E - ECTЬ OДHOИMEHHAЯ П/П      *LISSUB*    00001
+   D - PACCЫЛKA ДAHHЫX                     L 00001 RUNSUB
+   N - OПИCAH, HE ИCПOЛЬЗYETCЯ   *LLL*       00004
+   P - CTPAHИЧHЫЙ COMMON                   L 00004 TEPRIN
+   S - CEKTOPHЫЙ COMMON          *MINF*      02750
+   L - ПPOCTOЙ COMMON                      L 02718 CPABH
+   ***** - ДЛИHA OПИCAHA HEЯBHO            L 00084 PACПAK
+                                          DL 02750 REPLAC
+   **          00005             *MISTER*    00225
+             L 00005 LISTING               S 00225 MISTER
+             L 00005 PUTOUT      *MONCRD*    00015
+   *ARCHIV*    00030                       L 00012 B6*EC
+            DL 00030 APXAP                 L 00012 DTRAN
+   *BUF*       01024                       L 00012 LIBINIT
+             P 01024 IBMPC                 L 00012 PARAMT
+             L 01024 SERVER                L 00012 PARM*
+   *BUFFER*    01024                       L 00015 PAЗHИЦA2
+             L 01024 APXAP                NL 00012 PRINTER
+            NP 01024 TASK41                L 00012 SEARCH*
+   *BUFSEN*    00225                       L 00012 TABLE*SS
+             S 00225 TINGR1               NL 00012 WRITPL
+   *CATAR*     01024             *NAME*      00003
+             L 01024 APXAP                 L 00003 BTLOOK
+            NP 01024 TASK41                L 00003 HEADLT
+   *CATFIL*    01024                       L 00003 PEC
+             L 01024 APXAP                DL 00003 WHATIS
+            NP 01024 TASK41      *NUMS*      00083
+   *CHARM*     00001                      DL 00083 REPLAC
+             L 00001 APXAP                 L 00083 ЗAПAKN
+             L 00001 BTLOOK      *NZ1*       00001
+             L 00001 INFTYP                L 00001 NEWSTR
+   *CLNEWS*    00090                      NL 00001 READCG
+             L 00090 NEWSTR                L 00001 WHATIS
+             L 00090 WHATIS      *ORDERS*  E 00004
+   *COCTEC*    00002                       L 00003 EQUFS
+             L 00002 CONTAP                L 00004 REPLAC
+             L 00002 ECREAD      *P*         02048
+   *DIAGN*     00096                       L 02048 BTLOOK
+            DL 00096 APXAP                 P 02048 NEWSTR
+   *DISPAC*    00002                       P 02048 READCG
+             L 00002 MT9A                  L 02048 W1LOOK
+   *ECCMD*     01036                      NP 02048 ИCKATEЛЬ
+             L 01036 ECB6        *PARS*      00011
+             L 01036 IANALS                L 00011 TEXCDC
+   *ECTAPE*    00004             *PASS*      04096
+             L 00004 B6*EC                 P 04096 WRAUTOR
+             L 00004 ECBEG                 L 04096 WRAUTR
+             L 00004 ECREAD      *POUT*      02048
+   *ELERR*     00004                       P 02048 LISTING
+             L 00004 EXLIB                 L 02048 PUTOUT
+   *ERRG*      00010             *PROTO*     00065
+             L 00010 IGRA                  L 00037 APXAP
+   *FL*        00001                      DL 00025 BTLOOK
+             L 00001 READCG               DL 00025 CTLOOK
+             L 00001 WHATIS                L 00004 DIALOG
+   *HEAD*      00015                       L 00001 DIALOP
+             L 00015 LLФ                   L 00028 DIATEX
+            DL 00015 LLФPRN               DL 00045 ETLOOK
+   *HEADER*    01024                       L 00025 LLC
+             L 01024 APXAP                 L 00020 PUTOUT
+            NP 01024 TASK41               DL 00044 TASK41
+   *ICHECK*    00006                      DL 00045 TEPRIN
+             L 00025 W1LOOK                L 00001 DTOI
+             L 00065 WRAUTOR               L 00001 DTON
+             L 00065 WRAUTR                L 00001 ECREAD
+            DL 00035 ЛИЗA                  L 00001 ELPRES
+   *Q*         00024                       L 00001 ELPRIN
+             L 00024 QINP                  L 00001 ENCOD
+   *QCM*       00003                       L 00001 HOPEN
+             L 00003 QINP                  L 00001 INFTYP
+   *QP*        00015                       L 00001 INPSPT
+             L 00015 QINP                  L 00001 ISPACK
+   *REGIM//    00001                       L 00001 ISUNP
+             L 00001 B6*EC                 L 00001 JFOCC
+             L 00001 CONBIL                L 00001 JOPER
+   *RO*        00001                       L 00001 JSEART
+             L 00001 LDEFIN                L 00001 LIBINIT
+   *SCAN*      00004                       L 00001 LOAD
+             L 00004 APXAP                 L 00001 LREGIM
+   *SLATE*     00042                       L 00001 LSHIFT
+             L 00042 PAЗБOP                L 00001 MEMORR
+   *TEP*       00006                       L 00001 MT9A
+             L 00006 CONBIL                L 00001 PARSER
+   *TEXORG*    00012                       L 00001 PERFPL
+             L 00012 APXAP                 L 00001 PRINTER
+             L 00012 DIATEX                L 00001 QOUTLT
+             L 00012 TEXOUT                L 00001 SCANER
+   *TIKTAK*    00025                       L 00001 SHSORT
+            NL 00025 B6*EC                 L 00001 STROUT
+             L 00025 NNN                   L 00001 VMEMOR
+             L 00025 RENUMB      A/MINUS     00001
+             L 00025 SAVEMON/              L 00001 DECOD
+            NL 00025 TABLE*EC    ACC*        00001
+   *TITLE*     00002                       L 00001 ETLOOK
+             L 00002 STROUT                L 00001 MGAUSS
+   *UNIT*      00008                       L 00001 PAЗБOP
+             L 00008 BTLOOK                L 00001 QINP
+             L 00008 W1LOOK                L 00001 TEPRIN
+   *WRDKEY*    00006             BUFFER      02904
+             L 00006 ECB6                  L 02904 PRINTER
+             L 00006 IANALS      CARD        00014
+            DL 00006 PAЗБOP                L 00014 PERFPL
+   *ЖПPOT*     00001                       L 00014 PRINTER
+             L 00001 ЖИPПEЧ      CAT         02048
+   /ELPRES/    01024                       P 02048 BREEDING
+             P 01024 ELPRES                P 01024 PAЗHИЦA2
+            NP 01024 LIBINIT     CHECKFL*    00001
+   /EXPAGE/    02048                       L 00001 DTRAN
+             P 02048 ELPRES      CONLIST     10000
+             P 02048 ELPRIN                L 10000 CONSTAN
+             P 02048 EXLIB       DATA*       00002
+             P 01024 EXMEM                 L 00002 FCREST
+             P 02048 LIBINIT               L 00001 LLФPRI
+   /MONCRD/    00025                       L 00002 NEWLIB
+             L 00025 PARM*       DRTAPE      00001
+   /PARAM      00004                       L 00001 NEWLIB
+             L 00004 PARM*                 L 00001 RDSTAR
+   1970        00004             EEE         00001
+            NL 00004 PRINTER               L 00001 IBMPC
+   A/I0        00001             ERRPR/      00001
+             L 00001 BRAND                 L 00001 ERRPRINT
+             L 00001 COCARD      FLAGS       00001
+             L 00001 CONBIL                L 00001 LREGIM
+             L 00001 CONTAP      FORM        01848
+             L 00001 DECOD                 L 01848 PRINTER
+             L 00001 DIALOG      FULISFL*    00001
+             L 00001 DIALOP                L 00001 LREGIM
+   INF/OP      00064             OUT*OUT     00001
+             L 00064 DTRAN                 L 00001 B6*EC
+   INKOGN      00001                      NL 00001 DTRAN
+             L 00001 SEARCH*               L 00001 PARAMT
+   JERRIO*     00001                       L 00001 PRINTSP*
+             L 00001 JERR        PAGE        08192
+   KCOUNT*     00004                       P 08192 DTRAN
+             L 00004 DEFINP                P 01024 GIVBYT
+   L           01024                       P 01040 PERFPL
+             P 01024 DEFECTAP              P 02048 PULLMOD
+   LCAT        02048             PARSAME     00001
+             P 02048 TAKELIBR              L 00001 ERRPRINT
+   LIBPRINT    00100                       L 00001 PARM*
+             L 00100 DTRAN       RFMRTFLG    00001
+   LIMWR*      00001                       L 00001 GIVPAG
+             L 00001 LLФPRI                L 00001 HOPEN
+   LIST        04096                       L 00001 REQUEST
+             P 01024 LDEFIN                L 00001 SWOP
+             P 04096 PRINTSP*    RM*         00001
+             P 03072 TESTLIB              NL 00001 CHEKPOIN
+   LOADLIS*    00001             SAV/47      00007
+             L 00001 PUTPLO                L 00007 B6*EC
+   LSM         12288             STACK       *****
+             P 12288 PAЗHИЦA2              L ***** IBMPC
+   MATINFEX    00001             STARSTA     00001
+             L 00001 INTER                NL 00001 DTRAN
+   MFOR*       00001             TAB         02048
+             L 00001 CONSTAN               L 02048 DTRAN
+             L 00001 ORD         TO*DRUM     01024
+   MIST10*     00003                       P 01024 DTRAN
+             L 00003 DTRAN       WBEGFLAG    00002
+             L 00003 PRINTSP*              L 00002 NEWLIB
+   MONCARD*    00025                       L 00002 RDSTAR
+            NL 00014 BREEDING    XAXA*       01024
+             L 00025 DEFINP                P 01024 B6*EC
+             L 00014 DTRAN       XPARAMT*    00004
+             L 00001 NEWLIB                L 00004 DTRAN
+             L 00014 NZEDIT      XPARAMT/    00004
+   MONCARD/    00014                      NL 00004 DTRAN
+            NL 00014 B6*EC       XREAD/      00002
+             L 00014 BREEDING              L 00002 B6*EC
+             L 00014 DTRAN                 L 00002 NZEDIT
+             L 00014 PARAMT                L 00002 ORD
+             L 00014 PERSOT                L 00002 READER
+             L 00014 READER      XWRITE/     00002
+             L 00014 SAVEMON/              L 00002 LISTING
+            NL 00014 TABLE*EC              L 00002 NZEDIT
+   MST10*      00003                      NL 00002 ORD
+            NL 00003 PARAMT
+   NAM*LIST    10014
+             L 10014 ORD
+   NAME*       00002
+             L 00001 CONSTAN
+             L 00002 ORD
+             L 00002 QN
+             L 00002 TAKELIBR
+   NAMLIST     00400
+             L 00400 CONSTAN
+   NOLISFL*    00001
+             L 00001 DTRAN
+             L 00001 LREGIM
+             L 00001 NEWLIB
+             L 00001 NEWSTR
+             L 00000 PULLMOD
+             L 00001 TAKELIBR
+             L 00001 TASK41
 *END FILE

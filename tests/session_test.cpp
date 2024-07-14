@@ -299,6 +299,32 @@ TEST_F(dubna_session, libpunch)
 }
 
 //
+// Print real values from Fortran and check output.
+// https://github.com/besm6/dubna/issues/1
+//
+TEST_F(dubna_session, DISABLED_epsilon1)
+{
+    auto output = run_job_and_capture_output(R"(*name epsilon
+*no list
+      program eps
+      real a
+      a = 4020000000000001b
+      print 1000, a, a
+ 1000 format(o17, f44.40)
+      stop
+      end
+*no load list
+*execute
+*end file
+)");
+    // Split output into lines.
+    auto lines = multiline_split(output);
+    auto len = lines.size();
+    ASSERT_GE(lines.size(), 5);
+    EXPECT_STREQ(lines[len-5].c_str(), " 4020000000000001 -0.9999999999990905052982270717620849609375");
+}
+
+//
 // Capture overflow.
 // https://github.com/besm6/dubna/issues/2
 //

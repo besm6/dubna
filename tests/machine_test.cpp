@@ -153,7 +153,7 @@ TEST_F(dubna_machine, trace_startjob)
 // Print real values from Fortran and check output.
 // https://github.com/besm6/dubna/issues/1
 //
-TEST_F(dubna_machine, DISABLED_epsilon)
+TEST_F(dubna_machine, DISABLED_epsilon_staircase)
 {
     run_job_and_check_output("expect_epsilon.txt", R"(*name epsilon
 *call setftn:one,long

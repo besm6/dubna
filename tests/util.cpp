@@ -137,3 +137,40 @@ bool starts_with(const std::string &str, const char *prefix)
     auto prefix_size = strlen(prefix);
     return str.size() >= prefix_size && memcmp(str.c_str(), prefix, prefix_size) == 0;
 }
+
+//
+// Compare output of the Dubna session.
+// Ignore header and footer.
+//
+void check_output(const std::string &output_str, const std::string &expect_str)
+{
+    std::stringstream output(output_str);
+    std::stringstream expect(expect_str);
+
+    // Skip header in the output.
+    while (output.good()) {
+        // Get directory name from the output.
+        std::string line;
+        getline(output, line);
+        if (line == "------------------------------------------------------------")
+            break;
+    }
+
+    // Compare line by line.
+    for (unsigned lineno = 1; expect.good(); lineno++) {
+        ASSERT_TRUE(output.good()) << "Output is too short";
+
+        std::string output_line;
+        getline(output, output_line);
+        if (output_line == "------------------------------------------------------------")
+            break;
+
+        // Remove trailing spaces.
+        output_line.resize(1 + output_line.find_last_not_of(' '));
+
+        std::string expect_line;
+        getline(expect, expect_line);
+        EXPECT_EQ(output_line, expect_line)
+            << "line #" << lineno;
+    }
+}

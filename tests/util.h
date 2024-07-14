@@ -68,4 +68,10 @@ void create_file(const std::string &dest_filename, const std::string &prolog,
 //
 bool starts_with(const std::string &str, const char *prefix);
 
+//
+// Compare output of the Dubna session.
+// Ignore header and footer.
+//
+void check_output(const std::string &output_str, const std::string &expect_str);
+
 #endif // DUBNA_TESTS_UTIL_H

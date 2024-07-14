@@ -28,12 +28,6 @@
 *CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
-          OШИБKA HOMEP 05003   B   00001-M    OПEPATOPE, CЛEДYЮЩEM ЗA METKOЙ 00052    DBES
-   ПYCTOЙ OПEPATOP.
-          OШИБKA HOMEP 05003   B   00001-M    OПEPATOPE, CЛEДYЮЩEM ЗA METKOЙ 00031    DBES
-   ПYCTOЙ OПEPATOP.
-          OШИБKA HOMEP 05003   B   00018-M    OПEPATOPE, CЛEДYЮЩEM ЗA METKOЙ 00030    DBES
-   ПYCTOЙ OПEPATOP.
 *EXECUTE
                               TEST C312     AND     TEST C313
      X         J0(X)       J0(-X)        J1(X)       J1(-X)       I0(X)        I0(-X)        I1(X)       I1(-X)

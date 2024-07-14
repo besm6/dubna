@@ -129,13 +129,13 @@ again:
         if (cpu.intercept(message)) {
             goto again;
         }
-        throw 0;
+        throw std::runtime_error(message);
 
     } catch (std::exception &ex) {
         // Something else.
         cpu.finish();
         std::cerr << "Error: " << ex.what() << std::endl;
-        throw 0;
+        throw std::runtime_error(ex.what());
     }
 }
 

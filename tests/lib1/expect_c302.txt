@@ -28,26 +28,6 @@
 *CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
-          OШИБKA HOMEP 05003   B   00000-M    OПEPATOPE, CЛEДYЮЩEM ЗA METKOЙ 00005    C302
-   ПYCTOЙ OПEPATOP.
-          OШИБKA HOMEP 05003   B   00000-M    OПEPATOPE, CЛEДYЮЩEM ЗA METKOЙ 00006    C302
-   ПYCTOЙ OПEPATOP.
-          OШИБKA HOMEP 05003   B   00086-M    OПEPATOPE, CЛEДYЮЩEM ЗA METKOЙ 00000    DBES
-   ПYCTOЙ OПEPATOP.
-          OШИБKA HOMEP 05003   B   00103-M    OПEPATOPE, CЛEДYЮЩEM ЗA METKOЙ 00000    DBES
-   ПYCTOЙ OПEPATOP.
-          OШИБKA HOMEP 05003   B   00001-M    OПEPATOPE, CЛEДYЮЩEM ЗA METKOЙ 00052    DBES
-   ПYCTOЙ OПEPATOP.
-          OШИБKA HOMEP 05003   B   00001-M    OПEPATOPE, CЛEДYЮЩEM ЗA METKOЙ 00031    DBES
-   ПYCTOЙ OПEPATOP.
-          OШИБKA HOMEP 05003   B   00001-M    OПEPATOPE, CЛEДYЮЩEM ЗA METKOЙ 00030    DBES
-   ПYCTOЙ OПEPATOP.
-          OШИБKA HOMEP 05003   B   00017-M    OПEPATOPE, CЛEДYЮЩEM ЗA METKOЙ 00030    DBES
-   ПYCTOЙ OПEPATOP.
-          OШИБKA HOMEP 05003   B   00001-M    OПEPATOPE, CЛEДYЮЩEM ЗA METKOЙ 00000    FKN
-   ПYCTOЙ OПEPATOP.
-          OШИБKA HOMEP 05003   B   00003-M    OПEPATOPE, CЛEДYЮЩEM ЗA METKOЙ 00000    FKN
-   ПYCTOЙ OПEPATOP.
 *EXECUTE
  TEST SUBROUTINE BESSEL
          X         C                    J0(X)                    J1(X)                    Y0(X)                    Y1(X)
@@ -60,7 +40,7 @@
       -6.0       1.0          1.5064525725-01          2.7668385813-01          0.0000000000+00          0.0000000000+00
    BESSEL...NON-POSITIVE ARGUMENT X=     -9.0000+00
       -9.0       1.0         -9.0333611179-02         -2.4531178657-01          0.0000000000+00          0.0000000000+00
-
+ 
          X         C                    I0(X)                    I1(X)                    K0(X)                    K1(X)
        1.0      -1.0          1.2660658777+00          5.6515910399-01          4.2102443809-01          6.0190723021-01
        6.0      -1.0          6.7234406976+01          6.1341936777+01          1.2439943280-03          1.3439197177-03

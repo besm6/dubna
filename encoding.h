@@ -22,6 +22,7 @@
 // SOFTWARE.
 //
 #include <string>
+#include <iostream>
 
 //
 // Write GOST-10859 string to stdout.
@@ -45,6 +46,11 @@ bool is_gost_end_of_text(unsigned char ch);
 void utf8_putc(unsigned ch);
 
 //
+// Write Unicode symbol to a stream in UTF-8 encoding.
+//
+void utf8_putc(unsigned ch, std::ostream & s);
+
+//
 // Fetch Unicode symbol from UTF-8 string.
 // Advance string pointer.
 //
@@ -64,6 +70,11 @@ std::string utf8_to_koi7(const std::string &input);
 // Convert ITM encoding to/from GOST-10859.
 //
 extern const unsigned char itm_to_gost[256], gost_to_itm[256];
+
+//
+// Convert KOI-7(ISO) encoding to Unicode.
+//
+extern const unsigned short koi7_to_unicode [128];
 
 //
 // Convert character in TEXT encoding to Unicode.

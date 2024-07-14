@@ -34,6 +34,8 @@ private:
     Memory &memory;
     std::ofstream braille;
     std::ofstream stdarray;
+    std::ofstream cosy;
+    std::string cosy_string;
 
 public:
     explicit Puncher(Memory &m) : memory(m) {}
@@ -43,7 +45,9 @@ public:
 
 private:
     void punch_braille(const unsigned char buf[144]);
-    void punch_stdarray(const unsigned char buf[144]);
+    void punch_stdarray(const ushort columns[80]);
+    void punch_cosy(const ushort columns[80]);
+    void transpose(const unsigned char buf[144], ushort columns[80]);
 };
 
 #endif // DUBNA_PLOTTER_H

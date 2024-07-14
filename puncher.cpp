@@ -28,6 +28,7 @@
 #include <iostream>
 
 #include "machine.h"
+#include "encoding.h"
 
 //
 // Print 3 lines of 40 Braille Unicode characters per line
@@ -69,14 +70,11 @@ void Puncher::punch_braille(const unsigned char buf[144])
 }
 
 //
-// Transpose the card image into a column-based representation;
-// if the image matches the "standard array" pattern,
-// and is not a title card, output its contents in an octal format
-// suitable for input.
-void Puncher::punch_stdarray(const unsigned char buf[144])
+// Transpose the card image into a column-based representation.
+//
+void Puncher::transpose(const unsigned char buf[144], ushort columns[80])
 {
-    unsigned short columns[80];
-    memset(columns, 0, 160);
+    memset(columns, 0, 80*sizeof(ushort));
     for (int col = 0; col < 80; ++col) {
         for (int line = 0; line < 12; ++line) {
             int idx = 1 + 12 * line + (col >= 40) + col / 8;
@@ -84,21 +82,19 @@ void Puncher::punch_stdarray(const unsigned char buf[144])
             if (bit)
                 columns[col] |= 1 << line;
         }
-        // Checking the patterns
-        switch (col) {
-        case 0:
-            if (columns[0] != 01200)
-                // Not a standard array card
-                return;
-            break;
-        case 1:
-            if (columns[1] == 0)
-                // Title card, no useful data
-                return;
-            break;
-        default:
-            break;
-        }
+    }
+}
+
+//
+// Given that the image matches the "standard array" (object module) pattern,
+// and is not a title card, output its contents in an octal format
+// suitable for input.
+//
+void Puncher::punch_stdarray(const ushort columns[80])
+{
+    if (columns[1] == 0) {
+	// Title card, no useful data
+	return;
     }
     if (stdarray.bad())
         return;
@@ -110,7 +106,14 @@ void Puncher::punch_stdarray(const unsigned char buf[144])
         }
     }
 
-    stdarray << "`77761\n";
+    // Using the binary header to write the module name and the card number
+    stdarray << "`77761 ";
+    for (int col = 76; col < 80; ++col) {
+	utf8_putc(text_to_unicode(columns[col] >> 6), stdarray);
+	utf8_putc(text_to_unicode(columns[col] & 077), stdarray);
+    }
+    stdarray << ' ' << columns[1] << '\n';
+
     for (int col = 4; col < 75; col += 9) {
         for (int i = 0; i < 8; ++i) {
             if (i % 4 == 0)
@@ -118,6 +121,67 @@ void Puncher::punch_stdarray(const unsigned char buf[144])
             stdarray << std::oct << std::setfill('0') << std::setw(4) << columns[col + i];
             if (i % 4 == 3)
                 stdarray << '\n';
+        }
+    }
+}
+
+//
+// Given that the image matches the COSY (compressed symbols) array pattern,
+// output its title from the 0-th card and its contents in text format.
+// This can be used for extracting text files from disk images by
+// *EDIT
+// *R:<nuzzzz>
+// *CP:<arbitrary name>
+// *EE
+//
+void Puncher::punch_cosy(const ushort columns[80])
+{
+    if (cosy.bad())
+        return;
+    if (!cosy.is_open()) {
+        cosy.open("cosy.out");
+        if (!cosy.is_open()) {
+            std::cerr << "cosy.out:" << std::strerror(errno) << std::endl;
+            return;
+        }
+    }
+
+    if (columns[1] == 0) {
+	// Title card, no text contents.
+	cosy_string.erase();
+	// Printing the COSY array name in curly braces before the first line of the array.
+	cosy << "{";
+	for (int col = 76; col < 80; ++col) {
+	    utf8_putc(text_to_unicode(columns[col] >> 6), cosy);
+	    utf8_putc(text_to_unicode(columns[col] & 077), cosy);
+	}
+	cosy << "}\n";
+	return;
+    }
+
+    for (int col = 4; col < 75; col += 9) {
+	Word w{};
+        for (int i = 0; i < 8; ++i) {
+            if (i % 4 == 0)
+                w = 0;
+            w = (w << 12) | columns[col+i];
+            if (i % 4 == 3) {
+		for (int j = 40; j >= 0; j -= 8) {
+		    unsigned char c = (w >> j) & 0xFF;
+		    if (c == '\n') {
+			cosy_string.resize(cosy_string.find_last_not_of(" ")+1);
+			for (size_t p = 0; p < cosy_string.size(); ++p) {
+			    utf8_putc(koi7_to_unicode[unsigned(cosy_string[p])], cosy);
+			}
+			cosy << '\n';
+			cosy_string.erase();
+			break;	// word-align
+		    } else if (c < 0200) {
+			cosy_string += c;
+		    } else
+			cosy_string += std::string(c - 0200, ' ');
+		}
+	    }
         }
     }
 }
@@ -135,8 +199,16 @@ void Puncher::punch(ushort start_addr, ushort end_addr)
         for (int i = 0; i < 144; ++i)
             buf[i] = bp.get_byte();
         punch_braille(buf);
-        punch_stdarray(buf);
-        // TODO: punch_cosy_array
+	ushort columns[80];
+	transpose(buf, columns);
+	switch (columns[0]) {
+	case 01200:
+	    punch_stdarray(columns);
+	    break;
+	case 05000:
+	    punch_cosy(columns);
+	    break;
+	}
         a += 24;
     }
 }

@@ -136,6 +136,7 @@ bool Processor::step()
     case 000: // зп, atx
         Aex = ADDR(addr + core.M[reg]);
         machine.mem_store(Aex, core.ACC);
+        machine.trace_memory_write_dispak(Aex, core.ACC);
         if (!addr && reg == 017)
             core.M[017] = ADDR(core.M[017] + 1);
         break;
@@ -143,6 +144,7 @@ bool Processor::step()
     case 001: // зпм, stx
         Aex = ADDR(addr + core.M[reg]);
         machine.mem_store(Aex, core.ACC);
+        machine.trace_memory_write_dispak(Aex, core.ACC);
         core.M[017] = ADDR(core.M[017] - 1);
         corr_stack  = 1;
         core.ACC    = machine.mem_load(core.M[017]);

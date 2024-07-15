@@ -71,6 +71,7 @@ static void print_usage(std::ostream &out, const char *prog_name)
     out << "    f       Trace fetch" << std::endl;
     out << "    r       Trace registers" << std::endl;
     out << "    m       Trace memory read/write" << std::endl;
+    out << "    d       Trace in dispak format, to stderr" << std::endl;
 }
 
 //

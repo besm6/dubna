@@ -77,6 +77,7 @@ private:
     static bool debug_registers;    // trace CPU registers
     static bool debug_memory;       // trace memory read/write
     static bool debug_fetch;        // trace instruction fetch
+    static bool debug_dispak;       // trace trace in dispak format, to stderr
 
     // Static stuff.
     static const uint64_t DEFAULT_LIMIT;    // Limit of instructions to simulate, by default
@@ -194,6 +195,12 @@ public:
             print_memory_access(addr, val, "Write");
     }
 
+    static void trace_memory_write_dispak(unsigned addr, Word val)
+    {
+        if (debug_dispak)
+            print_memory_write_dispak(addr, val);
+    }
+
     static void trace_memory_read(unsigned addr, Word val)
     {
         if (debug_memory)
@@ -205,6 +212,8 @@ public:
         // Print e50...e77 except e75, and also e20, e21.
         if (debug_instructions || (debug_extracodes && opcode != 075 && is_extracode(opcode)))
             cpu.print_instruction();
+        if (debug_dispak)
+            cpu.print_instruction_dispak();
     }
 
     void trace_registers()
@@ -246,6 +255,7 @@ public:
     static void print_exception(const char *message);
     static void print_fetch(unsigned addr, Word val);
     static void print_memory_access(unsigned addr, Word val, const char *opname);
+    static void print_memory_write_dispak(unsigned addr, Word val);
     static void print_e70(const E70_Info &info);
     void print_e64(const E64_Info &info, unsigned start_addr, unsigned end_addr);
     void print_e64_dubna(unsigned start_addr, unsigned end_addr);

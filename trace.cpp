@@ -24,6 +24,7 @@
 #include <fstream>
 #include <iomanip>
 #include <iostream>
+#include <sstream>
 
 #include "machine.h"
 
@@ -36,6 +37,7 @@ bool Machine::debug_print;        // trace extracode e64
 bool Machine::debug_registers;    // trace CPU registers
 bool Machine::debug_memory;       // trace memory read/write
 bool Machine::debug_fetch;        // trace instruction fetch
+bool Machine::debug_dispak;       // trace in dispak format, to stderr
 
 //
 // Emit trace to this stream.
@@ -50,6 +52,7 @@ std::ofstream Machine::trace_stream;
 //  r - trace registers
 //  m - trace memory read/write
 //  x - trace exceptions
+//  d - trace in dispak format, to stderr
 //
 void Machine::enable_trace(const char *trace_mode)
 {
@@ -83,6 +86,9 @@ void Machine::enable_trace(const char *trace_mode)
                 break;
             case 'r':
                 debug_registers = true;
+                break;
+            case 'd':
+                debug_dispak = true;
                 break;
             default:
                 throw std::runtime_error("Wrong trace option: " + std::string(1, ch));
@@ -177,6 +183,20 @@ void Machine::print_memory_access(unsigned addr, Word val, const char *opname)
 }
 
 //
+// Print memory write in dispak format.
+// "       00016: store 0003770010053377"
+//
+void Machine::print_memory_write_dispak(unsigned addr, Word val)
+{
+    auto &out       = std::cerr;
+    auto save_flags = out.flags();
+
+    out << std::oct << "       " << std::setfill('0') << std::setw(5) << addr
+        << ": store " << std::setw(16) << val << '\n';
+    out.flags(save_flags);
+}
+
+//
 // Print instruction address, opcode from RK and mnemonics.
 //
 void Processor::print_instruction()
@@ -193,6 +213,32 @@ void Processor::print_instruction()
     out << std::endl;
 
     // Restore.
+    out.flags(save_flags);
+}
+
+//
+// Print instruction in dispak format.
+// "03652: xta 2157(1)          (=6040000000065366) acc=2031463100000000 r[1]=00141"
+//
+void Processor::print_instruction_dispak()
+{
+    auto &out       = std::cerr;
+    auto save_flags = out.flags();
+    auto reg        = RK >> 20;
+    auto addr       = (RK & ONEBIT(20)) ? (RK & BITS(15)) :
+                      ((RK & BITS(12)) | ((RK & ONEBIT(19)) ? 070000 : 0));
+    auto word       = machine.mem_load(ADDR(addr + core.M[reg]));
+    std::ostringstream buf;
+
+    besm6_print_instruction_mnemonics(buf, RK);
+    out << std::oct << std::setfill('0') << std::setw(5) << core.PC
+        << ": " << std::setfill(' ') << std::setw(20) << std::left << buf.str()
+        << " (=" << std::right << std::setfill('0') << std::setw(16) << word
+        << ") acc=" << std::setw(16) << core.ACC;
+    if (reg) {
+        out << " r[" << reg << "]=" << std::setw(5) << core.M[reg];
+    }
+    out << '\n';
     out.flags(save_flags);
 }
 

@@ -28,6 +28,7 @@ set(TEST_SOURCES
     session_test.cpp
     e64_test.cpp
     elem_func_test.cpp
+    arch_test.cpp
     util.cpp
 )
 # Enable CERN tests when variable TEST_ALL is defined.

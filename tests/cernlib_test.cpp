@@ -26,10 +26,9 @@
 #include "fixture_machine.h"
 
 //
-// Uncomment when needed.
+// These tests are enabled by "make test-all" in the top level Makefile.
 // Please note that this file adds more than 400 tests to the list.
 //
-#if 0
 TEST_F(dubna_machine, cernlib_a200)
 {
     test_cernlib(1, "a200");
@@ -1734,4 +1733,3 @@ TEST_F(dubna_machine, cernlib_z054)
 {
     test_cernlib(2, "z054");
 }
-#endif

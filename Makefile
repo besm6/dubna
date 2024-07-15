@@ -19,6 +19,11 @@ test:   build
 	$(MAKE) -Cbuild unit_tests
 	ctest --test-dir build/tests
 
+test-all: TEST_ALL="-DTEST_ALL:BOOL=ON"
+test-all: build
+	$(MAKE) -Cbuild unit_tests
+	ctest --test-dir build/tests
+
 install: build
 	$(MAKE) -Cbuild $@
 
@@ -27,7 +32,7 @@ clean:
 
 build:
 	mkdir $@
-	cmake -B$@ -DCMAKE_BUILD_TYPE=RelWithDebInfo
+	cmake -B$@ -DCMAKE_BUILD_TYPE=RelWithDebInfo $(TEST_ALL)
 
 debug:
 	mkdir build

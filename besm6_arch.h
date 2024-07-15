@@ -206,8 +206,10 @@ public:
 
     //
     // Whether the number is negative.
+    // Must check bit 42 instead of bit 41, as the value may be
+    // denormalized due to negation.
     //
-    bool is_negative() { return (mantissa & BIT41) != 0; }
+    bool is_negative() { return (mantissa & BIT42) != 0; }
 
     //
     // Вернуть true если число ненормализованное.

@@ -1228,47 +1228,53 @@ TEST_F(dubna_machine, amx)
     // Store the test code.
     store_word(010, besm6_asm("уиа 2001(17), ржа 3"));
     store_word(011, besm6_asm("уиа 100(16), счи 16"));
-    store_word(012, besm6_asm("вчаб 2013, по 34"));
-    store_word(013, besm6_asm("нтж 2000, пе 34"));
-    store_word(014, besm6_asm("сч 2000, вчаб 2000"));
-    store_word(015, besm6_asm("пе 34, или"));
-    store_word(016, besm6_asm("пе 34, сч 2014"));
-    store_word(017, besm6_asm("счм 2015, вчаб (17)"));
-    store_word(020, besm6_asm("пе 34, нтж 2016"));
-    store_word(021, besm6_asm("пе 34, сч 2017"));
-    store_word(022, besm6_asm("вчаб 2016, нтж 2020"));
-    store_word(023, besm6_asm("пе 34, сч 2021"));
-    store_word(024, besm6_asm("счм 2022, вчаб (17)"));
-    store_word(025, besm6_asm("нтж 2023, пе 34"));
-    store_word(026, besm6_asm("ржа, сч 2024"));
-    store_word(027, besm6_asm("счм 2025, вчаб (17)"));
-    store_word(030, besm6_asm("нтж 2021, пе 34"));
-    store_word(031, besm6_asm("сч 2026, вчаб 2027"));
-    store_word(032, besm6_asm("нтж 2030, пе 34"));
-    store_word(033, besm6_asm("стоп 12345(6), мода")); // Magic opcode: Pass
-    store_word(034, besm6_asm("стоп 76543(2), мода")); // Magic opcode: Fail
-    store_word(02000, 00037777777777777ul);
-    store_word(02013, 00000000000000101ul);
-    store_word(02014, 00000000000000002ul);
-    store_word(02015, 00000000000000003ul);
-    store_word(02016, 00000000000000001ul);
-    store_word(02017, 00067777777777777ul);
-    store_word(02020, 00050000000000000ul);
-    store_word(02021, 04050000000000000ul);
-    store_word(02022, 06427777777777777ul);
-    store_word(02023, 06410000000000000ul);
-    store_word(02024, 06410000000000002ul);
-    store_word(02025, 06410000000000003ul);
-    store_word(02026, 04060000000000000ul);
-    store_word(02027, 04057777777777765ul);
-    store_word(02030, 01653000000000000ul);
+    store_word(012, besm6_asm("вчаб 2013, по 36"));
+    store_word(013, besm6_asm("нтж 2000, пе 36"));
+    store_word(014, besm6_asm("сч 2014, вчаб 2015"));
+    store_word(015, besm6_asm("нтж 2016, пе 36"));
+    store_word(016, besm6_asm("сч 2000, вчаб 2000"));
+    store_word(017, besm6_asm("пе 36, или"));
+    store_word(020, besm6_asm("пе 36, сч 2017"));
+    store_word(021, besm6_asm("счм 2020, вчаб (17)"));
+    store_word(022, besm6_asm("пе 36, нтж 2021"));
+    store_word(023, besm6_asm("пе 36, сч 2022"));
+    store_word(024, besm6_asm("вчаб 2021, нтж 2023"));
+    store_word(025, besm6_asm("пе 36, сч 2024"));
+    store_word(026, besm6_asm("счм 2025, вчаб (17)"));
+    store_word(027, besm6_asm("нтж 2026, пе 36"));
+    store_word(030, besm6_asm("ржа, сч 2027"));
+    store_word(031, besm6_asm("счм 2030, вчаб (17)"));
+    store_word(032, besm6_asm("нтж 2024, пе 36"));
+    store_word(033, besm6_asm("сч 2031, вчаб 2032"));
+    store_word(034, besm6_asm("нтж 2033, пе 36"));
+    store_word(035, besm6_asm("стоп 12345(6), мода")); // Magic opcode: Pass
+    store_word(036, besm6_asm("стоп 76543(2), мода")); // Magic opcode: Fail
+    store_word(02000, 00037'7777'7777'7777ul);
+    store_word(02013, 00000'0000'0000'0101ul);
+    store_word(02014, 04160'0000'0000'0000ul);
+    store_word(02015, 06400'0000'0000'0000ul);
+    store_word(02016, 06400'0000'0000'0010ul);
+    store_word(02017, 00000'0000'0000'0002ul);
+    store_word(02020, 00000'0000'0000'0003ul);
+    store_word(02021, 00000'0000'0000'0001ul);
+    store_word(02022, 00067'7777'7777'7777ul);
+    store_word(02023, 00050'0000'0000'0000ul);
+    store_word(02024, 04050'0000'0000'0000ul);
+    store_word(02025, 06427'7777'7777'7777ul);
+    store_word(02026, 06410'0000'0000'0000ul);
+    store_word(02027, 06410'0000'0000'0002ul);
+    store_word(02030, 06410'0000'0000'0003ul);
+    store_word(02031, 04060'0000'0000'0000ul);
+    store_word(02032, 04057'7777'7777'7765ul);
+    store_word(02033, 01653'0000'0000'0000ul);
 
     // Run the code.
+    Machine::enable_trace("emir");
     machine->cpu.set_pc(010);
     machine->run();
 
     // Check registers.
-    EXPECT_EQ(machine->cpu.get_pc(), 033u);
+    EXPECT_EQ(machine->cpu.get_pc(), 035u);
     EXPECT_EQ(machine->cpu.get_acc(), 0u);
     EXPECT_EQ(machine->cpu.get_rmr(), 0u);
     EXPECT_EQ(machine->cpu.get_rau(), 04u);

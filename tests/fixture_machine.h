@@ -60,9 +60,12 @@ protected:
         // Create job file.
         create_file(job_filename, input);
 
+        // This buffer must be static, otherwise in case of exception in machine->run(),
+        // destructor of std::ios:base crashes trying to deallocate it.
+        static std::ostringstream output;
+
         // Redirect stdout.
         std::streambuf *save_cout = std::cout.rdbuf();
-        std::ostringstream output;
         std::cout.rdbuf(output.rdbuf());
 
         // Run the job.
@@ -84,6 +87,7 @@ protected:
             // Save result for debug.
             create_file(expect_filename, result);
         }
+        output.clear();
     }
 
     //
@@ -102,12 +106,15 @@ protected:
                                       "*no load list\n";
         std::string epilog          = "*end file\n";
 
+        // This buffer must be static, otherwise in case of exception in machine->run(),
+        // destructor of std::ios:base crashes trying to deallocate it.
+        static std::ostringstream output;
+
         // Create job file.
         create_file(job_filename, prolog, input_filename, epilog);
 
         // Redirect stdout.
         std::streambuf *save_cout = std::cout.rdbuf();
-        std::ostringstream output;
         std::cout.rdbuf(output.rdbuf());
 
         // Run the job.
@@ -129,5 +136,6 @@ protected:
             // Save result for debug.
             create_file("expect_" + file_base + ".txt", result);
         }
+        output.clear();
     }
 };

@@ -565,14 +565,14 @@ TEST_F(dubna_machine, cernlib_d610)
 {
     test_cernlib(1, "d610");
 }
-TEST_F(dubna_machine, cernlib_d612)
-{
-    test_cernlib(1, "d612");
-}
-TEST_F(dubna_machine, cernlib_d612a)
-{
-    test_cernlib(1, "d612a");
-}
+//TEST_F(dubna_machine, cernlib_d612)
+//{
+//    test_cernlib(1, "d612"); // Routine NABOR is damaged on tape 12/monsys.
+//}
+//TEST_F(dubna_machine, cernlib_d612a)
+//{
+//    test_cernlib(1, "d612a"); // Routine NABOR is damaged on tape 12/monsys.
+//}
 TEST_F(dubna_machine, cernlib_d700)
 {
     test_cernlib(1, "d700");

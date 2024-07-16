@@ -146,27 +146,27 @@ bool is_extracode(unsigned opcode)
 //      48——–42 41   40————————————————–1
 //      порядок знак мантисса в доп. коде
 //
-Word ieee_to_besm6(double value)
+Word ieee_to_besm6(const double input)
 {
     // Split into mantissa and exponent.
     int exponent;
-    value = frexp(value, &exponent);
-    if (value == 0.0) {
+    double mantissa = frexp(input, &exponent);
+    if (mantissa == 0.0) {
         return 0;
     }
 
     // Multiply mantissa by 2^40.
-    value = ldexp(value, 40);
+    mantissa = ldexp(mantissa, 40);
 
     Word word;
-    if (value > 0) {
-        // Positive value in range [0.5, 1) * 2^40.
+    if (mantissa > 0) {
+        // Positive value in range [0.5, 1) * 2⁴⁰
         // Get 40 bits of mantissa.
-        word = (Word)value;
-        if (value - word >= 0.5) {
+        word = (Word)mantissa;
+        if (mantissa - word >= 0.5) {
             // Rounding.
             word += 1;
-            if (value == 1LL << 40) {
+            if (word == 1LL << 40) {
                 // Normalize.
                 word >>= 1;
                 exponent += 1;
@@ -177,27 +177,27 @@ Word ieee_to_besm6(double value)
             return 07757'7777'7777'7777LL;
         }
     } else {
-        // Negative value in range (-1, -0.5] * 2^40.
+        // Negative value in range (-1, -0.5] * 2⁴⁰.
         // Convert it to [-1, -0.5).
-        if (value == -(1LL << 39)) {
+        if (mantissa == -(1LL << 39)) {
             if (exponent == -64) {
                 // The smallest negative number.
                 return 0027'7777'7777'7777LL;
             }
-            value += value;
+            mantissa += mantissa;
             exponent -= 1;
         }
 
         // Account for the sign bit.
         // The value becomes positive.
-        value += 1LL << 40;
+        mantissa += 1LL << 40;
 
         // Get 40 bits of mantissa.
-        word = (Word)value;
-        if (value - word >= 0.5) {
+        word = (Word)mantissa;
+        if (mantissa - word > 0.5) {
             // Rounding.
             word += 1;
-            if (value == 1LL << 40) {
+            if (word == 1LL << 40) {
                 // Normalize.
                 word >>= 1;
                 exponent += 1;
@@ -402,11 +402,13 @@ std::string encode_cosy(std::string line)
 //
 Word besm6_sqrt(Word input)
 {
-    const double result = std::sqrt(besm6_to_ieee(input));
+    const double arg    = besm6_to_ieee(input);
+    const double result = std::sqrt(arg);
     if (std::isnan(result)) {
         throw std::runtime_error("Function sqrt() failed");
     }
-    return ieee_to_besm6(result);
+    Word output = ieee_to_besm6(result);
+    return output;
 }
 
 //

@@ -66,18 +66,10 @@ protected:
         std::cout.rdbuf(output.rdbuf());
 
         // Run the job.
-        try {
-            machine->load(job_filename);
-            machine->boot_ms_dubna();
-            machine->run();
-            machine->plotter.finish();
-        } catch (const std::exception &ex) {
-            FAIL() << ex.what();
-            return;
-        } catch (...) {
-            FAIL() << "Exception";
-            return;
-        }
+        machine->load(job_filename);
+        machine->boot_ms_dubna();
+        ASSERT_NO_THROW(machine->run());
+        machine->plotter.finish();
 
         // Get output.
         std::cout.rdbuf(save_cout);
@@ -119,18 +111,10 @@ protected:
         std::cout.rdbuf(output.rdbuf());
 
         // Run the job.
-        try {
-            machine->load(job_filename);
-            machine->boot_ms_dubna();
-            machine->run();
-            machine->plotter.finish();
-        } catch (const std::exception &ex) {
-            FAIL() << ex.what();
-            return;
-        } catch (...) {
-            FAIL() << "Exception";
-            return;
-        }
+        machine->load(job_filename);
+        machine->boot_ms_dubna();
+        ASSERT_NO_THROW(machine->run());
+        machine->plotter.finish();
 
         // Get output.
         std::cout.rdbuf(save_cout);

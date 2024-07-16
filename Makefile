@@ -21,8 +21,13 @@ test:   build
 
 test-all: TEST_ALL="-DTEST_ALL:BOOL=ON"
 test-all: build
-	$(MAKE) -Cbuild unit_tests
-	ctest --test-dir build/tests
+	@if grep TEST_ALL:BOOL=ON build/CMakeCache.txt; \
+        then \
+            $(MAKE) test; \
+        else \
+            rm -rf build; \
+            $(MAKE) $@; \
+        fi
 
 install: build
 	$(MAKE) -Cbuild $@

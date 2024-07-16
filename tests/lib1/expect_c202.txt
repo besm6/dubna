@@ -37,12 +37,13 @@
                      -3.000+00  0.000+00
                       2.000+00  0.000+00
                       1.000+00  0.000+00
-     THE DEGREE OF THE POLYNOMIAL IS TOO HIGH OR THE
-     POLYNOMIAL IS TOO ILL-CONDITIONED
           ROOT
+       -0.288     0.000     1.902    -1.016     1.902     1.016     0.242    -0.829     0.242     0.829
           MULT
+                      1                   1                   1                   1                   1
           ERROR
-          NS=  0                               COMPLEX POLYNOMIAL ROOTS                    TEST C 202
+              1.3328-07           1.3328-07           1.3328-07           8.4294-08           8.4294-08
+          NS=  5                               COMPLEX POLYNOMIAL ROOTS                    TEST C 202
                               ************************                    *********
           POLYNOM A
                       1.000+00  0.000+00

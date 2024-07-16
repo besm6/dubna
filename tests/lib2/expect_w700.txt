@@ -35,3 +35,40 @@
           BEAM   PARTICLE HAS  T = 1.0   AND  T3 = -1.0
           TARGET PARTICLE HAS  T = 0.5   AND  T3 =  0.5
           M = (  1 0 0 0 2 0 0  )
+          NISCO OUTPUT
+          NUMBER OF CHARGE CONFIGURATIONS IS    3
+          CONFIG.    NISCO     VALUES OF  T3  FOR SECONDARIES
+             1*176268.10423     0.5   0.0  -1.0
+             2*264401.42875    -0.5   1.0  -1.0
+             3*088133.97935    -0.5   0.0   0.0
+                                        ----------------------------------------
+          RESULTS OF NORMALIZED ISOSPIN COEFFICIENTS CALCULATION
+          ******************************************************
+           22.10.1970
+          BEAM   PARTICLE HAS  T = 1.0   AND  T3 = -1.0
+          TARGET PARTICLE HAS  T = 0.5   AND  T3 =  0.5
+          M = (  1 0 0 0 3 0 0  )
+          NISCO OUTPUT
+          NUMBER OF CHARGE CONFIGURATIONS IS    4
+          CONFIG.    NISCO     VALUES OF  T3  FOR SECONDARIES
+             1      0.58182     0.5   1.0  -1.0  -1.0
+             2     -0.41818     0.5   0.0   0.0  -1.0
+             3      0.96364    -0.5   1.0   0.0  -1.0
+             4     -0.12727    -0.5   0.0   0.0   0.0
+                                        ----------------------------------------
+          RESULTS OF NORMALIZED ISOSPIN COEFFICIENTS CALCULATION
+          ******************************************************
+           22.10.1970
+          BEAM   PARTICLE HAS  T = 1.0   AND  T3 = -1.0
+          TARGET PARTICLE HAS  T = 0.5   AND  T3 =  0.5
+          M = (  1 0 0 0 4 0 0  )
+          NISCO OUTPUT
+          NUMBER OF CHARGE CONFIGURATIONS IS    5
+          CONFIG.    NISCO     VALUES OF  T3  FOR SECONDARIES
+             1      0.46510     0.5   1.0   0.0  -1.0  -1.0
+             2      0.27486    -0.5   1.0   1.0  -1.0  -1.0
+             3     -0.12260     0.5   0.0   0.0   0.0  -1.0
+             4      0.41013    -0.5   1.0   0.0   0.0  -1.0
+             5     -0.02749    -0.5   0.0   0.0   0.0   0.0
+                                        ----------------------------------------
+          CALNIC NORMAL END

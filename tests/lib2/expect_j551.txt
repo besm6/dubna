@@ -92,8 +92,8 @@
                               MИHИMAЛЬHOE И MAKCИMAЛЬHOE ЗHAЧEHИЯ ИЗ MACCИBA OPДИHAT KPИBЫX
                             PABHЫ COOTBETCTBEHHO   -1.00000000000+00  И    1.00000000000+00.
                                      ЦEHA ДEЛEHИЯ ПO OCИ OPДИHAT PABHA   2.0000-02.
-        -50                 -30                            0         10        20        30        40        50
-         I    I         I    I    I         I              I    I    I    I    I    I    I    I    I    I    I
+        -50       -40       -30       -20       -10        0         10        20        30        40        50
+         I    I    I    I    I    I    I    I    I    I    I    I    I    I    I    I    I    I    I    I    I
          IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
       0--                                                  S                                                 C--  0
         -                                                        S                                           C-
@@ -146,8 +146,8 @@
         -                                      S                                                           C  -
         -                                            S                                                       C-
          IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
-         I    I         I    I    I         I              I    I    I    I    I    I    I    I    I    I    I
-        -50                 -30                            0         10        20        30        40        50
+         I    I    I    I    I    I    I    I    I    I    I    I    I    I    I    I    I    I    I    I    I
+        -50       -40       -30       -20       -10        0         10        20        30        40        50
                               MИHИMAЛЬHOE И MAKCИMAЛЬHOE ЗHAЧEHИЯ ИЗ MACCИBA OPДИHAT KPИBЫX
                             PABHЫ COOTBETCTBEHHO   -1.00000000000+00  И    1.00000000000+00.
                                      ЦEHA ДEЛEHИЯ ПO OCИ OPДИHAT PABHA   2.0000-02.

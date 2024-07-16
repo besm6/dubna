@@ -155,6 +155,9 @@ Word ieee_to_besm6(double d)
     if (sign)
         d = -d;
     d = frexp(d, &exponent);
+    if (d == 0.0)
+        return 0;
+
     // 0.5 <= d < 1.0
     d    = ldexp(d, 40);
     word = (Word)d;

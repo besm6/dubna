@@ -68,9 +68,9 @@ TEST(arith, besm6_to_ieee)
     EXPECT_EQ(besm6_to_ieee(0'7757'7777'7777'7777ull), 0x1.fffffffffep+62);     //  9.22337e+18
     EXPECT_EQ(besm6_to_ieee(0'7777'7777'7777'7777ull), -0x1p+23);               // -8.38861e+06 denormal
     //
-    EXPECT_EQ(besm6_to_ieee(0'3717'7777'7777'7777ull), 0x1.fffffffffep-3); // 0.25 - epsilon
-    EXPECT_EQ(besm6_to_ieee(0'4017'7777'7777'7777ull), 0x1.fffffffffep-1); // 1.0 - epsilon
-    EXPECT_EQ(besm6_to_ieee(0'4117'7777'7777'7777ull), 0x1.fffffffffep+1); // 4.0 - epsilon
+    EXPECT_EQ(besm6_to_ieee(0'3717'7777'7777'7777ull), 0x1.fffffffffep-3); // 0.25 minus epsilon
+    EXPECT_EQ(besm6_to_ieee(0'4017'7777'7777'7777ull), 0x1.fffffffffep-1); // 1.0 minus epsilon
+    EXPECT_EQ(besm6_to_ieee(0'4117'7777'7777'7777ull), 0x1.fffffffffep+1); // 4.0 minus epsilon
     // clang-format on
 }
 
@@ -125,5 +125,8 @@ TEST(arith, ieee_to_besm6)
     EXPECT_EQ(ieee_to_besm6(-0x1.ffffffffffp-2), 0'3760'0000'0000'0000ull); // round to -0.5
     EXPECT_EQ(ieee_to_besm6(-0x1.ffffffffffp-1), 0'4020'0000'0000'0000ull); // round to -1.0
     EXPECT_EQ(ieee_to_besm6(-0x1.ffffffffffp+0), 0'4060'0000'0000'0000ull); // round to -2.0
+    EXPECT_EQ(ieee_to_besm6(-0x1.fffffffffep-2), 0'3760'0000'0000'0001ull); // -0.5 plus epsilon
+    EXPECT_EQ(ieee_to_besm6(-0x1.fffffffffep-1), 0'4020'0000'0000'0001ull); // -1.0 plus epsilon
+    EXPECT_EQ(ieee_to_besm6(-0x1.fffffffffep+0), 0'4060'0000'0000'0001ull); // -2.0 plus epsilon
     // clang-format on
 }

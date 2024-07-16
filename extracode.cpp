@@ -215,6 +215,9 @@ void Processor::e51()
     case 0:
         core.ACC = besm6_sin(core.ACC);
         break;
+    case 1:
+        core.ACC = besm6_cos(core.ACC);
+        break;
     default:
         throw Exception("Unimplemented extracode *51 " + to_octal(addr));
     }

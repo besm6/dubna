@@ -135,6 +135,7 @@ bool is_extracode(unsigned opcode)
 
 //
 // Преобразование вещественного числа в формат БЭСМ-6.
+// Всегда возвращает нормализованное число.
 //
 // Представление чисел в IEEE 754 (double):
 //      64   63———53 52————–1
@@ -145,32 +146,75 @@ bool is_extracode(unsigned opcode)
 //      48——–42 41   40————————————————–1
 //      порядок знак мантисса в доп. коде
 //
-Word ieee_to_besm6(double d)
+Word ieee_to_besm6(double value)
 {
-    Word word;
+    // Split into mantissa and exponent.
     int exponent;
-    int sign;
-
-    sign = d < 0;
-    if (sign)
-        d = -d;
-    d = frexp(d, &exponent);
-    if (d == 0.0)
+    value = frexp(value, &exponent);
+    if (value == 0.0) {
         return 0;
-
-    // 0.5 <= d < 1.0
-    d    = ldexp(d, 40);
-    word = (Word)d;
-    if (d - word >= 0.5)
-        word += 1;                       // Округление
-    if (exponent < -64)
-        return 0LL;                      // Близкое к нулю число
-    if (exponent > 63) {
-        return sign ? 0xFEFFFFFFFFFFLL : // Максимальное число
-                   0xFF0000000000LL;     // Минимальное число
     }
-    if (sign)
-        word = 0x20000000000LL - word; // Знак
+
+    // Multiply mantissa by 2^40.
+    value = ldexp(value, 40);
+
+    Word word;
+    if (value > 0) {
+        // Positive value in range [0.5, 1) * 2^40.
+        // Get 40 bits of mantissa.
+        word = (Word)value;
+        if (value - word >= 0.5) {
+            // Rounding.
+            word += 1;
+            if (value == 1LL << 40) {
+                // Normalize.
+                word >>= 1;
+                exponent += 1;
+            }
+        }
+        if (exponent > 63) {
+            // Overflow: return the most positive number.
+            return 07757'7777'7777'7777LL;
+        }
+    } else {
+        // Negative value in range (-1, -0.5] * 2^40.
+        // Convert it to [-1, -0.5).
+        if (value == -(1LL << 39)) {
+            if (exponent == -64) {
+                // The smallest negative number.
+                return 0027'7777'7777'7777LL;
+            }
+            value += value;
+            exponent -= 1;
+        }
+
+        // Account for the sign bit.
+        // The value becomes positive.
+        value += 1LL << 40;
+
+        // Get 40 bits of mantissa.
+        word = (Word)value;
+        if (value - word >= 0.5) {
+            // Rounding.
+            word += 1;
+            if (value == 1LL << 40) {
+                // Normalize.
+                word >>= 1;
+                exponent += 1;
+            }
+        }
+        if (exponent > 63) {
+            // Overflow: return the most negative number.
+            return 07760'0000'0000'0000LL;
+        }
+        word |= 1LL << 40;
+    }
+    if (exponent < -64) {
+        // Underflow.
+        return 0LL;
+    }
+
+    // Add exponent.
     word |= ((Word)(exponent + 64)) << 41;
     return word;
 }

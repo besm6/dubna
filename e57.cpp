@@ -28,6 +28,10 @@
 //
 void Processor::e57()
 {
+    if (RK == 06057'0400) {
+        // 12,*57,400B - unknown, for CERN routine ELPAHY (test d302).
+        return;
+    }
     auto addr = core.M[016];
     switch (addr) {
     case 0:

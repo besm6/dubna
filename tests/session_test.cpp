@@ -800,14 +800,14 @@ TEST_F(dubna_session, grafor_calcomp)
 TEST_F(dubna_session, file_scratch)
 {
     auto output = run_job_and_capture_output(R"(*name scratch
-*file:scratch,44,w,10
+*file:scratch,44,w
 *edit
 *RO
 *W:44
-Варкалось. Хливкие шорьки
-Пырялись по наве,
-И хрюкотали зелюки,
-Как мюмзики в мове.
+’Twas brillig, and the slithy toves
+Did gyre and gimble in the wabe:
+All mimsy were the borogoves,
+And the mome raths outgrabe.
 *EE
 *
 *edit

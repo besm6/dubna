@@ -1,8 +1,4 @@
-*name test
-*tape:148/dispac,41,w
-*tape:149/dispac,42,w
-*       todo file:scratch,41,100
-*       todo file:scratch,42,100
+*name flower
 *library:1,2,12
 *call flower
 CHECK FLOWER

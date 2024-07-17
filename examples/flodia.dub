@@ -1,8 +1,6 @@
 *name flodia
-*tape:148/dispac,41,w
-*tape:149/dispac,42,w
-*       todo file:scratch,41,100
-*       todo file:scratch,42,100
+*file:scratch,41,w
+*file:scratch,42,w
 *library:2
 *call flodia
       SUBROUTINE TRED2(N,D,E,Z,FAIL)

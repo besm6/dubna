@@ -52,7 +52,7 @@ Disk::Disk(Word id, Memory &m, const std::string &p, bool wp)
 // Open temporary file as disk.
 //
 Disk::Disk(Word id, Memory &m, const std::string &p, unsigned nz)
-  : volume_id(id), memory(m), path(p + ".XXXXXX"), write_permit(true), num_zones(nz)
+  : volume_id(id), memory(m), path(p + ".@XXXXXX"), write_permit(true), num_zones(nz)
 {
     // Create a unique file with name derived from template.
     file_descriptor = mkstemp(&path[0]);
@@ -98,8 +98,14 @@ void Disk::disk_to_memory(unsigned zone, unsigned sector, unsigned addr, unsigne
 
     Word *destination = memory.get_ptr(addr);
     unsigned nbytes   = nwords * sizeof(Word);
-    if (read(file_descriptor, destination, nbytes) != nbytes)
+    int nread         = read(file_descriptor, destination, nbytes);
+
+    if (nread == 0) {
+        // Read past the end of file - return zeroes.
+        std::memset(destination, 0, nbytes);
+    } else if (nread != nbytes) {
         throw std::runtime_error("Disk read error");
+    }
 }
 
 //

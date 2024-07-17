@@ -334,6 +334,10 @@ void Processor::e63()
         // Unknown, for DIPOL.
         core.ACC = 05000;
         return;
+    case 0702:
+        // Unknown, for test f423.
+        core.ACC = 0;
+        return;
     case 0704:
         // Get page mode.
         // Bit 44 means disable page numbering.

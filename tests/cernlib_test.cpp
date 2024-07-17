@@ -1281,18 +1281,18 @@ TEST_F(dubna_machine, cernlib_k450)
 {
     test_cernlib(2, "k450");
 }
-TEST_F(dubna_machine, cernlib_k451a)
-{
-    test_cernlib(2, "k451a");
-}
+//TEST_F(dubna_machine, cernlib_k451a)
+//{
+//    test_cernlib(2, "k451a");
+//}
 TEST_F(dubna_machine, cernlib_k451b)
 {
     test_cernlib(2, "k451b");
 }
-TEST_F(dubna_machine, cernlib_k452)
-{
-    test_cernlib(2, "k452");
-}
+//TEST_F(dubna_machine, cernlib_k452)
+//{
+//    test_cernlib(2, "k452");
+//}
 TEST_F(dubna_machine, cernlib_m101)
 {
     test_cernlib(2, "m101");

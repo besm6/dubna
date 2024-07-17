@@ -46,6 +46,11 @@ void Processor::e57()
     case 7:
         // Delay the task, presumably waiting for tape to be installed by operator.
         throw Exception("Task paused waiting for tape");
+    case 1:
+    case 4:
+        // CDC tape control by Gusev.
+        core.ACC = 0;
+        return;
     case 5:
         // Unknown, for Forex.
         core.ACC = 0;

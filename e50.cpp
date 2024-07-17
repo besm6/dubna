@@ -472,6 +472,9 @@ void Processor::e50()
     case 0203:
         // Convert tape number from 2-10 format into internal format.
         break;
+    case 0205:
+        // Unknown, for Liza.
+        break;
     case 0210:
         // TODO: Lock/release semaphores.
         break;

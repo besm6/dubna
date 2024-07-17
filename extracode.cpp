@@ -363,6 +363,7 @@ void Processor::e63()
     case 03000:
     case 03001:
     case 03010:
+    case 03011:
         // Get words from some other descriptor.
         core.ACC = 0;
         return;

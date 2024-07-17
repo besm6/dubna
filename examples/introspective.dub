@@ -1,0 +1,12 @@
+*name introspective
+*call setftn:one,long
+*no load
+*fortran
+      PROGRAMQ
+      REALX(14)
+      DATA  X /84H(6X8HPROGRAMQ/6X9HREALX(14)/6X12HDATA  X /84H9A6/5X1HC
+     C5A6,1H//6X9HPRINT X,X/6X3HEND)/
+      PRINT X,X
+      END
+*execute
+*end file

@@ -24,10 +24,14 @@
 
 
 *NAME F311
+*TAPE:12/******,32
 *LIBRARY:1,2,3,5,12,23
 *CALL SETFTN:ONE,LONG
 *NO LIST
 *NO LOAD LIST
+*       TAPE:12/LIBRAR,32
+*TABLE:LIBLIST(DETERM)
+*LIBLIST:320375
 *EXECUTE
                               TEST F311
                               A
@@ -38,3 +42,6 @@
                  0.0       0.0       0.0       0.0
                  0.0       0.0       0.0       0.0
            N                    Y
+            4              1.46999999996+02
+            3              4.19999999998+02
+            2             -2.40000000000+01

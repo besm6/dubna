@@ -985,10 +985,10 @@ TEST_F(dubna_machine, cernlib_f203)
 {
     test_cernlib(2, "f203");
 }
-TEST_F(dubna_machine, cernlib_f220)
-{
-    test_cernlib(2, "f220");
-}
+//TEST_F(dubna_machine, cernlib_f220)
+//{
+//    test_cernlib(2, "f220"); // Routine ELTRAN is damaged on tape 12/monsys.
+//}
 TEST_F(dubna_machine, cernlib_f221)
 {
     test_cernlib(2, "f221");
@@ -997,10 +997,10 @@ TEST_F(dubna_machine, cernlib_f222)
 {
     test_cernlib(2, "f222");
 }
-TEST_F(dubna_machine, cernlib_f223)
-{
-    test_cernlib(2, "f223");
-}
+//TEST_F(dubna_machine, cernlib_f223)
+//{
+//    test_cernlib(2, "f223"); // Routine ELTRAN is damaged on tape 12/monsys.
+//}
 TEST_F(dubna_machine, cernlib_f224)
 {
     test_cernlib(2, "f224");

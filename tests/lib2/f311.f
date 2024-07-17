@@ -1,3 +1,6 @@
+*       tape:12/librar,32
+*table:liblist(determ)
+*liblist:320375
       PROGRAM  F311
       DIMENSION A(4,6),B(4,6),N(3)
       DATA B/2.,2.,4.,1.,5.,-7.,0.,0.,9.,12.,3.,6.,4.,8.,-5.,4.,8*0./,

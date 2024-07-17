@@ -148,30 +148,3 @@ TEST_F(dubna_machine, trace_startjob)
     auto expect = file_contents(TEST_DIR "/expect_startjob.txt");
     EXPECT_EQ(trace, expect);
 }
-
-//
-// Print real values from Fortran and check output.
-// https://github.com/besm6/dubna/issues/1
-//
-TEST_F(dubna_machine, DISABLED_epsilon_staircase)
-{
-    run_job_and_check_output("expect_epsilon.txt", R"(*name epsilon
-*call setftn:one,long
-      program eps
-      real a, b
-      a = 1.
-      i = 0
-  10  a=a/2.
-      i=i+1
-      b = -1.+a
-      if(b.eq.-1.) stop
-      print 11,i,b,b
-c Least significant digits 5 must form a neat staircase
-  11  format(' -1.0+2**-',i2,' =',f43.40,o17)
-      goto 10
-      end
-*no load list
-*execute
-*end file
-)");
-}

@@ -793,3 +793,29 @@ TEST_F(dubna_session, grafor_calcomp)
     expect = file_contents(TEST_DIR "/expect_calcomp.svg");
     EXPECT_EQ(calcomp, expect);
 }
+
+//
+// Open temporary disk using *FILE:SCRATCH.
+//
+TEST_F(dubna_session, file_scratch)
+{
+    auto output = run_job_and_capture_output(R"(*name scratch
+*file:scratch,44,10
+*edit
+*RO
+*W:44
+Варкалось. Хливкие шорьки
+Пырялись по наве,
+И хрюкотали зелюки,
+Как мюмзики в мове.
+*EE
+*
+*edit
+*R:44
+*LL
+*EE
+*end file
+)");
+    auto expect = file_contents(TEST_DIR "/expect_file_scratch.txt");
+    check_output(output, expect);
+}

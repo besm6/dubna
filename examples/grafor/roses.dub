@@ -1,0 +1,28 @@
+*name roses
+*call plotter:wx4675,direct
+*ftn
+        program roses
+        dimension x(6), y(6), n(6), a(6), b(6)
+        data(x = 42., 48., 92., 92., 126., 140.)
+        data(y = 40., 68., 56., 108., 82., 34.)
+        data(n = 16, 8, 24, 16, 8, 8)
+        data(a = 11., 10., 18., 11., 10., 10.)
+        data(b = 2., 5., 3., 2., 5., 5.)
+        call mms
+        call page(180., 140., 'ROSES', 5, 1)
+        do 1 j = 1, 6
+            call getpen(j)
+            m = n(j)
+            do 3 k = 1, m
+                l = int(a(j)) + 1
+                do 2 i = 1, l
+                    call beglev
+                    call pscale(x(j), y(j), 1. - float(i-1) / a(j))
+                    call elips(x(j), y(j), a(j), b(j), 0., -180., 180.)
+   2                call endlev
+   3            call rotate(x(j), y(j), 360. / float(m))
+   1        continue
+        call endpg(0)
+        end
+*execute
+*end file

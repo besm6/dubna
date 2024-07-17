@@ -1,4 +1,4 @@
-*name графор
+*name sincos
 *call plotter:wx4675,direct
 *ftn
         program grafor

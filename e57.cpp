@@ -48,9 +48,8 @@ void Processor::e57()
         throw Exception("Task paused waiting for tape");
     case 1:
     case 4:
-        // CDC tape control by Gusev.
-        core.ACC = 0;
-        return;
+        // Tape control by Gusev.
+        throw Exception("*57 " + to_octal(addr) + ": Tape drive is not supported");
     case 5:
         // Unknown, for Forex.
         core.ACC = 0;

@@ -1,0 +1,19 @@
+*name tidy si
+*tape:148/dispac,43,w
+*tape:149/dispac,44,w
+*library:2
+*call tidy
+*NOCARD
+*NOEXEM
+*NOLABE
+*NOCOMM
+      PROGRAM SI
+      DIMEN
+     1SION E(10)
+C     EXECUTE
+      N=1.+2.
+      STOP
+      END
+*STOP
+*STOP
+*end file

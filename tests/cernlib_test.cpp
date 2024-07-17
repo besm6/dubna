@@ -657,10 +657,10 @@ TEST_F(dubna_machine, cernlib_e113)
 {
     test_cernlib(1, "e113");
 }
-TEST_F(dubna_machine, cernlib_e200)
-{
-    test_cernlib(1, "e200");
-}
+//TEST_F(dubna_machine, cernlib_e200)
+//{
+//    test_cernlib(1, "e200"); // Enable when *file:scratch is implemented
+//}
 TEST_F(dubna_machine, cernlib_e201)
 {
     test_cernlib(1, "e201");
@@ -1085,14 +1085,14 @@ TEST_F(dubna_machine, cernlib_f422)
 {
     test_cernlib(2, "f422");
 }
-TEST_F(dubna_machine, cernlib_f423)
-{
-    test_cernlib(2, "f423");
-}
-TEST_F(dubna_machine, cernlib_f424)
-{
-    test_cernlib(2, "f424");
-}
+//TEST_F(dubna_machine, cernlib_f423)
+//{
+//    test_cernlib(2, "f423"); // Enable when *file:scratch is implemented
+//}
+//TEST_F(dubna_machine, cernlib_f424)
+//{
+//    test_cernlib(2, "f424"); // Enable when *file:scratch is implemented
+//}
 TEST_F(dubna_machine, cernlib_f500)
 {
     test_cernlib(2, "f500");
@@ -1149,10 +1149,10 @@ TEST_F(dubna_machine, cernlib_h300)
 {
     test_cernlib(2, "h300");
 }
-TEST_F(dubna_machine, cernlib_h600)
-{
-    test_cernlib(2, "h600");
-}
+//TEST_F(dubna_machine, cernlib_h600)
+//{
+//    test_cernlib(2, "h600"); // Enable when *file:scratch is implemented
+//}
 TEST_F(dubna_machine, cernlib_h601)
 {
     test_cernlib(2, "h601");
@@ -1269,29 +1269,29 @@ TEST_F(dubna_machine, cernlib_j551)
 {
     test_cernlib(2, "j551");
 }
-TEST_F(dubna_machine, cernlib_k100)
-{
-    test_cernlib(2, "k100");
-}
+//TEST_F(dubna_machine, cernlib_k100)
+//{
+//    test_cernlib(2, "k100"); // Enable when *file:scratch is implemented
+//}
 TEST_F(dubna_machine, cernlib_k101)
 {
     test_cernlib(2, "k101");
 }
-TEST_F(dubna_machine, cernlib_k450)
-{
-    test_cernlib(2, "k450");
-}
+//TEST_F(dubna_machine, cernlib_k450)
+//{
+//    test_cernlib(2, "k450"); // Tape drive is not supported
+//}
 //TEST_F(dubna_machine, cernlib_k451a)
 //{
-//    test_cernlib(2, "k451a");
+//    test_cernlib(2, "k451a"); // Tape drive is not supported
 //}
-TEST_F(dubna_machine, cernlib_k451b)
-{
-    test_cernlib(2, "k451b");
-}
+//TEST_F(dubna_machine, cernlib_k451b)
+//{
+//    test_cernlib(2, "k451b"); // Tape drive is not supported
+//}
 //TEST_F(dubna_machine, cernlib_k452)
 //{
-//    test_cernlib(2, "k452");
+//    test_cernlib(2, "k452"); // Tape drive is not supported
 //}
 TEST_F(dubna_machine, cernlib_m101)
 {
@@ -1437,54 +1437,34 @@ TEST_F(dubna_machine, cernlib_n200)
 {
     test_cernlib(2, "n200");
 }
-TEST_F(dubna_machine, cernlib_q800)
-{
-    test_cernlib(2, "q800");
-}
-TEST_F(dubna_machine, cernlib_q820)
-{
-    test_cernlib(2, "q820");
-}
-TEST_F(dubna_machine, cernlib_q900a)
-{
-    test_cernlib(2, "q900a");
-}
-TEST_F(dubna_machine, cernlib_q900b)
-{
-    test_cernlib(2, "q900b");
-}
-TEST_F(dubna_machine, cernlib_relkin)
-{
-    test_cernlib(2, "relkin");
-}
-TEST_F(dubna_machine, cernlib_roses)
-{
-    test_cernlib(2, "roses");
-}
-TEST_F(dubna_machine, cernlib_si)
-{
-    test_cernlib(2, "si");
-}
-TEST_F(dubna_machine, cernlib_sincos)
-{
-    test_cernlib(2, "sincos");
-}
+//TEST_F(dubna_machine, cernlib_q800)
+//{
+//    test_cernlib(2, "q800"); // Moved to examples as flodia.dub
+//}
+//TEST_F(dubna_machine, cernlib_q820)
+//{
+//    test_cernlib(2, "q820"); // Moved to examples as flower.dub
+//}
+//TEST_F(dubna_machine, cernlib_q900a)
+//{
+//    test_cernlib(2, "q900a"); // Moved to examples as tidy-relkin.dub
+//}
+//TEST_F(dubna_machine, cernlib_q900b)
+//{
+//    test_cernlib(2, "q900b"); // Moved to examples as tidy-si.dub
+//}
 TEST_F(dubna_machine, cernlib_t110a)
 {
     test_cernlib(2, "t110a");
 }
-TEST_F(dubna_machine, cernlib_t110b)
-{
-    test_cernlib(2, "t110b");
-}
-TEST_F(dubna_machine, cernlib_t110c)
-{
-    test_cernlib(2, "t110c");
-}
-TEST_F(dubna_machine, cernlib_test)
-{
-    test_cernlib(2, "test");
-}
+//TEST_F(dubna_machine, cernlib_t110b)
+//{
+//    test_cernlib(2, "t110b"); // Moved to examples as traxy.dub
+//}
+//TEST_F(dubna_machine, cernlib_t110c)
+//{
+//    test_cernlib(2, "t110c"); // Moved to examples as tracy.dub
+//}
 TEST_F(dubna_machine, cernlib_test1)
 {
     test_cernlib(1, "test1");

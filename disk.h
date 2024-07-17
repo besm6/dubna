@@ -43,7 +43,7 @@ private:
 public:
     // Constructor throws exception if the file cannot be opened.
     Disk(Word id, Memory &memory, const std::string &path, bool write_permit);
-    Disk(Word id, Memory &memory, const std::string &path, unsigned num_zones);
+    Disk(Word id, Memory &memory, const std::string &pattern, unsigned num_zones);
 
     // Clone the disk.
     Disk(const Disk &other);
@@ -56,6 +56,7 @@ public:
     void memory_to_disk(unsigned zone, unsigned sector, unsigned addr, unsigned nwords);
 
     Word get_id() { return volume_id; }
+    const std::string &get_path() { return path; }
 };
 
 #endif // DUBNA_DISK_H

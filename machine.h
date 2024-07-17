@@ -155,7 +155,6 @@ public:
     void disk_io(char op, unsigned disk_unit, unsigned zone, unsigned sector, unsigned addr,
                  unsigned nwords);
     std::string disk_path(Word tape_id);
-    std::string random_path(const std::string &pattern);
     void disk_mount(unsigned disk, Word tape_id, bool write_permit);
     void disk_mount_readonly(unsigned disk, Word tape_id) { disk_mount(disk, tape_id, false); }
     void disk_release(Word mask);

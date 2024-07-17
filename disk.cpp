@@ -52,10 +52,10 @@ Disk::Disk(Word id, Memory &m, const std::string &p, bool wp)
 // Open temporary file as disk.
 //
 Disk::Disk(Word id, Memory &m, const std::string &p, unsigned nz)
-  : volume_id(id), memory(m), path(p), write_permit(true), num_zones(nz)
+  : volume_id(id), memory(m), path(p + ".XXXXXX"), write_permit(true), num_zones(nz)
 {
-    // Create empty file.
-    file_descriptor = open(path.c_str(), O_CREAT | O_TRUNC | O_RDWR, 0644);
+    // Create a unique file with name derived from template.
+    file_descriptor = mkstemp(&path[0]);
     if (file_descriptor < 0)
         throw std::runtime_error("Cannot create " + path);
 }

@@ -381,11 +381,11 @@ void Machine::scratch_mount(unsigned disk_unit, unsigned num_zones)
 
     // Create temporary file.
     std::string pattern = "scratch" + std::to_string(digit_hi) + std::to_string(digit_lo);
-    std::string path    = random_path(pattern);
-    disks[disk_unit]    = std::make_unique<Disk>(tape_id, memory, path, num_zones);
+    disks[disk_unit]    = std::make_unique<Disk>(tape_id, memory, pattern, num_zones);
 
     if (trace_enabled()) {
-        std::cout << "Mount image '" << path << "' as disk " << to_octal(disk_unit + 030) << std::endl;
+        std::cout << "Mount image '" << disks[disk_unit]->get_path()
+                  << "' as disk " << to_octal(disk_unit + 030) << std::endl;
     }
 }
 
@@ -486,15 +486,6 @@ std::string Machine::disk_path(Word tape_id)
         }
     }
     throw std::runtime_error("Tape " + tape_name_string(tape_id) + " not found");
-}
-
-//
-// Create unique file name by appending a random suffix.
-//
-std::string Machine::random_path(const std::string &pattern)
-{
-    //TODO
-    return pattern + ".XXXXXX";
 }
 
 //

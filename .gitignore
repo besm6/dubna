@@ -12,3 +12,4 @@ calcomp*.svg
 *.sh-
 *.o
 *.out
+scratch*.@*

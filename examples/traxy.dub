@@ -1,6 +1,6 @@
 *name t110b
-*tape:148/dispac,44,w
-*tape:149/dispac,50,w
+*file:scratch,44,w
+*file:scratch,50,w
 *library:1,2
         FUNCTION SQRTF(X)
         SQRTF = SQRT(X)

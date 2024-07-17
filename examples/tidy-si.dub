@@ -1,6 +1,6 @@
 *name tidy si
-*tape:148/dispac,43,w
-*tape:149/dispac,44,w
+*file:scratch,43,w
+*file:scratch,44,w
 *library:2
 *call tidy
 *NOCARD

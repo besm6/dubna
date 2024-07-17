@@ -25,6 +25,7 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
+#include <cstring>
 #include <iostream>
 
 #include "machine.h"
@@ -103,7 +104,7 @@ void Disk::disk_to_memory(unsigned zone, unsigned sector, unsigned addr, unsigne
     if (nread == 0) {
         // Read past the end of file - return zeroes.
         std::memset(destination, 0, nbytes);
-    } else if (nread != nbytes) {
+    } else if (nread != (int)nbytes) {
         throw std::runtime_error("Disk read error");
     }
 }

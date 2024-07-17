@@ -800,7 +800,7 @@ TEST_F(dubna_session, grafor_calcomp)
 TEST_F(dubna_session, file_scratch)
 {
     auto output = run_job_and_capture_output(R"(*name scratch
-*file:scratch,44,10
+*file:scratch,44,w,10
 *edit
 *RO
 *W:44

@@ -99,6 +99,7 @@ public:
 
     // "MONSYS )" in TEXT encoding.
     static const Word TAPE_MONSYS = 055'57'56'63'71'63'00'11;
+    static const Word TAPE_SCRATCH = 063'43'62'64'43'50'00'00;
 
     // Virtual disk unit for phys.io.
     static const unsigned PHYS_IO_UNIT = 0100;
@@ -154,10 +155,13 @@ public:
     void disk_io(char op, unsigned disk_unit, unsigned zone, unsigned sector, unsigned addr,
                  unsigned nwords);
     std::string disk_path(Word tape_id);
+    std::string random_path(const std::string &pattern);
     void disk_mount(unsigned disk, Word tape_id, bool write_permit);
     void disk_mount_readonly(unsigned disk, Word tape_id) { disk_mount(disk, tape_id, false); }
     void disk_release(Word mask);
     unsigned disk_find(Word tape_id);
+    void scratch_mount(unsigned disk_unit, unsigned num_zones);
+
 
     // Drum i/o.
     void drum_io(char op, unsigned drum_unit, unsigned zone, unsigned sector, unsigned addr,
@@ -246,6 +250,12 @@ public:
             print_e57_file(info);
     }
 
+    void trace_e57_scratch(const E57_Scratch_Info &info)
+    {
+        if (debug_extracodes)
+            print_e57_scratch(info);
+    }
+
     void trace_e50_format_real(const E50_Format_Info &info)
     {
         if (debug_extracodes)
@@ -260,6 +270,7 @@ public:
     void print_e64(const E64_Info &info, unsigned start_addr, unsigned end_addr);
     void print_e64_dubna(unsigned start_addr, unsigned end_addr);
     void print_e57_file(const E57_File_Info &info);
+    void print_e57_scratch(const E57_Scratch_Info &info);
     void print_e50_format_real(const E50_Format_Info &info);
 };
 

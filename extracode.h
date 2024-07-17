@@ -222,6 +222,20 @@ union E57_File_Info {
     static const Word KEY_BITMASK = 0'7777'7740'7400'0000;
 };
 
+union E57_Scratch_Info {
+    Word word;
+
+    struct {
+        // Разряды 5-1 - количество экстентов
+        // Разряды 42-37 - мат.номер
+        //
+        unsigned size : 5;      // Size in blocks of 040 zones
+        unsigned _1 : 31;       // ---
+        unsigned disk_unit : 6; // Disk unit number
+        unsigned _2 : 6;        // ---
+    } field;
+};
+
 //
 // Экстракод 050 015, 016, 017: форматные преобразования из двоичного кода в ISO.
 //

@@ -43,6 +43,7 @@ private:
 public:
     // Constructor throws exception if the file cannot be opened.
     Disk(Word id, Memory &memory, const std::string &path, bool write_permit);
+    Disk(Word id, Memory &memory, const std::string &path, unsigned num_zones);
 
     // Clone the disk.
     Disk(const Disk &other);

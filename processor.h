@@ -150,6 +150,9 @@ private:
     // Parse text string.
     Word e50_parse(Word input, unsigned &result);
 
+    // Create scratch file.
+    void scratch_open(unsigned disk_unit, unsigned num_zones);
+
 public:
     // Exception for unexpected situations.
     class Exception : public std::exception {

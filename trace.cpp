@@ -626,6 +626,17 @@ void Machine::print_e57_file(const E57_File_Info &info)
     out.flags(save_flags);
 }
 
+void Machine::print_e57_scratch(const E57_Scratch_Info &info)
+{
+    auto &out       = Machine::get_trace_stream();
+    auto save_flags = out.flags();
+
+    out << "      Disk=" << std::setw(2) << std::oct << info.field.disk_unit
+        << " Size=" << std::dec << info.field.size
+        << '\n';
+    out.flags(save_flags);
+}
+
 //
 // Print details about extracode e50 015/016/017.
 //

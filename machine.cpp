@@ -359,6 +359,37 @@ void Machine::disk_mount(unsigned disk_unit, Word tape_id, bool write_permit)
 }
 
 //
+// Create scratch file and assign it to the disk unit.
+//
+void Machine::scratch_mount(unsigned disk_unit, unsigned num_zones)
+{
+
+    if (disk_unit < 030 || disk_unit >= 070)
+        throw std::runtime_error("Invalid disk unit " + to_octal(disk_unit) + " in scratch_mount()");
+
+    const auto digit_lo = disk_unit % 8;
+    const auto digit_hi = disk_unit / 8;
+    const Word tape_id = TAPE_SCRATCH | (digit_hi << 4) | digit_lo;
+
+    disk_unit -= 030;
+    if (disks[disk_unit]) {
+        // Already mounted.
+        auto mounted_id = disks[disk_unit]->get_id();
+        throw std::runtime_error("Disk unit " + to_octal(disk_unit + 030) +
+                                 " is already mounted as " + tape_name_string(mounted_id));
+    }
+
+    // Create temporary file.
+    std::string pattern = "scratch" + std::to_string(digit_hi) + std::to_string(digit_lo);
+    std::string path    = random_path(pattern);
+    disks[disk_unit]    = std::make_unique<Disk>(tape_id, memory, path, num_zones);
+
+    if (trace_enabled()) {
+        std::cout << "Mount image '" << path << "' as disk " << to_octal(disk_unit + 030) << std::endl;
+    }
+}
+
+//
 // Release volumes according to bitmask on accumulator.
 //
 void Machine::disk_release(Word bitmask)
@@ -455,6 +486,15 @@ std::string Machine::disk_path(Word tape_id)
         }
     }
     throw std::runtime_error("Tape " + tape_name_string(tape_id) + " not found");
+}
+
+//
+// Create unique file name by appending a random suffix.
+//
+std::string Machine::random_path(const std::string &pattern)
+{
+    //TODO
+    return pattern + ".XXXXXX";
 }
 
 //

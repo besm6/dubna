@@ -194,16 +194,26 @@ void Processor::e57_file()
 //
         break;
     case E57_File_Info::SCRATCH_OPEN:
-        throw Exception("Extracode *57 77777: operation 'Open Scratch' not supported yet");
-//
-// структура инф.поля такова:
-//     1. хар-ка sсr-файла
-//          1:5 - кол-во экстентов
-//          37:42 - мат.номер
-//     2. хар-ка следующего файла
-//        ........................
-//        нулевая ячейка
-//
+        // Allocate scratch file.
+        //
+        // Структура инф.поля такова:
+        //  1. Характеристика sсratch-файла
+        //      1:5 - количество экстентов
+        //      37:42 - мат.номер
+        //  2. Характеристика следующего файла
+        //     ........................
+        //  N. Нулевая ячейка
+        //
+        for (auto addr = info.field.addr; ; addr++) {
+            E57_Scratch_Info item;
+            item.word = machine.mem_load(addr);
+            if (item.word == 0) {
+                break;
+            }
+            machine.trace_e57_scratch(item);
+            machine.scratch_mount(item.field.disk_unit, item.field.size * 040);
+        }
+        core.ACC = 0;
         break;
     case E57_File_Info::FILE_RELEASE:
         throw Exception("Extracode *57 77777: operation 'Release File' not supported yet");
@@ -218,4 +228,12 @@ void Processor::e57_file()
     default:
         throw Exception("Extracode *57 77777: unknown operation " + to_octal(info.field.op));
     }
+}
+
+//
+// Create scratch file.
+//
+void Processor::scratch_open(unsigned disk_unit, unsigned num_zones)
+{
+    //TODO
 }

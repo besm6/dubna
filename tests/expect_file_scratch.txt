@@ -24,7 +24,7 @@
 
 
 *NAME SCRATCH
-*FILE:SCRATCH,44,10
+*FILE:SCRATCH,44,W,10
 *EDIT                                             04 ИЮЛ 24 23.45
  PEДAKTOP TEKCTOB
     (01.06.82)

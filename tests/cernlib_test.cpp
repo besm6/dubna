@@ -1137,10 +1137,10 @@ TEST_F(dubna_machine, cernlib_g900)
 {
     test_cernlib(2, "g900");
 }
-TEST_F(dubna_machine, cernlib_g901)
-{
-    test_cernlib(2, "g901");
-}
+//TEST_F(dubna_machine, cernlib_g901)
+//{
+//    test_cernlib(2, "g901"); // Routine VRAN3S is damaged on tape 12/monsys.
+//}
 TEST_F(dubna_machine, cernlib_h100)
 {
     test_cernlib(2, "h100");

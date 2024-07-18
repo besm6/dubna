@@ -430,7 +430,7 @@ void Processor::e50()
     case 066:
         // Get reply from operator.
         // Change page on plotter.
-        machine.plotter.change_page();
+        machine.plotter_change_page();
         core.ACC = 0;
         break;
     case 067: {

@@ -82,6 +82,7 @@ private:
     // Static stuff.
     static const uint64_t DEFAULT_LIMIT;    // Limit of instructions to simulate, by default
     static bool verbose;                    // Verbose flag for tracing
+    static bool keep_temporary_files;       // Preserve scratch files and raw plotter output
     static uint64_t simulated_instructions; // Count of instructions
 
 public:
@@ -117,6 +118,9 @@ public:
     // Run simulation.
     void run();
 
+    void plotter_finish() { plotter.finish(keep_temporary_files); }
+    void plotter_change_page() { plotter.change_page(keep_temporary_files); }
+
     // Enable a progress message to stderr.
     void enable_progress_message(bool on) { progress_message_enabled = on; }
 
@@ -131,6 +135,9 @@ public:
     // Verbose flag for tracing.
     static void set_verbose(bool on) { verbose = on; }
     static bool get_verbose() { return verbose; }
+
+    // Keep temporary files.
+    void preserve_temps(bool on) { keep_temporary_files = on; }
 
     // Enable trace output to the given file,
     // or to std::cout when filename not present.

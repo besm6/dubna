@@ -135,7 +135,7 @@ public:
             }
 
             // Save plotter data.
-            machine.plotter.finish();
+            machine.plotter_finish();
 
         } catch (const std::exception &ex) {
             // Print exception message.
@@ -162,6 +162,11 @@ public:
     // Print more details to the trace log.
     //
     void set_verbose(bool on) { machine.set_verbose(on); }
+
+    //
+    // Keep temporary files.
+    //
+    void preserve_temps(bool on) { machine.preserve_temps(on); }
 
     //
     // Enable trace log to stdout.
@@ -403,6 +408,14 @@ void Session::set_limit(uint64_t count)
 uint64_t Session::get_default_limit()
 {
     return Machine::get_default_limit();
+}
+
+//
+// Keep temporary files.
+//
+void Session::preserve_temps(bool on)
+{
+    internal->preserve_temps(on);
 }
 
 //

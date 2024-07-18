@@ -65,6 +65,9 @@ public:
     void enable_trace(const char *mode);
     void set_trace_file(const char *filename, const char *default_mode);
 
+    // Keep temporary files.
+    void preserve_temps(bool on = true);
+
     // Get the number of simulated instructions.
     uint64_t get_instr_count();
 

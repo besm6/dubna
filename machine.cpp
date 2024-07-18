@@ -34,6 +34,7 @@
 
 // Static fields.
 bool Machine::verbose                    = false;
+bool Machine::keep_temporary_files       = false;
 uint64_t Machine::simulated_instructions = 0;
 
 // Limit of instructions, by default.
@@ -382,10 +383,15 @@ void Machine::scratch_mount(unsigned disk_unit, unsigned num_zones)
     // Create temporary file.
     std::string pattern = "scratch" + std::to_string(digit_hi) + std::to_string(digit_lo);
     disks[disk_unit]    = std::make_unique<Disk>(tape_id, memory, pattern, num_zones);
+    auto &path          = disks[disk_unit]->get_path();
 
     if (trace_enabled()) {
-        std::cout << "Mount image '" << disks[disk_unit]->get_path()
+        std::cout << "Mount image '" << path
                   << "' as disk " << to_octal(disk_unit + 030) << std::endl;
+    }
+    if (!keep_temporary_files) {
+        // Remove temporary file.
+        std::remove(path.c_str());
     }
 }
 

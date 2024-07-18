@@ -229,11 +229,3 @@ void Processor::e57_file()
         throw Exception("Extracode *57 77777: unknown operation " + to_octal(info.field.op));
     }
 }
-
-//
-// Create scratch file.
-//
-void Processor::scratch_open(unsigned disk_unit, unsigned num_zones)
-{
-    //TODO
-}

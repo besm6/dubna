@@ -34,20 +34,26 @@
 // Finish operation.
 // Save all data files.
 //
-void Plotter::finish()
+void Plotter::finish(bool keep_temporary_files)
 {
     if (!watanabe.empty()) {
-        save_to_file("watanabe", watanabe);
+        if (keep_temporary_files) {
+            save_to_file("watanabe", watanabe);
+        }
         watanabe_convert_svg("watanabe");
         watanabe.erase();
     }
     if (!calcomp.empty()) {
-        save_to_file("calcomp", calcomp);
+        if (keep_temporary_files) {
+            save_to_file("calcomp", calcomp);
+        }
         calcomp_convert_svg("calcomp");
         calcomp.erase();
     }
     if (!tektronix.empty()) {
-        save_to_file("tektronix", tektronix);
+        if (keep_temporary_files) {
+            save_to_file("tektronix", tektronix);
+        }
         tektronix_convert_svg("tektronix");
         tektronix.erase();
     }
@@ -56,7 +62,7 @@ void Plotter::finish()
 //
 // Finish current page and start new one.
 //
-void Plotter::change_page()
+void Plotter::change_page(bool keep_temporary_files)
 {
     if (watanabe.empty() && calcomp.empty() && tektronix.empty()) {
         // No reason to increase page number.
@@ -66,7 +72,7 @@ void Plotter::change_page()
         // Enable page numbers.
         page_number = 1;
     }
-    finish();
+    finish(keep_temporary_files);
     page_number += 1;
 }
 

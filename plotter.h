@@ -40,7 +40,7 @@ private:
 
 public:
     // Save all data files.
-    void finish();
+    void finish(bool keep_temporary_files);
 
     // Send one byte to Watanabe WX4675 plotter.
     void watanabe_putch(char ch) { watanabe += ch; }
@@ -52,7 +52,7 @@ public:
     void tektronix_putch(char ch) { tektronix += ch; }
 
     // Finish current page and start new one.
-    void change_page();
+    void change_page(bool keep_temporary_files);
 
 private:
     // Save output, if available.

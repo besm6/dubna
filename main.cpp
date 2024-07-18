@@ -36,6 +36,7 @@ static const struct option long_options[] = {
     { "help-commands",  no_argument,        nullptr,    'C' },
     { "version",        no_argument,        nullptr,    'V' },
     { "verbose",        no_argument,        nullptr,    'v' },
+    { "keep",           no_argument,        nullptr,    'k' },
     { "limit",          required_argument,  nullptr,    'l' },
     { "trace",          required_argument,  nullptr,    'T' },
     { "debug",          required_argument,  nullptr,    'd' },
@@ -55,15 +56,15 @@ static void print_usage(std::ostream &out, const char *prog_name)
     out << "    filename                Job file in MS Dubna format" << std::endl;
     out << "Options:" << std::endl;
     out << "    -h, --help              Display available options" << std::endl;
+    out << "    --help-libs             Show available libraries" << std::endl;
+    out << "    --help-commands         Show available commands" << std::endl;
     out << "    -V, --version           Print the version number and exit" << std::endl;
     out << "    -v, --verbose           Verbose mode" << std::endl;
     out << "    -l NUM, --limit=NUM     Stop after so many instructions (default "
         << Session::get_default_limit() << ")" << std::endl;
-    out << "    -t                      Trace extracodes to stdout" << std::endl;
+    out << "    --keep                  Keep scratch files and raw plotter output" << std::endl;
     out << "    --trace=FILE            Redirect trace to the file" << std::endl;
     out << "    -d MODE, --debug=MODE   Select debug mode, default irm" << std::endl;
-    out << "    --help-libs             Show available libraries" << std::endl;
-    out << "    --help-commands         Show available commands" << std::endl;
     out << "Debug modes:" << std::endl;
     out << "    i       Trace instructions" << std::endl;
     out << "    e       Trace extracodes" << std::endl;
@@ -154,6 +155,11 @@ int main(int argc, char *argv[])
         case 'd':
             // Set trace options.
             session.enable_trace(optarg);
+            continue;
+
+        case 'k':
+            // Keep temporary files.
+            session.preserve_temps();
             continue;
 
         default:

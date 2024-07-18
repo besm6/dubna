@@ -69,7 +69,7 @@ unsigned char unicode_to_koi7(unsigned short val);
 //
 // Convert string from UTF-8 encoding to KOI-7.
 //
-std::string utf8_to_koi7(const std::string &input);
+std::string utf8_to_koi7(const std::string &input, size_t maxlen = 80);
 
 //
 // Convert ITM encoding to/from GOST-10859.

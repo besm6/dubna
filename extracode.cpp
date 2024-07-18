@@ -647,6 +647,30 @@ void Processor::e71()
         std::cout << std::endl;
         return;
     }
+    case 6:			// Terminal input
+    {
+	size_t buflen = ((end ? end : 077777) - start + 1) * 6;
+	std::string inp;
+	e64_finish();
+	std::cout << "-\r" << std::flush; // Standard prompt
+	std::cin >> inp;
+	if (inp.back() == '\n')
+	    inp.pop_back();
+	inp = utf8_to_koi7(inp, buflen);
+	// The terminating zero byte will be written if it fits.
+	if (inp.length() < buflen) {
+	    inp += '\0';
+	}
+        BytePointer bp(memory, ADDR(start));
+	for (size_t c = 0; c < inp.length(); ++c) {
+	    // Pre-clear a new word
+	    if (c % 6 == 0) {
+		memory.store(start + c/6, 0);
+	    }
+	    bp.put_byte(inp[c]);
+	}
+	return;
+    }
     }
 }
 

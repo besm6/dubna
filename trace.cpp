@@ -204,6 +204,7 @@ void Processor::print_instruction()
     auto &out       = Machine::get_trace_stream();
     auto save_flags = out.flags();
 
+    e64_finish();
     out << std::oct << std::setfill('0') << std::setw(5) << core.PC << ' '
         << (core.right_instr_flag ? 'R' : 'L') << ": ";
     besm6_print_instruction_octal(out, RK);

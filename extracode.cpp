@@ -633,6 +633,7 @@ void Processor::e71()
     {
         auto a1 = start, a2 = end;
         unsigned char c = 1;
+        e64_finish();
         BytePointer bp(memory, ADDR(a1));
         while (a2 ? a1 <= a2 : c != '\0')  {
             for (int i = 0; c != '\0' && i < 6; ++i) {
@@ -642,7 +643,7 @@ void Processor::e71()
                 std::cout << c;
                 ++a1;
             }
-        }       
+        }
         std::cout << std::endl;
         return;
     }

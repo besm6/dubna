@@ -131,17 +131,22 @@ void Processor::e57_tape()
 void Processor::e57_file()
 {
     // Use control word at accumulator.
-    E57_File_Info info;
+    E57_Request_Info info;
     info.word = core.ACC;
 
-    machine.trace_e57_file(info);
+    machine.trace_e57_request(info);
 
-    if ((info.word & E57_File_Info::KEY_BITMASK) != E57_File_Info::KEY_VALUE) {
+    if ((info.word & E57_Request_Info::KEY_BITMASK) != E57_Request_Info::KEY_VALUE) {
         throw Exception("Wrong access key in *57 77777");
     }
     switch (info.field.op) {
-    case E57_File_Info::VOLUME_OPEN: {
+    case E57_Request_Info::VOLUME_OPEN: {
         // Name is located at addr+1.
+        //
+        // Структура задания:
+        //      0. признак монополии на диск
+        //      1. имя диска
+        //
         Word disc_id = machine.mem_load(info.field.addr + 1);
         switch (disc_id & ~0xfff) {
         case DISC_LOCAL:
@@ -155,72 +160,83 @@ void Processor::e57_file()
         }
         break;
     }
-    case E57_File_Info::VOLUME_RELEASE:
+    case E57_Request_Info::VOLUME_RELEASE:
         throw Exception("Extracode *57 77777: operation 'Release Volume' not supported yet");
         break;
 
-    case E57_File_Info::FILE_SEARCH:
+    case E57_Request_Info::FILE_SEARCH: {
         // File name is located at addr.
-        throw Exception("Extracode *57 77777: operation 'Search File' not supported yet");
-        // Accept for now.
-        core.ACC = 0;
         //
-        // Заказ обычных файлов
+        // Структура задания:
+        //      0. имя диска
+        //    1-4. запрос координат одного файла
+        //    5-8. запрос координат следующего файла
+        //         .........................
+        //         запрос координат последнего файла
+        //  N*4+1. бит 48
         //
-        // Формируем стек вот с такой структурой:
-        //     1. признак монополии на диск             0000 0000 0000 0000
-        //     2. имя диска                             4657 5700 0000 0001
-        //     3. запрос координат одного файла
-        //     4. запрос координат следующего файла
-        //        .........................
-        //        запрос координат последнего файла
-        //     N. бит 48                                4000 0000 0000 0000
-        //
-        // Запрос координат файла выглядит так:
-        //     1. имя хозяина файла                     0000 0000 0000 0000
-        //     2. имя файла                             2044 0522 1002 0040
-        //     3. поле ответа (+бит 30, если запись)    0000 0040 0000 0000
-        //     4. бит 48 + мат.номер файла в 1:6 р.     4000 0000 0000 0041
-        //
-        // В поле ответа для каждого файла будут его координаты на диске,
-        // а также признаки всяких бяк:
-        //     бит 48 - плохое обращение
-        //     бит 47 - файла нет на диске
-        //     бит 46 - нет доступа к файлу
-        //
-        break;
+        //Word disc_id = machine.mem_load(info.field.addr);
+        for (auto addr = info.field.addr + 1; ; addr += 4) {
+            E57_File_Info item;
+            item.word[0] = machine.mem_load(addr);
+            if (item.word[0] == BIT48) {
+                break;
+            }
 
-    case E57_File_Info::FILE_OPEN:
+            // Запрос координат файла выглядит так:
+            //      0. имя хозяина файла                     0000 0000 0000 0000
+            //      1. имя файла                             2044 0522 1002 0040
+            //      2. поле ответа (+бит 30, если запись)    0000 0040 0000 0000
+            //      3. бит 48 + мат.номер файла в 1:6 р.     4000 0000 0000 0041
+            //
+            item.word[1] = machine.mem_load(addr + 1);
+            item.word[2] = machine.mem_load(addr + 2);
+            item.word[3] = machine.mem_load(addr + 3);
+            machine.trace_e57_file(item);
+
+            // В поле ответа для каждого файла будут его координаты на диске,
+            // а также признаки всяких бяк:
+            //      бит 48 - плохое обращение
+            //      бит 47 - файла нет на диске
+            //      бит 46 - нет доступа к файлу
+            //
+            //TODO: item.word[2] = machine.file_search(disc_id, item.field.file_name, item.field.write_mode);
+        }
+        core.ACC = BIT48; // TODO
+        break;
+    }
+    case E57_Request_Info::FILE_OPEN:
         // File name is located at addr.
         throw Exception("Extracode *57 77777: operation 'Open File' not supported yet");
         // Accept for now.
         core.ACC = 0;
         //
-        // Формируется стек для похода на заказ файловЖ
-        //     1. имя диска
-        //     2. координаты первого файла (берутся из поля ответа предыдущего стека + мат.номер в 37:42 р.)
-        //        ...........................
-        //        координаты последнего файла
-        //     N. нулевая ячейка
+        // Структура задания:
+        //      0. имя диска
+        //    1-4. координаты первого файла (берутся из поля ответа предыдущего стека + мат.номер в 37:42 р.)
+        //    5-8. координаты второго файла
+        //         ...........................
+        //         координаты последнего файла
+        //  N*4+1. нулевая ячейка
         //
         // В ячейках по файлам:
-        //     бит 43 - нет диска
-        //     бит 44 - занят мат.номер
-        //     бит 45 - занят файл
-        //     бит 46 - нет места для файла
+        //      бит 43 - нет диска
+        //      бит 44 - занят мат.номер
+        //      бит 45 - занят файл
+        //      бит 46 - нет места для файла
         //
         break;
 
-    case E57_File_Info::SCRATCH_OPEN:
+    case E57_Request_Info::SCRATCH_OPEN:
         // Allocate scratch file.
         //
         // Структура инф.поля такова:
-        //  1. Характеристика sсratch-файла
-        //      1:5 - количество экстентов
-        //      37:42 - мат.номер
-        //  2. Характеристика следующего файла
-        //     ........................
-        //  N. Нулевая ячейка
+        //      0. характеристика sсratch-файла
+        //          1:5 - количество экстентов
+        //          37:42 - мат.номер
+        //      1. характеристика следующего файла
+        //         ........................
+        //      N. нулевая ячейка
         //
         for (auto addr = info.field.addr; ; addr++) {
             E57_Scratch_Info item;
@@ -234,15 +250,15 @@ void Processor::e57_file()
         core.ACC = 0;
         break;
 
-    case E57_File_Info::FILE_RELEASE:
+    case E57_Request_Info::FILE_RELEASE:
         throw Exception("Extracode *57 77777: operation 'Release File' not supported yet");
         break;
 
-    case E57_File_Info::ALL_RELEASE:
+    case E57_Request_Info::ALL_RELEASE:
         throw Exception("Extracode *57 77777: operation 'Release All' not supported yet");
         break;
 
-    case E57_File_Info::FILE_CONTROL:
+    case E57_Request_Info::FILE_CONTROL:
         // File name is located at addr.
         throw Exception("Extracode *57 77777: operation 'Change File Status' not supported yet");
         break;

@@ -253,10 +253,10 @@ public:
             print_e64_dubna(start_addr, end_addr);
     }
 
-    void trace_e57_file(const E57_File_Info &info)
+    void trace_e57_request(const E57_Request_Info &info)
     {
         if (debug_extracodes)
-            print_e57_file(info);
+            print_e57_request(info);
     }
 
     void trace_e57_scratch(const E57_Scratch_Info &info)
@@ -278,7 +278,7 @@ public:
     static void print_e70(const E70_Info &info);
     void print_e64(const E64_Info &info, unsigned start_addr, unsigned end_addr);
     void print_e64_dubna(unsigned start_addr, unsigned end_addr);
-    void print_e57_file(const E57_File_Info &info);
+    void print_e57_request(const E57_Request_Info &info);
     void print_e57_scratch(const E57_Scratch_Info &info);
     void print_e50_format_real(const E50_Format_Info &info);
 };

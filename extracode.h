@@ -189,7 +189,7 @@ union E64_Info {
 //
 // Информационное слово на сумматоре задаёт параметры обмена.
 //
-union E57_File_Info {
+union E57_Request_Info {
     Word word;
 
     struct {

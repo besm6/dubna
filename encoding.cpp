@@ -63,6 +63,13 @@ static const unsigned short gost_to_unicode_lat[256] = {
     /* 130-137 */ 0x7c,   0x2015, 0x5f,   0x21,   0x22,   0x042a, 0xb0,   0x2032,
 };
 
+static const char *koi7_to_utf8[32] = {
+    /* 0140 */ "Ю", "А", "Б", "Ц", "Д", "Е", "Ф", "Г",
+    /* 0150 */ "Х", "И", "Й", "К", "Л", "М", "Н", "О",
+    /* 0160 */ "П", "Я", "Р", "С", "Т", "У", "Ж", "В",
+    /* 0170 */ "Ь", "Ы", "З", "Ш", "Э", "Щ", "Ч", "Ъ",
+};
+
 //
 // Convert character in GOST-10859 encoding to Unicode.
 //
@@ -158,6 +165,26 @@ unsigned utf8_to_unicode(const char **p)
         return (c1 & 0x1f) << 6 | (c2 & 0x3f);
     c3 = (unsigned char)*(*p)++;
     return (c1 & 0x0f) << 12 | (c2 & 0x3f) << 6 | (c3 & 0x3f);
+}
+
+//
+// Write ISO symbol to a stream in UTF-8 encoding.
+//
+void iso_putc(unsigned ch, std::ostream &out)
+{
+    if (ch >= ' ' && ch < 0140) {
+        // Latin
+        out << (char)ch;
+    } else if (ch >= 0140 && ch < 0200) {
+        // Cyrillic
+        out << koi7_to_utf8[ch - 0140];
+    } else if (ch == '\1') {
+        // Special
+        out << "\n•";
+    } else {
+        // Non-text
+        out << '`';
+    }
 }
 
 //

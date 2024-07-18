@@ -184,6 +184,9 @@ public:
     // Bootstrap the Monitoring System Dubna.
     void boot_ms_dubna(const std::string &path = "");
 
+    // Send message to operator's console.
+    void print_iso_string(std::ostream &out, unsigned addr);
+
     //
     // Trace methods.
     //
@@ -284,5 +287,10 @@ public:
 // Return tape name as string.
 //
 std::string tape_name_string(Word w);
+
+//
+// Decode word as string in ISO format.
+//
+std::string word_iso_string(Word w);
 
 #endif // DUBNA_MACHINE_H

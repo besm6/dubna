@@ -51,6 +51,11 @@ void utf8_putc(unsigned ch);
 void utf8_putc(unsigned ch, std::ostream & s);
 
 //
+// Write ISO symbol to a stream in UTF-8 encoding.
+//
+void iso_putc(unsigned ch, std::ostream & s);
+
+//
 // Fetch Unicode symbol from UTF-8 string.
 // Advance string pointer.
 //

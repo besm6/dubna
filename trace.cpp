@@ -591,7 +591,9 @@ void Machine::print_e57_file(const E57_File_Info &info)
         out << "      Release Volume\n";
         break;
     case E57_File_Info::FILE_SEARCH:
-        out << "      Search File " << tape_name_string(mem_load(info.field.addr)) << '\n';
+        out << "      Search File '" << word_iso_string(mem_load(info.field.addr + 2))
+            << "' on disk " << tape_name_string(mem_load(info.field.addr))
+            << '\n';
         break;
     case E57_File_Info::FILE_OPEN:
         out << "      Open File " << tape_name_string(mem_load(info.field.addr)) << '\n';
@@ -609,24 +611,29 @@ void Machine::print_e57_file(const E57_File_Info &info)
         out << "      Change File Status\n";
         break;
     }
-    out << "      Info0 = ";
-    besm6_print_word_octal(out, mem_load(info.field.addr));
-    out << "\n      Info1 = ";
-    besm6_print_word_octal(out, mem_load(info.field.addr + 1));
-    out << "\n      Info2 = ";
-    besm6_print_word_octal(out, mem_load(info.field.addr + 2));
-    out << "\n      Info3 = ";
-    besm6_print_word_octal(out, mem_load(info.field.addr + 3));
-    out << "\n      Info4 = ";
-    besm6_print_word_octal(out, mem_load(info.field.addr + 4));
-    out << "\n      Info5 = ";
-    besm6_print_word_octal(out, mem_load(info.field.addr + 5));
-    out << "\n      Info6 = ";
-    besm6_print_word_octal(out, mem_load(info.field.addr + 6));
-    out << '\n';
-
     // Restore.
     out.flags(save_flags);
+
+    out << "      Info0 = ";
+    besm6_print_word_octal(out, mem_load(info.field.addr));
+    out << '\n';
+    out << "      Info1 = ";
+    besm6_print_word_octal(out, mem_load(info.field.addr + 1));
+    out << '\n';
+    if (info.field.op == E57_File_Info::VOLUME_OPEN)
+        return;
+    out << "      Info2 = ";
+    besm6_print_word_octal(out, mem_load(info.field.addr + 2));
+    out << '\n';
+    out << "      Info3 = ";
+    besm6_print_word_octal(out, mem_load(info.field.addr + 3));
+    out << '\n';
+    out << "      Info4 = ";
+    besm6_print_word_octal(out, mem_load(info.field.addr + 4));
+    out << '\n';
+    out << "      Info5 = ";
+    besm6_print_word_octal(out, mem_load(info.field.addr + 5));
+    out << '\n';
 }
 
 void Machine::print_e57_scratch(const E57_Scratch_Info &info)

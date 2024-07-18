@@ -516,6 +516,34 @@ std::string tape_name_string(Word tape_id)
 }
 
 //
+// Decode word as string in ISO format.
+//
+std::string word_iso_string(Word w)
+{
+    std::ostringstream buf;
+    for (int shift = 40; shift >= 0; shift -= 8) {
+        uint8_t ch = w >> shift;
+        iso_putc(ch, buf);
+    }
+    return buf.str();
+}
+
+//
+// Send message to operator's console.
+//
+void Machine::print_iso_string(std::ostream &out, unsigned addr)
+{
+    BytePointer bp(memory, ADDR(addr));
+    for (;;) {
+        auto ch = bp.get_byte();
+        if (ch == '\0')
+            break;
+        iso_putc(ch, out);
+    }
+    out << '\n';
+}
+
+//
 // Load boot code for Monitoring System Dubna.
 //
 void Machine::boot_ms_dubna(const std::string &path)

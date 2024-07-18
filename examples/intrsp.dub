@@ -1,7 +1,5 @@
 *NAME INTRSP
-* From 9/monsys, zone 0435
-*TIME:24.00
-*EXPRESS
+*       From 9/monsys, zone 0435
 *NO LOAD
       PROGRAMMA
       DIMENSION M1(9),M2(9),M3(9),M4(9),M5(9)

@@ -424,8 +424,8 @@ void Processor::e50()
         core.ACC = e50_format_real(core.ACC, core.M[14]);
         break;
     case 064:
-        // Print some message.
-        // TODO: print_iso(ADDR(core.ACC));
+        // Print job name on operator's terminal.
+        //machine.print_iso_string(std::cerr, ADDR(core.ACC));
         break;
     case 066:
         // Get reply from operator.
@@ -457,8 +457,8 @@ void Processor::e50()
         // Unknown.
         break;
     case 076:
-        // Send message to operator.
-        // TODO: print_iso(ADDR(core.ACC));
+        // Send message to operator, like: "\1\1Ш12:JOB NAME".
+        //machine.print_iso_string(std::cerr, ADDR(core.ACC));
         break;
     case 0102:
         // Some conversion?

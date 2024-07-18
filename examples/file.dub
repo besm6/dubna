@@ -1,5 +1,5 @@
 *name disc
-*disc:1/foo
+*disc:1/local
 *file:bar,41,w
 *edit
 *RO

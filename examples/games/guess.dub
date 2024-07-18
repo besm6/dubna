@@ -1,72 +1,73 @@
 *name guess
 *no list
 *no load list
-      PROGRAM GUESS
-C     ******************************************************************
-C
-C     ORIGINALLY WRITTEN BY WALT KOETKE IN FOCAL, AND PORTED TO BASIC BY
-C     DAVID H. AHL. CONVERTED TO FORTRAN BY PHILIPP ENGEL.
+      program guess
+c     ******************************************************************
+c
+c     Originally written by Walt Koetke in Focal, and ported to Basic by
+c     David H. Ahl. Converted to Fortran by Philipp Engel.
 c     Ported from https://github.com/interkosmos/fortran-fun/src/guess/guess.f
-C
-C     ******************************************************************
-      INTEGER IATTEM, IGUESS, IMAX, ISECRE, LIMIT
-      PRINT 100
-      call INPUT(LIMIT)
-      IMAX = ALOG(LIMIT) / ALOG(2.0) + 1
+c     to BESM-6 by Serge Vakulenko.
 c
-      PRINT 200, LIMIT
-      ISECRE = rndm(-1) * LIMIT
-      IGUESS = 0
-      IATTEM = 0
+c     ******************************************************************
+      integer iattem, iguess, imax, isecre, limit
+      write (54, 100)
+      call input(limit)
+      imax = alog(limit) / alog(2.0) + 1
 c
-   10 CONTINUE
-      IATTEM = IATTEM + 1
-      call INPUT(IGUESS)
-      IF (IGUESS .LT. ISECRE) PRINT 300
-      IF (IGUESS .GT. ISECRE) PRINT 400
-      IF (IGUESS .NE. ISECRE) GOTO 10
+      write (54, 200) limit
+      isecre = rndm(-1) * limit
+      iguess = 0
+      iattem = 0
 c
-      PRINT 500, IATTEM
+   10 continue
+      iattem = iattem + 1
+      call input(iguess)
+      if (iguess .lt. isecre) write (54, 300)
+      if (iguess .gt. isecre) write (54, 400)
+      if (iguess .ne. isecre) goto 10
 c
-      IF (IATTEM .LT. IMAX) goto 60
-      IF (IATTEM .EQ. IMAX) goto 70
-      PRINT 800, IMAX
+      write (54, 500) iattem
+c
+      if (iattem .lt. imax) goto 60
+      if (iattem .eq. imax) goto 70
+      write (54, 800) imax
       goto 90
-   60 PRINT 600
+   60 write (54, 600)
       goto 90
-   70 PRINT 700
+   70 write (54, 700)
       goto 90
    90 continue
 c
-  100 FORMAT (' THIS IS A NUMBER GUESSING GAME. I WILL THINK',/,
-     &' OF A NUMBER BETWEEN 1 AND ANY LIMIT YOU WANT.',/,
-     &' THEN YOU HAVE TO GUESS WHAT IT IS.',/,/,
-     &' WHAT LIMIT DO YOU WANT? ')
-  200 FORMAT (' I AM THINKING OF A NUMBER BETWEEN 1 AND ',I6,' ...',/,
-     &' NOW YOU TRY TO GUESS WHAT IT IS: ')
-  300 FORMAT (' TOO LOW. TRY A BIGGER ANSWER: ')
-  400 FORMAT (' TOO HIGH. TRY A SMALLER ANSWER: ')
-  500 FORMAT (' THAT''S IT! YOU GOT IT IN ',I6,' TRIES.')
-  600 FORMAT (' VERY GOOD.')
-  700 FORMAT (' GOOD.')
-  800 FORMAT (' YOU SHOULD HAVE BEEN ABLE TO GET IT IN ONLY ',I6,'.')
-      END
-C     ******************************************************************
-      subroutine INPUT(ivalue)
-C
-C     RETURNS A POSITIVE INTEGER GREATER THAN 1 FROM USER INPUT.
-C
-   10 CONTINUE
+  100 format (' This is a number guessing game. I will think',/,
+     &' of a number between 1 and any limit you want.',/,
+     &' Then you have to guess what it is.',/,/,
+     &' What limit do you want? ')
+  200 format (' I am thinking of a number between 1 and ',i6,' ...',/,
+     &' now you try to guess what it is: ')
+  300 format (' Too low. Try a bigger answer: ')
+  400 format (' Too high. Try a smaller answer: ')
+  500 format (' T''s it! You got it in ',i6,' tries.')
+  600 format (' Very good.')
+  700 format (' Good.')
+  800 format (' You should have been able to get it in only ',i6,'.')
+      end
+c     ******************************************************************
+      subroutine input(ivalue)
+c
+c     Returns a positive integer greater than 1 from user input.
+c
+   10 continue
       ivalue = -1
       rewind 54
-      READ (54, 100) ivalue
-  100 FORMAT (I8)
-      IF (ivalue .ge. 2) goto 20
-      PRINT 200
-      GOTO 10
-  200 FORMAT (' INVALID INPUT. TRY AGAIN:')
-   20 CONTINUE
-      END
+      read (54, 100) ivalue
+  100 format (i8)
+      if (ivalue .ge. 2) goto 20
+      write (54, 200)
+      goto 10
+  200 format (' Invalid input. Try again:')
+   20 continue
+      end
 *library:1
 *execute
 *end file

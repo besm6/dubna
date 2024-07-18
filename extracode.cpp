@@ -622,7 +622,6 @@ void Processor::e71()
 
     unsigned start = ADDR(ptr.field.start_addr + core.M[ptr.field.start_reg]);
     unsigned end   = ADDR(ptr.field.end_addr + core.M[ptr.field.end_reg]);
-
     switch (ptr.field.flags) {
     case 1:                     // Punch
         if ((end - start + 1) % 24 != 0)
@@ -630,15 +629,20 @@ void Processor::e71()
                             "-" + to_octal(end) + " has fractional cards");
         machine.puncher.punch(start, end);
         return;
-    case 4:                     // Terminal output?
+    case 4:                     // Terminal output
     {
         auto a1 = start, a2 = end;
-        while (a1 <= a2) {
-            BytePointer bp(memory, ADDR(a1));
-            for (int i = 0; i < 6; ++i)
-                std::cout << std::oct << bp.get_byte() << ' ';
-            ++a1;
-        }
+        unsigned char c = 1;
+        BytePointer bp(memory, ADDR(a1));
+        while (a2 ? a1 <= a2 : c != '\0')  {
+            for (int i = 0; c != '\0' && i < 6; ++i) {
+                c = bp.get_byte();
+                if (c == '\0')
+                    break;
+                std::cout << c;
+                ++a1;
+            }
+        }       
         std::cout << std::endl;
         return;
     }

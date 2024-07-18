@@ -1,0 +1,17 @@
+*name ch54
+*ftn
+      program ch54
+      dimension line(13)
+      write (54,2)
+   2  format(' hello world')
+   3  continue
+c     rewind 54
+      read (54,1) line
+      print 11,line
+      goto 3
+   1  format(13a6)
+  11  format(1x,13a6)
+      end
+*no lo
+*execute
+*end file

@@ -573,7 +573,7 @@ done:
 //
 // Print details about extracode e57 77777.
 //
-void Machine::print_e57_file(const E57_File_Info &info)
+void Machine::print_e57_request(const E57_Request_Info &info)
 {
     auto &out       = Machine::get_trace_stream();
     auto save_flags = out.flags();
@@ -581,33 +581,33 @@ void Machine::print_e57_file(const E57_File_Info &info)
     out << "      Op=" << info.field.op
         << " Addr=" << std::setfill('0') << std::setw(5) << std::oct << info.field.addr
         << " Flags=" << info.field.flags
-        << " Key=" << ((info.word & E57_File_Info::KEY_BITMASK) >> 18)
+        << " Key=" << ((info.word & E57_Request_Info::KEY_BITMASK) >> 18)
         << '\n';
     switch (info.field.op) {
-    case E57_File_Info::VOLUME_OPEN:
+    case E57_Request_Info::VOLUME_OPEN:
         out << "      Open Volume " << tape_name_string(mem_load(info.field.addr + 1)) << '\n';
         break;
-    case E57_File_Info::VOLUME_RELEASE:
+    case E57_Request_Info::VOLUME_RELEASE:
         out << "      Release Volume\n";
         break;
-    case E57_File_Info::FILE_SEARCH:
+    case E57_Request_Info::FILE_SEARCH:
         out << "      Search File '" << word_iso_string(mem_load(info.field.addr + 2))
             << "' on disk " << tape_name_string(mem_load(info.field.addr))
             << '\n';
         break;
-    case E57_File_Info::FILE_OPEN:
+    case E57_Request_Info::FILE_OPEN:
         out << "      Open File " << tape_name_string(mem_load(info.field.addr)) << '\n';
         break;
-    case E57_File_Info::SCRATCH_OPEN:
+    case E57_Request_Info::SCRATCH_OPEN:
         out << "      Open Scratch\n";
         break;
-    case E57_File_Info::FILE_RELEASE:
+    case E57_Request_Info::FILE_RELEASE:
         out << "      Release File\n";
         break;
-    case E57_File_Info::ALL_RELEASE:
+    case E57_Request_Info::ALL_RELEASE:
         out << "      Release All\n";
         break;
-    case E57_File_Info::FILE_CONTROL:
+    case E57_Request_Info::FILE_CONTROL:
         out << "      Change File Status\n";
         break;
     }
@@ -620,7 +620,7 @@ void Machine::print_e57_file(const E57_File_Info &info)
     out << "      Info1 = ";
     besm6_print_word_octal(out, mem_load(info.field.addr + 1));
     out << '\n';
-    if (info.field.op == E57_File_Info::VOLUME_OPEN)
+    if (info.field.op == E57_Request_Info::VOLUME_OPEN)
         return;
     out << "      Info2 = ";
     besm6_print_word_octal(out, mem_load(info.field.addr + 2));

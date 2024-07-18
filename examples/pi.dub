@@ -1,0 +1,54 @@
+*name pi
+*call setftn:one,long
+*forex
+c     ******************************************************************
+c
+c     Spigot algorithm for the digits of pi.
+c     Ported from https://github.com/interkosmos/fortran-fun/src/pi/pi.f
+c
+c     ******************************************************************
+      program pi
+      integer ndigit, m
+      parameter (ndigit=40 - 1, m=(ndigit/4 + 1) * 14)
+      integer      i, j
+      integer      a, d, e, l
+      integer      b(m + 1)
+      character*14 fmt
+c
+      data b /m * 20, 0/
+c
+      e = 0
+      l = 2
+c
+      do 20 i = m, 14, -7
+      d = 0
+      a = i * 2 - 1
+c
+      do 30 j = i, 1, -1
+      d = d * j + b(j) * 100
+      b(j) = mod(d, a)
+      d = d / a
+      a = a - 2
+   30 continue
+c
+      if (d .eq. 99) then
+        e = e * 100 + d
+        l = l + 2
+      else if (i .eq. m) then
+        dd = (d / 100) / 10.0
+        print 100, dd
+        e = mod(d, 100)
+      else
+        write (fmt, 200) l
+        print fmt, e + d / 100
+        e = mod(d, 100)
+        l = 2
+      end if
+   20 continue
+c
+  100 format (f3.1)
+  200 format ('(i', i4, ')')
+      end
+*no load list
+*execute
+*end file

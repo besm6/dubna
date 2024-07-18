@@ -620,6 +620,8 @@ void Machine::print_e57_file(const E57_File_Info &info)
     besm6_print_word_octal(out, mem_load(info.field.addr + 4));
     out << "\n      Info5 = ";
     besm6_print_word_octal(out, mem_load(info.field.addr + 5));
+    out << "\n      Info6 = ";
+    besm6_print_word_octal(out, mem_load(info.field.addr + 6));
     out << '\n';
 
     // Restore.

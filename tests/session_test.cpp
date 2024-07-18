@@ -689,6 +689,7 @@ TEST_F(dubna_session, lib3)
 //
 TEST_F(dubna_session, grafor_watanabe)
 {
+    session->preserve_temps();
     auto output = run_job_and_capture_output(R"(*name графор
 *call plotter:wx4675,direct
 *ftn
@@ -737,6 +738,7 @@ TEST_F(dubna_session, grafor_watanabe)
 //
 TEST_F(dubna_session, grafor_tektronix)
 {
+    session->preserve_temps();
     auto output = run_job_and_capture_output(R"(*name графор
 *call plotter:tektronix,direct
 *ftn
@@ -768,6 +770,7 @@ TEST_F(dubna_session, grafor_tektronix)
 //
 TEST_F(dubna_session, grafor_calcomp)
 {
+    session->preserve_temps();
     auto output = run_job_and_capture_output(R"(*name графор
 *call plotter:calcomp,direct
 *ftn

@@ -21,8 +21,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
-#include "machine.h"
 #include "encoding.h"
+#include "machine.h"
 
 //
 // Execute extracode.
@@ -384,7 +384,7 @@ void Processor::e72()
     unsigned addr = core.M[016];
     if (addr >= 010) {
         // Request or release pages of memory.
-        //std::cerr << "\n--- Ignore extracode *72 " + to_octal(addr) << std::endl;
+        // std::cerr << "\n--- Ignore extracode *72 " + to_octal(addr) << std::endl;
         return;
     }
 
@@ -525,7 +525,7 @@ void Processor::e65()
 void Processor::e67()
 {
     auto word = machine.mem_load(core.M[016]);
-    core.PC = (word >> 24) & 077777;
+    core.PC   = (word >> 24) & 077777;
 }
 
 #if 0
@@ -556,9 +556,9 @@ void Processor::e76()
     default:
         if (addr >= 10) {
             // Print warning.
-            //std::cerr << "\n--- Ignore extracode *76 " + to_octal(addr) << std::endl;
-            //print_instruction_word(addr, machine.mem_load(addr));
-            //print_instruction_word(addr + 1, machine.mem_load(addr + 1));
+            // std::cerr << "\n--- Ignore extracode *76 " + to_octal(addr) << std::endl;
+            // print_instruction_word(addr, machine.mem_load(addr));
+            // print_instruction_word(addr + 1, machine.mem_load(addr + 1));
             return;
         }
         throw Exception("Unimplemented extracode *76 " + to_octal(addr));
@@ -623,19 +623,20 @@ void Processor::e71()
     unsigned start = ADDR(ptr.field.start_addr + core.M[ptr.field.start_reg]);
     unsigned end   = ADDR(ptr.field.end_addr + core.M[ptr.field.end_reg]);
     switch (ptr.field.flags) {
-    case 1:                     // Punch
+    case 1:
+        // Punch
         if ((end - start + 1) % 24 != 0)
-            throw Exception("Punched card buffer " + to_octal(start) +
-                            "-" + to_octal(end) + " has fractional cards");
+            throw Exception("Punched card buffer " + to_octal(start) + "-" + to_octal(end) +
+                            " has fractional cards");
         machine.puncher.punch(start, end);
         return;
-    case 4:                     // Terminal output
-    {
+    case 4: {
+        // Terminal output
         auto a1 = start, a2 = end;
         unsigned char c = 1;
         e64_finish();
         BytePointer bp(memory, ADDR(a1));
-        while (a2 ? a1 <= a2 : c != '\0')  {
+        while (a2 ? a1 <= a2 : c != '\0') {
             for (int i = 0; c != '\0' && i < 6; ++i) {
                 c = bp.get_byte();
                 if (c == '\0')
@@ -647,29 +648,29 @@ void Processor::e71()
         std::cout << std::endl;
         return;
     }
-    case 6:			// Terminal input
-    {
-	size_t buflen = ((end ? end : 077777) - start + 1) * 6;
-	std::string inp;
-	e64_finish();
-	std::cout << "-\r" << std::flush; // Standard prompt
-	std::cin >> inp;
-	if (inp.back() == '\n')
-	    inp.pop_back();
-	inp = utf8_to_koi7(inp, buflen);
-	// The terminating zero byte will be written if it fits.
-	if (inp.length() < buflen) {
-	    inp += '\0';
-	}
+    case 6: {
+        // Terminal input
+        size_t buflen = ((end ? end : 077777) - start + 1) * 6;
+        std::string inp;
+        e64_finish();
+        do {
+            std::cout << "-\r" << std::flush; // Standard prompt
+            std::getline(std::cin, inp);
+        } while (inp.size() == 0);
+        inp = utf8_to_koi7(inp, buflen);
+        // The terminating zero byte will be written if it fits.
+        if (inp.length() < buflen) {
+            inp += '\0';
+        }
         BytePointer bp(memory, ADDR(start));
-	for (size_t c = 0; c < inp.length(); ++c) {
-	    // Pre-clear a new word
-	    if (c % 6 == 0) {
-		memory.store(start + c/6, 0);
-	    }
-	    bp.put_byte(inp[c]);
-	}
-	return;
+        for (size_t c = 0; c < inp.length(); ++c) {
+            // Pre-clear a new word
+            if (c % 6 == 0) {
+                memory.store(start + c / 6, 0);
+            }
+            bp.put_byte(inp[c]);
+        }
+        return;
     }
     }
 }

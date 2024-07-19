@@ -1,0 +1,175 @@
+*name GRAYSCALE
+*forex  
+      program graysc
+      dimension a(124,124)
+      common/outcom/lunout,i80132
+      data lunout/51/,i80132/1/
+c     real tt(4)
+c     do 2 i = 1,4
+c  2  tt(i) = i
+c     call array(tt,2)
+c     stop
+      do 1 i=1,62
+      do 1 j=1,62
+   1  a(i,j)=sqrt((i-31.)**2+(j-31.)**2)/3.
+c     print '(1x124f1.0)',a
+      call array(a,124)
+      end
+      subroutine array(b,nxn)
+      common/outcom/lunout,i80132
+      dimension b(nxn,nxn),ln(127,7),den(21)
+      dimension rleg(11)
+      dimension mesgp(14)
+      integer gray(21,7),nln(21)
+      data gray/ 1h , 1h0, 1h*, 1h+, 1h), 1h1, 1hz, 1hx, 1ha, 1hm,
+     1           1ho, 1ho, 1ho, 1ho, 1ho, 1ho, 1ho, 1ho, 1ho, 1ho, 1ho,
+     2           1h , 1h , 1h , 1h , 1h , 1h , 1h , 1h , 1h , 1h ,
+     3           1h-, 1h=, 1h+, 1h+, 1h+, 1h+, 1hx, 1hx, 1hx, 1hx, 1hx,
+     4           1h , 1h , 1h , 1h , 1h , 1h , 1h , 1h , 1h , 1h ,
+     5           1h , 1h , 1h , 1h., 1h=, 1h., 1h., 1h., 1h., 1h., 1h.,
+     6           1h , 1h , 1h , 1h , 1h , 1h , 1h , 1h , 1h , 1h ,
+     7           1h , 1h , 1h , 1h , 1h , 1h=, 1h-, 1hh, 1hh, 1hh, 1hh,
+     8           1h , 1h , 1h , 1h , 1h , 1h , 1h , 1h , 1h , 1h ,
+     9           1h , 1h , 1h , 1h , 1h , 1h , 1h , 1hc, 1hb, 1hb, 1hb,
+     a           1h , 1h , 1h , 1h , 1h , 1h , 1h , 1h , 1h , 1h ,
+     b           1h , 1h , 1h , 1h , 1h , 1h , 1h , 1h , 1h , 1hv, 1hv,
+     c           1h , 1h , 1h , 1h , 1h , 1h , 1h , 1h , 1h , 1h ,
+     d           1h , 1h , 1h , 1h , 1h , 1h , 1h , 1h , 1h , 1h , 1ha/
+      data den/  .0 , .15, .22, .25, .29, .33, .37, .40, .42, .45,
+     1           .53, .56, .60, .64, .67, .79, .85, .89, .93, .97, 1.0/
+      data nln/    1,   1,   1,   1,   1,   1,   1,   1,   1,   1,
+     1             2,   2,   2,   3,   3,   4,   4,   5,   5,   6,   7/
+      data char/0.6/
+      data iblank, istar/1h , 1h*/
+      data mesgp/'(16h plot suppressed)'/
+      if (i80132.ne.0) write (lunout,66)
+      if (i80132.eq.0) write (lunout,68)
+      j80132=127
+      if (i80132.eq.0) j80132=78
+      xmin=b(1,1)
+      xmax=xmin
+      xsum=0.
+      do 16 i=1,nxn
+      do 16 j=1,nxn
+      xsum=xsum+b(i,j)
+      if (xmin-b(i,j)) 12,12,10
+  10  xmin=b(i,j)
+  12  if (xmax-b(i,j)) 14,16,16
+  14  xmax=b(i,j)
+  16  continue
+      n1=float(nxn)*char
+      xdist=float(nxn)/float(n1+1)
+      write (lunout,70) xmin,xmax,xsum
+      if (xmax-xmin.gt.1.e-10) go to 18
+      write (lunout,mesgp)
+      if (i80132.ne.0) write (lunout,72)
+      return
+  18  if (nxn+2.gt.j80132) print '('' *** too wide *** '')'
+      frac=1./(xmax-xmin)
+      if (nxn.gt.100) go to 22
+      nn=(60-n1)/4.-1
+      if (i80132.eq.0) nn=2
+      do 20 i=1,nn
+      write (lunout,68)
+  20  continue
+  22  do 24 i=1,127
+      do 24 j=1,7
+      ln(i,j)=iblank
+  24  continue
+      imin=(j80132-nxn)/2.
+      imax=imin+nxn-1
+      ii1=imin-1
+      ii2=imax+1
+      do 26 i=ii1,ii2
+      ln(i,1)=istar
+  26  continue
+      write (lunout,74) (ln(i,1),i=1,j80132)
+      y=float(nxn)+0.5
+      do 46 k=1,n1
+      y=y-xdist
+      j1=y
+      y1=float(j1)
+      j2=j1+1
+      i1=0
+      lmax=0
+      do 40 i=imin,imax
+      i1=i1+1
+      d=(b(i1,j1)+(b(i1,j2)-b(i1,j1))*(y-float(j1))-xmin)*frac
+      do 28 m=1,21
+      if (d-den(m)) 30,36,28
+  28  continue
+  30  m1=m-1
+      m2=m
+      t=(den(m2)+den(m1))/2.
+      if (d-t) 32,32,34
+  32  l=m1
+      go to 38
+  34  l=m2
+      go to 38
+  36  l=m
+  38  do 40 j=1,7
+      if (l.gt.lmax) lmax=l
+      ln(i,j)=gray(l,j)
+  40  continue
+      nj=nln(lmax)-1
+      if (nj.le.0) go to 44
+      do 42 j=1,nj
+      write (lunout,76) (ln(i,j),i=1,j80132)
+  42  continue
+  44  write (lunout,78) (ln(i,nj+1),i=1,j80132)
+  46  continue
+      do 48 i=ii1,ii2
+      ln(i,1)=istar
+  48  continue
+      write (lunout,74) (ln(i,1),i=1,j80132)
+      mleg=j80132/11.
+      nleg=22/float(mleg)
+      do 56 ii=1,nleg
+      do 50 j=1,7
+      do 50 i=1,127
+      ln(i,j)=iblank
+  50  continue
+      do 52 j=1,ii
+      isub1=(j-1)*ii+1
+      isub2=(j-1)+(ii-1)*mleg
+      isub3=isub2+1
+      if (isub2.le.0) isub2=1
+      if (isub3.gt.21) isub3=21
+      rleg(j)=(den(isub2)+den(isub3))/(frac*2.)+xmin
+      do 52 k=1,7
+      ln(isub1,k)=gray(isub2,k)
+  52  continue
+      write (lunout,68)
+      do 54 i=1,6
+  54  write (lunout,76) (ln(j,i),j=1,j80132)
+      write (lunout,78) (ln(j,7),j=1,j80132)
+      write (lunout,80) (rleg(j),j=1,mleg)
+  56  continue
+      if (i80132.ne.0) goto 64
+      do 58 j=1,7
+      do 58 i=1,127
+      ln(i,j)=iblank
+  58  continue
+      rleg(1)=den(21)/frac+xmin
+      do 60 k=1,7
+      ln(1,k)=gray(21,k)
+  60  continue
+      write (lunout,68)
+      do 62 i=1,6
+  62  write (lunout,76) (ln(l,i),l=1,j80132)
+      write (lunout,78) (ln(l,7),l=1,j80132)
+      write (lunout,80) rleg(1)
+  64  continue
+      if (i80132.ne.0) write (lunout,72)
+      return
+  66  format(6h1*OVF*)
+  68  format(/)
+  70  format(1x,7hxmin = ,e10.2,5x,7hxmax = ,e10.2,5x,7hxsum = ,e12.4)
+  72  format(6h1*OVN*)
+  74  format(1x,127a1)
+  76  format(1h+,127a1)
+  78  format(1h ,127a1)
+  80  format(11(1x,e10.4))
+      end
+*execute
+*end file

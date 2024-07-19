@@ -1,0 +1,7 @@
+*name copy
+*tape: 9/monsys, 32
+*disc: 1/local
+*file: lib23, 41, w
+*      Copy 060 zones from tape Monsys to file lib23.bin
+*copy: 60, 320320, 41
+*end file

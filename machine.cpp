@@ -414,6 +414,7 @@ unsigned Machine::file_search(Word disc_id, Word file_name, bool write_mode)
     } else {
         // Read mode: the file must exist.
         if (!file_exists) {
+            // TODO: check for *.txt instead.
             return 0;
         }
     }
@@ -445,6 +446,16 @@ unsigned Machine::file_mount(unsigned disk_unit, unsigned file_index, bool write
 
     // Note file index has offset +1.
     auto const &path = file_paths[file_index - 1];
+
+    //TODO: if file.bin is absent, but file.txt exists -
+    //TODO: (1) convert file.txt -> file.bin
+    //TODO: (2) if read-only mode: set flag remove_bin
+
+    //TODO: create method Machine::finish() -
+    //TODO: for each file in write mode: when file.bin is in cosy format,
+    //TODO:                              convert it to file.txt and set flag remove_bin
+    //TODO: for each file with flag remove_bin: remove file.bin
+
     if (write_mode) {
         // Create file and close it.
         std::fstream file(path, std::ios::out);

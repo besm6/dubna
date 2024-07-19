@@ -1,4 +1,4 @@
-*name disc
+*name write file
 *disc:1/local
 *file:fubar,41,w
 *edit

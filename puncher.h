@@ -43,6 +43,9 @@ public:
     // Send an array to punched cards.
     void punch(ushort start_addr, ushort end_addr);
 
+    // Save all data files.
+    void finish();
+
 private:
     void punch_braille(const unsigned char buf[144]);
     void punch_stdarray(const ushort columns[80]);

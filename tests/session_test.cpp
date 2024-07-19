@@ -288,6 +288,10 @@ _).
 //
 TEST_F(dubna_session, libpunch)
 {
+    // Remove resulting files from a previous run, just in case.
+    std::filesystem::remove("punch.out");
+    std::filesystem::remove("stdarray.out");
+
     // See Mazny book, page 140.
     auto output = run_job_and_capture_output(R"(*name libpunch
 *table:libpunch(print8)
@@ -296,6 +300,16 @@ TEST_F(dubna_session, libpunch)
 )");
     auto expect = file_contents(TEST_DIR "/expect_libpunch.txt");
     check_output(output, expect);
+
+    // Check Braille output.
+    auto result = file_contents("punch.out");
+    expect = file_contents(TEST_DIR "/expect_punch.txt");
+    EXPECT_EQ(result, expect);
+
+    // Check standard array output.
+    result = file_contents("stdarray.out");
+    expect = file_contents(TEST_DIR "/expect_stdarray.txt");
+    EXPECT_EQ(result, expect);
 }
 
 //

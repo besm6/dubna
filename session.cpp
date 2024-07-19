@@ -136,6 +136,7 @@ public:
 
             // Save plotter data.
             machine.plotter_finish();
+            machine.puncher.finish();
 
         } catch (const std::exception &ex) {
             // Print exception message.

@@ -31,6 +31,22 @@
 #include "encoding.h"
 
 //
+// Close all data files.
+//
+void Puncher::finish()
+{
+    if (braille.is_open()) {
+        braille.close();
+    }
+    if (stdarray.is_open()) {
+        stdarray.close();
+    }
+    if (cosy.is_open()) {
+        cosy.close();
+    }
+}
+
+//
 // Print 3 lines of 40 Braille Unicode characters per line
 // representing one punched card.
 // Reference: https://en.wikipedia.org/wiki/Braille_Patterns

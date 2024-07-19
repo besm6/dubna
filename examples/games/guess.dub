@@ -7,7 +7,7 @@ c     ******************************************************************
 c
 c     Originally written by Walt Koetke in Focal, and ported to Basic by
 c     David H. Ahl. Converted to Fortran by Philipp Engel.
-c     Ported from https://github.com/interkosmos/fortran-fun/src/guess/guess.f
+c     Ported from github.com/interkosmos/fortran-fun/src/guess/guess.f
 c     to BESM-6 by Serge Vakulenko.
 c
 c     ******************************************************************
@@ -61,7 +61,7 @@ c
       rewind 54
       read (54, 100) ivalue
   100 format (i8)
-      if (ivalue .le. 1) then
+      if (ivalue .lt. 1) then
         write (54, 200)
         goto 10
       end if

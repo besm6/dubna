@@ -1,0 +1,5 @@
+*name каталог overlay
+*tape:9/monsys,32
+*call setftn:one,long
+*call ocatalog:320100
+*end file

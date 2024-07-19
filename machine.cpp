@@ -492,7 +492,7 @@ void Machine::scratch_mount(unsigned disk_unit, unsigned num_zones)
     }
     if (!keep_temporary_files) {
         // Remove temporary file.
-        std::remove(path.c_str());
+        std::filesystem::remove(path);
     }
 }
 

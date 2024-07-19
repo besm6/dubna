@@ -822,3 +822,47 @@ And the mome raths outgrabe.
     auto expect = file_contents(TEST_DIR "/expect_file_scratch.txt");
     check_output(output, expect);
 }
+
+//
+// Write file using *FILE command, then read it back.
+//
+TEST_F(dubna_session, file_write_read)
+{
+    // Remove resulting file from a previous run, just in case.
+    std::filesystem::remove("fubar.bin");
+
+    auto output = run_job_and_capture_output(R"(*name write file
+*disc:1/local
+*file:fubar,41,w
+*edit
+*RO
+*W:41,2
+Варкалось. Хливкие шорьки
+Пырялись по наве,
+И хрюкотали зелюки,
+Как мюмзики в мове.
+*EE
+*end file
+)");
+    auto expect = file_contents(TEST_DIR "/expect_file_write.txt");
+    check_output(output, expect);
+
+    // Check resulting file.
+    auto fubar = file_contents("fubar.bin");
+    expect = file_contents(TEST_DIR "/expect_fubar.bin");
+    EXPECT_EQ(fubar, expect);
+
+    // Start another session.
+    session = std::make_unique<Session>();
+    auto output2 = run_job_and_capture_output(R"(*name read file
+*disc:1/local
+*file:fubar,41
+*edit
+*R:41
+*LL
+*EE
+*end file
+)");
+    expect = file_contents(TEST_DIR "/expect_file_read.txt");
+    check_output(output2, expect);
+}

@@ -141,7 +141,6 @@ void Processor::e57_file()
     }
     switch (info.field.op) {
     case E57_Request_Info::VOLUME_OPEN: {
-        // Name is located at addr+1.
         //
         // Структура задания:
         //      0. признак монополии на диск
@@ -165,7 +164,6 @@ void Processor::e57_file()
         break;
 
     case E57_Request_Info::FILE_SEARCH: {
-        // File name is located at addr.
         //
         // Структура задания:
         //      0. имя диска
@@ -175,56 +173,63 @@ void Processor::e57_file()
         //         запрос координат последнего файла
         //  N*4+1. бит 48
         //
-        //Word disc_id = machine.mem_load(info.field.addr);
+        Word disc_id = machine.mem_load(info.field.addr);
         for (auto addr = info.field.addr + 1; ; addr += 4) {
-            E57_File_Info item;
+            E57_Search_Info item;
             item.word[0] = machine.mem_load(addr);
             if (item.word[0] == BIT48) {
                 break;
             }
 
             // Запрос координат файла выглядит так:
-            //      0. имя хозяина файла                     0000 0000 0000 0000
-            //      1. имя файла                             2044 0522 1002 0040
-            //      2. поле ответа (+бит 30, если запись)    0000 0040 0000 0000
-            //      3. бит 48 + мат.номер файла в 1:6 р.     4000 0000 0000 0041
+            //      0. имя хозяина файла
+            //      1. имя файла
+            //      2. поле ответа (+бит 30, если запись)
+            //      3. бит 48 + мат.номер файла в 1:6 р.
             //
             item.word[1] = machine.mem_load(addr + 1);
             item.word[2] = machine.mem_load(addr + 2);
             item.word[3] = machine.mem_load(addr + 3);
-            machine.trace_e57_file(item);
+            machine.trace_e57_search(item);
 
-            // В поле ответа для каждого файла будут его координаты на диске,
-            // а также признаки всяких бяк:
-            //      бит 48 - плохое обращение
-            //      бит 47 - файла нет на диске
-            //      бит 46 - нет доступа к файлу
-            //
-            //TODO: item.word[2] = machine.file_search(disc_id, item.field.file_name, item.field.write_mode);
+            item.field.offset = machine.file_search(disc_id, item.field.file_name, item.field.write_mode);
+            if (!item.field.offset) {
+                // Failed with this file.
+                if (item.field.write_mode) {
+                    item.field.error = E57_NO_ACCESS;
+                } else {
+                    item.field.error = E57_NOT_FOUND;
+                }
+            }
+            machine.mem_store(addr + 2, item.word[2]);
         }
-        core.ACC = BIT48; // TODO
+        core.ACC = 0;
         break;
     }
+
     case E57_Request_Info::FILE_OPEN:
-        // File name is located at addr.
-        throw Exception("Extracode *57 77777: operation 'Open File' not supported yet");
-        // Accept for now.
-        core.ACC = 0;
         //
         // Структура задания:
         //      0. имя диска
-        //    1-4. координаты первого файла (берутся из поля ответа предыдущего стека + мат.номер в 37:42 р.)
-        //    5-8. координаты второго файла
+        //      1. координаты первого файла (берутся из поля ответа предыдущего стека + мат.номер в 37:42 р.)
+        //      2. координаты второго файла
         //         ...........................
         //         координаты последнего файла
-        //  N*4+1. нулевая ячейка
+        //    N+1. нулевая ячейка
         //
-        // В ячейках по файлам:
-        //      бит 43 - нет диска
-        //      бит 44 - занят мат.номер
-        //      бит 45 - занят файл
-        //      бит 46 - нет места для файла
-        //
+        //Word disc_id = machine.mem_load(info.field.addr);
+        for (auto addr = info.field.addr + 1; ; addr++) {
+            E57_Open_Info item;
+            item.word = machine.mem_load(addr);
+            if (!item.word) {
+                break;
+            }
+            machine.trace_e57_open(item);
+
+            item.field.error = machine.file_mount(item.field.disk_unit, item.field.offset, item.field.write_mode);
+            machine.mem_store(addr, item.word);
+        }
+        core.ACC = 0;
         break;
 
     case E57_Request_Info::SCRATCH_OPEN:

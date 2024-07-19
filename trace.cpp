@@ -614,26 +614,51 @@ void Machine::print_e57_request(const E57_Request_Info &info)
     // Restore.
     out.flags(save_flags);
 
-    out << "      Info0 = ";
+    out << "      Info0=";
     besm6_print_word_octal(out, mem_load(info.field.addr));
     out << '\n';
-    out << "      Info1 = ";
+    out << "      Info1=";
     besm6_print_word_octal(out, mem_load(info.field.addr + 1));
     out << '\n';
     if (info.field.op == E57_Request_Info::VOLUME_OPEN)
         return;
-    out << "      Info2 = ";
+    out << "      Info2=";
     besm6_print_word_octal(out, mem_load(info.field.addr + 2));
     out << '\n';
-    out << "      Info3 = ";
+    out << "      Info3=";
     besm6_print_word_octal(out, mem_load(info.field.addr + 3));
     out << '\n';
-    out << "      Info4 = ";
+    out << "      Info4=";
     besm6_print_word_octal(out, mem_load(info.field.addr + 4));
     out << '\n';
-    out << "      Info5 = ";
+    out << "      Info5=";
     besm6_print_word_octal(out, mem_load(info.field.addr + 5));
     out << '\n';
+}
+
+void Machine::print_e57_search(const E57_Search_Info &info)
+{
+    auto &out       = Machine::get_trace_stream();
+    auto save_flags = out.flags();
+
+    out << "      File='" << word_iso_string(info.field.file_name)
+        << "' Disk=" << std::setw(2) << std::oct << info.field.disk_unit << std::dec
+        << " Mode=" << (info.field.write_mode ? 'W' : 'R')
+        << " Owner='" << word_iso_string(info.field.owner)
+        << "'\n";
+    out.flags(save_flags);
+}
+
+void Machine::print_e57_open(const E57_Open_Info &info)
+{
+    auto &out       = Machine::get_trace_stream();
+    auto save_flags = out.flags();
+
+    out << "      File=" << info.field.offset
+        << " Disk=" << std::setw(2) << std::oct << info.field.disk_unit << std::dec
+        << " Mode=" << (info.field.write_mode ? 'W' : 'R')
+        << "\n";
+    out.flags(save_flags);
 }
 
 void Machine::print_e57_scratch(const E57_Scratch_Info &info)

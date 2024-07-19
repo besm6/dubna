@@ -360,6 +360,28 @@ void Machine::disk_mount(unsigned disk_unit, Word tape_id, bool write_permit)
 }
 
 //
+// Find file by name on given disk.
+// Return unique 'offset' of the file on the disk.
+// In case of error return zero.
+//
+unsigned Machine::file_search(Word disc_id, Word file_name, bool write_mode)
+{
+    //TODO
+    return 0;
+}
+
+//
+// Open file and assign it to the disk unit.
+// Return error code.
+// In case of success return zero.
+//
+unsigned Machine::file_mount(unsigned disk_unit, unsigned file_index, bool write_mode)
+{
+    //TODO
+    return E57_FILE_BUSY;
+}
+
+//
 // Create scratch file and assign it to the disk unit.
 //
 void Machine::scratch_mount(unsigned disk_unit, unsigned num_zones)

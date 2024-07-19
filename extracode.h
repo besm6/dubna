@@ -236,6 +236,56 @@ union E57_Scratch_Info {
     } field;
 };
 
+union E57_Search_Info {
+    Word word[4];
+
+    struct {
+        // Name of owner as ISO string, up to 6 characters.
+        Word owner;
+
+        // File name as ISO string, up to 6 characters.
+        Word file_name;
+
+        // Bit 30 means write mode. Put reply here.
+        unsigned offset : 29;       // Result: file offset on disk
+        unsigned write_mode : 1;    // 0-Read only, 1-Write/read
+        unsigned long long _1 : 12; // ---
+        unsigned error : 6;         // Return status here
+
+        // Разряды 6-1 - мат.номер
+        // Разряд 48 всегда единица
+        //
+        unsigned disk_unit : 6;     // Disk unit to mount
+        unsigned long long _2 : 41; // ---
+        unsigned bit48 : 1;         // Always 1
+    } field;
+};
+
+union E57_Open_Info {
+    Word word;
+
+    struct {
+        // Bit 30 means write mode. Put reply here.
+        unsigned offset : 29;      // Result: file offset on disk
+        unsigned write_mode : 1;   // 0-Read only, 1-Write/read
+        unsigned long long _1 : 6; // ---
+        unsigned disk_unit : 6;    // Disk unit to mount
+        unsigned error : 6;        // Return status here
+    } field;
+};
+
+//
+// В поле ответа для каждого файла будут признаки всяких бяк.
+//
+enum {
+    E57_DISK_OFFLINE = 010, // бит 43 - нет диска
+    E57_DISK_BUSY = 020,    // бит 44 - занят мат.номер
+    E57_FILE_BUSY = 040,    // бит 45 - занят файл
+    E57_NO_ACCESS = 010,    // бит 46 - нет доступа к файлу или нет места для файла
+    E57_NOT_FOUND = 020,    // бит 47 - файла нет на диске
+    E57_BAD_REQUEST = 040,  // бит 48 - плохое обращение
+};
+
 //
 // Экстракод 050 015, 016, 017: форматные преобразования из двоичного кода в ISO.
 //

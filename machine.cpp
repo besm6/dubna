@@ -25,15 +25,15 @@
 
 #include <unistd.h>
 
+#include <algorithm>
+#include <cctype>
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
+#include <filesystem>
 #include <fstream>
 #include <iostream>
 #include <sstream>
-#include <algorithm>
-#include <cctype>
-#include <filesystem>
 
 #include "encoding.h"
 
@@ -49,8 +49,7 @@ const uint64_t Machine::DEFAULT_LIMIT = 100ULL * 1000 * 1000 * 1000;
 // Initialize the machine.
 //
 Machine::Machine(Memory &m)
-    : progress_time_last(std::chrono::steady_clock::now()), memory(m),
-      cpu(*this, m), puncher(m)
+    : progress_time_last(std::chrono::steady_clock::now()), memory(m), cpu(*this, m), puncher(m)
 {
 }
 
@@ -130,7 +129,7 @@ again:
             return;
         }
         std::cerr << "Error: " << message << std::endl;
-        //trace_exception(message);
+        // trace_exception(message);
 
         if (cpu.intercept(message)) {
             goto again;
@@ -223,9 +222,10 @@ void Machine::load(std::istream &input)
         if (line[0] == '`') {
             Word word = std::stoul(line.c_str() + 1, nullptr, 8);
             drum_write_word(1, offset++, word);
-        } else
-        // Write to drum in COSY format.
-        drum_write_cosy(1, offset, line);
+        } else {
+            // Write to drum in COSY format.
+            drum_write_cosy(1, offset, line);
+        }
     }
 }
 
@@ -360,7 +360,8 @@ void Machine::disk_mount(unsigned disk_unit, Word tape_id, bool write_permit)
     disks[disk_unit] = std::make_unique<Disk>(tape_id, memory, path, write_permit);
 
     if (trace_enabled()) {
-        std::cout << "Mount image '" << path << "' as disk " << to_octal(disk_unit + 030) << std::endl;
+        std::cout << "Mount image '" << path << "' as disk " << to_octal(disk_unit + 030)
+                  << std::endl;
     }
 }
 
@@ -433,8 +434,29 @@ unsigned Machine::file_search(Word disc_id, Word file_name, bool write_mode)
 //
 unsigned Machine::file_mount(unsigned disk_unit, unsigned file_index, bool write_mode)
 {
-    //TODO
-    return E57_FILE_BUSY;
+    if (disk_unit < 030 || disk_unit >= 070)
+        throw std::runtime_error("Invalid disk unit " + to_octal(disk_unit) + " in file_mount()");
+
+    if (disks[disk_unit - 030]) {
+        // Already mounted.
+        return E57_DISK_BUSY;
+    }
+
+    // Note file index has offset +1.
+    auto const &path = file_paths[file_index - 1];
+    if (write_mode) {
+        // Create file and close it.
+        std::ofstream file(path);
+        if (!file.good()) {
+            return E57_NO_ACCESS;
+        }
+    }
+    disks[disk_unit - 030] = std::make_unique<Disk>(file_index, memory, path, write_mode);
+
+    if (trace_enabled()) {
+        std::cout << "Mount file '" << path << "' as disk " << to_octal(disk_unit) << std::endl;
+    }
+    return 0;
 }
 
 //
@@ -442,13 +464,13 @@ unsigned Machine::file_mount(unsigned disk_unit, unsigned file_index, bool write
 //
 void Machine::scratch_mount(unsigned disk_unit, unsigned num_zones)
 {
-
     if (disk_unit < 030 || disk_unit >= 070)
-        throw std::runtime_error("Invalid disk unit " + to_octal(disk_unit) + " in scratch_mount()");
+        throw std::runtime_error("Invalid disk unit " + to_octal(disk_unit) +
+                                 " in scratch_mount()");
 
     const auto digit_lo = disk_unit % 8;
     const auto digit_hi = disk_unit / 8;
-    const Word tape_id = TAPE_SCRATCH | (digit_hi << 4) | digit_lo;
+    const Word tape_id  = TAPE_SCRATCH | (digit_hi << 4) | digit_lo;
 
     disk_unit -= 030;
     if (disks[disk_unit]) {
@@ -464,8 +486,8 @@ void Machine::scratch_mount(unsigned disk_unit, unsigned num_zones)
     auto &path          = disks[disk_unit]->get_path();
 
     if (trace_enabled()) {
-        std::cout << "Mount image '" << path
-                  << "' as disk " << to_octal(disk_unit + 030) << std::endl;
+        std::cout << "Mount image '" << path << "' as disk " << to_octal(disk_unit + 030)
+                  << std::endl;
     }
     if (!keep_temporary_files) {
         // Remove temporary file.
@@ -532,13 +554,12 @@ void Machine::map_drum_to_disk(unsigned drum, unsigned disk_unit)
 std::string Machine::disk_path(Word tape_id)
 {
     // Build file name from tape number.
-    const unsigned tape_num = ((tape_id >> 8) & 0xf) * 100 +
-                              ((tape_id >> 4) & 0xf) * 10 +
-                               (tape_id & 0xf);
+    const unsigned tape_num =
+        ((tape_id >> 8) & 0xf) * 100 + ((tape_id >> 4) & 0xf) * 10 + (tape_id & 0xf);
     const std::string filename = std::to_string(tape_num);
-    //std::cout << "\n--- tape id 0" << std::oct << tape_id << std::dec
-    //          << ' ' << tape_name_string(tape_id)
-    //          << ", filename " << filename << '\n';
+    // std::cout << "\n--- tape id 0" << std::oct << tape_id << std::dec
+    //           << ' ' << tape_name_string(tape_id)
+    //           << ", filename " << filename << '\n';
 
     // Setup the list of directories to search.
     if (disk_search_path.empty()) {
@@ -580,16 +601,14 @@ std::string Machine::disk_path(Word tape_id)
 std::string tape_name_string(Word tape_id)
 {
     std::ostringstream buf;
-    unsigned const num = ((tape_id >> 8) & 0xf) * 100 +
-                         ((tape_id >> 4) & 0xf) * 10 +
-                         (tape_id & 0xf);
-    buf << num << '/'
-        << (char) std::tolower(text_to_unicode(tape_id >> 42))
-        << (char) std::tolower(text_to_unicode(tape_id >> 36))
-        << (char) std::tolower(text_to_unicode(tape_id >> 30))
-        << (char) std::tolower(text_to_unicode(tape_id >> 24))
-        << (char) std::tolower(text_to_unicode(tape_id >> 18))
-        << (char) std::tolower(text_to_unicode(tape_id >> 12));
+    unsigned const num =
+        ((tape_id >> 8) & 0xf) * 100 + ((tape_id >> 4) & 0xf) * 10 + (tape_id & 0xf);
+    buf << num << '/' << (char)std::tolower(text_to_unicode(tape_id >> 42))
+        << (char)std::tolower(text_to_unicode(tape_id >> 36))
+        << (char)std::tolower(text_to_unicode(tape_id >> 30))
+        << (char)std::tolower(text_to_unicode(tape_id >> 24))
+        << (char)std::tolower(text_to_unicode(tape_id >> 18))
+        << (char)std::tolower(text_to_unicode(tape_id >> 12));
     return buf.str();
 }
 
@@ -619,7 +638,7 @@ std::string word_iso_filename(Word w)
 
     // Convert to lowercase.
     std::transform(filename.begin(), filename.end(), filename.begin(),
-        [](unsigned char c){ return std::tolower(c); });
+                   [](unsigned char c) { return std::tolower(c); });
     return filename;
 }
 

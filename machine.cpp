@@ -401,7 +401,7 @@ unsigned Machine::file_search(Word disc_id, Word file_name, bool write_mode)
 
     if (write_mode) {
         // Write mode: try to write file.
-        std::ofstream file(path);
+        std::fstream file(path);
         bool is_writable = file.good();
         if (!file_exists) {
             // Remove the file we just created.
@@ -446,7 +446,7 @@ unsigned Machine::file_mount(unsigned disk_unit, unsigned file_index, bool write
     auto const &path = file_paths[file_index - 1];
     if (write_mode) {
         // Create file and close it.
-        std::ofstream file(path);
+        std::fstream file(path);
         if (!file.good()) {
             return E57_NO_ACCESS;
         }

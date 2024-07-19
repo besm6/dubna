@@ -12,4 +12,6 @@ calcomp*.svg
 *.sh-
 *.o
 *.out
+*.xd
+*.patched
 scratch*.@*

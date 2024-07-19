@@ -18,7 +18,7 @@ monsys.9, librar.12 and librar.37 respectively.
     $ besmtool write 9 --from-file=monsys.9
     Written 288 zones (1728 kbytes) from file monsys.9 to disk 9
 
-    $ besmtool write 12 --from-file=librar.1
+    $ besmtool write 12 --from-file=librar.12
     Written 320 zones (1920 kbytes) from file librar.12 to disk 12
 
     $ besmtool write 37 --from-file=librar.37

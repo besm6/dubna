@@ -167,7 +167,8 @@ public:
     void disk_release(Word mask);
     unsigned disk_find(Word tape_id);
     void scratch_mount(unsigned disk_unit, unsigned num_zones);
-
+    unsigned file_search(Word disc_id, Word file_name, bool write_mode);
+    unsigned file_mount(unsigned disk_unit, unsigned file_index, bool write_mode);
 
     // Drum i/o.
     void drum_io(char op, unsigned drum_unit, unsigned zone, unsigned sector, unsigned addr,
@@ -265,6 +266,18 @@ public:
             print_e57_scratch(info);
     }
 
+    void trace_e57_search(const E57_Search_Info &info)
+    {
+        if (debug_extracodes)
+            print_e57_search(info);
+    }
+
+    void trace_e57_open(const E57_Open_Info &info)
+    {
+        if (debug_extracodes)
+            print_e57_open(info);
+    }
+
     void trace_e50_format_real(const E50_Format_Info &info)
     {
         if (debug_extracodes)
@@ -280,6 +293,8 @@ public:
     void print_e64_dubna(unsigned start_addr, unsigned end_addr);
     void print_e57_request(const E57_Request_Info &info);
     void print_e57_scratch(const E57_Scratch_Info &info);
+    void print_e57_search(const E57_Search_Info &info);
+    void print_e57_open(const E57_Open_Info &info);
     void print_e50_format_real(const E50_Format_Info &info);
 };
 

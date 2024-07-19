@@ -13,8 +13,11 @@ set -x
 
 # Create copy of file monsys.9 and apply patches.
 cp monsys.9 monsys.9.patched
+chmod +w monsys.9.patched
 (
-    echo "08ffee: 70 90 1b 70 a0 1c 7b 7b 55 ec c4 ae 70 80 18 90 d0 00"
+    echo "08ffee: 70 90 1b 70 a0 1c"
+    echo "08fff4: 7b 7b 55 ec c4 ae"
+    echo "08fffa: 70 80 18 90 d0 00"
 ) | xxd -r - monsys.9.patched
 
 # Dump in text format for manual inspection.

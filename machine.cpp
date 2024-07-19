@@ -401,10 +401,11 @@ unsigned Machine::file_search(Word disc_id, Word file_name, bool write_mode)
 
     if (write_mode) {
         // Write mode: try to write file.
-        std::fstream file(path);
+        std::fstream file(path, std::ios::out);
         bool is_writable = file.good();
         if (!file_exists) {
             // Remove the file we just created.
+            file.close();
             std::filesystem::remove(path);
         }
         if (!is_writable) {
@@ -446,12 +447,12 @@ unsigned Machine::file_mount(unsigned disk_unit, unsigned file_index, bool write
     auto const &path = file_paths[file_index - 1];
     if (write_mode) {
         // Create file and close it.
-        std::fstream file(path);
+        std::fstream file(path, std::ios::out);
         if (!file.good()) {
             return E57_NO_ACCESS;
         }
     }
-    disks[disk_unit - 030] = std::make_unique<Disk>(file_index, memory, path, write_mode);
+    disks[disk_unit - 030] = std::make_unique<Disk>(0, memory, path, write_mode);
 
     if (trace_enabled()) {
         std::cout << "Mount file '" << path << "' as disk " << to_octal(disk_unit) << std::endl;

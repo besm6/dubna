@@ -47,6 +47,12 @@ Disk::Disk(Word id, Memory &m, const std::string &p, bool wp)
     struct stat stat;
     fstat(file_descriptor, &stat);
     num_zones = stat.st_size / DISK_ZONE_NWORDS;
+
+    if (num_zones == 0 && volume_id == 0 && write_permit) {
+        // Empty file mounted for write by *FILE card.
+        // Assume size of 1024 zones.
+        num_zones = 02000;
+    }
 }
 
 //

@@ -1,6 +1,6 @@
 *name disc
 *disc:1/local
-*file:bar,41,w
+*file:fubar,41,w
 *edit
 *RO
 *W:41,2

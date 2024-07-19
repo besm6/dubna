@@ -46,12 +46,18 @@ Disk::Disk(Word id, Memory &m, const std::string &p, bool wp)
     // Get file size.
     struct stat stat;
     fstat(file_descriptor, &stat);
-    num_zones = stat.st_size / DISK_ZONE_NWORDS;
-
-    if (num_zones == 0 && volume_id == 0 && write_permit) {
-        // Empty file mounted for write by *FILE card.
-        // Assume size of 1024 zones.
-        num_zones = 02000;
+    if (volume_id != 0) {
+        // Tape/disk image in SIMH format.
+        num_zones = stat.st_size / DISK_ZONE_NWORDS;
+    } else {
+        // File mounted by *FILE card.
+        if (write_permit) {
+            // Write access - assume size of 1024 zones.
+            num_zones = 02000;
+        } else {
+            // Read only access.
+            num_zones = stat.st_size / 6 / PAGE_NWORDS;
+        }
     }
 }
 
@@ -92,6 +98,30 @@ Disk::~Disk()
 //
 void Disk::disk_to_memory(unsigned zone, unsigned sector, unsigned addr, unsigned nwords)
 {
+    if (volume_id == 0) {
+        file_to_memory(zone, sector, addr, nwords);
+    } else {
+        simh_to_memory(zone, sector, addr, nwords);
+    }
+}
+
+//
+// Disk write: transfer data from memory.
+//
+void Disk::memory_to_disk(unsigned zone, unsigned sector, unsigned addr, unsigned nwords)
+{
+    if (volume_id == 0) {
+        memory_to_file(zone, sector, addr, nwords);
+    } else {
+        memory_to_simh(zone, sector, addr, nwords);
+    }
+}
+
+//
+// Read tape/disk image in SIMH format: transfer data to memory.
+//
+void Disk::simh_to_memory(unsigned zone, unsigned sector, unsigned addr, unsigned nwords)
+{
     zone += DISK_ZONE_OFFSET;
     if (zone >= num_zones)
         throw std::runtime_error("Zone number exceeds disk size");
@@ -116,9 +146,9 @@ void Disk::disk_to_memory(unsigned zone, unsigned sector, unsigned addr, unsigne
 }
 
 //
-// Disk write: transfer data from memory.
+// Write tape/disk image in SIMH format: transfer data from memory.
 //
-void Disk::memory_to_disk(unsigned zone, unsigned sector, unsigned addr, unsigned nwords)
+void Disk::memory_to_simh(unsigned zone, unsigned sector, unsigned addr, unsigned nwords)
 {
     if (!write_permit)
         throw std::runtime_error("Cannot write to read-only disk");
@@ -138,4 +168,66 @@ void Disk::memory_to_disk(unsigned zone, unsigned sector, unsigned addr, unsigne
     unsigned nbytes = nwords * sizeof(Word);
     if (write(file_descriptor, source, nbytes) != nbytes)
         throw std::runtime_error("Disk write error");
+}
+
+//
+// Read binary file: transfer data to memory.
+//
+void Disk::file_to_memory(unsigned zone, unsigned sector, unsigned addr, unsigned nwords)
+{
+    if (zone >= num_zones)
+        throw std::runtime_error("Zone number exceeds file size");
+
+    unsigned offset_bytes = (4 * zone + sector) * 6 * PAGE_NWORDS / 4;
+    if (lseek(file_descriptor, offset_bytes, SEEK_SET) < 0)
+        throw std::runtime_error("File seek error");
+
+    Word *destination = memory.get_ptr(addr);
+    while (nwords-- > 0) {
+        uint8_t buf[6];
+        int nread = read(file_descriptor, buf, sizeof(buf));
+
+        if (nread == 0) {
+            // Read past the end of file - return zeroes.
+            *destination++ = 0;
+        } else if (nread != (int)sizeof(buf)) {
+            throw std::runtime_error("File read error");
+        } else {
+            *destination++ = ((Word)buf[0] << 40) | ((Word)buf[1] << 32) | ((Word)buf[2] << 24) |
+                             (buf[3] << 16) | (buf[4] << 8) | buf[5];
+        }
+    }
+}
+
+//
+// Write binary file: transfer data from memory.
+//
+void Disk::memory_to_file(unsigned zone, unsigned sector, unsigned addr, unsigned nwords)
+{
+    if (!write_permit)
+        throw std::runtime_error("Cannot write to read-only file");
+
+    if (zone >= num_zones)
+        throw std::runtime_error("Zone number exceeds file size");
+
+    unsigned offset_bytes = (4 * zone + sector) * 6 * PAGE_NWORDS / 4;
+    if (lseek(file_descriptor, offset_bytes, SEEK_SET) < 0)
+        throw std::runtime_error("File seek error");
+
+    const Word *source = memory.get_ptr(addr);
+    while (nwords-- > 0) {
+        const auto word = *source++;
+        const uint8_t buf[6] = {
+            uint8_t(word >> 40),
+            uint8_t(word >> 32),
+            uint8_t(word >> 24),
+            uint8_t(word >> 16),
+            uint8_t(word >> 8),
+            uint8_t(word),
+        };
+        int nwrite = write(file_descriptor, buf, sizeof(buf));
+        if (nwrite != (int)sizeof(buf)) {
+            throw std::runtime_error("File write error");
+        }
+    }
 }

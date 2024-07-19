@@ -389,7 +389,7 @@ unsigned Machine::file_search(Word disc_id, Word file_name, bool write_mode)
     default:
         return 0;
     }
-    path += "/" + word_iso_filename(file_name) + ".img";
+    path += "/" + word_iso_filename(file_name) + ".bin";
 
     // Let's figure out whether file exists.
     bool file_exists{};

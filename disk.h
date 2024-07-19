@@ -57,6 +57,12 @@ public:
 
     Word get_id() { return volume_id; }
     const std::string &get_path() { return path; }
+
+private:
+    void simh_to_memory(unsigned zone, unsigned sector, unsigned addr, unsigned nwords);
+    void memory_to_simh(unsigned zone, unsigned sector, unsigned addr, unsigned nwords);
+    void file_to_memory(unsigned zone, unsigned sector, unsigned addr, unsigned nwords);
+    void memory_to_file(unsigned zone, unsigned sector, unsigned addr, unsigned nwords);
 };
 
 #endif // DUBNA_DISK_H

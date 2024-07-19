@@ -17,7 +17,7 @@ c     ******************************************************************
       imax = alog(limit) / alog(2.0) + 1
 c
       write (54, 200) limit
-      isecre = rndm(-1) * limit
+      isecre = 1 + rndm(-1) * limit
       iguess = 0
       iattem = 0
 c
@@ -61,7 +61,7 @@ c
       rewind 54
       read (54, 100) ivalue
   100 format (i8)
-      if (ivalue .lt. 1) then
+      if (ivalue .le. 1) then
         write (54, 200)
         goto 10
       end if

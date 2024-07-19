@@ -25,10 +25,15 @@
 
 #include <unistd.h>
 
+#include <cstdio>
+#include <cstdlib>
 #include <cstring>
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include <algorithm>
+#include <cctype>
+#include <filesystem>
 
 #include "encoding.h"
 
@@ -366,8 +371,59 @@ void Machine::disk_mount(unsigned disk_unit, Word tape_id, bool write_permit)
 //
 unsigned Machine::file_search(Word disc_id, Word file_name, bool write_mode)
 {
-    //TODO
-    return 0;
+    // Get directory path, based on disc name.
+    std::string path;
+    switch (disc_id & ~0xfff) {
+    case DISC_LOCAL:
+        path = ".";
+        break;
+    case DISC_HOME:
+        path = std::getenv("HOME");
+        if (path.size() == 0)
+            return 0;
+        break;
+    case DISC_TMP:
+        path = "/tmp";
+        break;
+    default:
+        return 0;
+    }
+    path += "/" + word_iso_filename(file_name) + ".img";
+
+    // Let's figure out whether file exists.
+    bool file_exists{};
+    {
+        // Try to read the file.
+        std::ifstream file(path);
+        file_exists = file.good();
+    }
+
+    if (write_mode) {
+        // Write mode: try to write file.
+        std::ofstream file(path);
+        bool is_writable = file.good();
+        if (!file_exists) {
+            // Remove the file we just created.
+            std::filesystem::remove(path);
+        }
+        if (!is_writable) {
+            return 0;
+        }
+    } else {
+        // Read mode: the file must exist.
+        if (!file_exists) {
+            return 0;
+        }
+    }
+
+    // Append file path to the list.
+    // This list always increases, never shrinks.
+    // Return file index (plus 1).
+    file_paths.push_back(path);
+    if (trace_enabled()) {
+        std::cout << "Access file '" << path << "' at index " << file_paths.size() << std::endl;
+    }
+    return file_paths.size();
 }
 
 //
@@ -548,6 +604,23 @@ std::string word_iso_string(Word w)
         iso_putc(ch, buf);
     }
     return buf.str();
+}
+
+//
+// Decode word as filename in ISO format.
+// Remove trailing spaces, convert to lowercase.
+//
+std::string word_iso_filename(Word w)
+{
+    std::string filename = word_iso_string(w);
+
+    // Remove trailing spaces.
+    filename.erase(filename.find_last_not_of(" ") + 1);
+
+    // Convert to lowercase.
+    std::transform(filename.begin(), filename.end(), filename.begin(),
+        [](unsigned char c){ return std::tolower(c); });
+    return filename;
 }
 
 //

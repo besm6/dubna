@@ -27,6 +27,7 @@
 #include <array>
 #include <chrono>
 #include <memory>
+#include <vector>
 
 #include "disk.h"
 #include "drum.h"
@@ -67,6 +68,9 @@ private:
     // Path to disk images, semicolon separated.
     std::string disk_search_path;
 
+    // List of all requested file names, for e57.
+    std::vector<std::string> file_paths;
+
     // Trace output.
     static std::ofstream trace_stream;
 
@@ -101,6 +105,11 @@ public:
     // "MONSYS )" in TEXT encoding.
     static const Word TAPE_MONSYS = 055'57'56'63'71'63'00'11;
     static const Word TAPE_SCRATCH = 063'43'62'64'43'50'00'00;
+
+    // Disc names
+    static const Word DISC_LOCAL = 054'57'43'41'54'00'00'00;
+    static const Word DISC_HOME  = 050'57'55'45'00'00'00'00;
+    static const Word DISC_TMP   = 064'55'60'00'00'00'00'00;
 
     // Virtual disk unit for phys.io.
     static const unsigned PHYS_IO_UNIT = 0100;
@@ -307,5 +316,11 @@ std::string tape_name_string(Word w);
 // Decode word as string in ISO format.
 //
 std::string word_iso_string(Word w);
+
+//
+// Decode word as filename in ISO format.
+// Remove trailing spaces, convert to lowercase.
+//
+std::string word_iso_filename(Word w);
 
 #endif // DUBNA_MACHINE_H

@@ -24,13 +24,6 @@
 #include "machine.h"
 
 //
-// Disc names
-//
-static const Word DISC_LOCAL = 054'57'43'41'54'00'00'00;
-static const Word DISC_HOME  = 050'57'55'45'00'00'00'00;
-static const Word DISC_TMP   = 064'55'60'00'00'00'00'00;
-
-//
 // Extracode 057.
 //
 void Processor::e57()
@@ -148,9 +141,9 @@ void Processor::e57_file()
         //
         Word disc_id = machine.mem_load(info.field.addr + 1);
         switch (disc_id & ~0xfff) {
-        case DISC_LOCAL:
-        case DISC_HOME:
-        case DISC_TMP:
+        case Machine::DISC_LOCAL:
+        case Machine::DISC_HOME:
+        case Machine::DISC_TMP:
             // Valid disc name.
             core.ACC = 0;
             break;

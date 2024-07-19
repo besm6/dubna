@@ -1,0 +1,974 @@
+*name Oregon Trail
+*call setftn:one
+*       no list
+*       no load list
+*forex
+c     ******************************************************************
+c
+c     The Oregon Trail in Fortran 77
+c
+c     ******************************************************************
+c
+c     This program is a port of the 1978 version of "The Oregon Trail"
+c     to ANSI Fortran 77, originally written in HP time-shared Basic by
+c     Don Rawitsch, Bill Heinemann, and Paul Dillenberger in 1971.
+c
+c     An additional integer function "time()" that returns the current
+c     time as a timestamp in seconds is required and must be linked
+c     with the executable, if not provided by the Fortran compiler
+c     already.
+c
+c     ******************************************************************
+c     Author:  Philipp Engel
+c     Date:    2023-11-29
+c     Version: 1.2
+c     Licence: ISC
+c     ******************************************************************
+      program oregon
+      external instr, play, srand
+      integer  time
+      logical  ask
+c
+      call srand(time())
+      print 100
+      if (ask()) call instr()
+      call play()
+c
+  100 format (1x,'type "stop" at any time to quit.',/,
+     &1x,'do you need instructions? (y/n)')
+      end
+c     ******************************************************************
+      logical function ask()
+c
+c     Reads user input and returns true if input starts with "y", and
+c     false on any other input.
+c
+      external    upper
+      character*4 a
+      integer     istat
+c
+      ask = .false.
+      read (*, 100, iostat=istat) a
+      if (istat .ne. 0) return
+      call upper(a)
+      if (a .eq. 'stop') stop
+      if (a .ne. 'y') return
+      ask = .true.
+c
+  100 format (a)
+      end
+c     ******************************************************************
+      integer function input(imin, imax)
+c
+c     Reads integer value with given minium and maximum from user input.
+c
+      external    upper
+      integer     imin, imax
+      character*4 a
+      integer     istat
+c
+   10 continue
+      read (*, 100, iostat=istat) a
+      if (istat .ne. 0) then
+        print 200
+        goto 10
+      end if
+      call upper(a)
+      if (a .eq. 'stop') stop
+      read (a, *, iostat=istat) input
+      if (istat .ne. 0) then
+        print 200
+        goto 10
+      end if
+      if (input .lt. imin) then
+        print 300
+        goto 10
+      else if (input .gt. imax) then
+        print 400
+        goto 10
+      end if
+c
+  100 format (a)
+  200 format (1x,'invalid.')
+  300 format (1x,'too low.')
+  400 format (1x,'too high.')
+      end
+c     ******************************************************************
+      real function rand()
+c
+c     This function returns a pseudo-random number for each invocation.
+c     It is a Fortran 77 adaptation of the "integer version 2" minimal
+c     standard number generator whose Pascal code appears in the
+c     article:
+c
+c         Park, Steven K. and Miller, Keith W., "Random number
+c         generators: good ones are hard to find", Communications of
+c         the ACM, October, 1988.
+c
+c     Original Fortran 77 implementation by Dick Valent and Fred Clare.
+c
+      integer mplier, modlus, mobymp, momdmp
+      parameter (mplier=16807, modlus=2147483647, mobymp=127773,
+     &           momdmp=2836)
+      integer jseed, ifrst
+      integer hvlue, lvlue, testv, nextn
+      common  /seed/ jseed, ifrst
+      save    nextn
+c
+      if (ifrst .eq. 0) then
+        nextn = jseed
+        ifrst = 1
+      end if
+      hvlue = nextn / mobymp
+      lvlue = mod(nextn, mobymp)
+      testv = mplier * lvlue - momdmp * hvlue
+      if (testv .gt. 0) then
+        nextn = testv
+      else
+        nextn = testv + modlus
+      end if
+      rand = real(nextn) / real(modlus)
+      end
+c     ******************************************************************
+      integer function shoot(ilevl)
+c
+c     Shoot stuff by letting the player enter instances of onomatopoeia.
+c
+      external    upper
+      integer     time
+      real        rand
+      integer     ilevl
+      character*4 a, s(4)
+      integer     i, t1, t2
+      data s /'bang','blam','pow','wham'/
+c
+      i = int(rand() * 4 + 1)
+      print 100, s(i)
+      t1 = time()
+      read (*, 200) a
+      t2 = time()
+      shoot = (abs(t2 - t1) * 2) - ilevl - 1
+      call upper(a)
+      if (a .eq. 'stop') stop
+      if (a .ne. s(i)) shoot = 9
+c
+  100 format (1x,'type:',1x,a)
+  200 format (a)
+      end
+c     ******************************************************************
+      integer function skill()
+c
+c     Returns the marksmanship level (1 to 5).
+c
+      integer input
+c
+      print 100
+      skill = input(1, 5)
+c
+  100 format (1x,'how good a shot are you with your rifle?',/,/,
+     &3x,'(1) ace marksman, (2) good shot, (3) fair to middlin''',/,
+     &8x,'(4) need more practice, (5) shaky knees',/,/,
+     &1x,'enter one of the above -- the better you claim you are,',/,
+     &1x,'the faster you''ll have to be with your gun to be ',
+     &'successful.')
+      end
+c     ******************************************************************
+      subroutine arrive(itmil, ilmil, ictrn, icash, iammu, iclth, ifood,
+     &                  imisc, ieats)
+c
+c     Final turn.
+c
+      integer      itmil, ilmil, ictrn, icash
+      integer      iammu, iclth, ifood, imisc, ieats
+      character*10 aweeky(7)
+      integer      ifinl
+      real         ffrac
+      common /wdays/ aweeky
+c
+      ffrac = (2040.0 - ilmil) / (itmil - ilmil)
+      ifood = ifood + (1 - int(ffrac)) * (8 + 5 * ieats)
+      print 100
+      ifinl = int(ffrac * 14)
+      ictrn = ictrn * 14 + ifinl
+      ifinl = ifinl + 1
+c
+      if (ifinl .gt. 7) ifinl = ifinl - 7
+      if (ictrn .le. 124) then
+        ictrn = ictrn - 93
+        print 200, aweeky(ifinl), 'july', ictrn
+      else if (ictrn .le. 155) then
+        ictrn = ictrn - 124
+        print 200, aweeky(ifinl), 'august', ictrn
+      else if (ictrn .le. 185) then
+        ictrn = ictrn - 155
+        print 200, aweeky(ifinl), 'september', ictrn
+      else if (ictrn .le. 216) then
+        ictrn = ictrn - 185
+        print 200, aweeky(ifinl), 'october', ictrn
+      else if (ictrn .le. 246) then
+        ictrn = ictrn - 216
+        print 200, aweeky(ifinl), 'november', ictrn
+      else
+        ictrn = ictrn - 246
+        print 200, aweeky(ifinl), 'december', ictrn
+      end if
+c
+      print 300, ifood, iammu, iclth, imisc, icash
+      print 400
+      stop
+c
+  100 format (/,1x,'you finally arrived at oregon city',/,
+     &1x,'after 2040 long miles -- hooray!!',/,1x,'a real pioneer!',/)
+  200 format (1x,a,1x,a,1x,i2,1x,'1847')
+  300 format (1x,60('-'),/,1x,'food bullets clothing misc.supp. cash',/,
+     &1x,i4,1x,i7,1x,i8,1x,i10,1x,i4)
+  400 format (/,10x,'president james k. polk sends you his',/,
+     &16x,'heartiest congratulations',/,/,10x,'and wishes you a ',
+     &'prosperous life ahead',/,21x,'at your new home',/)
+      end
+c     ******************************************************************
+      subroutine blizz(itmil, iammu, iclth, ifood, imisc, ifill, ifinj,
+     &                 ieats)
+c
+c     Blizzard in mountain pass.
+c
+      external sick
+      real     rand
+      integer  itmil, iammu, iclth, ifood, imisc, ifill, ifinj, ieats
+c
+      print 100
+      ifood = ifood - 25
+      imisc = imisc - 10
+      iammu = iammu - 300
+      itmil = itmil - 30 - int(40 * rand())
+c
+      if (iclth .lt. 18 + int(2 * rand())) then
+        call sick(ieats, itmil, imisc, ifill, ifinj)
+      end if
+c
+  100 format (1x,'blizzard in mountain pass -- time and supplies lost.')
+      end
+c     ******************************************************************
+      subroutine die()
+c
+c     reads final information and stops game.
+c
+      logical ask
+      logical l
+c
+      print 100
+      l = ask()
+      print 200
+      l = ask()
+      print 300
+      if (ask()) then
+        print 400
+      else
+        print 500
+      end if
+      print 600
+      stop
+c
+  100 format (/,1x,'due to your unfortunate situation, there are a few',
+     &/,1x,'formalities we must go through:',/,/,1x,'would you like a ',
+     &'minister? (y/n)')
+  200 format (1x,'would you like a fancy funeral? (y/n)')
+  300 format (1x,'would you like us to inform your next of kin? (y/n)')
+  400 format (1x,'that will be $4.50 for the telegraph charge.')
+  500 format (1x,'but your aunt sadie in st. louis is really worried',/,
+     &1x,'about you.')
+  600 format (/,1x,'we thank you for this information and we are ',
+     &'sorry you',/,1x,'didn''t make it to the great territory of ',
+     &'oregon.',/,1x,'better luck next time.',/,/,31x,'sincerly,',/,
+     &18x,'the oregon city chamber of commerce',/)
+      end
+c     ******************************************************************
+      subroutine doctor(icash, ifill, ifinj)
+c
+c     Visit ol' Doc Blanchard.
+c
+      integer icash, ifill, ifinj
+c
+      icash = icash - 20
+      if (icash .lt. 0) then
+        print 100
+        if (ifinj .eq. 1) then
+          print 200
+        else
+          print 300
+        end if
+        call die()
+      end if
+      print 400
+      ifill = 0
+      ifinj = 0
+c
+  100 format (1x,'you can''t afford a doctor.')
+  200 format (1x,'you died of injuries.')
+  300 format (1x,'you died of pneumonia.')
+  400 format (1x,'doctor''s bill is $20.')
+      end
+c     ******************************************************************
+      subroutine eat(ifood, ieats)
+c
+c     Lets the player decide how to eat.
+c
+      integer ifood, ieats
+      integer iamou, input
+c
+   10 continue
+      print 100
+      ieats = input(1, 3)
+      iamou = 8 + 5 * ieats
+      if (ifood - iamou .lt. 0) then
+        print 200
+        goto 10
+      end if
+      ifood = ifood - iamou
+c
+  100 format (1x,'do you want to eat',/,
+     &1x,'(1) poorly, (2) moderately, (3) well')
+  200 format (1x,'you can''t eat that well.')
+      end
+c     ******************************************************************
+      subroutine fort(icash, ifood, iammu, iclth, imisc)
+c
+c     Ye olde fort shoppe.
+c
+      integer input
+      integer icash, ifood, iammu, iclth, imisc
+      integer ispnd
+c
+      if (icash .le. 0) then
+        print 100
+        return
+      end if
+      print 200
+      ispnd = input(0, icash)
+      icash = icash - ispnd
+      ifood = ifood + int(2. / 3. * ispnd)
+      print 300
+      ispnd = input(0, icash)
+      icash = icash - ispnd
+      iammu = iammu + int(2. / 3. * ispnd * 50)
+      print 400
+      ispnd = input(0, icash)
+      icash = icash - ispnd
+      iclth = iclth + int(2. / 3. * ispnd)
+      print 500
+      ispnd = input(0, icash)
+      icash = icash - ispnd
+      imisc = imisc + int(2. / 3. * ispnd)
+c
+  100 format (1x,'you don''t have any money to spend.')
+  200 format (1x,'enter what you wish to spend on the following:',/,
+     &1x,'food')
+  300 format (1x,'ammunition')
+  400 format (1x,'clothing')
+  500 format (1x,'miscellaneous supplies')
+      end
+c     ******************************************************************
+      subroutine hunt(iammu, ilevl, ifood)
+c
+c     Hunting poor wildlife.
+c
+      integer shoot
+      real    rand
+      integer iammu, ilevl, ifood
+      integer ibangt
+c
+      if (iammu .lt. 39) then
+        print 100
+        return
+      end if
+      ibangt = shoot(ilevl)
+      if (ibangt .le. 1) then
+        print 200
+        ifood = ifood + 52 + int(rand() * 6)
+        iammu = iammu - 10 - int(rand() * 4)
+      else if (100 * rand() .lt. 13 * ibangt) then
+        print 300
+      else
+        print 400
+        ifood = ifood + 48 - 2 * ibangt
+        iammu = iammu - 10 - 3 * ibangt
+      end if
+c
+  100 format (1x,'tough -- you need more bullets to go hunting.')
+  200 format (1x,'right between the eyes -- you got a big one!!',/,
+     &1x,'full bellies tonight!')
+  300 format (1x,'you missed -- and your dinner got away ...')
+  400 format (1x,'nice shot -- right on target -- good eatin'' ',
+     &'tonight!!')
+      end
+c     ******************************************************************
+      subroutine instr()
+c
+c     Outputs the game instructions.
+c
+      print 100
+      read (*, 400)
+      print 200
+      read (*, 400)
+      print 300
+      read (*, 400)
+c
+  100 format (1x,'this program simulates a trip over the oregon trail ',
+     &'from',/,1x,'independence, missouri to oregon city, oregon in ',
+     &'1847.',/,1x,'your family of five will cover the 2040 mile ',
+     &'oregon',/,1x,'trail in 5-6 months -- if you make it alive.',/,/,
+     &1x,'you had saved $900 to spend for the trip, and you''ve just',/,
+     &1x,'paid $200 for a wagon.',/,/,1x,'you will need to spend the ',
+     &'rest of your money on the',/,1x,'following items:',/,/,
+     &1x,'press return key.')
+  200 format (3x,'oxen - you can spend $200-$300 on your team. the ',
+     &'more',/,10x,'you spend, the faster you''ll go because',/,10x,
+     &'you''ll have better animals.',/,/,3x,'food - the more you ',
+     &'have, the less chance there is of',/,10x,'getting sick.',/,/,
+     &3x,'ammunition - $1 buys a belt of 50 bullets. you will',/,10x,
+     &'need bullets for attacks by animals and',/,10x,'bandits, and ',
+     &'for hunting food.',/,/,3x,'clothing - this is especially ',
+     &'important for the cold',/,10x,'weather you will encounter ',
+     &'when crossing the',/,10x,'mountains.',/,/,3x,'miscellaneous ',
+     &'supplies - this includes medicine and',/,10x,'other things ',
+     &'you will need for sickness and',/,10x,'emergency repairs.',/,/,
+     &1x,'press return key.')
+  300 format (1x,'you can spend all your money before you start your',/,
+     &1x,'trip -- or you can save some of your cash to spend at',/,
+     &1x,'forts along the way when you run low. however, items',/,
+     &1x,'cost more at the forts. you can also go hunting along',/,
+     &1x,'the way to get more food.',/,/,1x,'whenever you have to use ',
+     &1x,'your trusty rifle along the ',/,1x,'way, you will be told ',
+     &1x,'to type in a word (one that sounds',/,1x,'like a gun shot). ',
+     &'the faster you type in that word and',/,1x,'the return key, ',
+     &'the better luck you''ll have with',/,1x,'your gun.',/,/,1x,'at ',
+     &'each turn, all items are shown in dollar amounts',/,1x,'except ',
+     &'bullets.',/,/,1x,'when asked to enter money amounts, don''t ',
+     &'use a $.',/,/,1x,'good luck!!',/,/,1x,'press return key.')
+  400 format (a)
+      end
+c     ******************************************************************
+      subroutine play()
+c
+c     Initial routine. Game starts here.
+c
+      external arrive, blizz, die, doctor, eat, fort, hunt, riders
+      external shop, sick
+      integer  input, shoot, skill
+      real     rand
+c
+      character*17 adatey(20)
+      integer      i, ibangt, ievnty(15), iselec
+      integer      iammu, ianim, iclth, ifood, imisc, ievtc, ictrn,
+     &             ilevl, ieats, if950, ifpas, ifmou, iffrt, ifill,
+     &             ifinj, itmil, ilmil, icash
+      real         r
+c
+      common /evnts/ ievnty
+      common /state/ iammu, ianim, iclth, ifood, imisc, ievtc, ictrn,
+     &               ilevl, ieats, if950, ifpas, ifmou, iffrt, ifill,
+     &               ifinj, itmil, ilmil, icash
+      common /dates/ adatey
+c
+      ilevl = skill()
+      call shop(icash, ianim, ifood, iammu, iclth, imisc)
+      do 10 i = 1, 20
+      icash = max(0, icash)
+      iammu = max(0, iammu)
+      ianim = max(0, ianim)
+      iclth = max(0, iclth)
+      ifood = max(0, ifood)
+      imisc = max(0, imisc)
+      if (itmil .ge. 2040) then
+        call arrive(itmil, ilmil, ictrn, icash, iammu,
+     &              iclth, ifood, imisc, ieats)
+      end if
+      ictrn = ictrn + 1
+      print 100, adatey(i)
+      ilmil = itmil
+      if (ifill .eq. 1 .or. ifinj .eq. 1) then
+        call doctor(icash, ifill, ifinj)
+      end if
+      if (if950 .eq. 1) then
+        if950 = 0
+        print 110, 950
+      else
+        print 110, itmil
+      end if
+      if (ifood .le. 13) print 120
+      print 130, ifood, iammu, iclth, imisc, icash
+      if (iffrt .eq. -1) then
+        print 140
+        iselec = input(1, 3)
+        if (iselec .eq. 1) then
+          call fort(icash, ifood, iammu, iclth, imisc)
+          itmil = itmil - 45
+        else if (iselec .eq. 2) then
+          call hunt(iammu, ilevl, ifood)
+          itmil = itmil - 45
+        end if
+      else
+        print 150
+        iselec = input(1, 2)
+        if (iselec .eq. 1) then
+          call hunt(iammu, ilevl, ifood)
+          itmil = itmil - 45
+        end if
+      end if
+      if (ifood .ge. 13) then
+        call eat(ifood, ieats)
+      else
+        print 160
+        call die()
+      end if
+      itmil = itmil + 200 + int((ianim - 220) / 5 + 10 * rand())
+      r = ((itmil/100 - 4)**2 + 72) / ((itmil/100 - 4)**2 + 12) - 1
+      if (rand() * 10 .le. r) then
+        call riders(ilevl, itmil, ianim, iammu, imisc, ifinj)
+      end if
+      ievtc = 0
+      r = 100 * rand()
+   20 continue
+      ievtc = ievtc + 1
+      if (ievtc .lt. 16 .and. r .gt. ievnty(ievtc)) goto 20
+      if (ievtc .eq. 1) then
+        print 170
+        itmil = itmil - 15 - int(5 * rand())
+        imisc = imisc - 8
+      else if (ievtc .eq. 2) then
+        print 180
+        itmil = itmil - 25
+        ianim = ianim - 20
+      else if (ievtc .eq. 3) then
+        print 190
+        itmil = itmil - 5 - int(4 * rand())
+        imisc = imisc - 2 - int(3 * rand())
+      else if (ievtc .eq. 4) then
+        print 200
+        itmil = itmil - 17
+      else if (ievtc .eq. 5) then
+        print 210
+        itmil = itmil - 10
+      else if (ievtc .eq. 6) then
+        print 220
+        itmil = itmil - int(10 * rand()) - 2
+      else if (ievtc .eq. 7) then
+        if (itmil .gt. 950) then
+          print 230
+          if (iclth .gt. 22 + 4 * rand()) then
+            print 240
+          else
+            print 250
+            call sick(ieats, itmil, imisc, ifill, ifinj)
+          end if
+        else
+          print 260
+          ifood = ifood - 10
+          iammu = iammu - 500
+          imisc = imisc - 15
+          itmil = itmil - int(10 * rand()) - 5
+        end if
+      else if (ievtc .eq. 8) then
+        print 270
+        ibangt = shoot(ilevl)
+        iammu = iammu - 20 * ibangt
+        if (iammu .lt. 0) then
+          print 280
+          icash = icash / 3
+        end if
+        if (iammu .lt. 0 .or. ibangt .gt. 1) then
+          print 290
+          ifinj = 1
+          imisc = imisc - 5
+          ianim = ianim - 20
+        else if (ibangt .le. 1) then
+          print 300
+        end if
+      else if (ievtc .eq. 9) then
+        print 310
+        ifood = ifood - 40
+        iammu = iammu - 400
+        imisc = imisc - int(rand() * 8) - 3
+        itmil = itmil - 15
+      else if (ievtc .eq. 10) then
+        print 320
+        itmil = itmil - 10 - int(5 * rand())
+      else if (ievtc .eq. 11) then
+        print 330
+        iammu = iammu - 10
+        imisc = imisc - 5
+        if (imisc .lt. 0) then
+          print 340
+          call die()
+        end if
+      else if (ievtc .eq. 12) then
+        print 350
+        ifood = ifood - 30
+        iclth = iclth - 20
+        itmil = itmil - 20 - int(20 * rand())
+      else if (ievtc .eq. 13) then
+        print 360
+        if (iammu .le. 39) then
+          print 370
+          call die()
+        end if
+        ibangt = shoot(ilevl)
+        if (ibangt .gt. 2) then
+          print 380
+        else
+          print 390
+        end if
+        iammu = iammu - 20 * ibangt
+        iclth = iclth - ibangt * 4
+        ifood = ifood - ibangt * 8
+      else if (ievtc .eq. 14) then
+        print 400
+        itmil = itmil - 5 - int(rand() * 3)
+        iammu = iammu - 200
+        imisc = imisc - 4 - int(rand() * 3)
+      else if (ievtc .eq. 15) then
+        if ((ieats .eq. 1) .or.
+     &      (ieats .eq. 2 .and. rand() .gt. 0.25) .or.
+     &      (ieats .eq. 3 .and. rand() .lt. 0.5)) then
+          call sick(ieats, itmil, imisc, ifill, ifinj)
+        end if
+      else if (ievtc .eq. 16) then
+        print 410
+        ifood = ifood + 14
+      end if
+      if (itmil .gt. 950) then
+        r = 9 - ((itmil/100 - 15)**2 / ((itmil/100 - 15)**2 + 12))
+        if (rand() * 10 .le. r) then
+          print 420
+          if (rand() .le. 0.1) then
+            print 430
+            itmil = itmil - 60
+          else if (rand() .le. 0.11) then
+            print 440
+            imisc = imisc - 5
+            iammu = iammu - 200
+            itmil = itmil - 20 - int(30 * rand())
+          else
+            print 450
+            itmil = itmil - 45 - int(rand() / 0.02)
+          end if
+        end if
+        if (ifpas .ne. 1) then
+          ifpas = 1
+          if950 = 1
+          if (rand() .ge. 0.8) then
+            print 460
+          else
+            call blizz(itmil, iammu, iclth, ifood,
+     &                 imisc, ifill, ifinj, ieats)
+          end if
+        end if
+      end if
+      if (itmil .ge. 1700 .and. ifmou .ne. 1) then
+        ifmou = 1
+        if (rand() .ge. 0.7) then
+          call blizz(itmil, iammu, iclth, ifood,
+     &               imisc, ifill, ifinj, ieats)
+        end if
+      end if
+      iffrt = -1 * iffrt
+   10 continue
+      print 470
+      call die()
+c
+  100 format (/,1x,'monday,',1x,a,/,1x,60('-'))
+  110 format (1x,'total mileage is',1x,i4)
+  120 format (1x,'you''d better do some hunting or buy food and soon!!')
+  130 format (/,1x,'food bullets clothing misc.supp. cash',/,
+     &1x,i4,1x,i7,1x,i8,1x,i10,1x,i4,/)
+  140 format (1x,'do you want to',/,
+     &1x,'(1) stop at the next fort, (2) hunt, (3) continue')
+  150 format (1x,'do you want to',/,1x,'(1) hunt, (2) continue')
+  160 format (1x,'you ran out of food and starved to death.')
+  170 format (1x,'wagon breaks down -- lose time and supplies fixing ',
+     &'it.')
+  180 format (1x,'ox injures leg -- slows you down rest of trip.')
+  190 format (1x,'bad luck -- your daughter broke her arm.',/,
+     &1x,'you had to stop and use supplies to make a sling.')
+  200 format (1x,'ox wanders off -- spend time looking for it.')
+  210 format (1x,'your son gets lost -- spend half the day looking ',
+     &'for him.')
+  220 format (1x,'unsafe water -- lose time looking for clean spring.')
+  230 format (1x,'cold weather -- brrrrrrr!')
+  240 format (1x,'you have enough clothing to keep you warm.')
+  250 format (1x,'you don''t have enough clothing to keep you warm.')
+  260 format (1x,'heavy rains -- time and supplies lost.')
+  270 format (1x,'bandits attack.')
+  280 format (1x,'you ran out of bullets -- they get lots of cash.')
+  290 format (1x,'you got shot in the leg and they took one of your ',
+     &'oxen.',/,1x,'better have a doc look at your wound.')
+  300 format (1x,'quickest draw outside of dodge city!!',/,
+     &1x,'you got ''em!')
+  310 format (1x,'there was a fire in your wagon -- food and supplies ',
+     &'damage!')
+  320 format (1x,'lose your way in heavy fog -- time is lost.')
+  330 format (1x,'you killed a poisonous snake after it bit you.')
+  340 format (1x,'you die of snakebite since you have no medicine.')
+  350 format (1x,'wagon gets swamped fording river -- lose food and ',
+     &'clothes.')
+  360 format (1x,'wild animals attack!!')
+  370 format (1x,'you were too low on bullets -- the wolves ',
+     &'overpowered you.',/,1x,'you died of injuries.')
+  380 format (1x,'slow on the draw -- they got at your food and ',
+     &'clothes.')
+  390 format (1x,'nice shootin'' pardner -- they didn''t get much.')
+  400 format (1x,'hail storm -- supplies damaged.')
+  410 format (1x,'helpful indians show you were to find more food.')
+  420 format (1x,'rugged mountains.')
+  430 format (1x,'you got lost -- lose valuable time trying to ',
+     &'find trail!')
+  440 format (1x,'wagon damaged -- lose time and supplies.')
+  450 format (1x,'the going gets slow.')
+  460 format (1x,'you made it safely through south pass -- no snow.')
+  470 format (1x,'you have been on the trail too long ...',/,
+     &1x,'your family dies in the first blizzard of winter.')
+      end
+c     ******************************************************************
+      subroutine riders(ilevl, itmil, ianim, iammu, imisc, ifinj)
+c
+c     Riders attack (or not).
+c
+      integer input, shoot
+      real    rand
+      integer ilevl, itmil, ianim, iammu, imisc, ifinj
+      integer ibangt, ihorf, iselec
+c
+      ihorf = 0
+      if (rand() .lt. 0.8) then
+        print 100
+      else
+        print 110
+        ihorf = 1
+      end if
+      print 120
+      if (rand() .le. 0.2) ihorf = 1 - ihorf
+      iselec = input(1, 4)
+      if (iselec .eq. 1) then
+        if (ihorf .eq. 1) then
+          itmil = itmil + 15
+          ianim = ianim - 10
+        else
+          itmil = itmil + 20
+          imisc = imisc - 15
+          iammu = iammu - 150
+          ianim = ianim - 40
+        end if
+      else if (iselec .eq. 2 .or. iselec .eq. 4) then
+        ibangt = shoot(ilevl)
+        if (iselec .eq. 2) then
+          iammu = iammu - ibangt * 40 - 80
+        else
+          iammu = iammu - ibangt * 30 - 80
+          itmil = itmil - 25
+        end if
+        if (ibangt .le. 1) then
+          print 130
+        else if (ibangt .gt. 1 .and. ibangt .le. 4) then
+          print 140
+        else if (ibangt .gt. 5) then
+          print 150
+          ifinj = 1
+        end if
+      else if (iselec .eq. 3) then
+        if (rand() .gt. 0.8) then
+          print 160
+          return
+        end if
+        iammu = iammu - 150
+        imisc = imisc - 15
+      end if
+      if (ihorf .eq. 0) then
+        print 170
+        if (iammu .lt. 0) then
+          print 180
+          call die()
+        end if
+      else
+        print 190
+      end if
+c
+  100 format (1x,'riders ahead. they look hostile.')
+  110 format (1x,'riders ahead. they don''t look hostile.')
+  120 format (1x,'tactics',/,1x,'(1) run, (2) attack, (3) continue, ',
+     &'(4) circle wagons')
+  130 format (1x,'nice shooting -- you drove them off.')
+  140 format (1x,'kinda slow with your colt .45.')
+  150 format (1x,'lousy shot -- you got knifed.',/,
+     &1x,'you have to see ol'' doc blanchard.')
+  160 format (1x,'they did not attack.')
+  170 format (1x,'riders were hostile -- check for losses.')
+  180 format (1x,'you ran out of bullets and got massacred by the ',
+     &'riders.')
+  190 format (1x,'riders were friendly, but check for possible losses.')
+      end
+c     ******************************************************************
+      subroutine shop(icash, ianim, ifood, iammu, iclth, imisc)
+c
+c     Shop visit in Missouri. The player has to buy at least oxen for
+c     $200 to $300.
+c
+      integer icash, ianim, ifood, iammu, iclth, imisc
+      integer input
+c
+      print 100, icash
+      ianim = input(200, 300)
+      icash = icash - ianim
+      print 200, icash
+      ifood = input(0, icash)
+      icash = icash - ifood
+      print 300, icash
+      iammu = input(0, icash)
+      icash = icash - iammu
+      iammu = iammu * 50
+      print 400, icash
+      iclth = input(0, icash)
+      icash = icash - iclth
+      print 500, icash
+      imisc = input(0, icash)
+      icash = icash - imisc
+      print 600, icash
+c
+  100 format (1x,'you have ',i3,' dollars left.',/,
+     &1x,'how much do you want to spend on your oxen team?')
+  200 format (1x,'you now have ',i3,' dollars left.',/,
+     &1x,'how much do you want to spend on food?')
+  300 format (1x,'you now have ',i3,' dollars left.',/,
+     &1x,'how much do you want to spend on ammunition?')
+  400 format (1x,'you now have ',i3,' dollars left.',/,
+     &1x,'how much do you want to spend on clothing?')
+  500 format (1x,'you now have ',i3,' dollars left.',/,
+     &1x,'how much do you want to spend on miscellaneous supplies?')
+  600 format (1x,'after all your purchases, you now have ',i3,
+     &' dollars left.')
+      end
+c     ******************************************************************
+      subroutine sick(ieats, itmil, imisc, ifill, ifinj)
+c
+c     Illness events.
+c
+      real    rand
+      integer ieats, itmil, imisc, ifill, ifinj
+c
+      if (100 * rand() .lt. 10 + 35 * (ieats - 1)) then
+        print 100
+        itmil = itmil - 5
+        imisc = imisc - 2
+      else if (100 * rand() .lt. 100 - (40 / 4**(ieats - 1))) then
+        print 200
+        itmil = itmil - 5
+        imisc = imisc - 5
+      else
+        print 300
+        itmil = itmil - 10
+        ifill = 1
+      end if
+      if (imisc .lt. 0) then
+        print 400
+        if (ifinj .eq. 1) then
+          print 500
+        else
+          print 600
+        end if
+        call die()
+      end if
+c
+  100 format (1x,'mild illness -- medicine used.')
+  200 format (1x,'bad illness -- medicine used.')
+  300 format (1x,'serious illness -- you must stop for medical ',
+     &'attention.')
+  400 format (1x,'you ran out of medical supplies.')
+  500 format (1x,'you died of injuries.')
+  600 format (1x,'you died of pneumonia.')
+      end
+c     ******************************************************************
+      subroutine srand(iseed)
+c
+c     This subroutine sets the integer seed to be used with the
+c     companion rand function to the value of iseed. A flag is set to
+c     indicate that the sequence of pseudo-random numbers for the
+c     specified seed should start from the beginning.
+c
+      integer iseed
+      integer jseed, ifrst
+      common /seed/ jseed, ifrst
+c
+      jseed = iseed
+      ifrst = 0
+      end
+c     ******************************************************************
+      subroutine upper(str)
+c
+c     Converts a string to upper case.
+c
+      integer ia, iz
+      parameter (ia=97, iz=122)
+      character*(*) str
+      integer       i, j
+c
+      do 10 i = 1, len(str)
+      j = ichar(str(i:i))
+      if (j .ge. ia .and. j .le. iz) str(i:i) = char(j - 32)
+   10 continue
+      end
+c     ******************************************************************
+      block data
+c
+c     Common variables:
+c
+c     jseed - prng seed value.
+c     ifrst - first random value.
+c     evnts - array of event probabilities.
+c     dates - array of date strings.
+c     wdays - array of weekday strings.
+c     iammu - amount spent on ammunition.
+c     ianim - amount spent on animals.
+c     iclth - amount spent on clothing.
+c     ifood - amount spent on food.
+c     imisc - amount spent on miscellaneaous supplies.
+c     ievtc - counter in generating events.
+c     ictrn - turn number for setting date.
+c     ilevl - choice of shooting expertise level.
+c     ieats - choice of eating.
+c     if950 - flag for clearing south pass in setting mileage.
+c     ifpas - flag for clearing south pass.
+c     ifmou - flag for clearing blue mountains.
+c     iffrt - flag for fort option.
+c     ifill - flag for illness.
+c     ifinj - flag for injury.
+c     itmil - total mileage whole trip.
+c     ilmil - total mileage up through previous turn.
+c     icash - cash left after initial purchase.
+c
+      implicit integer (i-n)
+      character*17 adatey(20)
+      character*10 aweeky(7)
+      integer      ievnty(15)
+      common /seed/  jseed, ifrst
+      common /evnts/ ievnty
+      common /dates/ adatey
+      common /wdays/ aweeky
+      common /state/ iammu, ianim, iclth, ifood, imisc, ievtc, ictrn,
+     &               ilevl, ieats, if950, ifpas, ifmou, iffrt, ifill,
+     &               ifinj, itmil, ilmil, icash
+      data jseed, ifrst /123456789,0/
+      data ictrn, itmil /0,0/
+      data ievnty /6,11,13,15,17,22,32,35,37,42,44,54,64,69,95/
+      data iffrt, ifill, ifinj, if950, ifpas, ifmou /-1,0,0,0,0,0/
+      data icash  /700/
+      data aweeky /'monday,','tuesday,','wednesday,','thursday,',
+     &'friday,','saturday,','sunday,'/
+      data adatey /'march 29 1847','april 12 1847','april 26 1847',
+     &'may 10 1847','may 24 1847','june 7 1847','june 21 1847',
+     &'july 5 1847','july 19 1847','august 2 1847','august 16 1847',
+     &'august 31 1847','september 13 1847','september 27 1847',
+     &'october 11 1847','october 25 1847','november 8 1847',
+     &'november 22 1847','december 6 1847','december 20 1847'/
+      end
+*library:1
+*execute
+*end file

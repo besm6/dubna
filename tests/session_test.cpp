@@ -22,6 +22,7 @@
 // SOFTWARE.
 //
 #include <fstream>
+#include <filesystem>
 
 #include "fixture_session.h"
 

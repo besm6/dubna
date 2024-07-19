@@ -1,25 +1,18 @@
 *name quine
+*library:22
+*no load list
 *pascal
 PROGRAM MAIN(OUTPUT);TYPE STRING=PACKED ARRAY[1..60]OF CHAR;
-VAR L:ARRAY[1..9]OF STRING; C:ARRAY[1..7]OF CHAR; I:INTEGER;
-LC, A, O, K, N, E, S, T:CHAR; BEGIN
+VAR L:ARRAY[1..6]OF STRING; I,J:INTEGER; Q,S:CHAR; BEGIN
 L[1]:=′PROGRAM MAIN(OUTPUT);TYPE STRING=PACKED ARRAY[1..60]OF CHAR;′;
-L[2]:=′VAR L:ARRAY[1..9]OF STRING; C:ARRAY[1..7]OF CHAR; I:INTEGER;′;
-L[3]:=′LC, A, O, K, N, E, S, T:CHAR; BEGIN                         ′;
-L[4]:=′FOR I := 1 TO 3 DO WRITELN(L[I]);                           ′;
-L[5]:=′A:=C[1];T:=C[2];O:=C[3];K:=C[4];N:=C[5];E:=C[6];S:=C[7];    ′;
-L[6]:=′FOR I := 1 TO 9 DO WRITELN(A,O,I:1,K,N,E,LC,L[I],LC,S);     ′;
-L[7]:=′WRITELN(A, T, N, E, LC, LC, LC, LC, S);                     ′;
-L[8]:=′FOR I := 1 TO 7 DO WRITE(T,O,I:1,K,N,E,LC,C[I],LC,S);       ′;
-L[9]:=′WRITELN; FOR I := 4 TO 9 DO WRITELN(L[I]); END.             ′;
-LC:=′′′′;
-C[1]:=′L′;C[2]:=′C′;C[3]:=′[′;C[4]:=′]′;C[5]:=′:′;C[6]:=′=′;C[7]:=′;′;
-FOR I := 1 TO 3 DO WRITELN(L[I]);
-A:=C[1];T:=C[2];O:=C[3];K:=C[4];N:=C[5];E:=C[6];S:=C[7];
-FOR I := 1 TO 9 DO WRITELN(A,O,I:1,K,N,E,LC,L[I],LC,S);
-WRITELN(A, T, N, E, LC, LC, LC, LC, S);
-FOR I := 1 TO 7 DO WRITE(T,O,I:1,K,N,E,LC,C[I],LC,S);
-WRITELN; FOR I := 4 TO 9 DO WRITELN(L[I]); END.
-*library:22
+L[2]:=′VAR L:ARRAY[1..6]OF STRING; I,J:INTEGER; Q,S:CHAR; BEGIN    ′;
+L[3]:=′Q:=ZZZZ; FOR I:=1 TO 2 DO WRITELN(L[I]); FOR I := 1 TO 6 DO ′;
+L[4]:=′WRITELN(ZL[Z,I:1,Z]:=Z,Q,L[I],Q,Z;Z); FOR I:=3 TO 6 DO BEGIN′;
+L[5]:=′FOR J:=1 TO 60 DO BEGIN S:=L[I][J]; IF S=ZZZ THEN IF J<>43  ′;
+L[6]:=′THEN S:=Q; WRITE(S) END; WRITELN END END.                   ′;
+Q:=′′′′; FOR I:=1 TO 2 DO WRITELN(L[I]); FOR I := 1 TO 6 DO
+WRITELN(′L[′,I:1,′]:=′,Q,L[I],Q,′;′); FOR I:=3 TO 6 DO BEGIN
+FOR J:=1 TO 60 DO BEGIN S:=L[I][J]; IF S=′Z′ THEN IF J<>43
+THEN S:=Q; WRITE(S) END; WRITELN END END.
 *execute
 *end file

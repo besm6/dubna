@@ -53,7 +53,6 @@ c
       character*3 ans
       integer     i, imins, mins
       logical     flag
-      data ispace /' '/
 c
 c     call srand(time())
 c
@@ -102,8 +101,6 @@ c
       imt(i)    = 0
       iodd(i)   = 0
       ihand(i)  = 0
-      horse(i*3-1) = ispace
-      jock(i*3-1)  = ispace
    20 continue
 c
       call picks()
@@ -207,8 +204,8 @@ c
   100 format (/,/,/,2x'#',4x,'horse',14x,'jockey',22x,'odds',/)
 c
       do 10 i = 1, 5
-      write (54, 200) i, horse(i*3-1), jock(i*3-1), iodd(i)
-  200 format (x,'(',i1,')',3x,a16,3x,a16,12x,i2,'-1')
+      write (54, 200) i, horse(i*3-2), jock(i*3-2), iodd(i)
+  200 format (x, '(', i1, ')', 3x, a16, 3x, a16, 12x, i2, '-1')
    10 continue
 c
       write (54, 300)
@@ -353,6 +350,7 @@ c
       integer   i, i1, iwin1, n
       character bells(10)
       data bells /10 * bell/
+      character*66 line
 c
       write (54, 100)
   100 format (' at the sound of the bell they'1h''re off.')
@@ -387,17 +385,10 @@ c
  1070 format ('here are the results:')
 c
       do 50 i = 1, 5
-      write (54, 400) i
-  400 format (x,'(',i1,')')
-c
-      do 60 n = 1, ihand(i) - 1
-      write (54, 500)
-  500 format ('-')
-   60 continue
-c
-      write (54, 600)
-  600 format ('*')
-   50 continue
+        encode (66, 400, line) ihand(i) - 1
+  400   format ('(2h (, i1, 1h), ', i2, '(1h-), 1h*)')
+        write (54, line) i
+   50   continue
       end
 *ftn
 *     ******************************************************************

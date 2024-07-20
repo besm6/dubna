@@ -75,7 +75,7 @@ c
       end if
       if (a .eq. kstop) stop
       input = -1
-      read (a, 500) input
+      decode (4, 500, a) input
       if (input .eq. -1) then
         write (54, 200)
         goto 10

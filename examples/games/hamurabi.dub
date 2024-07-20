@@ -1,0 +1,377 @@
+*name Hamurabi
+*call setftn:one
+*no list
+*no load list
+*forex
+c     ******************************************************************
+c
+c     hamurabi
+c
+c     converted from the original focal program and modified for
+c     edusystem 70 by david h. ahl, digital. modified for 8k microsoft
+c     basic by peter turnbull. converted to fortran 77 by philipp engel.
+c
+c     ******************************************************************
+      program hamura
+      external play
+c
+c     initialise pseudo-random number generator, output the header, and
+c     start a new game.
+c
+      call srand(time())
+
+      print 100
+      call play()
+
+  100 format (31x,' hamurabi',/,
+     &26x,' creative computing',/,24x,' morristown, new jersey',/,/,
+     &' try your hand at governing ancient sumeria',/,
+     &' for a ten-year term of office.')
+      end
+c     ******************************************************************
+      integer function feed(istor)
+c
+c     asks player how many bushels to feed to the people.
+c
+      external nobush, resign
+      integer  istor
+      integer  istat
+
+   10 continue
+      print 100
+      read (*, 200, iostat=istat) feed
+      if (istat .ne. 0 .or. feed .lt. 0) call resign()
+      if (feed .gt. istor) then
+        call nobush(istor)
+        goto 10
+      end if
+      istor = istor - feed
+
+  100 format (' how many bushels do you wish to feed your people?')
+  200 format (i6)
+      end
+c     ******************************************************************
+      integer function plant(iacre, ipopu, istor)
+c
+c     let the farming begin.
+c
+      external noacre, nobush, resign
+      integer  iacre, ipopu, istor
+      integer  istat
+
+   10 continue
+      print 100
+      read (*, 300, iostat=istat) plant
+      if (istat .ne. 0) goto 10
+      if (plant .eq. 0) return
+      if (plant .lt. 0) call resign()
+c
+c     trying to plant more acres than the player owns?
+c
+      if (plant .gt. iacre) then
+        call noacre(iacre)
+        goto 10
+      end if
+c
+c     enough grain for seed?
+c
+      if (int(plant / 2.0) .gt. istor) then
+        call nobush(istor)
+        goto 10
+      end if
+c
+c     enough people to tend the crops?
+c
+      if (plant .ge. 10 * ipopu) then
+        print 200, ipopu
+        goto 10
+      end if
+
+      istor = istor - int(plant / 2.0)
+
+  100 format (' how many acres do you wish to plant with seed?')
+  200 format (' but you have only ',i3,' people to tend the field!',
+     &' now then,')
+  300 format (i6)
+      end
+c     ******************************************************************
+      subroutine fink()
+c
+c     player has been impeached.
+c
+      external quit
+
+      print 100
+      call quit()
+  100 format (' due to this extreme mismanagement you have not only',
+     &/,' been impeached and thrown out of office but you have',
+     &/,' also been declared national fink!!')
+      end
+c     ******************************************************************
+      subroutine noacre(iacre)
+c
+c     not enough acres.
+c
+      integer iacre
+
+      print 100, iacre
+  100 format (' hamurabi: think again. you own only ',i4,' acres.',
+     &' now then,')
+      end
+c     ******************************************************************
+      subroutine nobush(istor)
+c
+c     not enough bushels of grain.
+c
+      integer istor
+
+      print 100, istor
+  100 format (' hamurabi: think again. you have only ',i4,
+     &' bushels of grain. now then,')
+      end
+c     ******************************************************************
+      subroutine play()
+c
+c     the game starts here.
+c
+      external review, fink
+      integer  feed, plant
+
+      integer  ifeed, iplan, iquot, irand
+      integer  ipopu, iharv, istor, iyiel, irats, iacre, iimmi, iplag,
+     &         idead, iperc, ipric, istar, iyear
+
+      common /global/ ipopu, iharv, istor, iyiel, irats, iacre, iimmi,
+     &                iplag, idead, iperc, ipric, istar, iyear
+c
+c     initialise the game state.
+c
+      irats = iharv - istor
+      iacre = iharv / iyiel
+c
+c     the main loop.
+c
+   10 continue
+      iyear = iyear + 1
+      ipopu = ipopu + iimmi
+      print 100, iyear, istar, iimmi
+c
+c     a plague strikes! half the population died.
+c
+      if (iplag .le. 0) then
+        ipopu = ipopu / 2
+        print 200
+      end if
+
+      print 300, ipopu, iacre, iyiel, irats, istor
+c
+c     max. number of rounds reached: review performance and quit.
+c
+      if (iyear .eq. 11) call review(iacre, ipopu, iperc, idead)
+c
+c     roll new price per acre.
+c
+      ipric = int(10 * rand(0)) + 17
+c
+c     ask the player to buy/sell land.
+c
+      print 400, ipric
+      call trade(iacre, istor, ipric)
+      ifeed = feed(istor)
+      iplan = plant(iacre, ipopu, istor)
+c
+c     a bountiful harvest!
+c
+      iyiel = 1 + int(rand(0) * 5)
+      iharv = iplan * iyiel
+      irats = 0
+c
+c     rats are running wild.
+c
+      if (int(iyiel / 2.0) .eq. iyiel / 2) then
+        irand = 1 + int(rand(0) * 5)
+        irats = istor / irand
+      end if
+
+      istor = istor - irats + iharv
+c
+c     let's have some babies. (actually, it's immigration.)
+c
+      irand = 1 + int(rand(0) * 5)
+      iimmi = int(irand * (20 * iacre + istor) / ipopu / 100 + 1)
+c
+c     horrors, a 15% chance of plague.
+c
+      iplag = int(10 * (2 * rand(0) - 0.3))
+      iquot = ifeed / 20
+c
+c     either a new year, or impeachment if too many people starved.
+c
+      if (ipopu .lt. iquot) then
+        istar = 0
+      else
+        istar = ipopu - iquot
+        if (istar .gt. 0.45 * ipopu) then
+          print 500, istar
+          call fink()
+        end if
+        iperc = ((iyear - 1) * iperc + istar * 100 / ipopu) / iyear
+        ipopu = iquot
+        idead = idead + istar
+      end if
+      goto 10
+
+  100 format (/,' hamurabi: i beg to report to you,',/,/,
+     &11x,'in year ',i2,', ',i2,' people starved, ',i2,
+     &' came to the city.')
+  200 format (/,11x,'a horrible plague struck! half the people died.',/)
+  300 format (11x,'population is now ',i3,'.',/,
+     &11x,'the city now owns ',i4,' acres.',/,
+     &11x,'you harvested ',i4,' bushels per acre.',/,
+     &11x,'the rats ate  ',i4,' bushels.',/,
+     &11x,'you now have  ',i4,' bushels in store.',/)
+  400 format (' land is trading at ',i2,' bushels per acre.')
+  500 format (/,' you starved ',i2,' people in one year!!')
+      end
+c     ******************************************************************
+      subroutine resign()
+c
+c     the steward has enough.
+c
+      external quit
+
+      print 100
+      call quit()
+  100 format (' hamurabi: i cannot do what you wish.',
+     &' get yourself another steward!!')
+      end
+c     ******************************************************************
+      subroutine review(iacre, ipopu, iperc, idead)
+c
+c     outputs results.
+c
+      external fink, quit
+      real     rand
+
+      integer  iacre, ipopu, iperc, idead
+      integer  iland
+
+      iland = iacre / ipopu
+      print 100, iperc, idead, iland
+
+      if (iperc .gt. 33 .or. iland .lt. 7) call fink()
+
+      if (iperc .gt. 10 .or. iland .lt. 9) then
+        print 200
+      else if (iperc .gt. 3 .or. iland .lt. 10) then
+        print 300, int(ipopu * 0.8 * rand(0))
+      else
+        print 400
+      end if
+
+      call quit()
+
+  100 format (' in your 10-year term of office, ',i2,
+     &' percent of the',/,' population starved per year on the',
+     &' average, i.e. a total of',/,1x,i2,' people died!!',/,
+     &' you started with 10 acres per person and ended with',/,
+     &1x,i2,' acres per person.')
+  200 format (' your heavy-handed performance smacks of nero and',
+     &' ivan iv.',/,' the people (remaining) find you an unpleasant',
+     &' ruler, and,',/,' frankly, hate your guts!!')
+  300 format (' your performance could have been somewhat better,',
+     &' but',/,' really wasn''t too bad at all. ',i2,' people',/,
+     &' would dearly like to see you assassinated but we all have our',
+     &/,' trivial problems.')
+  400 format (' a fantastic performance!! charlemange, disraeli, and',
+     &/,' jefferson combined could not have done better!')
+      end
+c     ******************************************************************
+      subroutine trade(iacre, istor, ipric)
+c
+c     lets the player buy/sell acres.
+c
+      external noacre, nobush, resign
+      integer  iacre, istor, ipric
+      integer  iamou, istat
+c
+c     ask to buy acres.
+c
+   10 continue
+      print 100
+      read (*, 300, iostat=istat) iamou
+
+      if (istat .ne. 0 .or. iamou .lt. 0) call resign()
+
+      if (ipric * iamou .gt. istor) then
+        call nobush(istor)
+        goto 10
+      end if
+
+      if (iamou .gt. 0) then
+        iacre = iacre + iamou
+        istor = istor - ipric * iamou
+        return
+      end if
+c
+c     if no acres bought, ask how many to sell.
+c
+   20 continue
+      print 200
+      read (*, 300, iostat=istat) iamou
+
+      if (istat .ne. 0 .or. iamou .lt. 0) call resign()
+
+      if (iamou .ge. iacre) then
+        call noacre(iacre)
+        goto 20
+      end if
+
+      if (iamou .gt. 0) then
+        iacre = iacre - iamou
+        istor = istor + ipric * iamou
+        return
+      end if
+
+  100 format (' how many acres do you wish to buy?')
+  200 format (' how many acres do you wish to sell?')
+  300 format (i6)
+      end
+c     ******************************************************************
+      subroutine quit()
+c
+c     prints last message and exits.
+c
+      print 100
+      stop
+  100 format (/,' so long for now.')
+      end
+c     ******************************************************************
+      block data
+c
+c     common variables:
+c
+c     ipopu - size of the population.
+c     iharv - bushels harvested in one year.
+c     istor - number of bushels stored.
+c     iyiel - yield of acres.
+c     irats - bushels eaten by rats.
+c     iacre - acres owned by player.
+c     iimmi - immigration per year.
+c     iplag - flag for horrible plague.
+c     idead - number of people who died.
+c     iperc - percentage of people who died.
+c     ipric - price per acre.
+c     istar - number of people starved to death in one year.
+c     iyear - the current year.
+c
+      common /global/
+     &ipopu, iharv, istor, iyiel, irats, iacre, iimmi, iplag, idead,
+     &iperc, ipric, istar, iyear
+      data
+     &ipopu, iharv, istor, iyiel, irats, iacre, iimmi, iplag, idead,
+     &iperc, ipric, istar, iyear /95,3000,2800,3,0,0,5,1,0,0,0,0,0/
+      end
+*library:1,23
+*execute
+*end file

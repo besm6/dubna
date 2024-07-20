@@ -1,0 +1,417 @@
+*name Hunt The Wumpus
+*call setftn:one
+*no list
+*no load list
+*forex
+c     ****************************************************************
+c
+c     wumpus
+c
+c     the text-based adventure game "hunt the wumpus" from 1973: find
+c     and kill the horrendous beast wumpus that lurks in a cave full
+c     of dangers. originally written by gregory yob in basic. ported
+c     to fortran in 2023 by the illustrious philipp engel.
+c
+c     ****************************************************************
+      program wumpus
+      external help, init, turn
+
+      character a
+      integer   iseed, istat
+      logical   next
+c
+c     seed the random number generator.
+c
+      iseed = abs(time())
+      call srand(iseed)
+c
+c     ask for instructions.
+c
+      print 100
+      read (*, 200, iostat=istat) a
+      if (a .eq. 'y' .or. a .eq. 'y') call help()
+c
+c     initialise the game.
+c
+      call init()
+c
+c     run until game is over.
+c
+   10 continue
+      call turn(next)
+      if (next) goto 10
+
+  100 format (' hunt the wumpus',/,/,' instructions? (y/n) ',$)
+  200 format (a)
+      end
+c     ****************************************************************
+      integer function iadjac(ifrom)
+c
+c     returns random room adjacent to ifrom.
+c
+      integer ifrom
+      integer i
+      integer iroomy(20, 3)
+      common /world/ iroomy
+
+      i = 1 + int(rand() * 3)
+      iadjac = iroomy(ifrom, i)
+      end
+c     ******************************************************************
+      integer function input()
+c
+c     reads player input (1, 2, or 3).
+c
+      integer istat
+
+   10 continue
+      read (*, 100, iostat=istat) input
+      if (istat .ne. 0 .or. input .lt. 1 .or. input .gt. 3) then
+        print 200
+        goto 10
+      end if
+
+  100 format (i1)
+  200 format (' invalid input. try again: ',$)
+      end
+c     ****************************************************************
+      integer function irandr()
+c
+c     returns random empty room.
+c
+      logical empty
+
+   10 continue
+      irandr = 1 + int(rand() * 20)
+      if (.not. empty(irandr)) goto 10
+      end
+c     ****************************************************************
+      logical function empty(iroom)
+c
+c     returns .true. if given room is empty.
+c
+      integer iroom
+      integer ibaty(2), ipity(2), iwump, ihero, narrow
+      common /state/ ibaty, ipity, iwump, ihero, narrow
+
+      empty = .false.
+      if (iroom .eq. ihero    .or. iroom .eq. iwump    .or.
+     &    iroom .eq. ibaty(1) .or. iroom .eq. ibaty(2) .or.
+     &    iroom .eq. ipity(1) .or. iroom .eq. ipity(2)) return
+      empty = .true.
+      end
+c     ****************************************************************
+      subroutine help()
+c
+c     prints instructions.
+c
+      character a
+      integer   istat
+
+      print 200
+      read (*, 100, iostat=istat) a
+      print 300
+      read (*, 100, iostat=istat) a
+      print 400
+      read (*, 100, iostat=istat) a
+      print 500
+      read (*, 100, iostat=istat) a
+
+  100 format (a)
+  200 format (/,' welcome to "hunt the wumpus"',/,/,
+     &' the wumpus lives in a cave of 20 rooms. each room has three',/,
+     &' tunnels leading to other rooms. (look at a dodecahedron to',/,
+     &' see how this works -- if you don''t know what a dodecahedron',/,
+     &' is, ask someone.)',/,/,
+     &' hazards:',/,/,
+     &2x,'bottomless pits - two rooms have bottomless pits in them.',/,
+     &4x,'if you go there, you fall into the pit (and lose).',/,/,
+     &2x,'super bats - two other rooms have super bats. if you go',/,
+     &4x,'there, a bat grabs you and takes you to some other room',/,
+     &4x,'at random. (which might be troublesome)',/,/,
+     &' press return.',$)
+  300 format (/,' wumpus:',/,/,
+     &2x,'the wumpus is not bothered by the hazards (he has sucker',/,
+     &2x,'feet and is too big for a bat to lift). usually he is',/,
+     &2x,'asleep. two things wake him up: your entering his room or',/,
+     &2x,'your shooting an arrow.',/,/,
+     &2x,'if the wumpus wakes, he moves (p=.75) one room or stays',/,
+     &2x,'still (p=.25). after that, if he is where you are, he eats',/,
+     &2x,'you up (and you lose).',/,/,
+     &' press return.',$)
+  400 format (/,' you:',/,/,
+     &2x,'each turn you may move or shoot a crooked arrow.',/,/,
+     &2x,'moving: you can go one room (thru one tunnel).',/,
+     &2x,'arrows: you have 5 arrows. you lose when you run out.',/,/,
+     &2x,'each arrow can go from 1 to 5 rooms. you aim by telling',/,
+     &2x,'the computer the rooms you want the arrow to go to.',/,
+     &2x,'if the arrow can''t go that way (i.e. no tunnel) it',/,
+     &2x,'moves at ramdom to the next room.',/,/,
+     &2x,'if the arrow hits the wumpus, you win.',/,
+     &2x,'if the arrow hits you, you lose.',/,/,
+     &' press return.',$)
+  500 format (/,' warnings:',/,/,
+     &2x,'when you are one room away from wumpus or hazard,',/,
+     &2x,'the computer says:',/,/,
+     &2x,'wumpus - "you smell a wumpus!"',/,
+     &2x,'bat    - "bats nearby!"',/,
+     &2x,'pit    - "you feel a draft!"',/,/,
+     &' press return.',$)
+      end
+c     ****************************************************************
+      subroutine init()
+c
+c     initialises the game.
+c
+      integer irandr
+
+      integer ibaty(2), ipity(2), iwump, ihero, narrow
+      common /state/ ibaty, ipity, iwump, ihero, narrow
+
+      ibaty(1) = irandr()
+      ibaty(2) = irandr()
+      ipity(1) = irandr()
+      ipity(2) = irandr()
+      iwump = irandr()
+      ihero = irandr()
+      narrow = 5
+      end
+c     ****************************************************************
+      subroutine move()
+c
+c     moves player.
+c
+      integer ibaty(2), ipity(2), iwump, ihero, narrow
+      integer iroomy(20, 3)
+      common /state/ ibaty, ipity, iwump, ihero, narrow
+      common /world/ iroomy
+
+      integer iroom, istat
+
+      print 100
+
+   10 continue
+      read (*, *, iostat=istat) iroom
+
+      if (istat .ne. 0 .or. iroom .lt. 1 .or. iroom .gt. 20) then
+        print 200
+        goto 10
+      end if
+
+      if (iroom .ne. iroomy(ihero, 1) .and.
+     &    iroom .ne. iroomy(ihero, 2) .and.
+     &    iroom .ne. iroomy(ihero, 3)) then
+        print 200
+        goto 10
+      end if
+
+      ihero = iroom
+
+  100 format (' which room do you want to enter? ',$)
+  200 format (' invalid input. try again: ',$)
+      end
+c     ****************************************************************
+      subroutine shoot()
+c
+c     shoots into room.
+c
+c
+      integer iadjac
+
+      integer ibaty(2), ipity(2), iwump, ihero, narrow
+      integer iroomy(20, 3)
+      common /state/ ibaty, ipity, iwump, ihero, narrow
+      common /world/ iroomy
+
+      integer idiry(5)
+      integer i, istat, last, n, next
+
+      print 100
+
+   10 continue
+c
+c     initialise direction array.
+c
+      do 20 i = 1, size(idiry)
+      idiry(i) = 0
+   20 continue
+c
+c     read list of rooms to shoot into.
+c
+      read (*, 200, iostat=istat) idiry
+
+      if (istat .ne. 0) then
+        print 300
+        goto 10
+      end if
+c
+c     validate input.
+c
+      n = 0
+
+      do 30 i = 1, size(idiry)
+      if (idiry(i) .gt. 0) n = i
+   30 continue
+
+      if (n .eq. 0) then
+        print 300
+        goto 10
+      end if
+
+      if (idiry(1) .eq. ihero) then
+        print 400
+        goto 10
+      end if
+c
+c     shoot arrow in up to five rooms.
+c
+      narrow = narrow - 1
+      last = ihero
+
+      do 40 i = 1, n
+      next = idiry(i)
+
+      if ((next .eq. last) .or. (next .lt. 1) .or. (next .gt. 20) .or.
+     &    (next .ne. iroomy(last, 1) .and.
+     &     next .ne. iroomy(last, 2) .and.
+     &     next .ne. iroomy(last, 3))) then
+        next = iadjac(last)
+      end if
+
+      if (next .eq. ihero) then
+        ihero = 0
+        return
+      end if
+
+      if (next .eq. iwump) then
+        iwump = 0
+        return
+      end if
+
+      last = next
+   40 continue
+c
+c     wake up the wumpus.
+c
+      if (rand() .lt. 0.75) iwump = iadjac(iwump)
+
+  100 format (' enter a list of rooms to shoot into (up to 5): ',$)
+  200 format (5(i2,1x))
+  300 format (' invalid input. try again: ',$)
+  400 format (' you have to aim into an adjacent room, stupid.')
+      end
+c     ****************************************************************
+      subroutine turn(next)
+c
+c     runs next turn.
+c
+      external move, shoot
+      integer  input
+
+      logical next
+
+      integer ibaty(2), ipity(2), iwump, ihero, narrow
+      integer iroomy(20, 3)
+      common /state/ ibaty, ipity, iwump, ihero, narrow
+      common /world/ iroomy
+
+      integer i, iroom, k
+
+      next = .false.
+
+      if (iwump .eq. 0) then
+        print 200
+        return
+      end if
+
+      if (ihero .eq. iwump) then
+        print 300
+        print 100
+        return
+      end if
+
+      if (ihero .eq. 0) then
+        print 400
+        print 100
+        return
+      end if
+
+      if (narrow .lt. 1) then
+        print 500
+        print 100
+        return
+      end if
+
+      if (ihero .eq. ipity(1) .or. ihero .eq. ipity(2)) then
+        print 600
+        print 100
+        return
+      end if
+
+      if (ihero .eq. ibaty(1) .or. ihero .eq. ibaty(2)) then
+        print 700
+        ihero = irandr()
+      end if
+
+      print 800, ihero
+
+      do 10, i = 3, 1, -1
+      iroom = iroomy(ihero, i)
+      if (iroom .eq. iwump) print 900
+      if (iroom .eq. ibaty(1) .or. iroom .eq. ibaty(2)) print 1000
+      if (iroom .eq. ipity(1) .or. iroom .eq. ipity(2)) print 1100
+   10 continue
+
+      print 1200, narrow, iroomy(ihero, 1), iroomy(ihero, 2),
+     &            iroomy(ihero, 3)
+
+      k = input()
+
+      if (k .eq. 1) then
+        call move()
+      else if (k .eq. 2) then
+        call shoot()
+      else if (k .eq. 3) then
+        return
+      end if
+
+      next = .true.
+
+  100 format (' game over.')
+  200 format (' aha! you got the wumpus!')
+  300 format (' you find yourself face to face with the wumpus.',
+     &' it eats you whole.')
+  400 format (' ouch! arrow got you!')
+  500 format (' you have run out of arrows!')
+  600 format (' aaaaaaaaaaa! you have fallen into a bottomless pit.')
+  700 format (' a bat has carried you into another empty room.')
+  800 format (/,' you are in room ',i2,'.')
+  900 format (' you smell a wumpus!')
+ 1000 format (' bats nearby!')
+ 1100 format (' your feel a draft!')
+ 1200 format (' you have ',i1,' arrows. tunnels lead to ',i2,', ',i2,
+     &' and ',i2,'.',/,' (1) move  (2) shoot  (3) quit: ',$)
+      end
+c     ****************************************************************
+      block data
+c
+c     common variables:
+c
+c     ibaty  - rooms of bats (2).
+c     ipity  - rooms of pits (2).
+c     iwump  - room of wumpus.
+c     ihero  - room of player.
+c     narrow - number of arrows left.
+c     iroomy - connections between rooms.
+c
+      integer ibaty(2), ipity(2), iwump, ihero, narrow
+      integer iroomy(20, 3)
+      common /state/ ibaty, ipity, iwump, ihero, narrow
+      common /world/ iroomy
+      data iroomy /2,1,2,3,1,5,6,1,8,2,10,3,12,4,6,15,7,9,11,13,
+     &5,3,4,5,4,7,8,7,10,9,12,11,14,13,14,17,16,17,18,16,
+     &8,10,12,14,6,15,17,9,18,11,19,13,20,15,16,20,18,19,20,19/
+      end
+*library:1,23
+*execute
+*end file

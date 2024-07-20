@@ -309,8 +309,6 @@ c     ******************************************************************
 c
 c     This subroutine runs the race internally and prints the results.
 c
-      character bell
-      parameter (bell=7)
       integer ihand(5), iodd(5)
       integer ihorse(5), imt(5), iplay, ibank(5), iwin
 c
@@ -318,15 +316,12 @@ c
       common /bet/    ihorse, imt, iplay, ibank, iwin
 c
       integer   i, i1, iwin1, n
-      character bells(10)
-      data bells /10 * bell/
       character*66 line
 c
       write (54, 100)
   100 format (' at the sound of the bell they'1h''re off.')
       call sleep(1)
-      write (54, 200) bells
-  200 format (10(a1))
+      call bells
 c
     1 do 10 i = 1, 5
       ihand(i) = ihand(i) + int(rndm(-1) * 5)
@@ -361,6 +356,16 @@ c
    50   continue
       end
 *ftn
+*     ******************************************************************
+      subroutine bells
+c
+c     Generate sound on the terminal.
+c
+      integer bell
+      data bell /0160 3407 0160 3407в/
+      write (54, 100) bell
+  100 format (a6)
+      end
 *     ******************************************************************
       integer function time(x)
 c

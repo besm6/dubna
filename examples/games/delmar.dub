@@ -42,7 +42,7 @@ c
 c     ******************************************************************
       program delmar
       external     banker, bets, odds, picks, race
-      integer      horse(15), jock(15)
+      character*18 horse(5), jock(5)
       integer      ihand(5), iodd(5)
       integer      ihorse(5), imt(5), iplay, ibank(5), iwin
 c
@@ -190,7 +190,7 @@ c     If the player does not have any more money (ibank = 0) then that
 c     player does not get a change to bet and the amount of the bet is
 c     put to 0 (imt = 0).
 c
-      integer      horse(15), jock(15)
+      character*18 horse(5), jock(5), hi, ji
       integer      ihand(5), iodd(5)
       integer      ihorse(5), imt(5), iplay, ibank(5), iwin
 c
@@ -204,9 +204,11 @@ c
   100 format (/,/,/,2x'#',4x,'horse',14x,'jockey',22x,'odds',/)
 c
       do 10 i = 1, 5
-      write (54, 200) i, horse(i*3-2), jock(i*3-2), iodd(i)
-  200 format (x, '(', i1, ')', 3x, a16, 3x, a16, 12x, i2, '-1')
-   10 continue
+        hi = horse(i)
+        ji = jock(i)
+        write (54, 200) i, hi, ji, iodd(i)
+  200   format (x, '(', i1, ')', 3x, 3a6, 1x, 3a6, 10x, i2, '-1')
+   10   continue
 c
       write (54, 300)
   300 format (/,/,/,' type the number of the horse,',
@@ -259,63 +261,35 @@ c     character arrays here. The random number generator has been
 c     replaced with the rand() extension that is supported by most
 c     Fortran 77 compilers.
 c
-c     Original description of the random number generator (obsolete)
-c
-c       -- random function
-c
-c       The random function returns a pseudo-random number, r, where
-c       0 <= r < 1. There are two modes available: reproducible and non-
-c       reproducible. The argument selects the mode.
-c
-c                                                 mode of     mode of
-c       name          function                    argument    result
-c
-c       random(i)     next pseudo-random value    integer     real
-c
-c       If i is negative, the generator is set back to the beginning of
-c       its reproducible sequence. The result, r, will be the same as
-c       the first time random is called after loading. If i is zero, the
-c       next number in the reproducible sequence is returned as the
-c       result. If i is greater than zero, an indefinite number (from 0
-c       to 63) of the next sequential intermediate 12-bit values are
-c       skipped before the random number is constructed. The number of
-c       values skipped is determined by the least significant portion of
-c       the current value of the real-time clock in the computer
-c
-c       The random numbers are constructed from three 12-bit groups
-c       calculated from 3**(2*n+1) (mod 2**39), using the left-most
-c       12-bits.
-c
 c     J and L are the numbers that are chosen randomly that control the
 c     horse(J) and jockey(L) that are chosen. H and jo are defined in
 c     data as the horses(h) and jockeys(j0). The check to see if the
 c     horse (or jockey) was already chosen starts at 90.
 c
-      integer horse(15), jock(15)
-      integer  h(60), jo(60)
+      character*18 horse(5), jock(5), h(20), jo(20)
       common /horsey/ horse, jock
       integer i, i2, j(5), l(5)
 c
-      data h /'ack ack      ',    'overglory    ',
-     &        'timetolight  ',    'golden wallet',
-     &        'ravishing ruby',   'red running good',
-     &        'acrocyanosis',     'nadine malcolm',
-     &        'whoopee      ',    'shamaleen    ',
-     &        'miss alert   ',    'command prince',
-     &        'ironside     ',    'wild surf    ',
-     &        'cannonero ii ',    'damage control',
-     &        'shiex kamiakin',   'audacity     ',
-     &        'court clown  ',    'sweet anastacia'/
-      data jo/'ksinner      ',    'gbaze        ',
-     &        'jleonard     ',    'shoemaker    ',
-     &        'jtgonzalez   ',    'sgoldsmith   ',
-     &        'mlewis       ',    'ryaka        ',
-     &        'wdelia       ',    'aochoa       ',
-     &        'glawless     ',    'pineda       ',
-     &        'mrujano      ',    'kfurlong     ',
-     &        'sarchuleta   ',    'mualenauela  ',
-     &        'jwilburn     ',    'fmena        ',
-     &        'svaldez      ',    'perez        '/
+      data h /'ack ack       ', 'overglory       ',
+     &        'timetolight   ', 'golden wallet   ',
+     &        'ravishing ruby', 'red running good',
+     &        'acrocyanosis  ', 'nadine malcolm  ',
+     &        'whoopee       ', 'shamaleen       ',
+     &        'miss alert    ', 'command prince  ',
+     &        'ironside      ', 'wild surf       ',
+     &        'cannonero ii  ', 'damage control  ',
+     &        'shiex kamiakin', 'audacity        ',
+     &        'court clown   ', 'sweet anastacia '/
+      data jo/'ksinner       ', 'gbaze        ',
+     &        'jleonard      ', 'shoemaker    ',
+     &        'jtgonzalez    ', 'sgoldsmith   ',
+     &        'mlewis        ', 'ryaka        ',
+     &        'wdelia        ', 'aochoa       ',
+     &        'glawless      ', 'pineda       ',
+     &        'mrujano       ', 'kfurlong     ',
+     &        'sarchuleta    ', 'mualenauela  ',
+     &        'jwilburn      ', 'fmena        ',
+     &        'svaldez       ', 'perez        '/
 c
       do 10 i = 1, 5
     1 j(i) = 1 + int(rndm(-1) * 20)
@@ -326,12 +300,8 @@ c
       if (j(i) .eq. j(i2) .or. l(i) .eq. l(i2)) goto 1
    20 continue
 c
-    2 horse(i*3-2) = h(j(i)*3-2)
-      horse(i*3-1) = h(j(i)*3-1)
-      horse(i*3) = h(j(i)*3)
-      jock(i*3-2) = jo(l(i)*3-2)
-      jock(i*3-1) = jo(l(i)*3-1)
-      jock(i*3) = jo(l(i)*3)
+    2 horse(i) = h(j(i))
+      jock(i) = jo(l(i))
    10 continue
       end
 c     ******************************************************************

@@ -1,0 +1,41 @@
+*name SPIGOT 6
+*no li
+*forex
+C     ******************************************************************
+C
+C     SPIGOT ALGORITHM FOR THE DIGITS OF PI.
+C
+C     ******************************************************************
+      program main
+      integer r(10001)
+      integer i,k,b,d,t,c,cc,p
+      integer buf(500),temp(2)
+      c = 0 $ p = 1
+      do 10 i = 1, 10001
+  10  r(i) = 200000
+      k = 10000
+  20  if (k.le.0) goto 60
+      d = 0
+      i = k
+  30  continue
+         d = d + r(i+1) * 1000000
+         b = i * 2 - 1
+         t = d / b
+         r(i+1) = d-t*b
+         d = t
+         i = i-1
+         if (i .eq. 0) goto 40
+         d = d*i
+      goto 30
+  40  continue 
+      cc=c+d/1000000
+      encode (12, 50, temp) cc+1000000
+   50 format(i12)
+      buf(p) = temp(2) $ p = p + 1
+      c = mod(d,1000000)
+      k = k - 20 
+      goto 20
+  60  print '(25(1x20a6/))', buf
+      end
+*execute
+*end file

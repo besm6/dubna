@@ -264,6 +264,12 @@ public:
             print_e64(info, start_addr, end_addr);
     }
 
+    void trace_e71(const E64_Pointer &info, unsigned start_addr, unsigned end_addr)
+    {
+        if (debug_extracodes)
+            print_e71(info, start_addr, end_addr);
+    }
+
     void trace_e64_dubna(unsigned start_addr, unsigned end_addr)
     {
         if (debug_print)
@@ -312,6 +318,7 @@ public:
     void print_e57_search(const E57_Search_Info &info);
     void print_e57_open(const E57_Open_Info &info);
     void print_e50_format_real(const E50_Format_Info &info);
+    void print_e71(const E64_Pointer &info, unsigned start_addr, unsigned end_addr);
 };
 
 //

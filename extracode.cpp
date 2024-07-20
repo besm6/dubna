@@ -622,6 +622,8 @@ void Processor::e71()
 
     unsigned start = ADDR(ptr.field.start_addr + core.M[ptr.field.start_reg]);
     unsigned end   = ADDR(ptr.field.end_addr + core.M[ptr.field.end_reg]);
+    machine.trace_e71(ptr, start, end);
+
     switch (ptr.field.flags) {
     case 1:
         // Punch

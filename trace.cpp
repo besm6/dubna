@@ -694,3 +694,46 @@ void Machine::print_e50_format_real(const E50_Format_Info &info)
     // Restore.
     out.flags(save_flags);
 }
+
+//
+// Print details about extracode e71.
+//
+void Machine::print_e71(const E64_Pointer &info, unsigned start_addr, unsigned end_addr)
+{
+    auto &out       = Machine::get_trace_stream();
+    auto save_flags = out.flags();
+
+    switch (info.field.flags) {
+    case 1:
+        out << "      Punch";
+        break;
+    case 4:
+        out << "      Tty Output";
+        break;
+    case 6:
+        out << "      Tty Input";
+        break;
+    default:
+        out << "      Unknown";
+        break;
+    }
+    out << " (" << info.field.flags
+        << ") " << std::oct << std::setfill('0') << std::setw(5) << start_addr
+        << '-' << std::setfill('0') << std::setw(5) << end_addr << std::endl;
+
+    BytePointer bp(memory, start_addr);
+    while (bp.word_addr) {
+        if (end_addr && bp.word_addr == end_addr + 1) {
+            break;
+        }
+
+        unsigned c = bp.get_byte();
+        out << ' ' << std::setfill('0') << std::setw(3) << c;
+        if (c == '\0')
+            break;
+    }
+    out << std::endl;
+
+    // Restore.
+    out.flags(save_flags);
+}

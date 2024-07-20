@@ -55,6 +55,9 @@ private:
     // Every few seconds, print a message to stderr, to track the simulation progress.
     void show_progress();
 
+    // Start time.
+    const std::chrono::time_point<std::chrono::steady_clock> start_time;
+
     // Time of last check.
     std::chrono::time_point<std::chrono::steady_clock> progress_time_last;
 
@@ -158,6 +161,9 @@ public:
         return debug_instructions | debug_extracodes | debug_print | debug_registers |
                debug_memory | debug_fetch;
     }
+
+    // Get start time.
+    std::chrono::time_point<std::chrono::steady_clock> get_start_time() { return start_time; }
 
     // Emit trace to this stream.
     static std::ostream &get_trace_stream();

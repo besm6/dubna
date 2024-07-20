@@ -498,8 +498,8 @@ void Processor::e50()
     case 070210: {
         // Get wall clock time in seconds as real value.
         // In Dubna sources: ,fun,70100b+110b
-        auto now = std::chrono::system_clock::now();
-        const std::chrono::duration<double> seconds = now.time_since_epoch();
+        auto now = std::chrono::steady_clock::now();
+        const std::chrono::duration<double> seconds = now - machine.get_start_time();
         core.ACC = ieee_to_besm6(seconds.count());
         break;
     }

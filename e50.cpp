@@ -453,6 +453,10 @@ void Processor::e50()
             (DAY << 42) | (MONTH << 34) | (YEAR << 26) | (HOUR << 20) | (MIN << 12) | (SEC << 4);
         break;
     }
+    case 071:
+        // Print time on printer, for PTIME.
+        // The same as e63 1 on Dispak.
+        break;
     case 075:
         // Unknown.
         break;
@@ -483,17 +487,22 @@ void Processor::e50()
         throw Exception("Task paused waiting for tape");
         break;
     case 070077:
-        // Get date?
+        // Get CPU time in seconds as real value.
+        // In Dubna sources: ,fun,70100b-1
         core.ACC = 0;
         break;
     case 070200:
         // Asking for some capabilities?
         core.ACC = 0'0010'0000;
         break;
-    case 070210:
-        // Get time?
-        core.ACC = 0;
+    case 070210: {
+        // Get wall clock time in seconds as real value.
+        // In Dubna sources: ,fun,70100b+110b
+        auto now = std::chrono::system_clock::now();
+        const std::chrono::duration<double> seconds = now.time_since_epoch();
+        core.ACC = ieee_to_besm6(seconds.count());
         break;
+    }
     case 070214:
         // Asking for шифр?
         core.ACC = 0'1234'5670'1234'5670;

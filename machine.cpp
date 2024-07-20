@@ -49,8 +49,7 @@ const uint64_t Machine::DEFAULT_LIMIT = 100ULL * 1000 * 1000 * 1000;
 // Initialize the machine.
 //
 Machine::Machine(Memory &m)
-    : start_time(std::chrono::steady_clock::now()), progress_time_last(start_time),
-      memory(m), cpu(*this, m), puncher(m)
+    : progress_time_last(std::chrono::steady_clock::now()), memory(m), cpu(*this, m), puncher(m)
 {
 }
 

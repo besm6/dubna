@@ -423,7 +423,9 @@ c
 c     Delays program for given amount of seconds.
 c     BESM-6 specific.
 c
-c      k = jextra(0, 50в, 67в)
+      do 10 i=1, n
+        k = jextra(0, 57в, 3)
+   10   continue
       end
 *library:1,23
 *execute

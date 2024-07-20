@@ -22,6 +22,7 @@
 // SOFTWARE.
 //
 #include "machine.h"
+#include <unistd.h>
 
 //
 // Extracode 057.
@@ -43,6 +44,9 @@ void Processor::e57()
         core.ACC = 0;
         return;
     case 3:
+        // Delay for one second.
+        usleep(1000000);
+        return;
     case 7:
         // Delay the task, presumably waiting for tape to be installed by operator.
         throw Exception("Task paused waiting for tape");

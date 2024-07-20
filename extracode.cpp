@@ -653,10 +653,8 @@ void Processor::e71()
         size_t buflen = ((end ? end : 077777) - start + 1) * 6;
         std::string inp;
         e64_finish();
-        do {
-            std::cout << "-\r" << std::flush; // Standard prompt
-            std::getline(std::cin, inp);
-        } while (inp.size() == 0);
+        std::cout << "-\r" << std::flush; // Standard prompt
+        std::getline(std::cin, inp);
         inp = utf8_to_koi7(inp, buflen);
         // The terminating zero byte will be written if it fits.
         if (inp.length() < buflen) {
@@ -664,11 +662,11 @@ void Processor::e71()
         }
         BytePointer bp(memory, ADDR(start));
         for (size_t c = 0; c < inp.length(); ++c) {
-            // Pre-clear a new word
-            if (c % 6 == 0) {
-                memory.store(start + c / 6, 0);
-            }
             bp.put_byte(inp[c]);
+        }
+        // Fill last word with zeroes.
+        while (bp.byte_index) {
+            bp.put_byte(0);
         }
         return;
     }

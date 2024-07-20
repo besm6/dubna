@@ -625,6 +625,16 @@ void Processor::e71()
     machine.trace_e71(ptr, start, end);
 
     switch (ptr.field.flags) {
+#if 0
+    case 3:
+        // Unknown.
+        core.ACC = 0;
+        return;
+#endif
+    case 10:
+        // Get tty number.
+        core.ACC = 1;
+        return;
     case 1:
         // Punch
         if ((end - start + 1) % 24 != 0)
@@ -632,6 +642,7 @@ void Processor::e71()
                             " has fractional cards");
         machine.puncher.punch(start, end);
         return;
+    case 3:
     case 4: {
         // Terminal output
         auto a1 = start, a2 = end;

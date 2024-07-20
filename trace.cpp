@@ -720,6 +720,8 @@ void Machine::print_e71(const E64_Pointer &info, unsigned start_addr, unsigned e
     out << " (" << info.field.flags
         << ") " << std::oct << std::setfill('0') << std::setw(5) << start_addr
         << '-' << std::setfill('0') << std::setw(5) << end_addr << std::endl;
+    out << "      Info=";
+    besm6_print_word_octal(out, info.word);
 
     BytePointer bp(memory, start_addr);
     while (bp.word_addr) {

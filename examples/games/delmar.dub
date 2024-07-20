@@ -5,74 +5,75 @@
 *forex
 c     ******************************************************************
 c
-c     delmar - horse race game
+c     Delmar - horse race game
 c
-c       the program listing was published in david h. ahl's book "the
-c       best of creative computing volume 2" (1977). the fortran iv
-c       source has been faithfully converted to fortran 77 by philipp
-c       engel (2021).
+c       The program listing was published in David H. Ahl's book "The
+c       Best Of Creative Computing Volume 2" (1977). the Fortran IV
+c       source has been faithfully converted to Fortran 77 by Philipp
+c       Engel (2021).
 c
-c       called fortran extensions:
+c       Called fortran extensions:
 c
 c       rand  - returns random number.
 c       sleep - delays program for given amount of seconds.
 c       srand - initialises random number generator.
 c       time  - returns current time in seconds.
 c
-c     original description
+c     Original description
 c
-c       this program simulates a horse race strictly using the random
+c       This program simulates a horse race strictly using the random
 c       function.
 c
-c       by ron morgan, kirk roderick 12/02/74
-c       csun 18111 nordhoff street, northridge ca 91324
-c       the double precision reals, horse and jock, can hold a maximum
-c       of 16 alpha-numeric characters. the common blocks refer to each
+c       By Ron Morgan, Kirk Roderick 12/02/74
+c       CSun 18111 Nordhoff Street, Northridge CA 91324
+c       The double precision reals, horse and jock, can hold a maximum
+c       of 16 alpha-numeric characters. The common blocks refer to each
 c       of the subroutines which access them.
 c
-c       horse and jock are double precision real arrays that will hold
-c       the names of the horses and jockes. ihand contains the handicap
+c       Horse and jock are double precision real arrays that will hold
+c       the names of the horses and jockes. Ihand contains the handicap
 c       that the horses will start away from the finish line (from 1
-c       to 20). iodd is the odds (-1) that will be printed out (divides
-c       40). ihorse and amt contain the horse number and amount for
-c       each player's bet. iplay is the number of players (1-5). ibank
+c       to 20). Iodd is the odds (-1) that will be printed out (divides
+c       40). Ihorse and amt contain the horse number and amount for
+c       each player's bet. Iplay is the number of players (1-5). Ibank
 c       contains the amount of money each player has left (initialized
-c       to 100). iwin is the number of the winning horse.
+c       to 100). Iwin is the number of the winning horse.
 c
 c     ******************************************************************
       program delmar
       external     banker, bets, odds, picks, race
-      character*16 horse(5), jock(5)
+      integer      horse(15), jock(15)
       integer      ihand(5), iodd(5)
       integer      ihorse(5), imt(5), iplay, ibank(5), iwin
-
+c
       common /horsey/ horse, jock
       common /numodd/ ihand, iodd
       common /bet/    ihorse, imt, iplay, ibank, iwin
-
+c
       character*3 ans
-      integer     i, imins, istat, mins
+      integer     i, imins, mins
       logical     flag
-
-      call srand(time())
-
+      data ispace /' '/
+c
+c     call srand(time())
+c
       mins = time() / 60
       imins = mins
-
+c
       flag = .false.
-
-      print 100
+c
+      write (54, 100)
   100 format (30x,'delmar',/,/,5x,'program simulates a horse race by',
-     &' use of the random function',/,/,' do you want instructions? ',$)
-
-    1 read (*, 200, iostat=istat) ans
+     &' use of the random function',/,/,' do you want instructions?')
+c
+    1 read (54, 200) ans
   200 format (a3)
-
+c
       if (ans(1:1) .eq. 'n' .or. ans(1:1) .eq. 'n') goto 3
       if (ans(1:1) .eq. 'y' .or. ans(1:1) .eq. 'y') goto 2
       goto 1
-
-    2 print 300
+c
+    2 write (54, 300)
   300 format (/,' this is a simulated horse race.  there are 20 horses',
      &' and jockeys in',/,' the stable.  you start out with $100. ',
      &' only whole number amounts are',/,' allowed in bets (i.e. 100',
@@ -80,148 +81,155 @@ c     ******************************************************************
      &' horses and jockeys for each race are picked randomly',/,' as',
      &' are the odds and the actual race.  however, the odds do have',
      &' a',/,' weight (or handicap) in the outcome of the race.',/)
-
-    3 print 400
-  400 format (' how many players? ',$)
-
-      read (*, 500, iostat=istat) iplay
+c
+    3 write (54, 400)
+  400 format (' how many players?')
+c
+      read (54, 500) iplay
   500 format (i1)
-
+c
       if (iplay .le. 5 .and. iplay .gt. 0) goto 4
-      print *, 'too many players. maximum of 5.'
+      write (54, 1000)
+ 1000 format('too many players. maximum of 5.')
       goto 3
-
+c
     4 do 10 i = 1, iplay
       ibank(i) = 100
    10 continue
-
+c
     5 do 20 i = 1, 5
       ihorse(i) = 0
       imt(i)    = 0
       iodd(i)   = 0
       ihand(i)  = 0
-      horse(i)  = ' '
-      jock(i)   = ' '
+      horse(i*3-1) = ispace
+      jock(i*3-1)  = ispace
    20 continue
-
+c
       call picks()
       call odds()
       call bets()
       call race()
       call banker()
-
+c
       if (flag) stop
-
-      print 600
-  600 format (' do you want another race? ',$)
-
-    6 read (*, 200, iostat=istat) ans
+c
+      write (54, 600)
+  600 format (' do you want another race?')
+c
+    6 read (54, 200) ans
       if (ans(1:1) .eq. 'y' .or. ans(1:1) .eq. 'y') goto 7
       if (ans(1:1) .eq. 'n' .or. ans(1:1) .eq. 'n') stop
-
-      print 700
-  700 format (' please answer yes or no. ',$)
+c
+      write (54, 700)
+  700 format (' please answer yes or no.')
       goto 6
-
+c
     7 mins = (time() / 60) - 28
       if (imins .gt. mins) goto 5
-
-      print *, 'this is your last race.'
+c
+      write (54, 1010)
+ 1010 format ('this is your last race.')
       flag = .true.
       goto 5
       end
 c     ******************************************************************
       subroutine banker()
 c
-c     this subroutine keeps a record of wins and losses.
+c     This subroutine keeps a record of wins and losses.
 c
-c     the bank totals are determined by whether the player chose the
-c     winner. if a bank balance becomes greater than 9999 the program
+c     The bank totals are determined by whether the player chose the
+c     winner. If a bank balance becomes greater than 9999 the program
 c     ends and prints out a message, or if all the players run out of
 c     money another message is printed out.
 c
       integer ihand(5), iodd(5)
       integer ihorse(5), imt(5), iplay, ibank(5), iwin
-
+c
       common /numodd/ ihand, iodd
       common /bet/    ihorse, imt, iplay, ibank, iwin
-
-      integer i, i1, i2
+c
+      integer i, i2
       logical flag
-
-      print 100, iwin
+c
+      write (54, 100) iwin
   100 format (/,' horse #',i1,' won.',/,' here are your bank balances:')
-
-      i1 = 0
+c
       i2 = 0
       flag = .false.
-
+c
       do 10 i = 1, iplay
       if (ihorse(i) .eq. iwin) then
         ibank(i) = ibank(i) + imt(i) * iodd(iwin)
       else
         ibank(i) = ibank(i) - imt(i)
       end if
-      print 200, i, ibank(i)
+      write (54, 200) i, ibank(i)
   200 format (/,' player #',i1,' $',i4)
       if (ibank(i) .gt. 9999) flag = .true.
       if (ibank(i) .le. 0) i2 = i2 + 1
    10 continue
-
+c
       if (flag) then
-        print *, 'you have broken the bank!!'
+        write (54, 1020)
+ 1020   format ('you have broken the bank!!')
         stop
       end if
-
+c
       if (i2 .ge. iplay) then
-        print *, 'you all ran out of money.  please pay the cashier'
-        print *, 'when you exit.  thank you.'
+        write (54, 1030)
+        write (54, 1040)
+ 1030   format ('you all ran out of money.  please pay the cashier')
+ 1040   format ('when you exit.  thank you.')
         stop
       end if
       end
 c     ******************************************************************
       subroutine bets()
 c
-c     subroutine for taking bets.
+c     Subroutine for taking bets.
 c
-c     if the player does not have any more money (ibank = 0) then that
+c     If the player does not have any more money (ibank = 0) then that
 c     player does not get a change to bet and the amount of the bet is
 c     put to 0 (imt = 0).
 c
-      character*16 horse(5), jock(5)
+      integer      horse(15), jock(15)
       integer      ihand(5), iodd(5)
       integer      ihorse(5), imt(5), iplay, ibank(5), iwin
-
+c
       common /horsey/ horse, jock
       common /numodd/ ihand, iodd
       common /bet/    ihorse, imt, iplay, ibank, iwin
-
-      integer i, istat
-
-      print 100
+c
+      integer i
+c
+      write (54, 100)
   100 format (/,/,/,2x'#',4x,'horse',14x,'jockey',22x,'odds',/)
-
+c
       do 10 i = 1, 5
-      print 200, i, horse(i), jock(i), iodd(i)
+      write (54, 200) i, horse(i*3-1), jock(i*3-1), iodd(i)
   200 format (x,'(',i1,')',3x,a16,3x,a16,12x,i2,'-1')
    10 continue
-
-      print 300
+c
+      write (54, 300)
   300 format (/,/,/,' type the number of the horse,',
      &' the amount of the bet.')
-
+c
       do 20 i = 1, iplay
       if (ibank(i) .le. 0) goto 3
-    1 print 400, i
-  400 format(/,' player #',i1,': ',$)
-      read (*, *, iostat=istat) ihorse(i), imt(i)
-      if (istat .eq. 0 .and. ihorse(i) .le. 5 .and. ihorse(i) .gt. 0)
+    1 write (54, 400) i
+  400 format(/,' player #',i1,':')
+      read (54, 500) ihorse(i), imt(i)
+  500 format (2i2)
+      if (ihorse(i) .le. 5 .and. ihorse(i) .gt. 0)
      &  goto 2
-      print *, 'no such horse #.'
+      write (54, 1050)
+ 1050 format ('no such horse #.')
       goto 1
     2 if (imt(i) .le. ibank(i) .or. imt (i) .lt. 0) goto 20
-      print *, 'you don''t have that much money. ',
-     &' enter horse # and bet.'
+      write (54, 1060)
+ 1060 format ('you don'1h''t have that much money. ',
+     &' enter horse # and bet.')
       goto 1
     3 imt(i) = 0
    20 continue
@@ -229,155 +237,193 @@ c
 c     ******************************************************************
       subroutine odds()
 c
-c     subroutine for determining odds
+c     Subroutine for determining odds
 c
-c     the odds are determined by having 40 divided by the handicap.
-c     this produces the odds from 2-1 to 40-1.
+c     The odds are determined by having 40 divided by the handicap.
+c     This produces the odds from 2-1 to 40-1.
 c
       integer ihand(5), iodd(5)
       common /numodd/ ihand, iodd
       integer i
-
+c
       do 10 i = 1, 5
-      ihand(i) = 1 + int(rand(0) * 20)
+      ihand(i) = 1 + int(rndm(-1) * 20)
       iodd(i) = 40 / ihand(i)
    10 continue
       end
 c     ******************************************************************
       subroutine picks()
 c
-c     subroutine for picking horses and jockeys.
+c     Subroutine for picking horses and jockeys.
 c
-c     in the fortran iv version, the strings were stored as hollerith
-c     constants in double precision arrays. they have been converted to
-c     character arrays here. the random number generator has been
+c     In the Fortran IV version, the strings were stored as hollerith
+c     constants in double precision arrays. They have been converted to
+c     character arrays here. The random number generator has been
 c     replaced with the rand() extension that is supported by most
-c     fortran 77 compilers.
+c     Fortran 77 compilers.
 c
-c     original description of the random number generator (obsolete)
+c     Original description of the random number generator (obsolete)
 c
 c       -- random function
 c
-c       the random function returns a pseudo-random number, r, where
-c       0 <= r < 1. there are two modes available: reproducible and non-
-c       reproducible. the argument selects the mode.
+c       The random function returns a pseudo-random number, r, where
+c       0 <= r < 1. There are two modes available: reproducible and non-
+c       reproducible. The argument selects the mode.
 c
 c                                                 mode of     mode of
 c       name          function                    argument    result
 c
 c       random(i)     next pseudo-random value    integer     real
 c
-c       if i is negative, the generator is set back to the beginning of
-c       its reproducible sequence. the result, r, will be the same as
-c       the first time random is called after loading. if i is zero, the
+c       If i is negative, the generator is set back to the beginning of
+c       its reproducible sequence. The result, r, will be the same as
+c       the first time random is called after loading. If i is zero, the
 c       next number in the reproducible sequence is returned as the
-c       result. if i is greater than zero, an indefinite number (from 0
+c       result. If i is greater than zero, an indefinite number (from 0
 c       to 63) of the next sequential intermediate 12-bit values are
-c       skipped before the random number is constructed. the number of
+c       skipped before the random number is constructed. The number of
 c       values skipped is determined by the least significant portion of
 c       the current value of the real-time clock in the computer
 c
-c       the random numbers are constructed from three 12-bit groups
+c       The random numbers are constructed from three 12-bit groups
 c       calculated from 3**(2*n+1) (mod 2**39), using the left-most
 c       12-bits.
 c
-c     j and l are the numbers that are chosen randomly that control the
-c     horse(j) and jockey(l) that are chosen. h and jo are defined in
-c     data as the horses(h) and jockeys(j0). the check to see if the
+c     J and L are the numbers that are chosen randomly that control the
+c     horse(J) and jockey(L) that are chosen. H and jo are defined in
+c     data as the horses(h) and jockeys(j0). The check to see if the
 c     horse (or jockey) was already chosen starts at 90.
 c
-      character*16 horse(5), jock(5), h(20), jo(20)
+      integer horse(15), jock(15)
+      integer  h(60), jo(60)
       common /horsey/ horse, jock
       integer i, i2, j(5), l(5)
-
-      data h /'ack ack',    'overglory',
-     &'timetolight',        'golden wallet',    'ravishing ruby',
-     &'red running good',   'acrocyanosis',     'nadine malcolm',
-     &'whoopee',            'shamaleen',        'miss alert',
-     &'command prince',     'ironside',         'wild surf',
-     &'cannonero ii',       'damage control',   'shiex kamiakin',
-     &'audacity',           'court clown',      'sweet anastacia'/
-      data jo /'ksinner',   'gbaze',
-     &'jleonard',           'shoemaker',        'jtgonzalez',
-     &'sgoldsmith',         'mlewis',           'ryaka',
-     &'wdelia',             'aochoa',           'glawless',
-     &'pineda',             'mrujano',          'kfurlong',
-     &'sarchuleta',         'mualenauela',      'jwilburn',
-     &'fmena',              'svaldez',          'perez'/
-
+c
+      data h /'ack ack      ',    'overglory    ',
+     &        'timetolight  ',    'golden wallet',
+     &        'ravishing ruby',   'red running good',
+     &        'acrocyanosis',     'nadine malcolm',
+     &        'whoopee      ',    'shamaleen    ',
+     &        'miss alert   ',    'command prince',
+     &        'ironside     ',    'wild surf    ',
+     &        'cannonero ii ',    'damage control',
+     &        'shiex kamiakin',   'audacity     ',
+     &        'court clown  ',    'sweet anastacia'/
+      data jo/'ksinner      ',    'gbaze        ',
+     &        'jleonard     ',    'shoemaker    ',
+     &        'jtgonzalez   ',    'sgoldsmith   ',
+     &        'mlewis       ',    'ryaka        ',
+     &        'wdelia       ',    'aochoa       ',
+     &        'glawless     ',    'pineda       ',
+     &        'mrujano      ',    'kfurlong     ',
+     &        'sarchuleta   ',    'mualenauela  ',
+     &        'jwilburn     ',    'fmena        ',
+     &        'svaldez      ',    'perez        '/
+c
       do 10 i = 1, 5
-    1 j(i) = 1 + int(rand(0) * 20)
-      l(i) = 1 + int(rand(0) * 20)
+    1 j(i) = 1 + int(rndm(-1) * 20)
+      l(i) = 1 + int(rndm(-1) * 20)
       if (i .eq. 1) goto 2
-
+c
       do 20 i2 = 1, i - 1
       if (j(i) .eq. j(i2) .or. l(i) .eq. l(i2)) goto 1
    20 continue
-
-    2 horse(i) = h(j(i))
-      jock(i) = jo(l(i))
+c
+    2 horse(i*3-2) = h(j(i)*3-2)
+      horse(i*3-1) = h(j(i)*3-1)
+      horse(i*3) = h(j(i)*3)
+      jock(i*3-2) = jo(l(i)*3-2)
+      jock(i*3-1) = jo(l(i)*3-1)
+      jock(i*3) = jo(l(i)*3)
    10 continue
       end
 c     ******************************************************************
       subroutine race()
 c
-c     this subroutine runs the race internally and prints the results.
+c     This subroutine runs the race internally and prints the results.
 c
       character bell
-      parameter (bell=char(7))
+      parameter (bell=7)
       integer ihand(5), iodd(5)
       integer ihorse(5), imt(5), iplay, ibank(5), iwin
-
+c
       common /numodd/ ihand, iodd
       common /bet/    ihorse, imt, iplay, ibank, iwin
-
+c
       integer   i, i1, iwin1, n
       character bells(10)
       data bells /10 * bell/
-
-      print 100
-  100 format (' at the sound of the bell they''re off.',$)
+c
+      write (54, 100)
+  100 format (' at the sound of the bell they'1h''re off.')
       call sleep(1)
-      print 200, bells
+      write (54, 200) bells
   200 format (10(a1))
-
+c
     1 do 10 i = 1, 5
-      ihand(i) = ihand(i) + int(rand(0) * 5)
+      ihand(i) = ihand(i) + int(rndm(-1) * 5)
    10 continue
-
+c
       do 20 i1 = 1, 5
       if (ihand(i1) .ge. 60) goto 2
    20 continue
-
+c
       goto 1
     2 iwin1 = ihand(1)
-
+c
       do 30 i = 1, 5
       iwin1 = max(iwin1, ihand(i))
    30 continue
-
+c
       do 40 i = 1, 5
       if (iwin1 .eq. ihand(i)) iwin1 = i
    40 continue
-
-      print 300
+c
+      write (54, 300)
   300 format (49x,' finish line^')
-
+c
       iwin = iwin1
-      print *, 'here are the results:'
-
+      write (54, 1070)
+ 1070 format ('here are the results:')
+c
       do 50 i = 1, 5
-      print 400, i
-  400 format (x,'(',i1,')',$)
-
+      write (54, 400) i
+  400 format (x,'(',i1,')')
+c
       do 60 n = 1, ihand(i) - 1
-      print 500
-  500 format ('-',$)
+      write (54, 500)
+  500 format ('-')
    60 continue
-
-      print 600
+c
+      write (54, 600)
   600 format ('*')
    50 continue
+      end
+*ftn
+*     ******************************************************************
+      integer function time(x)
+c
+c     Return the current time as a timestamp in seconds,
+c     starting from 00:00:00.
+c     BESM-6 specific.
+c
+      integer h1, h2, m1, m2, s1, s2
+      k = jextra(0, 50в, 67в)
+      h1 = k .shift. 24 .and. 3в .or. 0
+      h2 = k .shift. 20 .and. 17в .or. 0
+      m1 = k .shift. 16 .and. 17в .or. 0
+      m2 = k .shift. 12 .and. 17в .or. 0
+      s1 = k .shift. 8 .and. 17в .or. 0
+      s2 = k .shift. 4 .and. 17в .or. 0
+      time = s2 + 10*s1 + 60 * (m2 + 10*m1 + 60 * (h2 + 10*h1))
+      end
+*     ******************************************************************
+      subroutine sleep(n)
+c
+c     Delays program for given amount of seconds.
+c     BESM-6 specific.
+c
+c      k = jextra(0, 50в, 67в)
       end
 *library:1,23
 *execute

@@ -146,11 +146,11 @@ c
 c
       i = int(rndm(-1) * 4 + 1)
       write (54, 100) s(i)
-c     t1 = time()
+      t1 = time(0)
       read (54, 200) a
-c     t2 = time()
-c     shoot = (abs(t2 - t1) * 2) - ilevl - 1
-      shoot = (4 * 2) - ilevl - 1
+      t2 = time(0)
+      if (t2 .lt. t1) t2 = t2 + 24*60*60
+      shoot = (abs(t2 - t1) * 2) - ilevl - 1
       if (a .eq. kstop) stop
       if (a .ne. s(i)) shoot = 9
 c
@@ -961,6 +961,24 @@ c
      &             'november 8 1847', 'november 22 1847',
      &             'december 6 1847', 'december 20 1847'/
       end
-*library:1
+*ftn
+*     ******************************************************************
+      integer function time(x)
+c
+c     Return the current time as a timestamp in seconds,
+c     starting from 00:00:00.
+c     BESM-6 specific.
+c
+      integer h1, h2, m1, m2, s1, s2
+      k = jextra(0, 50в, 67в)
+      h1 = k .shift. 24 .and. 3в .or. 0
+      h2 = k .shift. 20 .and. 17в .or. 0
+      m1 = k .shift. 16 .and. 17в .or. 0
+      m2 = k .shift. 12 .and. 17в .or. 0
+      s1 = k .shift. 8 .and. 17в .or. 0
+      s2 = k .shift. 4 .and. 17в .or. 0
+      time = s2 + 10*s1 + 60 * (m2 + 10*m1 + 60 * (h2 + 10*h1))
+      end
+*library:1,23
 *execute
 *end file

@@ -90,7 +90,9 @@ int main(int argc, char *argv[])
     }
 
     // Instantiate the session.
+    // Enable wall clock by default.
     Session session;
+    session.enable_entropy();
 
     // Parse command line options.
     for (;;) {

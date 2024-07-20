@@ -318,6 +318,29 @@ union E50_Format_Info {
         unsigned src_reg : 4;     // Register of input address
     } field;
 };
+
+//
+// e50 067 - Get date and time
+//
+union E50_Date_Time {
+    Word word;
+
+    struct {
+        unsigned decisec : 4;  // bits 4-1
+        unsigned sec_lo : 4;   // bits 8-5
+        unsigned sec_hi : 4;   // bits 12-9
+        unsigned min_lo : 4;   // bits 16-13
+        unsigned min_hi : 4;   // bits 20-17
+        unsigned hour_lo : 4;  // bits 24-21
+        unsigned hour_hi : 2;  // bits 26-25
+        unsigned year_lo : 4;  // bits 30-27
+        unsigned year_hi : 4;  // bits 34-31
+        unsigned month_lo : 4; // bits 38-35
+        unsigned month_hi : 4; // bits 42-39
+        unsigned day_lo : 4;   // bits 46-43
+        unsigned day_hi : 2;   // bits 48-47
+    } field;
+};
 #pragma pack(pop)
 
 #endif // DUBNA_EXTRACODE_H

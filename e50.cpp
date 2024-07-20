@@ -435,22 +435,40 @@ void Processor::e50()
         break;
     case 067: {
         // DATE*, OS Dubna specific.
-        // Always return the same date/time, for easy testing.
-        static const Word DAY      = 0x04;
-        static const Word MONTH    = 0x07; // July
-        static const Word YEAR     = 0x24;
-        static const unsigned HOUR = 0x23;
-        static const unsigned MIN  = 0x45;
-        static const unsigned SEC  = 0x56;
-
-        // Date: DD MON YY
-        //        |  |   |
-        //       42  34  26 - shift
-        // Time: 00.00.00
-        //        |  |  |
-        //       20  16 4 - shift
-        core.ACC =
-            (DAY << 42) | (MONTH << 34) | (YEAR << 26) | (HOUR << 20) | (MIN << 12) | (SEC << 4);
+        E50_Date_Time result{};
+        if (machine.is_entropy_enabled()) {
+            auto const now = std::time(nullptr);
+            auto const &tm = *localtime(&now);
+            result.field.day_hi = tm.tm_mday / 10;
+            result.field.day_lo = tm.tm_mday % 10;
+            result.field.month_hi = (tm.tm_mon + 1) / 10;
+            result.field.month_lo = (tm.tm_mon + 1) % 10;
+            result.field.year_hi = tm.tm_year / 10 % 10;
+            result.field.year_lo = tm.tm_year % 10;
+            result.field.hour_hi = tm.tm_hour / 10;
+            result.field.hour_lo = tm.tm_hour % 10;
+            result.field.min_hi = tm.tm_min / 10;
+            result.field.min_lo = tm.tm_min % 10;
+            result.field.sec_hi = tm.tm_sec / 10;
+            result.field.sec_lo = tm.tm_sec % 10;
+            result.field.decisec = 0;
+        } else {
+            // Return permanent date/time, for easy testing.
+            result.field.day_hi = 0;
+            result.field.day_lo = 4; // 4th
+            result.field.month_hi = 0;
+            result.field.month_lo = 7; // July
+            result.field.year_hi = 2;
+            result.field.year_lo = 4; // 2024
+            result.field.hour_hi = 2;
+            result.field.hour_lo = 3; // 23:45:56
+            result.field.min_hi = 4;
+            result.field.min_lo = 5;
+            result.field.sec_hi = 5;
+            result.field.sec_lo = 6;
+            result.field.decisec = 0;
+        }
+        core.ACC = result.word;
         break;
     }
     case 071:
@@ -496,11 +514,9 @@ void Processor::e50()
         core.ACC = 0'0010'0000;
         break;
     case 070210: {
-        // Get wall clock time in seconds as real value.
+        // Get CPU+IO time in seconds as real value.
         // In Dubna sources: ,fun,70100b+110b
-        auto now = std::chrono::system_clock::now();
-        const std::chrono::duration<double> seconds = now.time_since_epoch();
-        core.ACC = ieee_to_besm6(seconds.count());
+        core.ACC = 0;
         break;
     }
     case 070214:

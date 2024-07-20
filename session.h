@@ -68,6 +68,9 @@ public:
     // Keep temporary files.
     void preserve_temps(bool on = true);
 
+    // Use wall clock when entropy is enabled.
+    void enable_entropy(bool on = true);
+
     // Get the number of simulated instructions.
     uint64_t get_instr_count();
 

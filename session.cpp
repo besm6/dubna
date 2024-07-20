@@ -170,6 +170,11 @@ public:
     void preserve_temps(bool on) { machine.preserve_temps(on); }
 
     //
+    // Enable wall clock and other sources of inpredictability.
+    //
+    void enable_entropy(bool on) { machine.enable_entropy(on); }
+
+    //
     // Enable trace log to stdout.
     //
     void enable_trace(const char *mode)
@@ -417,6 +422,14 @@ uint64_t Session::get_default_limit()
 void Session::preserve_temps(bool on)
 {
     internal->preserve_temps(on);
+}
+
+//
+// Enable wall clock and other sources of inpredictability.
+//
+void Session::enable_entropy(bool on)
+{
+    internal->enable_entropy(on);
 }
 
 //

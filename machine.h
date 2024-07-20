@@ -71,6 +71,9 @@ private:
     // List of all requested file names, for e57.
     std::vector<std::string> file_paths;
 
+    // Enable wall clock and other sources of inpredictability.
+    bool entropy_flag{};
+
     // Trace output.
     static std::ofstream trace_stream;
 
@@ -147,6 +150,10 @@ public:
 
     // Keep temporary files.
     void preserve_temps(bool on) { keep_temporary_files = on; }
+
+    // Use wall clock when entropy is enabled.
+    bool is_entropy_enabled() { return entropy_flag; }
+    void enable_entropy(bool on = true) { entropy_flag = on; }
 
     // Enable trace output to the given file,
     // or to std::cout when filename not present.

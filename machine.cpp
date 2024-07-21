@@ -145,6 +145,29 @@ again:
 }
 
 //
+// Save output files.
+//
+void Machine::finish()
+{
+    // Save plotter data.
+    plotter.finish(keep_temporary_files);
+
+    // Save puncher data.
+    puncher.finish();
+
+    //TODO: for each file in write mode:
+    //TODO:     when file.bin is in cosy format,
+    //TODO:     convert it to file.txt and set flag remove_bin
+
+    // Remove temporary files.
+    for (auto &disk : disks) {
+        if (disk) {
+            disk->finish();
+        }
+    }
+}
+
+//
 // Fetch instruction word.
 //
 Word Machine::mem_fetch(unsigned addr)
@@ -457,12 +480,7 @@ unsigned Machine::file_mount(unsigned disk_unit, unsigned file_index, bool write
     //  * convert file.txt -> file.bin
     //  * in read-only mode: set flag to remove file.bin when finished
     //
-    //TODO: bool bin_created = convert_txt_to_cosy(path);
-
-    //TODO: create method Machine::finish() -
-    //TODO: for each file in write mode: when file.bin is in cosy format,
-    //TODO:                              convert it to file.txt and set flag remove_bin
-    //TODO: for each file with flag remove_bin: remove file.bin
+    bool bin_created = file_txt_to_cosy(path);
 
     if (write_mode) {
         // Create file and close it.
@@ -472,12 +490,11 @@ unsigned Machine::file_mount(unsigned disk_unit, unsigned file_index, bool write
         }
     }
     disks[disk_unit - 030] = std::make_unique<Disk>(0, memory, path, write_mode);
-#if 0
     if (bin_created && !write_mode) {
         // Remove binary image of the disk when finished.
         disks[disk_unit - 030]->remove_when_finished();
     }
-#endif
+
     if (trace_enabled()) {
         std::cout << "Mount file '" << path << "' as disk " << to_octal(disk_unit) << std::endl;
     }

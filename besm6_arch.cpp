@@ -535,6 +535,14 @@ bool file_txt_to_cosy(const std::string &path_bin)
     }
     output << "*READ OLD\312\n\n";
     output << "*END FILE \311\n";
+
+    // Fill the rest of the zone with zeroes.
+    uint64_t size = output.tellp();
+    uint64_t aligned = (size + PAGE_NBYTES - 1) / PAGE_NBYTES * PAGE_NBYTES;
+    if (size != aligned) {
+        output.seekp(aligned - 1);
+        output << (char)0;
+    }
     return true;
 }
 

@@ -37,6 +37,7 @@ static const struct option long_options[] = {
     { "version",        no_argument,        nullptr,    'V' },
     { "verbose",        no_argument,        nullptr,    'v' },
     { "keep",           no_argument,        nullptr,    'k' },
+    { "random",         no_argument,        nullptr,    'r' },
     { "limit",          required_argument,  nullptr,    'l' },
     { "trace",          required_argument,  nullptr,    'T' },
     { "debug",          required_argument,  nullptr,    'd' },
@@ -60,6 +61,7 @@ static void print_usage(std::ostream &out, const char *prog_name)
     out << "    --help-commands         Show available commands" << std::endl;
     out << "    -V, --version           Print the version number and exit" << std::endl;
     out << "    -v, --verbose           Verbose mode" << std::endl;
+    out << "    -r, --random            Disable randomization" << std::endl;
     out << "    -l NUM, --limit=NUM     Stop after so many instructions (default "
         << Session::get_default_limit() << ")" << std::endl;
     out << "    --keep                  Keep scratch files and raw plotter output" << std::endl;
@@ -96,7 +98,7 @@ int main(int argc, char *argv[])
 
     // Parse command line options.
     for (;;) {
-        switch (getopt_long(argc, argv, "-hVvl:tT:d:", long_options, nullptr)) {
+        switch (getopt_long(argc, argv, "-hVvl:tT:d:r", long_options, nullptr)) {
         case EOF:
             break;
 
@@ -162,6 +164,11 @@ int main(int argc, char *argv[])
         case 'k':
             // Keep temporary files.
             session.preserve_temps();
+            continue;
+
+        case 'r':
+            // Disable randomization.
+            session.enable_entropy(false);
             continue;
 
         default:

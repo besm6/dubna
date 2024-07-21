@@ -881,3 +881,33 @@ TEST_F(dubna_session, file_write_read)
     expect = file_contents(TEST_DIR "/expect_file_read.txt");
     check_output(output2, expect);
 }
+
+//
+// Read text file using *FILE command.
+//
+TEST_F(dubna_session, file_read_txt)
+{
+    // Create text file.
+    const std::string contents = R"(the quick brown fox jumps over the lazy dog
+съешь же ещё этих мягких французских булок, да выпей чаю
+)";
+    create_file("qbfox.txt", contents);
+
+    // Remove resulting file from a previous run, just in case.
+    std::filesystem::remove("qbfox.bin");
+
+    auto output = run_job_and_capture_output(R"(*name read file
+*disc:1/local
+*file:qbfox,41
+*edit
+*R:41
+*LL
+*EE
+*end file
+)");
+    auto expect = file_contents(TEST_DIR "/expect_read_qbfox.txt");
+    check_output(output, expect);
+
+    // Binary file should be deleted.
+    EXPECT_FALSE(std::filesystem::exists("qbfox.bin"));
+}

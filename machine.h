@@ -130,7 +130,9 @@ public:
     // Run simulation.
     void run();
 
-    void plotter_finish() { plotter.finish(keep_temporary_files); }
+    // Save output files.
+    void finish();
+
     void plotter_change_page() { plotter.change_page(keep_temporary_files); }
 
     // Enable a progress message to stderr.

@@ -37,6 +37,7 @@ private:
     // File path.
     std::string path;
     bool write_permit;
+    bool remove_on_close{};
     int file_descriptor;
     unsigned num_zones;
 
@@ -55,8 +56,14 @@ public:
     void disk_to_memory(unsigned zone, unsigned sector, unsigned addr, unsigned nwords);
     void memory_to_disk(unsigned zone, unsigned sector, unsigned addr, unsigned nwords);
 
+    // Remove temporary file.
+    void finish();
+
     Word get_id() { return volume_id; }
     const std::string &get_path() { return path; }
+
+    // Remove this file.bin image when simulation is done.
+    void remove_when_finished() { remove_on_close = true; }
 
 private:
     void simh_to_memory(unsigned zone, unsigned sector, unsigned addr, unsigned nwords);

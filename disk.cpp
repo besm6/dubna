@@ -56,7 +56,7 @@ Disk::Disk(Word id, Memory &m, const std::string &p, bool wp)
             num_zones = 02000;
         } else {
             // Read only access.
-            num_zones = stat.st_size / 6 / PAGE_NWORDS;
+            num_zones = stat.st_size / PAGE_NBYTES;
         }
     }
 }
@@ -91,6 +91,18 @@ Disk::Disk(const Disk &other)
 Disk::~Disk()
 {
     close(file_descriptor);
+}
+
+//
+// Remove temporary file.
+//
+void Disk::finish()
+{
+    if (remove_on_close) {
+        // Binary image was temporary and is no longer needed.
+        std::filesystem::remove(path);
+        remove_on_close = false;
+    }
 }
 
 //
@@ -178,7 +190,7 @@ void Disk::file_to_memory(unsigned zone, unsigned sector, unsigned addr, unsigne
     if (zone >= num_zones)
         throw std::runtime_error("Zone number exceeds file size");
 
-    unsigned offset_bytes = (4 * zone + sector) * 6 * PAGE_NWORDS / 4;
+    unsigned offset_bytes = (4 * zone + sector) * PAGE_NBYTES / 4;
     if (lseek(file_descriptor, offset_bytes, SEEK_SET) < 0)
         throw std::runtime_error("File seek error");
 
@@ -210,7 +222,7 @@ void Disk::memory_to_file(unsigned zone, unsigned sector, unsigned addr, unsigne
     if (zone >= num_zones)
         throw std::runtime_error("Zone number exceeds file size");
 
-    unsigned offset_bytes = (4 * zone + sector) * 6 * PAGE_NWORDS / 4;
+    unsigned offset_bytes = (4 * zone + sector) * PAGE_NBYTES / 4;
     if (lseek(file_descriptor, offset_bytes, SEEK_SET) < 0)
         throw std::runtime_error("File seek error");
 

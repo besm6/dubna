@@ -86,8 +86,6 @@ the quick brown fox jumps over the lazy dog
     // Check resulting file.
     auto const result = file_contents(path_bin);
     auto expect = file_contents(TEST_DIR "/expect_cosy.bin");
-    // Remove trailing zeroes.
-    expect.erase(expect.find_last_not_of('\0') + 1);
     EXPECT_EQ(result, expect);
 }
 

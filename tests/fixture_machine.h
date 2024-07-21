@@ -72,7 +72,7 @@ protected:
         machine->load(job_filename);
         machine->boot_ms_dubna();
         ASSERT_NO_THROW(machine->run());
-        machine->plotter_finish();
+        machine->finish();
 
         // Get output.
         std::cout.rdbuf(save_cout);
@@ -122,7 +122,7 @@ protected:
         machine->load(job_filename);
         machine->boot_ms_dubna();
         ASSERT_NO_THROW(machine->run());
-        machine->plotter_finish();
+        machine->finish();
 
         // Get output.
         std::cout.rdbuf(save_cout);

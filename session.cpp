@@ -133,10 +133,7 @@ public:
                     print_footer(out, sec, instr_per_sec);
                 }
             }
-
-            // Save plotter data.
-            machine.plotter_finish();
-            machine.puncher.finish();
+            machine.finish();
 
         } catch (const std::exception &ex) {
             // Print exception message.

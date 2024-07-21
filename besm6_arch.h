@@ -32,6 +32,7 @@
 // Page, or zone, has 1024 words.
 //
 static const unsigned PAGE_NWORDS = 1024;
+static const unsigned PAGE_NBYTES = PAGE_NWORDS * 6;
 
 //
 // Sector, or paragraph, has 256 words.

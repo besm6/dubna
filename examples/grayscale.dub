@@ -1,9 +1,10 @@
 *name GRAYSCALE
-*forex  
+*no lo
+*ftn
       program graysc
-      dimension a(124,124)
+      dimension a(62,62)
       common/outcom/lunout,i80132
-      data lunout/51/,i80132/1/
+      data lunout/51/,i80132/0/
 c     real tt(4)
 c     do 2 i = 1,4
 c  2  tt(i) = i
@@ -13,7 +14,7 @@ c     stop
       do 1 j=1,62
    1  a(i,j)=sqrt((i-31.)**2+(j-31.)**2)/3.
 c     print '(1x124f1.0)',a
-      call array(a,124)
+      call array(a,62)
       end
       subroutine array(b,nxn)
       common/outcom/lunout,i80132
@@ -64,7 +65,8 @@ c     print '(1x124f1.0)',a
       write (lunout,mesgp)
       if (i80132.ne.0) write (lunout,72)
       return
-  18  if (nxn+2.gt.j80132) print '('' *** too wide *** '')'
+  18  if (nxn+2.gt.j80132) print 118
+ 118  format ('  *** too wide *** ')
       frac=1./(xmax-xmin)
       if (nxn.gt.100) go to 22
       nn=(60-n1)/4.-1
@@ -112,11 +114,11 @@ c     print '(1x124f1.0)',a
       ln(i,j)=gray(l,j)
   40  continue
       nj=nln(lmax)-1
-      if (nj.le.0) go to 44
+      write (lunout,78) (ln(i,nj+1),i=1,j80132)
+      if (nj.le.0) go to 46
       do 42 j=1,nj
       write (lunout,76) (ln(i,j),i=1,j80132)
   42  continue
-  44  write (lunout,78) (ln(i,nj+1),i=1,j80132)
   46  continue
       do 48 i=ii1,ii2
       ln(i,1)=istar
@@ -140,9 +142,9 @@ c     print '(1x124f1.0)',a
       ln(isub1,k)=gray(isub2,k)
   52  continue
       write (lunout,68)
-      do 54 i=1,6
-  54  write (lunout,76) (ln(j,i),j=1,j80132)
-      write (lunout,78) (ln(j,7),j=1,j80132)
+      write (lunout,78) (ln(j,1),j=1,j80132)
+      do 54 i=2,7
+  54  write (lunout,78) (ln(j,i),j=1,j80132)
       write (lunout,80) (rleg(j),j=1,mleg)
   56  continue
       if (i80132.ne.0) goto 64
@@ -155,9 +157,9 @@ c     print '(1x124f1.0)',a
       ln(1,k)=gray(21,k)
   60  continue
       write (lunout,68)
-      do 62 i=1,6
+      write (lunout,78) (ln(l,1),l=1,j80132)
+      do 62 i=2,7
   62  write (lunout,76) (ln(l,i),l=1,j80132)
-      write (lunout,78) (ln(l,7),l=1,j80132)
       write (lunout,80) rleg(1)
   64  continue
       if (i80132.ne.0) write (lunout,72)
@@ -166,9 +168,9 @@ c     print '(1x124f1.0)',a
   68  format(/)
   70  format(1x,7hxmin = ,e10.2,5x,7hxmax = ,e10.2,5x,7hxsum = ,e12.4)
   72  format(6h1*OVN*)
-  74  format(1x,127a1)
+  74  format(2x, 127a1)
   76  format(1h+,127a1)
-  78  format(1h ,127a1)
+  78  format(2x ,127a1)
   80  format(11(1x,e10.4))
       end
 *execute

@@ -27,6 +27,7 @@
 
 #include <cstring>
 #include <iostream>
+#include <filesystem>
 
 #include "machine.h"
 

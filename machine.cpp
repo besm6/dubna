@@ -373,23 +373,23 @@ void Machine::disk_mount(unsigned disk_unit, Word tape_id, bool write_permit)
 unsigned Machine::file_search(Word disc_id, Word file_name, bool write_mode)
 {
     // Get directory path, based on disc name.
-    std::string path;
+    std::string dir;
     switch (disc_id & ~0xfff) {
     case DISC_LOCAL:
-        path = ".";
+        dir = ".";
         break;
     case DISC_HOME:
-        path = std::getenv("HOME");
-        if (path.size() == 0)
+        dir = std::getenv("HOME");
+        if (dir.size() == 0)
             return 0;
         break;
     case DISC_TMP:
-        path = "/tmp";
+        dir = "/tmp";
         break;
     default:
         return 0;
     }
-    path += "/" + word_iso_filename(file_name) + ".bin";
+    const std::string path = dir + "/" + word_iso_filename(file_name) + ".bin";
 
     // Let's figure out whether file exists.
     bool file_exists{};
@@ -414,8 +414,13 @@ unsigned Machine::file_search(Word disc_id, Word file_name, bool write_mode)
     } else {
         // Read mode: the file must exist.
         if (!file_exists) {
-            // TODO: check for *.txt instead.
-            return 0;
+            // Check for *.txt instead.
+            const std::string txt_path = dir + "/" + word_iso_filename(file_name) + ".txt";
+            std::ifstream file(txt_path);
+            file_exists = file.good();
+            if (!file_exists) {
+                return 0;
+            }
         }
     }
 
@@ -444,12 +449,15 @@ unsigned Machine::file_mount(unsigned disk_unit, unsigned file_index, bool write
         return E57_DISK_BUSY;
     }
 
+    // Get file path.
     // Note file index has offset +1.
     auto const &path = file_paths[file_index - 1];
 
-    //TODO: if file.bin is absent, but file.txt exists -
-    //TODO: (1) convert file.txt -> file.bin
-    //TODO: (2) if read-only mode: set flag remove_bin
+    // When file.bin is absent, but file.txt exists -
+    //  * convert file.txt -> file.bin
+    //  * in read-only mode: set flag to remove file.bin when finished
+    //
+    //TODO: bool bin_created = convert_txt_to_cosy(path);
 
     //TODO: create method Machine::finish() -
     //TODO: for each file in write mode: when file.bin is in cosy format,
@@ -464,7 +472,12 @@ unsigned Machine::file_mount(unsigned disk_unit, unsigned file_index, bool write
         }
     }
     disks[disk_unit - 030] = std::make_unique<Disk>(0, memory, path, write_mode);
-
+#if 0
+    if (bin_created && !write_mode) {
+        // Remove binary image of the disk when finished.
+        disks[disk_unit - 030]->remove_when_finished();
+    }
+#endif
     if (trace_enabled()) {
         std::cout << "Mount file '" << path << "' as disk " << to_octal(disk_unit) << std::endl;
     }

@@ -22,11 +22,14 @@
 // SOFTWARE.
 //
 #include "besm6_arch.h"
+#include "encoding.h"
 
 #include <cmath>
 #include <iomanip>
 #include <iostream>
 #include <sstream>
+#include <filesystem>
+#include <fstream>
 
 //
 // 48-й разряд -> 1, 47-й -> 2 и т.п.
@@ -493,4 +496,54 @@ Word besm6_floor(Word input)
         throw std::runtime_error("Function floor() failed");
     }
     return ieee_to_besm6(result);
+}
+
+//
+// Create file.bin in COSY format from file.txt.
+// Return true when succeeded.
+//
+bool file_txt_to_cosy(const std::string &path_bin)
+{
+    if (std::filesystem::exists(path_bin)) {
+        // Binary file already exists - refuse to convert.
+        return false;
+    }
+
+    // Replace '.bin'extension with '.txt'.
+    std::filesystem::path path_txt{ path_bin };
+    path_txt.replace_extension(".txt");
+
+    // Open text file.
+    std::ifstream input(path_txt.string());
+    if (!input.good()) {
+        // No text file.
+        return false;
+    }
+
+    // Open binary file for write.
+    std::ofstream output(path_bin, std::ios::binary);
+    if (!output.good()) {
+        // Cannot write.
+        return false;
+    }
+
+    std::string line;
+    while (std::getline(input, line)) {
+        line = utf8_to_koi7(line, 80);
+        line = encode_cosy(line);
+        output << line;
+    }
+    output << "*READ OLD\312\n\n";
+    output << "*END FILE \311\n";
+    return true;
+}
+
+//
+// Convert file.bin in COSY format to file.txt.
+// Return true when succeeded.
+//
+bool file_cosy_to_txt(const std::string &path_bin)
+{
+    //TODO
+    return false;
 }

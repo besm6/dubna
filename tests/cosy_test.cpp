@@ -68,3 +68,56 @@ TEST_F(dubna_machine, cosy_4lines)
     EXPECT_EQ(machine->drum_read_word(drum1, 2), 0'2024'1321'0242'0012);
     EXPECT_EQ(machine->drum_read_word(drum1, 3), 0'2024'1103'6400'5012);
 }
+
+TEST(unit, file_txt_to_cosy)
+{
+    const std::string path_txt = get_test_name() + ".txt";
+    const std::string path_bin = get_test_name() + ".bin";
+    const std::string contents = R"(
+the quick brown fox jumps over the lazy dog
+съешь же ещё этих мягких французских булок, да выпей чаю
+)";
+    create_file(path_txt, contents);
+    std::filesystem::remove(path_bin);
+    EXPECT_TRUE(file_txt_to_cosy(path_bin));
+
+    // Check resulting file.
+    auto const result = file_contents(path_bin);
+    auto expect = file_contents(TEST_DIR "/expect_cosy.bin");
+    // Remove trailing zeroes.
+    expect.erase(expect.find_last_not_of('\0') + 1);
+    EXPECT_EQ(result, expect);
+}
+
+TEST(unit, DISABLED_good_cosy_to_txt)
+{
+    const std::string path_txt = get_test_name() + ".txt";
+    const std::string path_bin = get_test_name() + ".bin";
+    const std::string good_cosy = "ABRA\201CADABRA\307\n   \n"
+                                  "KREKS\201FEKS\201PEKS\304\n\n"
+                                  "*READ OLD\312\n\n"
+                                  "*END FILE \311\n";
+    create_file(path_bin, good_cosy);
+    std::filesystem::remove(path_txt);
+    EXPECT_TRUE(file_cosy_to_txt(path_bin));
+
+    // Check resulting file.
+    auto const result = file_contents(path_txt);
+    const std::string expect = "ABRA CADABRA\n"
+                               "KREKS FEKS PEKS\n";
+    EXPECT_EQ(result, expect);
+}
+
+TEST(unit, DISABLED_bad_cosy_to_txt)
+{
+    const std::string path_txt = get_test_name() + ".txt";
+    const std::string path_bin = get_test_name() + ".bin";
+    const std::string bad_cosy = "ABRA\201CADABRA\307\n   \n"
+                                 "KREKS\201FEKS\201PEKS\304\n\n"
+                                 "*READ\201OLD\312\n\n" // note packed space - wrong
+                                 "*END FILE \311\n";
+    create_file(path_bin, bad_cosy);
+    std::filesystem::remove(path_txt);
+    EXPECT_FALSE(file_cosy_to_txt(path_bin));
+    EXPECT_FALSE(std::filesystem::exists(path_txt));
+}

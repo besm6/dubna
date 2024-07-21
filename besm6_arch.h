@@ -140,6 +140,18 @@ std::string to_octal(unsigned val);
 std::string encode_cosy(std::string line);
 
 //
+// Create file.bin in COSY format from file.txt.
+// Return true when succeeded.
+//
+bool file_txt_to_cosy(const std::string &path_bin);
+
+//
+// Convert file.bin in COSY format to file.txt.
+// Return true when succeeded.
+//
+bool file_cosy_to_txt(const std::string &path_bin);
+
+//
 // Elementary functions.
 //
 Word besm6_sqrt(Word input);

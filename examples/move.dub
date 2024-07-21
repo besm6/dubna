@@ -1,0 +1,5 @@
+*name move
+*tape: 9/monsys, 32
+*      Seek tape to zone 123
+*move: 320123
+*end file

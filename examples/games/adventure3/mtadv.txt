@@ -1,0 +1,309 @@
+$at the spectacular mountain view
+You are in mountains.  To see all the snow-capped monsters hereabouts,
+you would need to look up and turn in a full circle.  Near here is a
+deserted monastery.  It is said that a sect of mountain worshippers once
+lived there.  It is reputed that they have hidden various treasures in
+these parts.  It is also said that somewhere in these mountains there
+lives a wise seer who knows the secrets of life.  Perhaps you will be
+able to locate him.  Should you succeed in finding him and learning his
+ways, you will receive many rewards.  Watch out for treacherous passages.
+Do not necessarily believe all you see and hear.
+$walking along a steep mountain trail
+You are walking along a steep mountain trail.  The footing is tricky
+here.  Several snow-capped peaks are now visible in front of you.
+$walking along a narrow mountain trail
+You are walking along a narrow mountain trail.  The footing is tricky
+here.  Several snow-capped peaks are now visible in front of you.
+$on a steep mountain trail
+You are walking along a steep mountain trail.  The footing is tricky
+here.  Many snow-capped peaks are now visible in front of you.
+$on a narrow mountain trail
+You are walking along a narrow mountain trail.  The footing is tricky
+here.  Many snow-capped peaks are now visible in front of you.
+$walking along a steep trail
+You are walking along a steep mountain trail.  The footing is very
+tricky here.  You see snow-capped peaks in front of you.
+$walking along a narrow trail
+You are walking along a narrow mountain trail.  The footing is very
+tricky here.  You see snow-capped peaks in front of you.  I seem to
+remember having been here before.
+$scrambling through a rock-strewn col
+You are scrambling through a rock-strewn col.  Above and below you are
+ledges that look safer than where you are now.  Every now and then I
+hear faint echoes of churlish voices.  It is difficult to tell from
+which direction they come.
+$in a tricky, rock-strewn col
+You are trying very hard not to lose your footing.  This is a very
+tricky, rock-strewn col.  Above and below you are fairly secure looking
+ledges.  They are quite a distance in either direction, but I think
+you could make it to either one safely if you are careful.
+$in a col with ledges above and below
+You are scrambling through a rock-strewn col.  Above and below you are
+ledges that look safer than where you are now.  Every now and then I
+hear faint echoes of churlish voices.  It is difficult to tell which
+direction they come from.
+$in a rocky col
+You are in a rocky col.  It is difficult to see anything from here as
+you cling to the mountain.  The air is cold and the wind whistles as
+it blows across the bare rock-scape.
+$in a rubble filled hollow
+This is a rubble filled hollow.  Talus from the higher points in the
+surrounding terrain has accumulated here over the eons.  It is quite
+difficult to maintain your footing in places.
+$in a hollow filled with rubble
+"
+$at a grassy mound
+You have surmounted a grassy mound.  There is a pleasant meadow here
+filled with colorful wildflowers.  The fragrance is stimulating.  I
+think I see an ancient looking building in the distance.  It is
+partially hidden from view.
+$at an ancient monastery
+You have found the ancient monastery.  The building is partially
+collapsed and all the entrances have been blocked with undergrowth or
+boarded up with great hand-hewn planks of what looks like very hard
+wood.  The tatters of what must once have been a flag flutter in the
+light breeze from a high and pointed parapet.  There is almost total
+silence here apart from the sighing of the wind and the noise of birds
+and small animals.  Yet there seems to be a ghostly echo of gongs,
+cymbals, plaintive and monotonous chanting, and a rushing noise like
+fire consuming an enormous pile of dead branches and leaves.  It leaves
+an impression in the mind alone - the ears hear none of it.
+The building leans into the sides of the steep mountain path.  Leading
+to the now blocked front entrance is a set of broad wooden stairs.  Set
+into the bottom of this staircase is a windowless wooden gate.  It is
+hanging askew from its rotten hinges - I think you could squeeze by it
+if you wished to.
+$in a dank and musty cellar
+You are in a dank and musty cellar. It looks like it might have once
+been a storeroom for the monastery.  There are empty barrels standing along
+the back wall.  There are rows of dusty shelves, mostly empty save for an
+accumulation of cobwebs.  In the floor are two trapdoors or hatches made
+of the same rough-hewn planks seen outside.  They both shut tightly.
+$in an ancient catacomb
+This is an ancient catacomb directly under the monastery.  The light is
+extremely dim coming only from the cellar above down the steep stone
+staircase.  The floor is littered with bones.  Bits of what appears to
+be dried flesh still cling to them in many cases.
+$on a steep mountain slope
+You are on a steep mountain slope.  There is no vegetation here, you
+have passed beyond the treeline.  The bare granite peeks out here and
+there from beneath the fresh dusting of snow.  There are massive drifts
+to either side. Tread lightly, avalanches are easily caused here by
+sudden noises.
+$on a slope beyond the treeline
+You are on a steep mountain slope.  There is no vegetation here, as you
+have passed beyond the treeline.  You see bare granite here and
+there from beneath the fresh dusting of snow.  There are massive drifts
+on either side.  Tread lightly, avalanches are easily caused here by
+sudden noises.
+$on a slope surrounded by drifts
+You are on a steep mountain slope.  There is not any vegetation here.
+You are past the treeline.  Bare granite peeks from beneath the fresh
+snow.  There are also massive drifts to either side of the narrow trail.
+I would be extremely careful about loud noises - avalanches have been
+known to be caused by incautious travelers.
+$on a slope bereft of vegetation
+You are on a steep mountain slope.  There is not any vegetation here.
+You are past the treeline.  Bare granite peeks from beneath the fresh
+snow.  There are also massive drifts to either side of the narrow trail.
+I would be extremely careful about loud noises - avalanches have been
+known to be caused by incautious travelers.
+$on a slope with granite underfoot
+You are on a steep mountain slope.  There is not any vegetation here.
+You are past the treeline.  Bare granite peeks from beneath the fresh
+snow.  There are also massive drifts to either side of the narrow trail.
+I would be extremely careful about loud noises - avalanches have been
+known to be caused by incautious travelers.
+$in a deep ravine
+You are in a deep ravine.  All you can see is the tattered clouds
+above.  They are racing along beneath the blue sky, carried by the
+calamitous mountain gales.
+$in a deep crevass
+You are in a deep crevass.  There is a ridge above you - I think you
+might be able to scramble back up with some effort.
+$in a bitterly cold deep ravine
+You are in a deep ravine.  All you can see is the tattered clouds
+above.  They are racing along beneath the blue sky, carried by the
+calamitous mountain gales.  Although the sun appears now and then
+it is bitterly cold here.
+$on a steep pitch
+You are on a very steep pitch.  The bare rock beneath your feet is
+treacherous in the extreme.  Any false moves here and you will not live
+to tell your grandchildren about them.
+$on an extremely steep pitch
+"
+$on a very steep pitch
+"
+$on a steep pitch with bare rock
+"
+$on a pitch with bare rock
+"
+$on a mountain peak
+You have reached a magnificent mountain peak.  All around you lies the
+grandeur of the mountain range.  You can see several other peaks.  They
+look so near you could almost reach out and touch them, yet they must
+be several miles away, even as the crow flies.  The wind here howls in
+your ears, but does not diminish your pleasure in the vista.
+$on a splendid peak
+"
+$on a magnificent peak
+"
+$on a grand mountain peak
+"
+$on a peak
+"
+$atop a saddle like formation
+You are atop a saddle like formation.  In some directions there are
+dropoffs and in others the trail continues upward.
+$on a saddle
+"
+$atop a saddle
+"
+$in a mountain cave
+This is a mountain cave.  It continues on into the heart of the
+mountain.  The passageway is very narrow and filled with debris.
+There are pits in the floor of the cave.  Some contain the remnants
+of fires: charred wood and ashes.  Some of the wood is very strange
+looking - sort of whiteish and quite long and narrow.
+$deep in a cave
+You are in a cave in the very root of the mountain.  It is pitch
+black in here.  I wouldn't stay long - there are nameless things which
+see in the dark.
+$in a dimly lit mountain cave
+This is a mountain cave.  The light here is dim, but further along
+the passage there appears to be an opening from which it issues.
+There is a draft coming from the darker side of the passageway.  It
+whistles along and now and then seems to whisper.  You can almost
+make out faint words, but they make you shudder and want to turn
+away.
+$in a cave
+This is a mountain cave.  The light here is dim, but further along
+the passage there appears to be an opening from which it issues.
+You feel a slight draft on your face.
+$in a cave in pitch dark
+You are in a cave in the very root of a mountain.  It is intensely
+dark here - you cannot see a hand held inches from your face.  As you
+move, you brush against tendrils of a feathery substance.  It makes
+your flesh crawl.
+$in a cave with bones strewn about
+This is a mountain cave.  There are remnants of cooking fires here.
+There are old bones strewn on the floor.  There are strange looking
+runes or symbols of some sort carved into the walls.
+$in a shallow gully
+You are in a shallow gully.  It seems to deepen further ahead.
+$in a deepening gully
+You are in a deepening gully.  In one direction it seems shallower.
+I can't say for sure, but in the other direction there may be an
+opening into the side of the mountain.
+$on a barren hill
+You have surmounted a barren hill.  There is the barest hint of foliage
+here, but most has succumbed to the rigorous climate and the altitude.
+$at a sheltered place
+This is a sheltered place in the path.  It is a very deep cut in the
+side of the mountain, not quite a cave, but much more than a mere
+depression.
+$on a narrow ridge
+This is a narrow ridge.  The trail is only a foot or so wide here and
+negotiating it will be quite a challenge.  There are precipitous
+dropoffs in some directions and the chasm yawns beneath you.
+$on a very narrow ridge
+This is a narrow ridge.  The trail is only a foot or so wide here and
+negotiating it will be quite a challenge.  There are precipitous
+dropoffs in some directions and the chasm yawns beneath you.
+$at the grandest peak
+You have reached the grandest peak in the entire mountain range.  Here
+there is almost an entire acre of flat from which to view the
+surrounding peaks.  All of the other pinnacles are spread out beneath
+the one you have reached.
+On the far side of the small flat of the peak is a wizened old man.
+He appears to have been here quite some time.  Perhaps he can tell you
+some interesting tales.
+$chasm
+You have fallen off the mountain side.  The chasm that yawned beneath
+you has claimed you for its own.  The drop of several thousand feet may
+not have been enough to finish you off, but the sudden stop at the
+bottom certainly was.
+$nowhere
+$cellardown
+$at fountain of youth
+You have located the fountain of youth.  Never a wrinkle shall grace your
+countenance.  Your quest is culminated.  Congratulations.
+$trtalk
+There are several huge, ugly mountain trolls lolling nearby.
+Unfortunately, they have spotted you.  Quickly and rudely you are
+surrounded and bound with rough thongs of ragged and grisly leather.  No
+doubt the remains of the trolls last and (for them) meagre meal.  Now
+they have you!!
+With great gusto they truss you up to a gnarled and charred hardwood spit.
+This, of course, is accompanied by flaying you and using the strips of your
+flesh to make your bonds even more secure.  They then slowly roast you to
+a turn over their hastily built fire.  You make a fine meal for these
+famished, gluttonous villains.
+The last sounds heard by your erstwhile, but discretely hidden, guide are
+those of vast troll contentment.  Snores, great rude belches, slavering over
+the last remnants of roasted flesh on what were your bones, and other more
+unspeakable sounds.  I beat a hasty retreat from this gruesome location and
+bid you better luck in your next re-incarnation.
+$wmmblab
+The wise man of the mountain speaks:
+'I am exceedingly pleased at your obeisance and your gifts.  In return
+for your devotion, I offer you a word.  That word is: wadda.  Use it well,
+my son.'
+$wmmharp
+The wise man of the mountain lifts a deep hood covering his face.  He gazes
+at the items arrayed before him and speaks:
+'You give me great displeasure oh profligate servant.  Of silver and gold
+I will have none.  Treasures of the earth are but transitory baubles to be
+scorned and discarded.  Take them from my sight and bring me gifts of worth
+to the spirit.  I would sooner have one molar from the jaw of a troll than all
+these worldly goods.  If you seek my wisdom, you will need this charge.'
+$wmmhello
+The garbed figure comes toward you.  He speaks:
+'Welcome, my child.  You have achieved much simply to reach my mountain peak.
+If you bring to me the treasures that I seek, then you shall know the secret
+of everlasting youth!  Go now and fulfill your quest.'
+$wmmsp1
+The wise man speaks:
+'So you return, my child.  I have been exceedingly occupied by my efforts at
+omphaloskepsis.  You will excuse me if I do not linger.'
+$wmmsp2
+The wise man speaks:
+'A seer once told me that only those who persist succeed in finding the true
+secrets of existence.  Do not despair, your quest has just begun.  You have
+much to learn and much to gain.  I must now feed and tend my yak.'
+$wmmsp3
+The wise man speaks:
+'Have you read any good scrolls lately my child?'
+$wmmsp4
+The wise man speaks:
+'Contemplation is good for the soul, my child.  But music and prayer also heal
+many wounds.'
+$wmmsp5
+The wise man speaks:
+'All that is gold does not glitter, my child.  A little wine for the stomach's
+sake.  A stitch in time saves nine.  Don't take any wooden nickels.  A flush
+beats two pair any day, but then I don't have indoor plumbing up here.  Am I
+boring you?  Maybe I should go say my prayers.'
+$tgablure
+The trolls seem very excited.  I can't tell what they want more - you or
+those bones you are carrying.
+$tgabbones
+The trolls seem to have lost interest in you - at least for the moment.
+They are gathered around the bones you have dropped.
+Wait...  They are attacking the bones with great gusto.  There are crunching
+noises and sounds of breaking teeth.  I would take this opportunity to make
+tracks.
+$trhungry
+Several huge, ugly, mountain trolls are lolling nearby.  Unfortunately,
+they have spotted you.  They slaver and utter gutteral blasphemies.  They
+gaze longingly at the bones you are carrying.  They rise.  They seem to
+want to follow you.  I would find a good, out of the way place to ditch
+those bones if I were you!
+$trfollow
+You are being shadowed by several huge, hairy, rude, and hungry mountain
+trolls.  They slaver and mumble in their gutteral speech.  You can barely
+understand, but the general idea is that they are famished and want bones
+and flesh.  Perhaps it is yours that they will get!
+$helpspiel
+Help arrives in the form of a distant voice carried on the wind...
+'Sorry, this help line is out of order.'

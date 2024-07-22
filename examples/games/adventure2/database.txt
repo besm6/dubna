@@ -1,0 +1,140 @@
+$START
+You are standing by a hole in the ground.  It looks big enough to climb
+down.
+$GRANDROOM
+You are in a huge open room, with an immense expanse of ceiling.  A dark
+passage leads west and a narrow crawl leads downward.
+$VESTIBULE
+You are in the entrance to a cave of passageways.  There are halls leading
+off to the north, south, and east.  Above you is a tunnel leading to the
+surface.
+$NARROW1
+You are in a narrow passage that continues to the north.  It is extremely
+narrow to the south.  A very tight crawl also leads east.  A curious odor
+seeps through it.  I would think twice before trying to go that way.
+$LAKESHORE
+You are on the shore of a vast underground lake.  Narrow passages wind away to
+the east and south.  A small island is visible in the center of the lake to
+the north.
+$ISLAND
+You are on a small island in the center of a huge underground lake. Dark,
+frigid waters surround you on all sides.  You can barely make out the
+shoreline to the south.  A message is scratched in the dirt here.  It says:
+'The treasure may be found in the maze.'
+$BRINK
+You are on the brink of a steep incline.  The bottom of a pit is over fifty
+feet below you.  You could probably slide down safely, but I won't promise you
+that you could climb back up.  To the west is a rubble-filled tunnel.  A
+vampire bat just flew out of it shrieking.
+$ICEROOM
+You are in a room whose walls are formed from a deep blue crystalline ice.  To
+the north a narrow tunnel opens.  From the other end of this tunnel an ominous
+growling sound may be heard.  To the east a sparkling luminescence emanates
+from a broad opening.  To the west a passage leads back to the vestibule.
+$OGREROOM
+You are in a low room whose walls are covered with grisly dark gouts of dried
+blood.  The center of the room is dominated by a firepit, which contains
+burned out coals and a long spit suspended over its center.  From one corner
+emanates a horrible growling noise like that of some unspeakable monster
+dreaming of rending you limb from limb and making you its dinner.
+$NARROW2
+You are in a very narrow east/west passage.  To the west the passage opens
+out by a lake shore.  To the east it becomes even tighter than it is here.
+You might be able to squeeze through if you try real hard.  There is also a
+strange looking alcove in the south wall that seems to open into a very dark
+tunnel.
+$PIT
+You are at the bottom of a fifty foot pit.  The walls are just a hair too
+steep to climb.  The pit is empty except for a few old dried bones.  I can't
+tell whether they are human or not!!  In the center of the pit is a narrow
+shinny leading further downward.
+$CRYSTAL
+You are in a dazzling hall of crystal glass.  It is intensely cold here, but
+also chillingly beautiful.  There are glass formations rising from the floor
+as if they had grown there, yet delicately sculptured with multi-faceted
+sides.  A searing white light shines blindingly through the floor, itself
+formed from fine mirror smooth lead crystal.  The light sets off reflections
+that corruscate through the room and make it virtually impossible to tell
+where the room begins and where it ends.  There might be an exit to the east,
+although my eyes could be betraying me.
+$BATSCAVE
+You are in a steep cavern filled with shrieking vampire bats.  They swoop and
+dive at you by the thousands.  I would suggest a hurried departure.  There are
+openings to the west and north.
+$STEAM
+You have entered a room filled with a stifling steamy vapor.  There are
+innumerable small geysers scattered about the floor of the room, each
+contributing its own steam to the general mist.  To the west is a dark opening
+and another to the north.  Further out in the middle of the room an opening in
+the floor is barely visible through the mist.  Some of the vapor seems to ooze
+through the opening as if it continued downward.
+$DEADEND
+This is a dead end.  There is a cryptic message etched in the stone of the
+walls here.  It reads: 'GOOD THINGS GO THROUGH SMALL PASSAGES.'
+$LADDER
+You are at the base of a huge ladder reaching up and out of sight.  It must
+extend up at least 500 feet.  It will take someone very brave in heart to
+scale it. There are also passages here which lead to the north and down.
+$MAZE
+You are in a maze of featureless passages.
+$STAIRS
+You are on a steep stairway of rough-hewn granite blocks.  Your lamp only
+penetrates the gloom for a few feet in either direction.  Above you is a
+doorway leading to a large room.  Below is a dark and drafty continuation of
+the stairway.
+$ECHOES
+You are in a vast underground cavern. The slightest sound seems to create a
+resonating wave of echoes.  It is difficult to even hear yourself think.  To
+the north an opening leads to a downward slanting corridor which quickly bends
+out of sight.  In the center of the cavern, there is a set of rough stairs
+leading downward.  Behind you a similar set of stairs leads upward.
+$WARMROOM
+You are in a confined space which is more like a widening of the corridor than
+a room.  The corridor itself ends abruptly here, but a narrow shaft opens
+downward.  There is a faint red glow to be seen if one peers into the shaft
+and a warm draft of slightly sulfurous smelling air emanates from that open-
+ing.  The corridor slants downward to the south.
+$INCLINE
+You are in a twisting, downward slanting corridor.  The corridor forms a
+Y-shaped intersection here with passages leading up, east, and west.
+$HONEYCOMB
+You are in a room with numerous honeycomb-like openings leading out.  The
+largest of these appear to lead south.
+$ROUNDROOM
+You are in an almost spherically shaped room with exits to the west, north,
+and down.
+$MUDROOM
+You are in a room filled with thick, knee-deep mud.  Trickles of water flow in
+from a narrow opening high above you on the west wall.  A passage leads up
+from here and another down.
+$DEEPPOOL
+You are standing by a deep underground pool.  The water is ice cold, but clear
+as crystal.  There is nary a ripple on the surface.
+$COLDROOM
+You are at the bottom of an icy cold underground pool.  If you don't get out
+quickly, you'll either drown or freeze to death or both.
+$NARROW3
+You are in a slanting N-S passage.
+$NARROW4
+You are in a sloping N-S passage.  A narrow slit opens downward, from which
+emanates a warm, sulfurous draft.  A very faint red glow may also be seen
+through the slit.
+$RIVER
+You are standing on the eastern shore of a swiftly running N-S underground
+river.
+$ROCKYROOM
+You are in a room filled with irregularly shaped boulders.  To the east a low
+opening below a huge boulder leads to an alcove of some sort, and to the south
+the passage continues along the river bank.
+$SILTROOM
+You are near a large underground deposit of silt.  A passage leads upward.
+From it steadily oozes a flow of thick mud which must contribute to the
+deposit.  Passages also lead north and west.
+$ALCOVE
+You are in a small nook off a large room filled with boulders.  The only exit
+is to the east.  To the west you can see into the boulder room, but the exit
+is blocked by a large, slippery boulder.  A note here says: KEEP ON DIGGING!
+$FLAMES
+Unfortunately, you have fallen into an underground lava pocket.  It is the
+source of the heat that produces the geysers in the steam room.  You have
+been, to put it politely, 'toasted to a crisp!'

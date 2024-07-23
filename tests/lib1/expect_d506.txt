@@ -43,7 +43,7 @@
                                                   *   VERSION 11.73   *
                                                   * DATA BLOCK NO.  1 *
             ************************************************************************************************
-            D506 HA БЭCM-6. TOЧHЫE ЗHAЧEHИЯ ПAPAMETPOB 1,1,1                                     TIME  0.069
+            D506 HA БЭCM-6. TOЧHЫE ЗHAЧEHИЯ ПAPAMETPOB 1,1,1                                     TIME  0.000
             ************************************************************************************************
             ************************************************************************************************
                    1              A       1.200000       0.500000           0.0000+00      1.0000+01
@@ -53,14 +53,14 @@
 
  FIRST ENTRY TO FCN
     FCN VALUE     CALLS    TIME     EDM      INT.EXT. PARAMETER     VALUE         ERROR      INTERN.VALUE  INT.STEP SIZE
-   7.2166488+12      1    0.069    0.00+00     1   1          A    1.20000+00    5.00000-01   -8.63313-01    1.57225-01
+   7.2166488+12      1    0.000    0.00+00     1   1          A    1.20000+00    5.00000-01   -8.63313-01    1.57225-01
                                                2   2          B    1.40000+00    1.00000+00   -8.03802-01    3.10615-01
                                                3   3          C    1.60000+00    1.00000+00   -7.47763-01    2.87604-01
  **********
  **********CALL FCN          6.00000
  **********
     FCN VALUE     CALLS    TIME     EDM      INT.EXT. PARAMETER     VALUE         ERROR      INTERN.VALUE  INT.STEP SIZE
-   1.0616000+02      5    0.069    0.00+00     1   1          A    1.20000+00    5.00000-01   -8.63313-01    1.57225-01
+   1.0616000+02      5    0.000    0.00+00     1   1          A    1.20000+00    5.00000-01   -8.63313-01    1.57225-01
                                                2   2          B    1.40000+00    1.00000+00   -8.03802-01    3.10615-01
                                                3   3          C    1.60000+00    1.00000+00   -7.47763-01    2.87604-01
  **********
@@ -78,7 +78,7 @@
 
  BEST VALUE FOUND IN SEEK IS
     FCN VALUE     CALLS    TIME     EDM      INT.EXT. PARAMETER     VALUE         ERROR      INTERN.VALUE  INT.STEP SIZE
-   3.7326707-01     42    0.069    0.00+00     1   1          A    1.00343+00    5.00000-01   -9.26151-01    1.57225-01
+   3.7326707-01     42    0.000    0.00+00     1   1          A    1.00343+00    5.00000-01   -9.26151-01    1.57225-01
                                                2   2          B    8.08298-01    1.00000+00   -9.94232-01    3.10615-01
                                                3   3          C    1.66411+00    1.00000+00   -7.30415-01    2.87604-01
  **********
@@ -86,12 +86,12 @@
  **********
  START SIMPLEX MINIMIZATION                  CONVERGENCE CRITERION -- ESTIMATED DISTANCE TO MINIMUM (EDM) .LT.   1.00-01
     FCN VALUE     CALLS    TIME     EDM      INT.EXT. PARAMETER     VALUE         ERROR      INTERN.VALUE  INT.STEP SIZE
-   1.0807281-01     52    0.069    5.55+00     1   1          A    1.08027+00    3.45185-01   -9.00995-01    2.51561-02
+   1.0807281-01     52    0.000    5.55+00     1   1          A    1.08027+00    3.45185-01   -9.00995-01    2.51561-02
                                                2   2          B    5.02819-01    4.82822-01   -1.11848+00    1.24246-01
                                                3   3          C    1.66411+00    7.53936-01   -7.30415-01    4.60166-02
  SIMPLEX MINIMIZATION HAS CONVERGED
     FCN VALUE     CALLS    TIME     EDM      INT.EXT. PARAMETER     VALUE         ERROR      INTERN.VALUE  INT.STEP SIZE
-   1.0807281-01     64    0.069    7.00-02     1   1          A    1.08027+00    1.50371-01   -9.00995-01    1.43412-02
+   1.0807281-01     64    0.000    7.00-02     1   1          A    1.08027+00    1.50371-01   -9.00995-01    1.43412-02
                                                2   2          B    5.02819-01    4.66353-01   -1.11848+00    6.38805-02
                                                3   3          C    1.66411+00    3.56972-01   -7.30415-01    2.80147-02
                                              ERRORS CORRESPOND TO FUNCTION CHANGE OF     1.0000
@@ -101,12 +101,12 @@
  START MIGRAD MINIMIZATION.                  CONVERGENCE CRITERIA  --  ESTIMATED DISTANCE TO MINIMUM (EDM) .LT.  1.00-06
                                              OR EDM .LT.  1.00-01 AND FRACTIONAL CHANGE IN VARIANCE MATRIX .LT.  4.00-02
     FCN VALUE     CALLS    TIME     EDM      INT.EXT. PARAMETER     VALUE         ERROR      INTERN.VALUE  INT.STEP SIZE
-   1.0807281-01     70    0.069    6.87-02     1   1          A    1.08027+00    3.19380-02   -9.00995-01    9.69215-04
+   1.0807281-01     70    0.000    6.87-02     1   1          A    1.08027+00    3.19380-02   -9.00995-01    9.69215-04
                                                2   2          B    5.02819-01    1.33979-01   -1.11848+00    4.30125-03
                                                3   3          C    1.66411+00    4.43202-01   -7.30415-01    1.91984-03
  MIGRAD MINIMIZATION HAS CONVERGED
     FCN VALUE     CALLS    TIME     EDM      INT.EXT. PARAMETER     VALUE         ERROR      INTERN.VALUE  INT.STEP SIZE
-   5.7237011-11    117    0.069    7.16-08     1   1          A    1.00000+00    2.62082-01   -9.27295-01    7.94376-06
+   5.7237011-11    117    0.000    7.16-08     1   1          A    1.00000+00    2.62082-01   -9.27295-01    7.94376-06
                                                2   2          B    9.99992-01    1.54271+00   -9.27298-01   -6.10164-05
                                                3   3          C    1.00001+00    1.96124+00   -9.27293-01    8.23744-05
                                              ERRORS CORRESPOND TO FUNCTION CHANGE OF     1.0000
@@ -129,7 +129,7 @@
                                                   *   VERSION 11.73   *
                                                   * DATA BLOCK NO.  2 *
             ************************************************************************************************
-            D506 HA БЭCM-6. TOЧHЫE ЗHAЧEHИЯ ПAPAMETPOB 1,1,1                                     TIME  0.069
+            D506 HA БЭCM-6. TOЧHЫE ЗHAЧEHИЯ ПAPAMETPOB 1,1,1                                     TIME  0.000
             ************************************************************************************************
             ************************************************************************************************
                    1              A       1.200000       0.500000           0.0000+00      1.0000+01
@@ -139,7 +139,7 @@
 
  FIRST ENTRY TO FCN
     FCN VALUE     CALLS    TIME     EDM      INT.EXT. PARAMETER     VALUE         ERROR      INTERN.VALUE  INT.STEP SIZE
-   7.2166491+12      1    0.069    0.00+00     1   1          A    1.20000+00    5.00000-01   -8.63313-01    1.57225-01
+   7.2166491+12      1    0.000    0.00+00     1   1          A    1.20000+00    5.00000-01   -8.63313-01    1.57225-01
                                                2   2          B    1.40000+00    1.00000+00   -8.03802-01    3.10615-01
                                                3   3          C    1.60000+00    1.00000+00   -7.47763-01    2.87604-01
  **********
@@ -157,7 +157,7 @@
 
  BEST VALUE FOUND IN SEEK IS
     FCN VALUE     CALLS    TIME     EDM      INT.EXT. PARAMETER     VALUE         ERROR      INTERN.VALUE  INT.STEP SIZE
-   2.4684147+08     40    0.069    0.00+00     1   1          A    3.03376-03    5.00000-01   -1.53596+00    1.57225-01
+   2.4684147+08     40    0.000    0.00+00     1   1          A    3.03376-03    5.00000-01   -1.53596+00    1.57225-01
                                                2   2          B    4.00554+00    1.00000+00   -2.00228-01    3.10615-01
                                                3   3          C    1.93938+00    1.00000+00   -6.58743-01    2.87604-01
  **********
@@ -165,16 +165,16 @@
  **********
  START SIMPLEX MINIMIZATION                  CONVERGENCE CRITERION -- ESTIMATED DISTANCE TO MINIMUM (EDM) .LT.   1.00-01
     FCN VALUE     CALLS    TIME     EDM      INT.EXT. PARAMETER     VALUE         ERROR      INTERN.VALUE  INT.STEP SIZE
-   2.2116268+07     50    0.069    2.25+08     1   1          A    1.96731-03    3.08558-02   -1.59885+00    6.28902-02
+   2.2116268+07     50    0.000    2.25+08     1   1          A    1.96731-03    3.08558-02   -1.59885+00    6.28902-02
                                                2   2          B    1.48863-01    2.63844-01   -1.81542+00    1.61520+00
                                                3   3          C    1.93938+00    7.98542-01   -6.58743-01    2.87604-01
     FCN VALUE     CALLS    TIME     EDM      INT.EXT. PARAMETER     VALUE         ERROR      INTERN.VALUE  INT.STEP SIZE
-   5.0332119+02     92    0.069    4.77+01     1   1          A    6.06545-06    1.21388-06   -1.57235+00    4.45124-04
+   5.0332119+02     92    0.000    4.77+01     1   1          A    6.06545-06    1.21388-06   -1.57235+00    4.45124-04
                                                2   2          B    7.18698-03    1.11720-03   -1.51717+00    1.69434-02
                                                3   3          C    1.60659+00    7.32187-03   -7.45967-01    7.70124-03
  SIMPLEX MINIMIZATION HAS CONVERGED
     FCN VALUE     CALLS    TIME     EDM      INT.EXT. PARAMETER     VALUE         ERROR      INTERN.VALUE  INT.STEP SIZE
-   5.0324812+02    114    0.069    6.56-02     1   1          A    4.60572-06    5.26278-06   -1.57215+00    2.56657-05
+   5.0324812+02    114    0.000    6.56-02     1   1          A    4.60572-06    5.26278-06   -1.57215+00    2.56657-05
                                                2   2          B    8.76745-03    6.65577-03   -1.51157+00    1.25027-03
                                                3   3          C    1.61163+00    2.96590-02   -7.44596-01    1.38603-03
                                              ERRORS CORRESPOND TO FUNCTION CHANGE OF     1.0000
@@ -184,12 +184,12 @@
  START MIGRAD MINIMIZATION.                  CONVERGENCE CRITERIA  --  ESTIMATED DISTANCE TO MINIMUM (EDM) .LT.  1.00-06
                                              OR EDM .LT.  1.00-01 AND FRACTIONAL CHANGE IN VARIANCE MATRIX .LT.  4.00-02
     FCN VALUE     CALLS    TIME     EDM      INT.EXT. PARAMETER     VALUE         ERROR      INTERN.VALUE  INT.STEP SIZE
-   5.0324812+02    120    0.069    8.04-04     1   1          A    4.60572-06    4.47089-07   -1.57215+00    1.55095-05
+   5.0324812+02    120    0.000    8.04-04     1   1          A    4.60572-06    4.47089-07   -1.57215+00    1.55095-05
                                                2   2          B    8.76745-03    4.47149-04   -1.51157+00    4.49799-04
                                                3   3          C    1.61163+00    4.45828-01   -7.44596-01    1.61332-04
  MIGRAD MINIMIZATION HAS CONVERGED
     FCN VALUE     CALLS    TIME     EDM      INT.EXT. PARAMETER     VALUE         ERROR      INTERN.VALUE  INT.STEP SIZE
-   5.0324800+02    127    0.069    6.22-11     1   1          A    4.60405-06    3.86983-07   -1.57215+00   -2.97729-11
+   5.0324800+02    127    0.000    6.22-11     1   1          A    4.60405-06    3.86983-07   -1.57215+00   -2.97729-11
                                                2   2          B    8.76581-03    3.89308-04   -1.51157+00    7.13951-10
                                                3   3          C    1.61014+00    3.99348-01   -7.45000-01    7.05008-08
                                              ERRORS CORRESPOND TO FUNCTION CHANGE OF     1.0000
@@ -212,7 +212,7 @@
                                                   *   VERSION 11.73   *
                                                   * DATA BLOCK NO.  3 *
             ************************************************************************************************
-            D506 HA БЭCM-6. TOЧHЫE ЗHAЧEHИЯ ПAPAMETPOB 1,1,1                                     TIME  0.069
+            D506 HA БЭCM-6. TOЧHЫE ЗHAЧEHИЯ ПAPAMETPOB 1,1,1                                     TIME  0.000
             ************************************************************************************************
             ************************************************************************************************
                    1              A       1.200000       0.500000           0.0000+00      1.0000+01
@@ -222,7 +222,7 @@
 
  FIRST ENTRY TO FCN
     FCN VALUE     CALLS    TIME     EDM      INT.EXT. PARAMETER     VALUE         ERROR      INTERN.VALUE  INT.STEP SIZE
-   7.2166486+12      1    0.069    0.00+00     1   1          A    1.20000+00    5.00000-01   -8.63313-01    1.57225-01
+   7.2166486+12      1    0.000    0.00+00     1   1          A    1.20000+00    5.00000-01   -8.63313-01    1.57225-01
                                                2   2          B    1.40000+00    1.00000+00   -8.03802-01    3.10615-01
                                                3   3          C    1.60000+00    1.00000+00   -7.47763-01    2.87604-01
  **********
@@ -240,7 +240,7 @@
 
  BEST VALUE FOUND IN SEEK IS
     FCN VALUE     CALLS    TIME     EDM      INT.EXT. PARAMETER     VALUE         ERROR      INTERN.VALUE  INT.STEP SIZE
-   9.4096293+08     40    0.069    0.00+00     1   1          A    1.00271-02    5.00000-01   -1.50745+00    1.57225-01
+   9.4096293+08     40    0.000    0.00+00     1   1          A    1.00271-02    5.00000-01   -1.50745+00    1.57225-01
                                                2   2          B    3.70529+00    1.00000+00   -2.61927-01    3.10615-01
                                                3   3          C    9.55123-01    1.00000+00   -9.42407-01    2.87604-01
  **********
@@ -248,17 +248,17 @@
  **********
  START SIMPLEX MINIMIZATION                  CONVERGENCE CRITERION -- ESTIMATED DISTANCE TO MINIMUM (EDM) .LT.   1.00-01
     FCN VALUE     CALLS    TIME     EDM      INT.EXT. PARAMETER     VALUE         ERROR      INTERN.VALUE  INT.STEP SIZE
-   6.8145026+07     47    0.069    8.73+08     1   1          A    5.09867-07    3.08680-02   -1.57034+00    6.28902-02
+   6.8145026+07     47    0.000    8.73+08     1   1          A    5.09867-07    3.08680-02   -1.57034+00    6.28902-02
                                                      WARNING -   - ABOVE PARAMETER IS AT LIMIT.
                                                2   2          B    3.70529+00    1.05223+00   -2.61927-01    3.10615-01
                                                3   3          C    9.55123-01    5.93626-01   -9.42407-01    2.87604-01
     FCN VALUE     CALLS    TIME     EDM      INT.EXT. PARAMETER     VALUE         ERROR      INTERN.VALUE  INT.STEP SIZE
-   5.8193162+02     91    0.069    2.47+02     1   1          A    2.96168-06    5.93466-07   -1.56971+00    4.33730-04
+   5.8193162+02     91    0.000    2.47+02     1   1          A    2.96168-06    5.93466-07   -1.56971+00    4.33730-04
                                                2   2          B    8.07816-03    9.78059-04   -1.62765+00    1.70540-02
                                                3   3          C    5.37413-02    2.19280-03   -1.71754+00    1.51370-02
  SIMPLEX MINIMIZATION HAS CONVERGED
     FCN VALUE     CALLS    TIME     EDM      INT.EXT. PARAMETER     VALUE         ERROR      INTERN.VALUE  INT.STEP SIZE
-   5.0484924+02    121    0.069    2.44-02     1   1          A    1.15770-06    6.97562-07   -1.57012+00    3.17715-05
+   5.0484924+02    121    0.000    2.44-02     1   1          A    1.15770-06    6.97562-07   -1.57012+00    3.17715-05
                                                      WARNING -   - ABOVE PARAMETER IS AT LIMIT.
                                                2   2          B    1.37729-02    1.10150-03   -1.64504+00    3.17033-04
                                                3   3          C    7.36774-02    2.97765-02   -1.74268+00    5.86707-03
@@ -269,13 +269,13 @@
  START MIGRAD MINIMIZATION.                  CONVERGENCE CRITERIA  --  ESTIMATED DISTANCE TO MINIMUM (EDM) .LT.  1.00-06
                                              OR EDM .LT.  1.00-01 AND FRACTIONAL CHANGE IN VARIANCE MATRIX .LT.  4.00-02
     FCN VALUE     CALLS    TIME     EDM      INT.EXT. PARAMETER     VALUE         ERROR      INTERN.VALUE  INT.STEP SIZE
-   5.0484924+02    127    0.069    7.71-03     1   1          A    1.15770-06    4.48686-07   -1.57012+00    4.10028-06
+   5.0484924+02    127    0.000    7.71-03     1   1          A    1.15770-06    4.48686-07   -1.57012+00    4.10028-06
                                                      WARNING -   - ABOVE PARAMETER IS AT LIMIT.
                                                2   2          B    1.37729-02    4.47341-04   -1.64504+00    5.94018-05
                                                3   3          C    7.36774-02    7.34410-01   -1.74268+00    6.96513-04
  MIGRAD MINIMIZATION HAS CONVERGED
     FCN VALUE     CALLS    TIME     EDM      INT.EXT. PARAMETER     VALUE         ERROR      INTERN.VALUE  INT.STEP SIZE
-   5.0484800+02    136    0.069    5.85-10     1   1          A    1.16273-06    3.96635-07   -1.57011+00   -3.37759-11
+   5.0484800+02    136    0.000    5.85-10     1   1          A    1.16273-06    3.96635-07   -1.57011+00   -3.37759-11
                                                      WARNING -   - ABOVE PARAMETER IS AT LIMIT.
                                                2   2          B    1.37779-02    3.94782-04   -1.64505+00    3.04621-10
                                                3   3          C    7.93822-02    5.54989-01   -1.74923+00    1.65770-07

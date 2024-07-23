@@ -120,6 +120,7 @@ again:
 
     } catch (const Processor::Exception &ex) {
         // Unexpected situation in the machine.
+        auto pc = cpu.get_pc();
         cpu.stack_correction();
         cpu.finish();
 
@@ -128,7 +129,8 @@ again:
             // Empty message - legally halted by extracode e74.
             return;
         }
-        std::cerr << "Error: " << message << std::endl;
+        std::cerr << "Error: " << message << " @"
+                  << std::oct << std::setfill('0') << std::setw(5) << pc << std::endl;
         // trace_exception(message);
 
         if (cpu.intercept(message)) {

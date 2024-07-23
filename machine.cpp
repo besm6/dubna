@@ -104,7 +104,7 @@ again:
             // Show changed registers.
             trace_registers();
 
-            if (progress_message_enabled) {
+            if (progress_message_enabled && !entropy_flag) {
                 show_progress();
             }
             simulated_instructions++;

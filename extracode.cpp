@@ -638,7 +638,10 @@ void Processor::e71()
         unsigned char c = 1;
         e64_finish();
         BytePointer bp(memory, ADDR(a1));
-        while (a2 ? a1 <= a2 : c != '\0') {
+        while (c != '\0') {
+            if (a2 && a1 > a2) {
+                break;
+            }
             for (int i = 0; c != '\0' && i < 6; ++i) {
                 c = bp.get_byte();
                 if (c == '\0')

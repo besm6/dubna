@@ -1,0 +1,1393 @@
+*name Adventure #1
+*no list
+*no load list
+*pascal
+(************************************************)
+(*                                              *)
+(*   a  d  v  e  n  t  u  r  e       #  1       *)
+(*                                              *)
+(* This is an example of the Pascal language    *)
+(* features that are useful in writing advent-  *)
+(* games.  It is not really a serious game, but *)
+(* more an instructional exercise.              *)
+(*                                              *)
+(************************************************)
+
+PROGRAM miniadventure(output, input, pastel, (*=S2*)rgexport);
+CONST
+
+  ff    =       12;
+  ew    =       12;
+  nw    =        9;
+  ne    =        5;
+  sew   =       14;
+  nonly =        1;
+  nsew  =       15;
+  newud =       61;
+  sw    =       10;
+  ns    =        3;
+  donly =       32;
+  dn    =       33;
+  ud    =       48;
+  su    =       18;
+
+TYPE
+
+  rooms =  (start, grandroom, vestibule, narrow1,
+            lakeshore, island, brink, iceroom,
+            ogreroom, narrow2, pit, crystal,
+            batscave, steam, deadend, ladder,
+            maze, flames);
+
+  directions = (n,s,e,w,u,d);
+
+  byte       =  0..255;
+
+VAR
+
+  command:      ALFA;
+  (* holds user typed direction *)
+
+  ch:           CHAR;
+
+  location:     rooms;
+  ogreloc:      rooms;
+  visited:      ARRAY[start..flames] OF BOOLEAN;
+
+  next:         directions;
+  twopow:       ARRAY[n..d] OF INTEGER;
+
+  turns:        INTEGER;
+  done:         BOOLEAN;
+  quit:         BOOLEAN;
+  eaten:        BOOLEAN;
+  awake:        BOOLEAN;
+  readmsg:      BOOLEAN;
+  carrying:     BOOLEAN;
+  dropped:      BOOLEAN;
+  trapped:      BOOLEAN;
+  cooked:       BOOLEAN;
+
+  pastel:       ARRAY[0..25] OF INTEGER;
+  rgexport:     SET OF 0..47;
+
+PROCEDURE pasinp(VAR a, b: ALFA); FORTRAN;
+
+         (***********)
+         (* w i p e *)
+         (***********)
+         PROCEDURE wipe;
+         BEGIN
+           (*write(chr(ff));*)
+         END;
+
+(**************************************)
+(* i  n  t  r  o  d  u  c  t  i  o  n *)
+(**************************************)
+
+PROCEDURE introduction;
+BEGIN
+
+  wipe;         (* clear screen *);
+
+  writeln ('Welcome to miniadventure!');
+  writeln ('Your goal will be to find a treasure');
+  writeln ('and bring it to the starting point.');
+  writeln ('You will also get points for finding');
+  writeln ('each location in the adventure.');
+  writeln ('Points will be deducted for various');
+  writeln ('undesirable happenings: waking the');
+  writeln ('ogre, getting eaten, getting toasted,');
+  writeln ('etc.');
+  writeln ('               ---');
+  writeln ('I will guide you and be your eyes and');
+  writeln ('ears.  I will describe your location');
+  writeln ('and give you special instructions');
+  writeln ('from time to time.');
+  writeln ('               ---');
+  writeln ('To command me, tell me a direction');
+  writeln ('to take - north, south, east,');
+  writeln ('west, up, or down.');
+  writeln ('Note: I only look at the first letter');
+  writeln ('of the command, so abbreviations');
+  writeln ('are acceptable.');
+  writeln ('               ---');
+  writeln ('  When you are ready to begin your');
+  writeln ('adventure, just press "return".');
+
+  pasinp(command, command);
+
+  wipe;
+END (* PROCEDURE introduction *);
+
+(**************************************)
+(*   i  n  i  t  i  a  l  i  z  e     *)
+(**************************************)
+
+PROCEDURE initialize;
+VAR
+  loc:  rooms;
+BEGIN
+
+  location := start;
+  done     := false;
+  quit     := false;
+  cooked   := false;
+  eaten    := false;
+  awake    := false;
+  readmsg  := false;
+  carrying := false;
+  trapped  := false;
+  dropped  := false;
+  turns    := 0;
+  twopow[n]:= 1;
+  twopow[s]:= 2;
+  twopow[e]:= 4;
+  twopow[w]:= 8;
+  twopow[u]:=16;
+  twopow[d]:=32;
+  FOR loc := start TO flames DO
+    visited[loc] := false
+  (* enddo *);
+
+END (* PROCEDURE initialize *);
+
+(**************************************)
+(*      s    c    o    r    e         *)
+(**************************************)
+
+FUNCTION score: INTEGER;
+VAR
+  loc:  rooms;
+  sc:   INTEGER;
+BEGIN
+
+  sc := 0;
+
+  FOR loc := start TO flames DO
+    IF visited[loc]
+    THEN
+      sc := sc + 10
+    (* endif *)
+  (* endo *);
+
+  IF NOT quit
+  THEN
+    sc := sc + 30;
+
+  IF cooked
+  THEN
+    sc := sc - 50;
+
+  IF eaten
+  THEN
+    sc := sc - 50;
+
+  IF awake
+  THEN
+    sc := sc - 25;
+
+  score := sc;
+
+END (* FUNCTION score *);
+
+(**************************************)
+(*  c o n g r a t u l a t i o n s     *)
+(**************************************)
+
+PROCEDURE congratulations;
+BEGIN
+
+  IF NOT cooked
+  THEN
+  BEGIN
+    IF NOT quit
+    THEN
+    BEGIN
+
+      writeln (' ***** Congratulations *****');
+      writeln ('               ---');
+      writeln ('You got the treasure out in only');
+      writeln (turns:4,' turns.');
+
+    END;
+
+    writeln ('You scored', score:4, ' points out');
+    writeln (' of a maximum of 200 points.');
+    writeln ('So long for now, come again soon!');
+
+  END
+  ELSE
+
+    writeln ('Sorry about that - try again soon!')
+
+  (* endif *);
+
+  pasinp(command, command);
+  wipe;
+
+END (* PROCEDURE congratulations *);
+
+(**************************************)
+(*     w  h  i  c  h  w  a  y         *)
+(**************************************)
+
+FUNCTION whichway:directions;
+BEGIN
+
+  turns := turns + 1;
+
+(loop)
+  REPEAT
+
+    REPEAT
+
+      writeln ('               ---');
+      writeln('Which way?');
+      pasinp(command, command);
+
+    UNTIL command <> '      ';
+
+    ch := command[1];
+
+    CASE ch OF
+
+      'n': BEGIN whichway := n; exit loop; END;
+      's': BEGIN whichway := s; exit loop; END;
+      'e': BEGIN whichway := e; exit loop; END;
+      'w': BEGIN whichway := w; exit loop; END;
+      'u': BEGIN whichway := u; exit loop; END;
+      'd': BEGIN whichway := d; exit loop; END;
+      'q': BEGIN quit := true; exit loop; END;
+
+    END;
+
+  UNTIL false;
+
+  writeln ('               ---');
+
+end (* function whichway *);
+
+(**************************************)
+(*       n   o   w   a   y            *)
+(**************************************)
+
+PROCEDURE noway;
+BEGIN
+
+  writeln ('               ---');
+  writeln ('You cannot go in that direction.');
+
+END;
+
+(**************************************)
+(*    o  g  r  e  a  c  t  i  o  n    *)
+(**************************************)
+
+PROCEDURE ogreaction;
+BEGIN
+
+  IF NOT awake
+  THEN
+  BEGIN
+
+    writeln ('This is the ogre''s lair!');
+    writeln ('If you are not careful, you''ll');
+    writeln ('wake him.');
+
+    IF (turns MOD 7)=0
+    THEN
+    BEGIN
+      awake := true;
+      writeln ('Now you''ve done it!');
+      writeln ('You woke the ogre - better');
+      writeln ('get out of here while you can');
+
+    END (* IF *);
+
+  END
+  ELSE
+  BEGIN
+
+    writeln ('You wouldn''t listen to me would');
+    writeln ('you?  You really better get out');
+    writeln ('of here before you get eaten!');
+
+    IF carrying
+    THEN
+      IF (turns MOD 2)=0
+      THEN
+      BEGIN
+
+        writeln ('Too bad!!  The ogre caught you');
+        writeln ('and roasted you for dinner.');
+        writeln ('Better luck next time!!');
+
+        eaten := true;
+        quit  := true;
+
+      END
+      ELSE
+      BEGIN
+
+        writeln ('Get out fast if you don''t want');
+        writeln ('to be a big-mac for the ogre!!');
+
+      END
+    ELSE
+      IF (turns MOD 5)=0
+      THEN
+      BEGIN
+
+        writeln ('Too bad - you''ve been eaten!');
+
+        eaten := true;
+        quit  := true;
+
+      END
+
+    (* endif *)
+
+  END (* IF NOT awake *);
+
+END (* PROCEDURE ogreaction *);
+
+(**************************************)
+(*     p   s   t   a   r   t          *)
+(**************************************)
+
+PROCEDURE pstart;
+BEGIN
+
+  IF carrying
+  THEN
+    done := true
+  ELSE
+  BEGIN
+
+    writeln ('You are standing by a hole in');
+    writeln ('the ground.  It looks big enough');
+    writeln ('to climb down.');
+
+    CASE whichway OF
+
+      n,s,e,w:    noway;
+      u: writeln ('You can''t jump to the clouds!');
+      d: location := vestibule;
+
+    END;
+
+  END (* IF carrying *);
+
+END (* PROCEDURE pstart *);
+
+(**************************************)
+(*    p  v  e  s  t  i  b  u  l  e    *)
+(**************************************)
+
+PROCEDURE pvestibule;
+BEGIN
+
+  writeln ('You are in the entrance to a cave');
+  writeln ('of passageways.  There are halls');
+  writeln ('leading off to the north, south,');
+  writeln ('and east.  Above you is a tunnel');
+  writeln ('leading to the surface.');
+
+  IF dropped
+  THEN
+  BEGIN
+
+    writeln ('To the north, through a narrow crack,');
+    writeln ('You can see the treasure.  If you');
+    writeln ('stretch your arm through you might');
+    writeln ('reach it.  Do you want to try?');
+
+    pasinp(command, command);
+
+    IF (command = 'yes   ') OR (command = 'y     ')
+    THEN
+    BEGIN
+      carrying := true;
+      dropped  := false;
+    END (* IF *);
+
+  END;
+  CASE whichway OF
+
+    n:   location := narrow1;
+    s:   location := grandroom;
+    e:   location := iceroom;
+
+    w,d: noway;
+    u:   location := start;
+
+  END (* CASE whichway *);
+
+
+END (* PROCEDURE pvestibule *);
+
+(**************************************)
+(*    p  g  r  a  n  d  r  o  o  m    *)
+(**************************************)
+
+PROCEDURE pgrandroom;
+BEGIN
+
+  writeln ('You are in a huge open room, with');
+  writeln ('an immense expanse of ceiling.');
+  writeln ('A dark passage leads west and a');
+  writeln ('narrow crawl leads downward.');
+
+  CASE whichway OF
+
+    w:  location := brink;
+    d:  location := iceroom;
+
+    n,s,e,u:    noway;
+
+  END;
+
+END (* PROCEDURE pgrandroom *);
+
+(**************************************)
+(*     p  n  a  r  r  o  w  1         *)
+(**************************************)
+
+PROCEDURE pnarrow1;
+BEGIN
+
+  writeln ('You are in a narrow passage which');
+  writeln ('continues to the north.  It is');
+  writeln ('extremely narrow to the south.');
+  writeln ('  A very tight crawl also leads east.');
+  writeln ('A curious odor seeps through it.');
+  writeln ('I would think twice before trying');
+  writeln ('to go that way!');
+
+  IF carrying
+  THEN
+  BEGIN
+
+    writeln ('The treasure won''t fit through');
+    writeln ('the crack going south.  Do you want');
+    writeln ('to leave it here?');
+
+    pasinp(command, command);
+
+    IF (command = 'yes   ') OR
+       (command = 'y     ')
+    THEN
+    BEGIN
+
+      dropped  := true;
+      carrying := false;
+
+    END (* IF *);
+
+  END (* IF carrying *);
+
+  CASE whichway OF
+
+    n:  location := lakeshore;
+    e:  location := ogreroom;
+    s:  writeln ('It''s too narrow to get through!');
+
+    w,u,d:      noway;
+
+  END (* CASE whIchway *);
+
+END (* PROCEDURE pnarrow1 *);
+
+(**************************************)
+(*   p  l  a  k  e  s  h  o  r  e     *)
+(**************************************)
+
+PROCEDURE plakeshore;
+BEGIN
+
+  writeln ('You are on the shore of a vast');
+  writeln ('underground lake.  Narrow passages');
+  writeln ('wind away to the east and south.');
+  writeln ('A small island is visible in the');
+  writeln ('center of the lake to the north.');
+
+  CASE whichway OF
+
+    n:  location := island;
+    s:  location := narrow1;
+    e:  location := narrow2;
+    w,u,d:          noway;
+
+  END;
+
+END (* PROCEDURE plakeshore *);
+
+(**************************************)
+(*      p  i  s  l  a  n  d           *)
+(**************************************)
+
+PROCEDURE pisland;
+BEGIN
+
+  writeln ('You are on a small island in the');
+  writeln ('center of a huge underground lake.');
+  writeln ('Dark frigid water surrounds you on');
+  writeln ('all sides.  You can barely make out');
+  writeln ('the shoreline to the south.');
+  writeln ('A small message is scratched in the');
+  writeln ('dirt here.  It says: ''The treasure');
+  writeln ('may be found in the maze.''');
+
+  CASE whichway OF
+
+    n,e,w,u,d:  noway;
+    s:          location := lakeshore;
+
+  END;
+
+  readmsg := true;
+
+END (* PROCEDURE pisland *);
+
+(**************************************)
+(*     p   b   r   i   n   k          *)
+(**************************************)
+
+PROCEDURE pbrink;
+BEGIN
+
+  writeln ('You are on the brink of a steep');
+  writeln ('incline.  The bottom of the pit');
+  writeln ('is over fifty feet below you.');
+  writeln ('You could probably slide down');
+  writeln ('safely, but I won''t promise you');
+  writeln ('that you could get back up.');
+  writeln ('  To the west is a dark opening');
+  writeln ('into a rubble-filled tunnel.  A');
+  writeln ('vampire bat just flew out of it');
+  writeln ('shrieking.');
+
+  CASE whichway OF
+
+    n,s,e,u:  noway;
+    w:        location := ogreroom;
+    d:        location := pit;
+
+  END;
+
+END (* PROCEDURE pbrink *);
+
+(**************************************)
+(*    p  i  c  e  r  o  o  m          *)
+(**************************************)
+
+PROCEDURE piceroom;
+BEGIN
+
+  writeln ('You are in a room whose walls are');
+  writeln ('formed from a deep blue crystalline');
+  writeln ('ice.  To the north a narrow tunnel');
+  writeln ('opens.  From the other end of the tunnel');
+  writeln ('an ominous growling sound may be');
+  writeln ('heard.  To the east a sparkling ');
+  writeln ('luminescence emanates from a broad');
+  writeln ('opening.  To the west a passage');
+  writeln ('leads back to the vestibule.');
+
+  CASE whichway OF
+
+    e:          location := crystal;
+    n:          location := ogreroom;
+    w:          location := vestibule;
+
+    s,u,d:      noway;
+
+  END;
+
+END (* PROCEDURE piceroom *);
+
+(**************************************)
+(*    o   g   r   e   r   o   o   m   *)
+(**************************************)
+
+PROCEDURE pogreroom;
+VAR
+  i,j:  INTEGER;
+
+  PROCEDURE generaldescription;
+  BEGIN
+
+    writeln ('You are in a low room whose walls');
+    writeln ('are covered with ominous dark');
+    writeln ('gouts of dried blood.  The center');
+    writeln ('of the room is dominated by a');
+    writeln ('firepit, which contains burned');
+    writeln ('out coals and a long spit suspend-');
+    writeln ('ed over its center.');
+    writeln ('  From one dark corner emanates a');
+    writeln ('horrible growling noise like that ');
+    writeln ('of some unspeakable monster snoring');
+    writeln ('during its dream of rending you limb');
+    writeln ('from limb and making you its dinner!');
+
+  END (* PROCEDURE generaldescription *);
+
+BEGIN
+
+  generaldescription;
+  ogreaction;
+
+  IF NOT eaten
+  THEN
+  BEGIN
+
+    writeln ('There are exits to the east, west,');
+    writeln ('north, and south.');
+
+    CASE whichway OF
+
+      w:          location := narrow1;
+      e:          location := batscave;
+      n:          location := narrow2;
+      s:          location := iceroom;
+      d: BEGIN
+
+           quit  := true;
+           eaten := true;
+           writeln ('Oh no!! You dummy!!!');
+           writeln ('You just fell in the firepit');
+           writeln ('and made such a ruckus that');
+           writeln ('you woke the ogre.  I hate to');
+           writeln ('tell you this, but you are');
+           writeln ('also trapped!');
+           FOR i := 1 TO 5 DO
+           BEGIN
+             FOR j := 1 to 1000 DO;
+             write('.');
+           END (* DO *);
+           writeln ('You have been added to the');
+           writeln ('ogre''s gourmet recipe library!');
+           writeln ('Better luck next time.');
+
+         END;
+
+      u:    noway;
+
+    END (* CASE whichway *);
+
+    END (* IF NOT eaten *);
+
+  END (* PROCEDURE pogreroom *);
+
+  (**************************************)
+  (*       p   m   a   z   e            *)
+  (**************************************)
+
+  PROCEDURE pmaze;
+  TYPE
+
+    mazerooms = (m1,m2,m3,m4,m5,m6,m7,m8,
+                 m9,m10,m11,m12,m13,m14,
+                 m15,m16,m17,m18,m19);
+  VAR
+
+    mazeloc:      mazerooms;
+    bitset:       ARRAY[directions] OF BOOLEAN;
+
+    FUNCTION bittest
+             (v: INTEGER; dir: directions): BOOLEAN;
+    BEGIN
+
+      IF ((v DIV twopow[dir]) MOD 2)=1
+      THEN
+        bittest := true
+      ELSE
+        bittest := false
+      (* endif *);
+
+    END (* FUNCTION bittest *);
+
+    PROCEDURE describe(wh: INTEGER);
+    VAR
+      dir: directions;
+
+    BEGIN
+
+      writeln ('You are in a maze of featureless');
+      writeln ('passages.  There are exits visible');
+      writeln ('in the following directions:');
+
+      IF bittest (wh,n) THEN write ('n ');
+      IF bittest (wh,s) THEN write ('s ');
+      IF bittest (wh,e) THEN write ('e ');
+      IF bittest (wh,w) THEN write ('w ');
+      IF bittest (wh,u) THEN write ('u ');
+      IF bittest (wh,d) THEN write ('d ');
+
+      writeln ('               ---');
+
+    end (* procedure describe *);
+
+  PROCEDURE sameplace;
+  BEGIN
+
+    writeln ('You have crawled around some');
+    writeln ('twisted tunnels and wound up');
+    writeln ('where you began.');
+
+  END (* PROCEDURE sameplace *);
+
+  PROCEDURE treasure;
+  BEGIN
+
+    IF NOT carrying
+    THEN
+    BEGIN
+
+      IF readmsg
+      THEN
+      BEGIN
+
+        writeln ('The treasure is here!!');
+        writeln ('Do you want to take it now?');
+
+        pasinp(command, command);
+
+        IF (command = 'yes   ') OR
+           (command = 'y     ')
+        THEN
+          carrying := true
+        (* endif *);
+
+      END
+      ELSE
+      BEGIN
+
+        writeln ('The light is extremely dim here');
+        writeln ('You better get out or risk');
+        writeln ('falling into a pit.');
+
+      END (* IF readmsg *);
+
+    END (* IF NOT carrying *);
+
+  END (* PROCEDURE treasure *);
+
+  PROCEDURE pm1;
+  BEGIN
+
+    writeln ('You are in a maze of featureless');
+    writeln ('passages.');
+    writeln ('From here you can go south, east,');
+    writeln ('west, or up.');
+
+    CASE whichway OF
+
+      s:        location := ladder;
+      e:        mazeloc  := m2;
+      w:        mazeloc  := m4;
+      u:        location := steam;
+      n,d:      noway;
+
+    END;
+
+  END (* pm1 *);
+
+  PROCEDURE pm2;
+  BEGIN
+
+    describe(nw);
+
+    CASE whichway OF
+
+      n:        mazeloc := m1;
+      w:        sameplace;
+      e,s,u,d:  noway;
+
+    END;
+
+  END (* PROCEDURE pm2 *);
+
+  PROCEDURE pm3;
+  BEGIN
+
+    describe(ne);
+
+    CASE whichway OF
+
+      n:        mazeloc := m1;
+      e:        sameplace;
+      s,w,u,d:  noway;
+
+    END;
+
+  END (* PROCEDURE pm3 *);
+
+  PROCEDURE pm4;
+  BEGIN
+
+    describe(sew);
+
+    CASE whichway OF
+
+      s:        mazeloc := m7;
+      e:        mazeloc := m3;
+      w:        mazeloc := m5;
+      n,u,d:    noway;
+
+    END;
+
+  END (* PROCEDURE pm4 *);
+
+  PROCEDURE pm5;
+  BEGIN
+
+    describe(nonly);
+
+    CASE whichway OF
+
+      n:        mazeloc :=m1;
+
+      e,w,s,u,d:        noway;
+
+    END;
+
+  END (* PROCEDURE pm5 *);
+
+  PROCEDURE pm6;
+  BEGIN
+
+    describe(ne);
+
+    CASE whichway OF
+
+      n:        mazeloc := m4;
+      e:        sameplace;
+
+      s,w,u,d:  noway;
+
+    END;
+
+  END (* PROCEDURE pm6 *);
+
+  PROCEDURE pm7;
+  BEGIN
+
+    describe(nsew);
+
+    CASE whichway OF
+
+      n:        mazeloc := m5;
+      s:        mazeloc := m9;
+      e:        mazeloc := m6;
+      w:        mazeloc := m8;
+
+      u,d:      noway;
+
+    END;
+
+  END (* PROCEDURE pm7 *);
+
+  PROCEDURE pm8;
+  BEGIN
+
+    describe(nw);
+
+    CASE whichway OF
+
+      n:        mazeloc := m5;
+      w:        sameplace;
+
+      e,s,u,d:  noway;
+
+    END;
+
+  END (* PROCEDURE pm8 *);
+
+  PROCEDURE pm9;
+  BEGIN
+
+    describe(sw);
+
+    CASE whichway OF
+
+      s:        mazeloc := m11;
+      w:        mazeloc := m10;
+
+      n,e,u,d:  noway;
+
+    END;
+
+  END (* PROCEDURE pm9 *);
+
+  PROCEDURE pm10;
+  BEGIN
+
+    describe(ns);
+
+    CASE whichway OF
+
+      n:        mazeloc := m8;
+      s:        sameplace;
+
+      e,w,u,d:  noway;
+
+    END;
+
+  END (* PROCEDURE pm10 *);
+
+  PROCEDURE pm11;
+  BEGIN
+
+    describe(newud);
+
+    CASE whichway OF
+
+      n:        mazeloc := m9;
+      e:        mazeloc := m6;
+      w:        mazeloc := m10;
+      u:        mazeloc := m1;
+      d:        mazeloc := m12;
+
+      s:        noway;
+
+    END;
+
+  END (* PROCEDURE pm11 *);
+
+  PROCEDURE pm12;
+  BEGIN
+
+    describe(dn);
+
+    CASE whichway OF
+
+      n:        mazeloc := m13;
+      d:        mazeloc := m16;
+
+      e,s,w,u:  noway;
+
+    END;
+
+  END (* PROCEDURE pm12 *);
+
+  PROCEDURE pm13;
+  BEGIN
+
+    describe(dn);
+
+    CASE whichway OF
+
+      n:        mazeloc := m14;
+      d:        mazeloc := m17;
+
+      e,s,w,u:  noway;
+
+    END;
+
+  END (* PROCEDURE pm13 *);
+
+  PROCEDURE pm14;
+  BEGIN
+
+    describe(dn);
+
+    CASE whichway OF
+
+      n:        mazeloc := m15;
+      d:        mazeloc := m18;
+
+      e,s,w,u:  noway;
+
+    END;
+
+  END (* PROCEDURE pm14 *);
+
+  PROCEDURE pm15;
+  BEGIN
+
+    describe(ud);
+
+    CASE whichway OF
+
+      u:        mazeloc := m1;
+      d:        mazeloc := m19;
+
+      n,s,e,w:  noway;
+
+    END;
+
+  END (* PROCEDURE pm15 *);
+
+  PROCEDURE pm16;
+  BEGIN
+
+    describe(ns);
+
+    CASE whichway OF
+
+      n:        mazeloc := m17;
+      s:        sameplace;
+
+      e,w,u,d:  noway;
+
+    END;
+
+  END (* PROCEDURE pm16 *);
+
+  PROCEDURE pm17;
+  BEGIN
+
+    describe(ns);
+
+    CASE whichway OF
+
+      n:        mazeloc := m18;
+      s:        mazeloc := m16;
+      e,w,u,d:  noway;
+
+    END;
+
+  END (* PROCEDURE pm17 *);
+
+  PROCEDURE pm18;
+  BEGIN
+
+    describe(ns);
+
+    CASE whichway OF
+
+      n:        mazeloc := m19;
+      s:        mazeloc := m17;
+
+      e,w,u,d:  noway;
+
+    END;
+
+  END (* PROCEDURE pm18 *);
+
+  PROCEDURE pm19;
+  BEGIN
+
+    describe(su);
+    treasure;
+
+    CASE whichway OF
+
+      s:        mazeloc := m18;
+      u:        mazeloc := m15;
+
+      n,e,w,d:  noway;
+
+    END;
+
+  END (* PROCEDURE pm19 *);
+
+BEGIN  (* PROCEDURE pmaze *);
+
+  mazeloc := m1;
+
+  REPEAT
+
+    CASE mazeloc OF
+
+      m1:       pm1;
+      m2:       pm2;
+      m3:       pm3;
+      m4:       pm4;
+      m5:       pm5;
+      m6:       pm6;
+      m7:       pm7;
+      m8:       pm8;
+      m9:       pm9;
+      m10:      pm10;
+      m11:      pm11;
+      m12:      pm12;
+      m13:      pm13;
+      m14:      pm14;
+      m15:      pm15;
+      m16:      pm16;
+      m17:      pm17;
+      m18:      pm18;
+      m19:      pm19;
+
+    END (* CASE mazeloc *);
+
+  UNTIL location <> maze;
+
+END (* PROCEDURE pmaze *);
+
+(**************************************)
+(*     p  n  a  r  r  o  w  2         *)
+(**************************************)
+
+PROCEDURE pnarrow2;
+BEGIN
+
+  writeln ('You are in a very narrow passage.');
+  writeln ('To the west the passage opens out');
+  writeln ('by a lake shore.  To the east it is');
+  writeln ('even tighter.  You just might be');
+  writeln ('able to squeeze through if you try');
+  writeln ('real hard.');
+  writeln ('  There is also a strange looking');
+  writeln ('alcove in the south wall that seems');
+  writeln ('to open into a very dark tunnel.');
+
+  CASE whichway OF
+
+    w:          location := lakeshore;
+    e:          location := steam;
+    s:          location := ogreroom;
+
+    n,u,d:    noway;
+
+  END;
+
+END (* PROCEDURE pnarrow2 *);
+
+(**************************************)
+(*         p   p   i   t              *)
+(**************************************)
+
+PROCEDURE ppit;
+BEGIN
+
+  writeln ('You are at the bottom of a fifty');
+  writeln ('foot pit.  The walls are just a');
+  writeln ('hair too steep to climb.  The pit');
+  writeln ('is empty except for a few old');
+  writeln ('dried bones - I can''t tell if they');
+  writeln ('are human or not!!  In the center');
+  writeln ('of the pit is a narrow shinny');
+  writeln ('leading downward.');
+
+  CASE whichway OF
+
+    d: location := ladder;
+
+    u: BEGIN
+         writeln ('If you try to climb that,');
+         writeln ('you''re sure to kill yourself!');
+       END;
+
+    n,s,e,w:    noway;
+
+  END;
+
+END (* PROCEDURE ppit *);
+
+(**************************************)
+(*      p  c  r  y  s  t  a  l        *)
+(**************************************)
+
+PROCEDURE pcrystal;
+BEGIN
+
+  writeln ('You are in a shining hall of crystal.');
+  writeln ('It is intensely cold but also chill-');
+  writeln ('ingly beautiful.  There are glass');
+  writeln ('formations rising from the floor');
+  writeln ('as if they had grown there, yet');
+  writeln ('delicately sculptured with multi-');
+  writeln ('faceted sides.  An intense white');
+  writeln ('light shines brilliantly from the');
+  writeln ('floor, which is also made of a');
+  writeln ('mirror smooth lead crystal.  The light');
+  writeln ('is almost blinding and the many');
+  writeln ('reflections that it sets off among');
+  writeln ('the crystal formations of the room');
+  writeln ('make it almost impossible to tell');
+  writeln ('where the room begins and where');
+  writeln ('it ends. ');
+
+  CASE whichway OF
+
+    e:      location := maze;
+    n,w:    location := ogreroom;
+
+    s,u,d:  noway;
+
+  END;
+
+END (* PROCEDURE crystal *);
+
+(**************************************)
+(*     p  b  a  t  s  c  a  v  e      *)
+(**************************************)
+
+PROCEDURE pbatscave;
+BEGIN
+
+  writeln ('You are in a steep cavern filled');
+  writeln ('with shrieking vampire bats.  They');
+  writeln ('swoop and dive at you by the ');
+  writeln ('thousands.  If I were you, I would');
+  writeln ('get out as quick as I could.  There');
+  writeln ('are openings to the west and north.');
+
+  CASE whichway OF
+
+    w:          location := ogreroom;
+    n:          location := steam;
+
+    e,s,u,d:    noway;
+
+  END;
+
+END (* PROCEDURE pbatscave *);
+
+(**************************************)
+(*     p   s   t   e   a   m          *)
+(**************************************)
+
+PROCEDURE psteam;
+BEGIN
+
+  writeln ('You have entered a hall filled with');
+  writeln ('a stifling steamy vapor.  There are');
+  writeln ('innumerable small geysers scattered');
+  writeln ('about, each contributing its own steam');
+  writeln ('to the general mist.');
+  writeln ('To the west is a dark opening, as');
+  writeln ('well as to the north.  Further out');
+  writeln ('in the middle of the room is a dark');
+  writeln ('opening in the floor into which some');
+  writeln ('of the vapor seems to be seeping.');
+
+  CASE whichway OF
+
+    w:          location := narrow2;
+    n:          location := deadend;
+    d:          location := maze;
+    s:          location := batscave;
+
+    e,u:        noway;
+
+  END;
+
+END (* PROCEDURE psteam *);
+
+(**************************************)
+(*     p  l  a  d  d  e  r            *)
+(**************************************)
+
+PROCEDURE pladder;
+BEGIN
+
+  writeln ('You are at the base of a huge ladder');
+  writeln ('reaching up out of sight.  It must');
+  writeln ('extend up at least 500 feet, and it will');
+  writeln ('take someone brave in heart to scale');
+  writeln ('it.  There are also passages which');
+  writeln ('lead north and down.');
+
+  CASE whichway OF
+
+    n: location := maze;
+    d: location := flames;
+    u: IF carrying
+       THEN
+       BEGIN
+
+         writeln ('You can''t carry the treasure up the');
+         writeln ('ladder - it''s much too heavy!');
+
+       END
+       ELSE
+         location := vestibule
+       (* endif *);
+
+    e,s,w:    noway;
+
+  END;
+
+END (* PROCEDURE pladder *);
+
+(**************************************)
+(*     p   f   l   a   m   e   s      *)
+(**************************************)
+
+PROCEDURE pflames;
+BEGIN
+
+  writeln ('Unfortunately you have fallen into');
+  writeln ('an underground fire pit.  It is the');
+  writeln ('source of the heat that produces');
+  writeln ('the geysers in the steam room.  You');
+  writeln ('have been toasted to a crisp to put');
+  writeln ('it politely.');
+
+  cooked := true;
+  done   := true;
+
+END (* PROCEDURE pflames *);
+
+(**************************************)
+(*    p   d   e   a   d   e   n   d   *)
+(**************************************)
+
+PROCEDURE pdeadend;
+BEGIN
+
+  writeln ('Dead end.');
+
+  CASE whichway OF
+
+    s:  location := steam;
+
+    n,e,w,u,d:  noway;
+
+  END;
+
+END (* PROCEDURE pdeadend *);
+
+          (***************************)
+BEGIN     (* =====> adventure <===== *)
+          (***************************)
+
+  pastel[00b] :=               12c;
+  pastel[01b] :=    4000000000000c;
+  pastel[06b] := 5060000055000000c;
+  pastel[22b] :=                1c;
+  rgexport := [];
+
+  introduction;
+  initialize;
+
+  REPEAT
+
+    visited[location] := true;
+
+    CASE location OF
+
+      start:            pstart;
+      grandroom:        pgrandroom;
+      vestibule:        pvestibule;
+      narrow1:          pnarrow1;
+      lakeshore:        plakeshore;
+      island:           pisland;
+      brink:            pbrink;
+      iceroom:          piceroom;
+      ogreroom:         pogreroom;
+      narrow2:          pnarrow2;
+      pit:              ppit;
+      crystal:          pcrystal;
+      batscave:         pbatscave;
+      steam:            psteam;
+      deadend:          pdeadend;
+      ladder:           pladder;
+      maze:             pmaze;
+      flames:           pflames;
+
+    END (* CASE location *);
+
+  UNTIL quit OR done;
+
+  congratulations;
+
+END.
+*library:22
+*execute
+*end file

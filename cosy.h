@@ -24,10 +24,40 @@
 #include <string>
 
 //
+// Create file.bin in COSY format from file.txt.
+// Return true when succeeded.
+//
+bool file_txt_to_cosy(const std::string &path_bin);
+
+//
+// Convert file.bin in COSY format to file.txt.
+// Return true when succeeded.
+//
+bool file_cosy_to_txt(const std::string &path_bin);
+
+//
 // Encode string to COSY format.
 //
 std::string encode_cosy(std::string line);
 
+//
+// Decode string from COSY format.
+// Return false on failure.
+//
 bool decode_cosy(std::string &line);
+
+//
+// Read COSY card from an input stream and place it into a string.
+// Return false on EOF or failure.
+//
+bool get_line_cosy(std::istream &input, std::string &line);
+
+//
+// Recognize card '*read old'.
+//
 bool is_read_old_cosy(const std::string &line);
+
+//
+// Recognize card '*end file'.
+//
 bool is_end_file_cosy(const std::string &line);

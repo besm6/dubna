@@ -159,8 +159,8 @@ bool file_cosy_to_txt(const std::string &path_bin)
 
     std::string line;
     for (;;) {
-        if (!std::getline(input, line)) {
-            // Card '*read old' is missing.
+        if (!get_line_cosy(input, line)) {
+            // End of file - card '*read old' is missing.
             return false;
         }
         if (is_read_old_cosy(line)) {
@@ -187,16 +187,16 @@ bool file_cosy_to_txt(const std::string &path_bin)
 }
 
 //
-// Decode string from COSY format.
-// Return false on failure.
+// Read COSY card from an input stream and place it into a string.
+// Return false on EOF or failure.
 //
-bool decode_cosy(std::string &line)
+bool get_line_cosy(std::istream &input, std::string &line)
 {
-    //TODO
-    if (line.size() == 0) {
+    if (!std::getline(input, line)) {
+        // Premature end of file.
         return false;
     }
-    line += '\n';
+    //TODO: read words up to '\n' in lower byte
     return true;
 }
 
@@ -214,4 +214,18 @@ bool is_read_old_cosy(const std::string &line)
 bool is_end_file_cosy(const std::string &line)
 {
     return line == "TODO";
+}
+
+//
+// Decode string from COSY format.
+// Return false on failure.
+//
+bool decode_cosy(std::string &line)
+{
+    //TODO
+    if (line.size() == 0) {
+        return false;
+    }
+    line += '\n';
+    return true;
 }

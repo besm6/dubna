@@ -6,7 +6,7 @@
 *no load list
 *ftn
         program test
-c
+c------------------------------------------
 c       Пример записи файла в формате COSY.
 c
 c       WBEGIN(ук) - подготовка к записи
@@ -34,6 +34,28 @@ c
         call wrcard(card)
 c
         call wriend
+c
+c------------------------------------------
+c       Пример чтения файла в формате COSY.
+c
+c       RBEGIN(ук) - подготовка к чтению
+c       REWORD(aw) - чтение слова
+c       RECARD(ac) - чтение карты
+c
+        call rbegin(410000в)
+c
+        call recard(card)
+        print 5000, card
+ 5000   format(x, 14a6)
+c
+        call recard(card)
+        print 5000, card
+c
+        call recard(card)
+        print 5000, card
+c
+        call recard(card)
+        print 5000, card
         end
 *execute
 *end file

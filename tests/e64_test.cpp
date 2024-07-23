@@ -558,6 +558,38 @@ TEST_F(dubna_session, e64_overprint_dubna)
     EXPECT_EQ(output, expect);
 }
 
+
+TEST_F(dubna_session, e64_overprint_fortran)
+{
+    auto output = run_job_and_capture_output(R"(*name overprint
+*no li
+*no lo
+      program main
+      print 1
+      print 2
+      print 3
+      print 4
+      print 5
+      print 6
+   1  format('  A')
+   2  format ('+ B')
+   3  format ('+  C')
+   4  format ('+   D')
+   5  format ('+    E')
+   6  format ('+     F')
+      end
+*execute
+*end file
+)");
+
+    // No need for overprint, all characters must be on one line.
+    auto expect = R"(*EXECUTE
+  ABCDEF
+)";
+    output = extract_after_execute(output);
+    EXPECT_EQ(output, expect);
+}
+
 TEST_F(dubna_session, e64_repeat0)
 {
     auto output = run_job_and_capture_output(R"(*name print

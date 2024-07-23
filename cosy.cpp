@@ -27,6 +27,26 @@
 
 #include <filesystem>
 #include <fstream>
+#include <sstream>
+
+//
+// Card '*read old' has a special representation.
+// Note the space symbol is not packed.
+// It is impossible to obtain with a regular encode_cosy() routine.
+//
+static const std::string COSY_READ_OLD = "*READ OLD\312\n\n";
+
+//
+// Card '*end file' has two alternative representations.
+//
+static const std::string COSY_END_FILE_REGULAR = "*END\201FILE\312\n\n";
+
+//
+// Legacy variant produced by *EDIT.
+// Note the space symbol is not packed,
+// and extra space is appended.
+//
+static const std::string COSY_END_FILE_LEGACY  = "*END FILE \311\n";
 
 //
 // Encode string to COSY format.
@@ -192,11 +212,26 @@ bool file_cosy_to_txt(const std::string &path_bin)
 //
 bool get_line_cosy(std::istream &input, std::string &line)
 {
-    if (!std::getline(input, line)) {
-        // Premature end of file.
-        return false;
-    }
-    //TODO: read words up to '\n' in lower byte
+    // Read words up to '\n' in lower byte.
+    line.clear();
+    do {
+        if (line.size() >= 14*6) {
+            // A valid COSY line can have up to 14 words, or 84 bytes.
+            return false;
+        }
+
+        // Read next word.
+        line.push_back(input.get());
+        line.push_back(input.get());
+        line.push_back(input.get());
+        line.push_back(input.get());
+        line.push_back(input.get());
+        line.push_back(input.get());
+        if (!input.good()) {
+            // Premature end of file.
+            return false;
+        }
+    } while (line.back() != '\n');
     return true;
 }
 
@@ -205,15 +240,16 @@ bool get_line_cosy(std::istream &input, std::string &line)
 //
 bool is_read_old_cosy(const std::string &line)
 {
-    return line == "TODO";
+    return line == COSY_READ_OLD;
 }
 
 //
 // Recognize card '*end file'.
+// It has two alternative representations.
 //
 bool is_end_file_cosy(const std::string &line)
 {
-    return line == "TODO";
+    return (line == COSY_END_FILE_REGULAR) || (line == COSY_END_FILE_LEGACY);
 }
 
 //
@@ -222,10 +258,26 @@ bool is_end_file_cosy(const std::string &line)
 //
 bool decode_cosy(std::string &line)
 {
-    //TODO
-    if (line.size() == 0) {
-        return false;
+    std::stringstream result;
+
+    for (uint8_t ch : line) {
+        if (ch == '\n') {
+            // End of line.
+            break;
+        }
+        if (ch >= 0201 && ch <= 0323) {
+            // Unpack spaces.
+            while (ch-- > 0200) {
+                result << ' ';
+            }
+            continue;
+        }
+        if (ch < ' ' || ch > 0177) {
+            // Bad byte.
+            return false;
+        }
+        utf8_putc(koi7_to_unicode[ch], result);
     }
-    line += '\n';
+    line = result.str();
     return true;
 }

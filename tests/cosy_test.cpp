@@ -24,6 +24,7 @@
 #include <filesystem>
 
 #include "fixture_machine.h"
+#include "cosy.h"
 
 TEST(unit, encode_cosy)
 {

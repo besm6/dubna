@@ -89,7 +89,7 @@ the quick brown fox jumps over the lazy dog
     EXPECT_EQ(result, expect);
 }
 
-TEST(unit, DISABLED_good_cosy_to_txt)
+TEST(unit, good_cosy_to_txt)
 {
     const std::string path_txt = get_test_name() + ".txt";
     const std::string path_bin = get_test_name() + ".bin";
@@ -108,7 +108,7 @@ TEST(unit, DISABLED_good_cosy_to_txt)
     EXPECT_EQ(result, expect);
 }
 
-TEST(unit, DISABLED_bad_cosy_to_txt)
+TEST(unit, bad_cosy_to_txt)
 {
     const std::string path_txt = get_test_name() + ".txt";
     const std::string path_bin = get_test_name() + ".bin";

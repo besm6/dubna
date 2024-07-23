@@ -52,10 +52,9 @@
 
     'integer' 'procedure' SUM(a, b, c, d);
         'value' b, c;
-        'integer' a, b, c;
-        'real' d;
+        'integer' a, b, c, d;
     'begin'
-        'real' t;
+        'integer' t;
         t := 0;
         'for' a := b 'step' 1 'until' c 'do'
             t := t + d;
@@ -276,9 +275,9 @@ UIT:    'end';
                 'begin'
                     'integer' a, b;
                     a := SUM(j, 1, 4,
-                             2.0 * RVAL[k, j] + RNUM[k, kleur, j]);
-                    b := SUM(j, 0, 1, 2 *
-                             (7.0 - WT[k, j] - abs(j - kleur) / 2.0));
+                             2 * RVAL[k, j] + RNUM[k, kleur, j]);
+                    b := SUM(j, 0, 1, 2 * (7 - WT[k, j] -
+                                      entier(abs(j - kleur) / 2)));
                     'if' maxim(v, a + b) 'then'
                         m := k
                 'end'

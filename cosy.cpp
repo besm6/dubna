@@ -181,6 +181,7 @@ bool file_cosy_to_txt(const std::string &path_bin)
     for (;;) {
         if (!get_line_cosy(input, line)) {
             // End of file - card '*read old' is missing.
+            std::filesystem::remove(path_txt);
             return false;
         }
         if (is_read_old_cosy(line)) {
@@ -189,18 +190,21 @@ bool file_cosy_to_txt(const std::string &path_bin)
         }
         if (!decode_cosy(line)) {
             // Bad data.
+            std::filesystem::remove(path_txt);
             return false;
         }
-        output << line;
+        output << line << '\n';
     }
 
     // Check next card.
-    if (!std::getline(input, line)) {
+    if (!get_line_cosy(input, line)) {
         // Cannot read '*end file' card.
+        std::filesystem::remove(path_txt);
         return false;
     }
     if (!is_end_file_cosy(line)) {
         // Card '*end file' is missing.
+        std::filesystem::remove(path_txt);
         return false;
     }
     return true;
@@ -279,5 +283,8 @@ bool decode_cosy(std::string &line)
         utf8_putc(koi7_to_unicode[ch], result);
     }
     line = result.str();
+
+    // Remove trailing spaces.
+    line.erase(line.find_last_not_of(" ") + 1);
     return true;
 }

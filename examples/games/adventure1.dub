@@ -258,7 +258,7 @@ BEGIN
       'w': BEGIN whichway := w; exit loop; END;
       'u': BEGIN whichway := u; exit loop; END;
       'd': BEGIN whichway := d; exit loop; END;
-      'q': BEGIN quit := true; exit loop; END;
+      'q': BEGIN whichway := u; quit := true; exit loop; END;
 
     END;
 

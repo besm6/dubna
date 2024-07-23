@@ -1,0 +1,39 @@
+*name wrcard
+*disc:1/local
+*file:output,41,w
+*call setftn:one
+*       no list
+*no load list
+*ftn
+        program test
+c
+c       Пример записи файла в формате COSY.
+c
+c       WBEGIN(ук) - подготовка к записи
+c       WRWORD(aw) - запись слова
+c       WRCARD(ac) - запись карты
+c       WRIEND     - конец записи
+c
+        integer card(14)
+        call wbegin(410000в)
+c
+        encode(84, 1000, card)
+ 1000   format ('foo bar')
+        call wrcard(card)
+c
+        encode(84, 2000, card)
+ 2000   format ('abra cadabra')
+        call wrcard(card)
+c
+        encode(84, 3000, card)
+ 3000   format ('*read old')
+        call wrcard(card)
+c
+        encode(84, 4000, card)
+ 4000   format ('*end file')
+        call wrcard(card)
+c
+        call wriend
+        end
+*execute
+*end file

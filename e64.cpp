@@ -517,7 +517,7 @@ unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1)
         case GOST_CARRIAGE_RETURN:
         case GOST_NEWLINE:
             // New line.
-            if (e64_line_dirty) {
+            if (e64_line_dirty && !e64_overprint) {
                 // Emit previous line.
                 e64_emit_line();
             }
@@ -746,10 +746,11 @@ void Processor::e64()
             }
 
             if (e64_position != 0) {
-                if (e64_line_dirty || ctl.field.skip > 0) {
+                if (!e64_overprint && (e64_line_dirty || ctl.field.skip > 0)) {
                     e64_emit_line();
                 } else {
                     e64_line_dirty = true;
+                    e64_overprint = false;
                 }
             }
 

@@ -28,7 +28,6 @@ c -------------
       common/outcom/i80132
       dimension b(nxn,nxn),ln(125,7),den(21)
       dimension rleg(11)
-c     dimension mesgp(14)
       integer gray(21,7),nln(21)
       data gray/ 1h , 1h:, 1h*, 1h+, 1h), 1h1, 1hz, 1hx, 1ha, 1hm,
      1           1ho, 1ho, 1ho, 1ho, 1ho, 1ho, 1ho, 1ho, 1ho, 1ho, 1ho,
@@ -50,10 +49,8 @@ c     dimension mesgp(14)
      1             2,   2,   2,   3,   3,   4,   4,   5,   5,   6,   7/
       data char/0.6/
       data istar/1h*/
-c     data mesgp/'(16h plot suppressed)'/
+      print 72
       iblank = 1h 
-      if (i80132.ne.0) write (51,66)
-      if (i80132.eq.0) write (51,68)
       j80132=125
       if (i80132.eq.0) j80132=78
       xmin=b(1,1)
@@ -69,21 +66,13 @@ c     data mesgp/'(16h plot suppressed)'/
   16  continue
       n1=float(nxn)*char
       xdist=float(nxn)/float(n1+1)
-      write (51,70) xmin,xmax,xsum
       if (xmax-xmin.gt.1.e-10) go to 18
       print 181
-      if (i80132.ne.0) write (51,72)
       return
   18  if (nxn+2.gt.j80132) print 181
   181 format ('  *** too wide *** ')
       frac=1./(xmax-xmin)
-      if (nxn.gt.100) go to 22
-      nn=(60-n1)/4.-1
-      if (i80132.eq.0) nn=2
-      do 20 i=1,nn
-      write (51,68)
-  20  continue
-  22  do 24 i=1,125
+      do 24 i=1,125
       do 24 j=1,7
       ln(i,j)=iblank
   24  continue
@@ -133,54 +122,11 @@ c     y1=float(j1)
       ln(i,1)=istar
   48  continue
       write (51,74) (ln(i,1),i=1,j80132)
-      mleg=j80132/11.
-      nleg=22/float(mleg)
-      do 56 ii=1,nleg
-      do 50 j=1,7
-      do 50 i=1,125
-      ln(i,j)=iblank
-  50  continue
-      do 52 j=1,ii
-      isub1=(j-1)*ii+1
-      isub2=(j-1)+(ii-1)*mleg
-      isub3=isub2+1
-      if (isub2.le.0) isub2=1
-      if (isub3.gt.21) isub3=21
-      rleg(j)=(den(isub2)+den(isub3))/(frac*2.)+xmin
-      do 52 k=1,7
-      ln(isub1,k)=gray(isub2,k)
-  52  continue
-      write (51,68)
-      write (51,78) (ln(j,1),j=1,j80132)
-      do 54 i=2,7
-  54  write (51,78) (ln(j,i),j=1,j80132)
-      write (51,80) (rleg(j),j=1,mleg)
-  56  continue
-      if (i80132.ne.0) goto 64
-      do 58 j=1,7
-      do 58 i=1,125
-      ln(i,j)=iblank
-  58  continue
-      rleg(1)=den(21)/frac+xmin
-      do 60 k=1,7
-      ln(1,k)=gray(21,k)
-  60  continue
-      write (51,68)
-      write (51,78) (ln(l,1),l=1,j80132)
-      do 62 i=2,7
-  62  write (51,76) (ln(l,i),l=1,j80132)
-      write (51,80) rleg(1)
-  64  continue
-      if (i80132.ne.0) write (51,72)
       return
-  66  format(6h1*OVF*)
-  68  format(/)
-  70  format(1x,7hxmin = ,e10.2,5x,7hxmax = ,e10.2,5x,7hxsum = ,e12.4)
-  72  format(6h1*OVN*)
+  72  format(1h0)
   74  format(2x, 125a1)
   76  format(1h+,125a1)
   78  format(2x ,125a1)
-  80  format(11(1x,e10.4))
       end
 *call notlis
 *execute

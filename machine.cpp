@@ -36,6 +36,7 @@
 #include <sstream>
 
 #include "encoding.h"
+#include "cosy.h"
 
 // Static fields.
 bool Machine::verbose                    = false;

@@ -136,11 +136,6 @@ void besm6_print_instruction_mnemonics(std::ostream &out, unsigned cmd);
 std::string to_octal(unsigned val);
 
 //
-// Encode string to COSY format.
-//
-std::string encode_cosy(std::string line);
-
-//
 // Create file.bin in COSY format from file.txt.
 // Return true when succeeded.
 //

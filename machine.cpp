@@ -158,10 +158,6 @@ void Machine::finish()
     // Save puncher data.
     puncher.finish();
 
-    //TODO: for each file in write mode:
-    //TODO:     when file.bin is in cosy format,
-    //TODO:     convert it to file.txt and set flag remove_bin
-
     // Remove temporary files.
     for (auto &disk : disks) {
         if (disk) {

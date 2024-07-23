@@ -863,8 +863,8 @@ TEST_F(dubna_session, file_write_read)
     check_output(output, expect);
 
     // Check resulting file.
-    auto fubar = file_contents("fubar.bin");
-    expect = file_contents(TEST_DIR "/expect_fubar.bin");
+    auto fubar = file_contents("fubar.txt");
+    expect = file_contents(TEST_DIR "/expect_fubar.txt");
     EXPECT_EQ(fubar, expect);
 
     // Start another session.

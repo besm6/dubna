@@ -30,6 +30,7 @@
 #include <filesystem>
 
 #include "machine.h"
+#include "cosy.h"
 
 //
 // Open binary image as disk.
@@ -99,6 +100,17 @@ Disk::~Disk()
 //
 void Disk::finish()
 {
+    if (volume_id == 0 && write_permit) {
+        //
+        // When file is mounted in write mode:
+        // detect COSY format and convert it text.
+        // If successful - remove the binary.
+        //
+        if (file_cosy_to_txt(path)) {
+            remove_on_close = true;
+        }
+    }
+
     if (remove_on_close) {
         // Binary image was temporary and is no longer needed.
         std::filesystem::remove(path);

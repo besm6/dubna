@@ -1,0 +1,284 @@
+*name juggle generator
+*call setftn:one
+*library:1
+*no list
+*no load list
+*algol
+'code':'real'rndm;
+'code':terin;
+'begin'
+    'comment' From: github.com/cwi-software-archive/Algol60
+    Jungle Generator prints random sentences in English as a demo.
+    Author: C.H.A. Koster, Mathematical Centre.
+    Date: 1964 or earlier.
+    Listing and papertape are from X1 at the HTS"A".
+    Copied in 1977/1978 and preserved since that moment.
+    Papertape is in 7 bit code for Friden Flexowriter.
+    The program refers to "the world famous X8 computer".
+    The X8 may be of later date than the original program.;
+
+    'real' rr;
+    'integer' input;
+
+    'real' 'procedure' R;
+    'begin'
+        R := rr := rndm(-1)
+    'end';
+
+    'procedure' P(u);
+        'string' u;
+    print(u);
+
+    'procedure' sentence;
+    'begin'
+        subject;
+        predicate;
+        'if' R < .2 'then'
+            nextsentence
+    'end';
+
+    'procedure' nextsentence;
+    'begin'
+        connective;
+        sentence
+    'end';
+
+    'procedure' connective;
+        'if' R <.3 'then'
+            P('' and'')
+        'else' 'if' rr < .55 'then'
+            P('' but'')
+        'else' 'if' rr <.8 'then'
+            P('' because'')
+        'else'
+            P('' though'');
+
+    'procedure' subject;
+        'if' R < .8 'then'
+            subst
+        'else'
+            subname;
+
+    'procedure' subst;
+    'begin'
+        article;
+        noun phrase;
+        'if' R < .2 'then'
+            property
+    'end';
+
+    'procedure' property;
+        'if' R <.25 'then'
+            P('' with blue eyes'')
+        'else' 'if' rr < .5 'then'
+            P('' in a mink coat'')
+        'else'
+            'begin'
+                P('' from'');
+                'if' R < .25 'then'
+                    P('' Australia'')
+                'else' 'if' rr < .5 'then'
+                    P('' Switserland'')
+                'else' 'if' rr <.75 'then'
+                    P('' Siberia'')
+                'else'
+                    P('' Cleveland (Ohio)'')
+            'end';
+
+    'procedure' noun phrase;
+        'if' R < .25 'then'
+            'begin'
+                adje;
+                noun phrase
+            'end'
+        'else'
+            nounpart;
+
+    'procedure' nounpart;
+        'if' R < .25 'then'
+            'begin'
+                noun;
+                relsentence
+            'end'
+        'else'
+            noun;
+
+    'procedure' predicate;
+        'if' R < .2 'then'
+            'begin'
+                modifier;
+                modpredicate
+            'end'
+        'else' 'if' rr < .5 'then'
+            quality
+        'else'
+            modpredicate;
+
+    'procedure' modpredicate;
+    'begin'
+        verb;
+        object
+    'end';
+
+    'procedure' relsentence;
+    'begin'
+        P('', that'');
+        'if' R < .4 'then'
+            'begin'
+                subject;
+                verb
+            'end'
+        'else' 'if' rr < .6 'then'
+            quality
+        'else'
+            predicate
+    'end';
+
+    'procedure' object;
+        'if' R < .8 'then'
+            subst
+        'else'
+            objname;
+
+    'procedure' quality;
+    'begin'
+            'if' R < .45 'then'
+                P('' was'')
+            'else'
+                P('' is'');
+            'if' R < .4 'then'
+                adje
+            'else'
+                object
+    'end';
+
+    'procedure' adje;
+        'if' R < .2 'then'
+            'begin'
+                adverb;
+                adjective
+            'end'
+        'else'
+            adjective;
+
+    'procedure' subname;
+        'if' R < .2 'then'
+            P('' he'')
+        'else' 'if' rr < .4 'then'
+            P('' Jim'')
+        'else' 'if' rr < .6 'then'
+            P('' Mary'')
+        'else' 'if' rr < .8 'then'
+            P('' she'')
+        'else' 'if' rr < .9 'then'
+            P('' David Livingstone'')
+        'else'
+            P('' the world Famous X8 Computer'');
+
+    'procedure' objname;
+        'if' R < .2 'then'
+            P('' him'')
+        'else' 'if' rr < .4 'then'
+            P('' Jim'')
+        'else' 'if' rr < .6 'then'
+            P('' Mary'')
+        'else' 'if' rr < .8 'then'
+            P('' her'')
+        'else' 'if' rr < .95 'then'
+            P('' David Livingstone'')
+        'else'
+            P('' a computer'');
+
+    'procedure' modifier;
+        'if' R < .33 'then'
+            P('' always'')
+        'else' 'if' rr < .67 'then'
+            P('' often'')
+        'else'
+            P('' never'');
+
+    'procedure' article;
+        'if' R < .35 'then'
+            P('' a'')
+        'else' 'if' rr < .75 'then'
+            P('' the'')
+        'else' 'if' rr < .87 'then'
+            P('' this'')
+        'else'
+            P('' that'');
+
+    'procedure' noun;
+        'if' R < .17 'then'
+            P('' boy'')
+        'else' 'if' rr < .33 'then'
+            P('' tree'')
+        'else' 'if' rr < .5 'then'
+            P('' girl'')
+        'else' 'if' rr < .67 'then'
+            P('' bear'')
+        'else' 'if' rr < .83 'then'
+            P('' hunter'')
+        'else'
+            P('' lamb'');
+
+    'procedure' adjective;
+        'if' R < .2 'then'
+            P('' little'')
+        'else' 'if' rr < .4 'then'
+            P('' nice'')
+        'else' 'if' rr < .6 'then'
+            P('' big'')
+        'else' 'if' rr < .8 'then'
+            P('' green'')
+        'else'
+            P('' bad'');
+
+    'procedure' adverb;
+        'if' R < .4 'then'
+            P('' very'')
+        'else' 'if' rr < .6 'then'
+            P('' extraordinarily'')
+        'else'
+            P('' rather'');
+
+    'procedure' verb;
+        'if' R < .45 'then'
+            'begin'
+                'if' R < .2 'then'
+                    P('' saw'')
+                'else' 'if' rr < .4 'then'
+                    P('' liked'')
+                'else' 'if' rr < .6 'then'
+                    P('' dreamt about'')
+                'else' 'if' rr < .7 'then'
+                    P('' smelled'')
+                'else' 'if' rr < .8 'then'
+                    P('' ate'')
+                'else'
+                    P('' had'')
+            'end'
+        'else'
+            'begin'
+                'if' R < .2 'then'
+                    P('' sees'')
+                'else' 'if' rr < .4 'then'
+                    P('' likes'')
+                'else' 'if' rr < .6 'then'
+                    P('' dreams about'')
+                'else' 'if' rr < .7 'then'
+                    P('' eats'')
+                'else' 'if' rr < .8 'then'
+                    P('' smells'')
+                'else'
+                    P('' has'')
+            'end';
+NZ:
+    sentence;
+    print(newline);
+
+    terin(input, 1);
+    'goto' NZ
+'end'
+'eop'
+*execute
+*end file

@@ -1,25 +1,24 @@
 *name quinio
-*call putflag*
-61
-*fortran
+*call setftn:one,long
+*ftn
       integer function xeen(mask)
       integer N
       if (mask.eq.31) goto 1
       if (mask.eq.992) goto 2
       if (mask.eq.-1) goto 3
       if (mask.eq.33554432) goto 4
-      write (54, 100),mask
+      write (54, 100) mask
  100  format(' Unexpected XEEN mask ',i10)
       stop
    1  write (54, 101)
- 101  format(' Enter Y: ')
+ 101  format(' Enter column: ')
       read (54, 200) N
  200  format(I2)
       if (N.le.0.or.N.gt.31) goto 1
       xeen = N
       return
    2  write (54, 102)
- 102  format(' Enter X: ')
+ 102  format(' Enter row: ')
       read (54, 200) N
       if (N.le.0.or.N.gt.31) goto 2
       xeen = N*32
@@ -37,8 +36,29 @@
       xeen = N*33554432
       return
       end
+C---------------------------------------
+      subroutine draw(bord, nt, znr, row, col)
+      dimension l(4)
+      data l/1hx ,1ho , 1h., 1h* /
+      integer bord(nt, nt), znr, row, col
+      dimension k(20)
+      write(54,99)znr,row,col
+   99 format(5h Move i3i50,1h-i2)
+      write(54, 100) (i,i=1,nt)
+  100 format(9x20(i3))
+      bord(row,col)=1
+      if (mod(znr,2).eq.1)bord(row,col)=3
+      do 1 i=1,nt
+      do 2 j=1,nt
+    2 k(j)=l(bord(i,j)+1)
+c   2 k(j)=bord(i,j)
+    1 write(54,101) i,(k(j),j=1,nt)
+  101 format(4xi3,2x(20(2xa1)))
+      return
+      end
 *algol
 'code':'integer'xeen;
+'code':draw;
 'begin'
     'comment' L. Meertens, R 1082, LM 010964/9219.
     QUINIO (GO-MOKU). Zie voor de spelregels aparte beschrijving.:
@@ -278,7 +298,7 @@ UIT:    'end';
             'value' x, y;
             'integer' x, y;
         'begin'
-            'print' ''(5h Move i3i51h-i2)'', znr, x, y;
+            draw(bord, nt, znr, x, y);
         'end';
 
         'integer' 'procedure' SEL;
@@ -325,11 +345,9 @@ UIT:    'end';
         sw := znr := 1;
         'if' kleur = 0 'then'
         'begin'
-            PRINT(''                   X1                       N.N.'');
             PRINTZET(tn, tn);
             ZET(tn, tn)
-        'end' 'else'
-            PRINT(''                   N.N.                     X1'');
+        'end';
 MENS:
         x := div(XEEN(992), 32);
         y := XEEN(31);

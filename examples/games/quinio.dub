@@ -1,7 +1,44 @@
 *name quinio
 *call putflag*
 61
+*fortran
+      integer function xeen(mask)
+      integer N
+      if (mask.eq.31) goto 1
+      if (mask.eq.992) goto 2
+      if (mask.eq.-1) goto 3
+      if (mask.eq.33554432) goto 4
+      write (54, 100),mask
+ 100  format(' Unexpected XEEN mask ',i10)
+      stop
+   1  write (54, 101)
+ 101  format(' Enter Y: ')
+      read (54, 200) N
+ 200  format(I2)
+      if (N.le.0.or.N.gt.31) goto 1
+      xeen = N
+      return
+   2  write (54, 102)
+ 102  format(' Enter X: ')
+      read (54, 200) N
+      if (N.le.0.or.N.gt.31) goto 2
+      xeen = N*32
+      return
+   3  write (54, 103)
+ 103  format (' Are you sure (1), or not (0)?')
+      read (54, 200) N
+      if (N.ne.0.and.N.ne.1) goto 3
+      xeen = N-1
+      return
+   4  write (54, 104)
+ 104  format (' Who plays first, you (1), or I (0)?')
+      read (54, 200) N
+      if (N.ne.0.and.N.ne.1) goto 3
+      xeen = N*33554432
+      return
+      end
 *algol
+'code':'integer'xeen;
 'begin'
     'comment' L. Meertens, R 1082, LM 010964/9219.
     QUINIO (GO-MOKU). Zie voor de spelregels aparte beschrijving.:
@@ -36,11 +73,6 @@
     PRINT(NEWLINE);
 
     'comment' UNDEFINED---------------------------------------------;
-
-    'integer' 'procedure' XEEN(mask);
-        'value' mask;
-        'integer' mask;
-    XEEN := 0;
 
     'integer' 'procedure' EVEN(mask); 'comment' perhaps same as XEEN;
         'value' mask;
@@ -101,7 +133,7 @@
     av := nt * nt;
     tn := 1 + div(nt, 2);
     NLCR;
-    print(nt);
+    print(''Field size = '', nt);
 
     'begin'
         'integer' 'array' RNUM, RLANG, RVRY[1 : av, 0 : 1, 1 : 4],
@@ -246,12 +278,7 @@ UIT:    'end';
             'value' x, y;
             'integer' x, y;
         'begin'
-            'if' EVEN(znr) < 0 'or' XEEN(-1) < 0 'then'
-                NLCR;
-            ABSFIXT(5, 0, znr);
-            PRINT(''.'');
-            ABSFIXT(3, 0, x);
-            FIXT(3, 0, -y)
+            'print' ''(5h Move i3i51h-i2)'', znr, x, y;
         'end';
 
         'integer' 'procedure' SEL;
@@ -303,7 +330,7 @@ UIT:    'end';
             ZET(tn, tn)
         'end' 'else'
             PRINT(''                   N.N.                     X1'');
-MENS:   stop;
+MENS:
         x := div(XEEN(992), 32);
         y := XEEN(31);
         'if' x = 0 'or' x > nt 'or' y = 0 'or' y > nt 'then'
@@ -311,7 +338,6 @@ MENS:   stop;
         'if' BORD[x, y] 'ne' 2 'then'
             'goto' MENS;
         PRINTZET(x, y);
-        stop;
         'if' XEEN(-1) < 0 'then'
             'goto' MENS;
         ZET(x, y);
@@ -339,4 +365,5 @@ LKLAAR: NLCR;
     'end'
 'end'
 'eop'
+*execute
 *end file

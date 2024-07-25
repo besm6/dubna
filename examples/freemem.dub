@@ -1,0 +1,22 @@
+*name сколько свободно
+*library:23
+*call setftn:eight
+*no list
+*ftn
+*       Печать количества свободной памяти
+        subroutine showfree
+        maxadr = MEMORR(16в) .and. 77777в .or. 0
+        minadr = MEMORR(17в) .and. 77777в .or. 0
+        nfree = maxadr + 1 - minadr
+        print 1000, maxadr, minadr, nfree
+ 1000   format (x, o5, x, o5 / ' Свободно', i6, ' слов')
+        end
+*
+*call showfree
+*
+*call ficmemory
+*call showfree
+*
+*call allmemory
+*call showfree
+*end file

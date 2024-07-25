@@ -25,11 +25,11 @@ c     Version: 1.2
 c     Licence: ISC
 c     ******************************************************************
       program oregon
-      external instr, play, srand
+      external instr, play
       integer  time
       logical  ask
 c
-c     call srand(time())
+      call rndm1(jextra(0, 40, 55))
       write (54, 100)
       if (ask()) call instr()
       call play()
@@ -95,48 +95,11 @@ c
   500 format (i4)
       end
 c     ******************************************************************
-      real function rand()
-c
-c     This function returns a pseudo-random number for each invocation.
-c     It is a Fortran 77 adaptation of the "integer version 2" minimal
-c     standard number generator whose Pascal code appears in the
-c     article:
-c
-c         Park, Steven K. and Miller, Keith W., "Random number
-c         generators: good ones are hard to find", Communications of
-c         the ACM, October, 1988.
-c
-c     Original Fortran 77 implementation by Dick Valent and Fred Clare.
-c
-      integer mplier, modlus, mobymp, momdmp
-      parameter (mplier=16807, modlus=2147483647, mobymp=127773,
-     &           momdmp=2836)
-      integer jseed, ifrst
-      integer hvlue, lvlue, testv, nextn
-      common  /seed/ jseed, ifrst
-      save    nextn
-c
-      if (ifrst .eq. 0) then
-        nextn = jseed
-        ifrst = 1
-      end if
-      hvlue = nextn / mobymp
-      lvlue = mod(nextn, mobymp)
-      testv = mplier * lvlue - momdmp * hvlue
-      if (testv .gt. 0) then
-        nextn = testv
-      else
-        nextn = testv + modlus
-      end if
-      rand = real(nextn) / real(modlus)
-      end
-c     ******************************************************************
       integer function shoot(ilevl)
 c
 c     Shoot stuff by letting the player enter instances of onomatopoeia.
 c
       integer     time
-      real        rand
       integer     ilevl
       integer     a
       integer     s(4)
@@ -235,7 +198,6 @@ c
 c     Blizzard in mountain pass.
 c
       external sick
-      real     rand
       integer  itmil, iammu, iclth, ifood, imisc, ifill, ifinj, ieats
 c
       write (54, 100)
@@ -375,7 +337,6 @@ c
 c     Hunting poor wildlife.
 c
       integer shoot
-      real    rand
       integer iammu, ilevl, ifood
       integer ibangt
 c
@@ -458,7 +419,6 @@ c
       external arrive, blizz, die, doctor, eat, fort, hunt, riders
       external shop, sick
       integer  input, shoot, skill
-      real     rand
 c
       integer      adatey(60)
       integer      i, ibangt, ievnty(15), iselec
@@ -739,7 +699,6 @@ c
 c     Riders attack (or not).
 c
       integer input, shoot
-      real    rand
       integer ilevl, itmil, ianim, iammu, imisc, ifinj
       integer ibangt, ihorf, iselec
 c
@@ -856,7 +815,6 @@ c     ******************************************************************
 c
 c     Illness events.
 c
-      real    rand
       integer ieats, itmil, imisc, ifill, ifinj
 c
       if (100 * rndm(-1) .lt. 10 + 35 * (ieats - 1)) then
@@ -891,27 +849,10 @@ c
   600 format (1x,'you died of pneumonia.')
       end
 c     ******************************************************************
-      subroutine srand(iseed)
-c
-c     This subroutine sets the integer seed to be used with the
-c     companion rand function to the value of iseed. A flag is set to
-c     indicate that the sequence of pseudo-random numbers for the
-c     specified seed should start from the beginning.
-c
-      integer iseed
-      integer jseed, ifrst
-      common /seed/ jseed, ifrst
-c
-      jseed = iseed
-      ifrst = 0
-      end
-c     ******************************************************************
       block data
 c
 c     Common variables:
 c
-c     jseed - prng seed value.
-c     ifrst - first random value.
 c     evnts - array of event probabilities.
 c     dates - array of date strings.
 c     wdays - array of weekday strings.
@@ -938,14 +879,12 @@ c
       integer adatey(60)
       integer aweeky(14)
       integer ievnty(15)
-      common /seed/  jseed, ifrst
       common /evnts/ ievnty
       common /dates/ adatey
       common /wdays/ aweeky
       common /state/ iammu, ianim, iclth, ifood, imisc, ievtc, ictrn,
      &               ilevl, ieats, if950, ifpas, ifmou, iffrt, ifill,
      &               ifinj, itmil, ilmil, icash
-      data jseed, ifrst /123456789,0/
       data ictrn, itmil /0,0/
       data ievnty /6,11,13,15,17,22,32,35,37,42,44,54,64,69,95/
       data iffrt, ifill, ifinj, if950, ifpas, ifmou /-1,0,0,0,0,0/

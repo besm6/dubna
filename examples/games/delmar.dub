@@ -54,7 +54,7 @@ c
       integer     i, imins, mins
       logical     flag
 c
-c     call srand(time())
+      call rndm1(jextra(0, 40, 55))
 c
       mins = time() / 60
       imins = mins

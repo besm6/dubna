@@ -22,8 +22,7 @@ c     integer   iseed
 c
 c     Seed the random number generator.
 c
-c     iseed = abs(time())
-c     call srand(iseed)
+      call rndm1(jextra(0, 40, 55))
 c
 c     Ask for instructions.
 c

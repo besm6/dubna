@@ -18,7 +18,7 @@ c
 c     Initialise pseudo-random number generator, output the header, and
 c     start a new game.
 c
-c     call srand(time())
+      call rndm1(jextra(0, 40, 55))
 c
       write (54, 100)
       call play()

@@ -17,6 +17,7 @@ c     ******************************************************************
       imax = alog(limit) / alog(2.0) + 1
 c
       write (54, 200) limit
+      call rndm1(jextra(0, 40, 55))
       isecre = 2 + rndm(-1) * (limit - 1)
       iguess = 0
       iattem = 0
@@ -67,6 +68,6 @@ c
       end if
   200 format (' Invalid input. Try again:')
       end
-*library:1
+*library:1,23
 *execute
 *end file

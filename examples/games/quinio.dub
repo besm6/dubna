@@ -1,63 +1,7 @@
 *name quinio
 *call setftn:one,long
-*ftn
-      integer function xeen(mask)
-      integer N
-      if (mask.eq.31) goto 1
-      if (mask.eq.992) goto 2
-      if (mask.eq.-1) goto 3
-      if (mask.eq.33554432) goto 4
-      write (54, 100) mask
- 100  format(' Unexpected XEEN mask ',i10)
-      stop
-   1  write (54, 101)
- 101  format(' Enter column: ')
-      read (54, 200) N
- 200  format(I2)
-      if (N.le.0.or.N.gt.31) goto 1
-      xeen = N
-      return
-   2  write (54, 102)
- 102  format(' Enter row: ')
-      read (54, 200) N
-      if (N.le.0.or.N.gt.31) goto 2
-      xeen = N*32
-      return
-   3  write (54, 103)
- 103  format (' Are you sure (1), or not (0)?')
-      read (54, 200) N
-      if (N.ne.0.and.N.ne.1) goto 3
-      xeen = N-1
-      return
-   4  write (54, 104)
- 104  format (' Who plays first, you (1), or I (0)?')
-      read (54, 200) N
-      if (N.ne.0.and.N.ne.1) goto 3
-      xeen = N*33554432
-      return
-      end
-C---------------------------------------
-      subroutine draw(bord, nt, znr, row, col)
-      dimension l(4)
-      data l/1hx ,1ho , 1h., 1h* /
-      integer bord(nt, nt), znr, row, col
-      dimension k(20)
-      write(54,99)znr,row,col
-   99 format(5h Move i3i50,1h-i2)
-      write(54, 100) (i,i=1,nt)
-  100 format(9x20(i3))
-      bord(row,col)=1
-      if (mod(znr,2).eq.1)bord(row,col)=3
-      do 1 i=1,nt
-      do 2 j=1,nt
-    2 k(j)=l(bord(i,j)+1)
-c   2 k(j)=bord(i,j)
-    1 write(54,101) i,(k(j),j=1,nt)
-  101 format(4xi3,2x(20(2xa1)))
-      return
-      end
 *algol
-'code':'integer'xeen;
+'code':'integer'xeen,available;
 'code':draw;
 'begin'
     'comment' L. Meertens, R 1082, LM 010964/9219.
@@ -90,17 +34,7 @@ c   2 k(j)=bord(i,j)
     div := entier(a/b);
 
     'procedure' NLCR;
-    PRINT(NEWLINE);
-
-    'comment' UNDEFINED---------------------------------------------;
-
-    'integer' 'procedure' EVEN(mask); 'comment' perhaps same as XEEN;
-        'value' mask;
-        'integer' mask;
-    EVEN := 0;
-
-    'integer' 'procedure' available;
-    available := 10240;
+    'PRINT' ''(/)'';
 
     'integer' 'procedure' SUM(a, b, c, d);
         'value' b, c;
@@ -113,18 +47,6 @@ c   2 k(j)=bord(i,j)
             t := t + d;
         SUM := entier(t)
     'end';
-
-    'procedure' FIXT(a, b, c);
-        'value' a, b, c;
-        'integer' a, b, c;
-    'begin' 'end';
-
-    'procedure' ABSFIXT(a, b, c);
-        'value' a, b, c;
-        'integer' a, b, c;
-    'begin' 'end';
-
-    'comment' END OF UNDEFINED--------------------------------------;
 
     'Boolean' 'procedure' minim(x, p);
         'value' p;
@@ -153,7 +75,7 @@ c   2 k(j)=bord(i,j)
     av := nt * nt;
     tn := 1 + div(nt, 2);
     NLCR;
-    print(''Field size = '', nt);
+    'PRINT' ''(14H Field size = I2/24H O - Human, X - Computer)'', nt;
 
     'begin'
         'integer' 'array' RNUM, RLANG, RVRY[1 : av, 0 : 1, 1 : 4],
@@ -298,7 +220,7 @@ UIT:    'end';
             'value' x, y;
             'integer' x, y;
         'begin'
-            draw(bord, nt, znr, x, y);
+            draw(bord, nt, znr, kleur, x, y);
         'end';
 
         'integer' 'procedure' SEL;
@@ -316,7 +238,7 @@ UIT:    'end';
             'for' k := sw - 1 'step' -1 'until' 1 'do'
             'begin'
                 'if' 'if' BORD[AX[k], AY[k]] = 2 'then'
-                        ('if' TEMPO[k, kleur] < w 'then' 'true' 'else'
+                        ('if' TEMPO[k, kleur]'le'w 'then' 'true' 'else'
                          'if' WT[k, 1 - kleur] = 0 'then'
                             w = TEMPO[k, 1 - kleur] 'else' 'false')
                      'else' 'false' 'then'
@@ -324,7 +246,7 @@ UIT:    'end';
                     'integer' a, b;
                     a := SUM(j, 1, 4,
                              2.0 * RVAL[k, j] + RNUM[k, kleur, j]);
-                    b := SUM(j, 0, 1, 2 *
+                    b := SUM(j, 0, 1, 2 **
                              (7.0 - WT[k, j] - abs(j - kleur) / 2.0));
                     'if' maxim(v, a + b) 'then'
                         m := k
@@ -366,7 +288,7 @@ MACH:   km := SEL;
         'if' km = 0 'then'
         'begin'
             NLCR;
-            PRINT('' Ik geef op'');
+            'PRINT' ''(10H Ik geef op)'';
             'goto' LKLAAR
         'end';
         x := AX[km];
@@ -377,11 +299,78 @@ MACH:   km := SEL;
             'goto'MENS;
 LKLAAR: NLCR;
         'if' kleur = 0 'then'
-            PRINT('' U hebt gewonnen'')
+            'PRINT' ''(16H U hebt gewonnen)''
         'else'
-            PRINT('' Ik heb gewonnen'')
+            'PRINT' ''(16H Ik heb gewonnen)''
     'end'
 'end'
 'eop'
+*ftn
+      integer function xeen(mask)
+      integer N
+      if (mask.eq.31) goto 1
+      if (mask.eq.992) goto 2
+      if (mask.eq.-1) goto 3
+      if (mask.eq.33554432) goto 4
+      write (54, 100) mask
+ 100  format(' Unexpected XEEN mask ',i10)
+      stop
+   1  write (54, 101)
+ 101  format(' Enter column: ')
+      read (54, 200) N
+ 200  format(I2)
+      if (N.le.0.or.N.gt.31) goto 1
+      xeen = N
+      return
+   2  write (54, 102)
+ 102  format(' Enter row: ')
+      read (54, 200) N
+      if (N.le.0.or.N.gt.31) goto 2
+      xeen = N*32
+      return
+   3  write (54, 103)
+ 103  format (' Are you sure (1), or not (0)?')
+      read (54, 200) N
+      if (N.ne.0.and.N.ne.1) goto 3
+      xeen = N-1
+      return
+   4  write (54, 104)
+ 104  format (' Who plays first, you (1), or I (0)?')
+      read (54, 200) N
+      if (N.ne.0.and.N.ne.1) goto 3
+      xeen = N*33554432
+      return
+      end
+C---------------------------------------
+      subroutine draw(bord, nt, znr, color, row, col)
+      dimension l(4)
+      data l/1hx ,1ho , 1h., 1h* /
+      integer bord(nt, nt), znr, row, col
+      dimension k(20)
+      write(54,99)znr,row,col
+   99 format(5h Move i3i50,1h-i2)
+      write(54, 100) (i,i=1,nt)
+  100 format(9x20(i3))
+      bord(row,col)=color
+      do 1 i=1,nt
+      do 2 j=1,nt
+    2 k(j)=l(bord(i,j)+1)
+c   2 k(j)=bord(i,j)
+    1 write(54,101) i,(k(j),j=1,nt)
+  101 format(4xi3,2x(20(2xa1)))
+      return
+      end
+*assem
+ availa:,name,
+ a/i0:,lc,1
+  ,xta,17b
+  ,aex,=77777
+  ,ati,14
+  ,wtc,16b
+  14,utm,2
+  ,ita,14
+  ,aox,a/i0
+  13,uj,
+  ,end,
 *execute
 *end file

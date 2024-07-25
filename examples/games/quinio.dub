@@ -288,7 +288,7 @@ MACH:   km := SEL;
         'if' km = 0 'then'
         'begin'
             NLCR;
-            'write' (54, ''(10H Ik geef op)'');
+            'write' (54, ''(11H Ik geef op)'');
             'goto' LKLAAR
         'end';
         x := AX[km];

@@ -546,6 +546,11 @@ void Processor::e50()
         // Set paper limit?
         // TODO: show paper limit on core.ACC
         break;
+    case 072220:
+    case 072221:
+    case 072222:
+        // Release drum tracts (?), for AVTOLOAD.
+        break;
     case 074200:
         // Unknown, for *page
         break;

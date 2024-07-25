@@ -92,8 +92,7 @@ public:
     {
         // Load requested ELF file.
         try {
-            std::cout << "Read job '" << job_file << "'" << std::endl;
-            machine.load(job_file);
+            machine.load_job(job_file);
 
         } catch (std::exception &ex) {
             std::cerr << "Error: " << ex.what() << std::endl;
@@ -107,8 +106,6 @@ public:
 
             // Run simulation.
             using namespace std::chrono;
-            std::cout << "------------------------------------------------------------"
-                      << std::endl;
             auto t0 = steady_clock::now();
             machine.run();
             auto t1 = steady_clock::now();

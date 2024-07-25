@@ -124,8 +124,8 @@ public:
     ~Machine();
 
     // Load job input into machine.
-    void load(const std::string &filename);
-    void load(std::istream &input);
+    void load_job(const std::string &filename);
+    void load_job(std::istream &input);
 
     // Run simulation.
     void run();

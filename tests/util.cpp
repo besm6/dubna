@@ -147,15 +147,6 @@ void check_output(const std::string &output_str, const std::string &expect_str)
     std::stringstream output(output_str);
     std::stringstream expect(expect_str);
 
-    // Skip header in the output.
-    while (output.good()) {
-        // Get directory name from the output.
-        std::string line;
-        getline(output, line);
-        if (line == "------------------------------------------------------------")
-            break;
-    }
-
     // Compare line by line.
     for (unsigned lineno = 1; expect.good(); lineno++) {
         ASSERT_TRUE(output.good()) << "Output is too short";

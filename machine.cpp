@@ -215,21 +215,25 @@ Word Machine::mem_load(unsigned addr)
 // Load input job from file.
 // Throw exception on failure.
 //
-void Machine::load(const std::string &filename)
+void Machine::load_job(const std::string &filename)
 {
+    if (trace_enabled()) {
+        std::cout << "Read job '" << filename << "'\n";
+    }
+
     // Open the input file.
     std::ifstream input;
     input.open(filename);
     if (!input.is_open())
         throw std::runtime_error(filename + ": " + std::strerror(errno));
 
-    load(input);
+    load_job(input);
 }
 
 //
 // Load input job from stream to drum #1.
 //
-void Machine::load(std::istream &input)
+void Machine::load_job(std::istream &input)
 {
     // Word offset from the beginning of the drum.
     unsigned offset = 0;
@@ -742,4 +746,7 @@ void Machine::boot_ms_dubna(const std::string &path)
     // clang-format on
 
     cpu.set_pc(02010);
+    if (trace_enabled()) {
+        std::cout << "------------------------------------------------------------\n";
+    }
 }

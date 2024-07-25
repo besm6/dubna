@@ -732,7 +732,12 @@ void Machine::boot_ms_dubna(const std::string &path)
     memory.store(02020, besm6_asm("atx 2(16),     arx 3001"));     // прибавляем 10b
     memory.store(02021, besm6_asm("atx 17,        xta 3000"));     // 'INPUTCAL'
     memory.store(02022, besm6_asm("atx (16),      vtm 1673(15)")); // call CHEKJOB*
-    memory.store(02023, besm6_asm("uj (17),       utc"));          // в статический загрузчик
+    if (system_load_list_flag) {
+        memory.store(02023, besm6_asm("xta 44,    asn 77")); // erase bit 48 from word 44b
+        memory.store(02024, besm6_asm("asn 101,   atx 44")); // by doing << 1 >> 1
+    }
+    memory.store(02023 + 2 * system_load_list_flag,
+                        besm6_asm("uj (17),       utc"));          // в статический загрузчик
 
     memory.store(03000, 0'5156'6065'6443'4154ul); // 'INPUTCAL' in Text encoding
     memory.store(03001, 0'0000'0000'0000'0010ul); // прибавляем 10b

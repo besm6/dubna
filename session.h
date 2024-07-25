@@ -71,6 +71,9 @@ public:
     // Use wall clock when entropy is enabled.
     void enable_entropy(bool on = true);
 
+    // Enable system load list from the start.
+    void enable_system_load_list(bool on = true);
+
     // Get the number of simulated instructions.
     uint64_t get_instr_count();
 

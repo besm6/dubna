@@ -169,6 +169,11 @@ public:
     void enable_entropy(bool on) { machine.enable_entropy(on); }
 
     //
+    // Enable verbose loader actions from the start.
+    //
+    void enable_system_load_list(bool on) { machine.enable_system_load_list(on); }
+
+    //
     // Enable trace log to stdout.
     //
     void enable_trace(const char *mode)
@@ -424,6 +429,14 @@ void Session::preserve_temps(bool on)
 void Session::enable_entropy(bool on)
 {
     internal->enable_entropy(on);
+}
+
+//
+// Enable verbose loader actions from the start.
+//
+void Session::enable_system_load_list(bool on)
+{
+    internal->enable_system_load_list(on);
 }
 
 //

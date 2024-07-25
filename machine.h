@@ -74,6 +74,9 @@ private:
     // Enable wall clock and other sources of inpredictability.
     bool entropy_flag{};
 
+    // Enable system load list from the start.
+    bool system_load_list_flag{};
+
     // Trace output.
     static std::ofstream trace_stream;
 
@@ -156,6 +159,9 @@ public:
     // Use wall clock when entropy is enabled.
     bool is_entropy_enabled() { return entropy_flag; }
     void enable_entropy(bool on = true) { entropy_flag = on; }
+
+    // System load list allows to see all loader actions.
+    void enable_system_load_list(bool on = true) { system_load_list_flag = on; }
 
     // Enable trace output to the given file,
     // or to std::cout when filename not present.

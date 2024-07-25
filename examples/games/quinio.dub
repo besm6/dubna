@@ -34,7 +34,7 @@
     div := entier(a/b);
 
     'procedure' NLCR;
-    'PRINT' ''(/)'';
+    'write' (54,''(/)'');
 
     'integer' 'procedure' SUM(a, b, c, d);
         'value' b, c;
@@ -75,7 +75,7 @@
     av := nt * nt;
     tn := 1 + div(nt, 2);
     NLCR;
-    'PRINT' ''(14H Field size = I2/24H O - Human, X - Computer)'', nt;
+    'write'(54, ''(13HField size = I2/23HO - Human, X - Computer)'') nt;
 
     'begin'
         'integer' 'array' RNUM, RLANG, RVRY[1 : av, 0 : 1, 1 : 4],
@@ -288,7 +288,7 @@ MACH:   km := SEL;
         'if' km = 0 'then'
         'begin'
             NLCR;
-            'PRINT' ''(10H Ik geef op)'';
+            'write' (54, ''(10H Ik geef op)'');
             'goto' LKLAAR
         'end';
         x := AX[km];
@@ -299,9 +299,9 @@ MACH:   km := SEL;
             'goto'MENS;
 LKLAAR: NLCR;
         'if' kleur = 0 'then'
-            'PRINT' ''(16H U hebt gewonnen)''
+            'write' (54, ''(16H U hebt gewonnen)'')
         'else'
-            'PRINT' ''(16H Ik heb gewonnen)''
+            'write' (54, ''(16H Ik heb gewonnen)'')
     'end'
 'end'
 'eop'

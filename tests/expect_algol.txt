@@ -28,19 +28,29 @@
 A L G O L - Г Д P
     (7.01.82)
            1. ′BEGIN′
-           2.     PRINT(′′HELLO, WORLD!′′);
-           3. ′END′
-           4. ′EOP′
+           2.     ′STRING′ S, T;
+           3.     S := ′′ELEVEN PLUS TWO′′;
+           4.     T := S[13:14] + S[1:2] + S[4:5] + S[7:12]
+               + S[15] + S[6] + S[3];
+           5.     PRINT(S, ′′ = ′′, T, NEWLINE);
+           6. ′END′
+           7. ′EOP′
 CTPOKИ             OTHOCИTEЛЬHЫE AДPECA
-   1 - 00001 00001 00004
-PROGRAM   ДЛИHA:   16 00020B BPEMЯ:  0.00 CEK. KAPT:   4
+   1 - 00001 00001 00001 00003 00030 00036 00036
+PROGRAM   ДЛИHA:   52 00064B BPEMЯ:  0.00 CEK. KAPT:   7
 *EXECUTE
 ≠
-         PROGRAM    01000                A/BPRI   E 01220                A/R*ISO  E 01370                PRINT8     01547
-         A/STOP     01020                A/SPRI   E 01227                STOP*      01423                SYSBACK*   01730
-         A/START  E 01024                A/LPRI   E 01244                EXIT     E 01424                CBOБOДHO   01740
-         A/DRUCK    01100                A/NLINE  E 01310                A/ARRD/K   01452
-         A/IPRI   E 01132                A/NPAGE  E 01312                A/ARRD/V E 01455
-         A/RPRI   E 01164                A/I*ISO  E 01365                STOPFLG* C 01546
+         PROGRAM    01000                A/BPRI   E 01744                A/CALLP    02273                *HEAP*   C 02454
+         A/STOP     01064                A/SPRI   E 01753                A/CALLS  E 02274                PRINT8     03054
+         A/START  E 01070                A/LPRI   E 01770                A/PROCRT E 02301                A/RECORD C 03235
+         A/SPLUSS   01144                A/NLINE  E 02034                A/PARCON E 02324                A/SYMB   C 03266
+         A/SLICE  E 01176                A/NPAGE  E 02036                A/PARVAR E 02333                READ*      03267
+         ATOS     E 01247                A/I*ISO  E 02111                A/PARPAR E 02344                MONREAD*   03315
+         STOA     E 01265                A/R*ISO  E 02114                A/PARVAL E 02353                READ*ERR E 03375
+         A/SREAD  E 01316                STOP*      02147                A/PAREXP E 02360                DRUMTAP*   03421
+         A/ARGSTR E 01327                EXIT     E 02150                A/PARLAB E 02371                COSYTISO   03452
+         A/DRUCK    01624                A/ARRD/K   02176                A/PARSTR E 02400                CHKWORD* C 03526
+         A/IPRI   E 01656                A/ARRD/V E 02201                SYSBACK*   02411                CBOБOДHO   03527
+         A/RPRI   E 01710                STOPFLG* C 02272                A/GETINC   02421
 ≠
- HELLO, WORLD!
+ ELEVEN PLUS TWO = TWELVE PLUS ONE

@@ -255,7 +255,10 @@ TEST_F(dubna_session, algol)
     auto output = run_job_and_capture_output(R"(*name aлгол
 *algol
 'begin'
-    print(''Hello, World!'');
+    'string' s, t;
+    s := ''eleven plus two'';
+    t := s[13:14] + s[1:2] + s[4:5] + s[7:12] + s[15] + s[6] + s[3];
+    print(s, '' = '', t, newline);
 'end'
 'eop'
 *execute

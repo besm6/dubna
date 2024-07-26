@@ -190,7 +190,7 @@ chk_rnd:
     }
 
     core.ACC = (Word)(acc.exponent & BITS(7)) << 41 | (acc.mantissa & BITS41);
-    core.RMR = (core.RMR & ~BITS40) | (mr & BITS40);
+    core.RMR = mr & BITS40;
 
     // При переполнении мантисса и младшие разряды порядка верны
     if (acc.exponent & 0x80) {

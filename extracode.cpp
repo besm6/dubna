@@ -510,6 +510,10 @@ void Processor::e65()
         core.ACC = 0;
         return;
     default:
+        if (addr >= 0700 && addr < 0760) {
+            core.ACC = 1LL << (0757 - addr);
+            return;
+        }
         if (addr >= 06000 && addr < 06000 + 128) {
             // Read entry from ALLTOISO encoding table.
             core.ACC = all_to_iso[addr - 06000];

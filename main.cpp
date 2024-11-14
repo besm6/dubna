@@ -34,6 +34,7 @@ static const struct option long_options[] = {
     { "help",           no_argument,        nullptr,    'h' },
     { "help-libs",      no_argument,        nullptr,    'L' },
     { "help-commands",  no_argument,        nullptr,    'C' },
+    { "help-resident",  no_argument,        nullptr,    'R' },
     { "version",        no_argument,        nullptr,    'V' },
     { "verbose",        no_argument,        nullptr,    'v' },
     { "keep",           no_argument,        nullptr,    'k' },
@@ -60,6 +61,7 @@ static void print_usage(std::ostream &out, const char *prog_name)
     out << "    -h, --help              Display available options" << std::endl;
     out << "    --help-libs             Show available libraries" << std::endl;
     out << "    --help-commands         Show available commands" << std::endl;
+    out << "    --help-resident         Print resident routines" << std::endl;
     out << "    -V, --version           Print the version number and exit" << std::endl;
     out << "    -v, --verbose           Verbose mode" << std::endl;
     out << "    -r, --random            Disable randomization" << std::endl;
@@ -125,6 +127,11 @@ int main(int argc, char *argv[])
         case 'C':
             // Show available commands.
             session.print_commands(std::cout);
+            exit(EXIT_SUCCESS);
+
+        case 'R':
+            // Show resident routines.
+            session.print_resident(std::cout);
             exit(EXIT_SUCCESS);
 
         case 'v':

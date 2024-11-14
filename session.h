@@ -83,6 +83,9 @@ public:
     // Show available commands.
     void print_commands(std::ostream &out);
 
+    // Show resident entries.
+    void print_resident(std::ostream &out);
+
     // Get version of the simulator.
     static const char *get_version();
 

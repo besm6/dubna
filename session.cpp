@@ -34,6 +34,7 @@
 #include <vector>
 
 #include "machine.h"
+#include "encoding.h"
 
 //
 // Internal implementation of the simulation session, hidden from user.
@@ -239,6 +240,42 @@ public:
                 << std::setw(10) << tape_name_string(tape_name)
                 << "   " << std::right << std::setw(4) << std::setfill('0') << (location >> 30)
                 << std::setfill(' ') << std::dec << std::endl;
+        }
+    }
+
+    //
+    // Show resident entries of the monitor system kernel..
+    //
+    void print_resident(std::ostream &out)
+    {
+        // Mount tape image 9 as disk 30, read only.
+        machine.disk_mount_readonly(030, machine.TAPE_MONSYS);
+
+        // Read zone 1, sector 2.
+        static const unsigned ZONE = 1;
+        static const unsigned SECTOR = 2;
+        static const unsigned BASE = 0x1000;
+        machine.disk_io('r', 0, ZONE, SECTOR, BASE, 256);
+
+        out << "Name       Descriptor\n";
+        out << "------------------------------\n";
+        for (unsigned addr = 0; addr < 256; addr += 2) {
+            Word name = machine.mem_load(BASE + addr);
+            if (name == 0) {
+                break;
+            }
+            Word location = machine.mem_load(BASE + addr + 1);
+
+            out << (char)std::tolower(text_to_unicode(name >> 42))
+                << (char)std::tolower(text_to_unicode(name >> 36))
+                << (char)std::tolower(text_to_unicode(name >> 30))
+                << (char)std::tolower(text_to_unicode(name >> 24))
+                << (char)std::tolower(text_to_unicode(name >> 18))
+                << (char)std::tolower(text_to_unicode(name >> 12))
+                << (char)std::tolower(text_to_unicode(name >> 6))
+                << (char)std::tolower(text_to_unicode(name)) << "   ";
+            besm6_print_word_octal(out, location);
+            out << std::endl;
         }
     }
 
@@ -483,4 +520,12 @@ void Session::print_libraries(std::ostream &out)
 void Session::print_commands(std::ostream &out)
 {
     internal->print_commands(out);
+}
+
+//
+// Show resident routines.
+//
+void Session::print_resident(std::ostream &out)
+{
+    internal->print_resident(out);
 }

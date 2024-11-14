@@ -340,6 +340,11 @@ std::string tape_name_string(Word w);
 std::string word_iso_string(Word w);
 
 //
+// Decode word as string in TEXT format.
+//
+std::string word_text_string(Word w);
+
+//
 // Decode word as filename in ISO format.
 // Remove trailing spaces, convert to lowercase.
 //

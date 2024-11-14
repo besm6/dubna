@@ -671,6 +671,19 @@ std::string word_iso_string(Word w)
 }
 
 //
+// Decode word as 8 characters in TEXT format.
+//
+std::string word_text_string(Word w)
+{
+    std::ostringstream buf;
+    for (int shift = 42; shift >= 0; shift -= 6) {
+        unsigned ch = text_to_unicode(w >> shift);
+        utf8_putc(ch, buf);
+    }
+    return buf.str();
+}
+
+//
 // Decode word as filename in ISO format.
 // Remove trailing spaces, convert to lowercase.
 //

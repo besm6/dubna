@@ -34,7 +34,6 @@
 #include <vector>
 
 #include "machine.h"
-#include "encoding.h"
 
 //
 // Internal implementation of the simulation session, hidden from user.
@@ -266,14 +265,7 @@ public:
             }
             Word location = machine.mem_load(BASE + addr + 1);
 
-            out << (char)std::tolower(text_to_unicode(name >> 42))
-                << (char)std::tolower(text_to_unicode(name >> 36))
-                << (char)std::tolower(text_to_unicode(name >> 30))
-                << (char)std::tolower(text_to_unicode(name >> 24))
-                << (char)std::tolower(text_to_unicode(name >> 18))
-                << (char)std::tolower(text_to_unicode(name >> 12))
-                << (char)std::tolower(text_to_unicode(name >> 6))
-                << (char)std::tolower(text_to_unicode(name)) << "   ";
+            out << word_text_string(name) << "   ";
             besm6_print_word_octal(out, location);
             out << std::endl;
         }

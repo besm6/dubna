@@ -256,18 +256,35 @@ public:
         static const unsigned BASE = 0x1000;
         machine.disk_io('r', 0, ZONE, SECTOR, BASE, 256);
 
-        out << "Name       Descriptor\n";
-        out << "------------------------------\n";
+        out << "Name       Address Size    Flags\n";
+        out << "----------------------------------\n";
         for (unsigned addr = 0; addr < 256; addr += 2) {
             Word name = machine.mem_load(BASE + addr);
             if (name == 0) {
                 break;
             }
             Word location = machine.mem_load(BASE + addr + 1);
+            unsigned address = location & 077777;
+            unsigned nwords  = (location >> 15) & 077777;
+            unsigned flags   = (location >> 30) & 0777777;
 
-            out << word_text_string(name) << "   ";
-            besm6_print_word_octal(out, location);
-            out << std::endl;
+            out << word_text_string(name) << "   "
+                << std::oct << std::left << std::showbase << std::setw(6) << address << "  ";
+            if (!nwords && !flags) {
+                out << "-       entry";
+            } else {
+                if (nwords > 7) {
+                    out << std::setw(6) << nwords;
+                } else {
+                    out << std::setw(6) << std::noshowbase << nwords << std::showbase;
+                }
+                if (flags) {
+                    out << "  " << flags;
+                } else {
+                    out << "  data";
+                }
+            }
+            out << std::dec << std::right << std::noshowbase << std::endl;
         }
     }
 

@@ -734,9 +734,9 @@ void Machine::boot_ms_dubna(const std::string &path)
     // at https://github.com/besm6/besm6.github.io/blob/master/sources/dubna/cross/extold.txt#L250
     //
     // clang-format off
-    memory.store(02010, besm6_asm("vtm -5(1),     *70 3002"));     // читаем инициатор монитора
+    memory.store(02010, besm6_asm("vtm -5(1),     *70 3002"));     // читаем таблицу резидентных программ для загрузчика
     memory.store(02011, besm6_asm("xta 377,       atx 3010"));     // берем тракт, где MONITOR* + /MONTRAN
-    memory.store(02012, besm6_asm("xta 363,       atx 100"));      // ТРП для загрузчика
+    memory.store(02012, besm6_asm("xta 363,       atx 100"));      // восстановим испорченный IОLISТ*
     memory.store(02013, besm6_asm("vtm 53401(17), utc"));          // магазин
     memory.store(02014, besm6_asm("*70 3010(1),   utc"));          // каталоги
     memory.store(02015, besm6_asm("vlm 2014(1),   ita 17"));       // aload по адресу 716b

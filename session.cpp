@@ -256,6 +256,10 @@ public:
         static const unsigned BASE = 0x1000;
         machine.disk_io('r', 0, ZONE, SECTOR, BASE, 256);
 
+        // Fix damaged IОLISТ*.
+        Word iolist_star = machine.mem_load(BASE + 0363);
+        machine.mem_store(BASE + 0100, iolist_star);
+
         out << "Name       Address Size    Flags\n";
         out << "----------------------------------\n";
         for (unsigned addr = 0; addr < 256; addr += 2) {

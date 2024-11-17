@@ -768,3 +768,66 @@ void Machine::boot_ms_dubna(const std::string &path)
         std::cout << "------------------------------------------------------------\n";
     }
 }
+
+//
+// Check for binary program (overlay).
+//
+bool Machine::is_overlay(const std::string &filename)
+{
+//std::cout << "--- file = '" << filename << "'\n";
+    // Open text file.
+    std::ifstream file(filename, std::ios_base::binary);
+    if (!file.good()) {
+        // Cannot open.
+        return false;
+    }
+
+    // Check file size.
+    file.seekg(0, std::ios_base::end);
+    auto nbytes = file.tellg();
+//std::cout << "--- nbytes = " << nbytes << '\n';
+    if (nbytes / PAGE_NBYTES < 2 || nbytes % PAGE_NBYTES != 0) {
+        // Must be a multiple of the page size.
+        return false;
+    }
+
+    // Check a magic word OVERLA at fixed offset.
+    // 2365 3105 2444 6101
+    // 2365 3105 2444 6101   CODE: ,ISO, 6HOVERLA
+    // 0x4f5645524c41
+    std::string magic(6, '\0');
+    file.seekg(01762 * 6, std::ios_base::beg);
+    if (!file.read(&magic[0], magic.size())) {
+        // Wrong file format.
+        return false;
+    }
+//std::cout << "--- magic = " << std::oct
+//          << (int)(uint8_t)magic[0] << '-'
+//          << (int)(uint8_t)magic[1] << '-'
+//          << (int)(uint8_t)magic[2] << '-'
+//          << (int)(uint8_t)magic[3] << '-'
+//          << (int)(uint8_t)magic[4] << '-'
+//          << (int)(uint8_t)magic[5]
+//          << std::dec << "\n";
+    if (magic != "OVERLA") {
+        // Wrong file format.
+        return false;
+    }
+#if 0
+    // Check base address of the binary.
+    Word address;
+    file.seekg(6, std::ios_base::beg);
+    file.read((char*) &address, 6);
+    if ((address & BITS(15)) != 0770) {
+        // Wrong base address.
+        return false;
+    }
+#endif
+    return true;
+}
+
+// Load binary program (overlay).
+void Machine::boot_overlay(const std::string &filename)
+{
+    throw std::runtime_error("Overlays not supported yet");
+}

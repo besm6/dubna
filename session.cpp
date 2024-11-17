@@ -90,21 +90,28 @@ public:
     //
     void run()
     {
-        // Load requested ELF file.
+        // Load requested file.
         try {
-            machine.load_job(job_file);
+            if (machine.is_overlay(job_file)) {
 
+                // Load binary program.
+                machine.boot_overlay(job_file);
+
+            } else {
+                // Load job control script.
+                machine.load_job(job_file);
+
+                // Boot the monitoring system.
+                machine.boot_ms_dubna();
+            }
         } catch (std::exception &ex) {
             std::cerr << "Error: " << ex.what() << std::endl;
             exit_status = EXIT_FAILURE;
             return;
         }
 
+        // Run simulation.
         try {
-            // Boot the monitoring system.
-            machine.boot_ms_dubna();
-
-            // Run simulation.
             using namespace std::chrono;
             auto t0 = steady_clock::now();
             machine.run();

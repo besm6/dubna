@@ -136,6 +136,12 @@ public:
     // Save output files.
     void finish();
 
+    // Check for binary program (overlay).
+    bool is_overlay(const std::string &filename);
+
+    // Load binary program (overlay).
+    void boot_overlay(const std::string &filename);
+
     void plotter_change_page() { plotter.change_page(keep_temporary_files); }
 
     // Enable a progress message to stderr.

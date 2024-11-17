@@ -142,7 +142,7 @@ again:
     } catch (std::exception &ex) {
         // Something else.
         cpu.finish();
-        std::cerr << "Error: " << ex.what() << std::endl;
+        //std::cerr << "Error: " << ex.what() << std::endl;
         throw std::runtime_error(ex.what());
     }
 }
@@ -834,8 +834,54 @@ bool Machine::is_overlay(const std::string &filename)
     return true;
 }
 
+//
 // Load binary program (overlay).
-void Machine::boot_overlay(const std::string &filename)
+//
+void Machine::boot_overlay(const std::string &filename, const std::string &path)
 {
-    throw std::runtime_error("Overlays not supported yet");
+    // Mount tape 9/monsys as disk 30, read only.
+    disk_search_path = path;
+    disk_mount_readonly(030, TAPE_MONSYS);
+
+    // Phys i/o: re-direct drum 021 to disk 030.
+    map_drum_to_disk(021, 030);
+
+    // Open overlay as disk 60, read only.
+    file_paths.push_back(filename);
+    file_mount(060, file_paths.size(), false);
+
+    // clang-format off
+    memory.store(02000, besm6_asm("*70 3000,      utc"));          // читаем таблицу резидентных программ для загрузчика
+    memory.store(02001, besm6_asm("xta 76363,     atx 76100"));    // восстановим испорченный IОLISТ*
+    memory.store(02002, besm6_asm("*70 3001,      utc"));          // пишем ТРП на барабан
+    memory.store(02003, besm6_asm("*70 3002,      utc"));          // читаем пустой каталог временной библиотеки
+    memory.store(02004, besm6_asm("*70 3003,      utc"));          // пишем на барабан
+    memory.store(02005, besm6_asm("*70 3004,      utc"));          // вторая зона пустого каталога временной библиотеки
+    memory.store(02006, besm6_asm("*70 3005,      utc"));          // пишем на барабан
+    memory.store(02007, besm6_asm("*70 3006,      utc"));          // читаем резидент MONITOR*
+    memory.store(02010, besm6_asm("*70 3007,      utc"));          // читаем каталог оверлея
+
+    memory.store(02011, besm6_asm("vtm 53401(17), *70 717"));      // читаем статический загрузчик (infloa по адресу 0717)
+    memory.store(02012, besm6_asm("ita 17,        atx 716"));      // устанавливаем aload по адресу 0716
+    memory.store(02013, besm6_asm("xta 17,        ati 16"));       // берём адрес "Свободно"
+    memory.store(02014, besm6_asm("atx 2(16),     arx 3010"));     // записываем в заголовок, прибавляем 010
+    memory.store(02015, besm6_asm("atx 17,        xta 76000"));    // увеличиваем адрес "Свободно", берём имя оверлея
+    memory.store(02016, besm6_asm("atx (16),      vtm 1000(15)")); // записываем в заголовок, ставим начало программы
+    memory.store(02017, besm6_asm("uj (17),       utc"));          // уходим в статический загрузчик
+
+    memory.store(03000, 0'4014'3700'0021'0201ul); // э70: читаем таблицу резидентных программ для загрузчика
+    memory.store(03001, 0'0000'3700'0020'0000ul); // э70: пишем ТРП на барабан
+    memory.store(03002, 0'0014'3700'0021'0007ul); // э70: читаем пустой каталог временной библиотеки
+    memory.store(03003, 0'0000'3700'0021'0000ul); // э70: пишем на барабан
+    memory.store(03004, 0'0014'3700'0021'0010ul); // э70: вторая зона пустого каталога временной библиотеки
+    memory.store(03005, 0'0000'3700'0021'0001ul); // э70: пишем на барабан
+    memory.store(03006, 0'0014'0000'0021'0035ul); // э70: читаем резидент MONITOR*
+    memory.store(03007, 0'0010'3700'0060'0000ul); // э70: читаем каталог оверлея
+    memory.store(03010, 0'0000'0000'0000'0010ul); // прибавляем 10b
+    // clang-format on
+
+    cpu.set_pc(02000);
+    if (trace_enabled()) {
+        std::cout << "------------------------------------------------------------\n";
+    }
 }

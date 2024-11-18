@@ -69,7 +69,7 @@ protected:
         std::cout.rdbuf(output.rdbuf());
 
         // Run the job.
-        machine->load_job(job_filename);
+        machine->load_script(job_filename);
         machine->boot_ms_dubna();
         ASSERT_NO_THROW(machine->run());
         machine->finish();
@@ -119,7 +119,7 @@ protected:
         std::cout.rdbuf(output.rdbuf());
 
         // Run the job.
-        machine->load_job(job_filename);
+        machine->load_script(job_filename);
         machine->boot_ms_dubna();
         ASSERT_NO_THROW(machine->run());
         machine->finish();

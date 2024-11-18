@@ -90,55 +90,12 @@ public:
     //
     void run()
     {
-        // Load requested file.
         try {
             if (machine.is_overlay(job_file)) {
-
-                // Load binary program.
-                machine.boot_overlay(job_file);
-
+                run_overlay();
             } else {
-                // Load job control script.
-                machine.load_job(job_file);
-
-                // Boot the monitoring system.
-                machine.boot_ms_dubna();
+                run_script();
             }
-        } catch (std::exception &ex) {
-            std::cerr << "Error: " << ex.what() << std::endl;
-            exit_status = EXIT_FAILURE;
-            return;
-        }
-
-        // Run simulation.
-        try {
-            using namespace std::chrono;
-            auto t0 = steady_clock::now();
-            machine.run();
-            auto t1 = steady_clock::now();
-
-            // Get duration in microseconds.
-            auto usec = (double)duration_cast<microseconds>(t1 - t0).count();
-            if (usec < 1)
-                usec = 1;
-
-            // Compute the simulation speed.
-            auto sec           = usec / 1000000.0;
-            auto instr_count   = Machine::get_instr_count();
-            long instr_per_sec = std::lround(1000000.0 * instr_count / usec);
-
-            // Print footer.
-            print_footer(std::cout, sec, instr_per_sec);
-
-            if (Machine::trace_enabled()) {
-                // Print also to the trace file.
-                auto &out = Machine::get_trace_stream();
-                if (&out != &std::cout) {
-                    print_footer(out, sec, instr_per_sec);
-                }
-            }
-            machine.finish();
-
         } catch (const std::exception &ex) {
             // Print exception message.
             std::cerr << "Error: " << ex.what() << std::endl;
@@ -147,6 +104,62 @@ public:
             // Assuming the exception message already printed.
             exit_status = EXIT_FAILURE;
         }
+    }
+
+    //
+    // Run simulation session with given parameters.
+    //
+    void run_script()
+    {
+        // Load job control script.
+        machine.load_script(job_file);
+
+        // Boot the monitoring system.
+        machine.boot_ms_dubna();
+        if (Machine::trace_enabled()) {
+            std::cout << "------------------------------------------------------------\n";
+        }
+
+        // Run simulation.
+        using namespace std::chrono;
+        auto t0 = steady_clock::now();
+        machine.run();
+        auto t1 = steady_clock::now();
+
+        // Get duration in microseconds.
+        auto usec = (double)duration_cast<microseconds>(t1 - t0).count();
+        if (usec < 1)
+            usec = 1;
+
+        // Compute the simulation speed.
+        auto sec           = usec / 1000000.0;
+        auto instr_count   = Machine::get_instr_count();
+        long instr_per_sec = std::lround(1000000.0 * instr_count / usec);
+
+        // Print footer.
+        print_footer(std::cout, sec, instr_per_sec);
+
+        if (Machine::trace_enabled()) {
+            // Print also to the trace file.
+            auto &out = Machine::get_trace_stream();
+            if (&out != &std::cout) {
+                print_footer(out, sec, instr_per_sec);
+            }
+        }
+        machine.finish();
+    }
+
+    //
+    // Run simulation session with given parameters.
+    //
+    void run_overlay()
+    {
+        // Load binary program.
+        machine.boot_overlay(job_file);
+
+        // Run simulation.
+        machine.run();
+        machine.finish();
     }
 
     //

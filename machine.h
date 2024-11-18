@@ -126,9 +126,9 @@ public:
     // Destructor.
     ~Machine();
 
-    // Load job input into machine.
-    void load_job(const std::string &filename);
-    void load_job(std::istream &input);
+    // Load script into machine.
+    void load_script(const std::string &filename);
+    void load_script(std::istream &input);
 
     // Run simulation.
     void run();

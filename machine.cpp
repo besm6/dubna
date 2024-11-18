@@ -212,13 +212,13 @@ Word Machine::mem_load(unsigned addr)
 }
 
 //
-// Load input job from file.
+// Load script from file.
 // Throw exception on failure.
 //
-void Machine::load_job(const std::string &filename)
+void Machine::load_script(const std::string &filename)
 {
     if (trace_enabled()) {
-        std::cout << "Read job '" << filename << "'\n";
+        std::cout << "Read script '" << filename << "'\n";
     }
 
     // Open the input file.
@@ -227,20 +227,20 @@ void Machine::load_job(const std::string &filename)
     if (!input.is_open())
         throw std::runtime_error(filename + ": " + std::strerror(errno));
 
-    load_job(input);
+    load_script(input);
 }
 
 //
-// Load input job from stream to drum #1.
+// Load script from stream to drum #1.
 //
-void Machine::load_job(std::istream &input)
+void Machine::load_script(std::istream &input)
 {
     // Word offset from the beginning of the drum.
     unsigned offset = 0;
 
     while (input.good()) {
         if (offset >= 040 * PAGE_NWORDS)
-            throw std::runtime_error("Input job is too large");
+            throw std::runtime_error("Script is too large");
 
         // Get next line.
         std::string line;
@@ -764,9 +764,6 @@ void Machine::boot_ms_dubna(const std::string &path)
     // clang-format on
 
     cpu.set_pc(02010);
-    if (trace_enabled()) {
-        std::cout << "------------------------------------------------------------\n";
-    }
 }
 
 //
@@ -837,9 +834,10 @@ void Machine::boot_overlay(const std::string &filename, const std::string &path)
     memory.store(02005, besm6_asm("*70 3004,      utc"));       // вторая зона пустого каталога временной библиотеки
     memory.store(02006, besm6_asm("*70 3005,      utc"));       // пишем на барабан
     memory.store(02007, besm6_asm("*70 3006,      utc"));       // читаем резидент MONITOR*
+
     memory.store(02010, besm6_asm("*70 3007,      utc"));       // читаем каталог оверлея
-    memory.store(02011, besm6_asm("xta 76001,     aax 3015"));  //
-    memory.store(02012, besm6_asm("aox 3016,      atx 76001")); //
+    memory.store(02011, besm6_asm("xta 76001,     aax 3015"));  // снимаем признак раздела на МБ
+    memory.store(02012, besm6_asm("aox 3016,      atx 76001")); // ставим признак раздела на МЛ
     memory.store(02013, besm6_asm("*70 3014,      utc"));       // сохраняем каталог оверлея для статического загрузчика
 
     memory.store(02014, besm6_asm("vtm 53401(17), *70 717"));   // читаем статический загрузчик (infloa по адресу 0717)
@@ -860,17 +858,14 @@ void Machine::boot_overlay(const std::string &filename, const std::string &path)
     memory.store(03005, 0'0000'3700'0021'0001ul); // э70: пишем на барабан
     memory.store(03006, 0'0014'0000'0021'0035ul); // э70: читаем резидент MONITOR*
     memory.store(03007, 0'0010'3700'0060'0000ul); // э70: читаем каталог оверлея
-    memory.store(03010, 0'7777'7777'7770'0000ul); // маска битов 48:16.
+    memory.store(03010, 0'7777'7777'7770'0000ul); // маска битов 48:16
     memory.store(03011, 0'0000'0000'0000'1000ul); // начальный адрес оверлея
     memory.store(03012, 0'0010'0000'0060'0000ul); // inf0 для статического загрузчика
-    memory.store(03013, 0'0010'3700'0020'0013ul); // a/cat для статического загрузчика
+    memory.store(03013, 0'0010'0000'0020'0013ul); // a/cat для статического загрузчика
     memory.store(03014, 0'0000'3700'0020'0013ul); // э70: пишем в a/cat
-    memory.store(03015, 0'0777'7777'7777'7777ul); // маска битов 45:1.
+    memory.store(03015, 0'0777'7777'7777'7777ul); // маска битов 45:1
     memory.store(03016, 0'4000'0000'0000'0000ul); // бит 48
     // clang-format on
 
     cpu.set_pc(02000);
-    if (trace_enabled()) {
-        std::cout << "------------------------------------------------------------\n";
-    }
 }

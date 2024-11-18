@@ -1,0 +1,14 @@
+*name hello
+*disc:1/local
+*file:hello,60,w
+*pascal
+program main(output);
+_(
+    writeln('Hello, Pascal!');
+    stop;
+_).
+*library:22
+*call overlay
+program
+*end record
+*end file

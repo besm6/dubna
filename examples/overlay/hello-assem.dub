@@ -1,0 +1,17 @@
+*name hello
+*disc:1/local
+*file:hello,60,w
+*assem
+ program: ,name,
+          ,*64 , info
+          ,*74 ,
+ info:    ,    , text
+          ,    , text
+          ,000 ,
+         8,    ,
+ text:    ,gost, 24hHello, Assembler!'214''231'
+          ,end ,
+*call overlay
+program
+*end record
+*end file

@@ -1,0 +1,12 @@
+*name hello
+*disc:1/local
+*file:hello,60,w
+*algol
+'begin'
+    print(''Hello, Algol!'');
+'end'
+'eop'
+*call overlay
+program
+*end record
+*end file

@@ -1,0 +1,13 @@
+*name hello
+*disc:1/local
+*file:hello,60,w
+*fortran
+        program hello
+        print 1000
+        stop
+ 1000   format('Hello, Fortran!')
+        end
+*call overlay
+program
+*end record
+*end file

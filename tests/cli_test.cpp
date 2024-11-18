@@ -111,6 +111,9 @@ TEST(cli, trace_end_file)
 
 TEST(cli, help_libs)
 {
+    // Set path to the disk images.
+    EXPECT_EQ(setenv("BESM6_PATH", TEST_DIR "/../tapes", 1), 0);
+
     // Run simulator via shell.
     FILE *pipe = popen("../dubna --help-libs", "r");
     ASSERT_TRUE(pipe != nullptr);

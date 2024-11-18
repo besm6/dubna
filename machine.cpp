@@ -863,11 +863,12 @@ void Machine::boot_overlay(const std::string &filename, const std::string &path)
 
     memory.store(02011, besm6_asm("vtm 53401(17), *70 717"));      // читаем статический загрузчик (infloa по адресу 0717)
     memory.store(02012, besm6_asm("ita 17,        atx 716"));      // устанавливаем aload по адресу 0716
-    memory.store(02013, besm6_asm("xta 17,        ati 16"));       // берём адрес "Свободно"
-    memory.store(02014, besm6_asm("atx 2(16),     arx 3010"));     // записываем в заголовок, прибавляем 010
-    memory.store(02015, besm6_asm("atx 17,        xta 76000"));    // увеличиваем адрес "Свободно", берём имя оверлея
-    memory.store(02016, besm6_asm("atx (16),      vtm 1000(15)")); // записываем в заголовок, ставим начало программы
-    memory.store(02017, besm6_asm("uj (17),       utc"));          // уходим в статический загрузчик
+    memory.store(02013, besm6_asm("xta 17,        aax 3010"));     // берём адрес "Свободно"
+    memory.store(02014, besm6_asm("aox 3011,      atx 17"));       // устанавливаем на 01000
+    memory.store(02015, besm6_asm("atx 772,       ati 15"));       // записываем в заголовок, ставим начало программы
+    memory.store(02016, besm6_asm("xta 3012,      atx 512"));      // ставим inf0 для статического загрузчика
+    memory.store(02017, besm6_asm("xta 76000,     atx 770"));      // берём имя оверлея, записываем в заголовок
+    memory.store(02020, besm6_asm("uj (17),       utc"));          // уходим в статический загрузчик
 
     memory.store(03000, 0'4014'3700'0021'0201ul); // э70: читаем таблицу резидентных программ для загрузчика
     memory.store(03001, 0'0000'3700'0020'0000ul); // э70: пишем ТРП на барабан
@@ -877,7 +878,9 @@ void Machine::boot_overlay(const std::string &filename, const std::string &path)
     memory.store(03005, 0'0000'3700'0021'0001ul); // э70: пишем на барабан
     memory.store(03006, 0'0014'0000'0021'0035ul); // э70: читаем резидент MONITOR*
     memory.store(03007, 0'0010'3700'0060'0000ul); // э70: читаем каталог оверлея
-    memory.store(03010, 0'0000'0000'0000'0010ul); // прибавляем 10b
+    memory.store(03010, 0'7777'7777'7770'0000ul); // маска битов 48:16.
+    memory.store(03011, 0'0000'0000'0000'1000ul); // начальный адрес оверлея
+    memory.store(03012, 0'0010'0000'0060'0000ul); // inf0 для статического загрузчика
     // clang-format on
 
     cpu.set_pc(02000);

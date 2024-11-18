@@ -774,8 +774,7 @@ void Machine::boot_ms_dubna(const std::string &path)
 //
 bool Machine::is_overlay(const std::string &filename)
 {
-//std::cout << "--- file = '" << filename << "'\n";
-    // Open text file.
+    // Open binary file.
     std::ifstream file(filename, std::ios_base::binary);
     if (!file.good()) {
         // Cannot open.
@@ -785,29 +784,17 @@ bool Machine::is_overlay(const std::string &filename)
     // Check file size.
     file.seekg(0, std::ios_base::end);
     auto nbytes = file.tellg();
-//std::cout << "--- nbytes = " << nbytes << '\n';
     if (nbytes / PAGE_NBYTES < 2 || nbytes % PAGE_NBYTES != 0) {
         // Must be a multiple of the page size.
         return false;
     }
 
-    // Check a magic word OVERLA at fixed offset.
-    // 2365 3105 2444 6101
-    // 2365 3105 2444 6101   CODE: ,ISO, 6HOVERLA
-    // 0x4f5645524c41
+    // Check magic word OVERLA at fixed offset.
     std::string word(6, '\0');
     file.seekg(01762 * 6, std::ios_base::beg);
     if (!file.read(&word[0], word.size())) {
         return false;
     }
-//std::cout << "--- magic = " << std::oct
-//          << (int)(uint8_t)word[0] << '-'
-//          << (int)(uint8_t)word[1] << '-'
-//          << (int)(uint8_t)word[2] << '-'
-//          << (int)(uint8_t)word[3] << '-'
-//          << (int)(uint8_t)word[4] << '-'
-//          << (int)(uint8_t)word[5]
-//          << std::dec << "\n";
     if (word != "OVERLA") {
         // Wrong file format.
         return false;
@@ -819,15 +806,6 @@ bool Machine::is_overlay(const std::string &filename)
         return false;
     }
     unsigned address = (word[5] & 0377) | ((word[4] << 8) & 077400);
-//std::cout << "--- spec = " << std::oct
-//          << (int)(uint8_t)word[0] << '-'
-//          << (int)(uint8_t)word[1] << '-'
-//          << (int)(uint8_t)word[2] << '-'
-//          << (int)(uint8_t)word[3] << '-'
-//          << (int)(uint8_t)word[4] << '-'
-//          << (int)(uint8_t)word[5]
-//          << std::dec << "\n";
-//std::cout << "--- base = 0" << std::oct << address << std::dec << '\n';
     if (address != 0770) {
         throw std::runtime_error("Overlay at wrong base address");
     }
@@ -851,28 +829,28 @@ void Machine::boot_overlay(const std::string &filename, const std::string &path)
     file_mount(060, file_paths.size(), false);
 
     // clang-format off
-    memory.store(02000, besm6_asm("*70 3000,      utc"));          // читаем таблицу резидентных программ для загрузчика
-    memory.store(02001, besm6_asm("xta 76363,     atx 76100"));    // восстановим испорченный IОLISТ*
-    memory.store(02002, besm6_asm("*70 3001,      utc"));          // пишем ТРП на барабан
-    memory.store(02003, besm6_asm("*70 3002,      utc"));          // читаем пустой каталог временной библиотеки
-    memory.store(02004, besm6_asm("*70 3003,      utc"));          // пишем на барабан
-    memory.store(02005, besm6_asm("*70 3004,      utc"));          // вторая зона пустого каталога временной библиотеки
-    memory.store(02006, besm6_asm("*70 3005,      utc"));          // пишем на барабан
-    memory.store(02007, besm6_asm("*70 3006,      utc"));          // читаем резидент MONITOR*
-    memory.store(02010, besm6_asm("*70 3007,      utc"));          // читаем каталог оверлея
-    memory.store(02011, besm6_asm("xta 76001,     aax 3015"));     //
-    memory.store(02012, besm6_asm("aox 3016,      atx 76001"));    //
-    memory.store(02013, besm6_asm("*70 3014,      utc"));          // сохраняем каталог оверлея для статического загрузчика
+    memory.store(02000, besm6_asm("*70 3000,      utc"));       // читаем таблицу резидентных программ для загрузчика
+    memory.store(02001, besm6_asm("xta 76363,     atx 76100")); // восстановим испорченный IОLISТ*
+    memory.store(02002, besm6_asm("*70 3001,      utc"));       // пишем ТРП на барабан
+    memory.store(02003, besm6_asm("*70 3002,      utc"));       // читаем пустой каталог временной библиотеки
+    memory.store(02004, besm6_asm("*70 3003,      utc"));       // пишем на барабан
+    memory.store(02005, besm6_asm("*70 3004,      utc"));       // вторая зона пустого каталога временной библиотеки
+    memory.store(02006, besm6_asm("*70 3005,      utc"));       // пишем на барабан
+    memory.store(02007, besm6_asm("*70 3006,      utc"));       // читаем резидент MONITOR*
+    memory.store(02010, besm6_asm("*70 3007,      utc"));       // читаем каталог оверлея
+    memory.store(02011, besm6_asm("xta 76001,     aax 3015"));  //
+    memory.store(02012, besm6_asm("aox 3016,      atx 76001")); //
+    memory.store(02013, besm6_asm("*70 3014,      utc"));       // сохраняем каталог оверлея для статического загрузчика
 
-    memory.store(02014, besm6_asm("vtm 53401(17), *70 717"));      // читаем статический загрузчик (infloa по адресу 0717)
-    memory.store(02015, besm6_asm("ita 17,        atx 716"));      // устанавливаем aload по адресу 0716
-    memory.store(02016, besm6_asm("xta 17,        aax 3010"));     // берём адрес "Свободно"
-    memory.store(02017, besm6_asm("aox 3011,      atx 17"));       // устанавливаем на 01000
-    memory.store(02020, besm6_asm("atx 772,       ati 15"));       // записываем в заголовок, ставим начало программы
-    memory.store(02021, besm6_asm("xta 3012,      atx 512"));      // ставим inf0 для статического загрузчика
-    memory.store(02022, besm6_asm("xta 3013,      atx 511"));      // ставим a/cat для статического загрузчика
-    memory.store(02023, besm6_asm("xta 76000,     atx 770"));      // берём имя оверлея, записываем в заголовок
-    memory.store(02024, besm6_asm("uj (17),       utc"));          // уходим в статический загрузчик
+    memory.store(02014, besm6_asm("vtm 53401(17), *70 717"));   // читаем статический загрузчик (infloa по адресу 0717)
+    memory.store(02015, besm6_asm("ita 17,        atx 716"));   // устанавливаем aload по адресу 0716
+    memory.store(02016, besm6_asm("xta 17,        aax 3010"));  // берём адрес "Свободно"
+    memory.store(02017, besm6_asm("aox 3011,      atx 17"));    // устанавливаем на 01000
+    memory.store(02020, besm6_asm("atx 772,       ati 15"));    // записываем в заголовок, ставим начало программы
+    memory.store(02021, besm6_asm("xta 3012,      atx 512"));   // ставим inf0 для статического загрузчика
+    memory.store(02022, besm6_asm("xta 3013,      atx 511"));   // ставим a/cat для статического загрузчика
+    memory.store(02023, besm6_asm("xta 76000,     atx 770"));   // берём имя оверлея, записываем в заголовок
+    memory.store(02024, besm6_asm("uj (17),       utc"));       // уходим в статический загрузчик
 
     memory.store(03000, 0'4014'3700'0021'0201ul); // э70: читаем таблицу резидентных программ для загрузчика
     memory.store(03001, 0'0000'3700'0020'0000ul); // э70: пишем ТРП на барабан

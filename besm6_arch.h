@@ -228,6 +228,12 @@ public:
         mantissa >>= 1;
         ++exponent;
     }
+
+    //
+    // Multiply by a signed 41-bit integer.
+    // Return lower 40 bits.
+    //
+    uint64_t multiply(int64_t);
 };
 
 #endif // BESM6_ARCH_H

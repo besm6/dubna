@@ -246,23 +246,57 @@ void Processor::arith_multiply(Word val)
     }
     MantissaExponent acc(core.ACC);
     MantissaExponent word(val);
-    Word mr;
 
-    //
-    // Multiply two signed 41-bit integers a and b, giving a 81-bit result.
-    // Put upper 41 bits into signed *hi.
-    // Put lower 40 bits into unsigned *lo.
-    //
-    __int128 result = (__int128)acc.mantissa * word.mantissa;
-    acc.mantissa    = (int64_t)(result >> 40);
-    mr              = (Word)result & BITS40;
-
+    Word mr = acc.multiply(word.mantissa);
     acc.exponent += word.exponent - 64;
 
     if (acc.is_denormal()) {
         acc.normalize_to_the_right();
     }
     arith_normalize_and_round(acc, mr, mr != 0);
+}
+
+//
+// Multiply by a signed 41-bit integer.
+// Store upper 41 bits (signed) into mantissa.
+// Return lower 40 bits (unsigned).
+//
+uint64_t MantissaExponent::multiply(int64_t x)
+{
+    // Compute sign.
+    unsigned negative = 0;
+    if (mantissa < 0) {
+        mantissa = -mantissa;
+        negative ^= 1;
+    }
+    if (x < 0) {
+        x = -x;
+        negative ^= 1;
+    }
+
+    uint64_t a = mantissa >> 20;
+    uint64_t b = mantissa & 0xfffff;
+    uint64_t c = x >> 20;
+    uint64_t d = x & 0xfffff;
+
+    mantissa   = a * c;
+    uint64_t f = b * d;
+    uint64_t g = a*d + b*c; // 41 bits
+
+    f        += (g & 0xfffff) << 20;
+    mantissa += g >> 20;
+    mantissa += f >> 40;
+    f &= 0xfffff'fffff;
+
+    // Negate.
+    if (negative) {
+        mantissa = ~mantissa;
+        f ^= 0xfffff'fffff;
+        f += 1;
+        mantissa += f >> 40;
+        f &= 0xfffff'fffff;
+    }
+    return f;
 }
 
 //

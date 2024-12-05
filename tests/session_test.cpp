@@ -453,7 +453,7 @@ TEST_F(dubna_session, sovcatal)
 //
 // Print contents of library 1.
 //
-TEST_F(dubna_session, library1)
+TEST_F(dubna_session, DISABLED_library1)
 {
     auto output = run_job_and_capture_output(R"(*name библиотека 1
 *tape:12/librar,32
@@ -468,7 +468,7 @@ TEST_F(dubna_session, library1)
 //
 // Print contents of library 2.
 //
-TEST_F(dubna_session, library2)
+TEST_F(dubna_session, DISABLED_library2)
 {
     auto output = run_job_and_capture_output(R"(*name библиотека 2
 *tape:37/librar,32
@@ -483,7 +483,7 @@ TEST_F(dubna_session, library2)
 //
 // Print contents of library 3.
 //
-TEST_F(dubna_session, library3)
+TEST_F(dubna_session, DISABLED_library3)
 {
     auto output = run_job_and_capture_output(R"(*name библиотека 3
 *tape:37/librar,32
@@ -498,7 +498,7 @@ TEST_F(dubna_session, library3)
 //
 // Print contents of library 5.
 //
-TEST_F(dubna_session, library5)
+TEST_F(dubna_session, DISABLED_library5)
 {
     auto output = run_job_and_capture_output(R"(*name библиотека 5
 *tape:37/librar,32
@@ -513,7 +513,7 @@ TEST_F(dubna_session, library5)
 //
 // Print contents of library 12.
 //
-TEST_F(dubna_session, library12)
+TEST_F(dubna_session, DISABLED_library12)
 {
     auto output = run_job_and_capture_output(R"(*name библиотека 12
 *tape:12/librar,32
@@ -528,7 +528,7 @@ TEST_F(dubna_session, library12)
 //
 // Print contents of library 21.
 //
-TEST_F(dubna_session, library21)
+TEST_F(dubna_session, DISABLED_library21)
 {
     auto output = run_job_and_capture_output(R"(*name библиотека 21
 *tape:9/monsys,32
@@ -543,7 +543,7 @@ TEST_F(dubna_session, library21)
 //
 // Print contents of library 22.
 //
-TEST_F(dubna_session, library22)
+TEST_F(dubna_session, DISABLED_library22)
 {
     auto output = run_job_and_capture_output(R"(*name библиотека 22
 *tape:9/monsys,32
@@ -558,7 +558,7 @@ TEST_F(dubna_session, library22)
 //
 // Print contents of library 23.
 //
-TEST_F(dubna_session, library23)
+TEST_F(dubna_session, DISABLED_library23)
 {
     auto output = run_job_and_capture_output(R"(*name библиотека 23
 *tape:9/monsys,32

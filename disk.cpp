@@ -189,8 +189,8 @@ void Disk::memory_to_simh(unsigned zone, unsigned sector, unsigned addr, unsigne
     if (lseek(file_descriptor, offset_nwords * sizeof(Word), SEEK_SET) < 0)
         throw std::runtime_error("Disk seek error");
 
-    Word *source    = memory.get_ptr(addr);
-    unsigned nbytes = nwords * sizeof(Word);
+    Word *source   = memory.get_ptr(addr);
+    ssize_t nbytes = nwords * sizeof(Word);
     if (write(file_descriptor, source, nbytes) != nbytes)
         throw std::runtime_error("Disk write error");
 }

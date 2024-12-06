@@ -273,30 +273,25 @@ uint64_t MantissaExponent::multiply(int64_t x)
         x = -x;
         negative ^= 1;
     }
+    uint64_t a = x >> 20;
+    uint64_t b = x & 0xfffff;
 
-    uint64_t a = mantissa >> 20;
-    uint64_t b = mantissa & 0xfffff;
-    uint64_t c = x >> 20;
-    uint64_t d = x & 0xfffff;
-
-    mantissa   = a * c;
-    uint64_t f = b * d;
-    uint64_t g = a*d + b*c; // 41 bits
-
-    f        += (g & 0xfffff) << 20;
-    mantissa += g >> 20;
-    mantissa += f >> 40;
-    f &= 0xfffff'fffff;
+    uint64_t mr = mantissa * b;
+    mantissa *= a;
+    mr += (mantissa & 0xfffff) << 20;
+    mantissa >>= 20;
+    mantissa += mr >> 40;
+    mr &= 0xfffff'fffff;
 
     // Negate.
     if (negative) {
         mantissa = ~mantissa;
-        f ^= 0xfffff'fffff;
-        f += 1;
-        mantissa += f >> 40;
-        f &= 0xfffff'fffff;
+        mr ^= 0xfffff'fffff;
+        mr += 1;
+        mantissa += mr >> 40;
+        mr &= 0xfffff'fffff;
     }
-    return f;
+    return mr;
 }
 
 //

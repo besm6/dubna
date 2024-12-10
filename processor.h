@@ -83,10 +83,10 @@ private:
     Memory &memory;
 
     // Current state.
-    struct CoreState core {};
+    struct CoreState core{};
 
     // Previous state, for tracing.
-    struct CoreState prev {};
+    struct CoreState prev{};
 
     unsigned RK{};    // регистр команд
     unsigned Aex{};   // executive address
@@ -138,7 +138,7 @@ private:
     void e64_flush_line();
     void e64_finish();
     std::string e64_line;
-    int e64_skip_lines{0};
+    int e64_skip_lines{ 0 };
     unsigned e64_position{};
     unsigned e64_line_count{};
     bool e64_line_dirty{};

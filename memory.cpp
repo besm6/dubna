@@ -28,6 +28,7 @@
 #include <iomanip>
 #include <iostream>
 #include <sstream>
+
 #include "gost10859.h"
 
 //
@@ -120,5 +121,6 @@ static bool is_eof(uint8_t byte)
 bool BytePointer::eof_in_word()
 {
     const Word w = *memory.get_ptr(word_addr);
-    return is_eof(w) || is_eof(w >> 8) || is_eof(w >> 16) || is_eof(w >> 24) || is_eof(w >> 32) || is_eof(w >> 40);
+    return is_eof(w) || is_eof(w >> 8) || is_eof(w >> 16) || is_eof(w >> 24) || is_eof(w >> 32) ||
+           is_eof(w >> 40);
 }

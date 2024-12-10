@@ -41,16 +41,16 @@ public:
     explicit Puncher(Memory &m) : memory(m) {}
 
     // Send an array to punched cards.
-    void punch(ushort start_addr, ushort end_addr);
+    void punch(uint16_t start_addr, uint16_t end_addr);
 
     // Save all data files.
     void finish();
 
 private:
     void punch_braille(const unsigned char buf[144]);
-    void punch_stdarray(const ushort columns[80]);
-    void punch_cosy(const ushort columns[80]);
-    void transpose(const unsigned char buf[144], ushort columns[80]);
+    void punch_stdarray(const uint16_t columns[80]);
+    void punch_cosy(const uint16_t columns[80]);
+    void transpose(const unsigned char buf[144], uint16_t columns[80]);
 };
 
 #endif // DUBNA_PLOTTER_H

@@ -25,9 +25,9 @@
 #ifndef DUBNA_SESSION_H
 #define DUBNA_SESSION_H
 
+#include <iostream>
 #include <memory>
 #include <string>
-#include <iostream>
 
 #include "besm6_arch.h"
 

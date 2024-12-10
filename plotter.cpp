@@ -109,7 +109,7 @@ void Plotter::save_to_file(std::string filename, const std::string &data)
 void Plotter::watanabe_convert_svg(std::string filename)
 {
     // Default color is black.
-    unsigned color = 1;
+    unsigned color                         = 1;
     static const std::string color_name[6] = {
         "black",     // pen #1 - black
         "red",       // pen #2 - red
@@ -140,12 +140,11 @@ void Plotter::watanabe_convert_svg(std::string filename)
 
     // Write SVG header.
     out << "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n"
-        << "<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:ev=\"http://www.w3.org/2001/xml-events\""
+        << "<svg xmlns=\"http://www.w3.org/2000/svg\" "
+           "xmlns:ev=\"http://www.w3.org/2001/xml-events\""
         << " xmlns:xlink=\"http://www.w3.org/1999/xlink\" baseProfile=\"full\" version=\"1.1\""
-        << " width=\"" << (maxx+1)
-        << "\" height=\"" << (maxy+1)
-        << "\" viewBox=\"0 0 " << (maxx+1)
-        << " " << (maxy+1) << "\">\n"
+        << " width=\"" << (maxx + 1) << "\" height=\"" << (maxy + 1) << "\" viewBox=\"0 0 "
+        << (maxx + 1) << " " << (maxy + 1) << "\">\n"
         << "<g fill=\"none\" stroke=\"black\" stroke-linecap=\"round\" stroke-width=\"3\">\n";
 
     // Write lines.
@@ -174,12 +173,12 @@ void Plotter::watanabe_convert_svg(std::string filename)
             if (x >= 1 && x <= 6 && x != color) {
                 color = x;
                 out << "</g>\n"
-                    << "<g fill=\"none\" stroke=\"" << color_name[color-1]
+                    << "<g fill=\"none\" stroke=\"" << color_name[color - 1]
                     << "\" stroke-linecap=\"round\" stroke-width=\"3\">\n";
             }
             return;
         }
-        path.push_back({x, maxy - y});
+        path.push_back({ x, maxy - y });
     });
 
     // Write SVG footer.
@@ -190,7 +189,7 @@ void Plotter::watanabe_convert_svg(std::string filename)
 //
 // Parse Watanabe file and invoke given routine for each line.
 //
-void Plotter::watanabe_parse(const std::function<void(char, unsigned, unsigned&)> &func)
+void Plotter::watanabe_parse(const std::function<void(char, unsigned, unsigned &)> &func)
 {
     std::istringstream input(watanabe);
     std::string line;
@@ -241,12 +240,11 @@ void Plotter::tektronix_convert_svg(std::string filename)
 
     // Write SVG header.
     out << "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n"
-        << "<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:ev=\"http://www.w3.org/2001/xml-events\""
+        << "<svg xmlns=\"http://www.w3.org/2000/svg\" "
+           "xmlns:ev=\"http://www.w3.org/2001/xml-events\""
         << " xmlns:xlink=\"http://www.w3.org/1999/xlink\" baseProfile=\"full\" version=\"1.1\""
-        << " width=\"" << (maxx+1)
-        << "\" height=\"" << (maxy+1)
-        << "\" viewBox=\"0 0 " << (maxx+1)
-        << " " << (maxy+1) << "\">\n"
+        << " width=\"" << (maxx + 1) << "\" height=\"" << (maxy + 1) << "\" viewBox=\"0 0 "
+        << (maxx + 1) << " " << (maxy + 1) << "\">\n"
         << "<g fill=\"none\" stroke=\"black\" stroke-linecap=\"round\" stroke-width=\"1.5\">\n";
 
     // Write lines.
@@ -263,7 +261,7 @@ void Plotter::tektronix_convert_svg(std::string filename)
             }
             path.clear();
         }
-        path.push_back({x, maxy - y});
+        path.push_back({ x, maxy - y });
     });
 
     // Write SVG footer.
@@ -274,17 +272,17 @@ void Plotter::tektronix_convert_svg(std::string filename)
 //
 // Parse Tektronix file and invoke given routine for each line.
 //
-void Plotter::tektronix_parse(const std::function<void(bool, unsigned, unsigned&)> &func)
+void Plotter::tektronix_parse(const std::function<void(bool, unsigned, unsigned &)> &func)
 {
     static const char GS = 035;
-    for (auto ptr = tektronix.cbegin(); ptr < tektronix.cend(); ) {
+    for (auto ptr = tektronix.cbegin(); ptr < tektronix.cend();) {
         bool flag = (*ptr == GS);
         if (flag) {
             ptr++;
         }
         unsigned h = (*ptr++ & 037) << 5;
         unsigned y = (*ptr++ & 037) | h;
-        h = (*ptr++ & 037) << 5;
+        h          = (*ptr++ & 037) << 5;
         unsigned x = (*ptr++ & 037) | h;
         func(flag, x, y);
     }
@@ -311,7 +309,7 @@ static inline bool is_collinear(int ax, int ay, int bx, int by)
     if (ay == 0) {
         return (by == 0) && same_sign(ax, bx);
     }
-    return (ax*by == ay*bx);
+    return (ax * by == ay * bx);
 }
 
 //
@@ -343,15 +341,14 @@ void Plotter::calcomp_convert_svg(std::string filename)
     }
 
     // Write SVG header.
-    int width = maxx + 1 - minx;
+    int width  = maxx + 1 - minx;
     int height = maxy + 1 - miny;
     out << "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n"
-        << "<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:ev=\"http://www.w3.org/2001/xml-events\""
+        << "<svg xmlns=\"http://www.w3.org/2000/svg\" "
+           "xmlns:ev=\"http://www.w3.org/2001/xml-events\""
         << " xmlns:xlink=\"http://www.w3.org/1999/xlink\" baseProfile=\"full\" version=\"1.1\""
-        << " width=\"" << width
-        << "\" height=\"" << height
-        << "\" viewBox=\"0 0 " << width
-        << " " << height << "\">\n"
+        << " width=\"" << width << "\" height=\"" << height << "\" viewBox=\"0 0 " << width << " "
+        << height << "\">\n"
         << "<g fill=\"none\" stroke=\"black\" stroke-linecap=\"round\" stroke-width=\"1\">\n";
 
     // Write lines.
@@ -387,7 +384,7 @@ void Plotter::calcomp_convert_svg(std::string filename)
                 path.pop_back();
             }
         }
-        path.push_back({dev_x, dev_y});
+        path.push_back({ dev_x, dev_y });
     });
 
     // Write SVG footer.
@@ -398,7 +395,7 @@ void Plotter::calcomp_convert_svg(std::string filename)
 //
 // Parse Calcomp file and invoke given routine for each line.
 //
-void Plotter::calcomp_parse(const std::function<void(bool, int, int&)> &func)
+void Plotter::calcomp_parse(const std::function<void(bool, int, int &)> &func)
 {
     bool pen_up{};
     for (auto const byte : calcomp) {

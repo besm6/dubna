@@ -21,8 +21,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
-#include <string>
 #include <iostream>
+#include <string>
 
 //
 // Write GOST-10859 string to stdout.
@@ -48,12 +48,12 @@ void utf8_putc(unsigned ch);
 //
 // Write Unicode symbol to a stream in UTF-8 encoding.
 //
-void utf8_putc(unsigned ch, std::ostream & s);
+void utf8_putc(unsigned ch, std::ostream &s);
 
 //
 // Write ISO symbol to a stream in UTF-8 encoding.
 //
-void iso_putc(unsigned ch, std::ostream & s);
+void iso_putc(unsigned ch, std::ostream &s);
 
 //
 // Fetch Unicode symbol from UTF-8 string.
@@ -79,7 +79,7 @@ extern const unsigned char itm_to_gost[256], gost_to_itm[256];
 //
 // Convert KOI-7(ISO) encoding to Unicode.
 //
-extern const unsigned short koi7_to_unicode [128];
+extern const unsigned short koi7_to_unicode[128];
 
 //
 // Convert character in TEXT encoding to Unicode.

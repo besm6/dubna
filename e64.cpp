@@ -49,8 +49,8 @@ void Processor::e64_emit_line()
     e64_flush_line();
 
     // Set separator and position for next line.
-    e64_position = 0;
-    e64_overprint = false;
+    e64_position   = 0;
+    e64_overprint  = false;
     e64_line_dirty = false;
 }
 
@@ -644,9 +644,9 @@ void Processor::e64_print_dubna(unsigned addr0, unsigned addr1)
 void Processor::e64()
 {
     switch (core.M[016]) {
-    case 0:  // Disable paging.
+    case 0: // Disable paging.
         return;
-    case 1:  // Enable paging.
+    case 1: // Enable paging.
         return;
     default: // Print something.
         break;
@@ -704,8 +704,8 @@ void Processor::e64()
         case 9:
         case 13:
             // CPU instruction.
-            start_addr = e64_print_instructions(start_addr, end_addr, ctl.field.width,
-                                                ctl.field.repeat1);
+            start_addr =
+                e64_print_instructions(start_addr, end_addr, ctl.field.width, ctl.field.repeat1);
             break;
 
         case 2:
@@ -750,7 +750,7 @@ void Processor::e64()
                     e64_emit_line();
                 } else {
                     e64_line_dirty = true;
-                    e64_overprint = false;
+                    e64_overprint  = false;
                 }
             }
 

@@ -99,7 +99,7 @@ bool Processor::step()
     core.PC &= BITS(15);
     word = machine.mem_fetch(core.PC);
     if (core.right_instr_flag)
-        RK = (unsigned)word;         // get right instruction
+        RK = (unsigned)word; // get right instruction
     else
         RK = (unsigned)(word >> 24); // get left instruction
 
@@ -465,7 +465,7 @@ bool Processor::step()
     }
 
     case 042: // счи, ita
-load_modifier:
+    load_modifier:
         Aex      = ADDR(addr + core.M[reg]);
         core.ACC = ADDR(core.M[Aex & 017]);
         core.set_logical();
@@ -611,7 +611,7 @@ load_modifier:
         return true;
 
     case 0340: // пио, vzm
-branch_zero:
+    branch_zero:
         Aex = addr;
         if (!core.M[reg]) {
             core.PC               = addr;

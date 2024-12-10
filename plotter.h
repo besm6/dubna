@@ -64,9 +64,9 @@ private:
     void tektronix_convert_svg(std::string filename);
 
     // Parse raw file and invoke given routine for each line.
-    void watanabe_parse(const std::function<void(char, unsigned, unsigned&)> &func);
-    void tektronix_parse(const std::function<void(bool, unsigned, unsigned&)> &func);
-    void calcomp_parse(const std::function<void(bool, int, int&)> &func);
+    void watanabe_parse(const std::function<void(char, unsigned, unsigned &)> &func);
+    void tektronix_parse(const std::function<void(bool, unsigned, unsigned &)> &func);
+    void calcomp_parse(const std::function<void(bool, int, int &)> &func);
 
     // Append suffix to a file base name.
     // Also optionally append a page number.

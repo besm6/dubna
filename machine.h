@@ -33,8 +33,8 @@
 #include "drum.h"
 #include "gost10859.h"
 #include "plotter.h"
-#include "puncher.h"
 #include "processor.h"
+#include "puncher.h"
 
 class Machine {
 private:
@@ -109,7 +109,7 @@ public:
     Puncher puncher;
 
     // "MONSYS )" in TEXT encoding.
-    static const Word TAPE_MONSYS = 055'57'56'63'71'63'00'11;
+    static const Word TAPE_MONSYS  = 055'57'56'63'71'63'00'11;
     static const Word TAPE_SCRATCH = 063'43'62'64'43'50'00'00;
 
     // Disc names

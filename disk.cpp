@@ -26,17 +26,17 @@
 #include <unistd.h>
 
 #include <cstring>
-#include <iostream>
 #include <filesystem>
+#include <iostream>
 
-#include "machine.h"
 #include "cosy.h"
+#include "machine.h"
 
 //
 // Open binary image as disk.
 //
 Disk::Disk(Word id, Memory &m, const std::string &p, bool wp)
-  : volume_id(id), memory(m), path(p), write_permit(wp)
+    : volume_id(id), memory(m), path(p), write_permit(wp)
 {
     // Open file.
     int open_flag   = write_permit ? O_RDWR : O_RDONLY;
@@ -67,7 +67,7 @@ Disk::Disk(Word id, Memory &m, const std::string &p, bool wp)
 // Open temporary file as disk.
 //
 Disk::Disk(Word id, Memory &m, const std::string &p, unsigned nz)
-  : volume_id(id), memory(m), path(p + ".@XXXXXX"), write_permit(true), num_zones(nz)
+    : volume_id(id), memory(m), path(p + ".@XXXXXX"), write_permit(true), num_zones(nz)
 {
     // Create a unique file with name derived from template.
     file_descriptor = mkstemp(&path[0]);
@@ -79,8 +79,8 @@ Disk::Disk(Word id, Memory &m, const std::string &p, unsigned nz)
 // Clone the disk.
 //
 Disk::Disk(const Disk &other)
-  : volume_id(other.volume_id), memory(other.memory), path(other.path),
-    write_permit(other.write_permit), num_zones(other.num_zones)
+    : volume_id(other.volume_id), memory(other.memory), path(other.path),
+      write_permit(other.write_permit), num_zones(other.num_zones)
 {
     // Duplicate the file descriptor.
     file_descriptor = dup(other.file_descriptor);
@@ -241,14 +241,10 @@ void Disk::memory_to_file(unsigned zone, unsigned sector, unsigned addr, unsigne
 
     const Word *source = memory.get_ptr(addr);
     while (nwords-- > 0) {
-        const auto word = *source++;
+        const auto word      = *source++;
         const uint8_t buf[6] = {
-            uint8_t(word >> 40),
-            uint8_t(word >> 32),
-            uint8_t(word >> 24),
-            uint8_t(word >> 16),
-            uint8_t(word >> 8),
-            uint8_t(word),
+            uint8_t(word >> 40), uint8_t(word >> 32), uint8_t(word >> 24),
+            uint8_t(word >> 16), uint8_t(word >> 8),  uint8_t(word),
         };
         int nwrite = write(file_descriptor, buf, sizeof(buf));
         if (nwrite != (int)sizeof(buf)) {

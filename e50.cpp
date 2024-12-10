@@ -35,8 +35,7 @@ static inline bool IS_DIGIT(uint8_t c)
 
 static inline bool IS_CHAR(uint8_t c)
 {
-    return (c >= 0101 && c <= 0132) ||
-           (c >= 0140 && c <= 0176);
+    return (c >= 0101 && c <= 0132) || (c >= 0140 && c <= 0176);
 }
 
 //
@@ -80,7 +79,7 @@ Word Processor::e50_parse(Word input, unsigned &result)
     const int star_slash_flag = (input >> 16) & 1;
     // const int octal_flag = (input >> 17) & 1;
     const int char_mode = (input >> 18) & 1;
-    const int src_reg  = (input >> 20) & 15;
+    const int src_reg   = (input >> 20) & 15;
     static int index;
     static uint8_t ident[128];
     static unsigned ident_len;
@@ -88,17 +87,18 @@ Word Processor::e50_parse(Word input, unsigned &result)
     bool negate = false;
     static unsigned last_word_addr;
     static unsigned last_byte_index;
-    BytePointer bp{memory, last_word_addr, last_byte_index};
+    BytePointer bp{ memory, last_word_addr, last_byte_index };
 
-    // std::cout << "--- e50_parse: acc = "; besm6_print_word_octal(std::cout, input); std::cout << '\n';
+    // std::cout << "--- e50_parse: acc = "; besm6_print_word_octal(std::cout, input); std::cout <<
+    // '\n';
     if (src_reg) {
         src_addr = ADDR(src_addr + core.M[src_reg]);
     }
     if (src_addr != 0) {
         // Set source pointer.
-        bp.word_addr = src_addr;
+        bp.word_addr  = src_addr;
         bp.byte_index = 0;
-        index = 0;
+        index         = 0;
     } else {
         // Continue from current place.
         if (last_word_addr == 0) {
@@ -136,7 +136,7 @@ Word Processor::e50_parse(Word input, unsigned &result)
         for (;;) {
             if (bp.word_addr == 0) {
                 // Error.
-                result = 0;
+                result   = 0;
                 core.RMR = (Word)index << 24;
                 // std::cout << "--- Error\n";
                 return 0;
@@ -149,10 +149,10 @@ Word Processor::e50_parse(Word input, unsigned &result)
                 // End of line.
                 // std::cout << "--- End of line, index = " << index << '\n';
                 result = 0;
-ret:
+            ret:
                 core.RMR = (Word)index << 24 | c;
-                return ((Word)c << 40) | ((Word)' ' << 32) | (' ' << 24) |
-                        (' ' << 16) | (' ' << 8) | ' ';
+                return ((Word)c << 40) | ((Word)' ' << 32) | (' ' << 24) | (' ' << 16) |
+                       (' ' << 8) | ' ';
 
             case '0':
             case '1':
@@ -203,10 +203,10 @@ ret:
         case 0:
         case 012:
             // Empty fragment.
-empty:
+        empty:
             result = 6;
             // std::cout << "--- Delimiter = '" << (char)c << "'\n";
-            last_word_addr = bp.word_addr;
+            last_word_addr  = bp.word_addr;
             last_byte_index = bp.byte_index;
             return c;
 
@@ -239,10 +239,11 @@ empty:
                 value = -value;
 
             // Return value, delimiter and it's index.
-            result = 1;
+            result   = 1;
             core.RMR = (Word)index << 24 | c;
-            // std::cout << "--- Number = 0" << std::oct << value << std::dec << ", delimiter = '" << (char)c << "', index = " << index << '\n';
-            last_word_addr = bp.word_addr;
+            // std::cout << "--- Number = 0" << std::oct << value << std::dec << ", delimiter = '"
+            // << (char)c << "', index = " << index << '\n';
+            last_word_addr  = bp.word_addr;
             last_byte_index = bp.byte_index;
             return value;
 
@@ -266,7 +267,7 @@ empty:
                 goto empty;
 
             // Get identifier.
-ident:
+        ident:
             ident[0]  = c;
             ident_len = 1;
             memset(ident + 1, ' ', sizeof(ident) - 1);
@@ -284,9 +285,9 @@ ident:
             // Only short identifiers are supported for now.
             result = 4;
             // std::cout << "--- Identifier = '" << std::setw(12) << ident << "'\n";
-            last_word_addr = bp.word_addr;
+            last_word_addr  = bp.word_addr;
             last_byte_index = bp.byte_index;
-            core.RMR = ((Word)ident[6] << 40) | ((Word)ident[7] << 32) | (ident[8] << 24) |
+            core.RMR        = ((Word)ident[6] << 40) | ((Word)ident[7] << 32) | (ident[8] << 24) |
                        (ident[9] << 16) | (ident[10] << 8) | ident[11];
             return ((Word)ident[0] << 40) | ((Word)ident[1] << 32) | (ident[2] << 24) |
                    (ident[3] << 16) | (ident[4] << 8) | ident[5];
@@ -425,7 +426,7 @@ void Processor::e50()
         break;
     case 064:
         // Print job name on operator's terminal.
-        //machine.print_iso_string(std::cerr, ADDR(core.ACC));
+        // machine.print_iso_string(std::cerr, ADDR(core.ACC));
         break;
     case 066:
         // Get reply from operator.
@@ -437,36 +438,36 @@ void Processor::e50()
         // DATE*, OS Dubna specific.
         E50_Date_Time result{};
         if (machine.is_entropy_enabled()) {
-            auto const now = std::time(nullptr);
-            auto const &tm = *localtime(&now);
-            result.field.day_hi = tm.tm_mday / 10;
-            result.field.day_lo = tm.tm_mday % 10;
+            auto const now        = std::time(nullptr);
+            auto const &tm        = *localtime(&now);
+            result.field.day_hi   = tm.tm_mday / 10;
+            result.field.day_lo   = tm.tm_mday % 10;
             result.field.month_hi = (tm.tm_mon + 1) / 10;
             result.field.month_lo = (tm.tm_mon + 1) % 10;
-            result.field.year_hi = tm.tm_year / 10 % 10;
-            result.field.year_lo = tm.tm_year % 10;
-            result.field.hour_hi = tm.tm_hour / 10;
-            result.field.hour_lo = tm.tm_hour % 10;
-            result.field.min_hi = tm.tm_min / 10;
-            result.field.min_lo = tm.tm_min % 10;
-            result.field.sec_hi = tm.tm_sec / 10;
-            result.field.sec_lo = tm.tm_sec % 10;
-            result.field.decisec = 0;
+            result.field.year_hi  = tm.tm_year / 10 % 10;
+            result.field.year_lo  = tm.tm_year % 10;
+            result.field.hour_hi  = tm.tm_hour / 10;
+            result.field.hour_lo  = tm.tm_hour % 10;
+            result.field.min_hi   = tm.tm_min / 10;
+            result.field.min_lo   = tm.tm_min % 10;
+            result.field.sec_hi   = tm.tm_sec / 10;
+            result.field.sec_lo   = tm.tm_sec % 10;
+            result.field.decisec  = 0;
         } else {
             // Return permanent date/time, for easy testing.
-            result.field.day_hi = 0;
-            result.field.day_lo = 4; // 4th
+            result.field.day_hi   = 0;
+            result.field.day_lo   = 4; // 4th
             result.field.month_hi = 0;
             result.field.month_lo = 7; // July
-            result.field.year_hi = 2;
-            result.field.year_lo = 4; // 2024
-            result.field.hour_hi = 2;
-            result.field.hour_lo = 3; // 23:45:56
-            result.field.min_hi = 4;
-            result.field.min_lo = 5;
-            result.field.sec_hi = 5;
-            result.field.sec_lo = 6;
-            result.field.decisec = 0;
+            result.field.year_hi  = 2;
+            result.field.year_lo  = 4; // 2024
+            result.field.hour_hi  = 2;
+            result.field.hour_lo  = 3; // 23:45:56
+            result.field.min_hi   = 4;
+            result.field.min_lo   = 5;
+            result.field.sec_hi   = 5;
+            result.field.sec_lo   = 6;
+            result.field.decisec  = 0;
         }
         core.ACC = result.word;
         break;
@@ -480,7 +481,7 @@ void Processor::e50()
         break;
     case 076:
         // Send message to operator, like: "\1\1Ш12:JOB NAME".
-        //machine.print_iso_string(std::cerr, ADDR(core.ACC));
+        // machine.print_iso_string(std::cerr, ADDR(core.ACC));
         break;
     case 0102:
         // Some conversion?

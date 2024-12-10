@@ -22,12 +22,13 @@
 // SOFTWARE.
 //
 #include "cosy.h"
-#include "besm6_arch.h"
-#include "encoding.h"
 
 #include <filesystem>
 #include <fstream>
 #include <sstream>
+
+#include "besm6_arch.h"
+#include "encoding.h"
 
 //
 // Card '*read old' has a special representation.
@@ -46,7 +47,7 @@ static const std::string COSY_END_FILE_REGULAR = "*END\201FILE\312\n\n";
 // Note the space symbol is not packed,
 // and extra space is appended.
 //
-static const std::string COSY_END_FILE_LEGACY  = "*END FILE \311\n";
+static const std::string COSY_END_FILE_LEGACY = "*END FILE \311\n";
 
 //
 // Encode string to COSY format.
@@ -144,7 +145,7 @@ bool file_txt_to_cosy(const std::string &path_bin)
     output << "*END FILE \311\n";
 
     // Fill the rest of the zone with zeroes.
-    uint64_t size = output.tellp();
+    uint64_t size    = output.tellp();
     uint64_t aligned = (size + PAGE_NBYTES - 1) / PAGE_NBYTES * PAGE_NBYTES;
     if (size != aligned) {
         output.seekp(aligned - 1);
@@ -219,7 +220,7 @@ bool get_line_cosy(std::istream &input, std::string &line)
     // Read words up to '\n' in lower byte.
     line.clear();
     do {
-        if (line.size() >= 14*6) {
+        if (line.size() >= 14 * 6) {
             // A valid COSY line can have up to 14 words, or 84 bytes.
             return false;
         }

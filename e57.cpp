@@ -21,8 +21,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
-#include "machine.h"
 #include <unistd.h>
+
+#include "machine.h"
 
 //
 // Extracode 057.
@@ -88,7 +89,7 @@ void Processor::e57_tape()
         BYNAME   = 01000, // поиск только по имени (без N бобины)
         ASSIGN   = 02000, // поиск c захватом ленты (мат.номер ленты - в 13 регистре)
         RELEASE  = 04000, // отказ от cвоиx лент, заданныx на сумматоре битовой шкалой:
-    };                    // 48 разряд - лента 30 для мат.задач
+    }; // 48 разряд - лента 30 для мат.задач
     auto addr = core.M[016];
 
     if (addr & ASSIGN) {
@@ -171,7 +172,7 @@ void Processor::e57_file()
         //  N*4+1. бит 48
         //
         Word disc_id = machine.mem_load(info.field.addr);
-        for (auto addr = info.field.addr + 1; ; addr += 4) {
+        for (auto addr = info.field.addr + 1;; addr += 4) {
             E57_Search_Info item;
             item.word[0] = machine.mem_load(addr);
             if (item.word[0] == BIT48) {
@@ -189,7 +190,8 @@ void Processor::e57_file()
             item.word[3] = machine.mem_load(addr + 3);
             machine.trace_e57_search(item);
 
-            item.field.offset = machine.file_search(disc_id, item.field.file_name, item.field.write_mode);
+            item.field.offset =
+                machine.file_search(disc_id, item.field.file_name, item.field.write_mode);
             if (!item.field.offset) {
                 // Failed with this file.
                 if (item.field.write_mode) {
@@ -208,14 +210,15 @@ void Processor::e57_file()
         //
         // Структура задания:
         //      0. имя диска
-        //      1. координаты первого файла (берутся из поля ответа предыдущего стека + мат.номер в 37:42 р.)
+        //      1. координаты первого файла (берутся из поля ответа предыдущего стека + мат.номер в
+        //      37:42 р.)
         //      2. координаты второго файла
         //         ...........................
         //         координаты последнего файла
         //    N+1. нулевая ячейка
         //
-        //Word disc_id = machine.mem_load(info.field.addr);
-        for (auto addr = info.field.addr + 1; ; addr++) {
+        // Word disc_id = machine.mem_load(info.field.addr);
+        for (auto addr = info.field.addr + 1;; addr++) {
             E57_Open_Info item;
             item.word = machine.mem_load(addr);
             if (!item.word) {
@@ -223,7 +226,8 @@ void Processor::e57_file()
             }
             machine.trace_e57_open(item);
 
-            item.field.error = machine.file_mount(item.field.disk_unit, item.field.offset, item.field.write_mode);
+            item.field.error =
+                machine.file_mount(item.field.disk_unit, item.field.offset, item.field.write_mode);
             machine.mem_store(addr, item.word);
         }
         core.ACC = 0;
@@ -240,7 +244,7 @@ void Processor::e57_file()
         //         ........................
         //      N. нулевая ячейка
         //
-        for (auto addr = info.field.addr; ; addr++) {
+        for (auto addr = info.field.addr;; addr++) {
             E57_Scratch_Info item;
             item.word = machine.mem_load(addr);
             if (item.word == 0) {

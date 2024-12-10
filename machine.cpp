@@ -35,8 +35,8 @@
 #include <iostream>
 #include <sstream>
 
-#include "encoding.h"
 #include "cosy.h"
+#include "encoding.h"
 
 // Static fields.
 bool Machine::verbose                    = false;
@@ -130,8 +130,8 @@ again:
             // Empty message - legally halted by extracode e74.
             return;
         }
-        std::cerr << "Error: " << message << " @"
-                  << std::oct << std::setfill('0') << std::setw(5) << pc << std::endl;
+        std::cerr << "Error: " << message << " @" << std::oct << std::setfill('0') << std::setw(5)
+                  << pc << std::endl;
         // trace_exception(message);
 
         if (cpu.intercept(message)) {
@@ -142,7 +142,7 @@ again:
     } catch (std::exception &ex) {
         // Something else.
         cpu.finish();
-        //std::cerr << "Error: " << ex.what() << std::endl;
+        // std::cerr << "Error: " << ex.what() << std::endl;
         throw std::runtime_error(ex.what());
     }
 }

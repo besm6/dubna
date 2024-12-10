@@ -70,8 +70,7 @@ public:
     unsigned word_addr;
     unsigned byte_index;
 
-    BytePointer(Memory &m, unsigned wa, unsigned bi = 0)
-        : memory(m), word_addr(wa), byte_index(bi)
+    BytePointer(Memory &m, unsigned wa, unsigned bi = 0) : memory(m), word_addr(wa), byte_index(bi)
     {
     }
 
@@ -93,9 +92,9 @@ public:
     // Store byte at the pointer, and increment.
     void put_byte(uint8_t ch)
     {
-        Word *ptr = memory.get_ptr(word_addr);
+        Word *ptr            = memory.get_ptr(word_addr);
         const unsigned shift = 40 - byte_index * 8;
-        *ptr = (*ptr & ~(0xffull << shift)) | ((Word)ch << shift);
+        *ptr                 = (*ptr & ~(0xffull << shift)) | ((Word)ch << shift);
         increment();
     }
 

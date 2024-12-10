@@ -256,9 +256,9 @@ public:
             Word location = machine.mem_load(OFFSET + libno + 030);
 
             out << "*library:" << std::left << std::setw(2) << std::oct << libno << "    "
-                << std::setw(10) << tape_name_string(tape_name)
-                << "   " << std::right << std::setw(4) << std::setfill('0') << (location >> 30)
-                << std::setfill(' ') << std::dec << std::endl;
+                << std::setw(10) << tape_name_string(tape_name) << "   " << std::right
+                << std::setw(4) << std::setfill('0') << (location >> 30) << std::setfill(' ')
+                << std::dec << std::endl;
         }
     }
 
@@ -271,9 +271,9 @@ public:
         machine.disk_mount_readonly(030, machine.TAPE_MONSYS);
 
         // Read zone 1, sector 2.
-        static const unsigned ZONE = 1;
+        static const unsigned ZONE   = 1;
         static const unsigned SECTOR = 2;
-        static const unsigned BASE = 0x1000;
+        static const unsigned BASE   = 0x1000;
         machine.disk_io('r', 0, ZONE, SECTOR, BASE, 256);
 
         // Fix damaged IОLISТ*.
@@ -287,13 +287,13 @@ public:
             if (name == 0) {
                 break;
             }
-            Word location = machine.mem_load(BASE + addr + 1);
+            Word location    = machine.mem_load(BASE + addr + 1);
             unsigned address = location & 077777;
             unsigned nwords  = (location >> 15) & 077777;
             unsigned flags   = (location >> 30) & 0777777;
 
-            out << word_text_string(name) << "   "
-                << std::oct << std::left << std::showbase << std::setw(6) << address << "  ";
+            out << word_text_string(name) << "   " << std::oct << std::left << std::showbase
+                << std::setw(6) << address << "  ";
             if (!nwords && !flags) {
                 out << "-       entry";
             } else {
@@ -359,12 +359,12 @@ private:
     {
         machine.disk_io('r', 0, zone, 0, 0x0, 1024);
         for (unsigned addr = addr_start; addr < addr_finish; addr++) {
-            Word word = machine.mem_load(addr);
+            Word word      = machine.mem_load(addr);
             char first_sym = word >> 40;
             if (first_sym == '*') {
                 // First symbol must be star.
-                std::string str { first_sym, (char)(word >> 32), (char)(word >> 24),
-                                  (char)(word >> 16), (char)(word >> 8), (char)word };
+                std::string str{ first_sym,          (char)(word >> 32), (char)(word >> 24),
+                                 (char)(word >> 16), (char)(word >> 8),  (char)word };
                 list.push_back(str);
             }
         }
@@ -382,7 +382,7 @@ private:
         for (unsigned row = 0; row < num_rows; row++) {
             for (unsigned col = 0; col < num_columns; col++) {
                 unsigned index = (col * num_rows) + row;
-                if (index >= list.size()){
+                if (index >= list.size()) {
                     break;
                 }
                 bool is_last = (index + num_rows) >= list.size();

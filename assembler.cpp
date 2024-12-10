@@ -204,8 +204,8 @@ static const char *parse_instruction(const char *cptr, unsigned &result)
             return 0;
         }
         int negate = 0;
-        cptr       = skip_spaces(cptr);     // absorb spaces
-        if (*cptr == '-') {                 // negative offset
+        cptr       = skip_spaces(cptr); // absorb spaces
+        if (*cptr == '-') {             // negative offset
             negate = 1;
             cptr   = skip_spaces(cptr + 1); // absorb spaces
         }

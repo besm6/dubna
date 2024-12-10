@@ -191,8 +191,8 @@ void Machine::print_memory_write_dispak(unsigned addr, Word val)
     auto &out       = std::cerr;
     auto save_flags = out.flags();
 
-    out << std::oct << "       " << std::setfill('0') << std::setw(5) << addr
-        << ": store " << std::setw(16) << val << '\n';
+    out << std::oct << "       " << std::setfill('0') << std::setw(5) << addr << ": store "
+        << std::setw(16) << val << '\n';
     out.flags(save_flags);
 }
 
@@ -226,16 +226,15 @@ void Processor::print_instruction_dispak()
     auto &out       = std::cerr;
     auto save_flags = out.flags();
     auto reg        = RK >> 20;
-    auto addr       = (RK & ONEBIT(20)) ? (RK & BITS(15)) :
-                      ((RK & BITS(12)) | ((RK & ONEBIT(19)) ? 070000 : 0));
-    auto word       = machine.mem_load(ADDR(addr + core.M[reg]));
+    auto addr =
+        (RK & ONEBIT(20)) ? (RK & BITS(15)) : ((RK & BITS(12)) | ((RK & ONEBIT(19)) ? 070000 : 0));
+    auto word = machine.mem_load(ADDR(addr + core.M[reg]));
     std::ostringstream buf;
 
     besm6_print_instruction_mnemonics(buf, RK);
-    out << std::oct << std::setfill('0') << std::setw(5) << core.PC
-        << ": " << std::setfill(' ') << std::setw(20) << std::left << buf.str()
-        << " (=" << std::right << std::setfill('0') << std::setw(16) << word
-        << ") acc=" << std::setw(16) << core.ACC;
+    out << std::oct << std::setfill('0') << std::setw(5) << core.PC << ": " << std::setfill(' ')
+        << std::setw(20) << std::left << buf.str() << " (=" << std::right << std::setfill('0')
+        << std::setw(16) << word << ") acc=" << std::setw(16) << core.ACC;
     if (reg) {
         out << " r[" << reg << "]=" << std::setw(5) << core.M[reg];
     }
@@ -306,8 +305,7 @@ void Processor::print_registers()
     }
     if (core.apply_mod_reg != prev.apply_mod_reg) {
         if (core.apply_mod_reg) {
-            out << "      MOD = " << std::oct << std::setfill('0') << std::setw(5)
-                << core.MOD;
+            out << "      MOD = " << std::oct << std::setfill('0') << std::setw(5) << core.MOD;
         } else {
             out << "      Clear MOD";
         }
@@ -333,8 +331,7 @@ void Machine::print_e70(const E70_Info &info)
         //
         // Disk.
         //
-        const char *opname = info.disk.seek ? "Seek" :
-                             info.disk.read_op ? "Read" : "Write";
+        const char *opname = info.disk.seek ? "Seek" : info.disk.read_op ? "Read" : "Write";
         out << "      Disk " << std::oct << info.disk.unit << ' ' << opname << " [";
 
         unsigned addr      = info.disk.page << 10;
@@ -387,41 +384,40 @@ void Machine::print_e64(const E64_Info &info, unsigned start_addr, unsigned end_
 
     out << "      Print ";
     switch (info.field.format) {
-        case 0:
-        case 8:
-            out << "Text";
-            break;
-        case 1:
-        case 5:
-        case 9:
-        case 13:
-            out << "Instruction";
-            break;
-        case 2:
-        case 10:
-            out << "Octal";
-            break;
-        case 3:
-        case 11:
-            out << "Real";
-            break;
-        case 4:
-        case 12:
-            out << "ITM";
-            break;
-        case 6:
-        case 7:
-        case 14:
-        case 15:
-            out << "Hex";
-            break;
-        default:
-            out << "Unknown";
-            break;
+    case 0:
+    case 8:
+        out << "Text";
+        break;
+    case 1:
+    case 5:
+    case 9:
+    case 13:
+        out << "Instruction";
+        break;
+    case 2:
+    case 10:
+        out << "Octal";
+        break;
+    case 3:
+    case 11:
+        out << "Real";
+        break;
+    case 4:
+    case 12:
+        out << "ITM";
+        break;
+    case 6:
+    case 7:
+    case 14:
+    case 15:
+        out << "Hex";
+        break;
+    default:
+        out << "Unknown";
+        break;
     }
-    out << '(' << info.field.format
-        << ") " << std::oct << std::setfill('0') << std::setw(5) << start_addr
-        << '-' << std::setfill('0') << std::setw(5) << end_addr
+    out << '(' << info.field.format << ") " << std::oct << std::setfill('0') << std::setw(5)
+        << start_addr << '-' << std::setfill('0') << std::setw(5) << end_addr
         << " offset=" << std::dec << info.field.offset;
     if (info.field.digits)
         out << " digits=" << info.field.digits;
@@ -528,7 +524,7 @@ void Machine::print_e64(const E64_Info &info, unsigned start_addr, unsigned end_
                 break;
             }
         }
-done:
+    done:
         out << std::endl;
     }
 
@@ -578,11 +574,9 @@ void Machine::print_e57_request(const E57_Request_Info &info)
     auto &out       = Machine::get_trace_stream();
     auto save_flags = out.flags();
 
-    out << "      Op=" << info.field.op
-        << " Addr=" << std::setfill('0') << std::setw(5) << std::oct << info.field.addr
-        << " Flags=" << info.field.flags
-        << " Key=" << ((info.word & E57_Request_Info::KEY_BITMASK) >> 18)
-        << '\n';
+    out << "      Op=" << info.field.op << " Addr=" << std::setfill('0') << std::setw(5) << std::oct
+        << info.field.addr << " Flags=" << info.field.flags
+        << " Key=" << ((info.word & E57_Request_Info::KEY_BITMASK) >> 18) << '\n';
     switch (info.field.op) {
     case E57_Request_Info::VOLUME_OPEN:
         out << "      Open Volume " << tape_name_string(mem_load(info.field.addr + 1)) << '\n';
@@ -592,8 +586,7 @@ void Machine::print_e57_request(const E57_Request_Info &info)
         break;
     case E57_Request_Info::FILE_SEARCH:
         out << "      Search File '" << word_iso_string(mem_load(info.field.addr + 2))
-            << "' on disk " << tape_name_string(mem_load(info.field.addr))
-            << '\n';
+            << "' on disk " << tape_name_string(mem_load(info.field.addr)) << '\n';
         break;
     case E57_Request_Info::FILE_OPEN:
         out << "      Open File " << tape_name_string(mem_load(info.field.addr)) << '\n';
@@ -641,11 +634,10 @@ void Machine::print_e57_search(const E57_Search_Info &info)
     auto &out       = Machine::get_trace_stream();
     auto save_flags = out.flags();
 
-    out << "      File='" << word_iso_string(info.field.file_name)
-        << "' Disk=" << std::setw(2) << std::oct << info.field.disk_unit << std::dec
-        << " Mode=" << (info.field.write_mode ? 'W' : 'R')
-        << " Owner='" << word_iso_string(info.field.owner)
-        << "'\n";
+    out << "      File='" << word_iso_string(info.field.file_name) << "' Disk=" << std::setw(2)
+        << std::oct << info.field.disk_unit << std::dec
+        << " Mode=" << (info.field.write_mode ? 'W' : 'R') << " Owner='"
+        << word_iso_string(info.field.owner) << "'\n";
     out.flags(save_flags);
 }
 
@@ -654,9 +646,8 @@ void Machine::print_e57_open(const E57_Open_Info &info)
     auto &out       = Machine::get_trace_stream();
     auto save_flags = out.flags();
 
-    out << "      File=" << info.field.offset
-        << " Disk=" << std::setw(2) << std::oct << info.field.disk_unit << std::dec
-        << " Mode=" << (info.field.write_mode ? 'W' : 'R')
+    out << "      File=" << info.field.offset << " Disk=" << std::setw(2) << std::oct
+        << info.field.disk_unit << std::dec << " Mode=" << (info.field.write_mode ? 'W' : 'R')
         << "\n";
     out.flags(save_flags);
 }
@@ -666,9 +657,8 @@ void Machine::print_e57_scratch(const E57_Scratch_Info &info)
     auto &out       = Machine::get_trace_stream();
     auto save_flags = out.flags();
 
-    out << "      Disk=" << std::setw(2) << std::oct << info.field.disk_unit
-        << " Size=" << std::dec << info.field.size
-        << '\n';
+    out << "      Disk=" << std::setw(2) << std::oct << info.field.disk_unit << " Size=" << std::dec
+        << info.field.size << '\n';
     out.flags(save_flags);
 }
 
@@ -682,14 +672,11 @@ void Machine::print_e50_format_real(const E50_Format_Info &info)
     unsigned src_addr  = ADDR(info.field.src_addr + cpu.get_m(info.field.src_reg));
     unsigned dest_addr = ADDR(info.field.dest_addr + cpu.get_m(info.field.dest_reg));
 
-    out << "      Src=" << std::oct << info.field.src_addr << '(' << std::dec << info.field.src_reg << ')'
-        << "=" << std::oct << src_addr
-        << " Dest=" << std::oct << info.field.dest_addr << '(' << std::dec << info.field.dest_reg << ')'
-        << "=" << std::oct << dest_addr
-        << " Width=" << std::dec << info.field.width
-        << " Precision=" << info.field.precision
-        << " Align=" << (info.field.right_align ? 'R' : 'L')
-        << '\n';
+    out << "      Src=" << std::oct << info.field.src_addr << '(' << std::dec << info.field.src_reg
+        << ')' << "=" << std::oct << src_addr << " Dest=" << std::oct << info.field.dest_addr << '('
+        << std::dec << info.field.dest_reg << ')' << "=" << std::oct << dest_addr
+        << " Width=" << std::dec << info.field.width << " Precision=" << info.field.precision
+        << " Align=" << (info.field.right_align ? 'R' : 'L') << '\n';
 
     // Restore.
     out.flags(save_flags);
@@ -717,9 +704,8 @@ void Machine::print_e71(const E64_Pointer &info, unsigned start_addr, unsigned e
         out << "      Unknown";
         break;
     }
-    out << " (" << info.field.flags
-        << ") " << std::oct << std::setfill('0') << std::setw(5) << start_addr
-        << '-' << std::setfill('0') << std::setw(5) << end_addr << std::endl;
+    out << " (" << info.field.flags << ") " << std::oct << std::setfill('0') << std::setw(5)
+        << start_addr << '-' << std::setfill('0') << std::setw(5) << end_addr << std::endl;
 
     BytePointer bp(memory, start_addr);
     while (bp.word_addr) {

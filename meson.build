@@ -41,6 +41,7 @@ simulator = static_library('simulator',
         'cosy.cpp',
     ],
     cpp_args: [
+        '-Werror',
         '-Wshadow',
         '-DVERSION_STRING="' + meson.project_version() + '.' + revcount + '-' + hash + '"'
     ]
@@ -67,6 +68,24 @@ install_data([
     ],
     install_dir: fs.expanduser('~/.besm6'),
     install_mode: 'r--r--r--',
+)
+
+#
+# Run cppcheck
+#
+run_target('cppcheck', command: [
+        'cppcheck',
+        '--project=' + join_paths(meson.project_build_root(), 'compile_commands.json'),
+        '--std=c++17',
+        '--enable=style',
+        '--check-level=exhaustive',
+        '--error-exitcode=1', # Fail on any issues
+        '--inline-suppr', # Enable inline control like // cppcheck-suppress 'id'
+        '--quiet', # No progress report messages
+        '--suppress=badBitmaskCheck', # Allow redundant zero operands
+        '--suppress=*:*/gtest/*', # Ignore issues in Googletest
+        '--library=' + join_paths(meson.source_root(), 'tests/googletest.xml'), # Parse TEST() macro properly
+    ]
 )
 
 # Tests are defined in 'tests/meson.build' file

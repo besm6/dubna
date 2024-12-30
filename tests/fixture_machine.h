@@ -96,7 +96,9 @@ protected:
     void test_cernlib(unsigned lib_num, const std::string &file_base)
     {
         std::string job_filename    = get_test_name() + ".dub";
-        std::string input_dir       = (lib_num == 1) ? (TEST_DIR "/lib1/") : (TEST_DIR "/lib2/");
+        std::string lib1_dir        = std::string(TEST_DIR "/lib1/");
+        std::string lib2_dir        = std::string(TEST_DIR "/lib2/");
+        std::string input_dir       = (lib_num == 1) ? lib1_dir : lib2_dir;
         std::string input_filename  = input_dir + file_base + ".f";
         std::string expect_filename = input_dir + "/expect_" + file_base + ".txt";
         std::string prolog          = "*name " + file_base + "\n" +

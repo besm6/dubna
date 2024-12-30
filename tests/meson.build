@@ -24,9 +24,10 @@ unit_tests = executable('unit_tests',
     include_directories: '..',
     link_with: simulator,
     cpp_args: [
+        '-Werror',
         '-Wshadow',
         '-DTEST_DIR="' + meson.current_source_dir() + '"',
-        '-DBUILD_DIR="' + meson.build_root() + '"',
+        '-DBUILD_DIR="' + meson.project_build_root() + '"',
     ],
     build_by_default: false
 )

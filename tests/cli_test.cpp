@@ -102,7 +102,7 @@ TEST(cli, trace_end_file)
     auto trace = file_contents_split(trace_filename);
 
     // Check output.
-    ASSERT_GE(trace.size(), 4);
+    ASSERT_GE(trace.size(), 4u);
     EXPECT_TRUE(starts_with(trace[0], "Dubna Simulator Version"));
     EXPECT_STREQ(trace[1].c_str(), "02010 R: 00 070 3002 *70 3002");
     EXPECT_STREQ(trace[2].c_str(), "      Drum 21 PhysRead [00000-00377] = Zone 1 Sector 2");

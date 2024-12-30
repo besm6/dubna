@@ -18,7 +18,7 @@ revcount = run_command('git', 'rev-list', 'HEAD', '--count', check: true).stdout
 
 add_global_arguments(
     '-DVERSION_STRING="' + meson.project_version() + '.' + revcount + '-' + hash + '"',
-    language : 'cpp',
+    language: 'cpp',
 )
 
 #
@@ -52,8 +52,22 @@ simulator = static_library('simulator',
 #
 executable('dubna', 'main.cpp',
     cpp_args: [ '-Wshadow' ],
-    link_with : simulator,
+    link_with: simulator,
     install: true,
+)
+
+#
+# Install disk images
+#
+fs = import('fs')
+install_data([
+        'tapes/9',
+        'tapes/12',
+        'tapes/37',
+        'tapes/739',
+    ],
+    install_dir: fs.expanduser('~/.besm6'),
+    install_mode: 'r--r--r--',
 )
 
 # Tests are defined in 'tests/meson.build' file.

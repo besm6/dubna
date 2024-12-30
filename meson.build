@@ -7,8 +7,6 @@ project('dubna', 'cpp',
         'buildtype=debugoptimized',
         'cpp_std=c++17',
         'warning_level=3',
-        'default_library=static',
-        'prefer_static=true',
     ]
 )
 
@@ -18,11 +16,16 @@ project('dubna', 'cpp',
 hash = run_command('git', 'log', '-1', '--format=%h', check: true).stdout().strip()
 revcount = run_command('git', 'rev-list', 'HEAD', '--count', check: true).stdout().strip()
 
+add_global_arguments(
+    '-DVERSION_STRING="' + meson.project_version() + '.' + revcount + '-' + hash + '"',
+    language : 'cpp',
+)
+
 #
-# Build executable file
+# Build library
 #
-executable('dubna', [
-        'main.cpp',
+simulator = static_library('simulator',
+    [
         'session.cpp',
         'memory.cpp',
         'machine.cpp',
@@ -41,12 +44,16 @@ executable('dubna', [
         'plotter.cpp',
         'puncher.cpp',
         'cosy.cpp',
-    ],
-    install: true,
-    cpp_args: [
-        '-Wshadow',
-        '-DVERSION_STRING="' + meson.project_version() + '.' + revcount + '-' + hash + '"'
     ]
+)
+
+#
+# Build executable file
+#
+executable('dubna', 'main.cpp',
+    cpp_args: [ '-Wshadow' ],
+    link_with : simulator,
+    install: true,
 )
 
 # Tests are defined in 'tests/meson.build' file.

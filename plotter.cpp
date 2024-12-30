@@ -223,7 +223,7 @@ void Plotter::tektronix_convert_svg(std::string filename)
 {
     // Get dimensions.
     unsigned maxx{}, maxy{};
-    tektronix_parse([&](bool flag, unsigned x, unsigned y) {
+    tektronix_parse([&](bool, unsigned x, unsigned y) {
         if (x > maxx)
             maxx = x;
         if (y > maxy)
@@ -319,7 +319,7 @@ void Plotter::calcomp_convert_svg(std::string filename)
 {
     // Get dimensions.
     int x{}, y{}, minx{}, miny{}, maxx{}, maxy{};
-    calcomp_parse([&](bool flag, int dx, int dy) {
+    calcomp_parse([&](bool, int dx, int dy) {
         x += dx;
         y += dy;
         if (x < minx)

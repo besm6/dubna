@@ -48,11 +48,11 @@ TEST_F(dubna_machine, cosy_2lines)
 
     // Check result on drum.
     unsigned const drum1 = 01;
-    EXPECT_EQ(machine->drum_read_word(drum1, 0), 0'1244'7101'2324'2601);
-    EXPECT_EQ(machine->drum_read_word(drum1, 1), 0'2124'6520'2505'4710);
-    EXPECT_EQ(machine->drum_read_word(drum1, 2), 0'0242'0040'1002'0012);
-    EXPECT_EQ(machine->drum_read_word(drum1, 3), 0'1244'2516'2110'0506);
-    EXPECT_EQ(machine->drum_read_word(drum1, 4), 0'2224'6105'6240'5012);
+    EXPECT_EQ(machine->drum_read_word(drum1, 0), 0'1244'7101'2324'2601u);
+    EXPECT_EQ(machine->drum_read_word(drum1, 1), 0'2124'6520'2505'4710u);
+    EXPECT_EQ(machine->drum_read_word(drum1, 2), 0'0242'0040'1002'0012u);
+    EXPECT_EQ(machine->drum_read_word(drum1, 3), 0'1244'2516'2110'0506u);
+    EXPECT_EQ(machine->drum_read_word(drum1, 4), 0'2224'6105'6240'5012u);
 }
 
 TEST_F(dubna_machine, cosy_4lines)
@@ -66,10 +66,10 @@ TEST_F(dubna_machine, cosy_4lines)
 
     // Check result on drum.
     unsigned const drum1 = 01;
-    EXPECT_EQ(machine->drum_read_word(drum1, 0), 0'6460'5040'1002'0012);
-    EXPECT_EQ(machine->drum_read_word(drum1, 1), 0'2035'1012'1002'0012);
-    EXPECT_EQ(machine->drum_read_word(drum1, 2), 0'2024'1321'0242'0012);
-    EXPECT_EQ(machine->drum_read_word(drum1, 3), 0'2024'1103'6400'5012);
+    EXPECT_EQ(machine->drum_read_word(drum1, 0), 0'6460'5040'1002'0012u);
+    EXPECT_EQ(machine->drum_read_word(drum1, 1), 0'2035'1012'1002'0012u);
+    EXPECT_EQ(machine->drum_read_word(drum1, 2), 0'2024'1321'0242'0012u);
+    EXPECT_EQ(machine->drum_read_word(drum1, 3), 0'2024'1103'6400'5012u);
 }
 
 TEST(unit, file_txt_to_cosy)

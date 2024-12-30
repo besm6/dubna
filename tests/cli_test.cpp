@@ -29,7 +29,7 @@
 TEST(cli, usage)
 {
     // Run simulator via shell.
-    FILE *pipe = popen("../dubna --help", "r");
+    FILE *pipe = popen(BUILD_DIR "/dubna --help", "r");
     ASSERT_TRUE(pipe != nullptr);
 
     // Capture the output.
@@ -51,7 +51,7 @@ TEST(cli, usage)
 TEST(cli, version)
 {
     // Run simulator via shell.
-    FILE *pipe = popen("../dubna --version", "r");
+    FILE *pipe = popen(BUILD_DIR "/dubna --version", "r");
     ASSERT_TRUE(pipe != nullptr);
 
     // Capture the output.
@@ -75,7 +75,7 @@ TEST(cli, trace_end_file)
     std::string base_name      = get_test_name();
     std::string job_filename   = base_name + ".dub";
     std::string trace_filename = base_name + ".trace";
-    std::string command_line = "../dubna --trace=" + trace_filename + " --debug=e " + job_filename;
+    std::string command_line   = BUILD_DIR "/dubna --trace=" + trace_filename + " --debug=e " + job_filename;
 
     create_file(job_filename,
                 "*name empty\n"
@@ -115,7 +115,7 @@ TEST(cli, help_libs)
     EXPECT_EQ(setenv("BESM6_PATH", TEST_DIR "/../tapes", 1), 0);
 
     // Run simulator via shell.
-    FILE *pipe = popen("../dubna --help-libs", "r");
+    FILE *pipe = popen(BUILD_DIR "/dubna --help-libs", "r");
     ASSERT_TRUE(pipe != nullptr);
 
     // Capture the output.

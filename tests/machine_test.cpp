@@ -141,7 +141,7 @@ TEST_F(dubna_machine, trace_startjob)
     machine->run();
 
     // Check PC value.
-    ASSERT_EQ(machine->cpu.get_pc(), 280);
+    ASSERT_EQ(machine->cpu.get_pc(), 280u);
 
     // Check the trace.
     auto trace  = file_contents(trace_filename);

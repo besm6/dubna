@@ -16,11 +16,6 @@ project('dubna', 'cpp',
 hash = run_command('git', 'log', '-1', '--format=%h', check: true).stdout().strip()
 revcount = run_command('git', 'rev-list', 'HEAD', '--count', check: true).stdout().strip()
 
-add_global_arguments(
-    '-DVERSION_STRING="' + meson.project_version() + '.' + revcount + '-' + hash + '"',
-    language: 'cpp',
-)
-
 #
 # Build library
 #
@@ -44,6 +39,10 @@ simulator = static_library('simulator',
         'plotter.cpp',
         'puncher.cpp',
         'cosy.cpp',
+    ],
+    cpp_args: [
+        '-Wshadow',
+        '-DVERSION_STRING="' + meson.project_version() + '.' + revcount + '-' + hash + '"'
     ]
 )
 
@@ -70,5 +69,5 @@ install_data([
     install_mode: 'r--r--r--',
 )
 
-# Tests are defined in 'tests/meson.build' file.
-#subdir('tests')
+# Tests are defined in 'tests/meson.build' file
+subdir('tests')

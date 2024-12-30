@@ -64,7 +64,7 @@ TEST_F(dubna_session, trace_end_file)
     auto trace = file_contents_split(trace_filename);
 
     // Check output.
-    ASSERT_GE(trace.size(), 4);
+    ASSERT_GE(trace.size(), 4u);
     EXPECT_TRUE(starts_with(trace[0], "Dubna Simulator Version"));
     EXPECT_STREQ(trace[1].c_str(), "02010 R: 00 070 3002 *70 3002");
     EXPECT_STREQ(trace[2].c_str(), "      Drum 21 PhysRead [00000-00377] = Zone 1 Sector 2");
@@ -344,7 +344,7 @@ TEST_F(dubna_session, epsilon)
     // Split output into lines.
     auto lines = multiline_split(output);
     auto len = lines.size();
-    ASSERT_GE(lines.size(), 8);
+    ASSERT_GE(lines.size(), 8u);
 
     //
     // This example shows bugs in floating-point formatted print of Fortran-Dubna.
@@ -389,7 +389,7 @@ TEST_F(dubna_session, overflow)
     // Split output into lines.
     auto lines = multiline_split(output);
     auto len = lines.size();
-    ASSERT_GE(lines.size(), 5);
+    ASSERT_GE(lines.size(), 5u);
 
     EXPECT_STREQ(lines[len-5].c_str(), "    62");
 }
@@ -419,7 +419,7 @@ TEST_F(dubna_session, divzero)
     // Split output into lines.
     auto lines = multiline_split(output);
     auto len = lines.size();
-    ASSERT_GE(lines.size(), 5);
+    ASSERT_GE(lines.size(), 5u);
 
     EXPECT_STREQ(lines[len-5].c_str(), " 123.4");
 }

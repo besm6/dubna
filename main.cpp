@@ -43,7 +43,7 @@ static const struct option long_options[] = {
     { "limit",          required_argument,  nullptr,    'l' },
     { "trace",          required_argument,  nullptr,    'T' },
     { "debug",          required_argument,  nullptr,    'd' },
-    { nullptr },
+    {},
     // clang-format on
 };
 

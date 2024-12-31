@@ -23,6 +23,7 @@
 //
 #include <cstdio>
 #include <fstream>
+#include <sys/wait.h>
 
 #include "util.h"
 

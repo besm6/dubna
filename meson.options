@@ -1,0 +1,12 @@
+option(
+    'tests',
+    type: 'feature',
+    value: 'disabled',
+    description: 'Enable unit tests',
+)
+option(
+    'test-all',
+    type: 'feature',
+    value: 'disabled',
+    description: 'Enable all tests',
+)

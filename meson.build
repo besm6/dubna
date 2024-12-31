@@ -89,4 +89,6 @@ run_target('cppcheck', command: [
 )
 
 # Tests are defined in 'tests/meson.build' file
-subdir('tests')
+if (get_option('tests').allowed())
+    subdir('tests')
+endif

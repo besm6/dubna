@@ -1,7 +1,7 @@
 #
 # Find the GTest library
 #
-gtest = dependency('gtest', main: true, version: '>= 1.10')
+gtest = subproject('gtest')
 
 #
 # Source files of the tests
@@ -28,7 +28,10 @@ endif
 # Build all tests as a single executable
 #
 unit_tests = executable('unit_tests', test_sources,
-    dependencies: gtest,
+    dependencies: [
+        gtest.get_variable('gtest_dep'),
+        gtest.get_variable('gtest_main_dep'),
+    ],
     include_directories: '..',
     link_with: simulator,
     cpp_args: [

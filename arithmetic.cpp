@@ -73,11 +73,11 @@ void Processor::arith_add(Word val, bool negate_acc, bool negate_val)
     } else if (diff <= 40) {
         mr          = (a1.mantissa << (40 - diff)) & BITS40;
         round_flag  = (mr != 0);
-        a1.mantissa = ((a1.mantissa >> diff) | (neg ? (~0ll << (40 - diff)) : 0)) & BITS42;
+        a1.mantissa = ((a1.mantissa >> diff) | (neg ? (~0ull << (40 - diff)) : 0)) & BITS42;
     } else if (diff <= 80) {
         diff -= 40;
         round_flag = (a1.mantissa != 0);
-        mr         = ((a1.mantissa >> diff) | (neg ? (~0ll << (40 - diff)) : 0)) & BITS40;
+        mr         = ((a1.mantissa >> diff) | (neg ? (~0ull << (40 - diff)) : 0)) & BITS40;
         if (neg) {
             a1.mantissa = BITS42;
         } else {

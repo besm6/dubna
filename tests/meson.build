@@ -1,7 +1,7 @@
 #
 # Find the GTest library
 #
-gtest = dependency('gtest', main: true, version: '>= 1.15.2')
+gtest = dependency('gtest', main: true, version: '>= 1.10')
 
 #
 # Build all tests as a single executable

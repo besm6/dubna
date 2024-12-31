@@ -3,6 +3,7 @@
 #
 project('dubna', 'cpp',
     version: '0.1',
+    meson_version: '>=1.1',
     default_options: [
         'buildtype=debugoptimized',
         'cpp_std=c++17',
@@ -84,7 +85,7 @@ run_target('cppcheck', command: [
         '--quiet', # No progress report messages
         '--suppress=badBitmaskCheck', # Allow redundant zero operands
         '--suppress=*:*/gtest/*', # Ignore issues in Googletest
-        '--library=' + join_paths(meson.source_root(), 'tests/googletest.xml'), # Parse TEST() macro properly
+        '--library=' + join_paths(meson.project_source_root(), 'tests/googletest.xml'), # Parse TEST() macro properly
     ]
 )
 

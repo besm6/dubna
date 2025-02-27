@@ -151,3 +151,31 @@ TEST(cli, help_libs)
 )";
     EXPECT_EQ(result, expect);
 }
+
+//
+// Run binary file created with *overlay.
+// See source in examples/overlay/hello-algol.dub.
+//
+TEST(cli, overlay_exe)
+{
+    std::string command_line = BUILD_DIR "/dubna " TEST_DIR "/overlay.exe";
+
+    // Set path to the disk images.
+    EXPECT_EQ(setenv("BESM6_PATH", TEST_DIR "/../tapes", 1), 0);
+
+    // Run simulator via shell.
+    FILE *pipe = popen(command_line.c_str(), "r");
+    ASSERT_TRUE(pipe != nullptr);
+
+    // Capture the output as vector of strings.
+    auto output = stream_contents(pipe);
+    std::cout << output;
+
+    // Check exit code.
+    int exit_status = pclose(pipe);
+    int exit_code   = WEXITSTATUS(exit_status);
+    ASSERT_NE(exit_status, -1);
+    ASSERT_EQ(exit_code, 0);
+
+    EXPECT_EQ(output, " HELLO, ALGOL!\n");
+}

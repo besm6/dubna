@@ -91,8 +91,9 @@ public:
     void run()
     {
         try {
-            if (machine.is_overlay(job_file)) {
-                run_overlay();
+            unsigned file_offset{};
+            if (machine.is_overlay(job_file, &file_offset)) {
+                run_overlay(file_offset);
             } else {
                 run_script();
             }
@@ -152,10 +153,10 @@ public:
     //
     // Run simulation session with given parameters.
     //
-    void run_overlay()
+    void run_overlay(unsigned file_offset)
     {
         // Load binary program.
-        machine.boot_overlay(job_file);
+        machine.boot_overlay(job_file, file_offset);
 
         // Run simulation.
         machine.run();

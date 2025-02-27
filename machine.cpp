@@ -465,7 +465,7 @@ unsigned Machine::file_search(Word disc_id, Word file_name, bool write_mode)
 // Return error code.
 // In case of success return zero.
 //
-unsigned Machine::file_mount(unsigned disk_unit, unsigned file_index, bool write_mode)
+unsigned Machine::file_mount(unsigned disk_unit, unsigned file_index, bool write_mode, unsigned file_offset)
 {
     if (disk_unit < 030 || disk_unit >= 070)
         throw std::runtime_error("Invalid disk unit " + to_octal(disk_unit) + " in file_mount()");
@@ -492,7 +492,7 @@ unsigned Machine::file_mount(unsigned disk_unit, unsigned file_index, bool write
             return E57_NO_ACCESS;
         }
     }
-    disks[disk_unit - 030] = std::make_unique<Disk>(0, memory, path, write_mode);
+    disks[disk_unit - 030] = std::make_unique<Disk>(0, memory, path, write_mode, file_offset);
     if (bin_created && !write_mode) {
         // Remove binary image of the disk when finished.
         disks[disk_unit - 030]->remove_when_finished();
@@ -768,8 +768,9 @@ void Machine::boot_ms_dubna(const std::string &path)
 
 //
 // Check for binary program (overlay).
+// Return file offset for shebang.
 //
-bool Machine::is_overlay(const std::string &filename)
+bool Machine::is_overlay(const std::string &filename, unsigned *file_offset_ptr)
 {
     // Open binary file.
     std::ifstream file(filename, std::ios_base::binary);
@@ -778,9 +779,25 @@ bool Machine::is_overlay(const std::string &filename)
         return false;
     }
 
+    // Check for shebang line.
+    std::string line(512, '\0');
+    if (!file.read(&line[0], line.size())) {
+        return false;
+    }
+    *file_offset_ptr = 0;
+    if (line[0] == '#' && line[1] == '!') {
+        // Shebang found: determine offset to actual overlay binary.
+        auto newline = line.find('\n');
+        if (newline == std::string::npos) {
+            // Too long line.
+            return false;
+        }
+        *file_offset_ptr = newline + 1;
+    }
+
     // Check file size.
     file.seekg(0, std::ios_base::end);
-    auto nbytes = file.tellg();
+    auto nbytes = file.tellg() - (off_t)*file_offset_ptr;
     if (nbytes / PAGE_NBYTES < 2 || nbytes % PAGE_NBYTES != 0) {
         // Must be a multiple of the page size.
         return false;
@@ -788,7 +805,7 @@ bool Machine::is_overlay(const std::string &filename)
 
     // Check magic word OVERLA at fixed offset.
     std::string word(6, '\0');
-    file.seekg(01762 * 6, std::ios_base::beg);
+    file.seekg(01762 * 6 + *file_offset_ptr, std::ios_base::beg);
     if (!file.read(&word[0], word.size())) {
         return false;
     }
@@ -798,7 +815,7 @@ bool Machine::is_overlay(const std::string &filename)
     }
 
     // Check base address of the binary.
-    file.seekg(6, std::ios_base::beg);
+    file.seekg(6 + *file_offset_ptr, std::ios_base::beg);
     if (!file.read(&word[0], word.size())) {
         return false;
     }
@@ -812,7 +829,7 @@ bool Machine::is_overlay(const std::string &filename)
 //
 // Load binary program (overlay).
 //
-void Machine::boot_overlay(const std::string &filename, const std::string &path)
+void Machine::boot_overlay(const std::string &filename, unsigned file_offset, const std::string &path)
 {
     // Mount tape 9/monsys as disk 30, read only.
     disk_search_path = path;
@@ -823,7 +840,7 @@ void Machine::boot_overlay(const std::string &filename, const std::string &path)
 
     // Open overlay as disk 60, read only.
     file_paths.push_back(filename);
-    file_mount(060, file_paths.size(), false);
+    file_mount(060, file_paths.size(), false, file_offset);
 
     // clang-format off
     memory.store(02000, besm6_asm("*70 3000,      utc"));       // читаем таблицу резидентных программ для загрузчика

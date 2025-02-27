@@ -41,9 +41,12 @@ private:
     int file_descriptor;
     unsigned num_zones;
 
+    // Skip so many bytes at the beginning of the file.
+    unsigned file_offset{};
+
 public:
     // Constructor throws exception if the file cannot be opened.
-    Disk(Word id, Memory &memory, const std::string &path, bool write_permit);
+    Disk(Word id, Memory &memory, const std::string &path, bool write_permit, unsigned offset = 0);
     Disk(Word id, Memory &memory, const std::string &pattern, unsigned num_zones);
 
     // Clone the disk.

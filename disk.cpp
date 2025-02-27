@@ -35,8 +35,8 @@
 //
 // Open binary image as disk.
 //
-Disk::Disk(Word id, Memory &m, const std::string &p, bool wp)
-    : volume_id(id), memory(m), path(p), write_permit(wp)
+Disk::Disk(Word id, Memory &m, const std::string &p, bool wp, unsigned offset)
+    : volume_id(id), memory(m), path(p), write_permit(wp), file_offset(offset)
 {
     // Open file.
     int open_flag   = write_permit ? O_RDWR : O_RDONLY;
@@ -155,7 +155,8 @@ void Disk::simh_to_memory(unsigned zone, unsigned sector, unsigned addr, unsigne
                              8 +                         // skip OS info
                              (256 * sector);             // sector offset
 
-    if (lseek(file_descriptor, offset_nwords * sizeof(Word), SEEK_SET) < 0)
+    unsigned offset_bytes = offset_nwords * sizeof(Word) + file_offset;
+    if (lseek(file_descriptor, offset_bytes, SEEK_SET) < 0)
         throw std::runtime_error("Disk seek error");
 
     Word *destination = memory.get_ptr(addr);
@@ -186,7 +187,8 @@ void Disk::memory_to_simh(unsigned zone, unsigned sector, unsigned addr, unsigne
                              8 +                         // skip OS info
                              (256 * sector);             // sector offset
 
-    if (lseek(file_descriptor, offset_nwords * sizeof(Word), SEEK_SET) < 0)
+    unsigned offset_bytes = offset_nwords * sizeof(Word) + file_offset;
+    if (lseek(file_descriptor, offset_bytes, SEEK_SET) < 0)
         throw std::runtime_error("Disk seek error");
 
     Word *source   = memory.get_ptr(addr);
@@ -203,7 +205,7 @@ void Disk::file_to_memory(unsigned zone, unsigned sector, unsigned addr, unsigne
     if (zone >= num_zones)
         throw std::runtime_error("Zone number exceeds file size");
 
-    unsigned offset_bytes = (4 * zone + sector) * PAGE_NBYTES / 4;
+    unsigned offset_bytes = (4 * zone + sector) * PAGE_NBYTES / 4 + file_offset;
     if (lseek(file_descriptor, offset_bytes, SEEK_SET) < 0)
         throw std::runtime_error("File seek error");
 
@@ -235,7 +237,7 @@ void Disk::memory_to_file(unsigned zone, unsigned sector, unsigned addr, unsigne
     if (zone >= num_zones)
         throw std::runtime_error("Zone number exceeds file size");
 
-    unsigned offset_bytes = (4 * zone + sector) * PAGE_NBYTES / 4;
+    unsigned offset_bytes = (4 * zone + sector) * PAGE_NBYTES / 4 + file_offset;
     if (lseek(file_descriptor, offset_bytes, SEEK_SET) < 0)
         throw std::runtime_error("File seek error");
 

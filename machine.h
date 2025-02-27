@@ -192,7 +192,7 @@ public:
     unsigned disk_find(Word tape_id);
     void scratch_mount(unsigned disk_unit, unsigned num_zones);
     unsigned file_search(Word disc_id, Word file_name, bool write_mode);
-    unsigned file_mount(unsigned disk_unit, unsigned file_index, bool write_mode);
+    unsigned file_mount(unsigned disk_unit, unsigned file_index, bool write_mode, unsigned file_offset = 0);
 
     // Drum i/o.
     void drum_io(char op, unsigned drum_unit, unsigned zone, unsigned sector, unsigned addr,
@@ -213,10 +213,11 @@ public:
     void print_iso_string(std::ostream &out, unsigned addr);
 
     // Check for binary program (overlay).
-    bool is_overlay(const std::string &filename);
+    // Return file offset for shebang.
+    bool is_overlay(const std::string &filename, unsigned *file_offset_ptr);
 
     // Load binary program (overlay).
-    void boot_overlay(const std::string &filename, const std::string &path = "");
+    void boot_overlay(const std::string &filename, unsigned file_offset, const std::string &path = "");
 
     //
     // Trace methods.

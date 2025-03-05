@@ -1,7 +1,7 @@
 #
 # Set project name, version and C++ level
 #
-project('dubna', 'cpp',
+project('dubna', ['cpp', 'c'],
     version: '0.1',
     meson_version: '>=1.1',
     default_options: [
@@ -22,6 +22,10 @@ revcount = run_command('git', 'rev-list', 'HEAD', '--count', check: true).stdout
 #
 simulator = static_library('simulator',
     [
+        'tapes/bemsh.739.c',
+        'tapes/librar.12.c',
+        'tapes/librar.37.c',
+        'tapes/monsys.9.c',
         'session.cpp',
         'memory.cpp',
         'machine.cpp',
@@ -55,20 +59,6 @@ executable('dubna', 'main.cpp',
     cpp_args: [ '-Wshadow' ],
     link_with: simulator,
     install: true,
-)
-
-#
-# Install disk images
-#
-fs = import('fs')
-install_data([
-        'tapes/9',
-        'tapes/12',
-        'tapes/37',
-        'tapes/739',
-    ],
-    install_dir: fs.expanduser('~/.besm6'),
-    install_mode: 'r--r--r--',
 )
 
 #

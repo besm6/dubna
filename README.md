@@ -8,15 +8,13 @@ by Gennady Maznyi.
 
 Compile the Dubna simulator from sources and install into /usr/local:
 
-```
-make
-make install
-```
+    make
+    make install
 
 Run tests:
-```
-make test
-```
+
+    make test
+
 Expected output:
 ```
 ctest --test-dir build/tests
@@ -33,9 +31,18 @@ ctest --test-dir build/tests
 Total Test time (real) =   0.21 sec
 ```
 
+# Meson
+
+You can use meson instead of cmake for the build:
+
+    meson setup build
+    cd build
+    meson build
+    meson install
+
 # Examples
 
-A few demos are available in the `examples` directory:
+A fair amount of demos are available in the `examples` directory:
 
 ```
 $ cd examples

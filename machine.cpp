@@ -381,6 +381,44 @@ void Machine::disk_mount(unsigned disk_unit, Word tape_id, bool write_permit)
                                  " is already mounted as " + tape_name_string(mounted_id));
     }
 
+    if (!write_permit) {
+        extern const unsigned char monsys_9[], librar_12[], librar_37[], bemsh_739[];
+        extern unsigned monsys_9_len, librar_12_len, librar_37_len, bemsh_739_len;
+
+        switch (tape_id) {
+        case TAPE_MONSYS:
+            // Embedded image of tape monsys.9.
+            disks[disk_unit] = std::make_unique<Disk>(tape_id, memory, monsys_9, monsys_9_len / PAGE_NBYTES);
+            if (trace_enabled()) {
+                std::cout << "Mount monsys.9 as disk " << to_octal(disk_unit + 030) << std::endl;
+            }
+            return;
+        case TAPE_LIBRAR_12:
+            // Embedded image of tape librar.12.
+            disks[disk_unit] = std::make_unique<Disk>(tape_id, memory, librar_12, librar_12_len / PAGE_NBYTES);
+            if (trace_enabled()) {
+                std::cout << "Mount librar.12 as disk " << to_octal(disk_unit + 030) << std::endl;
+            }
+            return;
+        case TAPE_LIBRAR_37:
+            // Embedded image of tape librar.37.
+            disks[disk_unit] = std::make_unique<Disk>(tape_id, memory, librar_37, librar_37_len / PAGE_NBYTES);
+            if (trace_enabled()) {
+                std::cout << "Mount librar.37 as disk " << to_octal(disk_unit + 030) << std::endl;
+            }
+            return;
+        case TAPE_BEMSH:
+            // Embedded image of tape bemsh.739.
+            disks[disk_unit] = std::make_unique<Disk>(tape_id, memory, bemsh_739, bemsh_739_len / PAGE_NBYTES);
+            if (trace_enabled()) {
+                std::cout << "Mount bemsh.739 as disk " << to_octal(disk_unit + 030) << std::endl;
+            }
+            return;
+        default:
+            break;
+        }
+    }
+
     // Open binary image as disk.
     auto path        = disk_path(tape_id);
     disks[disk_unit] = std::make_unique<Disk>(tape_id, memory, path, write_permit);

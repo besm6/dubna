@@ -28,6 +28,10 @@ endif()
 
 # Build library
 add_library(simulator STATIC
+    tapes/bemsh.739.c
+    tapes/librar.12.c
+    tapes/librar.37.c
+    tapes/monsys.9.c
     session.cpp
     memory.cpp
     machine.cpp
@@ -72,12 +76,6 @@ set_source_files_properties(session.cpp PROPERTIES COMPILE_FLAGS
 install(TARGETS
     ${PROJECT_NAME}
     DESTINATION bin
-)
-
-# Install disk images
-install(FILES tapes/9 tapes/12 tapes/37 tapes/739
-    DESTINATION $ENV{HOME}/.besm6
-    PERMISSIONS OWNER_READ GROUP_READ WORLD_READ
 )
 
 add_subdirectory(tests)

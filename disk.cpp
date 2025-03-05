@@ -76,11 +76,21 @@ Disk::Disk(Word id, Memory &m, const std::string &p, unsigned nz)
 }
 
 //
+// Open embedded image as disk.
+//
+Disk::Disk(Word id, Memory &m, const unsigned char data[], unsigned nz)
+    : volume_id(id), memory(m), num_zones(nz)
+{
+    embedded_data = data;
+}
+
+//
 // Clone the disk.
 //
 Disk::Disk(const Disk &other)
     : volume_id(other.volume_id), memory(other.memory), path(other.path),
-      write_permit(other.write_permit), num_zones(other.num_zones)
+      write_permit(other.write_permit), num_zones(other.num_zones),
+      embedded_data(other.embedded_data)
 {
     // Duplicate the file descriptor.
     file_descriptor = dup(other.file_descriptor);
@@ -92,7 +102,9 @@ Disk::Disk(const Disk &other)
 // Close file in destructor.
 Disk::~Disk()
 {
-    close(file_descriptor);
+    if (!embedded_data) {
+        close(file_descriptor);
+    }
 }
 
 //
@@ -123,7 +135,9 @@ void Disk::finish()
 //
 void Disk::disk_to_memory(unsigned zone, unsigned sector, unsigned addr, unsigned nwords)
 {
-    if (volume_id == 0) {
+    if (embedded_data) {
+        embedded_to_memory(zone, sector, addr, nwords);
+    } else if (volume_id == 0) {
         file_to_memory(zone, sector, addr, nwords);
     } else {
         simh_to_memory(zone, sector, addr, nwords);
@@ -135,7 +149,9 @@ void Disk::disk_to_memory(unsigned zone, unsigned sector, unsigned addr, unsigne
 //
 void Disk::memory_to_disk(unsigned zone, unsigned sector, unsigned addr, unsigned nwords)
 {
-    if (volume_id == 0) {
+    if (embedded_data) {
+        throw std::runtime_error("Cannot write embedded image");
+    } else if (volume_id == 0) {
         memory_to_file(zone, sector, addr, nwords);
     } else {
         memory_to_simh(zone, sector, addr, nwords);
@@ -252,5 +268,24 @@ void Disk::memory_to_file(unsigned zone, unsigned sector, unsigned addr, unsigne
         if (nwrite != (int)sizeof(buf)) {
             throw std::runtime_error("File write error");
         }
+    }
+}
+
+//
+// Read embedded data: transfer data to memory.
+//
+void Disk::embedded_to_memory(unsigned zone, unsigned sector, unsigned addr, unsigned nwords)
+{
+    if (zone >= num_zones)
+        throw std::runtime_error("Zone number exceeds embedded data size");
+
+    unsigned offset_bytes = (4 * zone + sector) * PAGE_NBYTES / 4;
+    const uint8_t *ptr    = &embedded_data[offset_bytes];
+    Word *destination     = memory.get_ptr(addr);
+
+    while (nwords-- > 0) {
+        *destination++ = ((Word)ptr[0] << 40) | ((Word)ptr[1] << 32) | ((Word)ptr[2] << 24) |
+                         (ptr[3] << 16) | (ptr[4] << 8) | ptr[5];
+        ptr += 6;
     }
 }

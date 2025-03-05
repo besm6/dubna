@@ -108,9 +108,12 @@ public:
     // Output to punched cards.
     Puncher puncher;
 
-    // "MONSYS )" in TEXT encoding.
-    static const Word TAPE_MONSYS  = 055'57'56'63'71'63'00'11;
-    static const Word TAPE_SCRATCH = 063'43'62'64'43'50'00'00;
+    // Pre-defined tapes.
+    static const Word TAPE_MONSYS    = 055'57'56'63'71'63'00'11; // MONSYS in TEXT encoding, and number 9
+    static const Word TAPE_SCRATCH   = 063'43'62'64'43'50'00'00;
+    static const Word TAPE_LIBRAR_12 = 054'51'42'62'41'62'00'22;
+    static const Word TAPE_LIBRAR_37 = 054'51'42'62'41'62'00'67;
+    static const Word TAPE_BEMSH     = 044'51'63'60'41'43'33'31; // DISPAC 739
 
     // Disc names
     static const Word DISC_LOCAL = 054'57'43'41'54'00'00'00;

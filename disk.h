@@ -29,25 +29,29 @@
 class Disk {
 private:
     // Tape name and number.
-    Word volume_id;
+    Word volume_id{};
 
     // Reference to the BESM-6 memory.
     Memory &memory;
 
     // File path.
     std::string path;
-    bool write_permit;
+    bool write_permit{};
     bool remove_on_close{};
-    int file_descriptor;
+    int file_descriptor{};
     unsigned num_zones;
 
     // Skip so many bytes at the beginning of the file.
     unsigned file_offset{};
 
+    // Embedded disk image, read only.
+    const unsigned char *embedded_data{};
+
 public:
     // Constructor throws exception if the file cannot be opened.
     Disk(Word id, Memory &memory, const std::string &path, bool write_permit, unsigned offset = 0);
     Disk(Word id, Memory &memory, const std::string &pattern, unsigned num_zones);
+    Disk(Word id, Memory &memory, const unsigned char data[], unsigned num_zones);
 
     // Clone the disk.
     Disk(const Disk &other);
@@ -73,6 +77,7 @@ private:
     void memory_to_simh(unsigned zone, unsigned sector, unsigned addr, unsigned nwords);
     void file_to_memory(unsigned zone, unsigned sector, unsigned addr, unsigned nwords);
     void memory_to_file(unsigned zone, unsigned sector, unsigned addr, unsigned nwords);
+    void embedded_to_memory(unsigned zone, unsigned sector, unsigned addr, unsigned nwords);
 };
 
 #endif // DUBNA_DISK_H

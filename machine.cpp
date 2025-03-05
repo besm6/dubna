@@ -324,6 +324,11 @@ void Machine::drum_io(char op, unsigned drum_unit, unsigned zone, unsigned secto
     drum_init(drum_unit);
     if (op == 'r') {
         drums[drum_unit]->drum_to_memory(zone, sector, addr, nwords);
+
+        // Debug: dump the data.
+        if (dump_io_flag) {
+            memory.dump(++dump_serial_num, drum_unit, zone, sector, addr, nwords);
+        }
     } else {
         drums[drum_unit]->memory_to_drum(zone, sector, addr, nwords);
     }

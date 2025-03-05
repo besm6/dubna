@@ -75,7 +75,15 @@ void Memory::dump(unsigned serial_num, unsigned disk_unit, unsigned zone, unsign
 {
     // Create unique filename.
     std::ostringstream buf;
-    buf << serial_num << "-disk" << std::oct << disk_unit << "-zone" << zone;
+    buf << serial_num << "-";
+    if (disk_unit == 0) {
+        buf << "phys";
+    } else if (disk_unit < 030) {
+        buf << "drum" << std::oct << disk_unit;
+    } else {
+        buf << "disk" << std::oct << disk_unit;
+    }
+    buf << "-zone" << zone;
     if (nwords < 1024)
         buf << "-sector" << sector;
     buf << ".dump";

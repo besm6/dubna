@@ -31,9 +31,20 @@
 #include <fstream>
 #include <iomanip>
 #include <iostream>
+#include <sstream>
 #include <vector>
 
 #include "machine.h"
+
+#ifdef _WIN32
+#include <io.h>
+#define ISATTY _isatty
+#define FILENO _fileno
+#else
+#include <unistd.h>
+#define ISATTY isatty
+#define FILENO fileno
+#endif
 
 //
 // Internal implementation of the simulation session, hidden from user.
@@ -55,14 +66,11 @@ public:
     //
     explicit Hidden()
     {
-#ifndef _WIN32
         // Enable progress message only when error output goes to a user terminal.
-        // No progress message on Windows.
-        if (isatty(STDERR_FILENO)) {
+        if (ISATTY(FILENO(stdin))) {
             // Print a progress message on stderr every few seconds.
             machine.enable_progress_message(true);
         }
-#endif
     }
 
     //
@@ -155,6 +163,16 @@ public:
     //
     void run_overlay(unsigned file_offset)
     {
+        // Load input data.
+        if (ISATTY(FILENO(stdin))) {
+            // Load empty file.
+            std::stringstream input_data;
+            input_data << "*end file\n";
+            machine.load_script(input_data);
+        } else {
+            machine.load_script(std::cin);
+        }
+
         // Load binary program.
         machine.boot_overlay(job_file, file_offset);
 

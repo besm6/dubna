@@ -900,15 +900,19 @@ void Machine::boot_overlay(const std::string &filename, unsigned file_offset, co
     memory.store(02012, besm6_asm("aox 3016,      atx 76001")); // ставим признак раздела на МЛ
     memory.store(02013, besm6_asm("*70 3014,      utc"));       // сохраняем каталог оверлея для статического загрузчика
 
-    memory.store(02014, besm6_asm("vtm 53401(17), *70 717"));   // читаем статический загрузчик (infloa по адресу 0717)
+    memory.store(02014, besm6_asm("vtm 53401(17), utc"));       // ставим стек на стандартное место
     memory.store(02015, besm6_asm("ita 17,        atx 716"));   // устанавливаем aload по адресу 0716
     memory.store(02016, besm6_asm("xta 17,        aax 3010"));  // берём адрес "Свободно"
     memory.store(02017, besm6_asm("aox 3011,      atx 17"));    // устанавливаем на 01000
-    memory.store(02020, besm6_asm("atx 772,       ati 15"));    // записываем в заголовок, ставим начало программы
+    memory.store(02020, besm6_asm("atx 772,       utc"));       // записываем в заголовок
     memory.store(02021, besm6_asm("xta 3012,      atx 512"));   // ставим inf0 для статического загрузчика
     memory.store(02022, besm6_asm("xta 3013,      atx 511"));   // ставим a/cat для статического загрузчика
     memory.store(02023, besm6_asm("xta 76000,     atx 770"));   // берём имя оверлея, записываем в заголовок
-    memory.store(02024, besm6_asm("uj (17),       utc"));       // уходим в статический загрузчик
+    memory.store(02024, besm6_asm("vjm 1132(15),  utc"));       // MONREAD* - считываем первую карту входного потока
+
+    memory.store(02025, besm6_asm("*70 717,       utc"));       // читаем статический загрузчик (infloa по адресу 0717)
+    memory.store(02026, besm6_asm("xta 17,        ati 15"));    // ставим начало программы
+    memory.store(02027, besm6_asm("uj (17),       utc"));       // уходим в статический загрузчик
 
     memory.store(03000, 0'4014'3700'0021'0201ul); // э70: читаем таблицу резидентных программ для загрузчика
     memory.store(03001, 0'0000'3700'0020'0000ul); // э70: пишем ТРП на барабан

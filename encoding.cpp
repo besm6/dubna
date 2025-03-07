@@ -290,7 +290,7 @@ unsigned char unicode_to_koi7(unsigned short val)
         case 0x29:
             return 0x7d; // Щ
         case 0x2a:
-            return 0x78; // Ъ
+            return 0x05; // Ъ
         case 0x2b:
             return 0x79; // Ы
         case 0x2c:
@@ -354,7 +354,7 @@ unsigned char unicode_to_koi7(unsigned short val)
         case 0x49:
             return 0x7d; // щ
         case 0x4a:
-            return 0x78; // ъ
+            return 0x05; // ъ
         case 0x4b:
             return 0x79; // ы
         case 0x4c:

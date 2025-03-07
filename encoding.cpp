@@ -426,7 +426,7 @@ std::string utf8_to_koi7(const std::string &input, size_t maxlen)
 
         // Convert to KOI-7.
         unsigned ch = unicode_to_koi7(u);
-        if (ch < ' ')
+        if (!ch)
             continue;
 
         line.append(1, ch);

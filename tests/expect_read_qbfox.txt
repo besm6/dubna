@@ -32,7 +32,7 @@
          *R:41
          *LL
          THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG
-         CЬEШЬ ЖE EЩE ЭTИX MЯГKИX ФPAHЦYЗCKИX БYЛOK, ДA BЫПEЙ Ч
+         CЪEШЬ ЖE EЩE ЭTИX MЯГKИX ФPAHЦYЗCKИX БYЛOK, ДA BЫПEЙ Ч
                                              AЮ
                ФAЙЛ 41       :CЧИTAHO       2 KAPT (0001 ЗOH)
          *EE

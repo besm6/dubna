@@ -69,23 +69,23 @@ void Machine::enable_trace(const char *trace_mode)
         for (unsigned i = 0; trace_mode[i]; i++) {
             char ch = trace_mode[i];
             switch (ch) {
-            case 'i':
-                debug_instructions = true;
-                break;
             case 'e':
                 debug_extracodes = true;
-                break;
-            case 'p':
-                debug_print = true;
-                break;
-            case 'f':
-                debug_fetch = true;
                 break;
             case 'm':
                 debug_memory = true;
                 break;
+            case 'i':
+                debug_instructions = true;
+                break;
             case 'r':
                 debug_registers = true;
+                break;
+            case 'f':
+                debug_fetch = true;
+                break;
+            case 'p':
+                debug_print = true;
                 break;
             case 'd':
                 debug_dispak = true;
@@ -95,6 +95,21 @@ void Machine::enable_trace(const char *trace_mode)
             }
         }
     }
+}
+
+//
+// Enable trace by bitmask,
+// for example by VTM instruction with register 0.
+//
+void Machine::enable_trace(unsigned bitmask)
+{
+    debug_extracodes   = bitmask & 01;   // -d e
+    debug_memory       = bitmask & 02;   // -d m
+    debug_instructions = bitmask & 04;   // -d i
+    debug_registers    = bitmask & 010;  // -d r
+    debug_fetch        = bitmask & 020;  // -d f
+    debug_print        = bitmask & 040;  // -d p
+    debug_dispak       = bitmask & 0100; // -d d
 }
 
 //

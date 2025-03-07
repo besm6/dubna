@@ -544,6 +544,10 @@ bool Processor::step()
         Aex         = addr;
         core.M[reg] = addr;
         core.M[0]   = 0;
+        if (reg == 0) {
+            // VTM instruction with register 0: enable and disable tracing.
+            Machine::enable_trace(addr);
+        }
         break;
 
     case 0250: // слиа, utm

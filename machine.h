@@ -169,6 +169,7 @@ public:
     // Enable trace output to the given file,
     // or to std::cout when filename not present.
     static void enable_trace(const char *mode);
+    static void enable_trace(unsigned bitmask);
     static void redirect_trace(const char *file_name, const char *default_mode);
     static void close_trace();
     static bool trace_enabled()

@@ -167,7 +167,6 @@ public:
         if (ISATTY(FILENO(stdin))) {
             // Load empty file.
             std::stringstream input_data;
-            input_data << "*end file\n";
             machine.load_script(input_data);
         } else {
             machine.load_script(std::cin);

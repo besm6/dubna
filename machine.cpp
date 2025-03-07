@@ -237,14 +237,14 @@ void Machine::load_script(std::istream &input)
 {
     // Word offset from the beginning of the drum.
     unsigned offset = 0;
+    std::string line;
 
-    while (input.good()) {
+    // Process line by line.
+    while (getline(input, line)) {
+
         if (offset >= 040 * PAGE_NWORDS)
             throw std::runtime_error("Script is too large");
 
-        // Get next line.
-        std::string line;
-        getline(input, line);
         if (line[0] == '`') {
             Word word = std::stoul(line.c_str() + 1, nullptr, 8);
             drum_write_word(1, offset++, word);
@@ -253,6 +253,9 @@ void Machine::load_script(std::istream &input)
             drum_write_cosy(1, offset, line);
         }
     }
+
+    // Write extra 'end file' line.
+    drum_write_cosy(1, offset, "*end file");
 }
 
 //
@@ -909,10 +912,11 @@ void Machine::boot_overlay(const std::string &filename, unsigned file_offset, co
     memory.store(02022, besm6_asm("xta 3013,      atx 511"));   // ставим a/cat для статического загрузчика
     memory.store(02023, besm6_asm("xta 76000,     atx 770"));   // берём имя оверлея, записываем в заголовок
     memory.store(02024, besm6_asm("vjm 1132(15),  utc"));       // MONREAD* - считываем первую карту входного потока
+    memory.store(02025, besm6_asm("*70 46,        utc"));       // сохраняем буфер ввода
 
-    memory.store(02025, besm6_asm("*70 717,       utc"));       // читаем статический загрузчик (infloa по адресу 0717)
-    memory.store(02026, besm6_asm("xta 17,        ati 15"));    // ставим начало программы
-    memory.store(02027, besm6_asm("uj (17),       utc"));       // уходим в статический загрузчик
+    memory.store(02026, besm6_asm("*70 717,       utc"));       // читаем статический загрузчик (infloa по адресу 0717)
+    memory.store(02027, besm6_asm("xta 17,        ati 15"));    // ставим начало программы
+    memory.store(02030, besm6_asm("uj (17),       utc"));       // уходим в статический загрузчик
 
     memory.store(03000, 0'4014'3700'0021'0201ul); // э70: читаем таблицу резидентных программ для загрузчика
     memory.store(03001, 0'0000'3700'0020'0000ul); // э70: пишем ТРП на барабан

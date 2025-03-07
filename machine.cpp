@@ -888,35 +888,41 @@ void Machine::boot_overlay(const std::string &filename, unsigned file_offset, co
     file_paths.push_back(filename);
     file_mount(060, file_paths.size(), false, file_offset);
 
+    // Start at this address.
+    unsigned a = 054000;
+    cpu.set_pc(a);
+
     // clang-format off
-    memory.store(02000, besm6_asm("*70 3000,      utc"));       // читаем таблицу резидентных программ для загрузчика
-    memory.store(02001, besm6_asm("xta 76363,     atx 76100")); // восстановим испорченный IОLISТ*
-    memory.store(02002, besm6_asm("*70 3001,      utc"));       // пишем ТРП на барабан
-    memory.store(02003, besm6_asm("*70 3002,      utc"));       // читаем пустой каталог временной библиотеки
-    memory.store(02004, besm6_asm("*70 3003,      utc"));       // пишем на барабан
-    memory.store(02005, besm6_asm("*70 3004,      utc"));       // вторая зона пустого каталога временной библиотеки
-    memory.store(02006, besm6_asm("*70 3005,      utc"));       // пишем на барабан
-    memory.store(02007, besm6_asm("*70 3006,      utc"));       // читаем резидент MONITOR*
+    memory.store(a++, besm6_asm("*70 3000,      utc"));       // читаем таблицу резидентных программ для загрузчика
+    memory.store(a++, besm6_asm("xta 76363,     atx 76100")); // восстановим испорченный IОLISТ*
+    memory.store(a++, besm6_asm("*70 3001,      utc"));       // пишем ТРП на барабан
+    memory.store(a++, besm6_asm("*70 3002,      utc"));       // читаем пустой каталог временной библиотеки
+    memory.store(a++, besm6_asm("*70 3003,      utc"));       // пишем на барабан
+    memory.store(a++, besm6_asm("*70 3004,      utc"));       // вторая зона пустого каталога временной библиотеки
+    memory.store(a++, besm6_asm("*70 3005,      utc"));       // пишем на барабан
+    memory.store(a++, besm6_asm("*70 3006,      utc"));       // читаем резидент MONITOR*
 
-    memory.store(02010, besm6_asm("*70 3007,      utc"));       // читаем каталог оверлея
-    memory.store(02011, besm6_asm("xta 76001,     aax 3015"));  // снимаем признак раздела на МБ
-    memory.store(02012, besm6_asm("aox 3016,      atx 76001")); // ставим признак раздела на МЛ
-    memory.store(02013, besm6_asm("*70 3014,      utc"));       // сохраняем каталог оверлея для статического загрузчика
+    memory.store(a++, besm6_asm("*70 3007,      utc"));       // читаем каталог оверлея
+    memory.store(a++, besm6_asm("xta 76001,     aax 3015"));  // снимаем признак раздела на МБ
+    memory.store(a++, besm6_asm("aox 3016,      atx 76001")); // ставим признак раздела на МЛ
+    memory.store(a++, besm6_asm("*70 3014,      utc"));       // сохраняем каталог оверлея для статического загрузчика
 
-    memory.store(02014, besm6_asm("vtm 53401(17), utc"));       // ставим стек на стандартное место
-    memory.store(02015, besm6_asm("ita 17,        atx 716"));   // устанавливаем aload по адресу 0716
-    memory.store(02016, besm6_asm("xta 17,        aax 3010"));  // берём адрес "Свободно"
-    memory.store(02017, besm6_asm("aox 3011,      atx 17"));    // устанавливаем на 01000
-    memory.store(02020, besm6_asm("atx 772,       utc"));       // записываем в заголовок
-    memory.store(02021, besm6_asm("xta 3012,      atx 512"));   // ставим inf0 для статического загрузчика
-    memory.store(02022, besm6_asm("xta 3013,      atx 511"));   // ставим a/cat для статического загрузчика
-    memory.store(02023, besm6_asm("xta 76000,     atx 770"));   // берём имя оверлея, записываем в заголовок
-    memory.store(02024, besm6_asm("vjm 1132(15),  utc"));       // MONREAD* - считываем первую карту входного потока
-    memory.store(02025, besm6_asm("*70 46,        utc"));       // сохраняем буфер ввода
+    memory.store(a++, besm6_asm("vtm 53401(17), utc"));       // ставим стек на стандартное место
+    memory.store(a++, besm6_asm("ita 17,        atx 716"));   // устанавливаем aload по адресу 0716
+    memory.store(a++, besm6_asm("xta 17,        aax 3010"));  // берём адрес "Свободно"
+    memory.store(a++, besm6_asm("aox 3011,      atx 17"));    // устанавливаем на 01000
+    memory.store(a++, besm6_asm("atx 772,       utc"));       // записываем в заголовок
+    memory.store(a++, besm6_asm("xta 3012,      atx 512"));   // ставим inf0 для статического загрузчика
+    memory.store(a++, besm6_asm("xta 3013,      atx 511"));   // ставим a/cat для статического загрузчика
+    memory.store(a++, besm6_asm("xta 76000,     atx 770"));   // берём имя оверлея, записываем в заголовок
+    memory.store(a++, besm6_asm("vjm 1132(15),  utc"));       // MONREAD* - считываем первую карту входного потока
+    memory.store(a++, besm6_asm("*70 46,        utc"));       // сохраняем буфер ввода
 
-    memory.store(02026, besm6_asm("*70 717,       utc"));       // читаем статический загрузчик (infloa по адресу 0717)
-    memory.store(02027, besm6_asm("xta 17,        ati 15"));    // ставим начало программы
-    memory.store(02030, besm6_asm("uj (17),       utc"));       // уходим в статический загрузчик
+    memory.store(a++, besm6_asm("*70 717,       utc"));         // читаем статический загрузчик (infloa по адресу 0717)
+    memory.store(a++, besm6_asm("utc (17),      vjm (15)"));    // вызываем статический загрузчик
+    memory.store(a++, besm6_asm("vtm 427(15),   ita 15"));      // ставим адрес окончания программы
+    memory.store(a++, besm6_asm("atx 773,       vtm 774(15)")); // ставим адрес возврата
+    memory.store(a++, besm6_asm("wtc 777,       uj"));          // уходим в программу
 
     memory.store(03000, 0'4014'3700'0021'0201ul); // э70: читаем таблицу резидентных программ для загрузчика
     memory.store(03001, 0'0000'3700'0020'0000ul); // э70: пишем ТРП на барабан
@@ -934,6 +940,4 @@ void Machine::boot_overlay(const std::string &filename, unsigned file_offset, co
     memory.store(03015, 0'0777'7777'7777'7777ul); // маска битов 45:1
     memory.store(03016, 0'4000'0000'0000'0000ul); // бит 48
     // clang-format on
-
-    cpu.set_pc(02000);
 }

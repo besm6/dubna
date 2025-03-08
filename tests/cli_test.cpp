@@ -206,3 +206,39 @@ TEST(cli, shebang_exe)
 
     EXPECT_EQ(output, " HELLO, ALGOL!\n");
 }
+
+//
+// Run overlay with an input file argument.
+//
+TEST(cli, besmcat_exe)
+{
+    std::string command_line = BUILD_DIR "/dubna " TEST_DIR "/besmcat.exe besmcat.txt";
+
+    // Set path to the disk images.
+    EXPECT_EQ(setenv("BESM6_PATH", TEST_DIR "/../tapes", 1), 0);
+
+    // Create input text file.
+    const std::string contents = R"(the quick brown fox jumps over the lazy dog
+съешь же ещё этих мягких французских булок, да выпей чаю
+єхидна, ґава, їжак ще й шиплячі плазуни бігцем форсують янцзи
+)";
+    create_file("besmcat.txt", contents);
+
+    // Run simulator via shell.
+    FILE *pipe = popen(command_line.c_str(), "r");
+    ASSERT_TRUE(pipe != nullptr);
+
+    // Capture the output as vector of strings.
+    auto output = stream_contents(pipe);
+    std::cout << output;
+
+    // Check exit code.
+    int exit_status = pclose(pipe);
+    int exit_code   = WEXITSTATUS(exit_status);
+    ASSERT_NE(exit_status, -1);
+    ASSERT_EQ(exit_code, 0);
+
+    EXPECT_EQ(output, " THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG\n"
+                      " CЪEШЬ ЖE EЩE ЭTИX MЯГKИX ФPAHЦYЗCKИX БYЛOK, ДA BЫПEЙ ЧAЮ\n"
+                      " ЄХИДНА, ҐАВА, ЇЖАК ЩЕ Й ШИПЛЯЧІ ПЛАЗУНИ БІГЦЕМ ФОРСУЮТЬ ЯНЦЗИ\n");
+}

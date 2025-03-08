@@ -42,7 +42,12 @@ public:
     // Set name of job file.
     void set_job_file(const char *filename);
     void set_job_file(const std::string &filename) { set_job_file(filename.c_str()); }
-    std::string get_job_file();
+    const std::string &get_job_file();
+
+    // Set name of input file.
+    void set_input_file(const char *filename);
+    void set_input_file(const std::string &filename) { set_input_file(filename.c_str()); }
+    const std::string &get_input_file();
 
     // Run simulation session with given parameters.
     void run();

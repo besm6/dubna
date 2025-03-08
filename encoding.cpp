@@ -239,6 +239,12 @@ unsigned char unicode_to_koi7(unsigned short val)
         switch ((unsigned char)val) {
         case 0x01:
             return 'E'; // Ë - 0x65
+        case 0x04:
+            return 'E'; // Ukrainian Є -> E - 0x65
+        case 0x06:
+            return 'I'; // Ukrainian І -> I - 0x73
+        case 0x07:
+            return 'I'; // Ukrainian Ї -> I - 0x73
         case 0x10:
             return 'A'; // А - 0x61
         case 0x11:
@@ -369,6 +375,16 @@ unsigned char unicode_to_koi7(unsigned short val)
             return 0x71; // я
         case 0x51:
             return 'E'; // ё - 0x65
+        case 0x54:
+            return 'E'; // Ukrainian є -> е - 0x65
+        case 0x56:
+            return 'I'; // Ukrainian і -> i - 0x73
+        case 0x57:
+            return 'I'; // Ukrainian ї -> i - 0x73
+        case 0x90:
+            return 0x67; // Ukrainian Ґ -> Г
+        case 0x91:
+            return 0x67; // Ukrainian ґ -> г
         }
         break;
     case 0x20:

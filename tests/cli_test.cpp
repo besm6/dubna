@@ -221,6 +221,7 @@ TEST(cli, besmcat_exe)
     const std::string contents = R"(the quick brown fox jumps over the lazy dog
 съешь же ещё этих мягких французских булок, да выпей чаю
 єхидна, ґава, їжак ще й шиплячі плазуни бігцем форсують янцзи
+ах, чудна българска земьо, полюшвай цъфтящи жита
 )";
     create_file("besmcat.txt", contents);
 
@@ -240,5 +241,6 @@ TEST(cli, besmcat_exe)
 
     EXPECT_EQ(output, " THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG\n"
                       " CЪEШЬ ЖE EЩE ЭTИX MЯГKИX ФPAHЦYЗCKИX БYЛOK, ДA BЫПEЙ ЧAЮ\n"
-                      " ЄХИДНА, ҐАВА, ЇЖАК ЩЕ Й ШИПЛЯЧІ ПЛАЗУНИ БІГЦЕМ ФОРСУЮТЬ ЯНЦЗИ\n");
+                      " EXИДHA, ГABA, IЖAK ЩE Й ШИПЛЯЧI ПЛAЗYHИ БIГЦEM ФOPCYЮTЬ ЯHЦЗИ\n"
+                      " AX, ЧYДHA БЪЛГAPCKA ЗEMЬO, ПOЛЮШBAЙ ЦЪФTЯЩИ ЖИTA\n");
 }

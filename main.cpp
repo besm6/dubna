@@ -111,7 +111,15 @@ int main(int argc, char *argv[])
 
         case 1:
             // Regular argument.
-            session.set_job_file(optarg);
+            if (session.get_job_file().empty()) {
+                session.set_job_file(optarg);
+            } else if (session.get_input_file().empty()) {
+                session.set_input_file(optarg);
+            } else {
+                std::cerr << "Too many arguments: " << optarg << std::endl;
+                print_usage(std::cerr, prog_name);
+                exit(EXIT_FAILURE);
+            }
             continue;
 
         case 'h':

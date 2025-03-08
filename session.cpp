@@ -57,6 +57,9 @@ private:
     // A name of the file to run.
     std::string job_file;
 
+    // A name of input file for overlay.
+    std::string input_file;
+
     // Status of the simulation.
     int exit_status{ EXIT_SUCCESS };
 
@@ -92,6 +95,20 @@ public:
     }
 
     const std::string &get_job_file() const { return job_file; }
+
+    //
+    // Set name of input file.
+    //
+    void set_input_file(const char *filename)
+    {
+        if (!input_file.empty()) {
+            std::cerr << "Too many input files: " << filename << std::endl;
+            ::exit(EXIT_FAILURE);
+        }
+        input_file = filename;
+    }
+
+    const std::string &get_input_file() const { return input_file; }
 
     //
     // Run simulation session with given parameters.
@@ -164,7 +181,9 @@ public:
     void run_overlay(unsigned file_offset)
     {
         // Load input data.
-        if (ISATTY(FILENO(stdin))) {
+        if (!input_file.empty()) {
+            machine.load_script(input_file);
+        } else if (ISATTY(FILENO(stdin))) {
             // Load empty file.
             std::stringstream input_data;
             machine.load_script(input_data);
@@ -436,9 +455,22 @@ void Session::set_job_file(const char *filename)
     internal->set_job_file(filename);
 }
 
-std::string Session::get_job_file()
+const std::string &Session::get_job_file()
 {
     return internal->get_job_file();
+}
+
+//
+// Set name of input file.
+//
+void Session::set_input_file(const char *filename)
+{
+    internal->set_input_file(filename);
+}
+
+const std::string &Session::get_input_file()
+{
+    return internal->get_input_file();
 }
 
 //

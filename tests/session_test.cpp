@@ -930,8 +930,8 @@ _(
     writeln(' ', chr(20в), chr(25в), chr(26в), chr(27в));
     writeln(' ', chr(30в), chr(31в), chr(32в), chr(33в));
     writeln(' ', chr(34в), chr(35в), chr(36в), chr(37в));
-    writeln(' ', chr(40в), chr(41в), chr(61в), chr(101в));
-    writeln(' ', chr(43в), chr(100в), chr(134в), chr(136в));
+    writeln(' ', chr(43в), chr(44в), chr(45в), chr(46в));
+    writeln(' ', chr(77в), chr(100в), chr(134в), chr(136в));
 _).
 *library:22
 *execute
@@ -942,9 +942,13 @@ _).
  ‘―↑⏨
  ≠°÷’
  ⊃≡∨¬
-  !1A
- ≠°|‾
+ ≠◇%∧
+ ↑°‾|
 )";
+    // Note: in PRINT8 routine, ISO symbol 0136 '^' is converted
+    // to GOST symbol 0130 '|'.
+    // But in OS Dubna, it's converted to GOST 0131 '―'.
+
     output = extract_after_execute(output);
     check_output(output, expect);
 }

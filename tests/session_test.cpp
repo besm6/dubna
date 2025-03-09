@@ -271,7 +271,7 @@ TEST_F(dubna_session, algol)
 //
 // Run *PASCAL example and check output.
 //
-TEST_F(dubna_session, pascal)
+TEST_F(dubna_session, pascal_hello)
 {
     auto output = run_job_and_capture_output(R"(*name pascal
 *pascal
@@ -913,4 +913,38 @@ TEST_F(dubna_session, file_read_txt)
 
     // Binary file should be deleted.
     EXPECT_FALSE(std::filesystem::exists("qbfox.bin"));
+}
+
+//
+// Check output encoding in Pascal.
+//
+TEST_F(dubna_session, pascal_output_encoding)
+{
+    auto output = run_job_and_capture_output(R"(*name encoding
+*no list
+*no load
+*pascal
+program main (output);
+_(
+    writeln(' ', chr(5), chr(6), chr(16в), chr(17в));
+    writeln(' ', chr(20в), chr(25в), chr(26в), chr(27в));
+    writeln(' ', chr(30в), chr(31в), chr(32в), chr(33в));
+    writeln(' ', chr(34в), chr(35в), chr(36в), chr(37в));
+    writeln(' ', chr(40в), chr(41в), chr(61в), chr(101в));
+    writeln(' ', chr(43в), chr(100в), chr(134в), chr(136в));
+_).
+*library:22
+*execute
+*end file
+)");
+    const std::string expect = R"(*EXECUTE
+ Ъ×≤≥
+ ‘―↑⏨
+ ≠°÷’
+ ⊃≡∨¬
+  !1A
+ ≠°|‾
+)";
+    output = extract_after_execute(output);
+    check_output(output, expect);
 }

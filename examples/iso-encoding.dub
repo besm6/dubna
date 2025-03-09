@@ -1,0 +1,27 @@
+*name ISO encoding
+*no list
+*no load
+*pascal
+(*
+ * Print table of ISO encoding, as defined in print8 routine.
+ *)
+program main(output);
+var i, j, c: integer;
+    s: char;
+_(
+    for i := 0 to 15 do _(
+        for j := 0 to 7 do _(
+            c := j*16 + i;
+            s := chr(c);
+            if (c = 0) or (c = 3) or (c = 10в) or
+               (c = 12в) or (c = 14в) or (c = 15в) then _(
+                s := ' ';
+            _);
+            write('  ', c:3 oct, ' ', s);
+        _);
+        writeln;
+    _);
+_).
+*library:22
+*execute
+*end file

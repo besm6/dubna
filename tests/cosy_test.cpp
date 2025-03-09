@@ -153,7 +153,7 @@ TEST(unit, utf8_to_koi7)
     EXPECT_EQ(utf8_to_koi7("¬", 1), "\37");
 
     EXPECT_EQ(utf8_to_koi7("◇", 1), "$");
-    EXPECT_EQ(utf8_to_koi7("∧", 1), "^");
+    EXPECT_EQ(utf8_to_koi7("∧", 1), "&");
     EXPECT_EQ(utf8_to_koi7("′", 1), "'");
     EXPECT_EQ(utf8_to_koi7("‾", 1), "^");
     EXPECT_EQ(utf8_to_koi7("|", 1), "?"); // TODO: is this OK?

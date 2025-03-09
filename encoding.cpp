@@ -414,7 +414,7 @@ unsigned char unicode_to_koi7(unsigned short val)
     case 0x22:
         switch ((unsigned char)val) {
         case 0x27:
-            return '^';
+            return '&'; // ∧
         case 0x28:
             return '\36'; // ∨
         case 0x60:

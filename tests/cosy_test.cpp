@@ -26,6 +26,8 @@
 #include "fixture_machine.h"
 #include "cosy.h"
 
+#include "encoding.h"
+
 TEST(unit, encode_cosy)
 {
     EXPECT_EQ(encode_cosy(""), "\323\n   \n");
@@ -121,4 +123,40 @@ TEST(unit, bad_cosy_to_txt)
     std::filesystem::remove(path_txt);
     EXPECT_FALSE(file_cosy_to_txt(path_bin));
     EXPECT_FALSE(std::filesystem::exists(path_txt));
+}
+
+TEST(unit, utf8_to_koi7)
+{
+    EXPECT_EQ(utf8_to_koi7("!\"#$%&'()*+,-./", 16), "!\"#$%&'()*+,-./");
+    EXPECT_EQ(utf8_to_koi7("0123456789:;<=>?", 16), "0123456789:;<=>?");
+    EXPECT_EQ(utf8_to_koi7("@ABCDEFGHIJKLMNO", 16), "@ABCDEFGHIJKLMNO");
+    EXPECT_EQ(utf8_to_koi7("PQRSTUVWXYZ[\\]^_", 16), "PQRSTUVWXYZ[\\]^_");
+    EXPECT_EQ(utf8_to_koi7("ЮAБЦДEФГXИЙKЛMHO", 16), "`AbcdEfgXijKlMHO");
+    EXPECT_EQ(utf8_to_koi7("ПЯPCTYЖBЬЫЗШЭЩЧ ", 16), "pqPCTYvBxyz{|}~ ");
+
+    EXPECT_EQ(utf8_to_koi7("Ъ", 1), "\5");
+    //TODO: EXPECT_EQ(utf8_to_koi7("×", 1), "\6");
+    //TODO: EXPECT_EQ(utf8_to_koi7("≤", 1), "\16");
+    //TODO: EXPECT_EQ(utf8_to_koi7("≥", 1), "\17");
+    //TODO: EXPECT_EQ(utf8_to_koi7("‘", 1), "\20");
+    //TODO: EXPECT_EQ(utf8_to_koi7("―", 1), "\25");
+    //TODO: EXPECT_EQ(utf8_to_koi7("↑", 1), "\26");
+    //TODO: EXPECT_EQ(utf8_to_koi7("⏨", 1), "\27");
+
+    //TODO: EXPECT_EQ(utf8_to_koi7("≠", 1), "\30");
+    //TODO: EXPECT_EQ(utf8_to_koi7("°", 1), "\31");
+    //TODO: EXPECT_EQ(utf8_to_koi7("÷", 1), "\32");
+    //TODO: EXPECT_EQ(utf8_to_koi7("’", 1), "\33");
+    //TODO: EXPECT_EQ(utf8_to_koi7("⊃", 1), "\34");
+    //TODO: EXPECT_EQ(utf8_to_koi7("≡", 1), "\35");
+    //TODO: EXPECT_EQ(utf8_to_koi7("∨", 1), "\36");
+    //TODO: EXPECT_EQ(utf8_to_koi7("¬", 1), "\37");
+
+    EXPECT_EQ(utf8_to_koi7("≠", 1), "#");
+    //TODO: EXPECT_EQ(utf8_to_koi7("◇", 1), "$");
+    EXPECT_EQ(utf8_to_koi7("∧", 1), "^");
+    EXPECT_EQ(utf8_to_koi7("′", 1), "'");
+    EXPECT_EQ(utf8_to_koi7("↑", 1), "@");
+    //TODO: EXPECT_EQ(utf8_to_koi7("‾", 1), "^");
+    //TODO: EXPECT_EQ(utf8_to_koi7("|", 1), "|");
 }

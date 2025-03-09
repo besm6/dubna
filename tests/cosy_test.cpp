@@ -135,28 +135,26 @@ TEST(unit, utf8_to_koi7)
     EXPECT_EQ(utf8_to_koi7("ПЯPCTYЖBЬЫЗШЭЩЧ ", 16), "pqPCTYvBxyz{|}~ ");
 
     EXPECT_EQ(utf8_to_koi7("Ъ", 1), "\5");
-    //TODO: EXPECT_EQ(utf8_to_koi7("×", 1), "\6");
-    //TODO: EXPECT_EQ(utf8_to_koi7("≤", 1), "\16");
-    //TODO: EXPECT_EQ(utf8_to_koi7("≥", 1), "\17");
-    //TODO: EXPECT_EQ(utf8_to_koi7("‘", 1), "\20");
-    //TODO: EXPECT_EQ(utf8_to_koi7("―", 1), "\25");
-    //TODO: EXPECT_EQ(utf8_to_koi7("↑", 1), "\26");
-    //TODO: EXPECT_EQ(utf8_to_koi7("⏨", 1), "\27");
+    EXPECT_EQ(utf8_to_koi7("×", 1), "\6");
+    EXPECT_EQ(utf8_to_koi7("≤", 1), "\16");
+    EXPECT_EQ(utf8_to_koi7("≥", 1), "\17");
+    EXPECT_EQ(utf8_to_koi7("‘", 1), "\20");
+    EXPECT_EQ(utf8_to_koi7("―", 1), "\25");
+    EXPECT_EQ(utf8_to_koi7("↑", 1), "\26"); // was @
+    EXPECT_EQ(utf8_to_koi7("⏨", 1), "\27");
 
-    //TODO: EXPECT_EQ(utf8_to_koi7("≠", 1), "\30");
-    //TODO: EXPECT_EQ(utf8_to_koi7("°", 1), "\31");
-    //TODO: EXPECT_EQ(utf8_to_koi7("÷", 1), "\32");
-    //TODO: EXPECT_EQ(utf8_to_koi7("’", 1), "\33");
-    //TODO: EXPECT_EQ(utf8_to_koi7("⊃", 1), "\34");
-    //TODO: EXPECT_EQ(utf8_to_koi7("≡", 1), "\35");
-    //TODO: EXPECT_EQ(utf8_to_koi7("∨", 1), "\36");
-    //TODO: EXPECT_EQ(utf8_to_koi7("¬", 1), "\37");
+    EXPECT_EQ(utf8_to_koi7("≠", 1), "\30"); // was #
+    EXPECT_EQ(utf8_to_koi7("°", 1), "\31");
+    EXPECT_EQ(utf8_to_koi7("÷", 1), "\32");
+    EXPECT_EQ(utf8_to_koi7("’", 1), "\33");
+    EXPECT_EQ(utf8_to_koi7("⊃", 1), "\34");
+    EXPECT_EQ(utf8_to_koi7("≡", 1), "\35");
+    EXPECT_EQ(utf8_to_koi7("∨", 1), "\36");
+    EXPECT_EQ(utf8_to_koi7("¬", 1), "\37");
 
-    EXPECT_EQ(utf8_to_koi7("≠", 1), "#");
-    //TODO: EXPECT_EQ(utf8_to_koi7("◇", 1), "$");
+    EXPECT_EQ(utf8_to_koi7("◇", 1), "$");
     EXPECT_EQ(utf8_to_koi7("∧", 1), "^");
     EXPECT_EQ(utf8_to_koi7("′", 1), "'");
-    EXPECT_EQ(utf8_to_koi7("↑", 1), "@");
-    //TODO: EXPECT_EQ(utf8_to_koi7("‾", 1), "^");
-    //TODO: EXPECT_EQ(utf8_to_koi7("|", 1), "|");
+    EXPECT_EQ(utf8_to_koi7("‾", 1), "^");
+    EXPECT_EQ(utf8_to_koi7("|", 1), "?"); // TODO: is this OK?
 }

@@ -213,22 +213,22 @@ unsigned char unicode_to_koi7(unsigned short val)
         /* `abcdefg */ 0,    0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x47, //  ABCDEFG
         /* hijklmno */ 0x48, 0x49, 0x4a, 0x4b, 0x4c, 0x4d, 0x4e, 0x4f, // HIJKLMNO
         /* pqrstuvw */ 0x50, 0x51, 0x52, 0x53, 0x54, 0x55, 0x56, 0x57, // PQRSTUVW
-        /* xyz{|}~  */ 0x58, 0x59, 0x5a, 0,    0,    0,    0,    0,    // XYZ
+        /* xyz{|}~  */ 0x58, 0x59, 0x5a, 0,    0x3f, 0,    0,    0,    // XYZ |
         /* 80 - 87 */  0,    0,    0,    0,    0,    0,    0,    0,
         /* 88 - 8f */  0,    0,    0,    0,    0,    0,    0,    0,
         /* 90 - 97 */  0,    0,    0,    0,    0,    0,    0,    0,
         /* 98 - 9f */  0,    0,    0,    0,    0,    0,    0,    0,
         /* a0 - a7 */  0,    0,    0,    0,    0,    0,    0,    0,
-        /* a8 - af */  0,    0,    0,    0,    0,    0,    0,    0,
-        /* b0 - b7 */  0,    0,    0,    0,    0,    0,    0,    0,
+        /* a8 - af */  0,    0,    0,    0,    0x1f, 0,    0,    0, // ¬
+        /* b0 - b7 */  0x19, 0,    0,    0,    0,    0,    0,    0, // °
         /* b8 - bf */  0,    0,    0,    0,    0,    0,    0,    0,
         /* c0 - c7 */  0,    0,    0,    0,    0,    0,    0,    0,
         /* c8 - cf */  0,    0,    0,    0,    0,    0,    0,    0,
-        /* d0 - d7 */  0,    0,    0,    0,    0,    0,    0,    0,
+        /* d0 - d7 */  0,    0,    0,    0,    0,    0,    0,    0x06, // ×
         /* d8 - df */  0,    0,    0,    0,    0,    0,    0,    0,
         /* e0 - e7 */  0,    0,    0,    0,    0,    0,    0,    0,
         /* e8 - ef */  0,    0,    0,    0,    0,    0,    0,    0,
-        /* f0 - f7 */  0,    0,    0,    0,    0,    0,    0,    0,
+        /* f0 - f7 */  0,    0,    0,    0,    0,    0,    0,    0x1a, // ÷
         /* f8 - ff */  0,    0,    0,    0,    0,    0,    0,    0,
         // clang-format on
     };
@@ -390,15 +390,17 @@ unsigned char unicode_to_koi7(unsigned short val)
     case 0x20:
         switch ((unsigned char)val) {
         case 0x15:
-            return '-';
+            return '\25'; // ―
         case 0x18:
-            return 0; // `
+            return '\20'; // ‘
         case 0x19:
-            return '\'';
+            return '\33'; // ’
         case 0x28:
             return 0x0a;
         case 0x32:
             return '\'';
+        case 0x3e:
+            return '^';
         }
         break;
     case 0x21:
@@ -406,7 +408,7 @@ unsigned char unicode_to_koi7(unsigned short val)
         case 0x2f:
             return 'E';
         case 0x91:
-            return '@';
+            return '\26'; // ↑ (was '@')
         }
         break;
     case 0x22:
@@ -414,14 +416,28 @@ unsigned char unicode_to_koi7(unsigned short val)
         case 0x27:
             return '^';
         case 0x28:
-            return 'v';
+            return '\36'; // ∨
         case 0x60:
-            return '#';
+            return '\30'; // ≠ (was '#')
+        case 0x61:
+            return '\35'; // ≡
+        case 0x64:
+            return '\16'; // ≤
+        case 0x65:
+            return '\17'; // ≥
+        case 0x83:
+            return '\34'; // ⊃
+        }
+        break;
+    case 0x23:
+        switch ((unsigned char)val) {
+        case 0xe8:
+            return '\27'; // ⏨
         }
         break;
     case 0x25:
         switch ((unsigned char)val) {
-        case 0xca:
+        case 0xc7:
             return '$';
         }
         break;

@@ -213,7 +213,7 @@ unsigned char unicode_to_koi7(unsigned short val)
         /* `abcdefg */ 0,    0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x47, //  ABCDEFG
         /* hijklmno */ 0x48, 0x49, 0x4a, 0x4b, 0x4c, 0x4d, 0x4e, 0x4f, // HIJKLMNO
         /* pqrstuvw */ 0x50, 0x51, 0x52, 0x53, 0x54, 0x55, 0x56, 0x57, // PQRSTUVW
-        /* xyz{|}~  */ 0x58, 0x59, 0x5a, 0,    0x5e, 0,    0,    0,    // XYZ |
+        /* xyz{|}~  */ 0x58, 0x59, 0x5a, 0x5b, 0x5e, 0x5d, 0x1f, 0,    // XYZ[|]¬
         /* 80 - 87 */  0,    0,    0,    0,    0,    0,    0,    0,
         /* 88 - 8f */  0,    0,    0,    0,    0,    0,    0,    0,
         /* 90 - 97 */  0,    0,    0,    0,    0,    0,    0,    0,

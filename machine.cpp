@@ -46,6 +46,8 @@ uint64_t Machine::simulated_instructions = 0;
 // Limit of instructions, by default.
 const uint64_t Machine::DEFAULT_LIMIT = 100ULL * 1000 * 1000 * 1000;
 
+// Drum size in words.
+const unsigned DRUM_NWORDS = 040 * PAGE_NWORDS;
 //
 // Initialize the machine.
 //
@@ -242,7 +244,7 @@ void Machine::load_script(std::istream &input)
     // Process line by line.
     while (getline(input, line)) {
 
-        if (offset >= 040 * PAGE_NWORDS)
+        if (offset >= 2 * DRUM_NWORDS)
             throw std::runtime_error("Script is too large");
 
         if (line[0] == '`') {
@@ -342,6 +344,8 @@ void Machine::drum_io(char op, unsigned drum_unit, unsigned zone, unsigned secto
 //
 void Machine::drum_write_word(unsigned drum_unit, unsigned offset, Word value)
 {
+    drum_unit += offset / DRUM_NWORDS;
+    offset %= DRUM_NWORDS;
     drum_init(drum_unit);
     drums[drum_unit]->write_word(offset, value);
 }

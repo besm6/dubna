@@ -130,7 +130,7 @@ TEST(unit, utf8_to_koi7)
     EXPECT_EQ(utf8_to_koi7("!\"#$%&'()*+,-./", 16), "!\"#$%&'()*+,-./");
     EXPECT_EQ(utf8_to_koi7("0123456789:;<=>?", 16), "0123456789:;<=>?");
     EXPECT_EQ(utf8_to_koi7("@ABCDEFGHIJKLMNO", 16), "@ABCDEFGHIJKLMNO");
-    EXPECT_EQ(utf8_to_koi7("PQRSTUVWXYZ[\\]^_", 16), "PQRSTUVWXYZ[\\]^_");
+    EXPECT_EQ(utf8_to_koi7("PQRSTUVWXYZ[\\]^_", 16), "PQRSTUVWXYZ[\\]\\_");
     EXPECT_EQ(utf8_to_koi7("ЮAБЦДEФГXИЙKЛMHO", 16), "`AbcdEfgXijKlMHO");
     EXPECT_EQ(utf8_to_koi7("ПЯPCTYЖBЬЫЗШЭЩЧ ", 16), "pqPCTYvBxyz{|}~ ");
 

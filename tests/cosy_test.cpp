@@ -125,6 +125,26 @@ TEST(unit, bad_cosy_to_txt)
     EXPECT_FALSE(std::filesystem::exists(path_txt));
 }
 
+TEST(unit, file_utxt_to_iso)
+{
+    const std::string path_txt = get_test_name() + ".utxt";
+    const std::string path_bin = get_test_name() + ".bin";
+    const std::string contents = R"(
+My code was perfect until I spilled coffee on my keyboard - now it’s brewing bugs faster than a barista on April Fools' Day!
+I told my boss the app works fine; he believed me - guess who’s the real fool today? Spoiler: not me, I’m off debugging!
+Wrote a prank virus that rickrolls testers - best part? They’re still humming "Never Gonna Give You Up" while I fix it!
+Unit tests passed, but the UI now displays dancing clowns - Happy April Fools’, or maybe I forgot to delete that commit?
+)";
+    create_file(path_txt, contents);
+    std::filesystem::remove(path_bin);
+    EXPECT_TRUE(file_utxt_to_iso(path_bin));
+
+    // Check resulting file.
+    auto const result = file_contents(path_bin);
+    auto expect = file_contents(TEST_DIR "/expect_iso.bin");
+    EXPECT_EQ(result, expect);
+}
+
 TEST(unit, utf8_to_koi7)
 {
     EXPECT_EQ(utf8_to_koi7("!\"#$%&'()*+,-./", 16), "!\"#$%&'()*+,-./");

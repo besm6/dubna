@@ -495,7 +495,13 @@ unsigned Machine::file_search(Word disc_id, Word file_name, bool write_mode)
             std::ifstream file(txt_path);
             file_exists = file.good();
             if (!file_exists) {
-                return 0;
+                // Check for *.utxt instead.
+                const std::string utxt_path = dir + "/" + word_iso_filename(file_name) + ".utxt";
+                std::ifstream wfile(utxt_path);
+                file_exists = wfile.good();
+                if (!file_exists) {
+                    return 0;
+                }
             }
         }
     }
@@ -534,6 +540,10 @@ unsigned Machine::file_mount(unsigned disk_unit, unsigned file_index, bool write
     //  * in read-only mode: set flag to remove file.bin when finished
     //
     bool bin_created = file_txt_to_cosy(path);
+    if (!bin_created) {
+        // Convert file.utxt -> file.bin
+        bin_created = file_utxt_to_iso(path);
+    }
 
     if (write_mode) {
         // Create file and close it.

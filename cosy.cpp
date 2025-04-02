@@ -289,3 +289,50 @@ bool decode_cosy(std::string &line)
     line.erase(line.find_last_not_of(" ") + 1);
     return true;
 }
+
+//
+// Create file.bin in ISO format from file.txt.
+// Return true when succeeded.
+//
+bool file_utxt_to_iso(const std::string &path_bin)
+{
+    if (std::filesystem::exists(path_bin)) {
+        // Binary file already exists - refuse to convert.
+        return false;
+    }
+
+    // Replace '.bin' extension with '.utxt'.
+    std::filesystem::path path_txt{ path_bin };
+    path_txt.replace_extension(".utxt");
+
+    // Open text file.
+    std::ifstream input(path_txt.string());
+    if (!input.good()) {
+        // No text file.
+        return false;
+    }
+
+    // Open binary file for write.
+    std::ofstream output(path_bin, std::ios::binary);
+    if (!output.good()) {
+        // Cannot write.
+        return false;
+    }
+
+    std::string line;
+    while (std::getline(input, line)) {
+        line = utf8_to_koi7(line, 130);
+        output << line;
+        output << '\n';
+    }
+    output << "\0\0\0\0\0\0\0\0\0\0\0";
+
+    // Fill the rest of the zone with zeroes.
+    uint64_t size    = output.tellp();
+    uint64_t aligned = (size + PAGE_NBYTES - 1) / PAGE_NBYTES * PAGE_NBYTES;
+    if (size != aligned) {
+        output.seekp(aligned - 1);
+        output << (char)0;
+    }
+    return true;
+}

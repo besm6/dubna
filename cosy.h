@@ -36,6 +36,12 @@ bool file_txt_to_cosy(const std::string &path_bin);
 bool file_cosy_to_txt(const std::string &path_bin);
 
 //
+// Create file.bin in ISO format from file.txt.
+// Return true when succeeded.
+//
+bool file_utxt_to_iso(const std::string &path_bin);
+
+//
 // Encode string to COSY format.
 //
 std::string encode_cosy(std::string line);

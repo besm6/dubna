@@ -889,3 +889,35 @@ TEST_F(dubna_session, boldprint)
     output = extract_after_execute(output);
     EXPECT_EQ(output, expect);
 }
+
+TEST_F(dubna_session, e64_real_3)
+{
+    auto output = run_job_and_capture_output(R"(*name e64 real
+*assembler
+ program:   ,name,
+            ,*64,   prt
+            ,*74,
+C variables
+ s:         ,real,  12.0
+            ,real,  13.0
+            ,real,  14.0
+C format for *64
+ prt:   0   ,z00,   s   . start
+        0   ,z00,   s+2 . end
+        3   ,z00,   10  . float
+        8   ,z00,   0   . final word
+            ,end,
+*execute
+*end file
+)");
+    const std::string expect = R"(*EXECUTE
+≠
+         PROGRAM    01000                CBOБOДHO   01007
+≠
+ +120000⏨+02
+ +130000⏨+02
+ +140000⏨+02
+)";
+    output = extract_after_execute(output);
+    EXPECT_EQ(output, expect);
+}

@@ -436,12 +436,15 @@ unsigned Processor::e64_print_real(unsigned addr0, unsigned addr1, unsigned digi
         e64_putchar(GOST_SPACE);
         e64_putchar(negative ? GOST_MINUS : GOST_PLUS);
 
+        // Print mantissa.
         for (unsigned i = 0; i < digits - 4; ++i) {
             value     = value * 10;
-            int digit = (int)value;
+            int digit = (int)(value + 0.5);
             e64_putchar(digit);
             value -= digit;
         }
+
+        // Print exponent.
         e64_putchar(GOST_LOWER_TEN);
         if (exponent >= 0) {
             e64_putchar(GOST_PLUS);
@@ -742,6 +745,7 @@ void Processor::e64()
             if (end_addr && start_addr <= end_addr) {
                 // Repeat printing task until all data expired.
                 e64_emit_line();
+                ctl_addr--;
                 continue;
             }
 

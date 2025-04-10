@@ -436,10 +436,17 @@ unsigned Processor::e64_print_real(unsigned addr0, unsigned addr1, unsigned digi
         e64_putchar(GOST_SPACE);
         e64_putchar(negative ? GOST_MINUS : GOST_PLUS);
 
+        // Round.
+        value += 0.5 / pow(10.0, digits - 4);
+        if (value >= 1) {
+            value /= 10;
+            exponent++;
+        }
+
         // Print mantissa.
         for (unsigned i = 0; i < digits - 4; ++i) {
             value     = value * 10;
-            int digit = (int)(value + 0.5);
+            int digit = (int)value;
             e64_putchar(digit);
             value -= digit;
         }

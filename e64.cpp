@@ -294,6 +294,7 @@ unsigned Processor::e64_print_octal(unsigned start_addr, unsigned end_addr, unsi
         }
 
         if (!repeat) {
+            // TODO: fix test e64_octal_3
             return start_addr;
         }
         --repeat;
@@ -343,7 +344,12 @@ unsigned Processor::e64_print_hex(unsigned start_addr, unsigned end_addr, unsign
         }
 
         if (!repeat) {
-            return start_addr;
+            if (end_addr && start_addr <= end_addr) {
+                e64_emit_line();
+                repeat = 1;
+            } else {
+                return start_addr;
+            }
         }
         --repeat;
         if (width > digits) {
@@ -383,7 +389,12 @@ unsigned Processor::e64_print_instructions(unsigned start_addr, unsigned end_add
         e64_print_cmd(b);
 
         if (!repeat) {
-            return start_addr;
+            if (end_addr && start_addr <= end_addr) {
+                e64_emit_line();
+                repeat = 1;
+            } else {
+                return start_addr;
+            }
         }
         --repeat;
         if (width > 23) {

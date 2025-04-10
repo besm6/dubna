@@ -921,3 +921,93 @@ C format for *64
     output = extract_after_execute(output);
     EXPECT_EQ(output, expect);
 }
+
+TEST_F(dubna_session, DISABLED_e64_octal_3) // TODO
+{
+    auto output = run_job_and_capture_output(R"(*name e64 octal
+*assembler
+ program:   ,name,
+            ,*64,   prt
+            ,*74,
+ s:         ,log,  12345
+            ,log,  23456
+            ,log,  34567
+ prt:   0   ,z00,   s   . start
+        0   ,z00,   s+2 . end
+        2   ,z00,   10  . octal
+        8   ,z00,   0   . final word
+            ,end,
+*execute
+*end file
+)");
+    const std::string expect = R"(*EXECUTE
+≠
+         PROGRAM    01000                CBOБOДHO   01007
+≠
+0000012345
+0000023456
+0000034567
+)";
+    output = extract_after_execute(output);
+    EXPECT_EQ(output, expect);
+}
+
+TEST_F(dubna_session, e64_hex_3)
+{
+    auto output = run_job_and_capture_output(R"(*name e64 hex
+*assembler
+ program:   ,name,
+            ,*64,   prt
+            ,*74,
+ s:         ,log,  12345
+            ,log,  23456
+            ,log,  34567
+ prt:   0   ,z00,   s   . start
+        0   ,z00,   s+2 . end
+        6   ,z00,   10  . hexadecimal
+        8   ,z00,   0   . final word
+            ,end,
+*execute
+*end file
+)");
+    const std::string expect = R"(*EXECUTE
+≠
+         PROGRAM    01000                CBOБOДHO   01007
+≠
+00000014E5
+000000272E
+0000003977
+)";
+    output = extract_after_execute(output);
+    EXPECT_EQ(output, expect);
+}
+
+TEST_F(dubna_session, e64_instructions_3)
+{
+    auto output = run_job_and_capture_output(R"(*name e64 instructions
+*assembler
+ program:   ,name,
+            ,*64,   prt
+            ,*74,
+ s:         ,log,   2566 0370 3364 4043
+            ,log,   4027 3734 4476 5141
+            ,log,   6010 3764 7035 1336
+ prt:   0   ,z00,   s   . start
+        0   ,z00,   s+2 . end
+        1   ,z00,   10  . instructions
+        8   ,z00,   0   . final word
+            ,end,
+*execute
+*end file
+)");
+    const std::string expect = R"(*EXECUTE
+≠
+         PROGRAM    01000                CBOБOДHO   01007
+≠
+05 166 0370 06 36 44043
+10 027 3734 11 076 5141
+14 010 3764 16 035 1336
+)";
+    output = extract_after_execute(output);
+    EXPECT_EQ(output, expect);
+}

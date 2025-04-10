@@ -463,7 +463,12 @@ unsigned Processor::e64_print_real(unsigned addr0, unsigned addr1, unsigned digi
         e64_putchar(exponent % 10);
 
         if (!repeat) {
-            return addr0;
+            if (addr1 && addr0 <= addr1) {
+                e64_emit_line();
+                repeat = 1;
+            } else {
+                return addr0;
+            }
         }
         --repeat;
         if (width > digits + 2) {
@@ -752,7 +757,6 @@ void Processor::e64()
             if (end_addr && start_addr <= end_addr) {
                 // Repeat printing task until all data expired.
                 e64_emit_line();
-                ctl_addr--;
                 continue;
             }
 

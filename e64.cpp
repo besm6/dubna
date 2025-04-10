@@ -205,20 +205,20 @@ static double real_exponent(double value, int &exponent)
 // Print string in ITM format.
 // Return next data address.
 //
-unsigned Processor::e64_print_itm(unsigned addr0, unsigned addr1)
+unsigned Processor::e64_print_itm(unsigned start_addr, unsigned end_addr)
 {
-    BytePointer bp(memory, addr0);
+    BytePointer bp(memory, start_addr);
     uint8_t last_ch = GOST_SPACE;
 
     while (bp.word_addr) {
         // No data to print.
-        if (addr1 && bp.word_addr == addr1 + 1) {
+        if (end_addr && bp.word_addr == end_addr + 1) {
             return bp.word_addr;
         }
 
         // No space left on the line.
         if (e64_position == LINE_WIDTH) {
-            if (!addr1) {
+            if (!end_addr) {
                 if (bp.byte_index) {
                     ++bp.word_addr;
                 }
@@ -265,27 +265,27 @@ unsigned Processor::e64_print_itm(unsigned addr0, unsigned addr1)
 // Print word(s) in octal format.
 // Return next data address.
 //
-unsigned Processor::e64_print_octal(unsigned addr0, unsigned addr1, unsigned digits, unsigned width,
-                                    unsigned repeat)
+unsigned Processor::e64_print_octal(unsigned start_addr, unsigned end_addr, unsigned digits,
+                                    unsigned width, unsigned repeat)
 {
     if (digits > 16) {
         digits = 16;
     }
-    while (addr0) {
+    while (start_addr) {
         // No data to print.
-        if (addr1 && addr0 == addr1 + 1) {
-            return addr0;
+        if (end_addr && start_addr == end_addr + 1) {
+            return start_addr;
         }
 
         // No space left on the line.
         if (e64_position >= LINE_WIDTH) {
-            if (!addr1) {
+            if (!end_addr) {
                 return 0;
             }
-            return addr0;
+            return start_addr;
         }
-        Word word = machine.mem_load(addr0);
-        ++addr0;
+        Word word = machine.mem_load(start_addr);
+        ++start_addr;
 
         word <<= 64 - digits * 3;
         for (unsigned i = 0; i < digits; ++i) {
@@ -294,7 +294,7 @@ unsigned Processor::e64_print_octal(unsigned addr0, unsigned addr1, unsigned dig
         }
 
         if (!repeat) {
-            return addr0;
+            return start_addr;
         }
         --repeat;
         if (width > digits) {
@@ -308,8 +308,8 @@ unsigned Processor::e64_print_octal(unsigned addr0, unsigned addr1, unsigned dig
 // Print word(s) in hexadecimal format.
 // Return next data address.
 //
-unsigned Processor::e64_print_hex(unsigned addr0, unsigned addr1, unsigned digits, unsigned width,
-                                  unsigned repeat)
+unsigned Processor::e64_print_hex(unsigned start_addr, unsigned end_addr, unsigned digits,
+                                  unsigned width, unsigned repeat)
 {
     static const char hex_digit[16] = {
         GOST_0, GOST_1, GOST_2, GOST_3, GOST_4, GOST_5, GOST_6, GOST_7,
@@ -319,21 +319,21 @@ unsigned Processor::e64_print_hex(unsigned addr0, unsigned addr1, unsigned digit
     if (digits > 12) {
         digits = 12;
     }
-    while (addr0) {
+    while (start_addr) {
         // No data to print.
-        if (addr1 && addr0 == addr1 + 1) {
-            return addr0;
+        if (end_addr && start_addr == end_addr + 1) {
+            return start_addr;
         }
 
         // No space left on the line.
         if (e64_position >= LINE_WIDTH) {
-            if (!addr1) {
+            if (!end_addr) {
                 return 0;
             }
-            return addr0;
+            return start_addr;
         }
-        Word word = machine.mem_load(addr0);
-        ++addr0;
+        Word word = machine.mem_load(start_addr);
+        ++start_addr;
 
         word <<= 64 - digits * 4;
         for (unsigned i = 0; i < digits; ++i) {
@@ -343,7 +343,7 @@ unsigned Processor::e64_print_hex(unsigned addr0, unsigned addr1, unsigned digit
         }
 
         if (!repeat) {
-            return addr0;
+            return start_addr;
         }
         --repeat;
         if (width > digits) {
@@ -357,33 +357,33 @@ unsigned Processor::e64_print_hex(unsigned addr0, unsigned addr1, unsigned digit
 // Print CPU instruction(s).
 // Return next data address.
 //
-unsigned Processor::e64_print_instructions(unsigned addr0, unsigned addr1, unsigned width,
+unsigned Processor::e64_print_instructions(unsigned start_addr, unsigned end_addr, unsigned width,
                                            unsigned repeat)
 {
-    while (addr0) {
+    while (start_addr) {
         // No data to print.
-        if (addr1 && addr0 == addr1 + 1) {
-            return addr0;
+        if (end_addr && start_addr == end_addr + 1) {
+            return start_addr;
         }
 
         // No space left on the line.
         if (e64_position >= LINE_WIDTH) {
-            if (!addr1) {
+            if (!end_addr) {
                 return 0;
             }
-            return addr0;
+            return start_addr;
         }
-        Word word  = machine.mem_load(addr0);
+        Word word  = machine.mem_load(start_addr);
         unsigned a = word >> 24;
         unsigned b = word & BITS(24);
-        ++addr0;
+        ++start_addr;
 
         e64_print_cmd(a);
         e64_putchar(GOST_SPACE);
         e64_print_cmd(b);
 
         if (!repeat) {
-            return addr0;
+            return start_addr;
         }
         --repeat;
         if (width > 23) {
@@ -397,8 +397,8 @@ unsigned Processor::e64_print_instructions(unsigned addr0, unsigned addr1, unsig
 // Print real number(s).
 // Return next data address.
 //
-unsigned Processor::e64_print_real(unsigned addr0, unsigned addr1, unsigned digits, unsigned width,
-                                   unsigned repeat)
+unsigned Processor::e64_print_real(unsigned start_addr, unsigned end_addr, unsigned digits,
+                                   unsigned width, unsigned repeat)
 {
     if (digits > 20) {
         digits = 20;
@@ -406,21 +406,21 @@ unsigned Processor::e64_print_real(unsigned addr0, unsigned addr1, unsigned digi
     if (digits < 4) {
         digits = 4;
     }
-    while (addr0) {
+    while (start_addr) {
         // No data to print.
-        if (addr1 && addr0 == addr1 + 1) {
-            return addr0;
+        if (end_addr && start_addr == end_addr + 1) {
+            return start_addr;
         }
 
         // No space left on the line.
         if (e64_position >= LINE_WIDTH) {
-            if (!addr1) {
+            if (!end_addr) {
                 return 0;
             }
-            return addr0;
+            return start_addr;
         }
 
-        Word word     = machine.mem_load(addr0);
+        Word word     = machine.mem_load(start_addr);
         bool negative = (word & BIT41);
         double value  = 0;
         int exponent  = 0;
@@ -432,7 +432,7 @@ unsigned Processor::e64_print_real(unsigned addr0, unsigned addr1, unsigned digi
             }
             value = real_exponent(value, exponent);
         }
-        ++addr0;
+        ++start_addr;
 
         e64_putchar(GOST_SPACE);
         e64_putchar(negative ? GOST_MINUS : GOST_PLUS);
@@ -464,11 +464,11 @@ unsigned Processor::e64_print_real(unsigned addr0, unsigned addr1, unsigned digi
         e64_putchar(exponent % 10);
 
         if (!repeat) {
-            if (addr1 && addr0 <= addr1) {
+            if (end_addr && start_addr <= end_addr) {
                 e64_emit_line();
                 repeat = 1;
             } else {
-                return addr0;
+                return start_addr;
             }
         }
         --repeat;
@@ -483,9 +483,9 @@ unsigned Processor::e64_print_real(unsigned addr0, unsigned addr1, unsigned digi
 // Print string in GOST format.
 // Return next data address.
 //
-unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1)
+unsigned Processor::e64_print_gost(unsigned start_addr, unsigned end_addr)
 {
-    BytePointer bp(memory, addr0);
+    BytePointer bp(memory, start_addr);
     unsigned char last_ch = GOST_SPACE;
 
     for (;;) {
@@ -493,7 +493,7 @@ unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1)
             return 0;
 
         // No data to print.
-        if (addr1 && bp.word_addr == addr1 + 1)
+        if (end_addr && bp.word_addr == end_addr + 1)
             return bp.word_addr;
 
         unsigned char ch = bp.get_byte();
@@ -589,9 +589,9 @@ unsigned Processor::e64_print_gost(unsigned addr0, unsigned addr1)
 //
 // Print string in Dubna mode.
 //
-void Processor::e64_print_dubna(unsigned addr0, unsigned addr1)
+void Processor::e64_print_dubna(unsigned start_addr, unsigned end_addr)
 {
-    BytePointer bp(memory, addr0);
+    BytePointer bp(memory, start_addr);
 
     unsigned char ch = bp.get_byte();
     if (ch > 0 && e64_line_dirty) {
@@ -599,7 +599,7 @@ void Processor::e64_print_dubna(unsigned addr0, unsigned addr1)
         e64_emit_line();
     }
     for (;;) {
-        if (addr1 && bp.word_addr == addr1 + 1) {
+        if (end_addr && bp.word_addr == end_addr + 1) {
             // No data to print.
             return;
         }

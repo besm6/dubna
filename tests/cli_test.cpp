@@ -74,8 +74,8 @@ TEST(cli, version)
 TEST(cli, trace_end_file)
 {
     std::string base_name      = get_test_name();
-    std::string job_filename   = base_name + ".dub";
-    std::string trace_filename = base_name + ".trace";
+    std::string job_filename   = "cli_" + base_name + ".dub";
+    std::string trace_filename = "cli_" + base_name + ".trace";
     std::string command_line   = BUILD_DIR "/dubna --trace=" + trace_filename + " --debug=e " + job_filename;
 
     create_file(job_filename,

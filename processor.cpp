@@ -597,6 +597,9 @@ bool Processor::step()
         Aex                   = ADDR(addr + core.M[reg]);
         core.PC               = Aex;
         core.right_instr_flag = false;
+        if (reg != 0 && addr == 0) {
+            machine.set_after_return();
+        }
         break;
 
     case 0310: // пв, vjm
@@ -605,6 +608,7 @@ bool Processor::step()
         core.M[0]             = 0;
         core.PC               = addr;
         core.right_instr_flag = false;
+        machine.set_after_call();
         break;
 
     case 0320: // выпр, iret

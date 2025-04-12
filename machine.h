@@ -88,6 +88,8 @@ private:
     static bool debug_memory;       // trace memory read/write
     static bool debug_fetch;        // trace instruction fetch
     static bool debug_dispak;       // trace trace in dispak format, to stderr
+    bool after_call{};              // right after JVM instruction
+    bool after_return{};            // right after UJ(13) instruction
 
     // Static stuff.
     static const uint64_t DEFAULT_LIMIT;    // Limit of instructions to simulate, by default
@@ -177,6 +179,8 @@ public:
         return debug_instructions | debug_extracodes | debug_print | debug_registers |
                debug_memory | debug_fetch;
     }
+    void set_after_call() { after_call = true; };
+    void set_after_return() { after_return = true; };
 
     // Emit trace to this stream.
     static std::ostream &get_trace_stream();
@@ -265,6 +269,12 @@ public:
             cpu.print_instruction_dispak();
     }
 
+    void trace_calls_returns()
+    {
+        if (debug_instructions)
+            print_calls_returns();
+    }
+
     void trace_registers()
     {
         if (debug_registers)
@@ -338,6 +348,7 @@ public:
     void print_e57_open(const E57_Open_Info &info);
     void print_e50_format_real(const E50_Format_Info &info);
     void print_e71(const E64_Pointer &info, unsigned start_addr, unsigned end_addr);
+    void print_calls_returns();
 };
 
 //

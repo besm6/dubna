@@ -102,10 +102,16 @@ again:
 
     try {
         for (;;) {
+            after_call = false;
+            after_return = false;
+
             bool done = cpu.step();
 
             // Show changed registers.
             trace_registers();
+
+            // Show called routines.
+            trace_calls_returns();
 
             if (progress_message_enabled && !entropy_flag) {
                 show_progress();
@@ -165,6 +171,20 @@ void Machine::finish()
         if (disk) {
             disk->finish();
         }
+    }
+}
+
+//
+// After each call or return, print name of the called routine.
+//
+void Machine::print_calls_returns()
+{
+    if (after_call | after_return) {
+        auto &out = get_trace_stream();
+
+        out << "---------------------------------------------------\n";
+
+        // TODO: print name of the routine at PC.
     }
 }
 

@@ -1,0 +1,50 @@
+*name Pascal
+*pascal
+(* The following program will calculate the constant e-2 to about
+   4000 decimal digits, and print it 50 characters to the line in
+   groups of 5 characters.  The method is simple output conversion
+   of the expansion
+     1/2! + 1/3! + ... = .111....
+   where the bases of the digits are 2, 3, 4, . . . *)
+program main (output);
+const
+    n = 2000;
+var
+    v: array [0..2000] of integer;
+    i, c, col, a: integer;
+_(
+    i := 0;
+    col := 0;
+    while i < n do _(
+        v[i] := 1;
+        i := i + 1;
+    _);
+    write(' ');
+    while col < 2 * n do _(
+        a := n + 1;
+        c := 0;
+        i := 0;
+        while i < n do _(
+            c := c + v[i] * 10;
+            v[i] := c mod a;
+            c := c div a;
+            a := a - 1;
+            i := i + 1;
+        _);
+
+        write(chr(c + 48));
+        col := col + 1;
+        if col mod 5 = 0 then _(
+            if col mod 50 <> 0 then
+                write(' ')
+            else _(
+                writeln;
+                write(' ');
+            _)
+        _);
+    _);
+    writeln;
+_).
+*library:22
+*execute
+*end file

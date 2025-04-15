@@ -42,6 +42,7 @@ static const struct option long_options[] = {
     { "system",         no_argument,        nullptr,    's' },
     { "limit",          required_argument,  nullptr,    'l' },
     { "trace",          required_argument,  nullptr,    'T' },
+    { "map",            required_argument,  nullptr,    'P' },
     { "debug",          required_argument,  nullptr,    'd' },
     {},
     // clang-format on
@@ -171,6 +172,11 @@ int main(int argc, char *argv[])
         case 'T':
             // Redirect tracing to a file.
             session.set_trace_file(optarg, "irm");
+            continue;
+
+        case 'P':
+            // Load the table of resident programs from file.
+            session.set_map_file(optarg);
             continue;
 
         case 'd':

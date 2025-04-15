@@ -70,6 +70,9 @@ public:
     void enable_trace(const char *mode);
     void set_trace_file(const char *filename, const char *default_mode);
 
+    // Load table of resident programs from file.
+    void set_map_file(const char *filename);
+
     // Keep temporary files.
     void preserve_temps(bool on = true);
 

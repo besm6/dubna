@@ -252,6 +252,14 @@ public:
     }
 
     //
+    // Load table of resident programs from file.
+    //
+    void set_map_file(const char *filename)
+    {
+        machine.set_map_file(filename);
+    }
+
+    //
     // Fail after the specified number of instructions.
     //
     void set_limit(uint64_t count) { machine.set_limit(count); }
@@ -509,6 +517,11 @@ void Session::enable_trace(const char *mode)
 void Session::set_trace_file(const char *filename, const char *default_mode)
 {
     internal->set_trace_file(filename, default_mode);
+}
+
+void Session::set_map_file(const char *filename)
+{
+    internal->set_map_file(filename);
 }
 
 //

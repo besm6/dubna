@@ -28,6 +28,8 @@
 #include <chrono>
 #include <memory>
 #include <vector>
+#include <set>
+#include <unordered_map>
 
 #include "disk.h"
 #include "drum.h"
@@ -76,6 +78,12 @@ private:
 
     // Enable system load list from the start.
     bool system_load_list_flag{};
+
+    // Get name of a resident program by address.
+    std::unordered_map<unsigned, std::string> resident_name;
+
+    // Addresses of resident programs.
+    std::multiset<unsigned> resident_addr;
 
     // Trace output.
     static std::ofstream trace_stream;
@@ -226,6 +234,13 @@ public:
 
     // Load binary program (overlay).
     void boot_overlay(const std::string &filename, unsigned file_offset, const std::string &path = "");
+
+    // Load the table of resident programs, for tracing.
+    void load_resident_directory(unsigned addr);
+
+    // Find name of resident routine, by address.
+    // Set at_start to true when address matches the start of the routine.
+    bool find_resident_name(unsigned addr, std::string &name, bool &at_start);
 
     //
     // Trace methods.

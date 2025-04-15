@@ -182,9 +182,18 @@ void Machine::print_calls_returns()
     if (after_call | after_return) {
         auto &out = get_trace_stream();
 
-        out << "---------------------------------------------------\n";
+        out << "---------------------------------------------------";
 
-        // TODO: print name of the routine at PC.
+        // Print name of routine at new address.
+        std::string name;
+        bool at_start{};
+        if (find_resident_name(cpu.get_pc(), name, at_start)) {
+            if (!at_start) {
+                out << " back to";
+            }
+            out << " " << name;
+        }
+        out << "\n";
     }
 }
 
@@ -356,6 +365,11 @@ void Machine::drum_io(char op, unsigned drum_unit, unsigned zone, unsigned secto
         }
     } else {
         drums[drum_unit]->memory_to_drum(zone, sector, addr, nwords);
+
+        if (debug_instructions && drum_unit == 020 && zone == 0 && nwords == 1024) {
+            // Load the table of resident programs, for tracing.
+            load_resident_directory(addr);
+        }
     }
 }
 
@@ -793,6 +807,47 @@ void Machine::print_iso_string(std::ostream &out, unsigned addr)
         iso_putc(ch, out);
     }
     out << '\n';
+}
+
+//
+// Load the table of resident programs, for tracing.
+//
+void Machine::load_resident_directory(unsigned base)
+{
+    resident_name.clear();
+    resident_addr.clear();
+    for (unsigned offset = 0; offset < PAGE_NWORDS/4; offset += 2) {
+        Word name = memory.load(base + offset);
+        if (name == 0) {
+            break;
+        }
+        unsigned address = memory.load(base + offset + 1) & 077777;
+
+        resident_name[address] = word_text_string(name);
+        resident_addr.insert(address);
+    }
+    std::cout << "      Load " << resident_name.size() << " names from TRP\n";
+}
+
+//
+// Find name of resident routine, by address.
+// Set at_start to true when address matches the start of the routine.
+//
+bool Machine::find_resident_name(unsigned addr, std::string &name, bool &at_start)
+{
+    // Find the next resident program after given address.
+    auto it = resident_addr.upper_bound(addr);
+    if (it == resident_addr.begin()) {
+        // No residents at all.
+        return false;
+    }
+
+    // Get start address of the resident.
+    unsigned start = *std::prev(it); // Largest element <= addr
+
+    name = resident_name[start];
+    at_start = (addr == start);
+    return true;
 }
 
 //

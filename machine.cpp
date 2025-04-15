@@ -869,38 +869,28 @@ static std::string trim(std::string_view sv)
 //
 void Machine::parse_load_map(std::istream &file)
 {
+    // Regex: non-whitespace name, optional E/C tag with mandatory space, 5-digit address.
+    static const std::regex pattern(R"(\s*(\S+)\s+(?:[EC]\s+)?(\d{5})\s*)");
+
     std::string line;
     while (std::getline(file, line)) {
         if (line == "≠") {
             continue;
         }
 
-        // Split line into potential multiple entries.
+        // Use regex iterator to find all entries in the line.
         std::string_view line_view{line};
-        while (!line_view.empty()) {
+        auto begin = std::regex_iterator<std::string_view::const_iterator>(
+            line_view.begin(), line_view.end(), pattern);
+        auto end = std::regex_iterator<std::string_view::const_iterator>();
 
-            // Find next non-whitespace chunk.
-            const auto start = line_view.find_first_not_of(" \t");
-            if (start == std::string_view::npos)
-                break;
+        for (auto it = begin; it != end; ++it) {
+            const auto &match = *it;
+            const auto name = trim(match[1].str());
+            unsigned address = std::stoul(match[2].str(), nullptr, 8);
 
-            // Extract up to next address or end.
-            line_view.remove_prefix(start);
-            const auto next_addr = line_view.find_first_of(" \t", line_view.find_first_of("0123456789"));
-            const auto entry_len = (next_addr == std::string_view::npos) ? line_view.size() : next_addr;
-            const auto entry = line_view.substr(0, entry_len);
-
-            // Parse entry.
-            static const std::regex pattern(R"(\s*(\S+)\s*(?:[EC])?\s*(\d{5})\s*)");
-            std::match_results<std::string_view::const_iterator> matches;
-
-            if (std::regex_match(entry.begin(), entry.end(), matches, pattern)) {
-                unsigned address = std::stoul(matches[2].str(), nullptr, 8);
-
-                resident_name[address] = trim(matches[1].str());
-                resident_addr.insert(address);
-            }
-            line_view.remove_prefix(entry_len);
+            resident_name[address] = name;
+            resident_addr.insert(address);
         }
     }
 }

@@ -1,0 +1,12 @@
+*name create library
+*disc: 1/local
+*file: lib, 66, w
+*tape: 12/librar, 41
+*library: 2
+*perso: 41366
+*
+*       Create library on device 66
+*
+*call newlib
+drum
+*end file

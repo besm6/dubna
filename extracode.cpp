@@ -650,7 +650,7 @@ void Processor::e71()
                 c = bp.get_byte();
                 if (c == '\0')
                     break;
-                std::cout << c;
+                iso_putc(c, std::cout);
                 ++a1;
             }
         }

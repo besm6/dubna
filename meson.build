@@ -22,10 +22,11 @@ revcount = run_command('git', 'rev-list', 'HEAD', '--count', check: true).stdout
 #
 simulator = static_library('simulator',
     [
-        'tapes/bemsh.739.c',
-        'tapes/librar.12.c',
-        'tapes/librar.37.c',
-        'tapes/monsys.9.c',
+        'tapes/bemsh739.c',
+        'tapes/librar12.c',
+        'tapes/librar37.c',
+        'tapes/monsys9.c',
+        'tapes/b7.c',
         'session.cpp',
         'memory.cpp',
         'machine.cpp',

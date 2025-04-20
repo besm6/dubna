@@ -429,8 +429,8 @@ void Machine::disk_mount(unsigned disk_unit, Word tape_id, bool write_permit)
     }
 
     if (!write_permit) {
-        extern const unsigned char monsys_9[], librar_12[], librar_37[], bemsh_739[];
-        extern unsigned monsys_9_len, librar_12_len, librar_37_len, bemsh_739_len;
+        extern const unsigned char monsys_9[], librar_12[], librar_37[], bemsh_739[], b_7[];
+        extern unsigned monsys_9_len, librar_12_len, librar_37_len, bemsh_739_len, b_7_len;
 
         switch (tape_id) {
         case TAPE_MONSYS:
@@ -459,6 +459,13 @@ void Machine::disk_mount(unsigned disk_unit, Word tape_id, bool write_permit)
             disks[disk_unit] = std::make_unique<Disk>(tape_id, memory, bemsh_739, bemsh_739_len / PAGE_NBYTES);
             if (trace_enabled()) {
                 std::cout << "Mount bemsh.739 as disk " << to_octal(disk_unit + 030) << std::endl;
+            }
+            return;
+        case TAPE_B:
+            // Embedded image of tape b.7.
+            disks[disk_unit] = std::make_unique<Disk>(tape_id, memory, b_7, b_7_len / PAGE_NBYTES);
+            if (trace_enabled()) {
+                std::cout << "Mount b.7 as disk " << to_octal(disk_unit + 030) << std::endl;
             }
             return;
         default:

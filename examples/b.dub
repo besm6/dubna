@@ -1,0 +1,9 @@
+*name B compiler
+*tape:7/b,40
+*library:40
+*trans-main:40020
+main() {
+    printf("Hello, B!*n");
+}
+*execute
+*end file

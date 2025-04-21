@@ -1,0 +1,51 @@
+*name B compiler
+*       Example from rosettacode.org/wiki/Mandelbrot_set#B
+*tape:7/b,40
+*library:40
+*trans-main:40020
+main() {
+    auto cx, cy, x, y, x2, y2;
+    auto iter;
+    auto xmin, xmax, ymin, ymax, maxiter, dx, dy;
+
+    xmin = -8601;
+    xmax =  2867;
+    ymin = -4915;
+    ymax =  4915;
+
+    maxiter = 32;
+
+    dx = (xmax - xmin) / 79;
+    dy = (ymax - ymin) / 24;
+
+    cy = ymin;
+    while (cy <= ymax) {
+        cx = xmin;
+        while (cx <= xmax) {
+            x = 0;
+            y = 0;
+            x2 = 0;
+            y2 = 0;
+            iter = 0;
+            while (iter < maxiter) {
+                if (x2 + y2 > 16384)
+                    goto next;
+
+                y = ((x * y) / 2048) + cy;
+                x = x2 - y2 + cx;
+                x2 = (x * x) / 4096;
+                y2 = (y * y) / 4096;
+                iter++;
+            }
+next:
+            writeb(' ' + iter);
+            cx = cx + dx;
+        }
+        writeb(13);
+        writeb(10);
+        cy = cy + dy;
+    }
+    return(0);
+}
+*execute
+*end file

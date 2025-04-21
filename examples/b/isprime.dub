@@ -1,0 +1,31 @@
+*name B compiler
+*       Example from rosettacode.org/wiki/Primality_by_trial_division#B
+*tape:7/b,40
+*library:40
+*trans-main:40020
+isprime(n) {
+    auto p;
+
+    if (n < 2)
+        return (0);
+    if (!(n % 2))
+        return (n == 2);
+    p = 3;
+    while (n / p > p) {
+        if (!(n % p))
+            return (0);
+        p = p + 2;
+    }
+    return (1);
+}
+
+test(n) {
+    printf("%d is %s*n", n, isprime(n) ? "prime" : "not prime");
+}
+
+main() {
+    test(42);
+    test(43);
+}
+*execute
+*end file

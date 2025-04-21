@@ -38,11 +38,10 @@ main() {
                 iter++;
             }
 next:
-            writeb(' ' + iter);
+            write(' ' + iter);
             cx = cx + dx;
         }
-        writeb(13);
-        writeb(10);
+        write('*n');
         cy = cy + dy;
     }
     return(0);

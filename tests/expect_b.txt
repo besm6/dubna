@@ -1,0 +1,55 @@
+                                             04 ИЮЛ 24 23.45
+ ЙOKCEЛ      БЭCM-6/5     ШИФP-12
+ MOHИTOPHAЯ CИCTEMA  ′Д Y Б H A′  -  20/10/88
+
+
+
+
+
+
+
+            ЖЖЖЖ         ЖЖЖЖ  ЖЖЖ  Ж   Ж ЖЖЖЖ   ЖЖЖ  Ж     ЖЖЖЖ  ЖЖЖЖ
+            Ж  Ж        Ж     Ж   Ж ЖЖ ЖЖ Ж   Ж   Ж   Ж     Ж     Ж   Ж
+            ЖЖЖ         Ж     Ж   Ж Ж Ж Ж Ж   Ж   Ж   Ж     ЖЖЖ   Ж   Ж
+            Ж  Ж        Ж     Ж   Ж Ж Ж Ж Ж   Ж   Ж   Ж     Ж     ЖЖЖЖ
+            Ж   Ж       Ж     Ж   Ж Ж   Ж ЖЖЖЖ    Ж   Ж     Ж     Ж Ж
+            Ж   Ж       Ж     Ж   Ж Ж   Ж Ж       Ж   Ж     Ж     Ж  Ж
+            ЖЖЖЖ         ЖЖЖЖ  ЖЖЖ  Ж   Ж Ж      ЖЖЖ  ЖЖЖЖЖ ЖЖЖЖЖ Ж   Ж
+
+
+
+
+
+
+
+
+*NAME B COMPILER
+*TAPE:7/*,40
+*LIBRARY:40
+*TRANS-MAIN:40020
+                     OVERLAY OT  20/04/25
+B COMPILER FOR BESM-6, VERSION 04/2025
+COMPILED 3 LINES OF CODE, FOUND 0 ERRORS
+
+*NO LIST
+*CALL BLOCKERR
+*MADLEN
+ MAIN          CP 0.0,      ST 0.0,      RT     1.0*
+*READ OLD
+*EXECUTE
+      *LIBRA:40 = B/DIV       B/EQ        B/GT        B/LT        B/MUL       B/NE        B/RET       B/SAVE0     B/SAVE
+      B/TOUT      B/TRUE      CHAR        PRINTD      PRINTO      PRINTF      WRITE       WRITEB      OUT*CNT     OUT*SHFT
+      OUT*BUFF    FLUSH       FOUT
+≠
+         MAIN       01000                PRINTD     01413                B/MUL      01757                ISOTCOSY   06002
+         PROGRAM  E 01000                PRINTO     01466                B/GT       01766                ISOTCOS1 E 06053
+         B/SAVE0    01011                WRITE      01517                FOUT       01771                DRUMTAP*   06073
+         B/RET      01016                B/TRUE     01622                WRCARD     01772                CHKWORD* C 06124
+         PRINTF     01023                OUT*CNT    01623                WRWORD   E 02014                PRINT8     06125
+         B/SAVE     01256                OUT*SHFT   01624                WBEGIN   E 02033                STOP*      06306
+         CHAR       01263                OUT*BUFF   01625                WRIEND   E 02042                EXIT     E 06307
+         B/NE       01301                FLUSH      01654                B/TOUT     02075                CBOБOДHO   06335
+         B/EQ       01304                B/LT       01744                WRWORD/  C 04000
+         WRITEB     01307                B/DIV      01747                XWRITE/  C 06000
+≠
+HELLO, B!

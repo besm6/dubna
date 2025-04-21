@@ -952,3 +952,22 @@ _).
     output = extract_after_execute(output);
     check_output(output, expect);
 }
+
+//
+// Run B example and check output.
+//
+TEST_F(dubna_session, b_hello)
+{
+    auto output = run_job_and_capture_output(R"(*name b compiler
+*tape:7/b,40
+*library:40
+*trans-main:40020
+main() {
+    printf("Hello, B!*n");
+}
+*execute
+*end file
+)");
+    auto expect = file_contents(TEST_DIR "/expect_b.txt");
+    check_output(output, expect);
+}

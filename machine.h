@@ -127,7 +127,7 @@ public:
     static const Word TAPE_LIBRAR_12 = 054'51'42'62'41'62'00'22;
     static const Word TAPE_LIBRAR_37 = 054'51'42'62'41'62'00'67;
     static const Word TAPE_BEMSH     = 044'51'63'60'41'43'33'31; // DISPAC 739
-    static const Word TAPE_B         = 044'00'00'00'00'00'00'07;
+    static const Word TAPE_B         = 042'00'00'00'00'00'00'07;
 
     // Disc names
     static const Word DISC_LOCAL = 054'57'43'41'54'00'00'00;

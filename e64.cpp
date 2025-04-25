@@ -710,7 +710,7 @@ void Processor::e64()
         ctl_addr++;
         if (ctl_addr >= MEMORY_NWORDS)
             throw Processor::Exception("Unterminated info list in extracode e64");
-
+again:
         // Get format details from control word #1 onwards.
         E64_Info ctl;
         ctl.word = machine.mem_load(ctl_addr);
@@ -768,8 +768,7 @@ void Processor::e64()
         if (ctl.field.finish) {
             if (end_addr && start_addr <= end_addr) {
                 // Repeat printing task until all data expired.
-                e64_emit_line();
-                continue;
+                goto again;
             }
 
             if (e64_position != 0) {

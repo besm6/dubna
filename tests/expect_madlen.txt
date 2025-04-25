@@ -70,7 +70,6 @@
 
 
 
-
 *EXECUTE
 ≠
          PROGRAM    01000                CBOБOДHO   01010

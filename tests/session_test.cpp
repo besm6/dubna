@@ -971,3 +971,23 @@ main() {
     auto expect = file_contents(TEST_DIR "/expect_b.txt");
     check_output(output, expect);
 }
+
+//
+// Run B in full list mode.
+//
+TEST_F(dubna_session, b_full_list)
+{
+    auto output = run_job_and_capture_output(R"(*name b compiler
+*tape:7/b,40
+*library:40
+*full list
+*trans-main:40020
+main() {
+    printf("Hello, B!*n");
+}
+*execute
+*end file
+)");
+    auto expect = file_contents(TEST_DIR "/expect_b_full_list.txt");
+    check_output(output, expect);
+}

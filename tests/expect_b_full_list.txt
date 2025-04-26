@@ -26,14 +26,71 @@
 *NAME B COMPILER
 *TAPE:7/*,40
 *LIBRARY:40
+*FULL LIST
 *TRANS-MAIN:40020
                      OVERLAY OT  25/04/25
 B COMPILER FOR BESM-6, VERSION 04/2025
 COMPILED 3 LINES OF CODE, FOUND 0 ERRORS
 
 *CALL BLOCKERR
-*MADLEN,L=0
+*MADLEN
+ MAIN              MADLEN-3.5   04/07/24   23.45.56    CTP    1
+ 001L               MAIN    :  , NAME,
+ 0000               PROGRAM :  ,ENTRY,
+ 0000               MAIN    :  , BSS ,
+                    B/SAVE0 :  , SUBP,
+                    B/RET   :  , SUBP,
+ 0000                          , ITS ,13
+  -                            , CALL,B/SAVE0
+ 0001                         5, BASE,*+10000B
+                    PRINTF  :  , SUBP,
+  -                          14, VTM ,PRINTF
+ 0002                          , ITA ,14
+  -   0005                     , UJ  ,/1
+ 0003               /0      :  , BSS ,
+ 0003                          , LOG ,2204251423047454
+ 0004                          , LOG ,1004104102400000
+ 0005               /1      :  , BSS ,
+ 0005 0003                   14, VTM ,/0
+  -                            , ITS ,14
+ 0006                        14, VTM ,-1
+  -                          15, WTC ,
+ 0007                        13, VJM ,
+ 0010                          , UJ  ,B/RET
+        11                     , END ,
+
+ +++ CTPYKTYPA ПPOГPAMMЫ: +++++++++++++++++++++++++
+ +              ИMЯ 00001              BXOДЫ 00002+
+ +         OПИCAHИЯ 00006               SUBP 00003+
+ +      KOMMEHTAPИЙ 00000             ARRAYS 00000+
+ + PEЗEPBHAЯ ГPYППA 00000     ИДEHTИФИKATOPЫ 00006+
+ +ДЛ.ИДEHTИФИKATOPЫ 00003              DEBUG 00000+
+ +          KOMAHДЫ 00011              XTEXT 00000+
+ +       ГPYППA BSS 00000         ИHCTPYKЦИИ 00023+
+ +        KOHCTAHTЫ 00000   ГЛOБ.БAЗИPOBAHИE 00000+
+ +             DATA 00000               DISP DD****
+ +         PACCЫЛKИ 00000              MODEL ******
+ ЧИCЛO ПEPФ.     23      ЧИCЛO OШИБ. OПEPATOPOB  00
+
+  TAБЛИЦA BXOДOB :
+ ------------------
+ MAIN      00000
+ PROGRAM   00000
+
+  TAБЛИЦA CCЫЛOK :
+ ------------------
+ /0       :   00003  00005
+ /1       :   00005  00002
+ B/RET    SUB 00000  00010
+ B/SAVE0  SUB 00000  00000
+ PRINTF   SUB 00001  00001
+
+  HE ИCПOЛЬЗOBAHЫ:
+ ------------------
+ MAIN     :   00000
  MAIN          CP 0.0,      ST 0.0,      RT     1.0*
+
+
 *READ OLD
 *EXECUTE
       *LIBRA:40 = B/DIV       B/EQ        B/GT        B/LT        B/MUL       B/NE        B/RET       B/SAVE0     B/SAVE

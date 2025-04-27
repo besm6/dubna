@@ -158,6 +158,8 @@ TEST(unit, utf8_to_koi7)
     EXPECT_EQ(utf8_to_koi7("×", 1), "\6");
     EXPECT_EQ(utf8_to_koi7("≤", 1), "\16");
     EXPECT_EQ(utf8_to_koi7("≥", 1), "\17");
+    EXPECT_EQ(utf8_to_koi7("⩽", 1), "\16");
+    EXPECT_EQ(utf8_to_koi7("⩾", 1), "\17");
     EXPECT_EQ(utf8_to_koi7("‘", 1), "\20");
     EXPECT_EQ(utf8_to_koi7("―", 1), "\25");
     EXPECT_EQ(utf8_to_koi7("↑", 1), "\26"); // was @

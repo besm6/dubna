@@ -100,8 +100,8 @@
 #define GOST_W                     0113 // W
 #define GOST_Z                     0114 // Z
 #define GOST_OVERLINE              0115 // ^
-#define GOST_LESS_THAN_OR_EQUAL    0116 // ≤
-#define GOST_GREATER_THAN_OR_EQUAL 0117 // ≥
+#define GOST_LESS_THAN_OR_EQUAL    0116 // ⩽
+#define GOST_GREATER_THAN_OR_EQUAL 0117 // ⩾
 #define GOST_LOGICAL_OR            0120 // v
 #define GOST_LOGICAL_AND           0121 // &
 #define GOST_IMPLICATION           0122 // ?

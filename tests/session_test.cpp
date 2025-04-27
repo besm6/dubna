@@ -938,7 +938,7 @@ _).
 *end file
 )");
     const std::string expect = R"(*EXECUTE
- Ъ×≤≥
+ Ъ×⩽⩾
  ‘―↑⏨
  ≠°÷’
  ⊃≡∨¬

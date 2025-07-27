@@ -1,0 +1,18 @@
+*name Алгол
+*algol
+ ′BEGIN′′STRING′′ARRAY′L[1:7];′INTEGER′I,J;′STRING′Q,R,S;
+ ′PROCEDURE′P(S);′STRING′S;′BEGIN′′FOR′J:=1′STEP′1′UNTIL′
+ LENGTH(S)′DO′PRINT(′IF′J′NE′45′AND′S[J] = ′′/′′ ′THEN′ Q
+ ′ELSE′ S[J]); PRINT(NEWLINE) ′END′; R := ′′1234567′′;
+ L[1]:=′′/BEGIN//STRING//ARRAY/L[1:7];/INTEGER/I,J;/STRING/Q,R,S;′′;
+ L[2]:=′′/PROCEDURE/P(S);/STRING/S;/BEGIN//FOR/J:=1/STEP/1/UNTIL/′′;
+ L[3]:=′′LENGTH(S)/DO/PRINT(/IF/J/NE/45/AND/S[J] = ///// /THEN/ Q′′;
+ L[4]:=′′/ELSE/ S[J]); PRINT(NEWLINE) /END/; R := //1234567//;′′;
+ L[5]:=′′Q:=///47///;/FOR/ I:=1,2,3,4/DO/P(L[I]); /FOR/I:=1,2,3,4,′′;
+ L[6]:=′′5,6,7/DO/PRINT(//L[//,R[I],//]:=//,Q,Q,L[I],Q,Q,//;//,′′;
+ L[7]:=′′NEWLINE);/FOR/ I:=5,6,7 /DO/ P(L[I]); /END//EOP/′′;
+ Q:=′′′47′′′;′FOR′ I:=1,2,3,4′DO′P(L[I]); ′FOR′I:=1,2,3,4,
+ 5,6,7′DO′PRINT(′′L[′′,R[I],′′]:=′′,Q,Q,L[I],Q,Q,′′;′′,
+ NEWLINE);′FOR′ I:=5,6,7 ′DO′ P(L[I]); ′END′′EOP′
+*execute
+*end file

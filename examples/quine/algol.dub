@@ -1,4 +1,6 @@
 *name Алгол
+*call setftn:one,long
+*no load list
 *algol
  ′BEGIN′′STRING′′ARRAY′L[1:7];′INTEGER′I,J;′STRING′Q,R,S;
  ′PROCEDURE′P(S);′STRING′S;′BEGIN′′FOR′J:=1′STEP′1′UNTIL′

@@ -1,4 +1,6 @@
 *name форекс
+*call setftn:one,long
+*no load list
 *forex
        REALQ,X(13)◇DATAQ/-2E-14/,X/′(7X28HREALQ,X(13)◇DATAQ/-2E-14/,X/A1
      C,6A6/5X1HC7A6A1,19H/◇PRINT X,Q,X,Q◇END)   ′/◇PRINT X,Q,X,Q◇END

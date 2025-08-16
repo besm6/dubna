@@ -505,6 +505,9 @@ void Processor::e50()
         // Pause the task? Waiting for tape.
         throw Exception("Task paused waiting for tape");
         break;
+    case 0213:
+        // Unknown, for ITM/ASS.
+        break;
     case 070077:
         // Get CPU time in seconds as real value.
         // In Dubna sources: ,fun,70100b-1
@@ -526,6 +529,9 @@ void Processor::e50()
         break;
     case 070217:
         // Unknown
+        break;
+    case 070223:
+        // Unknown, for ITM/ASS.
         break;
     case 070236:
         // Unknown, for DIPOL.

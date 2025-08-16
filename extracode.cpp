@@ -104,6 +104,9 @@ void Processor::extracode(unsigned opcode)
         e72();
         break;
 
+    case 073: // Unknown, for ITM/ASS.
+        break;
+
     case 074: // Finish the job.
         throw Exception("");
 

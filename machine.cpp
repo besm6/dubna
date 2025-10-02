@@ -1005,7 +1005,8 @@ bool Machine::is_overlay(const std::string &filename, unsigned *file_offset_ptr)
 
     // Check file size.
     file.seekg(0, std::ios_base::end);
-    auto nbytes = file.tellg() - (off_t)*file_offset_ptr;
+    auto nbytes = file.tellg();
+    nbytes -= (off_t)*file_offset_ptr; // Avoid ambiguity of overloaded '-' operator
     if (nbytes / PAGE_NBYTES < 2 || nbytes % PAGE_NBYTES != 0) {
         // Must be a multiple of the page size.
         return false;

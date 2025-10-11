@@ -34,8 +34,8 @@ The Dubna emulator provides a complete simulation of the BESM-6 computer archite
 - **Memory protection**: None (full access emulation)
 
 ### I/O Devices
-- **Magnetic Drums**: Up to 32 units (020-057 octal)
-- **Magnetic Disks**: Up to 32 units (030-077 octal)
+- **Magnetic Drums**: Up to 32 units (0-27, 70-77 octal)
+- **Magnetic Disks**: Up to 32 units (30-67 octal)
 - **Punch Cards**: Input/output via card reader/puncher
 - **Plotters**: Support for Watanabe, Tektronix, and Calcomp plotters
 - **Terminal I/O**: Console input/output operations
@@ -69,7 +69,6 @@ The emulator implements the complete extracode system (e50-e77):
 - **Algol**: Algol-60 implementation
 - **Pascal**: Pascal compiler support
 - **Assembly**: BESM-6 assembly language
-- **ITM**: Intermediate Text Machine format
 
 ## Installation
 

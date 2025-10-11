@@ -120,7 +120,7 @@ The project uses strict compilation flags for code quality:
 The project includes comprehensive test coverage:
 
 ### Test Categories
-- **Unit Tests**: Core functionality testing (42 tests)
+- **Unit Tests**: Core functionality testing (127 tests)
 - **Integration Tests**: End-to-end system testing
 - **CLI Tests**: Command-line interface validation
 - **Architecture Tests**: BESM-6 instruction set verification
@@ -146,16 +146,16 @@ ctest --test-dir build/tests --verbose
 ```
 ctest --test-dir build/tests
 ...
- 1/42 Test  #1: cli.usage ........................   Passed    0.01 sec
-      Start  2: cli.version
- 2/42 Test  #2: cli.version ......................   Passed    0.01 sec
-      Start  3: cli.trace_end_file
+  1/127 Test  #88: dubna_session.file_write_read ...............   Passed    0.07 sec
+  2/127 Test  #85: dubna_session.grafor_tektronix ..............   Passed    0.07 sec
+        Start  64: dubna_session.overflow
+        Start  49: cli.besmcat_exe
 ...
-42/42 Test #42: unit.encode_cosy .................   Passed    0.00 sec
+127/127 Test  #81: dubna_session.lib1 ..........................   Passed    0.59 sec
 
-100% tests passed, 0 tests failed out of 42
+100% tests passed, 0 tests failed out of 118
 
-Total Test time (real) =   0.21 sec
+Total Test time (real) =   0.59 sec
 ```
 
 # Examples

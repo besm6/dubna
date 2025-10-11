@@ -38,24 +38,16 @@ size_t buflen = ((end ? end : 077777) - start + 1) * 6;
 **Risk:** Large allocations or integer overflow
 **Fix:** Add bounds validation for start/end addresses
 
-### 5. Integer Overflow
-**File:** `machine.cpp:704-705`
-**Issue:** Arithmetic operations without overflow checks
-```cpp
-((tape_id >> 8) & 0xf) * 100 + ((tape_id >> 4) & 0xf) * 10 + (tape_id & 0xf)
-```
-**Risk:** Unexpected behavior from integer wraparound
-**Fix:** Add overflow detection and handling
 
 ## Logic Errors
 
-### 6. Division by Zero Risk
+### 5. Division by Zero Risk
 **File:** `arithmetic.cpp:354-357`
 **Issue:** Division operations may not catch all edge cases
 **Risk:** Crashes or incorrect results
 **Fix:** Enhance division by zero detection
 
-### 7. Race Condition
+### 6. Race Condition
 **File:** `machine.cpp:578`
 **Issue:** Array access without bounds checking
 ```cpp
@@ -64,7 +56,7 @@ auto const &path = file_paths[file_index - 1];
 **Risk:** Out-of-bounds access
 **Fix:** Add bounds validation
 
-### 8. Inconsistent Error Handling
+### 7. Inconsistent Error Handling
 **File:** `extracode.cpp:122`
 **Issue:** Some extracodes throw exceptions, others return silently
 **Risk:** Inconsistent behavior
@@ -72,7 +64,7 @@ auto const &path = file_paths[file_index - 1];
 
 ## Code Quality Issues
 
-### 9. Magic Numbers
+### 8. Magic Numbers
 **File:** `processor.cpp:99, 115`
 **Issue:** Hardcoded values without named constants
 ```cpp
@@ -81,7 +73,7 @@ addr |= 070000;
 ```
 **Fix:** Replace with named constants for better maintainability
 
-### 10. Incomplete Function
+### 9. Incomplete Function
 **File:** `machine.cpp:566`
 **Issue:** Function signature appears incomplete
 ```cpp
@@ -89,7 +81,7 @@ unsigned Machine::file_mount(unsigned disk_unit, unsigned file_index, bool write
 ```
 **Fix:** Complete the function implementation
 
-### 11. Resource Management
+### 10. Resource Management
 **File:** `machine.cpp:527`
 **Issue:** File operations without proper error handling
 ```cpp
@@ -99,11 +91,10 @@ std::filesystem::remove(path);
 
 ## Test Coverage Gaps
 
-### 12. Missing Edge Case Tests
+### 11. Missing Edge Case Tests
 **Issues:**
 - No tests for memory bounds violations
 - No tests for path traversal attacks
-- No tests for integer overflow scenarios
 - No tests for file operation edge cases
 
 **Fix:** Add comprehensive test suite covering security vulnerabilities
@@ -113,8 +104,7 @@ std::filesystem::remove(path);
 ### Immediate Fixes (High Priority)
 1. **Add bounds checking** to all memory access functions
 2. **Validate file paths** to prevent directory traversal
-3. **Add integer overflow checks** for arithmetic operations
-4. **Complete incomplete functions** and fix function signatures
+3. **Complete incomplete functions** and fix function signatures
 
 ### Security Hardening (Medium Priority)
 1. **Implement input sanitization** for all user-controlled data
@@ -143,10 +133,10 @@ This ensures:
 ## Priority Order
 
 1. **Critical Security Issues** (Items 1-3)
-2. **Memory Safety Issues** (Items 4-5)
-3. **Logic Errors** (Items 6-8)
-4. **Code Quality Issues** (Items 9-11)
-5. **Test Coverage** (Item 12)
+2. **Memory Safety Issues** (Item 4)
+3. **Logic Errors** (Items 5-7)
+4. **Code Quality Issues** (Items 8-10)
+5. **Test Coverage** (Item 11)
 
 ## Implementation Notes
 

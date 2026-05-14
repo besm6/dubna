@@ -80,6 +80,10 @@ Machine  (simulation orchestrator)
 
 `Session` and `Memory` use the pImpl (pointer-to-implementation) idiom — the public headers expose only the interface; internals are in the `.cpp` files. This keeps `Machine` and `Processor` out of client headers.
 
+### Instruction Set Reference
+
+Full per-instruction documentation (opcodes, operands, ω mode effects, stack behavior, kernel restrictions): [doc/Besm6_Instruction_Set.md](doc/Besm6_Instruction_Set.md).
+
 ### Instruction Execution Cycle
 
 1. Processor fetches a 48-bit word.

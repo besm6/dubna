@@ -161,6 +161,8 @@ The BESM-6 used a 48-bit word, with 32 768 words of memory organized in 1 024-wo
 
 The emulator is written in C++17 and structured as: `Session` (public API) → `Machine` (orchestrator) → `Processor` + `Memory` + I/O devices + extracode handlers.
 
+For a full description of every CPU instruction, see [doc/Besm6_Instruction_Set.md](doc/Besm6_Instruction_Set.md).
+
 ## Known issues
 
 See [TODO.md](TODO.md) for a list of known issues and planned improvements.

@@ -10,7 +10,7 @@ occupies bits 24–1. Branches always target word boundaries (left instruction o
 **Bit-numbering convention**: bits are numbered right-to-left starting from 1. Bit 1 is
 the least-significant bit; bit 48 is the most-significant bit.
 
-**Octal** notation is used throughout, as on the original machine.
+**Octal** notation is used throughout.
 
 ---
 
@@ -21,21 +21,20 @@ the least-significant bit; bit 48 is the most-significant bit.
 | Name | Width | Description |
 |------|-------|-------------|
 | A | 48 bits | Accumulator. Holds the current floating-point working value. |
-| Y | 48 bits | "Young bits" register (also called RMR — регистр младших разрядов). Extension of A for double-precision arithmetic and logical operations. |
+| Y | 48 bits | "Younger bits" register (also called RMR — регистр младших разрядов). Extension of A for double-precision arithmetic and logical operations. |
 | R | 6 bits | AU mode register. Controls arithmetic behavior and conditional branch semantics. See [Section 4](#4-the-au-mode-register-r). |
 | M[1]–M[017] | 15 bits each | Index (modifier) registers. Used for address modification. M[017] is conventionally used as the stack pointer. |
 | C | 15 bits | Address-modification register. Added to EA during address calculation. Reset to 0 after every instruction **except** UTC and WTC. |
 | K | 15 bits | Program counter. Points to the current word; a flag inside the processor selects left vs. right half. |
 
-**M[0]** always reads as 0. Any instruction that writes to M[0] (ATI, STI, MTJ, J+M,
-VTM, UTM) resets it to 0 immediately.
+**M[0]** always reads as 0.
 
 ### Floating-point format of the accumulator A
 
 ```
-Bit:  48      42  41  40                    1
+Bit:  48     42  41 40                       1
      ┌─────────┬───┬──────────────────────────┐
-     │Exponent │ S │  Mantissa (2's complement)│
+     │Exponent │ S │ Mantissa (2's complement)│
      └─────────┴───┴──────────────────────────┘
 ```
 
@@ -45,8 +44,9 @@ Bit:  48      42  41  40                    1
 
 Numeric value: `(0.Mantissa − Sign) × 2^(Exponent − 64)`
 
-A normalized number has bits 42 and 41 equal (i.e., the top bit of the mantissa agrees
-with the sign bit). The mantissa magnitude lies in the range [0.5, 1.0).
+A normalized number has bits 41 and 40 different (i.e., the top bit of the mantissa disagrees
+with the sign bit). The mantissa magnitude lies in the range [0.5, 1.0) for positive numbers,
+or [-1.0, -0.5) for negative numbers.
 
 The Y register (RMR) stores the lower 40 bits of double-precision results in bits 40–1;
 bits 48–41 of Y are preserved by most operations but are not architecturally significant
@@ -57,7 +57,7 @@ for normal arithmetic.
 | Symbol | Meaning |
 |--------|---------|
 | A | Accumulator |
-| Y | Young-bits register (RMR) |
+| Y | Younger-bits register (RMR) |
 | Z | Y[40:1] — lower 40 bits of Y |
 | R | AU mode register |
 | K | Program counter |
@@ -77,7 +77,7 @@ for normal arithmetic.
 ### Format 1 — short opcode (bit 20 = 0)
 
 ```
-Bits: 24–21  20  19  18–13     12–1
+Bits: 24  21  20  19 18     13 12           1
      ┌──────┬───┬───┬─────────┬──────────────┐
      │  M   │ 0 │ S │ OPCode1 │    offset    │
      └──────┴───┴───┴─────────┴──────────────┘
@@ -86,7 +86,7 @@ Bits: 24–21  20  19  18–13     12–1
 - **M** (bits 24–21): Selects one of 16 modifier registers (0–017 octal).
 - **Bit 20**: Must be 0 for Format 1.
 - **S** (bit 19): Segment bit. When set, adds 070000 to offset, effectively addressing
-  the upper half of the address space.
+  the upper eighth of the address space.
 - **OPCode1** (bits 18–13): 6-bit opcode, range 000–077 octal.
 - **offset** (bits 12–1): 12-bit unsigned address offset.
 
@@ -98,7 +98,7 @@ S = 0, and 040–077 (with S = 1) would be written 100–177.
 ### Format 2 — long opcode (bit 20 = 1)
 
 ```
-Bits: 24–21  20  19–16     15–1
+Bits: 24  21  20 19      16 15               1
      ┌──────┬───┬──────────┬──────────────────┐
      │  M   │ 1 │ OPCode2  │     offset       │
      └──────┴───┴──────────┴──────────────────┘
@@ -115,12 +115,6 @@ Effective address: `EA = (M[reg] + offset + C) mod 0100000`
 The C register is added to EA by both formats, but **reset to 0 after every instruction
 except UTC (022) and WTC (023)**.
 
-### Address modification via MOD register
-
-If the previous instruction was UTC or WTC (which set the internal MOD register instead
-of C), the current instruction's address field is modified: `addr = (addr + MOD) & 0x7FFF`
-before EA computation. This allows a two-instruction sequence to reach any 15-bit address.
-
 ---
 
 ## 4. The AU Mode Register R
@@ -128,10 +122,10 @@ before EA computation. This allows a two-instruction sequence to reach any 15-bi
 The 6-bit AU mode register R (RAU) controls three independent aspects of arithmetic:
 
 ```
-Bit:  6        5   4   3      2           1
-     ┌────────┬────────────┬────────────┬────────────┐
-     │ Sup.FPE│   ω mode   │ Sup.round  │ Sup.norm.  │
-     └────────┴────────────┴────────────┴────────────┘
+Bit:     6     5     4     3      2        1
+     ┌───────┬───────────────┬─────────┬────────┐
+     │Sup.ovf│     ω mode    │Sup.round│Sup.norm│
+     └───────┴───────────────┴─────────┴────────┘
 ```
 
 | Bit(s) | Mask | Name | Effect when set |
@@ -200,11 +194,19 @@ accumulator A holds the logical stack top and is not stored in memory until expl
 pushed.
 
 ```
-Lower addresses          Higher addresses
-┌────┬────┬────┬────┬────┐
-│    │ s2 │ s1 │ s0 │    │  ← M[017] points here (empty)
-└────┴────┴────┴────┴────┘
-              stack top in A
+             Higher addresses
+                 ├──────┤
+  stack top in A │      │  ← M[017] points here (empty)
+                 ├──────┤
+                 │  s0  │
+                 ├──────┤
+                 │  s1  │
+                 ├──────┤
+                 │  s2  │
+                 ├──────┤
+                 │      │
+                 ├──────┤
+             Lower addresses
 ```
 
 ### Stack-mode auto-adjustment
@@ -689,7 +691,7 @@ partial reads. (When EA = 077 all 6 bits of R are transferred; EA = 0 yields A =
 
 ---
 
-#### 031 — YTA (счмр) — Get young bits register
+#### 031 — YTA (счмр) — Get younger bits register
 
 ```
 if R is logical mode:
@@ -783,13 +785,11 @@ normalization/rounding/overflow suppression bits without a memory access.
 
 ```
 M[I] = A[15:1]    ; I = EA[4:1]
-M[0] = 0
 ```
 
 ω mode: **Kept**
 
 Copies the low 15 bits of A into the index register selected by the low 4 bits of EA.
-M[0] is always reset to 0 afterward.
 
 ---
 
@@ -801,7 +801,6 @@ M[I] = A[15:1]
 if I ≠ 017:
     M[017] -= 1
     A = mem[M[017]]
-M[0] = 0
 ```
 
 ω mode: **Logical**
@@ -840,30 +839,27 @@ Saves A to the stack (incrementing M[017]), then loads M[I] into A.
 #### 044 — MTJ (уии) — Copy index register
 
 ```
-J = M[reg]    ; J = addr[4:1]; M and reg from instruction fields
-M[0] = 0
+M[J] = M[reg]    ; J = V[4:1]; reg from instruction field
 ```
 
 ω mode: **Kept**
 
 Copies M[reg] (the modifier register from the M field of the instruction) into the index
-register selected by the low 4 bits of the address field. Note: the target `J` comes from
-`V[4:1]` (the raw address field, not the EA), so the C register and M[reg] do **not**
-contribute to the target selection. M[0] is reset to 0.
+register selected by the low 4 bits of the effective address (without M[reg] contribution).
+So the C register does contribute to the target selection.
 
 ---
 
 #### 045 — J+M (сли) — Add index registers
 
 ```
-M[J] += M[reg]    ; J = addr[4:1]
-M[0] = 0
+M[J] += M[reg]    ; J = V[4:1]; reg from instruction field
 ```
 
 ω mode: **Kept**
 
-Adds M[reg] to M[J] (in-place). J is selected from the raw address field (same as MTJ).
-M[0] is reset to 0.
+Adds M[reg] to M[J] (in-place). J is selected from the effective address
+(without M[reg] contribution, same as MTJ).
 
 ---
 
@@ -883,7 +879,7 @@ M[0] is reset to 0.
 
 Extracodes are the system call and mathematical library interface. When executed:
 
-1. `M[014] = EA` (the executive address is stored in M[14] for the extracode handler).
+1. `M[014] = EA` (the effective address is stored in M[14] for the extracode handler).
 2. The extracode handler is invoked.
 3. On return, ω mode is set to **Logical**.
 
@@ -958,16 +954,12 @@ EA of the next instruction. WTC supports stack mode.
 
 ```
 M[reg] = V    ; V = offset + C (the address field, without M[reg] contribution)
-M[0] = 0
 ```
 
 ω mode: **Kept**
 
 Loads M[reg] with the 15-bit value V (the raw offset plus C, not including the current
-M[reg]). This allows loading an absolute value into any modifier register. M[0] is reset.
-
-**Special case**: `VTM M[0], value` (reg = 0) calls `Machine::enable_trace(value)` to
-enable or disable CPU tracing.
+M[reg]). This allows loading an absolute value into any modifier register.
 
 ---
 
@@ -975,13 +967,12 @@ enable or disable CPU tracing.
 
 ```
 M[reg] += V    ; V = offset + C
-M[0] = 0
 ```
 
 ω mode: **Kept**
 
 Adds V (raw offset plus C, without the current M[reg]) to M[reg]. The result is truncated
-to 15 bits. M[0] is reset.
+to 15 bits.
 
 ---
 
@@ -1050,7 +1041,6 @@ subroutine idiom `UJ M[n]`.
 ```
 M[reg] = K + 1    ; save return address (word after current instruction's word)
 K = V             ; jump to V = offset + C (without M[reg] contribution)
-M[0] = 0
 ```
 
 ω mode: **Kept**

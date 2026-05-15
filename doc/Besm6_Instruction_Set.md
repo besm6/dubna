@@ -879,7 +879,7 @@ Adds M[reg] to M[J] (in-place). J is selected from the effective address
 
 Extracodes are the system call and mathematical library interface. When executed:
 
-1. `M[014] = EA` (the effective address is stored in M[14] for the extracode handler).
+1. `M[016] = EA` (the effective address is stored in M[14] for the extracode handler).
 2. The extracode handler is invoked.
 3. On return, ω mode is set to **Logical**.
 

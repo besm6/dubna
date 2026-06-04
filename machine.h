@@ -98,7 +98,8 @@ private:
     static bool debug_registers;    // trace CPU registers
     static bool debug_memory;       // trace memory read/write
     static bool debug_fetch;        // trace instruction fetch
-    static bool debug_dispak;       // trace trace in dispak format, to stderr
+    static bool debug_dispak;       // trace in dispak format, to stderr
+    static bool debug_cprog;        // trace C program: enable on *execute
     bool after_call{};              // right after JVM instruction
     bool after_return{};            // right after UJ(13) instruction
 
@@ -171,7 +172,7 @@ public:
     static bool get_verbose() { return verbose; }
 
     // Keep temporary files.
-    void preserve_temps(bool on) { keep_temporary_files = on; }
+    static void preserve_temps(bool on) { keep_temporary_files = on; }
 
     // Use wall clock when entropy is enabled.
     bool is_entropy_enabled() { return entropy_flag; }
@@ -186,6 +187,7 @@ public:
     static void enable_trace(unsigned bitmask);
     static void redirect_trace(const char *file_name, const char *default_mode);
     static void close_trace();
+    void start_trace_on_exec();
     static bool trace_enabled()
     {
         return debug_instructions | debug_extracodes | debug_print | debug_registers |
@@ -213,7 +215,7 @@ public:
     void disk_mount(unsigned disk, Word tape_id, bool write_permit);
     void disk_mount_readonly(unsigned disk, Word tape_id) { disk_mount(disk, tape_id, false); }
     void disk_release(Word mask);
-    unsigned disk_find(Word tape_id);
+    static unsigned disk_find(Word tape_id);
     void scratch_mount(unsigned disk_unit, unsigned num_zones);
     unsigned file_search(Word disc_id, Word file_name, bool write_mode);
     unsigned file_mount(unsigned disk_unit, unsigned file_index, bool write_mode, unsigned file_offset = 0);
@@ -238,7 +240,7 @@ public:
 
     // Check for binary program (overlay).
     // Return file offset for shebang.
-    bool is_overlay(const std::string &filename, unsigned *file_offset_ptr);
+    static bool is_overlay(const std::string &filename, unsigned *file_offset_ptr);
 
     // Load binary program (overlay).
     void boot_overlay(const std::string &filename, unsigned file_offset, const std::string &path = "");
@@ -304,7 +306,7 @@ public:
             cpu.print_registers();
     }
 
-    void trace_e70(const E70_Info &info)
+    static void trace_e70(const E70_Info &info)
     {
         if (debug_extracodes)
             print_e70(info);
@@ -334,19 +336,19 @@ public:
             print_e57_request(info);
     }
 
-    void trace_e57_scratch(const E57_Scratch_Info &info)
+    static void trace_e57_scratch(const E57_Scratch_Info &info)
     {
         if (debug_extracodes)
             print_e57_scratch(info);
     }
 
-    void trace_e57_search(const E57_Search_Info &info)
+    static void trace_e57_search(const E57_Search_Info &info)
     {
         if (debug_extracodes)
             print_e57_search(info);
     }
 
-    void trace_e57_open(const E57_Open_Info &info)
+    static void trace_e57_open(const E57_Open_Info &info)
     {
         if (debug_extracodes)
             print_e57_open(info);
@@ -366,9 +368,9 @@ public:
     void print_e64(const E64_Info &info, unsigned start_addr, unsigned end_addr);
     void print_e64_dubna(unsigned start_addr, unsigned end_addr);
     void print_e57_request(const E57_Request_Info &info);
-    void print_e57_scratch(const E57_Scratch_Info &info);
-    void print_e57_search(const E57_Search_Info &info);
-    void print_e57_open(const E57_Open_Info &info);
+    static void print_e57_scratch(const E57_Scratch_Info &info);
+    static void print_e57_search(const E57_Search_Info &info);
+    static void print_e57_open(const E57_Open_Info &info);
     void print_e50_format_real(const E50_Format_Info &info);
     void print_e71(const E64_Pointer &info, unsigned start_addr, unsigned end_addr);
     void print_calls_returns();

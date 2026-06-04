@@ -38,6 +38,7 @@ bool Machine::debug_registers;    // trace CPU registers
 bool Machine::debug_memory;       // trace memory read/write
 bool Machine::debug_fetch;        // trace instruction fetch
 bool Machine::debug_dispak;       // trace in dispak format, to stderr
+bool Machine::debug_cprog;        // trace C program: enable on *execute
 
 //
 // Emit trace to this stream.
@@ -63,6 +64,8 @@ void Machine::enable_trace(const char *trace_mode)
     debug_registers    = false;
     debug_memory       = false;
     debug_fetch        = false;
+    debug_dispak       = false;
+    debug_cprog        = false;
 
     if (trace_mode) {
         // Parse the mode string and enable all requested trace flags.
@@ -90,6 +93,9 @@ void Machine::enable_trace(const char *trace_mode)
             case 'd':
                 debug_dispak = true;
                 break;
+            case 'c':
+                debug_cprog = true;
+                break;
             default:
                 throw std::runtime_error("Wrong trace option: " + std::string(1, ch));
             }
@@ -110,6 +116,7 @@ void Machine::enable_trace(unsigned bitmask)
     debug_fetch        = bitmask & 020;  // -d f
     debug_print        = bitmask & 040;  // -d p
     debug_dispak       = bitmask & 0100; // -d d
+    debug_cprog        = bitmask & 0200; // -d c
 }
 
 //
@@ -151,6 +158,22 @@ void Machine::close_trace()
 
     // Disable trace options.
     enable_trace("");
+}
+
+//
+// Start tracing a C program.
+//
+void Machine::start_trace_on_exec()
+{
+    if (debug_cprog) {
+        debug_memory       = true;
+        debug_instructions = true;
+        debug_registers    = true;
+        debug_cprog        = false;
+
+        cpu.finish();
+        trace_registers();
+    }
 }
 
 //

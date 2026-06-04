@@ -85,6 +85,22 @@ bool Processor::intercept(const std::string &message)
 }
 
 //
+// Is this instruction ,its,13?
+//
+static inline bool is_its_13(unsigned x)
+{
+    return (x & 077777777) == 0430015;
+}
+
+//
+// Is this instruction 13,vjm,xxx?
+//
+static inline bool is_13_vjm(unsigned x)
+{
+    return (x & 077700000) == 067100000;
+}
+
+//
 // Execute one instruction, placed at address PC+right_instr_flag.
 // Return false to continue the program.
 // Return true when the program is done and the processor is stopped.
@@ -114,6 +130,13 @@ bool Processor::step()
         if (RK & ONEBIT(19))
             addr |= 070000;
         opcode = (RK >> 12) & 077;
+    }
+
+    // Start tracing a C program.
+    // Check the instruction, and if it's the prolog of a C program - enable
+    // tracing of memory, instructions and registers.
+    if (core.PC == 01000 && !core.right_instr_flag && is_its_13(RK) && is_13_vjm(word)) {
+        machine.start_trace_on_exec();
     }
 
     // Show instruction: address, opcode and mnemonics.

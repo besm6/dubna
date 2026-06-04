@@ -367,7 +367,8 @@ void Machine::drum_io(char op, unsigned drum_unit, unsigned zone, unsigned secto
     } else {
         drums[drum_unit]->memory_to_drum(zone, sector, addr, nwords);
 
-        if (debug_instructions && map_filename.empty() && drum_unit == 020 && zone == 0) {
+        if ((debug_instructions || debug_cprog) &&
+            map_filename.empty() && drum_unit == 020 && zone == 0) {
             // Load the table of resident programs, for tracing.
             load_resident_directory(addr);
         }

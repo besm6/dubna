@@ -83,7 +83,7 @@ public:
     void enable_system_load_list(bool on = true);
 
     // Get the number of simulated instructions.
-    uint64_t get_instr_count();
+    static uint64_t get_instr_count();
 
     // Show available libraries.
     void print_libraries(std::ostream &out);

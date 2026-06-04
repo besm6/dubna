@@ -203,7 +203,7 @@ public:
     // Finish simulation.
     // Close trace files.
     //
-    void finish()
+    static void finish()
     {
         // Finish the trace output.
         Machine::close_trace();
@@ -233,7 +233,7 @@ public:
     //
     // Enable trace log to stdout.
     //
-    void enable_trace(const char *mode)
+    static void enable_trace(const char *mode)
     {
         if (mode && *mode) {
             Machine::enable_trace(mode);
@@ -245,7 +245,7 @@ public:
     //
     // Enable trace log to the specified file.
     //
-    void set_trace_file(const char *filename, const char *default_mode)
+    static void set_trace_file(const char *filename, const char *default_mode)
     {
         Machine::redirect_trace(filename, default_mode);
         Machine::get_trace_stream() << "Dubna Simulator Version: " << VERSION_STRING << "\n";
@@ -418,8 +418,8 @@ private:
     //
     // Print list in columns.
     //
-    void print_columns(std::ostream &out, const std::vector<std::string> &list,
-                       const unsigned num_columns)
+    static void print_columns(std::ostream &out, const std::vector<std::string> &list,
+                              const unsigned num_columns)
     {
         unsigned const num_rows  = (list.size() + num_columns - 1) / num_columns;
         unsigned const col_width = 12;

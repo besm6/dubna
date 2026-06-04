@@ -50,7 +50,7 @@ private:
     void punch_braille(const unsigned char buf[144]);
     void punch_stdarray(const uint16_t columns[80]);
     void punch_cosy(const uint16_t columns[80]);
-    void transpose(const unsigned char buf[144], uint16_t columns[80]);
+    static void transpose(const unsigned char buf[144], uint16_t columns[80]);
 };
 
 #endif // DUBNA_PLOTTER_H

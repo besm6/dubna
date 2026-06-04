@@ -21,6 +21,7 @@ if(NOT (Cppcheck MATCHES "NOTFOUND"))
         "--inline-suppr" # Enable inline control like // cppcheck-suppress "id"
         "--quiet" # No progress report messages
         "--suppress=badBitmaskCheck" # Allow redundant zero operands
+        "--suppress=bitwiseOnBoolean" # Allow bitwise operations on booleans
         "--suppress=*:*/_deps/*" # Ignore issues in Googletest
         "--library=${CMAKE_SOURCE_DIR}/tests/googletest.xml" # Parse TEST() macro properly
     )

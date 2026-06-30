@@ -32,6 +32,21 @@
 #include "cosy.h"
 #include "machine.h"
 
+namespace {
+
+std::string zone_bounds_message(const char *medium, unsigned zone, unsigned max_zones,
+                                const std::string &location = {})
+{
+    std::string msg = "Zone " + to_octal(zone) + " exceeds " + medium;
+    if (!location.empty())
+        msg += " for '" + location + "'";
+    msg += ": valid zones are 0.." + to_octal(max_zones > 0 ? max_zones - 1 : 0);
+    msg += " (" + std::to_string(max_zones) + " zones)";
+    return msg;
+}
+
+} // namespace
+
 //
 // Open binary image as disk.
 //
@@ -163,9 +178,11 @@ void Disk::memory_to_disk(unsigned zone, unsigned sector, unsigned addr, unsigne
 //
 void Disk::simh_to_memory(unsigned zone, unsigned sector, unsigned addr, unsigned nwords)
 {
+    unsigned req_zone = zone;
     zone += DISK_ZONE_OFFSET;
     if (zone >= num_zones)
-        throw std::runtime_error("Zone number exceeds disk size");
+        throw std::runtime_error(
+            zone_bounds_message("disk", req_zone, num_zones - DISK_ZONE_OFFSET, path));
 
     unsigned offset_nwords = (DISK_ZONE_NWORDS * zone) + // start of the zone record
                              8 +                         // skip OS info
@@ -195,9 +212,11 @@ void Disk::memory_to_simh(unsigned zone, unsigned sector, unsigned addr, unsigne
     if (!write_permit)
         throw std::runtime_error("Cannot write to read-only disk");
 
+    unsigned req_zone = zone;
     zone += DISK_ZONE_OFFSET;
     if (zone >= num_zones)
-        throw std::runtime_error("Zone number exceeds disk size");
+        throw std::runtime_error(
+            zone_bounds_message("disk", req_zone, num_zones - DISK_ZONE_OFFSET, path));
 
     unsigned offset_nwords = (DISK_ZONE_NWORDS * zone) + // start of the zone record
                              8 +                         // skip OS info
@@ -219,7 +238,7 @@ void Disk::memory_to_simh(unsigned zone, unsigned sector, unsigned addr, unsigne
 void Disk::file_to_memory(unsigned zone, unsigned sector, unsigned addr, unsigned nwords)
 {
     if (zone >= num_zones)
-        throw std::runtime_error("Zone number exceeds file size");
+        throw std::runtime_error(zone_bounds_message("file", zone, num_zones, path));
 
     unsigned offset_bytes = (4 * zone + sector) * PAGE_NBYTES / 4 + file_offset;
     if (lseek(file_descriptor, offset_bytes, SEEK_SET) < 0)
@@ -251,7 +270,7 @@ void Disk::memory_to_file(unsigned zone, unsigned sector, unsigned addr, unsigne
         throw std::runtime_error("Cannot write to read-only file");
 
     if (zone >= num_zones)
-        throw std::runtime_error("Zone number exceeds file size");
+        throw std::runtime_error(zone_bounds_message("file", zone, num_zones, path));
 
     unsigned offset_bytes = (4 * zone + sector) * PAGE_NBYTES / 4 + file_offset;
     if (lseek(file_descriptor, offset_bytes, SEEK_SET) < 0)
@@ -277,7 +296,7 @@ void Disk::memory_to_file(unsigned zone, unsigned sector, unsigned addr, unsigne
 void Disk::embedded_to_memory(unsigned zone, unsigned sector, unsigned addr, unsigned nwords)
 {
     if (zone >= num_zones)
-        throw std::runtime_error("Zone number exceeds embedded data size");
+        throw std::runtime_error(zone_bounds_message("embedded data", zone, num_zones));
 
     unsigned offset_bytes = (4 * zone + sector) * PAGE_NBYTES / 4;
     const uint8_t *ptr    = &embedded_data[offset_bytes];

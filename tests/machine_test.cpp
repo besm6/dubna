@@ -25,6 +25,11 @@
 
 #include "fixture_machine.h"
 
+static Word debug_watch_word(unsigned xfer, unsigned mode, unsigned watch, bool print_info = false)
+{
+    return ((Word)xfer << 24) | ((Word)print_info << 23) | ((Word)mode << 20) | watch;
+}
+
 TEST_F(dubna_machine, trace_arx)
 {
     // Store the test code.
@@ -60,6 +65,30 @@ TEST_F(dubna_machine, trace_arx)
         "      ACC = 0000 0000 0000 0014",
         "      RAU = 10",
         "00011 L: 06 33 12345 stop 12345(6)",
+        // clang-format on
+    };
+    EXPECT_EQ(trace, expect);
+}
+
+TEST_F(dubna_machine, trace_e67)
+{
+    store_word(010, besm6_asm("э67 2000, мода"));
+    store_word(011, besm6_asm("стоп 12345(6), мода")); // Magic opcode: Pass
+    store_word(012, besm6_asm("стоп 76543(2), мода")); // Magic opcode: Fail
+    store_word(02000, debug_watch_word(011, 1, 02001, true));
+
+    std::string trace_filename = get_test_name() + ".trace";
+    machine->redirect_trace(trace_filename.c_str(), "e");
+
+    machine->cpu.set_pc(010);
+    machine->run();
+
+    auto trace = file_contents_split(trace_filename);
+
+    static const std::vector<std::string> expect = {
+        // clang-format off
+        "00010 L: 00 067 2000 *67 2000",
+        "      Debug Write watch [02001] -> 00011 cont=00011 print-info",
         // clang-format on
     };
     EXPECT_EQ(trace, expect);

@@ -720,6 +720,25 @@ void Machine::print_e50_format_real(const E50_Format_Info &info)
     out.flags(save_flags);
 }
 
+void Machine::print_e67(unsigned xfer, bool print_info, unsigned mode, unsigned watch,
+                        unsigned cont)
+{
+    static const char *mode_name[] = { "Fetch", "Write", "Read", "Invalid" };
+    auto &out                      = Machine::get_trace_stream();
+    auto save_flags                = out.flags();
+
+    out << "      Debug " << mode_name[mode & 03] << " watch [" << std::oct << std::setfill('0')
+        << std::setw(5) << watch << "] -> " << std::setw(5) << xfer << " cont=" << std::setw(5)
+        << cont;
+    if (print_info) {
+        out << " print-info";
+    }
+    out << std::endl;
+
+    // Restore.
+    out.flags(save_flags);
+}
+
 //
 // Print details about extracode e71.
 //

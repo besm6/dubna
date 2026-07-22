@@ -360,6 +360,13 @@ public:
             print_e50_format_real(info);
     }
 
+    static void trace_e67(unsigned xfer, bool print_info, unsigned mode, unsigned watch,
+                          unsigned cont)
+    {
+        if (debug_extracodes)
+            print_e67(xfer, print_info, mode, watch, cont);
+    }
+
     static void print_exception(const char *message);
     static void print_fetch(unsigned addr, Word val);
     static void print_memory_access(unsigned addr, Word val, const char *opname);
@@ -372,6 +379,8 @@ public:
     static void print_e57_search(const E57_Search_Info &info);
     static void print_e57_open(const E57_Open_Info &info);
     void print_e50_format_real(const E50_Format_Info &info);
+    static void print_e67(unsigned xfer, bool print_info, unsigned mode, unsigned watch,
+                          unsigned cont);
     void print_e71(const E64_Pointer &info, unsigned start_addr, unsigned end_addr);
     void print_calls_returns();
 };

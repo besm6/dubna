@@ -45,8 +45,12 @@ void Processor::finish()
 //
 void Processor::reset()
 {
-    core    = {};
-    core.PC = 1;
+    core                   = {};
+    core.PC                = 1;
+    debug_fetch_watch      = {};
+    debug_memory_watch     = {};
+    debug_watch_suppressed = false;
+    debug_prev_abort       = 0;
 
     machine.trace_exception("Reset");
 }
@@ -132,6 +136,10 @@ bool Processor::step()
         opcode = (RK >> 12) & 077;
     }
 
+    if (!core.right_instr_flag && debug_check_fetch(core.PC)) {
+        return false;
+    }
+
     // Start tracing a C program.
     // Check the instruction, and if it's the prolog of a C program - enable
     // tracing of memory, instructions and registers.
@@ -158,6 +166,9 @@ bool Processor::step()
     switch (opcode) {
     case 000: // зп, atx
         Aex = ADDR(addr + core.M[reg]);
+        if (debug_check_write(Aex)) {
+            return false;
+        }
         machine.mem_store(Aex, core.ACC);
         machine.trace_memory_write_dispak(Aex, core.ACC);
         if (!addr && reg == 017)
@@ -166,8 +177,14 @@ bool Processor::step()
 
     case 001: // зпм, stx
         Aex = ADDR(addr + core.M[reg]);
+        if (debug_check_write(Aex)) {
+            return false;
+        }
         machine.mem_store(Aex, core.ACC);
         machine.trace_memory_write_dispak(Aex, core.ACC);
+        if (debug_check_read(core.M[017])) {
+            return false;
+        }
         core.M[017] = ADDR(core.M[017] - 1);
         corr_stack  = 1;
         core.ACC    = machine.mem_load(core.M[017]);
@@ -178,10 +195,16 @@ bool Processor::step()
         throw Exception("Illegal instruction 002 рег/mod");
 
     case 003: // счм, xts
+        if (debug_check_write(core.M[017])) {
+            return false;
+        }
         machine.mem_store(core.M[017], core.ACC);
         core.M[017] = ADDR(core.M[017] + 1);
         corr_stack  = -1;
         Aex         = ADDR(addr + core.M[reg]);
+        if (debug_check_read(Aex)) {
+            return false;
+        }
         core.ACC    = machine.mem_load(Aex);
         core.set_logical();
         break;
@@ -192,6 +215,9 @@ bool Processor::step()
             corr_stack  = 1;
         }
         Aex = ADDR(addr + core.M[reg]);
+        if (debug_check_read(Aex)) {
+            return false;
+        }
         arith_add(machine.mem_load(Aex), 0, 0);
         core.set_additive();
         break;
@@ -202,6 +228,9 @@ bool Processor::step()
             corr_stack  = 1;
         }
         Aex = ADDR(addr + core.M[reg]);
+        if (debug_check_read(Aex)) {
+            return false;
+        }
         arith_add(machine.mem_load(Aex), 0, 1);
         core.set_additive();
         break;
@@ -212,6 +241,9 @@ bool Processor::step()
             corr_stack  = 1;
         }
         Aex = ADDR(addr + core.M[reg]);
+        if (debug_check_read(Aex)) {
+            return false;
+        }
         arith_add(machine.mem_load(Aex), 1, 0);
         core.set_additive();
         break;
@@ -222,6 +254,9 @@ bool Processor::step()
             corr_stack  = 1;
         }
         Aex = ADDR(addr + core.M[reg]);
+        if (debug_check_read(Aex)) {
+            return false;
+        }
         arith_add(machine.mem_load(Aex), 1, 1);
         core.set_additive();
         break;
@@ -232,6 +267,9 @@ bool Processor::step()
             corr_stack  = 1;
         }
         Aex      = ADDR(addr + core.M[reg]);
+        if (debug_check_read(Aex)) {
+            return false;
+        }
         core.ACC = machine.mem_load(Aex);
         core.set_logical();
         break;
@@ -242,6 +280,9 @@ bool Processor::step()
             corr_stack  = 1;
         }
         Aex = ADDR(addr + core.M[reg]);
+        if (debug_check_read(Aex)) {
+            return false;
+        }
         core.ACC &= machine.mem_load(Aex);
         core.RMR = 0;
         core.set_logical();
@@ -253,6 +294,9 @@ bool Processor::step()
             corr_stack  = 1;
         }
         Aex      = ADDR(addr + core.M[reg]);
+        if (debug_check_read(Aex)) {
+            return false;
+        }
         core.RMR = core.ACC;
         core.ACC ^= machine.mem_load(Aex);
         core.set_logical();
@@ -264,6 +308,9 @@ bool Processor::step()
             corr_stack  = 1;
         }
         Aex = ADDR(addr + core.M[reg]);
+        if (debug_check_read(Aex)) {
+            return false;
+        }
         core.ACC += machine.mem_load(Aex);
         if (core.ACC & ONEBIT(49))
             core.ACC = (core.ACC + 1) & BITS48;
@@ -277,6 +324,9 @@ bool Processor::step()
             corr_stack  = 1;
         }
         Aex = ADDR(addr + core.M[reg]);
+        if (debug_check_read(Aex)) {
+            return false;
+        }
         arith_change_sign(machine.mem_load(Aex) >> 40 & 1);
         core.set_additive();
         break;
@@ -287,6 +337,9 @@ bool Processor::step()
             corr_stack  = 1;
         }
         Aex = ADDR(addr + core.M[reg]);
+        if (debug_check_read(Aex)) {
+            return false;
+        }
         core.ACC |= machine.mem_load(Aex);
         core.RMR = 0;
         core.set_logical();
@@ -298,6 +351,9 @@ bool Processor::step()
             corr_stack  = 1;
         }
         Aex = ADDR(addr + core.M[reg]);
+        if (debug_check_read(Aex)) {
+            return false;
+        }
         arith_divide(machine.mem_load(Aex));
         core.set_multiplicative();
         break;
@@ -308,6 +364,9 @@ bool Processor::step()
             corr_stack  = 1;
         }
         Aex = ADDR(addr + core.M[reg]);
+        if (debug_check_read(Aex)) {
+            return false;
+        }
         arith_multiply(machine.mem_load(Aex));
         core.set_multiplicative();
         break;
@@ -318,6 +377,9 @@ bool Processor::step()
             corr_stack  = 1;
         }
         Aex      = ADDR(addr + core.M[reg]);
+        if (debug_check_read(Aex)) {
+            return false;
+        }
         core.ACC = besm6_pack(core.ACC, machine.mem_load(Aex));
         core.RMR = 0;
         core.set_logical();
@@ -329,6 +391,9 @@ bool Processor::step()
             corr_stack  = 1;
         }
         Aex      = ADDR(addr + core.M[reg]);
+        if (debug_check_read(Aex)) {
+            return false;
+        }
         core.ACC = besm6_unpack(core.ACC, machine.mem_load(Aex));
         core.RMR = 0;
         core.set_logical();
@@ -340,6 +405,9 @@ bool Processor::step()
             corr_stack  = 1;
         }
         Aex      = ADDR(addr + core.M[reg]);
+        if (debug_check_read(Aex)) {
+            return false;
+        }
         core.ACC = besm6_count_ones(core.ACC) + machine.mem_load(Aex);
         if (core.ACC & ONEBIT(49))
             core.ACC = (core.ACC + 1) & BITS48;
@@ -353,6 +421,9 @@ bool Processor::step()
             corr_stack  = 1;
         }
         Aex = ADDR(addr + core.M[reg]);
+        if (debug_check_read(Aex)) {
+            return false;
+        }
         if (core.ACC) {
             int n = besm6_highest_bit(core.ACC);
 
@@ -378,6 +449,9 @@ bool Processor::step()
             corr_stack  = 1;
         }
         Aex = ADDR(addr + core.M[reg]);
+        if (debug_check_read(Aex)) {
+            return false;
+        }
         arith_add_exponent((machine.mem_load(Aex) >> 41) - 64);
         core.set_multiplicative();
         break;
@@ -388,6 +462,9 @@ bool Processor::step()
             corr_stack  = 1;
         }
         Aex = ADDR(addr + core.M[reg]);
+        if (debug_check_read(Aex)) {
+            return false;
+        }
         arith_add_exponent(64 - (machine.mem_load(Aex) >> 41));
         core.set_multiplicative();
         break;
@@ -399,6 +476,9 @@ bool Processor::step()
             corr_stack  = 1;
         }
         Aex = ADDR(addr + core.M[reg]);
+        if (debug_check_read(Aex)) {
+            return false;
+        }
         n   = (machine.mem_load(Aex) >> 41) - 64;
         arith_shift(n);
         core.set_logical();
@@ -411,6 +491,9 @@ bool Processor::step()
             corr_stack  = 1;
         }
         Aex      = ADDR(addr + core.M[reg]);
+        if (debug_check_read(Aex)) {
+            return false;
+        }
         core.RAU = (machine.mem_load(Aex) >> 41) & 077;
         break;
 
@@ -477,8 +560,13 @@ bool Processor::step()
         rg  = Aex & 017;
         ad  = ADDR(core.ACC);
         if (rg != 017) {
+            if (debug_check_read(core.M[017])) {
+                return false;
+            }
             core.M[017] = ADDR(core.M[017] - 1);
             corr_stack  = 1;
+        } else if (debug_check_read(ad)) {
+            return false;
         }
         core.ACC   = machine.mem_load(rg != 017 ? core.M[017] : ad);
         core.M[rg] = ad;
@@ -495,6 +583,9 @@ bool Processor::step()
         break;
 
     case 043: // счим, its
+        if (debug_check_write(core.M[017])) {
+            return false;
+        }
         machine.mem_store(core.M[017], core.ACC);
         core.M[017] = ADDR(core.M[017] + 1);
         goto load_modifier;
@@ -556,10 +647,16 @@ bool Processor::step()
 
     case 0230: // мод, wtc
         if (!addr && reg == 017) {
+            if (debug_check_read(core.M[017])) {
+                return false;
+            }
             core.M[017] = ADDR(core.M[017] - 1);
             corr_stack  = 1;
         }
         Aex      = ADDR(addr + core.M[reg]);
+        if (debug_check_read(Aex)) {
+            return false;
+        }
         next_mod = ADDR(machine.mem_load(Aex));
         break;
 

@@ -23,6 +23,11 @@
 //
 #include "fixture_machine.h"
 
+static Word debug_watch_word(unsigned xfer, unsigned mode, unsigned watch, bool print_info = false)
+{
+    return ((Word)xfer << 24) | ((Word)print_info << 23) | ((Word)mode << 20) | watch;
+}
+
 //
 // Test: UJ instruction (ПБ).
 //
@@ -1424,4 +1429,97 @@ TEST_F(dubna_machine, divide)
     EXPECT_EQ(machine->cpu.get_rmr(), 0u);
     EXPECT_EQ(machine->cpu.get_rau(), 07u);
     EXPECT_EQ(machine->cpu.get_m(15), 02000u);
+}
+
+//
+// Test: Э67 fetch watchpoint.
+//
+TEST_F(dubna_machine, debug_watch_fetch)
+{
+    store_word(010, besm6_asm("э67 2000, мода"));
+    store_word(011, besm6_asm("стоп 12345(6), мода")); // Pass.
+    store_word(012, besm6_asm("пб 14, мода"));
+    store_word(013, besm6_asm("стоп 76543(2), мода")); // Fail.
+    store_word(014, besm6_asm("стоп 76543(2), мода")); // Fail.
+    store_word(02000, debug_watch_word(012, 0, 014));
+
+    machine->cpu.set_pc(010);
+    machine->run();
+
+    EXPECT_EQ(machine->cpu.get_pc(), 011u);
+}
+
+//
+// Test: Э67 write watchpoint.
+//
+TEST_F(dubna_machine, debug_watch_write)
+{
+    store_word(010, besm6_asm("э67 2000, мода"));
+    store_word(011, besm6_asm("стоп 12345(6), мода")); // Pass.
+    store_word(012, besm6_asm("сч 2003, зп 2002"));
+    store_word(013, besm6_asm("зп 2001, мода"));
+    store_word(014, besm6_asm("стоп 76543(2), мода")); // Fail.
+    store_word(02000, debug_watch_word(012, 1, 02001));
+    store_word(02001, 0);
+    store_word(02003, 01234567012345670ul);
+
+    machine->cpu.set_pc(010);
+    machine->run();
+
+    EXPECT_EQ(machine->cpu.get_pc(), 011u);
+    EXPECT_EQ(machine->memory.load(02001), 0u);
+}
+
+//
+// Test: Э67 read watchpoint.
+//
+TEST_F(dubna_machine, debug_watch_read)
+{
+    store_word(010, besm6_asm("э67 2000, мода"));
+    store_word(011, besm6_asm("стоп 12345(6), мода")); // Pass.
+    store_word(012, besm6_asm("сч 2002, сч 2001"));
+    store_word(013, besm6_asm("стоп 76543(2), мода")); // Fail.
+    store_word(02000, debug_watch_word(012, 2, 02001));
+    store_word(02001, 07777777777777777ul);
+    store_word(02002, 01234567012345670ul);
+
+    machine->cpu.set_pc(010);
+    machine->run();
+
+    EXPECT_EQ(machine->cpu.get_pc(), 011u);
+    EXPECT_EQ(machine->cpu.get_acc(), 01234567012345670ul);
+}
+
+//
+// Test: Э67 rejects invalid watchpoint mode.
+//
+TEST_F(dubna_machine, debug_watch_bad_mode)
+{
+    store_word(010, besm6_asm("э67 2000, мода"));
+    store_word(02000, debug_watch_word(012, 3, 02001));
+
+    machine->cpu.set_pc(010);
+    EXPECT_THROW(machine->cpu.step(), Processor::Exception);
+}
+
+//
+// Test: Э67 zero transfer address reuses previous abort target.
+//
+TEST_F(dubna_machine, debug_watch_reuses_previous_abort)
+{
+    store_word(010, besm6_asm("э67 2000, мода"));
+    store_word(011, besm6_asm("э67 2004, мода"));
+    store_word(012, besm6_asm("зп 2001, мода"));
+    store_word(02000, debug_watch_word(012, 1, 02001));
+    store_word(02004, debug_watch_word(0, 0, 015));
+
+    machine->cpu.set_pc(010);
+    EXPECT_FALSE(machine->cpu.step());
+    EXPECT_EQ(machine->cpu.get_pc(), 012u);
+
+    EXPECT_FALSE(machine->cpu.step());
+    EXPECT_EQ(machine->cpu.get_pc(), 011u);
+
+    EXPECT_FALSE(machine->cpu.step());
+    EXPECT_EQ(machine->cpu.get_pc(), 011u);
 }

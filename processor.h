@@ -92,6 +92,26 @@ private:
     unsigned Aex{};   // executive address
     int corr_stack{}; // stack correction on exception
 
+    struct DebugFetchWatch {
+        bool armed{};
+        unsigned addr{};
+        unsigned cont{};
+        bool print_info{};
+    };
+
+    struct DebugMemoryWatch {
+        bool armed{};
+        unsigned addr{};
+        unsigned cont{};
+        bool print_info{};
+        unsigned mode{};
+    };
+
+    DebugFetchWatch debug_fetch_watch{};
+    DebugMemoryWatch debug_memory_watch{};
+    bool debug_watch_suppressed{};
+    unsigned debug_prev_abort{};
+
     // Intercept divzero/overflow.
     unsigned intercept_count{};     // intercept this many times
     unsigned intercept_addr{ 020 }; // jump to this address
@@ -116,6 +136,11 @@ private:
     void e72();
     void e75();
     void e76();
+
+    bool debug_fire(unsigned cont, bool print_info);
+    bool debug_check_fetch(unsigned addr);
+    bool debug_check_read(unsigned addr);
+    bool debug_check_write(unsigned addr);
 
     // Print executive address of extracode.
     void print_executive_address();

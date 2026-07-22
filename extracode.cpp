@@ -529,10 +529,106 @@ void Processor::e65()
 //
 // Extracode 067: debug service.
 //
+bool Processor::debug_fire(unsigned cont, bool print_info)
+{
+    debug_watch_suppressed = true;
+    if (print_info) {
+        print_instruction();
+    }
+    debug_prev_abort       = cont;
+    core.PC                = ADDR(cont);
+    core.right_instr_flag  = false;
+    core.apply_mod_reg     = false;
+    core.MOD               = 0;
+    debug_watch_suppressed = false;
+    return true;
+}
+
+bool Processor::debug_check_fetch(unsigned addr)
+{
+    if (debug_watch_suppressed) {
+        return false;
+    }
+    if (debug_fetch_watch.armed && debug_fetch_watch.addr == ADDR(addr)) {
+        auto cont       = debug_fetch_watch.cont;
+        auto print_info = debug_fetch_watch.print_info;
+
+        debug_fetch_watch.armed = false;
+        return debug_fire(cont, print_info);
+    }
+    return false;
+}
+
+bool Processor::debug_check_read(unsigned addr)
+{
+    if (debug_watch_suppressed) {
+        return false;
+    }
+    if (debug_memory_watch.armed && debug_memory_watch.mode == 2 &&
+        debug_memory_watch.addr == ADDR(addr)) {
+        auto cont       = debug_memory_watch.cont;
+        auto print_info = debug_memory_watch.print_info;
+
+        debug_memory_watch.armed = false;
+        return debug_fire(cont, print_info);
+    }
+    return false;
+}
+
+bool Processor::debug_check_write(unsigned addr)
+{
+    if (debug_watch_suppressed) {
+        return false;
+    }
+    if (debug_memory_watch.armed && debug_memory_watch.mode == 1 &&
+        debug_memory_watch.addr == ADDR(addr)) {
+        auto cont       = debug_memory_watch.cont;
+        auto print_info = debug_memory_watch.print_info;
+
+        debug_memory_watch.armed = false;
+        return debug_fire(cont, print_info);
+    }
+    return false;
+}
+
 void Processor::e67()
 {
-    auto word = machine.mem_load(core.M[016]);
-    core.PC   = (word >> 24) & 077777;
+    auto word       = machine.mem_load(core.M[016]);
+    auto xfer       = (unsigned)(word >> 24) & 077777;
+    auto print_info = ((word >> 23) & 1) != 0;
+    auto mode       = (unsigned)(word >> 20) & 03;
+    auto watch      = (unsigned)word & 077777;
+    auto cont       = core.PC;
+
+    if (xfer == 0) {
+        xfer = debug_prev_abort ? debug_prev_abort : cont;
+    }
+
+    machine.trace_e67(xfer, print_info, mode, watch, cont);
+
+    switch (mode) {
+    case 0:
+        debug_fetch_watch.armed      = true;
+        debug_fetch_watch.addr       = watch;
+        debug_fetch_watch.cont       = cont;
+        debug_fetch_watch.print_info = print_info;
+        break;
+
+    case 1:
+    case 2:
+        debug_memory_watch.armed      = true;
+        debug_memory_watch.addr       = watch;
+        debug_memory_watch.cont       = cont;
+        debug_memory_watch.print_info = print_info;
+        debug_memory_watch.mode       = mode;
+        break;
+
+    default:
+        throw Exception("Bad debug watchpoint mode");
+    }
+
+    core.PC               = ADDR(xfer);
+    core.right_instr_flag = false;
 }
 
 #if 0

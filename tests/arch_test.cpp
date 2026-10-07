@@ -130,3 +130,12 @@ TEST(arith, ieee_to_besm6)
     EXPECT_EQ(ieee_to_besm6(-0x1.fffffffffep+0), 0'4060'0000'0000'0001ull); // -2.0 plus epsilon
     // clang-format on
 }
+
+//
+// Convert pi to BESM-6 and back to IEEE format.
+//
+TEST(arith, pi_besm6_ieee)
+{
+    EXPECT_EQ(ieee_to_besm6(3.141592653589793238), 0'4114'4417'6652'1041ull); // 3.141592653589793238
+    EXPECT_EQ(besm6_to_ieee(0'4114'4417'6652'1041ull), 0x1.921fb54442p+1);    // 3.1415926535883045
+}

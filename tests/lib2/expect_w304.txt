@@ -78,7 +78,7 @@
    4.000    66.422   29.330-04      1.4      2.7    9.201
            126.965  -38.591-04      1.1      2.3    6.214
 
-   4.640    97.756    0.000+00      1.3      2.5    8.595  PARTICLE.     (1)INCOMING   (2)STATIONARY (3)OUTGOING   (4)OUTGOING
+   4.640    97.756  -16.610-16      1.3      2.5    8.595  PARTICLE.     (1)INCOMING   (2)STATIONARY (3)OUTGOING   (4)OUTGOING
                PI MINUS      PROTON        DEUTERON      ANTIPROTON
 
  T1=    3.8000
@@ -120,7 +120,7 @@
    7.000    75.412   71.614-04      1.5      2.8   15.518
            128.295  -10.889-03      1.1      2.3    8.964
 
-   7.851   103.263  -85.933-16      1.3      2.5   12.731  PARTICLE.     (1)INCOMING   (2)STATIONARY (3)OUTGOING   (4)OUTGOING
+   7.851   103.263    0.000+00      1.3      2.5   12.731  PARTICLE.     (1)INCOMING   (2)STATIONARY (3)OUTGOING   (4)OUTGOING
                PI MINUS      PROTON        DEUTERON      ANTIPROTON
 
  T1=    4.0000
@@ -144,7 +144,7 @@
    8.000    77.451   91.370-04      1.6      2.9   17.319
            129.800  -14.749-03      1.1      2.3    9.464
 
-   8.963   105.218    0.000+00      1.3      2.5   13.702  PARTICLE.     (1)INCOMING   (2)STATIONARY (3)OUTGOING   (4)OUTGOING
+   8.963   105.218  -13.205-15      1.3      2.5   13.702  PARTICLE.     (1)INCOMING   (2)STATIONARY (3)OUTGOING   (4)OUTGOING
                PI MINUS      PROTON        DEUTERON      ANTIPROTON
 
  T1=    4.1000
@@ -170,7 +170,7 @@
    9.000    81.391   10.438-03      1.6      2.9   18.377
            129.424  -17.101-03      1.1      2.3   10.089
 
-   9.911   106.910    0.000+00      1.3      2.6   14.340  PARTICLE.     (1)INCOMING   (2)STATIONARY (3)OUTGOING   (4)OUTGOING
+   9.911   106.910  -18.424-15      1.3      2.6   14.340  PARTICLE.     (1)INCOMING   (2)STATIONARY (3)OUTGOING   (4)OUTGOING
                PI MINUS      PROTON        DEUTERON      ANTIPROTON
 
  T1=    4.5000
@@ -280,7 +280,7 @@
   16.000   102.296   25.315-03      1.8      3.2   19.193
            135.908  -49.916-03      1.1      2.3   10.409
 
-  16.902   120.535    0.000+00      1.4      2.7   14.297  PARTICLE.     (1)INCOMING   (2)STATIONARY (3)OUTGOING   (4)OUTGOING
+  16.902   120.535  -13.581-14      1.4      2.7   14.297  PARTICLE.     (1)INCOMING   (2)STATIONARY (3)OUTGOING   (4)OUTGOING
                PI MINUS      PROTON        DEUTERON      ANTIPROTON
 
  T1=    6.0000
@@ -564,7 +564,7 @@
   22.000   123.527   46.173-03      2.1      3.5   12.299
            144.039  -93.048-03      1.2      2.4    7.545
 
-  22.631   134.681  -68.393-14      1.6      2.9    9.651  PARTICLE.     (1)INCOMING   (2)STATIONARY (3)OUTGOING   (4)OUTGOING
+  22.631   134.681    0.000+00      1.6      2.9    9.651  PARTICLE.     (1)INCOMING   (2)STATIONARY (3)OUTGOING   (4)OUTGOING
                PI MINUS      PROTON        DEUTERON      ANTIPROTON
 
  T1=   10.0000
@@ -666,7 +666,7 @@
   24.000   135.845   26.403-03      1.8      3.1    8.727
            142.218  -34.133-03      1.5      2.7    7.386
 
-  24.077   139.134    0.000+00      1.6      2.9    8.029  PARTICLE.     (1)INCOMING   (2)STATIONARY (3)OUTGOING   (4)OUTGOING
+  24.077   139.134  -11.405-13      1.6      2.9    8.029  PARTICLE.     (1)INCOMING   (2)STATIONARY (3)OUTGOING   (4)OUTGOING
                PI MINUS      PROTON        DEUTERON      ANTIPROTON
 
  T1=   12.0000
@@ -1100,7 +1100,7 @@
   34.000   131.122   15.016-02      0.6      1.2    8.406
            154.138  -44.783-02      0.2      0.7    4.480
 
-  35.534   144.197  -34.626-13      0.4      0.9    6.188  PARTICLE.     (1)INCOMING   (2)STATIONARY (3)OUTGOING   (4)OUTGOING
+  35.534   144.197    0.000+00      0.4      0.9    6.188  PARTICLE.     (1)INCOMING   (2)STATIONARY (3)OUTGOING   (4)OUTGOING
                PI MINUS      PROTON        DEUTERON      ANTIPROTON
 
  T1=    6.0000
@@ -1468,7 +1468,7 @@
   52.000   158.828   62.935-02      0.3      0.8    3.624
            166.222  -14.475-01      0.1      0.5    2.352
 
-  52.654   162.909    0.000+00      0.2      0.6    2.921  PARTICLE.     (1)INCOMING   (2)STATIONARY (3)OUTGOING   (4)OUTGOING
+  52.654   162.909  -89.345-12      0.2      0.6    2.921  PARTICLE.     (1)INCOMING   (2)STATIONARY (3)OUTGOING   (4)OUTGOING
                PI MINUS      PROTON        DEUTERON      ANTIPROTON
 
  T1=   11.0000
@@ -1530,7 +1530,7 @@
   54.000   160.987   77.719-02      0.3      0.7    3.179
            167.635  -17.988-01      0.1      0.5    2.062
 
-  54.639   164.658    0.000+00      0.2      0.6    2.561  PARTICLE.     (1)INCOMING   (2)STATIONARY (3)OUTGOING   (4)OUTGOING
+  54.639   164.658  -13.779-11      0.2      0.6    2.561  PARTICLE.     (1)INCOMING   (2)STATIONARY (3)OUTGOING   (4)OUTGOING
                PI MINUS      PROTON        DEUTERON      ANTIPROTON
 
  T1=   12.0000
@@ -1658,7 +1658,7 @@
   56.000   161.543   13.748-01      0.3      0.8    2.945
            171.226  -59.226-01      0.1      0.4    1.395
 
-  57.803   167.259    0.000+00      0.1      0.5    2.028  PARTICLE.     (1)INCOMING   (2)STATIONARY (3)OUTGOING   (4)OUTGOING
+  57.803   167.259  -28.617-11      0.1      0.5    2.028  PARTICLE.     (1)INCOMING   (2)STATIONARY (3)OUTGOING   (4)OUTGOING
                PI MINUS      PROTON        DEUTERON      ANTIPROTON
 
  T1=   14.0000
@@ -1724,7 +1724,7 @@
   58.000   164.267   14.861-01      0.2      0.7    2.450
            171.240  -47.113-01      0.1      0.4    1.361
 
-  59.094   168.253    0.000+00      0.1      0.5    1.826  PARTICLE.     (1)INCOMING   (2)STATIONARY (3)OUTGOING   (4)OUTGOING
+  59.094   168.253  -39.197-11      0.1      0.5    1.826  PARTICLE.     (1)INCOMING   (2)STATIONARY (3)OUTGOING   (4)OUTGOING
                PI MINUS      PROTON        DEUTERON      ANTIPROTON
 
  T1=   15.0000
@@ -1792,7 +1792,7 @@
   60.000   167.484   11.061-01      0.2      0.6    1.903
            170.514  -19.125-01      0.1      0.4    1.441
 
-  60.240   169.102    0.000+00      0.1      0.5    1.656
+  60.240   169.102  -52.301-11      0.1      0.5    1.656
 I/O-ERROR 201 DETECTED IN IOCONT* CALLED FROM 01107B LUN 50 ADDRESS 03012B FORMAT
 (3I1,A3)
 RECORD*

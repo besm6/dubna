@@ -295,53 +295,107 @@ uint64_t MantissaExponent::multiply(int64_t x)
 }
 
 //
-// non-restoring division
+// Деление мантисс так, как его выполняет АУ (ТО ИЫ1 700 000 ТО-3, ч. IV,
+// п. 4.16, листы 86-102).  Деление без восстановления остатка, но остаток
+// хранится в двухрядном коде (суммы и переносы), переносы не приводятся;
+// приводятся только старшие разряды 41-39 (РСУД, РПУД, РУД).  По ним и по
+// предыдущему действию (ЗУ+ЧВР) выбирается следующее действие: вычитание
+// делителя, прибавление или только сдвиг (таблица 4.4).  Частное набирается
+// двумя составляющими по 42 разряда (41 + доп. разряд): положительной (РОМ)
+// и отрицательной (ВРУ); в конце частное = РОМ - ВРУ со специальным
+// округлением (лист 102), при котором деление нацело всегда точно.
 //
-static inline MantissaExponent nrdiv(MantissaExponent n, MantissaExponent d)
+// Мантиссы - в 42-разрядном дополнительном коде (два знаковых разряда),
+// делитель нормализован.  Результат: мантисса частного в той же сетке,
+// |q| <= 2, нормализация - за вызывающим.  Эталонная модель:
+// tools/b6div.py в проекте simh-besm6.
+//
+static inline int dbit(uint64_t x, int n)
 {
-    MantissaExponent quot;
+    return (x >> (n - 1)) & 1;
+}
 
-    if (d.mantissa == BIT40) {
-        // Divide by a positive power of 2.
-        quot.mantissa = n.mantissa;
-        quot.exponent = n.exponent - d.exponent + 64 + 1;
-        return quot;
-    }
+static uint64_t au_divide(uint64_t x, uint64_t y)
+{
+    const uint64_t lo   = BITS40 >> 2; // двухрядная часть: 38..1
+    const uint64_t lo39 = BITS40 >> 1; // разряды 39..1
+    const int yneg      = dbit(y, 41);
 
-    // to compensate for potential normalization to the right
-    n.mantissa <<= 1;
-    d.mantissa <<= 1;
+    // Остаток R0 = X/2: старшие разряды 41-39 - на РСУД, младшие -
+    // однорядным кодом на СМ.  s2/c2 - двухрядный код остатка, уже
+    // сдвинутый влево (разряды 39-1), на первом такте это сам X.
+    uint64_t s2  = x & lo39;
+    uint64_t c2  = 0;
+    int sud      = dbit(x, 42) << 2 | dbit(x, 41) << 1 | dbit(x, 40);
+    int pud      = 0;
+    int rud      = dbit(x, 41) << 1 | dbit(x, 40); // разряды 40,39 остатка
+    bool zu_plus = !dbit(x, 41) && yneg;           // лист 100
+    uint64_t pos = 0, neg = 0;
 
-    if (llabs(n.mantissa) >= llabs(d.mantissa)) {
-        n.normalize_to_the_right();
-    }
+    for (int i = 0; i < 42; i++) {
+        // Таблица 4.4: при первом знаке 0 действие повторяет предыдущее;
+        // иначе знак остатка - по переносу из приведённых разрядов 40,39;
+        // код I,II - знак неизвестен, только сдвиг.
+        char act;
+        if (!(sud & 4))
+            act = zu_plus ? '+' : '-';
+        else if ((sud & 3) + pud == 3)
+            act = 's';
+        else
+            act = (((sud & 3) + pud >= 4) != yneg) ? '-' : '+';
+        zu_plus = (act == '+');
+        pos     = pos << 1 | (act == '-');
+        neg     = neg << 1 | (act == '+');
 
-    // Compute exponent.
-    quot.exponent = n.exponent - d.exponent + 64;
-
-    // Compute mantissa.
-    quot.mantissa = 0;
-    for (int64_t bitmask = BIT40; bitmask > 0; bitmask >>= 1) {
-        if (n.mantissa == 0)
-            break;
-
-        if (llabs(n.mantissa) < BIT40) {
-            // magic shortcut
-            n.mantissa *= 2;
-
-        } else if ((n.mantissa > 0) == (d.mantissa > 0)) {
-            // Same sign
-            quot.mantissa += bitmask;
-            n.mantissa *= 2;
-            n.mantissa -= d.mantissa;
+        uint64_t lo_s, lo_c;
+        if (act == 's') {
+            // Только сдвиг: 41,40 РСУД = 1, разряд 39 двухрядного кода
+            // складывается без делителя, перенос - в РПУД40 (лист 98).
+            // Разряд 38 (перенос - в РПУД39, как в схеме листа 99) лист 98
+            // не упоминает: он подобран по константе Е'Е-10' Диспака.
+            int a = dbit(s2, 39);
+            int b = dbit(c2, 39);
+            sud   = 6 | (a ^ b);
+            pud   = (a & b) << 1;
+            a     = dbit(s2, 38);
+            b     = dbit(c2, 38);
+            pud |= a & b;
+            lo_s = (s2 & (lo >> 1)) | (uint64_t)(a ^ b) << 37;
+            lo_c = c2 & (lo >> 1);
         } else {
-            // Different sign
-            quot.mantissa -= bitmask;
-            n.mantissa *= 2;
-            n.mantissa += d.mantissa;
+            // +ЧВР - прямой код делителя, -ЧВР - обратный и 1 в 1-й разряд
+            uint64_t yv = (act == '+') ? y : ~y & BITS42;
+            uint64_t sm = s2 ^ c2 ^ (yv & lo39);
+            uint64_t cr = ((s2 & c2) | (s2 & yv & lo39) | (c2 & yv & lo39)) << 1;
+            if (act == '-')
+                cr |= 1;
+
+            // Разряд 39 суммы - в РСУД, переносы из 39 и 38 - в РПУД;
+            // разряды 41,40 - сдвинутый РУД плюс делитель.
+            int t39 = rud & 1;
+            int t40 = rud >> 1;
+            sud     = (t40 ^ dbit(yv, 41) ^ (t39 & dbit(yv, 40))) << 2 | (t39 ^ dbit(yv, 40)) << 1 |
+                      dbit(sm, 39);
+            pud     = dbit(cr, 40) << 1 | dbit(cr, 39);
+            lo_s    = sm & lo;
+            lo_c    = cr & lo;
         }
+        // РУД - приведённые разряды 40,39 нового остатка
+        rud = ((sud & 3) + pud) & 3;
+        s2  = lo_s << 1;
+        c2  = lo_c << 1;
     }
-    return quot;
+
+    // Частное = РОМ + обратный код ВРУ + ДПР, плюс 1 округления в 1рРС2
+    int pe = pos & 1;
+    int ne = neg & 1;
+    pos >>= 1;
+    neg >>= 1;
+    int p1  = pos & 1;
+    int n1  = neg & 1;
+    int dpr = pe || (!ne && !pe) || (!p1 && ne && !n1);
+    int r1  = pe && (n1 || p1);
+    return (pos + (~neg & BITS42) + dpr + r1) & BITS42;
 }
 
 //
@@ -358,7 +412,19 @@ void Processor::arith_divide(Word val)
 
     MantissaExponent dividend(core.ACC);
     MantissaExponent divisor(val);
-    MantissaExponent acc = nrdiv(dividend, divisor);
+    MantissaExponent acc;
+
+    acc.mantissa = au_divide(dividend.mantissa & BITS42, divisor.mantissa & BITS42);
+    acc.exponent = dividend.exponent - divisor.exponent + 64;
+
+    // Sign extend.
+    acc.mantissa <<= 64 - 42;
+    acc.mantissa >>= 64 - 42;
+
+    if (acc.is_denormal()) {
+        // Нормализация вправо
+        acc.normalize_to_the_right();
+    }
 
     arith_normalize_and_round(acc, 0, 0);
 }
